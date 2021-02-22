@@ -1,0 +1,19 @@
+# Guion
+
+¿Como podrias escapar en un mundo postapocaliptico infestado de peligros (etc etc)?
+Pues bien, esta idea es la que nosotros, SinNombreTM, os planteamos en nuestro juego, DOME 2398479136416493.
+
+En este juego, controlaremos a un habitante de la colonia 2398479136416493 en su intento por reparar el cohete que le permitira
+escapar del desastre que ha acaecido en la cupula de las colonias del planeta (relleno).
+
+(Aqui explicamos el juego base)
+
+(Aqui explicamos el ciclo de juego)
+
+(Aqui explicamos la dinamica)
+
+(Aqui explicamos la estetica)
+
+(Aqui miscelanea [publico objetivo, intenciones de cada hito, organizacion, etc])
+
+Well okay bye (boy a dejar el esquema asi hasta que hablemos con cleon en clase).
