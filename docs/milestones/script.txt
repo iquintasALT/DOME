@@ -5,7 +5,7 @@ Pues bien, esta idea es la que nosotros, Sureffect, os planteamos en nuestro jue
 
 En este juego, controlaremos a un habitante de la colonia 2398479136416493 en su intento por reparar el cohete que le permitira
 escapar del desastre que ha acaecido en la cupula de las colonias del planeta. Este desastre fue causado por una raza alienígena
-invasora que planea quedarse los recursos del planeta y elimnar o infectar a todo ser vivo que reside en él.
+que planea eliminar o infectar a todo ser humano que reside en él.
 
 (Aqui explicamos el juego base)
 
@@ -47,6 +47,9 @@ al refugio antes del anochecer y descansará, de no llegar antes sufrirá alguna
 (Aqui explicamos la dinamica)
 
 (Aqui explicamos la estetica)
+
+El juego principalmente se centrará en edificios y zonas cerradas propias de la ciencia ficción con un toque post-apocalíptico, el jugador
+sólo podrá ver con claridad lo que hay dentro de su rango de visión y en la sala en la que se encuentra.
 
 (Aqui miscelanea [publico objetivo, intenciones de cada hito, organizacion, etc])
 
