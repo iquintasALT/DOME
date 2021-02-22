@@ -1,7 +1,7 @@
 # Guion
 
 ¿Como podrias escapar en un mundo postapocaliptico infestado de peligros (etc etc)?
-Pues bien, esta idea es la que nosotros, SinNombreTM, os planteamos en nuestro juego, DOME 2398479136416493.
+Pues bien, esta idea es la que nosotros, Sureffect, os planteamos en nuestro juego, DOME 2398479136416493.
 
 En este juego, controlaremos a un habitante de la colonia 2398479136416493 en su intento por reparar el cohete que le permitira
 escapar del desastre que ha acaecido en la cupula de las colonias del planeta. Este desastre fue causado por una raza alienígena
