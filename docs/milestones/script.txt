@@ -4,11 +4,45 @@
 Pues bien, esta idea es la que nosotros, SinNombreTM, os planteamos en nuestro juego, DOME 2398479136416493.
 
 En este juego, controlaremos a un habitante de la colonia 2398479136416493 en su intento por reparar el cohete que le permitira
-escapar del desastre que ha acaecido en la cupula de las colonias del planeta (relleno).
+escapar del desastre que ha acaecido en la cupula de las colonias del planeta. Este desastre fue causado por una raza alienígena
+invasora que planea quedarse los recursos del planeta y elimnar o infectar a todo ser vivo que reside en él.
 
 (Aqui explicamos el juego base)
 
+DOME 2398479136416493 es un juego survival scroller 2D en el que el jugador deberá moverse por toda la colonia en búsqueda de recursos
+y materiales para alimentarse así cómo para reparar la nave que le permitirá escapar de la peligrosa cúpula. Para ello, el protagonista 
+saldrá de su refugio todos los días para explorar las distintas zonas de la cúpula y volverá antes del anochecer para evitar las frías 
+temperaturas del planeta. Es por eso que el manejo de recursos será muy importante, debido a que el jugador no podrá llevarse todos los
+recursos de la zona al primer intento y tendrá que tener en cuenta el estado de su personaje como el hambre, heridas concretas, tiempo 
+y el espacio disponible.
+
+Pero las zonas que explorará el jugador tampoco serán sencillas, ya que éstas estarán llenas de enemigos y peligros a los que se deberá
+enfrentar. DOME 2398479136416493 es un shooter enfocado de una forma estratégica en la que el jugador deberá manejar la munición limitada
+así como cubrirse detrás de objetos para evitar disparos enemigos.  
+
+(Aqui explicamos mecánicas extra)
+
+Raid - Las raids son las exploraciones que podrá hacer el jugador, éste podrá elegir cualquier localización del mapa
+y habrán descripciones de dichas zonas indicando la dificultad o especificaciones ya que en una zona podrás encontrar
+objetos de un tipo u otro. Sólo podrá elegir una zona por día debido al tiempo que debe gestionar y una vez terminado del día
+deberá volver al refugio.
+
+Refugio - Es una zona pequeña donde el jugador podrá contruir y mejorar la nave para escapar, así como sus armas y objetos. 
+
+Equipamiento - El jugador dispondrá de un equipamiento sencillo, con un arma equipada, armadura y mochila mejorable.
+
+Supervivencia - A la hora de sobrevivir, el jugador tendrá que tener en cuenta varios factores que afectarán a su personaje,
+el hambre y la sed deben mantenerse en buen estado o aumentará la probabilidad de sufrir heridas al recibir daño o incluso morir de sed. 
+Podrá también descansar en el refugio para mejorar distintos aspectos como su puntería y el tiempo de viaje a la hora de hacer raids.
+
+Medicina - Dependiendo de las heridas causadas a lo largo de su viaje o de los estados en los que se encuentre su personaje, el jugador
+deberá tomar distintas medicinas.
+
 (Aqui explicamos el ciclo de juego)
+
+El loop de juego esperado comenzaría en el refugio con el jugador crafteando o mejorando items para realizar la raid, una vez hecho eso,
+el jugador pasará a elegir zona a la que raidear y se pasará el resto del día recogiendo materiales y explorando, finalmente volverá
+al refugio antes del anochecer y descansará, de no llegar antes sufrirá alguna penalización por el clima helado.
 
 (Aqui explicamos la dinamica)
 
