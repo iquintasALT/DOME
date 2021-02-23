@@ -3,22 +3,39 @@
 ¿Como podrias escapar en un mundo postapocaliptico infestado de peligros?
 Esta idea es la que nosotros, Sureffect, os planteamos en nuestro juego, DOME.
 
+
 En él, controlamos a un habitante de una de las colonias del planeta Aurora, que intenta reparar el cohete que le permitira
 escapar del desastre que ha acaecido en su cupula, causado por la tecnologia de una raza alienígena que planea eliminar
 la colonia invasora.
 
+Así, DOME es un juego survival scroller 2D en el que el jugador deberá moverse por toda la colonia en búsqueda de recursos
+y materiales para alimentarse, defenderse, y reparar la nave que le permitirá escapar de la peligrosa cúpula. Para ello, el protagonista 
+saldrá de su refugio todos los días para explorar las distintas zonas de la cúpula y volverá antes del anochecer para evitar las frías 
+temperaturas mortales del planeta. Es por eso que el manejo de recursos será muy importante, debido a que el jugador no podrá llevarse todos los
+recursos de la zona al visitarla por primera vez y tendrá que tener en cuenta el estado de su personaje como el hambre, heridas concretas, tiempo 
+y el espacio de su inventario disponible.
+
+Nos hemos inspirado en juegos como Escape from Tarkov, This Was of Mine, y Fallout Shelter.
+Nuestro target seran jugadores que le gusten los shooters mas tacticos en los que se premia el control de recursos y la toma de decisiones
+más que los reflejos. Además sera un juego con permadeth, por lo que también estará dirigido a un publico que busque un desafío, algo menos casual.
+
 Así, para poder reparar el cohete antes de que la cupula sea inhabitable, el jugador tendra que pasar por dos fases cada dia:
 
-- En un primer lugar, al principio del dia debera seleccionar una zona de la cupula 
+En la primera fase, el jugador necesitara recolectar recursos para defenderse: armas, municion, proteccion, medicinas... También necesitara
+hacerse con comida y bebida para sobrevivir hasta que pueda abandonar la cupula. Para hacer esto el jugador podra escoger una localizacion
+para lootearla, teniendo un tiempo limitado para obtener recursos de ella. Si por ejemplo el jugador tiene poca comida ira a una localizacion como es un supermercado. En cambio, si quiere conseguir
+mejor equipo para defenderse ira a un refugio militar.
+
+En la segunda fase, el jugador dispondra de cierta cantidad de tiempo que se consumira al hacer distintas acciones, las cuales pueden requerir de distintos
+recursos. Algunos ejemplos de acciones son: craftear medicinas, balas, mejoras del arma, arreglar la nave...
+El jugador necesitara realizar de forma regular acciones como comer, beber, dormir o tratar heridas para sobrevivir. Por ejemplo, si al pasar el dia no ha comido,
+recibira un debufo/penalizacion que afectara negativamente a la proxima raid. Si sigue sin comer morira, causando el fin de la partida.
+
+El ciclo de juego se centra el la repetición de estas dos fases cada dia, mejorando el equipamiento para poder raidear localizaciones mas dificiles y
+consiguiendo los recursos necesarios para no morir, a la vez que se arregla la nave para poder escapar y completar el juego.
 
 (Aqui explicamos el juego base)
 
-Así, DOME es un juego survival scroller 2D en el que el jugador deberá moverse por toda la colonia en búsqueda de recursos
-y materiales para alimentarse así cómo para reparar la nave que le permitirá escapar de la peligrosa cúpula. Para ello, el protagonista 
-saldrá de su refugio todos los días para explorar las distintas zonas de la cúpula y volverá antes del anochecer para evitar las frías 
-temperaturas del planeta. Es por eso que el manejo de recursos será muy importante, debido a que el jugador no podrá llevarse todos los
-recursos de la zona al primer intento y tendrá que tener en cuenta el estado de su personaje como el hambre, heridas concretas, tiempo 
-y el espacio disponible.
 
 Pero las zonas que explorará el jugador tampoco serán sencillas, ya que éstas estarán llenas de enemigos y peligros a los que se deberá
 enfrentar. DOME es un shooter enfocado de una forma estratégica en la que el jugador deberá manejar la munición limitada
@@ -31,7 +48,9 @@ y habrán descripciones de dichas zonas indicando la dificultad o especificacion
 objetos de un tipo u otro. Sólo podrá elegir una zona por día debido al tiempo que debe gestionar y una vez terminado del día
 deberá volver al refugio.
 
-Refugio - Es una zona pequeña donde el jugador podrá contruir y mejorar la nave para escapar, así como sus armas y objetos. 
+Refugio - Es una zona pequeña donde el jugador podrá contruir y mejorar la nave para escapar, así como sus armas y objetos. En el, el jugador
+ dispondra de cierta cantidad de tiempo que se consumira al hacer distintas acciones, las cuales pueden requerir de distintos
+recursos. Algunos ejemplos de acciones son: craftear medicinas, balas, mejoras del arma, arreglar la nave, comer, beber, dormir, tratar heridas...
 
 Equipamiento - El jugador dispondrá de un equipamiento sencillo, con un arma equipada, armadura y mochila mejorable.
 
