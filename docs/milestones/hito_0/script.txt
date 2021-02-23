@@ -42,24 +42,23 @@ así como cubrirse detrás de objetos para evitar disparos enemigos.
 
 (Aqui explicamos mecánicas extra)
 
-Raid - Las raids son las exploraciones que podrá hacer el jugador, éste podrá elegir cualquier localización del mapa
-y habrán descripciones de dichas zonas indicando la dificultad o especificaciones ya que en una zona podrás encontrar
-objetos de un tipo u otro. Sólo podrá elegir una zona por día debido al tiempo que debe gestionar y una vez terminado del día
-deberá volver al refugio.
+Equipamiento - El jugador dispondrá de un equipamiento sencillo, con un arma equipada, armadura y granada. Además, tendrá un inventario cuadriculado en
+el que podra colocar los objetos como si fuesen piezas de tetris.
 
-Refugio - Es una zona pequeña donde el jugador podrá contruir y mejorar la nave para escapar, así como sus armas y objetos. En el, el jugador
- dispondra de cierta cantidad de tiempo que se consumira al hacer distintas acciones, las cuales pueden requerir de distintos
-recursos. Algunos ejemplos de acciones son: craftear medicinas, balas, mejoras del arma, arreglar la nave, comer, beber, dormir, tratar heridas...
+Estados - A la hora de sobrevivir, el jugador tendrá que tener en cuenta varios factores que afectarán a su personaje. Estos estados están divididos
+en dos categorias: los generales y los de combate. Al no comer, beber o tratar
+heridas se sufriran penalizaciones generales que afectarán a la salud, la punteria o la capacidad del inventario. Al comienzo de cada día avanzaran
+estos estados dañinos no tratados, y si llegan a su fase final, mataran al jugador. Tambien hay estados generales beneficiosos como descansar en el refugio,
+lo que aumentara la precision.
 
-Equipamiento - El jugador dispondrá de un equipamiento sencillo, con un arma equipada, armadura y mochila mejorable.
+Por otro lado estan los estados de combate. Estos no avanzan al comienzo de cada dia, sino que son infligidos a lo largo de la raid e indican los
+daños del jugador. Algunos de estos son: herido, heridas graves, hemorragia, hueso roto... Se pueden curar en medio de la raid o en el refugio usando
+la medicina adecuada: vendas, kit de primeros auxilios...
 
-Supervivencia - A la hora de sobrevivir, el jugador tendrá que tener en cuenta varios factores que afectarán a su personaje,
-el hambre y la sed deben mantenerse en buen estado o aumentará la probabilidad de sufrir heridas al recibir daño o incluso morir de sed. 
-Podrá también descansar en el refugio para mejorar distintos aspectos como su puntería y el tiempo de viaje a la hora de hacer raids.
+Crafteo - En el refugio, aparte de las zonas para descansar, comprobar el estado del personaje, el almacen de objetos, y la salida para hacer una raid,
+existirán una estacion medica que usara componentes medicos encontrados en la raid, y estacion balistica centrada en la mejora de armas y creacion
+de municion.
 
-Medicina - Dependiendo de las heridas causadas a lo largo de su viaje o de los estados en los que se encuentre su personaje, el jugador
-deberá tomar distintas medicinas.
-(equipamiento, estados, crafteo)
 
 (Aqui explicamos la dinamica)
 
@@ -72,6 +71,7 @@ de sus disparos o atacándolos antes de que se acerquen a él.
 
 El juego principalmente se centrará en edificios y zonas cerradas propias de la ciencia ficción con un toque post-apocalíptico, el jugador
 sólo podrá ver con claridad lo que hay dentro de su rango de visión y en la sala en la que se encuentra.
+El juego tendra estetica pixel art, con colores oscuros para representar la situacion caotica en la que transcurre el juego
 (extenderla un poco)
 
 
