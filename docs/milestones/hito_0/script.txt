@@ -12,10 +12,8 @@ la colonia invasora.
 Así, DOME es un survival scroller 2D inspirado en juegos como Escape from Tarkov, This Was of Mine, y Fallout Shelter, en el que el
 jugador deberá moverse por toda la colonia en búsqueda de recursos y materiales para alimentarse, defenderse, y reparar la nave.
 
-Por ello, nuestro target seran jugadores que le gusten los shooters mas tacticos en los que se premia el control de recursos y la toma de decisiones
-más que los reflejos. Además sera un juego con permadeath, por lo que también estará dirigido a un publico que busque un desafío, algo menos casual.
-El juego está enfocado principalmente a la demográfica de jugadores experimentados. Aún así, el objetivo es que no sea necesario
-conocimiento sobre el género para entender cómo se juega.
+El juego estará enfocado a un publico familiarizado con los videojuegos, aunque no sean necesariamente expertos del género. Además, ciertos elementos 
+de diseño, como que exista permadeath, generan un desafio que apela más a un publico menos casual.
 
 Así, para poder reparar el cohete antes de que la cupula sea inhabitable, el jugador tendra que pasar por dos fases cada dia:
 
@@ -25,6 +23,9 @@ para lootearla, teniendo un tiempo limitado para obtener recursos de ella. Si pa
 Las noches son demasiado frías y causará al jugador un debufo/penalizacion de hipotermia. Si pasa demasiado tiempo en ese estado, morira y acabara la
 partida. Si por ejemplo el jugador tiene poca comida ira a una localizacion como es un supermercado. En cambio, si quiere conseguir mejor equipo para
 defenderse ira a un refugio militar.
+- Looteo
+- Combate
+- Criogenizacion
 
 --
 
