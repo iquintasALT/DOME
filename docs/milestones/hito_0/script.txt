@@ -46,6 +46,11 @@ al refugio antes del anochecer y descansará, de no llegar antes sufrirá alguna
 
 (Aqui explicamos la dinamica)
 
+Los objetivos principales que debe alcanzar el jugador son sobrevivir día a día y encontrar los materiales y recursos necesarios para
+arreglar la nave y huir del planeta en el que reside. Para lograrlo el jugador deberá manejar de manera inteligente su tiempo del día para
+centrarse en distintos fines, encontrar objetos, comida, partes, étc. y a su vez, enfrentarse a los enemigos de las distintas zonas cubriéndose
+de sus disparos o atacándolos antes de que se acerquen a él.
+
 (Aqui explicamos la estetica)
 
 El juego principalmente se centrará en edificios y zonas cerradas propias de la ciencia ficción con un toque post-apocalíptico, el jugador
