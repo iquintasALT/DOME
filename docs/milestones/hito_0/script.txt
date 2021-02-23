@@ -56,6 +56,10 @@ de sus disparos o atacándolos antes de que se acerquen a él.
 El juego principalmente se centrará en edificios y zonas cerradas propias de la ciencia ficción con un toque post-apocalíptico, el jugador
 sólo podrá ver con claridad lo que hay dentro de su rango de visión y en la sala en la que se encuentra.
 
-(Aqui miscelanea [publico objetivo, intenciones de cada hito, organizacion, etc])
+El juego está enfocado principalmente a la demográfica de jugadores experimentados. Aún así, el objetivo es que no sea necesario conocimiento sobre el género para entender cómo se juega. 
+
+Para el hito 1 tendremos funcionando los dos sistemas principales de la raid y el refugio. A partir de aquí podremos comenzar a implementar el contenido del juego, la mayor parte de la cual estará hecha para el hito 2. A partir de aquí, quedaría pulir el juego, terminar y expandir los sistemas implementados y hacer un QA más extensivo para la entrega final en el tercer hito.
+
+Nos hemos apoyado de Discord para nuestras reuniones de grupo, que a partir de este momento serán dos veces por semana. Para dividirnos el trabajo usamos Pivotal Tracker, como siempre, pero dado el tamaño del grupo también hemos asignado roles de organización a algunos miembros.
 
 Well okay bye (boy a dejar el esquema asi hasta que hablemos con cleon en clase).
