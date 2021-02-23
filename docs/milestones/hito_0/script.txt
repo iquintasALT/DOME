@@ -1,15 +1,15 @@
 # Guion
 
-¿Como podrias escapar en un mundo postapocaliptico infestado de peligros (etc etc)?
-Pues bien, esta idea es la que nosotros, Sureffect, os planteamos en nuestro juego, DOME 2398479136416493.
+¿Como podrias escapar en un mundo postapocaliptico infestado de peligros?
+Esta idea es la que nosotros, Sureffect, os planteamos en nuestro juego, DOME.
 
-En este juego, controlaremos a un habitante de la colonia 2398479136416493 en su intento por reparar el cohete que le permitira
-escapar del desastre que ha acaecido en la cupula de las colonias del planeta. Este desastre fue causado por una raza alienígena
-que planea eliminar o infectar a todo ser humano que reside en él.
+En él, controlamos a un habitante de una de las colonias del planeta Aurora en su intento por reparar el cohete que le permitira
+escapar del desastre que ha acaecido en su cupula. Este desastre fue causado por la tecnologia de una raza alienígena aun no descubierta
+que planea eliminar o infectar a todo ser humano que reside en él, ya que los considera invasores de su planeta.
 
 (Aqui explicamos el juego base)
 
-DOME 2398479136416493 es un juego survival scroller 2D en el que el jugador deberá moverse por toda la colonia en búsqueda de recursos
+Así, DOME es un juego survival scroller 2D en el que el jugador deberá moverse por toda la colonia en búsqueda de recursos
 y materiales para alimentarse así cómo para reparar la nave que le permitirá escapar de la peligrosa cúpula. Para ello, el protagonista 
 saldrá de su refugio todos los días para explorar las distintas zonas de la cúpula y volverá antes del anochecer para evitar las frías 
 temperaturas del planeta. Es por eso que el manejo de recursos será muy importante, debido a que el jugador no podrá llevarse todos los
@@ -17,8 +17,8 @@ recursos de la zona al primer intento y tendrá que tener en cuenta el estado de
 y el espacio disponible.
 
 Pero las zonas que explorará el jugador tampoco serán sencillas, ya que éstas estarán llenas de enemigos y peligros a los que se deberá
-enfrentar. DOME 2398479136416493 es un shooter enfocado de una forma estratégica en la que el jugador deberá manejar la munición limitada
-así como cubrirse detrás de objetos para evitar disparos enemigos.  
+enfrentar. DOME es un shooter enfocado de una forma estratégica en la que el jugador deberá manejar la munición limitada
+así como cubrirse detrás de objetos para evitar disparos enemigos.
 
 (Aqui explicamos mecánicas extra)
 
