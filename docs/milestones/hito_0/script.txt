@@ -23,13 +23,15 @@ Así, para poder reparar el cohete antes de que la cupula sea inhabitable, el ju
 
 En la primera fase, el jugador necesitara recolectar recursos para defenderse: armas, municion, proteccion, medicinas... También necesitara
 hacerse con comida y bebida para sobrevivir hasta que pueda abandonar la cupula. Para hacer esto el jugador podra escoger una localizacion
-para lootearla, teniendo un tiempo limitado para obtener recursos de ella. Si por ejemplo el jugador tiene poca comida ira a una localizacion como es un supermercado. En cambio, si quiere conseguir
-mejor equipo para defenderse ira a un refugio militar.
+para lootearla, teniendo un tiempo limitado para obtener recursos de ella. Si pasa mas tiempo en la zona del que tiene disponible, se hara de noche.
+Las noches son demasiado frías y causará al jugador un debufo/penalizacion de hipotermia. Si pasa demasiado tiempo en ese estado, morira y acabara la
+partida. Si por ejemplo el jugador tiene poca comida ira a una localizacion como es un supermercado. En cambio, si quiere conseguir mejor equipo para
+defenderse ira a un refugio militar.
 
 En la segunda fase, el jugador dispondra de cierta cantidad de tiempo que se consumira al hacer distintas acciones, las cuales pueden requerir de distintos
 recursos. Algunos ejemplos de acciones son: craftear medicinas, balas, mejoras del arma, arreglar la nave...
 El jugador necesitara realizar de forma regular acciones como comer, beber, dormir o tratar heridas para sobrevivir. Por ejemplo, si al pasar el dia no ha comido,
-recibira un debufo/penalizacion que afectara negativamente a la proxima raid. Si sigue sin comer morira, causando el fin de la partida.
+recibira un debufo/penalizacion que afectara negativamente a la proxima raid. Si no come durante 2 dias seguidos morira, causando el fin de la partida.
 
 El ciclo de juego se centra el la repetición de estas dos fases cada dia, mejorando el equipamiento para poder raidear localizaciones mas dificiles y
 consiguiendo los recursos necesarios para no morir, a la vez que se arregla la nave para poder escapar y completar el juego.
@@ -60,12 +62,6 @@ Podrá también descansar en el refugio para mejorar distintos aspectos como su 
 
 Medicina - Dependiendo de las heridas causadas a lo largo de su viaje o de los estados en los que se encuentre su personaje, el jugador
 deberá tomar distintas medicinas.
-
-(Aqui explicamos el ciclo de juego)
-
-El loop de juego esperado comenzaría en el refugio con el jugador crafteando o mejorando items para realizar la raid, una vez hecho eso,
-el jugador pasará a elegir zona a la que raidear y se pasará el resto del día recogiendo materiales y explorando, finalmente volverá
-al refugio antes del anochecer y descansará, de no llegar antes sufrirá alguna penalización por el clima helado.
 
 (Aqui explicamos la dinamica)
 
