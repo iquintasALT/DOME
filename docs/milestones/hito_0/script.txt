@@ -3,9 +3,13 @@
 ¿Como podrias escapar en un mundo postapocaliptico infestado de peligros?
 Esta idea es la que nosotros, Sureffect, os planteamos en nuestro juego, DOME.
 
-En él, controlamos a un habitante de una de las colonias del planeta Aurora en su intento por reparar el cohete que le permitira
-escapar del desastre que ha acaecido en su cupula. Este desastre fue causado por la tecnologia de una raza alienígena aun no descubierta
-que planea eliminar o infectar a todo ser humano que reside en él, ya que los considera invasores de su planeta.
+En él, controlamos a un habitante de una de las colonias del planeta Aurora, que intenta reparar el cohete que le permitira
+escapar del desastre que ha acaecido en su cupula, causado por la tecnologia de una raza alienígena que planea eliminar
+la colonia invasora.
+
+Así, para poder reparar el cohete antes de que la cupula sea inhabitable, el jugador tendra que pasar por dos fases cada dia:
+
+- En un primer lugar, al principio del dia debera seleccionar una zona de la cupula 
 
 (Aqui explicamos el juego base)
 
@@ -56,10 +60,15 @@ de sus disparos o atacándolos antes de que se acerquen a él.
 El juego principalmente se centrará en edificios y zonas cerradas propias de la ciencia ficción con un toque post-apocalíptico, el jugador
 sólo podrá ver con claridad lo que hay dentro de su rango de visión y en la sala en la que se encuentra.
 
-El juego está enfocado principalmente a la demográfica de jugadores experimentados. Aún así, el objetivo es que no sea necesario conocimiento sobre el género para entender cómo se juega. 
+El juego está enfocado principalmente a la demográfica de jugadores experimentados. Aún así, el objetivo es que no sea necesario
+conocimiento sobre el género para entender cómo se juega. 
 
-Para el hito 1 tendremos funcionando los dos sistemas principales de la raid y el refugio. A partir de aquí podremos comenzar a implementar el contenido del juego, la mayor parte de la cual estará hecha para el hito 2. A partir de aquí, quedaría pulir el juego, terminar y expandir los sistemas implementados y hacer un QA más extensivo para la entrega final en el tercer hito.
+Para el hito 1 tendremos funcionando los dos sistemas principales de la raid y el refugio. A partir de aquí podremos comenzar a
+implementar el contenido del juego, la mayor parte de la cual estará hecha para el hito 2. A partir de aquí, quedaría pulir el juego,
+terminar y expandir los sistemas implementados y hacer un QA más extensivo para la entrega final en el tercer hito.
 
-Nos hemos apoyado de Discord para nuestras reuniones de grupo, que a partir de este momento serán dos veces por semana. Para dividirnos el trabajo usamos Pivotal Tracker, como siempre, pero dado el tamaño del grupo también hemos asignado roles de organización a algunos miembros.
+Nos hemos apoyado de Discord para nuestras reuniones de grupo, que a partir de este momento serán dos veces por semana.
+Para dividirnos el trabajo usamos Pivotal Tracker, como siempre, pero dado el tamaño del grupo también hemos asignado roles
+de organización a algunos miembros.
 
 Well okay bye (boy a dejar el esquema asi hasta que hablemos con cleon en clase).
