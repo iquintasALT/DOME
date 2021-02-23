@@ -8,16 +8,13 @@ En él, controlamos a un habitante de una de las colonias del planeta Aurora, qu
 escapar del desastre que ha acaecido en su cupula, causado por la tecnologia de una raza alienígena que planea eliminar
 la colonia invasora.
 
-Así, DOME es un juego survival scroller 2D en el que el jugador deberá moverse por toda la colonia en búsqueda de recursos
-y materiales para alimentarse, defenderse, y reparar la nave que le permitirá escapar de la peligrosa cúpula. Para ello, el protagonista 
-saldrá de su refugio todos los días para explorar las distintas zonas de la cúpula y volverá antes del anochecer para evitar las frías 
-temperaturas mortales del planeta. Es por eso que el manejo de recursos será muy importante, debido a que el jugador no podrá llevarse todos los
-recursos de la zona al visitarla por primera vez y tendrá que tener en cuenta el estado de su personaje como el hambre, heridas concretas, tiempo 
-y el espacio de su inventario disponible.
+Así, DOME es un survival scroller 2D inspirado en juegos como Escape from Tarkov, This Was of Mine, y Fallout Shelter, en el que el
+jugador deberá moverse por toda la colonia en búsqueda de recursos y materiales para alimentarse, defenderse, y reparar la nave.
 
-Nos hemos inspirado en juegos como Escape from Tarkov, This Was of Mine, y Fallout Shelter.
-Nuestro target seran jugadores que le gusten los shooters mas tacticos en los que se premia el control de recursos y la toma de decisiones
-más que los reflejos. Además sera un juego con permadeth, por lo que también estará dirigido a un publico que busque un desafío, algo menos casual.
+Por ello, nuestro target seran jugadores que le gusten los shooters mas tacticos en los que se premia el control de recursos y la toma de decisiones
+más que los reflejos. Además sera un juego con permadeath, por lo que también estará dirigido a un publico que busque un desafío, algo menos casual.
+El juego está enfocado principalmente a la demográfica de jugadores experimentados. Aún así, el objetivo es que no sea necesario
+conocimiento sobre el género para entender cómo se juega. 
 
 Así, para poder reparar el cohete antes de que la cupula sea inhabitable, el jugador tendra que pasar por dos fases cada dia:
 
@@ -62,6 +59,7 @@ Podrá también descansar en el refugio para mejorar distintos aspectos como su 
 
 Medicina - Dependiendo de las heridas causadas a lo largo de su viaje o de los estados en los que se encuentre su personaje, el jugador
 deberá tomar distintas medicinas.
+(equipamiento, estados, crafteo)
 
 (Aqui explicamos la dinamica)
 
@@ -74,16 +72,16 @@ de sus disparos o atacándolos antes de que se acerquen a él.
 
 El juego principalmente se centrará en edificios y zonas cerradas propias de la ciencia ficción con un toque post-apocalíptico, el jugador
 sólo podrá ver con claridad lo que hay dentro de su rango de visión y en la sala en la que se encuentra.
+(extenderla un poco)
 
-El juego está enfocado principalmente a la demográfica de jugadores experimentados. Aún así, el objetivo es que no sea necesario
-conocimiento sobre el género para entender cómo se juega. 
-
-Para el hito 1 tendremos funcionando los dos sistemas principales de la raid y el refugio. A partir de aquí podremos comenzar a
-implementar el contenido del juego, la mayor parte de la cual estará hecha para el hito 2. A partir de aquí, quedaría pulir el juego,
-terminar y expandir los sistemas implementados y hacer un QA más extensivo para la entrega final en el tercer hito.
 
 Nos hemos apoyado de Discord para nuestras reuniones de grupo, que a partir de este momento serán dos veces por semana.
 Para dividirnos el trabajo usamos Pivotal Tracker, como siempre, pero dado el tamaño del grupo también hemos asignado roles
 de organización a algunos miembros.
 
+Para el hito 1 tendremos funcionando los dos sistemas principales de la raid y el refugio. A partir de aquí podremos comenzar a
+implementar el contenido del juego, la mayor parte de la cual estará hecha para el hito 2. A partir de aquí, quedaría pulir el juego,
+terminar y expandir los sistemas implementados y hacer un QA más extensivo para la entrega final en el tercer hito.
+
+(enseñar prototipo)
 Well okay bye (boy a dejar el esquema asi hasta que hablemos con cleon en clase).
