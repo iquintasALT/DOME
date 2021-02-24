@@ -42,9 +42,9 @@ Como equipamiento básico el jugador dispondrá de un arma equipada, una armadur
 cuadriculado en el que podrá colocar los objetos como si fuesen piezas de tetris.
 
 -ESTADOS:
-A la hora de sobrevivir, el jugador tendrá que tener en cuenta los distintos estados vitales. Estos estados están divididos
-en dos categorías: los generales y los de combate. Al no comer, beber o tratar
-heridas se sufrirán penalizaciones generales que afectarán a la salud, la puntería o la capacidad del inventario como el hambre la sed o
+A la hora de sobrevivir, el jugador tendrá que tener en cuenta los distintos estados vitales los cuales están divididos
+en dos categorías: los generales y los de combate. Al no comer, no beber o sufrir
+heridas se llevarán a cabo penalizaciones generales que afectarán a la salud, la puntería o la capacidad del inventario como el hambre la sed o
 posibles infecciones.
 Al comienzo de cada día avanzaran estos estados dañinos no tratados, y si llegan a su fase final, mataran al jugador.
 También hay acciones que puede afectar de manera positiva a los estados como descansar en el refugio, curarte las heridas
