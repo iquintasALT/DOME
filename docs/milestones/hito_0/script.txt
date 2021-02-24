@@ -1,8 +1,9 @@
 # Guion
 
+1º PARTE
+--
 ¿Como podrias escapar en un mundo postapocaliptico infestado de peligros?
 Esta idea es la que nosotros, Sureffect, os planteamos en nuestro juego, DOME.
-
 
 En él, controlamos a un habitante de una de las colonias del planeta Aurora, que intenta reparar el cohete que le permitira
 escapar del desastre que ha acaecido en su cupula, causado por la tecnologia de una raza alienígena que planea eliminar
@@ -11,10 +12,8 @@ la colonia invasora.
 Así, DOME es un survival scroller 2D inspirado en juegos como Escape from Tarkov, This Was of Mine, y Fallout Shelter, en el que el
 jugador deberá moverse por toda la colonia en búsqueda de recursos y materiales para alimentarse, defenderse, y reparar la nave.
 
-Por ello, nuestro target seran jugadores que le gusten los shooters mas tacticos en los que se premia el control de recursos y la toma de decisiones
-más que los reflejos. Además sera un juego con permadeath, por lo que también estará dirigido a un publico que busque un desafío, algo menos casual.
-El juego está enfocado principalmente a la demográfica de jugadores experimentados. Aún así, el objetivo es que no sea necesario
-conocimiento sobre el género para entender cómo se juega. 
+El juego estará enfocado a un publico familiarizado con los videojuegos, aunque no sean necesariamente expertos del género. Además, ciertos elementos 
+de diseño, como que exista permadeath, generan un desafio que apela más a un publico menos casual.
 
 Así, para poder reparar el cohete antes de que la cupula sea inhabitable, el jugador tendra que pasar por dos fases cada dia:
 
@@ -24,54 +23,50 @@ para lootearla, teniendo un tiempo limitado para obtener recursos de ella. Si pa
 Las noches son demasiado frías y causará al jugador un debufo/penalizacion de hipotermia. Si pasa demasiado tiempo en ese estado, morira y acabara la
 partida. Si por ejemplo el jugador tiene poca comida ira a una localizacion como es un supermercado. En cambio, si quiere conseguir mejor equipo para
 defenderse ira a un refugio militar.
+- Looteo
+- Combate
+- Criogenizacion
 
-En la segunda fase, el jugador dispondra de cierta cantidad de tiempo que se consumira al hacer distintas acciones, las cuales pueden requerir de distintos
+--
+
+2º PARTE
+--
+En la segunda fase, el jugador dispondrá de cierta cantidad de tiempo que se consumirá al hacer distintas acciones, las cuales pueden requerir de distintos
 recursos. Algunos ejemplos de acciones son: craftear medicinas, balas, mejoras del arma, arreglar la nave...
-El jugador necesitara realizar de forma regular acciones como comer, beber, dormir o tratar heridas para sobrevivir. Por ejemplo, si al pasar el dia no ha comido,
-recibira un debufo/penalizacion que afectara negativamente a la proxima raid. Si no come durante 2 dias seguidos morira, causando el fin de la partida.
+El jugador necesitara realizar de forma regular acciones como comer, beber, dormir o tratar heridas para sobrevivir. Por ejemplo, si al pasar el día no ha comido,
+recibirá una penalización que afectara negativamente a la próxima fase de looteo. Si no come durante 2 días seguidos morirá, causando el fin de la partida.
 
-El ciclo de juego se centra el la repetición de estas dos fases cada dia, mejorando el equipamiento para poder raidear localizaciones mas dificiles y
+El ciclo de juego se centra el la repetición de estas dos fases, mejorando el equipamiento para poder raidear localizaciones mas difíciles y
 consiguiendo los recursos necesarios para no morir, a la vez que se arregla la nave para poder escapar y completar el juego.
 
-(Aqui explicamos el juego base)
+El jugador dispondrá de un equipamiento sencillo, con un arma equipada, armadura y granada. Además, tendrá un inventario cuadriculado en
+el que podrá colocar los objetos como si fuesen piezas de tetris.
 
+A la hora de sobrevivir, el jugador tendrá que tener en cuenta los distintos estados vitales. Estos estados están divididos
+en dos categorías: los generales y los de combate. Al no comer, beber o tratar
+heridas se sufrirán penalizaciones generales que afectarán a la salud, la puntería o la capacidad del inventario. Al comienzo de cada día avanzaran
+estos estados dañinos no tratados, y si llegan a su fase final, mataran al jugador. También hay estados generales beneficiosos como descansar en el refugio,
+lo que aumentara la precisión.
 
-Pero las zonas que explorará el jugador tampoco serán sencillas, ya que éstas estarán llenas de enemigos y peligros a los que se deberá
-enfrentar. DOME es un shooter enfocado de una forma estratégica en la que el jugador deberá manejar la munición limitada
-así como cubrirse detrás de objetos para evitar disparos enemigos.
+Por otro lado están los estados de combate. Estos no avanzan al comienzo de cada día, sino que son infligidos a lo largo de la raid e indican los
+daños del jugador. Algunos de estos son: herido, hemorragia, hueso roto... Se pueden curar en medio de la raid o en el refugio usando
+la medicina adecuada: vendas, kit de primeros auxilios...
 
-(Aqui explicamos mecánicas extra)
+En el refugio, aparte de las zonas para descansar, se podrá comprobar el estado del personaje, usar el almacén de objetos, ir la salida para hacer una raid.
+A parte existirá una estación médica que usara componentes médicos encontrados en la raid, y  también una estación balística centrada en la mejora de armas y fabricación
+de munición.
+--
 
-Raid - Las raids son las exploraciones que podrá hacer el jugador, éste podrá elegir cualquier localización del mapa
-y habrán descripciones de dichas zonas indicando la dificultad o especificaciones ya que en una zona podrás encontrar
-objetos de un tipo u otro. Sólo podrá elegir una zona por día debido al tiempo que debe gestionar y una vez terminado del día
-deberá volver al refugio.
-
-Refugio - Es una zona pequeña donde el jugador podrá contruir y mejorar la nave para escapar, así como sus armas y objetos. En el, el jugador
- dispondra de cierta cantidad de tiempo que se consumira al hacer distintas acciones, las cuales pueden requerir de distintos
-recursos. Algunos ejemplos de acciones son: craftear medicinas, balas, mejoras del arma, arreglar la nave, comer, beber, dormir, tratar heridas...
-
-Equipamiento - El jugador dispondrá de un equipamiento sencillo, con un arma equipada, armadura y mochila mejorable.
-
-Supervivencia - A la hora de sobrevivir, el jugador tendrá que tener en cuenta varios factores que afectarán a su personaje,
-el hambre y la sed deben mantenerse en buen estado o aumentará la probabilidad de sufrir heridas al recibir daño o incluso morir de sed. 
-Podrá también descansar en el refugio para mejorar distintos aspectos como su puntería y el tiempo de viaje a la hora de hacer raids.
-
-Medicina - Dependiendo de las heridas causadas a lo largo de su viaje o de los estados en los que se encuentre su personaje, el jugador
-deberá tomar distintas medicinas.
-(equipamiento, estados, crafteo)
-
-(Aqui explicamos la dinamica)
-
+3º PARTE
+--
 Los objetivos principales que debe alcanzar el jugador son sobrevivir día a día y encontrar los materiales y recursos necesarios para
 arreglar la nave y huir del planeta en el que reside. Para lograrlo el jugador deberá manejar de manera inteligente su tiempo del día para
 centrarse en distintos fines, encontrar objetos, comida, partes, étc. y a su vez, enfrentarse a los enemigos de las distintas zonas cubriéndose
 de sus disparos o atacándolos antes de que se acerquen a él.
 
-(Aqui explicamos la estetica)
-
 El juego principalmente se centrará en edificios y zonas cerradas propias de la ciencia ficción con un toque post-apocalíptico, el jugador
 sólo podrá ver con claridad lo que hay dentro de su rango de visión y en la sala en la que se encuentra.
+El juego tendra estetica pixel art, con colores oscuros para representar la situacion caotica en la que transcurre el juego
 (extenderla un poco)
 
 
@@ -83,5 +78,5 @@ Para el hito 1 tendremos funcionando los dos sistemas principales de la raid y e
 implementar el contenido del juego, la mayor parte de la cual estará hecha para el hito 2. A partir de aquí, quedaría pulir el juego,
 terminar y expandir los sistemas implementados y hacer un QA más extensivo para la entrega final en el tercer hito.
 
-(enseñar prototipo)
-Well okay bye (boy a dejar el esquema asi hasta que hablemos con cleon en clase).
+--
+Turno de Yojhan Steven García Peña Parte Final Prototipo
