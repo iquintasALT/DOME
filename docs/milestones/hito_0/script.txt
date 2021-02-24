@@ -31,20 +31,20 @@ defenderse ira a un refugio militar.
 
 2º PARTE
 --
-En la segunda fase, el jugador dispondrá de cierta cantidad de tiempo que se consumirá al hacer distintas acciones, las cuales pueden requerir de distintos
+Tras abandonar la localización a tiempo y sin morir congelado el jugador regresara a su refugio. En esta segunda fase dispondrá de cierta cantidad de tiempo que se consumirá al hacer distintas acciones, las cuales pueden requerir de distintos
 recursos. Algunos ejemplos de acciones son: craftear medicinas, balas, mejoras del arma, arreglar la nave...
 El jugador necesitara realizar de forma regular acciones como comer, beber, dormir o tratar heridas para sobrevivir. Por ejemplo, si al pasar el día no ha comido,
 recibirá una penalización que afectará negativamente a la próxima fase de looteo. Si no come durante 2 días seguidos morirá, causando el fin de la partida.
 
 El ciclo de juego se centra en la repetición de estas dos fases, mejorando el equipamiento para poder raidear localizaciones mas difíciles y
 consiguiendo los recursos necesarios para no morir, a la vez que se arregla la nave para poder escapar y completar el juego.
-Como equipamiento básico el jugador dispondrá de un arma equipada, una armadura y una granada. Además para organizar sus items, tendrá un inventario
+Como equipamiento básico el jugador dispondrá de un arma equipada, una armadura y una granada. Además, para organizar sus items, tendrá un inventario
 cuadriculado en el que podrá colocar los objetos como si fuesen piezas de tetris.
 
 -ESTADOS:
 A la hora de sobrevivir, el jugador tendrá que tener en cuenta los distintos estados vitales los cuales están divididos
-en dos categorías: los generales y los de combate. Al no comer, no beber o sufrir
-heridas se llevarán a cabo penalizaciones generales que afectarán a la salud, la puntería o la capacidad del inventario como el hambre la sed o
+en dos categorías: los generales y los de combate. En cuanto a los de combate, al no comer, no beber o sufrir
+heridas se llevarán a cabo penalizaciones generales que afectarán a la salud, la puntería o la capacidad del inventario como por ejemplo el hambre la sed o
 posibles infecciones.
 Al comienzo de cada día avanzaran estos estados dañinos no tratados, y si llegan a su fase final, mataran al jugador.
 También hay acciones que puede afectar de manera positiva a los estados como descansar en el refugio, curarte las heridas
