@@ -12,7 +12,7 @@ la colonia invasora.
 Así, DOME es un survival scroller 2D inspirado en juegos como Escape from Tarkov, This Was of Mine, y Fallout Shelter, en el que el
 jugador deberá moverse por toda la colonia en búsqueda de recursos y materiales para alimentarse, defenderse, y reparar la nave.
 
-El juego estará enfocado a un publico familiarizado con los videojuegos, aunque no sean necesariamente expertos del género. Además, ciertos elementos 
+El juego estará enfocado a un publico familiarizado con los videojuegos, aunque no sean necesariamente expertos del género. Además, ciertos elementos
 de diseño, como que exista permadeath, generan un desafio que apela más a un publico menos casual.
 
 Así, para poder reparar el cohete antes de que la cupula sea inhabitable, el jugador tendra que pasar por dos fases cada dia:
@@ -34,27 +34,29 @@ defenderse ira a un refugio militar.
 En la segunda fase, el jugador dispondrá de cierta cantidad de tiempo que se consumirá al hacer distintas acciones, las cuales pueden requerir de distintos
 recursos. Algunos ejemplos de acciones son: craftear medicinas, balas, mejoras del arma, arreglar la nave...
 El jugador necesitara realizar de forma regular acciones como comer, beber, dormir o tratar heridas para sobrevivir. Por ejemplo, si al pasar el día no ha comido,
-recibirá una penalización que afectara negativamente a la próxima fase de looteo. Si no come durante 2 días seguidos morirá, causando el fin de la partida.
+recibirá una penalización que afectará negativamente a la próxima fase de looteo. Si no come durante 2 días seguidos morirá, causando el fin de la partida.
 
-El ciclo de juego se centra el la repetición de estas dos fases, mejorando el equipamiento para poder raidear localizaciones mas difíciles y
+El ciclo de juego se centra en la repetición de estas dos fases, mejorando el equipamiento para poder raidear localizaciones mas difíciles y
 consiguiendo los recursos necesarios para no morir, a la vez que se arregla la nave para poder escapar y completar el juego.
+Como equipamiento básico el jugador dispondrá de un arma equipada, una armadura y una granada. Además para organizar sus items, tendrá un inventario
+cuadriculado en el que podrá colocar los objetos como si fuesen piezas de tetris.
 
-El jugador dispondrá de un equipamiento sencillo, con un arma equipada, armadura y granada. Además, tendrá un inventario cuadriculado en
-el que podrá colocar los objetos como si fuesen piezas de tetris.
-
+-ESTADOS:
 A la hora de sobrevivir, el jugador tendrá que tener en cuenta los distintos estados vitales. Estos estados están divididos
 en dos categorías: los generales y los de combate. Al no comer, beber o tratar
-heridas se sufrirán penalizaciones generales que afectarán a la salud, la puntería o la capacidad del inventario. Al comienzo de cada día avanzaran
-estos estados dañinos no tratados, y si llegan a su fase final, mataran al jugador. También hay estados generales beneficiosos como descansar en el refugio,
-lo que aumentara la precisión.
+heridas se sufrirán penalizaciones generales que afectarán a la salud, la puntería o la capacidad del inventario como el hambre la sed o
+posibles infecciones.
+Al comienzo de cada día avanzaran estos estados dañinos no tratados, y si llegan a su fase final, mataran al jugador.
+También hay acciones que puede afectar de manera positiva a los estados como descansar en el refugio, curarte las heridas
+o comer.
 
 Por otro lado están los estados de combate. Estos no avanzan al comienzo de cada día, sino que son infligidos a lo largo de la raid e indican los
 daños del jugador. Algunos de estos son: herido, hemorragia, hueso roto... Se pueden curar en medio de la raid o en el refugio usando
 la medicina adecuada: vendas, kit de primeros auxilios...
 
-En el refugio, aparte de las zonas para descansar, se podrá comprobar el estado del personaje, usar el almacén de objetos, ir la salida para hacer una raid.
-A parte existirá una estación médica que usara componentes médicos encontrados en la raid, y  también una estación balística centrada en la mejora de armas y fabricación
-de munición.
+En el refugio, aparte de las zonas para descansar, se podrá comprobar el estado del personaje, usar el almacén de objetos, e ir la salida para hacer una raid.
+A parte existirá una estación médica que usara componentes médicos encontrados en la raid, y también una estación balística centrada en la mejora de armas
+y fabricación de munición.
 --
 
 3º PARTE
