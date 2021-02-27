@@ -119,7 +119,27 @@ Es un challenge de supervivencia donde el jugador tendrá que gestionar las nece
 
 ![Controles](./docs/headers/h_controles.png)
 
-### placeholder
+##### Teclado
+###### In-game
+
+AD -> Movimiento lateral
+WS -> Seleccionar el subir y bajar escaleras
+SPACE -> Saltar
+SHIFT -> Agacharse
+Movimiento del raton -> Apuntar
+Click izquierdo -> Disparar
+R -> Recargar el arma
+
+F -> Abrir el inventario
+E -> Interactuar con elementos del mapa
+ESC -> Menu de pausa
+
+###### Menu inventario
+
+F-> Volver al juego
+Click izquierdo -> Arrastrar un objeto del inventario
+Click derecho -> Rotar el objeto que estas arrastrando
+  
 
 ![Interfaz y Menús](./docs/headers/h_interfaz.png)
 
