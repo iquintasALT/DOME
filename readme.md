@@ -101,7 +101,9 @@ Medicina para contrarrestarlo antibióticos(infecciones) vendajes(sangrados o la
 
 ### Objetivos y conflictos
 
-Sobrevivir, encontrar las "piezas necesarias" para un objetivo final (escapar de la isla, zona, planeta, colonia, etc).
+Dependiendo del modo de juego, el objetivo puede ser o bien encontrar las piezas necesarias para reparar la nave o bien sobrevivir una número determinado de dias.  
+En el caso del modo de juego de encontrar las piezas, estarán distribuidas por las distintas localizaciones raideables.  
+En el caso del modo de juego de sobrevivir ciertos días, la dinámica se centrará en la gestión de los recursos encontrados en las localizaciones y en la mejora del equipamiento.
 
 ### Comportamiento esperado
 
