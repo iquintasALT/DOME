@@ -123,26 +123,33 @@ Es un challenge de supervivencia donde el jugador tendrá que gestionar las nece
 ###### In-game
 
 AD -> Movimiento lateral
-&nbsp;
+
+
 WS -> Seleccionar el subir y bajar escaleras
-&nbsp;
+
+
 SPACE -> Saltar
-&nbsp;
+
+
 SHIFT -> Agacharse
-&nbsp;
+
+
 Movimiento del raton -> Apuntar
-&nbsp;
+
+
 Click izquierdo -> Disparar
-&nbsp;
+
+
 R -> Recargar el arma
-&nbsp;
+
 
 F -> Abrir el inventario
-&nbsp;
+
+
 E -> Interactuar con elementos del mapa
-&nbsp;
+
+
 ESC -> Menu de pausa
-&nbsp;
 
 ###### Menu inventario
 
