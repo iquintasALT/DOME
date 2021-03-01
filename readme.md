@@ -114,12 +114,71 @@ Es un challenge de supervivencia donde el jugador tendrá que gestionar las nece
 
 ![Contenido](./docs/headers/h_contenido.png)
 
-Hay que hablarlo
+### Alimentos
 
+##### Comida
+Aparece en distintas formas y te aumenta la barra de comida
+
+##### Agua
+Aparece en distintas formas y te aumenta la barra de comida
+
+### Medicina
+
+##### Botiquin
+Te cura de cualquier lesión excepto de hambre, sed y sueño. No es crafteable
+##### Vendaje
+Te cura de cortes y quemaduras. Crafteable con 2 de tela y 1 antiséptico
+##### Morfina 
+Te cura de envenenamiento e infecciones. Carfteable con 2 de antiseptico y 2 de alcohol
+##### MiniKit de operación
+Te cura de heridas de bala. Crafteable con una lamina de metal, 2 de vendaje, y 1 de alcohol
+
+### Armas
+En funcion de su tier aumenta el daño y la precision de la misma.
+##### Revolver
+##### Micro Uzi
+##### Balas .38
+
+##### Aron-36E
+Fusil automatico
+##### P3
+Fusil por rafagas
+##### Balas 5.56
+
+##### A2VP
+Francotirador
+##### Balas 7.62
+
+##### RCH-U
+Arma especial que hace que las balas reboten en las paredes
+##### Balas Atomicas
+Balas no crafteables
+
+### Armadura
+
+### Piezas del cohete
+
+##### Transmisor
+
+##### Fusibles
+
+##### Mecanismo de despegue
+
+##### Localizacion espacial
+
+##### Combustible?
+
+### Piezas de crafteo
+
+###### Tela
+###### Antiséptico
+###### Alcohol
+###### Laminas de metal
+###### Polvora
+###### Casquillos de bala de cada calibre
 ![Estética](./docs/headers/h_estetica.png)
 
 El juego tiene estetica en pixel-art, concretamente en 64-bits. Esta ambientado en la cupula de un planeta desertico.
-
 
 ![weapon](./docs/images/weapon.png)
 ![Controles](./docs/headers/h_controles.png)
@@ -178,8 +237,6 @@ En este menu el jugador tendra la opcion de salir del juego,ir al juego o  irse 
 Menu de ajustes donde el jugador podra seleccionar el idioma del juego y el volumen del mismo.
 ### Menu de selección de raid
 En este menu el jugador tendra que seleccionar a que zona del mapa se quiere dirigir para efectuar la raid. Ademas en la parte superior izquierda se veran los estados del jugador para facilitarle el ver que es lo que mas necesita en ese momento. Tambien aparecera la distacia que hay al lugar y el tiempo que podras pasar en el.
-
-
 ![raidmenu](./docs/images/select_raid.png)
 ### Menu de pausa
 Este menu aparecera si una vez in-game el jugador pulsa esc, aqui el jugador podra irse al menu de opciones, volver a la partida o volver al menu principal
@@ -188,8 +245,6 @@ Menu que se le abrira al jugador cuasndo pulse la F, aqui el jugador podra ver e
 ![inventory](./docs/images/inventory.png)
 ### Menu interactuar con espacios de almacenamiento
 En este menu el jugador podra arrastrar objetos del lugar de almacenamiento a su inventario y viceversa.
-
-
 ![openchest](./docs/images/take_objects.jpg)
 ## Interfaz In-Game
 Hay que discutirlo
