@@ -144,6 +144,8 @@ Click izquierdo -> Disparar
 
 R -> Recargar el arma
 
+![Controls_1](./docs/images/controls_1.png)
+
 
 F -> Abrir el inventario
 
@@ -167,7 +169,24 @@ Click derecho -> Rotar el objeto que estas arrastrando
 
 ![Interfaz y Menús](./docs/headers/h_interfaz.png)
 
-### placeholder
+### Menu de inicio
+En este menu el jugador tendra la opcion de salir del juego,ir al juego o  irse al menu de opciones
+### Menu de opciones
+Menu de ajustes donde el jugador podra seleccionar el idioma del juego y el volumen del mismo.
+### Menu de selección de raid
+En este menu el jugador tendra que seleccionar a que zona del mapa se quiere dirigir para efectuar la raid. Ademas en la parte superior izquierda se veran los estados del jugador para facilitarle el ver que es lo que mas necesita en ese momento. Tambien aparecera la distacia que hay al lugar y el tiempo que podras pasar en el.
+![raidmenu](./docs/images/select_raid.png)
+### Menu de pausa
+Este menu aparecera si una vez in-game el jugador pulsa esc, aqui el jugador podra irse al menu de opciones, volver a la partida o volver al menu principal
+### Inventario
+Menu que se le abrira al jugador cuasndo pulse la F, aqui el jugador podra ver el estado de su armadura, la vida que le queda y sus distintos estados ademas de la hora que es en ese momento y los objetos que tiene en el inventario.
+![inventory](./docs/images/inventory.png)
+### Menu interactuar con espacios de almacenamiento
+En este menu el jugador podra arrastrar objetos del lugar de almacenamiento a su inventario y viceversa.
+![openchest](./docs/images/take_objects.png)
+## Interfaz In-Game
+Hay que discutirlo
+
 
 ![Referencias](./docs/headers/h_referencias.png)
 
