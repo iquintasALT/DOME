@@ -120,6 +120,7 @@ Hay que hablarlo
 
 El juego tiene estetica en pixel-art, concretamente en 64-bits. Esta ambientado en la cupula de un planeta desertico.
 
+
 ![weapon](./docs/images/weapon.png)
 ![Controles](./docs/headers/h_controles.png)
 
@@ -177,6 +178,8 @@ En este menu el jugador tendra la opcion de salir del juego,ir al juego o  irse 
 Menu de ajustes donde el jugador podra seleccionar el idioma del juego y el volumen del mismo.
 ### Menu de selección de raid
 En este menu el jugador tendra que seleccionar a que zona del mapa se quiere dirigir para efectuar la raid. Ademas en la parte superior izquierda se veran los estados del jugador para facilitarle el ver que es lo que mas necesita en ese momento. Tambien aparecera la distacia que hay al lugar y el tiempo que podras pasar en el.
+
+
 ![raidmenu](./docs/images/select_raid.png)
 ### Menu de pausa
 Este menu aparecera si una vez in-game el jugador pulsa esc, aqui el jugador podra irse al menu de opciones, volver a la partida o volver al menu principal
