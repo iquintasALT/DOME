@@ -188,6 +188,8 @@ Menu que se le abrira al jugador cuasndo pulse la F, aqui el jugador podra ver e
 ![inventory](./docs/images/inventory.png)
 ### Menu interactuar con espacios de almacenamiento
 En este menu el jugador podra arrastrar objetos del lugar de almacenamiento a su inventario y viceversa.
+
+
 ![openchest](./docs/images/take_objects.jpg)
 ## Interfaz In-Game
 Hay que discutirlo
