@@ -8,23 +8,23 @@
 
 ![Descripción](./docs/headers/h_descripcion.png)
 
-Survival shooter scroller 2D donde controlas a un superviviente en un refugio (upgradeable) y cada día desde un mapa seleccionas una localización para raidear(similar a This War of Mine) pero con más focus en el combate con armas de fuego y saqueo con el objetivo de conseguir mejor equipamiento de combate, comida, materiales, etc.
+DOME es un survival shooter scroller 2D donde controlas a un superviviente en un refugio establecido en un lejano planeta y cada día deberás aprovechar las horas del día para viajar a localizaciones que disponga de los objetos que necesitas para sobrevivir en ese hostil y frío planeta. Durante las horas de noche el frío es mortal por lo que deberás ir al refugio a descansar y gestionar tus recursos. ¿Serás capaz de escapar?
 
 ![Mecánicas](./docs/headers/h_mecanicas.png)
 
 ### Día a día
 
-Mecánica principal/loop de juego: cada día el jugador tendrá que dividir su tiempo (24h  1min/h? 24min/loop) entre trabajar en el refugio (instalando mejoras, comiendo, descansando, crafteando items como munición o medicinas) y decidir si ir a saquear una localización seleccionada desde un mapa.
+Mecánica principal/loop de juego: cada día el jugador 12 horas para saquear localizaciones y otras 12 para descansar y gestionar sus recursos en el refugio ya que será de noche y el frío puede acabar con tu vida. Si has terminado de realizar tus objetivos, podrás saltar la etapa de 12 horas para pasar a la siguiente.
 
 ### Raid
 
-Los lugares de saqueo serán pequeños y contendrán loot dependiendo del lugar (farmacia--> medicinas , supermercado---> comida, etc) rápidos de recorrer el jugador gastara tiempo del día mientras esta en ellos y solo podrá saquear lo que su equipamiento (y su estado? herido, hambriento, cansado ) le permita llevar de vuelta al refugio.
+Los lugares de saqueo serán pequeños y contendrán loot dependiendo del lugar (farmacia--> medicinas , supermercado---> comida, etc) rápidos de recorrer en los que el jugador gastará tiempo del día. Solo podrá saquear lo que su equipamiento y su estado (herido, hambriento, cansado  le permita llevar de vuelta al refugio.
 
 Estos lugares pueden presentar obstáculos como puertas bloqueadas, necesidad de contraseñas o herramientas para saquearlo completamente.
 
-Existe la posibilidad de volver a la misma localización.
+Existe la posibilidad de volver a la misma localización por si en la anterior etapa de 12 horas no terminaste de saquearlo por completo.
 
-Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber que esperar por ejemplo en una casa abandonada puede poner debajo de la descripción peligro: gran número hostiles en la zona o sustancia química en el aire, etc.
+Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber que esperar. Por ejemplo en una casa abandonada la descripción  podría indicar peligro de esta forma: gran número hostiles en la zona , posiblemente haya medicinas.
 
 ### Refugio
 
@@ -34,27 +34,30 @@ Ejemplo: caja de comida (comida se caduca un 10% más lenta, 4 espacios), nevera
 
 ### Equipamiento
 
-El jugador dispondrá de un sistema básico de equipamiento.
+El jugador dispondrá de un inventario tipo tetris donde almacenar los objetos que quiera llevarse a la hora de saquear y para almacenar los nuevos que saquee.
 
 Arma: distintos tiers de armas facilitan el combate contra ciertos enemigos, o por ejemplo ciertos enemigos son resistentes y el jugador deberá llevar algún tipo de arma con capacidad para eliminarlos.
 
-Armadura: Afecta la resistencia del jugador, ciertas mejoras o armaduras darán resistencia a efectos por ejemplo para poder saquear una zona contaminada o con radiación el jugador sacrifica resistencia balística por resistencia a un cierto elemento.
+Armadura: Afecta la resistencia del jugador, ciertas mejoras o armaduras darán resistencia a efectos para por ejemplo poder saquear una zona contaminada o con radiación. El 
 
-Mochila: Afecta la capacidad de saqueo del jugador.
+Mochila: Aumenta la capacidad del inventario del jugador.
 
 ### Loot
 
-El loot puede ser básico por ejemplo como en Metro Exodus dónde el jugador recoge componentes mecánicos y componentes químicos para crafteos y de manera más específica nuevo equipamiento (armas, mochilas, armaduras).
+El loot constará de partes completas y otras que serán parte de otras más grandes crafteables. 
+Dentro de las completas encontramos:
+-Armas: de distintos tiers y tipos.
+-Comida.
+-Bebida.
+-Etc.
 
-This War of mine usa un sistema de loot un poco más específico para crafteos con construcción, electrónicos, eléctricos, mecánicos y después el equipamiento.
+Dentro de las crafteables encontramos: (Esto es de ejemplo, se puede cambiar y añadir cosas)
+-Munición: pólvora + cobre.
+-Vendaje: tela + desinfectante.
+-Mochila: cuero + cuerda.
+-Etc.
 
-Escape from Tarkov utiliza un sistema especifico de loot donde no hay abstracción en ningún caso y cada objeto está representado por sí mismo.
-
-COMIDA: cruda (más común dura poco), enlatada (menos común no caduca)
-
-MEDICINAS: ya creadas (más rara), por componentes (por ejemplo, ropa + antiséptico = vendas)
-
-EN GENERAL EL LOOT DE LAS ZONAS DEBE SER ESCASO Y DEBE FORZAR AL JUGADOR A SAQUEAR UNOS ITEMS ANTES QUE OTROS POR NECESIDAD Y POR TIEMPO.
+En general el loot de las zonas será escaso y forzará al jugador a saquear unos items antes que otros por necesidad y tiempo.
 
 ### Combate
 
@@ -72,7 +75,7 @@ Comida: Si se pasan dos días sin comer, se aplicará el debufo de hambre. Hay d
 
 Bebida: Si no se bebe una ración de agua cada día, se aplicará el debufo de sed. Si no se bebe un día en el que ya está sediento el personaje, muere.
 
-Descanso: Por cada 30 minutos por encima de 6 horas que se duerme, el tiempo de viaje a una raid se reduce en un 5%, hasta un máximo de 40% de reducción. De tal forma que el de tiempo juegable final de la raid será Tf = (12-Tv) + min(0.4, 0.05*(m/30))*(12-Tv); siendo Tf el tiempo final, Tv el tiempo de viaje no modificado, m/30 el número de incrementos de 30 minutos dormidos por encima de las 6 horas. Esta modificación se aplica también en negativo, de tal forma que si se duermen solo 4 horas, el tiempo de viaje a la raid se incrementa un 20%, reduciendo la cantidad de tiempo que se tiene para jugar el nivel.
+Descanso: Por cada 30 minutos por encima de 6 horas que se duerme, el tiempo de viaje a una raid se reduce en un 5%, hasta un máximo de 40% de reducción. De tal forma que el de tiempo jugable final de la raid será Tf = (12-Tv) + min(0.4, 0.05*(m/30))*(12-Tv); siendo Tf el tiempo final, Tv el tiempo de viaje no modificado, m/30 el número de incrementos de 30 minutos dormidos por encima de las 6 horas. Esta modificación se aplica también en negativo, de tal forma que si se duermen solo 4 horas, el tiempo de viaje a la raid se incrementa un 20%, reduciendo la cantidad de tiempo que se tiene para jugar el nivel.
 
 
 Hambre: El hambre es un debufo stackeable que reduce el espacio de carga. Cada nivel de hambre adquirido deshabilida el último espacio disponible del inventario (modo fácil) o un espacio aleatorio (modo difícil). Si hay un objeto en el espacio deshabilitado en el momento de aplicarse el debufo, ese objeto se colocará en el almacenamiento del refugio. Comer una ración de comida restará dos niveles de hambre; comer una comida completa restará todos los niveles de hambre.
@@ -101,11 +104,11 @@ Medicina para contrarrestarlo antibióticos(infecciones) vendajes(sangrados o la
 
 ### Objetivos y conflictos
 
-Sobrevivir, encontrar las "piezas necesarias" para un objetivo final (escapar de la isla, zona, planeta, colonia, etc).
+El jugador deberá aguantar lo suficiente para lograr saquear las piezas que permiten reparar su nave y así escapar del planeta.
 
 ### Comportamiento esperado
 
-El jugador estará en este gameplay loop de crafteo->raid->loot->rest cada día progresando, mejorando su refugio y equipamiento, así como haciendo progreso en el objetivo final.
+El jugador estará en este gameplay loop de crafteo->raid->loot->rest cada día progresando, mejorando su refugio y equipamiento, así como haciendo progreso en el objetivo final. Se espera que elija la localización más adecuada a sus necesidades y de una dificultad asequible para él, ya que de lo contrarió morirá. En caso de que muera lo esperable es que entienda a la perfección cual ha sido su fallo para mejorar la siguiente partida.
 
 Es un challenge de supervivencia donde el jugador tendrá que gestionar las necesidades de su avatar para completarlo sin morir y en el menor tiempo posible.
 
