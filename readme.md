@@ -172,11 +172,14 @@ En este menu el jugador tendra la opcion de salir del juego,ir al juego o  irse 
 ### Menu de opciones
 Menu de ajustes donde el jugador podra selecionar el idioma del juego y el volumen del mismo.
 ### Menu de seleccion de raid
-En este menu el jugador tendra que selccionar a que zona del mapa se quiere dirigir para efectuar la raid. Ademas en la parte superior izquierda se veran los estados del jugador para facilitarle el ver que es lo que mas necesita en ese momento.
+En este menu el jugador tendra que selccionar a que zona del mapa se quiere dirigir para efectuar la raid. Ademas en la parte superior izquierda se veran los estados del jugador para facilitarle el ver que es lo que mas necesita en ese momento. Tambien aparecera la distacia que hay al lugar y el tiempo que podras pasar en el.
+![raidmenu](./docs/images/select_raid.png)
 ### Menu de pausa
 Este menu aparecera si una vez in-game el jugador pulsa esc, aqui el jugador podra irse al menu de opciones, volver a la partida o volver al menu principal
-
-![Referencias](./docs/headers/h_referencias.png)
+### Inventario
+Menu que se le abrira al jugador cuasndo pulse la F, aqui el jugador podra ver el estado de su armadura, la vida que le queda y sus distintos estados ademas de la hora que es en ese momento y los objetos que tiene en el inventario.
+![raidmenu](./docs/images/select_raid.png)
+![Referencias](./docs/images/inventory.png)
 
 - *This War of Mine (Supervivencia día a día)*
 - *Escape from Tarkov (Raids / Equipamiento)*
