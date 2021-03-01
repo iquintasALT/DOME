@@ -101,9 +101,7 @@ Medicina para contrarrestarlo antibióticos(infecciones) vendajes(sangrados o la
 
 ### Objetivos y conflictos
 
-Dependiendo del modo de juego, el objetivo puede ser o bien encontrar las piezas necesarias para reparar la nave o bien sobrevivir una número determinado de dias.  
-En el caso del modo de juego de encontrar las piezas, estarán distribuidas por las distintas localizaciones raideables.  
-En el caso del modo de juego de sobrevivir ciertos días, la dinámica se centrará en la gestión de los recursos encontrados en las localizaciones y en la mejora del equipamiento.
+Sobrevivir, encontrar las "piezas necesarias" para un objetivo final (escapar de la isla, zona, planeta, colonia, etc).
 
 ### Comportamiento esperado
 
@@ -183,7 +181,7 @@ Menu que se le abrira al jugador cuasndo pulse la F, aqui el jugador podra ver e
 ![inventory](./docs/images/inventory.png)
 ### Menu interactuar con espacios de almacenamiento
 En este menu el jugador podra arrastrar objetos del lugar de almacenamiento a su inventario y viceversa.
-![openchest](./docs/images/take_objects.png)
+![openchest](./docs/images/take_objects.jpg)
 ## Interfaz In-Game
 Hay que discutirlo
 
