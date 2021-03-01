@@ -153,12 +153,14 @@ ESC -> Menu de pausa
 
 ###### Menu inventario
 
-F-> Volver al juego
-&nbsp;
+F-> Volver al jueg0
+
+
 Click izquierdo -> Arrastrar un objeto del inventario
-&nbsp;
+
+
 Click derecho -> Rotar el objeto que estas arrastrando
-&nbsp;
+
   
 
 ![Interfaz y Menús](./docs/headers/h_interfaz.png)
