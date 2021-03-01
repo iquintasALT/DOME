@@ -142,6 +142,8 @@ Click izquierdo -> Disparar
 
 R -> Recargar el arma
 
+![Controls_1](./images/controls_1.png)
+
 
 F -> Abrir el inventario
 
