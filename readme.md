@@ -115,8 +115,7 @@ Es un challenge de supervivencia donde el jugador tendrá que gestionar las nece
 
 ![Estética](./docs/headers/h_estetica.png)
 
-### placeholder
-
+El juego tiene estetica en pixel-art, concretamente en 64-bits. Esta ambientado en la cupula de un planeta desertico.
 ![Controles](./docs/headers/h_controles.png)
 
 ##### Teclado
