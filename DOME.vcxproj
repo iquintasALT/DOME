@@ -127,13 +127,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\libraries\SDL2_ttf-2.0.15\include;.\libraries\box2d-2.4.1\include;.\libraries\SDL2-2.0.14\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\SDL2_net-2.0.1\include;.\libraries\box2d-2.4.1\include;.\libraries\SDL2-2.0.14\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>.\libraries\SDL2-2.0.14\lib\x64;.\libraries\SDL2_ttf-2.0.15\lib\x64;.\libraries\box2d-2.4.1\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_ttf.lib;box2d.lib;glad.lib;glfw.lib;imgui.lib;sajson.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\libraries\SDL2-2.0.14\lib\x64;.\libraries\SDL2_ttf-2.0.15\lib\x64;.\libraries\box2d-2.4.1\lib\x64;.\libraries\SDL2_mixer-2.0.2\lib\x64;.\libraries\SDL2_image-2.0.1\lib\x64;.\libraries\SDL2_net-2.0.1\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_ttf.lib;box2d.lib;glad.lib;glfw.lib;imgui.lib;sajson.lib;SDL2_image.lib;SDL2_net.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
