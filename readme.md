@@ -84,12 +84,17 @@ En general el loot de las zonas será escaso y forzará al jugador a saquear uno
 
 - **Descanso:** Por cada 30 minutos por encima de 6 horas que se duerme, el tiempo de viaje a una raid se reduce en un 5%, hasta un máximo de 40% de reducción. De tal forma que el de tiempo jugable final de la raid será Tf = (12-Tv) + min(0.4, 0.05*(m/30))*(12-Tv); siendo Tf el tiempo final, Tv el tiempo de viaje no modificado, m/30 el número de incrementos de 30 minutos dormidos por encima de las 6 horas. Esta modificación se aplica también en negativo, de tal forma que si se duermen solo 4 horas, el tiempo de viaje a la raid se incrementa un 20%, reduciendo la cantidad de tiempo que se tiene para jugar el nivel.
 
-
 - **Hambre:** El hambre es un debufo stackeable que reduce el espacio de carga. Cada nivel de hambre adquirido deshabilida el último espacio disponible del inventario (modo fácil) o un espacio aleatorio (modo difícil). Si hay un objeto en el espacio deshabilitado en el momento de aplicarse el debufo, ese objeto se colocará en el almacenamiento del refugio. Comer una ración de comida restará dos niveles de hambre; comer una comida completa restará todos los niveles de hambre.
 
 - **Sed:** La sed es un debufo que reduce la precisión de las armas, incrementando el índice de desviación de cada bala disparada. Este debufo se limpia cuando se bebe una ración de agua.
 
 Ciertas mejoras del refugio pueden hacer esto más llevadero, una cama mejor te permite estar sin dormir durante 2 días o algo así.
+
+### Enemigos
+
+Pepega a melee: comportamiento más agresivo, rushea al jugador cuando se da cuenta de su presencia y ataca en "horda", el jugador deberá ser rápido eliminando a estos enemigos ya que el combate a melee es peligroso.
+
+Pepega a rango: comportamiento más cauteloso, se comportan como guardias usando coberturas para frenar el avance del jugador siguen patrones de disparo que el jugador deberá usar para eliminarlos.
 
 ### Medicina
 
@@ -120,7 +125,6 @@ El jugador estará en este gameplay loop de crafteo->raid->loot->rest cada día 
 Es un challenge de supervivencia donde el jugador tendrá que gestionar las necesidades de su avatar para completarlo sin morir y en el menor tiempo posible.
 
 ![Contenido](./docs/headers/h_contenido.png)
-
 
 ### Localizaciones
 
@@ -178,6 +182,11 @@ Es un challenge de supervivencia donde el jugador tendrá que gestionar las nece
 | Crafteo/Acción | Sprite | Coste | Tiempo (Coste) | 
 |-----|-----|-----|-----|
 | N/A | N/A | N/A | N/A |
+
+### Enemigos
+| Nombre | Sprite | .... | 
+|--------|--------|-------|
+| N/A | N/A | N/A |
 
 ![Estética](./docs/headers/h_estetica.png)
 
