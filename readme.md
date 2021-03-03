@@ -17,7 +17,7 @@ DOME es un survival shooter scroller 2D donde controlas a uno de los últimos su
 
 Mecánica principal/loop de juego: cada día de juego, el jugador dispone de 12 horas (que se jugarán como 12 minutos cronometrados) para saquear puntos de interés, seguidas por otras 12 (que se gestionan como recurso de forma discreta) para descansar y gestionar sus recursos en el refugio, ya que será de noche y el frío le impide salir.
 
-![AltText](./docs/images/daybyday_system.png)
+![alt text](./docs/images/daybyday_system.png)
 
 ### Raid
 
@@ -37,13 +37,14 @@ El refugio es una zona pequeña donde el jugador podrá construir y mejorar dife
 
 Ejemplo: caja de comida (comida se caduca un 10% más lenta, 4 espacios), nevera pequeña (comida se caduca un 25% más lenta, 8 espacios), nevera (comida se caduca un 50% más lenta, 16 espacios)
 
-![AltText](./docs/images/hideout_concept.png)
+![alt text](./docs/images/hideout_concept.png)
 
 ### Equipamiento
 
 El jugador dispondrá de un inventario por bloques, al estilo de un tablero de tetris, donde almacenar los objetos que quiera llevarse a la hora de saquear y para almacenar los nuevos que saquee. Cada objeto ocupará un espacio diferente (pero siempre convexo) en el inventario, y la distribución eficiente del espacio físico permitirá al jugador cargar con más objetos.
 
 #### Armas
+
 Existen distintos tiers de armas facilitan el combate contra ciertos enemigos, o por ejemplo ciertos enemigos son resistentes y el jugador deberá llevar algún tipo de arma con capacidad para eliminarlos.
 
 - **Armas de plomo:** trazan una línea recta que colisiona con el primer objeto o enemigo que encuentre. Pistola --> subfusil --> fusil de asalto. Requieren balas como munición.
@@ -62,43 +63,31 @@ Aumenta la capacidad del inventario del jugador.
 
 ### Loot
 
-El loot constará de partes completas y otras que serán parte de otras más grandes crafteables. 
-Dentro de las completas encontramos:
--Armas: de distintos tiers y tipos.
--Comida.
--Bebida.
--Etc.
-
-Dentro de las crafteables encontramos: (Esto es de ejemplo, se puede cambiar y añadir cosas)
--Munición: pólvora + cobre.
--Vendaje: tela + desinfectante.
--Mochila: cuero + cuerda.
--Etc.
-
 En general el loot de las zonas será escaso y forzará al jugador a saquear unos items antes que otros por necesidad y tiempo.
 
 ### Combate
 
-Combate de point and click con posibilidad de agacharte detrás de objetos y levantarte para disparar.
-Los mapas tendrán verticalidad con plataformas, pero el jugador no podrá navegar el mapa con solo su salto; necesitará usar las escaleras del mapa.
-Hay daño de caída (una caída notable tiene una posibilidad de causar una concusión o una lesión, con mayor probabilidad mientras más grande la caída).
-El daño no se refleja en puntos de golpe, sino en efectos de estado o heridas. Cada ataque de cada enemigo puede inflingir ciertos tipos de herida. Si en algún momento el jugador sufre de 5 heridas diferentes, muere. Cada herida (ejs.: quemadura, músculo desgarrado, concusión, hemorragia) aportará una debilidad al jugador, parecidos a los efectos negativos del frío, el hambre, la sed y el cansancio.
-Las armas no son perfectamente certeras. Siempre que el jugador apunte, habrá una desviación oscilante en la trayectoria de su puntería.
-BAJA PRIORIDAD: El jugador se puede agachar, reduciendo su tamaño y velocidad de movimiento, pero reduciendo la desviación de sus disparos.
-BAJA PRIORIDAD: Las balas atraviesan las plataformas, de tal forma que si una criatura está directamente sobre otra, puedan dispararse.
+- Combate de point and click con posibilidad de agacharte detrás de objetos y levantarte para disparar.
+- Los mapas tendrán verticalidad con plataformas, pero el jugador no podrá navegar el mapa con solo su salto; necesitará usar las escaleras del mapa.
+- Hay daño de caída (una caída notable tiene una posibilidad de causar una concusión o una lesión, con mayor probabilidad mientras más grande la caída).
+- El daño no se refleja en puntos de golpe, sino en efectos de estado o heridas. Cada ataque de cada enemigo puede inflingir ciertos tipos de herida. Si en algún momento el jugador sufre de 5 heridas diferentes, muere. Cada herida (ejs.: quemadura, músculo desgarrado, concusión, hemorragia) aportará una debilidad al jugador, parecidos a los efectos negativos del frío, el hambre, la sed y el cansancio.
+- Las armas no son perfectamente certeras. Siempre que el jugador apunte, habrá una desviación oscilante en la trayectoria de su puntería.
+
+*BAJA PRIORIDAD: El jugador se puede agachar, reduciendo su tamaño y velocidad de movimiento, pero reduciendo la desviación de sus disparos.*
+*BAJA PRIORIDAD: Las balas atraviesan las plataformas, de tal forma que si una criatura está directamente sobre otra, puedan dispararse.*
 
 ### Supervivencia
 
-Comida: Si se pasan dos días sin comer, se aplicará el debufo de hambre. Hay dos tipos de ración de comida: proteínas (carne) y vitaminas (verdura). Comer uno de cada en un solo día se considera una comida completa, y aportará un bufo al jugador que le otorgará un 15% de probabilidad de evitar sufrir heridas cuando recibe daño. Este efecto dura un día.
+- **Comida:** Si se pasan dos días sin comer, se aplicará el debufo de hambre. Hay dos tipos de ración de comida: proteínas (carne) y vitaminas (verdura). Comer uno de cada en un solo día se considera una comida completa, y aportará un bufo al jugador que le otorgará un 15% de probabilidad de evitar sufrir heridas cuando recibe daño. Este efecto dura un día.
 
-Bebida: Si no se bebe una ración de agua cada día, se aplicará el debufo de sed. Si no se bebe un día en el que ya está sediento el personaje, muere.
+- **Bebida:** Si no se bebe una ración de agua cada día, se aplicará el debufo de sed. Si no se bebe un día en el que ya está sediento el personaje, muere.
 
-Descanso: Por cada 30 minutos por encima de 6 horas que se duerme, el tiempo de viaje a una raid se reduce en un 5%, hasta un máximo de 40% de reducción. De tal forma que el de tiempo jugable final de la raid será Tf = (12-Tv) + min(0.4, 0.05*(m/30))*(12-Tv); siendo Tf el tiempo final, Tv el tiempo de viaje no modificado, m/30 el número de incrementos de 30 minutos dormidos por encima de las 6 horas. Esta modificación se aplica también en negativo, de tal forma que si se duermen solo 4 horas, el tiempo de viaje a la raid se incrementa un 20%, reduciendo la cantidad de tiempo que se tiene para jugar el nivel.
+- **Descanso:** Por cada 30 minutos por encima de 6 horas que se duerme, el tiempo de viaje a una raid se reduce en un 5%, hasta un máximo de 40% de reducción. De tal forma que el de tiempo jugable final de la raid será Tf = (12-Tv) + min(0.4, 0.05*(m/30))*(12-Tv); siendo Tf el tiempo final, Tv el tiempo de viaje no modificado, m/30 el número de incrementos de 30 minutos dormidos por encima de las 6 horas. Esta modificación se aplica también en negativo, de tal forma que si se duermen solo 4 horas, el tiempo de viaje a la raid se incrementa un 20%, reduciendo la cantidad de tiempo que se tiene para jugar el nivel.
 
 
-Hambre: El hambre es un debufo stackeable que reduce el espacio de carga. Cada nivel de hambre adquirido deshabilida el último espacio disponible del inventario (modo fácil) o un espacio aleatorio (modo difícil). Si hay un objeto en el espacio deshabilitado en el momento de aplicarse el debufo, ese objeto se colocará en el almacenamiento del refugio. Comer una ración de comida restará dos niveles de hambre; comer una comida completa restará todos los niveles de hambre.
+- **Hambre:** El hambre es un debufo stackeable que reduce el espacio de carga. Cada nivel de hambre adquirido deshabilida el último espacio disponible del inventario (modo fácil) o un espacio aleatorio (modo difícil). Si hay un objeto en el espacio deshabilitado en el momento de aplicarse el debufo, ese objeto se colocará en el almacenamiento del refugio. Comer una ración de comida restará dos niveles de hambre; comer una comida completa restará todos los niveles de hambre.
 
-Sed: La sed es un debufo que reduce la precisión de las armas, incrementando el índice de desviación de cada bala disparada. Este debufo se limpia cuando se bebe una ración de agua.
+- **Sed:** La sed es un debufo que reduce la precisión de las armas, incrementando el índice de desviación de cada bala disparada. Este debufo se limpia cuando se bebe una ración de agua.
 
 Ciertas mejoras del refugio pueden hacer esto más llevadero, una cama mejor te permite estar sin dormir durante 2 días o algo así.
 
@@ -131,6 +120,21 @@ El jugador estará en este gameplay loop de crafteo->raid->loot->rest cada día 
 Es un challenge de supervivencia donde el jugador tendrá que gestionar las necesidades de su avatar para completarlo sin morir y en el menor tiempo posible.
 
 ![Contenido](./docs/headers/h_contenido.png)
+
+
+### Localizaciones
+
+| Nombre | Sprite | Desc | Dificultad/Enemigos |
+|--------|--------|-------|-------|
+| Puesto de seguridad | N/A | bla bla bla bla bla | 3 pepegas |
+| N/A | N/A | N/A | N/A |
+
+### Contenedores
+
+| Nombre | Sprite | Loot table | 
+|--------|--------|-------|
+| Estantería | N/A | Componentes electrónicos (5-10) / Materiales (10-20) |
+| N/A | N/A | N/A |
 
 ### Equipamiento
 
@@ -179,7 +183,7 @@ Es un challenge de supervivencia donde el jugador tendrá que gestionar las nece
 
 El juego tiene estetica en pixel-art, concretamente en 64-bits. Esta ambientado en la cúpula de un planeta desertico.
 
-![weapon](./docs/images/estetica.gif)
+![alt text](./docs/images/estetica.gif)
 
 ![Controles](./docs/headers/h_controles.png)
 
@@ -198,9 +202,9 @@ El juego tiene estetica en pixel-art, concretamente en 64-bits. Esta ambientado 
 - **ESC ->** Menu de pausa
 
 ### En menús
-- **F->** Volver al juego
+- **F ->** Volver al juego
 - **Click izquierdo ->** Arrastrar un objeto del inventario
-- **Click derecho ->** Rotar el objeto que estas arrastrando  
+- **Click derecho ->** Rotar el objeto que estas arrastrando
 
 ![Interfaz y Menús](./docs/headers/h_interfaz.png)
 
