@@ -39,16 +39,22 @@ Ejemplo: caja de comida (comida se caduca un 10% más lenta, 4 espacios), nevera
 
 El jugador dispondrá de un inventario por bloques, al estilo de un tablero de tetris, donde almacenar los objetos que quiera llevarse a la hora de saquear y para almacenar los nuevos que saquee. Cada objeto ocupará un espacio diferente (pero siempre convexo) en el inventario, y la distribución eficiente del espacio físico permitirá al jugador cargar con más objetos.
 
-Arma: distintos tiers de armas facilitan el combate contra ciertos enemigos, o por ejemplo ciertos enemigos son resistentes y el jugador deberá llevar algún tipo de arma con capacidad para eliminarlos.
-Hay cuatro categorías de armas, cada uno con tres fases de mejoras:
-Armas de plomo: trazan una línea recta que colisiona con el primer objeto o enemigo que encuentre. Pistola --> subfusil --> fusil de asalto. Requieren balas como munición.
-Armas de energía: el jugador debe mantener pulsada la tecla de disparo por un momento para cargar el arma antes de disparar. Los proyectiles atraviesan enemigos. Requieres baterías como munición.
-Armas poliméricas: disparan un proyectil de alta velocidad que rebota sobre superficies hasta colisionar con un enemigo. La primera fase solo rebota una vez, la segunda puede rebotar dos veces y la última puede rebotar cuatro veces. Requieren filamento poliatílico como munición.
-Armas de combustión: lanzan un proyectil con un leve arco en su trayectoria, el cual explota al colisionar con una superficie o un enemigo, haciendo daño a todos los enemigos que estén cerca. Si el jugador se encuentra demasiado cerca del punto de impacto, podrá recibir concusiones y quemaduras. Requieren explosivos como munición.
+#### Armas
+Existen distintos tiers de armas facilitan el combate contra ciertos enemigos, o por ejemplo ciertos enemigos son resistentes y el jugador deberá llevar algún tipo de arma con capacidad para eliminarlos.
 
-Armadura: Afecta la resistencia del jugador, ciertas mejoras o armaduras darán resistencia a efectos para por ejemplo poder saquear una zona contaminada o con radiación. El 
+- **Armas de plomo:** trazan una línea recta que colisiona con el primer objeto o enemigo que encuentre. Pistola --> subfusil --> fusil de asalto. Requieren balas como munición.
 
-Mochila: Aumenta la capacidad del inventario del jugador.
+- **Armas de energía:** el jugador debe mantener pulsada la tecla de disparo por un momento para cargar el arma antes de disparar. Los proyectiles atraviesan enemigos. Requieres baterías como munición.
+
+- **Armas poliméricas:** disparan un proyectil de alta velocidad que rebota sobre superficies hasta colisionar con un enemigo. La primera fase solo rebota una vez, la segunda puede rebotar dos veces y la última puede rebotar cuatro veces. Requieren filamento poliatílico como munición.
+
+#### Armaduras
+
+Afecta la resistencia del jugador, ciertas mejoras o armaduras darán resistencia a efectos para por ejemplo poder saquear una zona contaminada o con radiación. El 
+
+#### Mochilas
+
+Aumenta la capacidad del inventario del jugador.
 
 ### Loot
 
