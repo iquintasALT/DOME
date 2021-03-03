@@ -4,37 +4,40 @@
 ## ENLACES
 [PÁGINA WEB](https://www.pivotaltracker.com/n/projects/2489079)\
 [PIVOTAL (editable)](https://www.pivotaltracker.com/n/projects/2489079)\
-[DIAGRAMA UML](https://lucid.app/lucidchart/invitations/accept/355e2dc6-1896-49d8-9c1d-601517544eb8)\
+[DIAGRAMA UML - CLASES](https://lucid.app/lucidchart/invitations/accept/355e2dc6-1896-49d8-9c1d-601517544eb8)\
+[DIAGRAMA UML - COMPONENTES](https://discordapp.com/channels/810899981404733490/810934029078495262/810945073994006599)\
 
 ![Descripción](./docs/headers/h_descripcion.png)
 
-DOME es un survival shooter scroller 2D donde controlas a un superviviente en un refugio establecido en un lejano planeta y cada día deberás aprovechar las horas del día para viajar a localizaciones que disponga de los objetos que necesitas para sobrevivir en ese hostil y frío planeta. Durante las horas de noche el frío es mortal por lo que deberás ir al refugio a descansar y gestionar tus recursos. ¿Serás capaz de escapar?
+DOME es un survival shooter scroller 2D donde controlas a uno de los últimos supervivientes de una colonia establecida en un lejano planeta. Cada día deberás aprovechar las horas de luz para buscar los objetos que necesitas para sobrevivir en este hostil y frío lugar. Durante las horas de noche el frío es mortal por lo que deberás volver al refugio a descansar y gestionar tus recursos. ¿Serás capaz de escapar?
 
 ![Mecánicas](./docs/headers/h_mecanicas.png)
 
 ### Día a día
 
-Mecánica principal/loop de juego: cada día el jugador 12 horas para saquear localizaciones y otras 12 para descansar y gestionar sus recursos en el refugio ya que será de noche y el frío puede acabar con tu vida. Si has terminado de realizar tus objetivos, podrás saltar la etapa de 12 horas para pasar a la siguiente.
+Mecánica principal/loop de juego: cada día de juego, el jugador dispone de 12 horas (que se jugarán como 12 minutos cronometrados) para saquear puntos de interés, seguidas por otras 12 (que se gestionan como recurso de forma discreta) para descansar y gestionar sus recursos en el refugio, ya que será de noche y el frío le impide salir.
 
 ### Raid
 
-Los lugares de saqueo serán pequeños y contendrán loot dependiendo del lugar (farmacia--> medicinas , supermercado---> comida, etc) rápidos de recorrer en los que el jugador gastará tiempo del día. Solo podrá saquear lo que su equipamiento y su estado (herido, hambriento, cansado  le permita llevar de vuelta al refugio.
+Los lugares de saqueo serán pequeños y contendrán botín dependiendo del lugar (farmacia--> medicinas , supermercado--> comida, etc) rápidos de recorrer en los que el jugador gastará tiempo del día. Solo podrá saquear lo que su equipamiento y su estado (herido, hambriento, cansado) le permita llevar de vuelta al refugio.
+
+La dificultad de cada lugar de saqueo será definido por el peligro que presentan los enemigos que haya. Además, la distancia sobre el mapa entre el lugar de saqueo y el refugio reducirá el tiempo del cual dispone el jugador para saquear.
 
 Estos lugares pueden presentar obstáculos como puertas bloqueadas, necesidad de contraseñas o herramientas para saquearlo completamente.
 
-Existe la posibilidad de volver a la misma localización por si en la anterior etapa de 12 horas no terminaste de saquearlo por completo.
+Existe la posibilidad de volver a la misma localización por si en el anterior ciclo no terminaste de saquearlo por completo.
 
-Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber que esperar. Por ejemplo en una casa abandonada la descripción  podría indicar peligro de esta forma: gran número hostiles en la zona , posiblemente haya medicinas.
+Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber que esperar. Por ejemplo en una casa abandonada la descripción  podría indicar peligro de esta forma: gran número hostiles en la zona, posiblemente haya medicinas. No obstante, al principio del juego solo estarán descritas un poequeño número de zonas. Una zona no descrita aún se puede saquear, pero el jugador no sabrá a qué se enfrenta ni qué recompensas esperar. Cuando se complete un saqueo, independientemente del resultado, se desbloquearán la descripciones de las dos zonas más cercanas sobre el mapa a la zona saqueada.
 
 ### Refugio
 
-El refugio es una zona pequeña donde el jugador podrá construir y mejorar diferentes estaciones de crafteo, crear items o descansar.
+El refugio es una zona pequeña donde el jugador podrá construir y mejorar diferentes estaciones de crafteo, crear objetos o descansar.
 
 Ejemplo: caja de comida (comida se caduca un 10% más lenta, 4 espacios), nevera pequeña (comida se caduca un 25% más lenta, 8 espacios), nevera (comida se caduca un 50% más lenta, 16 espacios)
 
 ### Equipamiento
 
-El jugador dispondrá de un inventario tipo tetris donde almacenar los objetos que quiera llevarse a la hora de saquear y para almacenar los nuevos que saquee.
+El jugador dispondrá de un inventario por bloques, al estilo de un tablero de tetris, donde almacenar los objetos que quiera llevarse a la hora de saquear y para almacenar los nuevos que saquee. Cada objeto ocupará un espacio diferente en el inventario, y la distribución eficiente del espacio físico permitirá al jugador cargar con más objetos.
 
 Arma: distintos tiers de armas facilitan el combate contra ciertos enemigos, o por ejemplo ciertos enemigos son resistentes y el jugador deberá llevar algún tipo de arma con capacidad para eliminarlos.
 
