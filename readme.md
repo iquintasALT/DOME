@@ -133,7 +133,7 @@ Es un challenge de supervivencia donde el jugador tendrá que gestionar las nece
 #### Armas
 | Tier 1 | Tier 1 Sprite | Tier 2 | Tier 2 Sprite | Tier 3 | Tier 3 Sprite |
 |--------|--------|--------|--------|--------|--------|
-| Tier 1 Weapon | ![alt text](./assets/docs/images/w_tier_1.png)| Tier 2 Weapon | ![alt text](./assets/docs/images/w_tier_2.png)| Tier 3 Weapon | ![alt text](./assets/docs/images/w_tier_3.png)|
+| Tier 1 Weapon | ![alt text](./docs/images/w_tier_1.png)| Tier 2 Weapon | ![alt text](./docs/images/w_tier_2.png)| Tier 3 Weapon | ![alt text](./docs/images/w_tier_3.png)|
 
 #### Armaduras/Trajes
 | Nombre | Sprite | Stats | 
