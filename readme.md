@@ -128,68 +128,49 @@ Es un challenge de supervivencia donde el jugador tendrá que gestionar las nece
 
 ![Contenido](./docs/headers/h_contenido.png)
 
-### Alimentos
+### Equipamiento
 
-##### Comida
-Aparece en distintas formas y te aumenta la barra de comida
+#### Armas
+| Tier 1 | Tier 1 Sprite | Tier 2 | Tier 2 Sprite | Tier 3 | Tier 3 Sprite |
+|--------|--------|--------|--------|--------|--------|
+| Tier 1 Weapon | ![alt text](./assets/docs/images/w_tier_1.png)| Tier 2 Weapon | ![alt text](./assets/docs/images/w_tier_2.png)| Tier 3 Weapon | ![alt text](./assets/docs/images/w_tier_3.png)|
 
-##### Agua
-Aparece en distintas formas y te aumenta la barra de comida
+#### Armaduras/Trajes
+| Nombre | Sprite | Stats | 
+|--------|--------|-------|
+| N/A | N/A | N/A |
 
-### Medicina
+### Loot en localización
 
-##### Botiquin
-Te cura de cualquier lesión excepto de hambre, sed y sueño. No es crafteable
-##### Vendaje
-Te cura de cortes y quemaduras. Crafteable con 2 de tela y 1 antiséptico
-##### Morfina 
-Te cura de envenenamiento e infecciones. Carfteable con 2 de antiseptico y 2 de alcohol
-##### MiniKit de operación
-Te cura de heridas de bala. Crafteable con una lamina de metal, 2 de vendaje, y 1 de alcohol
+![Dinámicas](./docs/images/loot_system.png)
 
-### Armas
-En funcion de su tier aumenta el daño y la precision de la misma.
-##### Revolver
-##### Micro Uzi
-##### Balas .38
+#### Específico
+| Nombre | Sprite | Tamaño de stack | Uso |
+|--------|--------|-----------------|-----|
+| Kit de mejora básico | N/A | 1 | Permite la mejora de armas a nivel 2 |
+| Kit de mejora avanzado | N/A | 1 | Permite la mejora de armas a nivel 3 |
+| N/A | N/A | N/A | N/A | 
 
-##### Aron-36E
-Fusil automatico
-##### P3
-Fusil por rafagas
-##### Balas 5.56
+#### Genérico
+| Nombre | Sprite | Tamaño de stack | Uso |
+|--------|--------|-----------------|-----|
+| Materiales de construcción | N/A | 5 | Para hacer bla bla bla |
+| Partes mecánicas | N/A | 10 | N/A |
+| Restos electronicas | N/A | 10 | N/A |
+| N/A | N/A | N/A | N/A |
 
-##### A2VP
-Francotirador
-##### Balas 7.62
+### Refúgio
 
-##### RCH-U
-Arma especial que hace que las balas reboten en las paredes
-##### Balas Atomicas
-Balas no crafteables
+#### Estación médica
+| Crafteo/Acción | Sprite | Coste | Tiempo (Coste) | 
+|-----|-----|-----|-----|
+| N/A | N/A | N/A | N/A |
 
-### Armadura
+### Taller
+| Crafteo/Acción | Sprite | Coste | Tiempo (Coste) | 
+|-----|-----|-----|-----|
+| N/A | N/A | N/A | N/A |
 
-### Piezas del cohete
-
-##### Transmisor
-
-##### Fusibles
-
-##### Mecanismo de despegue
-
-##### Localizacion espacial
-
-##### Combustible?
-
-### Piezas de crafteo
-
-###### Tela
-###### Antiséptico
-###### Alcohol
-###### Laminas de metal
-###### Polvora
-###### Casquillos de bala de cada calibre
 ![Estética](./docs/headers/h_estetica.png)
 
 El juego tiene estetica en pixel-art, concretamente en 64-bits. Esta ambientado en la cupula de un planeta desertico.
