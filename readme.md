@@ -17,6 +17,8 @@ DOME es un survival shooter scroller 2D donde controlas a uno de los últimos su
 
 Mecánica principal/loop de juego: cada día de juego, el jugador dispone de 12 horas (que se jugarán como 12 minutos cronometrados) para saquear puntos de interés, seguidas por otras 12 (que se gestionan como recurso de forma discreta) para descansar y gestionar sus recursos en el refugio, ya que será de noche y el frío le impide salir.
 
+![AltText](./docs/images/daybyday_system.png)
+
 ### Raid
 
 Los lugares de saqueo serán pequeños y contendrán botín dependiendo del lugar (farmacia--> medicinas , supermercado--> comida, etc) rápidos de recorrer en los que el jugador gastará tiempo del día. Solo podrá saquear lo que su equipamiento y su estado (herido, hambriento, cansado) le permita llevar de vuelta al refugio.
@@ -34,6 +36,8 @@ Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber que e
 El refugio es una zona pequeña donde el jugador podrá construir y mejorar diferentes estaciones de crafteo, crear objetos o descansar.
 
 Ejemplo: caja de comida (comida se caduca un 10% más lenta, 4 espacios), nevera pequeña (comida se caduca un 25% más lenta, 8 espacios), nevera (comida se caduca un 50% más lenta, 16 espacios)
+
+![AltText](./docs/images/hideout_concept.png)
 
 ### Equipamiento
 
