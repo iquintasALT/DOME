@@ -87,6 +87,18 @@
     <ClCompile Include="scripts\components\SmellComponent.cpp">
       <Filter>Archivos de origen\components</Filter>
     </ClCompile>
+    <ClCompile Include="scripts\game\Game.cpp">
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\GameScene.cpp">
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\ShelterScene.cpp">
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\MenuScene.cpp">
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scripts\components\Component.h">
@@ -145,6 +157,18 @@
     </ClInclude>
     <ClInclude Include="scripts\components\SmellComponent.h">
       <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\Game.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\GameScene.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\ShelterScene.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\MenuScene.h">
+      <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
