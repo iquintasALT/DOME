@@ -18,7 +18,7 @@ int main(int a, char* argv[])
 	SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
 	//si ha habido algun problema en la creacion de la ventana de SDL, se lanza excepcion
 	if (window == nullptr || renderer == nullptr)
-		throw string("tusmuertospisaos");
+		throw string("NO SE HA PODIDO INICIAR SDL");
 
 	b2Vec2 gravity(0.0f, -10.0f);
 

@@ -19,11 +19,47 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="scripts\classes\Class.cpp" />
+    <ClCompile Include="scripts\components\ColliderComponent.cpp" />
+    <ClCompile Include="scripts\components\Component.cpp" />
+    <ClCompile Include="scripts\components\EnemyAttackComponent.cpp" />
+    <ClCompile Include="scripts\components\EnemyBehaviourComponent.cpp" />
+    <ClCompile Include="scripts\components\EnemyComponent.cpp" />
+    <ClCompile Include="scripts\components\EnemyDetectionComponent.cpp" />
+    <ClCompile Include="scripts\components\EntityComponent.cpp" />
+    <ClCompile Include="scripts\components\HearingComponent.cpp" />
+    <ClCompile Include="scripts\components\ItemComponent.cpp" />
+    <ClCompile Include="scripts\components\ItemPassiveComponent.cpp" />
+    <ClCompile Include="scripts\components\ItemUseComponent.cpp" />
+    <ClCompile Include="scripts\components\LinearDetectionComponent.cpp" />
+    <ClCompile Include="scripts\components\MeleeAtackComponent.cpp" />
+    <ClCompile Include="scripts\components\MovementComponent.cpp" />
+    <ClCompile Include="scripts\components\PlayerHealthComponent.cpp" />
+    <ClCompile Include="scripts\components\RadialDetectionComponent.cpp" />
+    <ClCompile Include="scripts\components\RangedAttackComponent.cpp" />
+    <ClCompile Include="scripts\components\RenderComponent.cpp" />
+    <ClCompile Include="scripts\components\SmellComponent.cpp" />
     <ClCompile Include="scripts\main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="scripts\classes\Class.h" />
+    <ClInclude Include="scripts\components\ColliderComponent.h" />
+    <ClInclude Include="scripts\components\Component.h" />
+    <ClInclude Include="scripts\components\EnemyAttackComponent.h" />
+    <ClInclude Include="scripts\components\EnemyBehaviourComponent.h" />
+    <ClInclude Include="scripts\components\EnemyComponent.h" />
+    <ClInclude Include="scripts\components\EnemyDetectionComponent.h" />
+    <ClInclude Include="scripts\components\EntityComponent.h" />
+    <ClInclude Include="scripts\components\HearingComponent.h" />
+    <ClInclude Include="scripts\components\ItemComponent.h" />
+    <ClInclude Include="scripts\components\ItemPassiveComponent.h" />
+    <ClInclude Include="scripts\components\ItemUseComponent.h" />
+    <ClInclude Include="scripts\components\LinearDetectionComponent.h" />
+    <ClInclude Include="scripts\components\MeleeAtackComponent.h" />
+    <ClInclude Include="scripts\components\MovementComponent.h" />
+    <ClInclude Include="scripts\components\PlayerHealthComponent.h" />
+    <ClInclude Include="scripts\components\RadialDetectionComponent.h" />
+    <ClInclude Include="scripts\components\RangedAttackComponent.h" />
+    <ClInclude Include="scripts\components\RenderComponent.h" />
+    <ClInclude Include="scripts\components\SmellComponent.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

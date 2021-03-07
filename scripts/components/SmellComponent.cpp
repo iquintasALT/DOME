@@ -1,0 +1,1 @@
+#include "SmellComponent.h"
