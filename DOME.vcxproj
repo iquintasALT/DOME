@@ -19,7 +19,6 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="scripts\components\ColliderComponent.cpp" />
     <ClCompile Include="scripts\components\Component.cpp" />
     <ClCompile Include="scripts\components\EnemyAttackComponent.cpp" />
@@ -27,6 +26,7 @@
     <ClCompile Include="scripts\components\EnemyComponent.cpp" />
     <ClCompile Include="scripts\components\EnemyDetectionComponent.cpp" />
     <ClCompile Include="scripts\components\EntityComponent.cpp" />
+    <ClCompile Include="scripts\components\EventHandler.cpp" />
     <ClCompile Include="scripts\components\HearingComponent.cpp" />
     <ClCompile Include="scripts\components\ItemComponent.cpp" />
     <ClCompile Include="scripts\components\ItemPassiveComponent.cpp" />
@@ -40,10 +40,12 @@
     <ClCompile Include="scripts\components\RenderComponent.cpp" />
     <ClCompile Include="scripts\components\SmellComponent.cpp" />
     <ClCompile Include="scripts\components\SpriteRenderer.cpp" />
+    <ClCompile Include="scripts\game\Entity.cpp" />
     <ClCompile Include="scripts\game\Game.cpp" />
     <ClCompile Include="scripts\game\GameObject.cpp" />
     <ClCompile Include="scripts\game\GameScene.cpp" />
     <ClCompile Include="scripts\game\MenuScene.cpp" />
+    <ClCompile Include="scripts\game\PhysicsObject.cpp" />
     <ClCompile Include="scripts\game\ShelterScene.cpp" />
     <ClCompile Include="scripts\main.cpp" />
   </ItemGroup>
@@ -69,10 +71,12 @@
     <ClInclude Include="scripts\components\RenderComponent.h" />
     <ClInclude Include="scripts\components\SmellComponent.h" />
     <ClInclude Include="scripts\components\SpriteRenderer.h" />
+    <ClInclude Include="scripts\game\Entity.h" />
     <ClInclude Include="scripts\game\Game.h" />
     <ClInclude Include="scripts\game\GameObject.h" />
     <ClInclude Include="scripts\game\GameScene.h" />
     <ClInclude Include="scripts\game\MenuScene.h" />
+    <ClInclude Include="scripts\game\PhysicsObject.h" />
     <ClInclude Include="scripts\game\ShelterScene.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
