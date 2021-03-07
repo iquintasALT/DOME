@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="EventHandler.cpp" />
     <ClCompile Include="scripts\components\ColliderComponent.cpp" />
     <ClCompile Include="scripts\components\Component.cpp" />
     <ClCompile Include="scripts\components\EnemyAttackComponent.cpp" />
@@ -38,7 +39,9 @@
     <ClCompile Include="scripts\components\RangedAttackComponent.cpp" />
     <ClCompile Include="scripts\components\RenderComponent.cpp" />
     <ClCompile Include="scripts\components\SmellComponent.cpp" />
+    <ClCompile Include="scripts\components\SpriteRenderer.cpp" />
     <ClCompile Include="scripts\game\Game.cpp" />
+    <ClCompile Include="scripts\game\GameObject.cpp" />
     <ClCompile Include="scripts\game\GameScene.cpp" />
     <ClCompile Include="scripts\game\MenuScene.cpp" />
     <ClCompile Include="scripts\game\ShelterScene.cpp" />
@@ -52,6 +55,7 @@
     <ClInclude Include="scripts\components\EnemyComponent.h" />
     <ClInclude Include="scripts\components\EnemyDetectionComponent.h" />
     <ClInclude Include="scripts\components\EntityComponent.h" />
+    <ClInclude Include="scripts\components\EventHandler.h" />
     <ClInclude Include="scripts\components\HearingComponent.h" />
     <ClInclude Include="scripts\components\ItemComponent.h" />
     <ClInclude Include="scripts\components\ItemPassiveComponent.h" />
@@ -64,7 +68,9 @@
     <ClInclude Include="scripts\components\RangedAttackComponent.h" />
     <ClInclude Include="scripts\components\RenderComponent.h" />
     <ClInclude Include="scripts\components\SmellComponent.h" />
+    <ClInclude Include="scripts\components\SpriteRenderer.h" />
     <ClInclude Include="scripts\game\Game.h" />
+    <ClInclude Include="scripts\game\GameObject.h" />
     <ClInclude Include="scripts\game\GameScene.h" />
     <ClInclude Include="scripts\game\MenuScene.h" />
     <ClInclude Include="scripts\game\ShelterScene.h" />

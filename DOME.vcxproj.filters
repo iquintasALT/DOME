@@ -99,6 +99,15 @@
     <ClCompile Include="scripts\game\MenuScene.cpp">
       <Filter>Archivos de origen\game</Filter>
     </ClCompile>
+    <ClCompile Include="EventHandler.cpp">
+      <Filter>Archivos de origen\components</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\components\SpriteRenderer.cpp">
+      <Filter>Archivos de origen\components</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\GameObject.cpp">
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="scripts\components\Component.h">
@@ -168,6 +177,15 @@
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
     <ClInclude Include="scripts\game\MenuScene.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\components\SpriteRenderer.h">
+      <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\components\EventHandler.h">
+      <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\GameObject.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
   </ItemGroup>
