@@ -126,18 +126,20 @@
     <ClCompile Include="scripts\game\Projectile.cpp">
       <Filter>Archivos de origen\game</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\Chest.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="scripts\game\ShelterScene.cpp">
+      <Filter>Archivos de origen\game</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\GameCharacter.cpp">
-      <Filter>Archivos de origen</Filter>
+    <ClCompile Include="scripts\game\Chest.cpp">
+      <Filter>Archivos de origen\game</Filter>
     </ClCompile>
     <ClCompile Include="scripts\game\Enemy.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\GameCharacter.cpp">
+      <Filter>Archivos de origen\game</Filter>
     </ClCompile>
     <ClCompile Include="scripts\game\Player.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
+      <Filter>Archivos de origen\game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -237,18 +239,20 @@
     <ClInclude Include="scripts\game\Projectile.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\Chest.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\game\GameCharacter.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\game\Enemy.h">
-      <Filter>Archivos de encabezado</Filter>
+    <ClInclude Include="scripts\game\ShelterScene.h">
+      <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
     <ClInclude Include="scripts\game\Player.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
+    <ClInclude Include="scripts\game\Chest.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\Enemy.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\GameCharacter.h">
+      <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
