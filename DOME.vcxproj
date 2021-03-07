@@ -53,7 +53,6 @@
     <ClCompile Include="scripts\game\RaidSelectionMap.cpp" />
     <ClCompile Include="scripts\game\ShelterScene.cpp" />
     <ClCompile Include="scripts\game\Workstation.cpp" />
-    <ClCompile Include="scripts\game\Physiognomy.cpp" />
     <ClCompile Include="scripts\game\Player.cpp" />
     <ClCompile Include="scripts\game\Projectile.cpp" />
     <ClCompile Include="scripts\game\ShelterScene.cpp" />
@@ -95,7 +94,6 @@
     <ClInclude Include="scripts\game\RaidSelectionMap.h" />
     <ClInclude Include="scripts\game\ShelterScene.h" />
     <ClInclude Include="scripts\game\Workstation.h" />
-    <ClInclude Include="scripts\game\Physiognomy.h" />
     <ClInclude Include="scripts\game\Player.h" />
     <ClInclude Include="scripts\game\Projectile.h" />
     <ClInclude Include="scripts\game\ShelterScene.h" />
