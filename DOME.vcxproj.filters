@@ -112,7 +112,16 @@
       <Filter>Archivos de origen\game</Filter>
     </ClCompile>
     <ClCompile Include="scripts\game\Entity.cpp">
-      <Filter>Archivos de origen</Filter>
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\MenuButton.cpp">
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\Workstation.cpp">
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\RaidSelectionMap.cpp">
+      <Filter>Archivos de origen\game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -198,7 +207,16 @@
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
     <ClInclude Include="scripts\game\Entity.h">
-      <Filter>Archivos de encabezado</Filter>
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\MenuButton.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\Workstation.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\RaidSelectionMap.h">
+      <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

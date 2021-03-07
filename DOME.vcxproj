@@ -44,9 +44,12 @@
     <ClCompile Include="scripts\game\Game.cpp" />
     <ClCompile Include="scripts\game\GameObject.cpp" />
     <ClCompile Include="scripts\game\GameScene.cpp" />
+    <ClCompile Include="scripts\game\MenuButton.cpp" />
     <ClCompile Include="scripts\game\MenuScene.cpp" />
     <ClCompile Include="scripts\game\PhysicsObject.cpp" />
+    <ClCompile Include="scripts\game\RaidSelectionMap.cpp" />
     <ClCompile Include="scripts\game\ShelterScene.cpp" />
+    <ClCompile Include="scripts\game\Workstation.cpp" />
     <ClCompile Include="scripts\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -75,9 +78,12 @@
     <ClInclude Include="scripts\game\Game.h" />
     <ClInclude Include="scripts\game\GameObject.h" />
     <ClInclude Include="scripts\game\GameScene.h" />
+    <ClInclude Include="scripts\game\MenuButton.h" />
     <ClInclude Include="scripts\game\MenuScene.h" />
     <ClInclude Include="scripts\game\PhysicsObject.h" />
+    <ClInclude Include="scripts\game\RaidSelectionMap.h" />
     <ClInclude Include="scripts\game\ShelterScene.h" />
+    <ClInclude Include="scripts\game\Workstation.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
