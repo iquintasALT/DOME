@@ -1,6 +1,9 @@
 #pragma once
 #include "GameObject.h"
-class MenuButton : public GameObject
+#include "EventHandler.h"
+class MenuButton : 
+	public GameObject,
+	public EventHandler
 {
 
 };

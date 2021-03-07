@@ -40,8 +40,11 @@
     <ClCompile Include="scripts\components\RenderComponent.cpp" />
     <ClCompile Include="scripts\components\SmellComponent.cpp" />
     <ClCompile Include="scripts\components\SpriteRenderer.cpp" />
+    <ClCompile Include="scripts\game\Chest.cpp" />
+    <ClCompile Include="scripts\game\Enemy.cpp" />
     <ClCompile Include="scripts\game\Entity.cpp" />
     <ClCompile Include="scripts\game\Game.cpp" />
+    <ClCompile Include="scripts\game\GameCharacter.cpp" />
     <ClCompile Include="scripts\game\GameObject.cpp" />
     <ClCompile Include="scripts\game\GameScene.cpp" />
     <ClCompile Include="scripts\game\MenuButton.cpp" />
@@ -50,6 +53,11 @@
     <ClCompile Include="scripts\game\RaidSelectionMap.cpp" />
     <ClCompile Include="scripts\game\ShelterScene.cpp" />
     <ClCompile Include="scripts\game\Workstation.cpp" />
+    <ClCompile Include="scripts\game\Physiognomy.cpp" />
+    <ClCompile Include="scripts\game\Player.cpp" />
+    <ClCompile Include="scripts\game\Projectile.cpp" />
+    <ClCompile Include="scripts\game\ShelterScene.cpp" />
+    <ClCompile Include="scripts\game\Terrain.cpp" />
     <ClCompile Include="scripts\main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -74,8 +82,11 @@
     <ClInclude Include="scripts\components\RenderComponent.h" />
     <ClInclude Include="scripts\components\SmellComponent.h" />
     <ClInclude Include="scripts\components\SpriteRenderer.h" />
+    <ClInclude Include="scripts\game\Chest.h" />
+    <ClInclude Include="scripts\game\Enemy.h" />
     <ClInclude Include="scripts\game\Entity.h" />
     <ClInclude Include="scripts\game\Game.h" />
+    <ClInclude Include="scripts\game\GameCharacter.h" />
     <ClInclude Include="scripts\game\GameObject.h" />
     <ClInclude Include="scripts\game\GameScene.h" />
     <ClInclude Include="scripts\game\MenuButton.h" />
@@ -84,6 +95,11 @@
     <ClInclude Include="scripts\game\RaidSelectionMap.h" />
     <ClInclude Include="scripts\game\ShelterScene.h" />
     <ClInclude Include="scripts\game\Workstation.h" />
+    <ClInclude Include="scripts\game\Physiognomy.h" />
+    <ClInclude Include="scripts\game\Player.h" />
+    <ClInclude Include="scripts\game\Projectile.h" />
+    <ClInclude Include="scripts\game\ShelterScene.h" />
+    <ClInclude Include="scripts\game\Terrain.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

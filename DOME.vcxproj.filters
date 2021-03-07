@@ -93,9 +93,6 @@
     <ClCompile Include="scripts\game\GameScene.cpp">
       <Filter>Archivos de origen\game</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\ShelterScene.cpp">
-      <Filter>Archivos de origen\game</Filter>
-    </ClCompile>
     <ClCompile Include="scripts\game\MenuScene.cpp">
       <Filter>Archivos de origen\game</Filter>
     </ClCompile>
@@ -111,6 +108,9 @@
     <ClCompile Include="scripts\game\PhysicsObject.cpp">
       <Filter>Archivos de origen\game</Filter>
     </ClCompile>
+    <ClCompile Include="scripts\game\Terrain.cpp">
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
     <ClCompile Include="scripts\game\Entity.cpp">
       <Filter>Archivos de origen\game</Filter>
     </ClCompile>
@@ -122,6 +122,24 @@
     </ClCompile>
     <ClCompile Include="scripts\game\RaidSelectionMap.cpp">
       <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\Projectile.cpp">
+      <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\Chest.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\GameCharacter.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\Enemy.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\Player.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\Physiognomy.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -188,9 +206,6 @@
     <ClInclude Include="scripts\game\GameScene.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\ShelterScene.h">
-      <Filter>Archivos de encabezado\game</Filter>
-    </ClInclude>
     <ClInclude Include="scripts\game\MenuScene.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
@@ -206,6 +221,9 @@
     <ClInclude Include="scripts\game\PhysicsObject.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
+    <ClInclude Include="scripts\game\Terrain.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
     <ClInclude Include="scripts\game\Entity.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
@@ -217,6 +235,24 @@
     </ClInclude>
     <ClInclude Include="scripts\game\RaidSelectionMap.h">
       <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\Projectile.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\Chest.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\GameCharacter.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\Enemy.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\Player.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\Physiognomy.h">
+      <Filter>Archivos de encabezado</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

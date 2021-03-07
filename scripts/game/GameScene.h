@@ -1,5 +1,7 @@
 #pragma once
-class GameScene
+#include "EventHandler.h"
+class GameScene:
+	public EventHandler
 {
 
 };
