@@ -102,9 +102,6 @@
     <ClCompile Include="scripts\game\GameObject.cpp">
       <Filter>Archivos de origen\game</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\components\EventHandler.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
     <ClCompile Include="scripts\game\PhysicsObject.cpp">
       <Filter>Archivos de origen\game</Filter>
     </ClCompile>
@@ -140,6 +137,12 @@
     </ClCompile>
     <ClCompile Include="scripts\game\Player.cpp">
       <Filter>Archivos de origen\game</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\game\ShelterScene.cpp">
+      <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="scripts\components\EventHandler.cpp">
+      <Filter>Archivos de origen\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -212,9 +215,6 @@
     <ClInclude Include="scripts\components\SpriteRenderer.h">
       <Filter>Archivos de encabezado\components</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\components\EventHandler.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
     <ClInclude Include="scripts\game\GameObject.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
@@ -253,6 +253,12 @@
     </ClInclude>
     <ClInclude Include="scripts\game\GameCharacter.h">
       <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\game\ShelterScene.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
+    <ClInclude Include="scripts\components\EventHandler.h">
+      <Filter>Archivos de encabezado\components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

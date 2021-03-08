@@ -8,6 +8,10 @@ class Player :
     public GameCharacter,
     public EventHandler
 {
+public:
+    Player();
+    virtual void render();
+
 };
 
 class Physiognomy
