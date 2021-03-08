@@ -1,6 +1,6 @@
 #pragma once
-#include "GameObject.h"
-#include "PhysicsObject.h"
+#include "game_object.h"
+#include "physics_object.h"
 class Entity :
 	public GameObject,
 	public PhysicsObject

@@ -1,5 +1,5 @@
 #pragma once
-#include "PhysicsObject.h"
+#include "physics_object.h"
 class Terrain :
     public PhysicsObject
 {

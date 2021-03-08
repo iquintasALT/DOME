@@ -6,7 +6,7 @@
 #include "SDL_image.h"
 #include "box2d.h"
 
-#include "Player.h"
+#include "player.h"
 
 #include <iostream>
 #include <list>

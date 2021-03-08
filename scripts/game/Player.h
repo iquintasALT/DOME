@@ -1,9 +1,9 @@
 #pragma once
-#include "GameCharacter.h"
-#include "EventHandler.h"
-#include "Inventory.h"
-#include "../components/PlayerHealthComponent.h"
-#include "Item.h"
+#include "game_character.h"
+#include "event_handler.h"
+#include "inventory.h"
+#include "../components/player_health_component.h"
+#include "item.h"
 class Player :
     public GameCharacter,
     public EventHandler

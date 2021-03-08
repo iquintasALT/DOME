@@ -1,6 +1,6 @@
 #pragma once
-#include "EventHandler.h"
-#include "../components/SpriteRenderer.h"
+#include "event_handler.h"
+#include "../components/sprite_renderer.h"
 class Inventory :
     public EventHandler
 {

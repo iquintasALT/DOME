@@ -1,5 +1,5 @@
 #pragma once
-#include "../components/SpriteRenderer.h"
+#include "../components/sprite_renderer.h"
 class Item
 {
 };

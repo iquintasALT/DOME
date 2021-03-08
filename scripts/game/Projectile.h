@@ -1,6 +1,6 @@
 #pragma once
-#include "Entity.h"
-#include "../Components/MovementComponent.h"
+#include "entity.h"
+#include "../Components/movement_component.h"
 class Projectile :
     public Entity
 {
