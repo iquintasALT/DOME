@@ -4,8 +4,9 @@
 ## ENLACES
 [PÁGINA WEB](https://www.pivotaltracker.com/n/projects/2489079)\
 [PIVOTAL (editable)](https://www.pivotaltracker.com/n/projects/2489079)\
-[DIAGRAMA UML - CLASES](https://lucid.app/lucidchart/invitations/accept/355e2dc6-1896-49d8-9c1d-601517544eb8)\
-[DIAGRAMA UML - COMPONENTES](https://discordapp.com/channels/810899981404733490/810934029078495262/810945073994006599)\
+[DIAGRAMA UML - MENUS, ESCENA Y REFUGIO](https://lucid.app/lucidchart/invitations/accept/aae27cba-d4f9-486b-8103-88b7f02d1c62)\
+[DIAGRAMA UML - MECÁNICAS DE SAQUEO](https://lucid.app/lucidchart/invitations/accept/355e2dc6-1896-49d8-9c1d-601517544eb8)\
+[DIAGRAMA UML - COMPONENTES](https://lucid.app/lucidchart/invitations/accept/4e6c891a-a004-42ba-a569-ac58c1c28972)\
 
 ![Descripción](./docs/headers/h_descripcion.png)
 
