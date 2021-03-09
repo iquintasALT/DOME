@@ -10,29 +10,30 @@
 
 ## INDICE
 
-- [Descripción](#building-the-code)
-- [Mecánicas](#applications)
-    - [Ciclo diario](#running-the-applications)
-    - [Raid](#custom-theme-and-fonts)
-    - [Refugio](#custom-icon-theme-and-fonts)
-    - [Inventario](#Mecánicas-docsheadershmecanicaspng)
-    - [Combate](#Raid)
-    - [Supervivencia](#Raid)
-    - [Enemigos](#Raid)
-    - [Medicina](#Raid)
-- [Dinámicas](#license)
-- [Contenido](#license)
-- [Estética](#license)
-- [Interfaz y menús](#license)
-- [Referencias](#license)
+- [Descripción](#desc)
+- [Mecánicas](#mec)
+    - [Ciclo diario](#day)
+    - [Raid](#rai)
+    - [Refugio](#refu)
+    - [Inventario](#inv)
+    - [Combate](#comb)
+    - [Supervivencia](#supe)
+    - [Enemigos](#enem)
+    - [Medicina](#medi)
+- [Dinámicas](#dina)
+- [Contenido](#cont)
+- [Estética](#este)
+- [Controles](#keys)
+- [Interfaz y menús](#hud)
+- [Referencias](#refe)
 
-![Descripción](./docs/headers/h_descripcion.png)
+![Descripción](./docs/headers/h_descripcion.png) <a name="desc"></a>
 
 DOME es un survival shooter scroller 2D donde el jugador controlará a uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora. Cada día, deberá aprovechar las horas de luz para buscar los objetos que necesita para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el frío es mortal por lo que deberá volver al refugio a descansar y gestionar sus recursos. ¿Serás capaz de escapar?.
 
-![Mecánicas](./docs/headers/h_mecanicas.png)
+![Mecánicas](./docs/headers/h_mecanicas.png) <a name="mec"></a>
 
-### Ciclo diario
+# Ciclo diario <a name="day"></a>
 
 El jugador tendrá que escapar del planeta antes de que pasen unos dias determinados (31 dias, que podrán disminuir con respecto a la dificultad) antes de que el refugio se congele y el jugador quede encerrado en Aurora.
 
@@ -40,7 +41,7 @@ Así, cada día de juego el jugador dispondrá de 12 horas (que se jugarán como
 
 ![alt text](./docs/images/infogfx_daycycle.png)
 
-### Raid
+# Raid <a name="rai"></a>
 
 Los lugares de saqueo serán pequeños, rápidos de recorrer y contendrán botín escaso dependiendo del lugar (farmacia--> medicinas , supermercado--> comida, etc) en los que el jugador gastará tiempo del día. Solo podrá saquear lo que su equipamiento y su estado (herido, hambriento, cansado) le permita llevar de vuelta al refugio.
 
@@ -54,7 +55,7 @@ Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber que e
 
 Para poder volver al refugio, el jugador tendrá que salir por la zona por la que entró. En caso de que tarde más del tiempo del dia, empezará a implantarse en él un estado de hipotermia o congelacion, que dependiendo de la tardanza puede conllevar desde un pequeño debufo hasta la muerte del jugador.
 
-### Refugio
+### Refugio <a name="refu"></a>
 
 El refugio es una zona pequeña donde el jugador podrá construir y mejorar diferentes estaciones de crafteo, crear objetos o descansar. En él, el jugador podrá interactuar con distintas estructuras del refugio para realizar acciones que gastarán parte del tiempo (discreto) disponible. Cuando gaste todo el tiempo, o bien cuando se vea sin acciones, podrá dormir y avanzar al siguiente día.
 
@@ -65,13 +66,13 @@ En un principio, el jugador podrá seleccionar las distintas localizaciones para
 
 ![alt text](./docs/images/hideout_concept.png)
 
-### Inventario
+### Inventario <a name="inv"></a>
 
 El jugador dispondrá de un inventario por bloques, como en los comienzos de la saga Resident Evil, donde almacenar los objetos que quiera llevarse a la hora de saquear. Cada objeto ocupará un espacio diferente (pero siempre cuadrilatero) en el inventario, y la distribución eficiente del espacio físico permitirá al jugador cargar con más objetos.
 
 Además, habrá una seccion en la que el jugador pueda establecer su equipamiento (armas, armaduras).
 
-#### Armas
+#### Armas 
 
 Existen tres categorías de armas que facilitan el combate contra ciertos enemigos, (ciertos enemigos son resistentes, con algunas armas será más facil dar al enemigo, etc.) que además podrán ser mejoradas en el refugio para obtener distintos efectos/estadísticas.
 
@@ -93,7 +94,7 @@ Afecta la resistencia del jugador, ciertas mejoras o armaduras darán resistenci
 
 Aumenta la capacidad del inventario del jugador.
 
-### Combate
+### Combate <a name="comb"></a>
 
 - Combate de point and click con posibilidad de agacharte detrás de objetos y levantarte para disparar.
 - Los mapas tendrán verticalidad con plataformas, pero el jugador no podrá navegar el mapa con solo su salto; necesitará usar las escaleras del mapa.
@@ -104,7 +105,7 @@ Aumenta la capacidad del inventario del jugador.
 *BAJA PRIORIDAD: El jugador se puede agachar, reduciendo su tamaño y velocidad de movimiento, pero reduciendo la desviación de sus disparos.*
 *BAJA PRIORIDAD: Las balas atraviesan las plataformas, de tal forma que si una criatura está directamente sobre otra, puedan dispararse.*
 
-### Supervivencia
+### Supervivencia <a name="supe"></a>
 
 - **Comida:** Si se pasan dos días sin comer, se aplicará el debufo de hambre. Hay dos tipos de ración de comida: proteínas (carne) y vitaminas (verdura). Comer uno de cada en un solo día se considera una comida completa, y aportará un bufo al jugador que le otorgará un 15% de probabilidad de evitar sufrir heridas cuando recibe daño. Este efecto dura un día.
 
@@ -118,13 +119,13 @@ Aumenta la capacidad del inventario del jugador.
 
 Ciertas mejoras del refugio pueden hacer esto más llevadero, una cama mejor te permite estar sin dormir durante 2 días o algo así.
 
-### Enemigos
+### Enemigos <a name="enem"></a>
 
 Pepega a melee: comportamiento más agresivo, rushea al jugador cuando se da cuenta de su presencia y ataca en "horda", el jugador deberá ser rápido eliminando a estos enemigos ya que el combate a melee es peligroso.
 
 Pepega a rango: comportamiento más cauteloso, se comportan como guardias usando coberturas para frenar el avance del jugador siguen patrones de disparo que el jugador deberá usar para eliminarlos.
 
-### Medicina
+### Medicina <a name="medi"></a>
 
 Heridas de bala.
 
@@ -140,7 +141,7 @@ Muerte por enfermedad al comer comida cruda o algo así.
 
 Medicina para contrarrestarlo antibióticos(infecciones) vendajes(sangrados o laceraciones leves) kit medico (sacar balas grapar heridas graves o laceraciones profundas).
 
-![Dinámicas](./docs/headers/h_dinamicas.png)
+![Dinámicas](./docs/headers/h_dinamicas.png) <a name="dina"></a>
 
 ### Objetivos y conflictos
 
@@ -152,7 +153,7 @@ El jugador estará en este gameplay loop de crafteo->raid->loot->rest cada día 
 
 Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidades de su avatar para completarlo sin morir y en el menor tiempo posible.
 
-![Contenido](./docs/headers/h_contenido.png)
+![Contenido](./docs/headers/h_contenido.png) <a name="cont"></a>
 
 ### Localizaciones
 
@@ -182,7 +183,7 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 
 ### Loot en localización
 
-![Dinámicas](./docs/images/loot_system.png)
+![Dinámicas](./docs/images/loot_system.png) <a name="dina"></a>
 
 #### Específico
 | Nombre | Sprite | Tamaño de stack | Uso |
@@ -216,13 +217,13 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 |--------|--------|-------|
 | N/A | N/A | N/A |
 
-![Estética](./docs/headers/h_estetica.png)
+![Estética](./docs/headers/h_estetica.png) <a name="este"></a>
 
 El juego tiene estetica en pixel-art, concretamente en 64-bits. Esta ambientado en la cúpula de un planeta desertico. Inspirado en Kingdom.
 
 ![alt text](./docs/images/estetica.gif)
 
-![Controles](./docs/headers/h_controles.png)
+![Controles](./docs/headers/h_controles.png) <a name="keys"></a>
 
 ![alttext](./docs/images/infogfx_keybinds.png)
 
@@ -243,7 +244,7 @@ El juego tiene estetica en pixel-art, concretamente en 64-bits. Esta ambientado 
 - **Click izquierdo ->** Arrastrar un objeto del inventario
 - **Click derecho ->** Rotar el objeto que estas arrastrando
 
-![Interfaz y Menús](./docs/headers/h_interfaz.png)
+![Interfaz y Menús](./docs/headers/h_interfaz.png) <a name="hud"></a>
 
 ### Menu de inicio
 En este menu el jugador tendra la opcion de salir del juego,ir al juego o  irse al menu de opciones
@@ -272,7 +273,7 @@ En este menu el jugador podra arrastrar objetos del lugar de almacenamiento a su
 ## Interfaz In-Game
 Hay que discutirlo
 
-![Referencias](./docs/headers/h_referencias.png)
+![Referencias](./docs/headers/h_referencias.png) <a name="refe"></a>
 
 - *This War of Mine (Supervivencia día a día)*
 - *Escape from Tarkov (Raids / Equipamiento)*
