@@ -7,19 +7,37 @@
 [DIAGRAMA UML - CLASES](https://lucid.app/lucidchart/invitations/accept/355e2dc6-1896-49d8-9c1d-601517544eb8)\
 [DIAGRAMA UML - COMPONENTES](https://discordapp.com/channels/810899981404733490/810934029078495262/810945073994006599)\
 
+## INDICE
+
+- [Descripción](#building-the-code)
+- [Mecánicas](#applications)
+    - [Ciclo diario](#running-the-applications)
+    - [Raid](#custom-theme-and-fonts)
+    - [Refugio](#custom-icon-theme-and-fonts)
+    - [Inventario](#Mecánicas-docsheadershmecanicaspng)
+    - [Combate](#Raid)
+    - [Supervivencia](#Raid)
+    - [Enemigos](#Raid)
+    - [Medicina](#Raid)
+- [Dinámicas](#license)
+- [Contenido](#license)
+- [Estética](#license)
+- [Interfaz y menús](#license)
+- [Referencias](#license)
+
 ![Descripción](./docs/headers/h_descripcion.png)
 
 DOME es un survival shooter scroller 2D donde el jugador controlará a uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora. Cada día, deberá aprovechar las horas de luz para buscar los objetos que necesita para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el frío es mortal por lo que deberá volver al refugio a descansar y gestionar sus recursos. ¿Serás capaz de escapar?.
 
 ![Mecánicas](./docs/headers/h_mecanicas.png)
 
-### Día a día
+### Ciclo diario
 
 El jugador tendrá que escapar del planeta antes de que pasen unos dias determinados (31 dias, que podrán disminuir con respecto a la dificultad) antes de que el refugio se congele y el jugador quede encerrado en Aurora.
 
 Así, cada día de juego el jugador dispondrá de 12 horas (que se jugarán como 12 minutos cronometrados) para saquear puntos de interés, seguidas por otras 12 (que se gestionan como recurso de forma discreta) para descansar y gestionar sus recursos en el refugio, ya que será de noche y el frío le impedirá salir.
 
-![alt text](./docs/images/daybyday_system.png)
+![alt text](./docs/images/infogfx_daycycle.png)
 
 ### Raid
 
@@ -205,7 +223,7 @@ El juego tiene estetica en pixel-art, concretamente en 64-bits. Esta ambientado 
 
 ![Controles](./docs/headers/h_controles.png)
 
-![Controls_1](./docs/images/controls_1.png)
+![alttext](./docs/images/infogfx_keybinds.png)
 
 ### En partida
 - **A,D ->** Movimiento lateral
