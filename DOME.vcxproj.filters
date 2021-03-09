@@ -13,264 +13,177 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Archivos de encabezado\game">
-      <UniqueIdentifier>{1daf9ac7-5e61-4f32-ae3c-5675f4b57a8e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Archivos de encabezado\components">
-      <UniqueIdentifier>{f5efb310-b5e3-4c6b-9faa-5dd6b816fc10}</UniqueIdentifier>
+      <UniqueIdentifier>{fc28ad1e-a8a7-4b2b-9ac3-357c27fc75b2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\components">
-      <UniqueIdentifier>{f9383466-3178-4a95-8288-123352111bfa}</UniqueIdentifier>
+    <Filter Include="Archivos de encabezado\ecs">
+      <UniqueIdentifier>{ab89bc97-6d7a-4d3a-9b7f-1e1241de11f1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Archivos de origen\game">
-      <UniqueIdentifier>{5cefa23f-6fbe-4671-91f9-2c000778db58}</UniqueIdentifier>
+    <Filter Include="Archivos de encabezado\game">
+      <UniqueIdentifier>{3dbcaa49-855b-4ea3-a2bb-1779b5363dc0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\json">
+      <UniqueIdentifier>{62b9b932-d2d4-4455-86ba-aa9946868e81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\sdlutils">
+      <UniqueIdentifier>{b25a9e95-e8fe-450c-861e-083f5f34d962}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de encabezado\utils">
+      <UniqueIdentifier>{fc0bbff0-e5be-4d3d-b353-7516768e5bd4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\components">
+      <UniqueIdentifier>{85cb028a-bcde-44eb-a7b1-d333a3270d1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\ecs">
+      <UniqueIdentifier>{bd339365-a731-4cc7-a8a3-b036dd0b873a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\game">
+      <UniqueIdentifier>{1f1c9d4b-fd5e-416a-988a-9163af22b1dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\json">
+      <UniqueIdentifier>{531baeee-1f59-4d79-b884-3623cf55f79e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\sdlutils">
+      <UniqueIdentifier>{1713c036-bfb7-4e42-b29d-f887f505c71c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de recursos\utils">
+      <UniqueIdentifier>{3b4bed19-4679-45f3-a31c-f04cf1400ee3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="scripts\game\chest.h">
+    <ClInclude Include="components\Image.h">
+      <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Transform.h">
+      <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\Component.h">
+      <Filter>Archivos de encabezado\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\ecs.h">
+      <Filter>Archivos de encabezado\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\ecs_defs_example.h">
+      <Filter>Archivos de encabezado\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\Entity.h">
+      <Filter>Archivos de encabezado\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\Manager.h">
+      <Filter>Archivos de encabezado\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="ecs\mpl.h">
+      <Filter>Archivos de encabezado\ecs</Filter>
+    </ClInclude>
+    <ClInclude Include="game\ecs_defs.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\enemy.h">
+    <ClInclude Include="game\Game.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\entity.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="json\JSON.h">
+      <Filter>Archivos de encabezado\json</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\event_handler.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="json\JSONValue.h">
+      <Filter>Archivos de encabezado\json</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\game.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="json\simplejson_demo.h">
+      <Filter>Archivos de encabezado\json</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\game_character.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="utils\Collisions.h">
+      <Filter>Archivos de encabezado\utils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\game_object.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="utils\Singleton.h">
+      <Filter>Archivos de encabezado\utils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\game_scene.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="utils\Vector2D.h">
+      <Filter>Archivos de encabezado\utils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\inventory.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="sdlutils\Font.h">
+      <Filter>Archivos de encabezado\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\item.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="sdlutils\InputHandler.h">
+      <Filter>Archivos de encabezado\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\menu_button.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="sdlutils\macros.h">
+      <Filter>Archivos de encabezado\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\menu_scene.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="sdlutils\Music.h">
+      <Filter>Archivos de encabezado\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\physics_object.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="sdlutils\RandomNumberGenerator.h">
+      <Filter>Archivos de encabezado\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\player.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="sdlutils\SDLUtils.h">
+      <Filter>Archivos de encabezado\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\projectile.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="sdlutils\sdlutils_demo.h">
+      <Filter>Archivos de encabezado\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\raid_selection_map.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="sdlutils\SoundEffect.h">
+      <Filter>Archivos de encabezado\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\shelter_scene.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="sdlutils\Texture.h">
+      <Filter>Archivos de encabezado\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\terrain.h">
-      <Filter>Archivos de encabezado\game</Filter>
+    <ClInclude Include="sdlutils\VirtualTimer.h">
+      <Filter>Archivos de encabezado\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\game\Workstation.h">
-      <Filter>Archivos de encabezado\game</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\collider_component.h">
+    <ClInclude Include="components\GravityComponent.h">
       <Filter>Archivos de encabezado\components</Filter>
     </ClInclude>
-    <ClInclude Include="scripts\components\component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\enemy_attack_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\enemy_behaviour_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\enemy_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\enemy_detection_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\entity_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\event_handler.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\hearing_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\item_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\item_passive_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\item_use_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\linear_detection_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\melee_attack_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\movement_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\player_health_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\radial_detection_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\ranged_attack_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\render_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\smell_component.h">
-      <Filter>Archivos de encabezado\components</Filter>
-    </ClInclude>
-    <ClInclude Include="scripts\components\sprite_renderer.h">
+    <ClInclude Include="components\KeyboardPlayerCtrl.h">
       <Filter>Archivos de encabezado\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="scripts\game\chest.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="ecs\Entity.cpp">
+      <Filter>Archivos de recursos\ecs</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\enemy.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="ecs\Manager.cpp">
+      <Filter>Archivos de recursos\ecs</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\entity.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="game\Game.cpp">
+      <Filter>Archivos de recursos\game</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\event_handler.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="json\JSON.cpp">
+      <Filter>Archivos de recursos\json</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\game.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="json\JSONValue.cpp">
+      <Filter>Archivos de recursos\json</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\game_character.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="json\somplejson_demo.cpp">
+      <Filter>Archivos de recursos\json</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\game_object.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="utils\Collisions.cpp">
+      <Filter>Archivos de recursos\utils</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\game_scene.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="utils\Vector2D.cpp">
+      <Filter>Archivos de recursos\utils</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\inventory.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="sdlutils\RandomNumberGenerator.cpp">
+      <Filter>Archivos de recursos\sdlutils</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\item.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="sdlutils\SDLUtils.cpp">
+      <Filter>Archivos de recursos\sdlutils</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\menu_button.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="sdlutils\sdlutils_demo.cpp">
+      <Filter>Archivos de recursos\sdlutils</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\menu_scene.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="sdlutils\SoundEffect.cpp">
+      <Filter>Archivos de recursos\sdlutils</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\physics_object.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="sdlutils\Texture.cpp">
+      <Filter>Archivos de recursos\sdlutils</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\player.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="main.cpp">
+      <Filter>Archivos de recursos</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\projectile.cpp">
-      <Filter>Archivos de origen\game</Filter>
+    <ClCompile Include="components\GravityComponent.cpp">
+      <Filter>Archivos de recursos\components</Filter>
     </ClCompile>
-    <ClCompile Include="scripts\game\raid_selection_map.cpp">
-      <Filter>Archivos de origen\game</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\game\shelter_scene.cpp">
-      <Filter>Archivos de origen\game</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\game\terrain.cpp">
-      <Filter>Archivos de origen\game</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\game\workstation.cpp">
-      <Filter>Archivos de origen\game</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\main.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\collider_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\enemy_attack_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\enemy_behaviour_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\enemy_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\enemy_detection_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\entity_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\event_handler.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\hearing_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\item_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\item_passive_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\item_use_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\linear_detection_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\melee_attack_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\movement_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\player_health_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\radial_detection_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\ranged_attack_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\render_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\smell_component.cpp">
-      <Filter>Archivos de origen\components</Filter>
-    </ClCompile>
-    <ClCompile Include="scripts\components\sprite_renderer.cpp">
-      <Filter>Archivos de origen\components</Filter>
+    <ClCompile Include="components\KeyboardPlayerCtrl.cpp">
+      <Filter>Archivos de recursos\components</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
