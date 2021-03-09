@@ -14,20 +14,21 @@ Manager::~Manager() {
 }
 
 void Manager::refresh() {
-
-	auto toRemove = std::remove_if( //
+	// remove dead entities from the list of entities
+	entities_.erase( //
+		std::remove_if( //
 			entities_.begin(), //
 			entities_.end(), //
-			[](const Entity *e) { //
-				return !e->isActive();
-			});
-
-	std::for_each(toRemove, entities_.end(), [](const Entity *e) {
-		delete e;
-	});
-
-	// remove dead entities from the list of entities
-	entities_.erase(toRemove, entities_.end());
+			[](const Entity* e) { //
+				if (e->isActive()) {
+					return false;
+				}
+				else {
+					delete e;
+					return true;
+				}
+			}), //
+		entities_.end());
 }
 
 void Manager::update() {
