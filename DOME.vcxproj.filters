@@ -49,6 +49,12 @@
     <Filter Include="Archivos de recursos\utils">
       <UniqueIdentifier>{3b4bed19-4679-45f3-a31c-f04cf1400ee3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Archivos de encabezado\classes">
+      <UniqueIdentifier>{3a873376-41c4-47ab-a5e8-5f88ab546c76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Archivos de origen\classes">
+      <UniqueIdentifier>{5cbc25c2-d807-4117-9037-728f518c12a4}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="components\Image.h">
@@ -135,6 +141,15 @@
     <ClInclude Include="components\KeyboardPlayerCtrl.h">
       <Filter>Archivos de encabezado\components</Filter>
     </ClInclude>
+    <ClInclude Include="classes\game_entity.h">
+      <Filter>Archivos de encabezado\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\game_object.h">
+      <Filter>Archivos de encabezado\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\game_character.h">
+      <Filter>Archivos de encabezado</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ecs\Entity.cpp">
@@ -184,6 +199,15 @@
     </ClCompile>
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp">
       <Filter>Archivos de recursos\components</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\game_entity.cpp">
+      <Filter>Archivos de origen\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\game_object.cpp">
+      <Filter>Archivos de origen\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\game_character.cpp">
+      <Filter>Archivos de origen</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

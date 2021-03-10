@@ -19,6 +19,9 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="classes\game_character.h" />
+    <ClInclude Include="classes\game_entity.h" />
+    <ClInclude Include="classes\game_object.h" />
     <ClInclude Include="components\GravityComponent.h" />
     <ClInclude Include="components\Image.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
@@ -49,6 +52,9 @@
     <ClInclude Include="utils\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="classes\game_character.cpp" />
+    <ClCompile Include="classes\game_entity.cpp" />
+    <ClCompile Include="classes\game_object.cpp" />
     <ClCompile Include="components\GravityComponent.cpp" />
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
