@@ -32,7 +32,7 @@ void Game::init() {
 	player->addComponent<Transform>(Vector2D(), Vector2D(), 32, 64, 0);
 	player->addComponent<Image>(&sdlutils().images().at("player"), 3, 6, 0, 0);
 	player->addComponent<GravityComponent>();
-	player->addComponent<KeyboardPlayerCtrl>(1);
+	player->addComponent<KeyboardPlayerCtrl>();
 }
 
 void Game::start() {
