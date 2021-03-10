@@ -10,6 +10,7 @@ public:
 	KeyboardPlayerCtrl() {
 		speed = consts::PLAYER_SPEED;
 		entityTr = nullptr;
+		left = right = crouched= false;
 	};
 
 	virtual void init() {
@@ -22,5 +23,7 @@ public:
 private:
 	Transform* entityTr;
 	float speed;
+	bool left, right, crouched;
+	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 };
 

@@ -45,9 +45,7 @@ public:
 
 		if (sdlutils().currRealTime() >= frameTime + 1000/12) {
 			frameTime = sdlutils().currRealTime();
-
 			playerWalk();
-			
 		}
 	}
 

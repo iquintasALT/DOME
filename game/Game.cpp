@@ -42,7 +42,7 @@ void Game::start() {
 	bool exit = false;
 	SDL_Event event;
 
-	while (!exit && timer->keepPlaying()) {
+	while (!exit ) {
 		Uint32 startTime = sdlutils().currRealTime();
 
 		ih().clearState();
