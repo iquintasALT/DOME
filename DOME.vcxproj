@@ -35,6 +35,7 @@
     <ClInclude Include="game\countdown.h" />
     <ClInclude Include="game\ecs_defs.h" />
     <ClInclude Include="game\Game.h" />
+    <ClInclude Include="game\constant_variables.h" />
     <ClInclude Include="json\JSON.h" />
     <ClInclude Include="json\JSONValue.h" />
     <ClInclude Include="json\simplejson_demo.h" />

@@ -153,6 +153,9 @@
     <ClInclude Include="game\countdown.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
+    <ClInclude Include="game\constant_variables.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ecs\Entity.cpp">
