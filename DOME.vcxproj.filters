@@ -147,11 +147,14 @@
     <ClInclude Include="classes\game_object.h">
       <Filter>Archivos de encabezado\classes</Filter>
     </ClInclude>
-    <ClInclude Include="classes\game_character.h">
-      <Filter>Archivos de encabezado</Filter>
-    </ClInclude>
     <ClInclude Include="game\countdown.h">
       <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\physiognomy.h">
+      <Filter>Archivos de encabezado\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\game_character.h">
+      <Filter>Archivos de encabezado\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -209,11 +212,14 @@
     <ClCompile Include="classes\game_object.cpp">
       <Filter>Archivos de origen\classes</Filter>
     </ClCompile>
-    <ClCompile Include="classes\game_character.cpp">
-      <Filter>Archivos de origen</Filter>
-    </ClCompile>
     <ClCompile Include="game\countdown.cpp">
       <Filter>Archivos de recursos\game</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\physiognomy.cpp">
+      <Filter>Archivos de origen\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\game_character.cpp">
+      <Filter>Archivos de origen\classes</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
