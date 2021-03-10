@@ -150,3 +150,5 @@ private:
 // needed for printing a value of tyep Vector2D with std::cout.
 // The definition is in .cpp
 std::ostream& operator<<(std::ostream &os, const Vector2D &v);
+
+using Point2D = Vector2D;
