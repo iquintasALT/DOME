@@ -52,7 +52,7 @@ void Game::start() {
 			continue;
 		}
 
-
+		timer->update();
 		mngr_->update();
 		mngr_->refresh();
 
