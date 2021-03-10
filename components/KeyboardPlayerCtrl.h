@@ -7,14 +7,17 @@
 class KeyboardPlayerCtrl : public Component {
 public:
 	KeyboardPlayerCtrl() {
-		speed = 1;
+		speed = 3;
+		entityTr = nullptr;
 	};
 
-	KeyboardPlayerCtrl(float sp) {
-		speed = sp;
-	};
+	virtual void init() {
+		entityTr = entity_->getComponent<Transform>();
+		assert(entityTr != nullptr);
+	}
 
 	virtual void update();
+
 private:
 	Transform* entityTr;
 	float speed;

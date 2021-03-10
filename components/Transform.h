@@ -60,6 +60,10 @@ public:
 		vel_ = vel;
 	}
 
+	void setPos(Vector2D pos) {
+		pos_ = pos;
+	}
+
 	void update() override {
 		pos_ = pos_ + vel_;
 	}
