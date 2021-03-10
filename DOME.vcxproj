@@ -32,7 +32,7 @@
     <ClInclude Include="ecs\Entity.h" />
     <ClInclude Include="ecs\Manager.h" />
     <ClInclude Include="ecs\mpl.h" />
-    <ClInclude Include="game\Countdown.h" />
+    <ClInclude Include="game\countdown.h" />
     <ClInclude Include="game\ecs_defs.h" />
     <ClInclude Include="game\Game.h" />
     <ClInclude Include="json\JSON.h" />
@@ -60,7 +60,7 @@
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
-    <ClCompile Include="game\Countdown.cpp" />
+    <ClCompile Include="game\countdown.cpp" />
     <ClCompile Include="game\Game.cpp" />
     <ClCompile Include="json\JSON.cpp" />
     <ClCompile Include="json\JSONValue.cpp" />
