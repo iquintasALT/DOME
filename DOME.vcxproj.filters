@@ -150,6 +150,9 @@
     <ClInclude Include="classes\game_character.h">
       <Filter>Archivos de encabezado</Filter>
     </ClInclude>
+    <ClInclude Include="game\Countdown.h">
+      <Filter>Archivos de encabezado\game</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ecs\Entity.cpp">
@@ -208,6 +211,9 @@
     </ClCompile>
     <ClCompile Include="classes\game_character.cpp">
       <Filter>Archivos de origen</Filter>
+    </ClCompile>
+    <ClCompile Include="game\Countdown.cpp">
+      <Filter>Archivos de recursos\game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
