@@ -14,8 +14,11 @@
 #include "../utils/Vector2D.h"
 #include "box2d.h"
 
-Game::Game() {
+Game::Game(int totaltime) {
 	mngr_.reset(new Manager());
+	lefttime = totaltime; //Recibe los miliseegundos de tiempo en raid
+	starttime = SDL_GetTicks();
+	updatetime = SDL_GetTicks();
 }
 
 Game::~Game() {
@@ -38,7 +41,7 @@ void Game::start() {
 	bool exit = false;
 	SDL_Event event;
 
-	while (!exit) {
+	while (!exit && lefttime > 0) {
 		Uint32 startTime = sdlutils().currRealTime();
 
 		ih().clearState();
@@ -49,6 +52,8 @@ void Game::start() {
 			exit = true;
 			continue;
 		}
+
+		timerupdate();
 
 		mngr_->update();
 		mngr_->refresh();
@@ -63,5 +68,43 @@ void Game::start() {
 			SDL_Delay((1000 / 60) - frameTime);
 	}
 
+}
+
+void Game::timerupdate()
+{
+	
+	lefttime -= SDL_GetTicks() - starttime; //Restamos el tiempoque ha pasado
+	starttime = SDL_GetTicks();
+	
+	if (lefttime <= 0)
+	{
+		std::cout << "Carlos Leon llamalo Angel";
+	}
+	else if(updatetime + 1000 <= SDL_GetTicks())
+	{
+		updatetime = SDL_GetTicks();
+		int seg = lefttime / 1000;
+		int min = seg/60;
+		seg = seg % 60;
+		if (min < 10)
+		{
+			std::cout << "0" << min;
+		}
+		else
+		{
+			std::cout <<  min;
+		}
+		std::cout << ":";
+		if (seg < 10)
+		{
+			std::cout << "0" << seg << std::endl;
+		}
+		else
+		{
+			std::cout << seg << std::endl;
+		}
+		
+		
+	}
 }
 

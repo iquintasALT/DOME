@@ -9,11 +9,15 @@ class Manager;
 
 class Game {
 public:
-	Game();
+	Game(int totaltime); 
 	virtual ~Game();
 	void init();
 	void start();
+	void timerupdate();
 private:
 	std::unique_ptr<Manager> mngr_;
+	int lefttime;
+	int starttime;
+	int updatetime;
 };
 

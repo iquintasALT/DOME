@@ -9,7 +9,7 @@
 #include "game/Game.h"
 
 void start() {
-	Game g;
+	Game g(8000);
 
 	g.init();
 	g.start();
