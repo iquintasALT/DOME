@@ -7,12 +7,14 @@ class Transform;
 class Image;
 class GravityComponent;
 class KeyboardPlayerCtrl;
+class player_animation;
 
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
 	GravityComponent,\
-	KeyboardPlayerCtrl 
+	KeyboardPlayerCtrl,\
+	player_animation
 
 
 // groups

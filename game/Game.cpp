@@ -5,10 +5,12 @@
 #include "../components/Image.h"
 #include "../components/GravityComponent.h"
 #include "../components/KeyboardPlayerCtrl.h"
+#include "../components/player_animation.h"
 #include "../ecs/ecs.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../game/constant_variables.h"
 
 #include "../ecs/Manager.h"
 #include "../utils/Vector2D.h"
@@ -28,7 +30,8 @@ void Game::init() {
 
 	Entity* player = mngr_->addEntity();
 	player->addComponent<Transform>(Vector2D(), Vector2D(), 32, 64, 0);
-	player->addComponent<Image>(&sdlutils().images().at("player"), 3, 6, 0, 0);
+	player->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
+	player->addComponent<player_animation>();
 	player->addComponent<GravityComponent>();
 	player->addComponent<KeyboardPlayerCtrl>();
 }
@@ -39,7 +42,7 @@ void Game::start() {
 	bool exit = false;
 	SDL_Event event;
 
-	while (!exit && timer->keepPlaying()) {
+	while (!exit ) {
 		Uint32 startTime = sdlutils().currRealTime();
 
 		ih().clearState();
@@ -51,7 +54,7 @@ void Game::start() {
 			continue;
 		}
 
-
+		timer->update();
 		mngr_->update();
 		mngr_->refresh();
 
@@ -61,8 +64,8 @@ void Game::start() {
 
 		Uint32 frameTime = sdlutils().currRealTime() - startTime;
 
-		if (frameTime < 1000 / 60)
-			SDL_Delay((1000 / 60) - frameTime);
+		if (frameTime < 1000 / consts::FRAME_RATE)
+			SDL_Delay((1000 / consts::FRAME_RATE) - frameTime);
 	}
 
 }

@@ -26,6 +26,7 @@
     <ClInclude Include="components\GravityComponent.h" />
     <ClInclude Include="components\Image.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
+    <ClInclude Include="components\player_animation.h" />
     <ClInclude Include="components\Transform.h" />
     <ClInclude Include="ecs\Component.h" />
     <ClInclude Include="ecs\ecs.h" />
@@ -36,6 +37,7 @@
     <ClInclude Include="game\countdown.h" />
     <ClInclude Include="game\ecs_defs.h" />
     <ClInclude Include="game\Game.h" />
+    <ClInclude Include="game\constant_variables.h" />
     <ClInclude Include="json\JSON.h" />
     <ClInclude Include="json\JSONValue.h" />
     <ClInclude Include="json\simplejson_demo.h" />

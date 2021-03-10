@@ -3,12 +3,14 @@
 #include "../ecs/Entity.h"
 #include "../components/Transform.h"
 #include "../sdlutils/InputHandler.h"
+#include "../game/constant_variables.h"
 
 class KeyboardPlayerCtrl : public Component {
 public:
 	KeyboardPlayerCtrl() {
-		speed = 3;
+		speed = consts::PLAYER_SPEED;
 		entityTr = nullptr;
+		left = right = crouched= false;
 	};
 
 	virtual void init() {
@@ -21,5 +23,7 @@ public:
 private:
 	Transform* entityTr;
 	float speed;
+	bool left, right, crouched;
+	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 };
 

@@ -16,6 +16,10 @@
         {
             "id": "player",
             "file": "resources/sprites/character_sheet.png"
+        },
+        {
+            "id": "floor",
+            "file": "resources/sprites/floor_tileset.png"
         }
     ],
 
