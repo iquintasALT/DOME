@@ -3,11 +3,12 @@
 #include "../ecs/Entity.h"
 #include "../components/Transform.h"
 #include "../sdlutils/InputHandler.h"
+#include "../game/constant_variables.h"
 
 class KeyboardPlayerCtrl : public Component {
 public:
 	KeyboardPlayerCtrl() {
-		speed = 3;
+		speed = consts::PLAYER_SPEED;
 		entityTr = nullptr;
 	};
 

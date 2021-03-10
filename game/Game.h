@@ -2,7 +2,7 @@
 
 #pragma once
 #include <memory>
-#include "../game/Countdown.h"
+#include "../game/countdown.h"
 
 // when you are not using the methods of a class, just
 // say that it exists, that saves time when parsing files

@@ -1,4 +1,4 @@
-#include "Countdown.h"
+#include "countdown.h"
 
 Countdown::Countdown(int totaltime)
 {

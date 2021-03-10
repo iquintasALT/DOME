@@ -9,6 +9,7 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../game/constant_variables.h"
 
 #include "../ecs/Manager.h"
 #include "../utils/Vector2D.h"
@@ -51,7 +52,7 @@ void Game::start() {
 			continue;
 		}
 
-
+		timer->update();
 		mngr_->update();
 		mngr_->refresh();
 
@@ -61,8 +62,8 @@ void Game::start() {
 
 		Uint32 frameTime = sdlutils().currRealTime() - startTime;
 
-		if (frameTime < 1000 / 60)
-			SDL_Delay((1000 / 60) - frameTime);
+		if (frameTime < 1000 / consts::FRAME_RATE)
+			SDL_Delay((1000 / consts::FRAME_RATE) - frameTime);
 	}
 
 }
