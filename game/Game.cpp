@@ -29,7 +29,7 @@ void Game::init() {
 	player->addComponent<Transform>(Vector2D(), Vector2D(), 32, 64, 0);
 	player->addComponent<Image>(&sdlutils().images().at("player"), 3, 6, 0, 0);
 	player->addComponent<GravityComponent>(9.8f);
-	player->addComponent<KeyboardPlayerCtrl>(4.5f);
+	player->addComponent<KeyboardPlayerCtrl>();
 }
 
 void Game::start() {
@@ -37,6 +37,7 @@ void Game::start() {
 	// a boolean to exit the loop
 	bool exit = false;
 	SDL_Event event;
+
 
 	while (!exit) {
 		Uint32 startTime = sdlutils().currRealTime();
