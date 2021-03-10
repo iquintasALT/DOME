@@ -2,6 +2,7 @@
 
 #pragma once
 #include <memory>
+#include "../game/Countdown.h"
 
 // when you are not using the methods of a class, just
 // say that it exists, that saves time when parsing files
@@ -13,11 +14,9 @@ public:
 	virtual ~Game();
 	void init();
 	void start();
-	void timerupdate();
 private:
 	std::unique_ptr<Manager> mngr_;
-	int lefttime;
-	int starttime;
-	int updatetime;
+	
+	Countdown* timer;
 };
 
