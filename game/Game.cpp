@@ -26,13 +26,13 @@ Game::~Game() {
 
 void Game::init() {
 
-	SDLUtils::init("DOME", 800, 600, "resources/config/resources.json");
+	SDLUtils::init("DOME", 1080, 720, "resources/config/resources.json");
 
 	Entity* player = mngr_->addEntity();
 	player->addComponent<Transform>(Vector2D(), Vector2D(), 32, 64, 0);
 	player->addComponent<Image>(&sdlutils().images().at("player"), 3, 6, 0, 0);
 	player->addComponent<GravityComponent>();
-	player->addComponent<KeyboardPlayerCtrl>(1);
+	player->addComponent<KeyboardPlayerCtrl>();
 }
 
 void Game::start() {
