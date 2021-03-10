@@ -156,6 +156,9 @@
     <ClInclude Include="game\constant_variables.h">
       <Filter>Archivos de encabezado\game</Filter>
     </ClInclude>
+    <ClInclude Include="components\player_animation.h">
+      <Filter>Archivos de encabezado\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ecs\Entity.cpp">

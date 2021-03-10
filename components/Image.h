@@ -13,20 +13,23 @@ public:
 	Image(Texture* tex) :
 		tr_(nullptr), //
 		tex_(tex), //
-		src_({ 0,0,tex->width(),tex->width() })
+		src_({ 0,0,tex->width(),tex->width() }),
+		flip_(SDL_FLIP_NONE)
 	{
 	}
 
 	Image(Texture* tex, SDL_Rect src) :
 		tr_(nullptr), //
 		tex_(tex), //
-		src_(src)
+		src_(src),
+		flip_(SDL_FLIP_NONE)
 	{
 	}
 
 	Image(Texture* tex, int rows, int cols, int r, int c) :
 		tr_(nullptr), //
-		tex_(tex) //
+		tex_(tex), //
+		flip_(SDL_FLIP_NONE)
 	{
 		int w = tex->width() / cols;
 		int h = tex->height() / rows;
@@ -36,19 +39,38 @@ public:
 	virtual ~Image() {
 	}
 
-	void init() override {
+	virtual void init() override {
 		tr_ = entity_->getComponent<Transform>();
 		assert(tr_ != nullptr);
 	}
 
 	void render() override {
 		SDL_Rect dest = build_sdlrect(tr_->getPos(), tr_->getW(), tr_->getH());
-		tex_->render(src_, dest, tr_->getRot());
+		tex_->render(src_, dest, tr_->getRot(), nullptr, flip_);
 	}
+
+	inline SDL_Rect& getSrc() {
+		return src_;
+	}
+
+	inline Texture* getText() {
+		return tex_;
+	}
+	
+	void setSrc(SDL_Rect rect) {
+		src_ = rect;
+	}
+
+	void setFlip(SDL_RendererFlip flip) {
+		flip_ = flip;
+	}
+
+
 
 private:
 	Transform* tr_;
 	Texture* tex_;
 	SDL_Rect src_;
+	SDL_RendererFlip flip_;
 };
 

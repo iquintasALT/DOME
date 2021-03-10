@@ -5,6 +5,7 @@
 #include "../components/Image.h"
 #include "../components/GravityComponent.h"
 #include "../components/KeyboardPlayerCtrl.h"
+#include "../components/player_animation.h"
 #include "../ecs/ecs.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
@@ -29,7 +30,8 @@ void Game::init() {
 
 	Entity* player = mngr_->addEntity();
 	player->addComponent<Transform>(Vector2D(), Vector2D(), 32, 64, 0);
-	player->addComponent<Image>(&sdlutils().images().at("player"), 3, 6, 0, 0);
+	player->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
+	player->addComponent<player_animation>();
 	player->addComponent<GravityComponent>();
 	player->addComponent<KeyboardPlayerCtrl>();
 }

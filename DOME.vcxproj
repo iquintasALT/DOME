@@ -25,6 +25,7 @@
     <ClInclude Include="components\GravityComponent.h" />
     <ClInclude Include="components\Image.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
+    <ClInclude Include="components\player_animation.h" />
     <ClInclude Include="components\Transform.h" />
     <ClInclude Include="ecs\Component.h" />
     <ClInclude Include="ecs\ecs.h" />
