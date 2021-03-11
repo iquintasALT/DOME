@@ -23,9 +23,6 @@
     <ClCompile Include="classes\game_object.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\GravityComponent.cpp">
-      <Filter>Header Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="json\JSON.cpp">
       <Filter>Source Files\json</Filter>
     </ClCompile>
@@ -61,6 +58,12 @@
     </ClCompile>
     <ClCompile Include="sdlutils\Texture.cpp">
       <Filter>Source Files\sdlutils</Filter>
+    </ClCompile>
+    <ClCompile Include="components\GravityComponent.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\weapon_behaviour.cpp">
+      <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -102,9 +105,6 @@
     </ClInclude>
     <ClInclude Include="classes\game_object.h">
       <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="components\GravityComponent.h">
-      <Filter>Source Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\Image.h">
       <Filter>Header Files\components</Filter>
@@ -168,6 +168,12 @@
     </ClInclude>
     <ClInclude Include="sdlutils\VirtualTimer.h">
       <Filter>Header Files\sdlutils</Filter>
+    </ClInclude>
+    <ClInclude Include="components\GravityComponent.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\weapon_behaviour.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

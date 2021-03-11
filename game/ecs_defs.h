@@ -8,13 +8,15 @@ class Image;
 class GravityComponent;
 class KeyboardPlayerCtrl;
 class player_animation;
+class WeaponBehaviour;
 
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
 	GravityComponent,\
 	KeyboardPlayerCtrl,\
-	player_animation
+	player_animation,\
+    WeaponBehaviour
 
 
 // groups
@@ -23,5 +25,5 @@ struct Group_1;
 #define _GRPS_LIST_  Group_1
 
 // handlers
-struct Hdlr_1;
-#define _HDLRS_LIST_ Hdlr_1
+struct Player;
+#define _HDLRS_LIST_ Player

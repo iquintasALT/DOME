@@ -6,6 +6,7 @@
 #include "../components/GravityComponent.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/player_animation.h"
+#include "../components/weapon_behaviour.h"
 #include "../ecs/ecs.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
@@ -27,6 +28,7 @@ Game::~Game() {
 void Game::init() {
 
 	SDLUtils::init("DOME", 1080, 720, "resources/config/resources.json");
+	sdlutils().showCursor();
 
 	Entity* player = mngr_->addEntity();
 	player->addComponent<Transform>(Vector2D(), Vector2D(), 32, 64, 0);
@@ -34,6 +36,17 @@ void Game::init() {
 	player->addComponent<player_animation>();
 	player->addComponent<GravityComponent>();
 	player->addComponent<KeyboardPlayerCtrl>();
+
+	mngr_->setHandler<Player>(player);
+
+	Transform* playerTr = player->getComponent<Transform>();
+	Vector2D playerPos = playerTr->getPos();
+
+
+	Entity* weapon = mngr_->addEntity();
+	weapon->addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW()/2, playerPos.getY() + playerTr->getW() * 0.4), Vector2D(), 32, 32, 0);
+	weapon->addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 2);
+	weapon->addComponent<WeaponBehaviour>();
 }
 
 void Game::start() {
@@ -42,7 +55,7 @@ void Game::start() {
 	bool exit = false;
 	SDL_Event event;
 
-	while (!exit ) {
+	while (!exit) {
 		Uint32 startTime = sdlutils().currRealTime();
 
 		ih().clearState();
@@ -54,7 +67,7 @@ void Game::start() {
 			continue;
 		}
 
-		timer->update();
+		//timer->update();
 		mngr_->update();
 		mngr_->refresh();
 

@@ -28,6 +28,7 @@
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
     <ClInclude Include="components\player_animation.h" />
     <ClInclude Include="components\Transform.h" />
+    <ClInclude Include="components\weapon_behaviour.h" />
     <ClInclude Include="ecs\Component.h" />
     <ClInclude Include="ecs\ecs.h" />
     <ClInclude Include="ecs\ecs_defs_example.h" />
@@ -62,6 +63,7 @@
     <ClCompile Include="classes\physiognomy.cpp" />
     <ClCompile Include="components\GravityComponent.cpp" />
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
+    <ClCompile Include="components\weapon_behaviour.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
     <ClCompile Include="game\countdown.cpp" />
