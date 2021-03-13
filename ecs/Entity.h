@@ -18,7 +18,7 @@ class Entity {
 public:
 
 	Entity(Manager* mngr) :
-		dead(true), //
+		dead(false), //
 		mngr_(mngr), //
 		cmpArray_(), //
 		groups_() //

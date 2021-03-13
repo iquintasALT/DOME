@@ -29,3 +29,7 @@ void KeyboardPlayerCtrl::update() {
 		crouched = false;
 	}
 }
+
+void KeyboardPlayerCtrl::resetSpeed() {
+	entityTr->setVel(Vector2D(0, entityTr->getVel().getY()));
+}

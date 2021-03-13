@@ -21,5 +21,8 @@ protected:
 	Entity* inventoryPanel = nullptr;
 	KeyboardPlayerCtrl* playerMovement = nullptr;
 	WeaponBehaviour* playerWeapon = nullptr;
+
+private:
+	bool used = false;
 };
 

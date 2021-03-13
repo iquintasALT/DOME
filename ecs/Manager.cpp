@@ -20,7 +20,7 @@ void Manager::refresh() {
 			entities_.begin(), //
 			entities_.end(), //
 			[](const Entity* e) { //
-				if (e->isActive()) {
+				if (!e->isDead()) {
 					return false;
 				}
 				else {

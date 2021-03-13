@@ -19,6 +19,7 @@ public:
 	}
 	virtual void update();
 
+	void resetSpeed();
 private:
 	Transform* entityTr;
 	float speed;
