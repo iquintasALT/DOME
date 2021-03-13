@@ -12,8 +12,14 @@ Item::Item(ItemInfo* itemInformation, int xPos, int yPos) :
 
 	width = info->width();
 	height = info->height();
+	image = new Image(info->texture());
 }
 
 Item::~Item() {
 	delete info;
+	delete image;
+}
+
+void Item::update() {
+	image->update();
 }

@@ -14,7 +14,7 @@ public:
 private:
 
 	int width, height;
-	std::list<Item> storedItems;
+	std::list<Item*> storedItems;
 };
 
 
