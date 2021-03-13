@@ -50,7 +50,7 @@ void Game::start() {
 	while (!exit) {
 		Uint32 startTime = sdlutils().currRealTime();
 
-		ih().clearState();
+		//ih().clearState();
 		while (SDL_PollEvent(&event))
 			ih().update(event);
 

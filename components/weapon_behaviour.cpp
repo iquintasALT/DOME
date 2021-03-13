@@ -1,6 +1,8 @@
 #include "weapon_behaviour.h"
 
 void WeaponBehaviour::update() {
+	counter++;
+
 	Vector2D playerPos = playerTr->getPos();
 	entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
 
@@ -24,7 +26,9 @@ void WeaponBehaviour::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT)) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate) {
+		counter = 0;
+
 		Entity* bullet = entity_->getMngr()->addEntity();
 
 		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), dir * 4, 16, 16, degreeAngle);

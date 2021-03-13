@@ -11,9 +11,9 @@
 // Instead of a Singleton class, we could make it part of
 // SDLUtils as well.
 
-class InputHandler: public Singleton<InputHandler> {
+class InputHandler : public Singleton<InputHandler> {
 
-	friend Singleton<InputHandler> ;
+	friend Singleton<InputHandler>;
 
 public:
 	enum MOUSEBUTTON : uint8_t {
@@ -35,7 +35,7 @@ public:
 	}
 
 	// update the state with a new event
-	inline void update(const SDL_Event &event) {
+	inline void update(const SDL_Event& event) {
 		switch (event.type) {
 		case SDL_KEYDOWN:
 			onKeyDown(event);
@@ -116,14 +116,14 @@ private:
 		isKeyUpEvent_ = true;
 	}
 
-	inline void onMouseMotion(const SDL_Event &event) {
+	inline void onMouseMotion(const SDL_Event& event) {
 		isMouseMotionEvent_ = true;
 		mousePos_.first = event.motion.x;
 		mousePos_.second = event.motion.y;
 
 	}
 
-	inline void onMouseButtonChange(const SDL_Event &event, bool isDown) {
+	inline void onMouseButtonChange(const SDL_Event& event, bool isDown) {
 		isMouseButtonEvent_ = true;
 		switch (event.button.button) {
 		case SDL_BUTTON_LEFT:
@@ -146,7 +146,7 @@ private:
 	bool isMouseButtonEvent_;
 	std::pair<Sint32, Sint32> mousePos_;
 	std::array<bool, 3> mbState_;
-	const Uint8 *kbState_;
+	const Uint8* kbState_;
 };
 
 // This macro defines a compact way for using the singleton InputHandler, instead of

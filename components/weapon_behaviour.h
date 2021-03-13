@@ -14,12 +14,13 @@ class WeaponBehaviour : public Component {
 public:
 	WeaponBehaviour() {
 		flipped = false;
-	};
-
+		counter = 0;
+		fireRate = 3;
+	}
 	virtual void init() {
 		playerTr = entity_->getMngr()->getHandler<Player>()->getComponent<Transform>();
 		entityTr = entity_->getComponent <Transform>();
-		assert(entityTr != nullptr && playerTr != nullptr );
+		assert(entityTr != nullptr && playerTr != nullptr);
 
 		entityImg = entity_->getComponent<Image>();
 		assert(entityImg != nullptr);
@@ -32,4 +33,6 @@ private:
 	Transform* entityTr;
 	Image* entityImg;
 	bool flipped;
+	float counter;
+	float fireRate;
 };
