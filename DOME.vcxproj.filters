@@ -86,6 +86,9 @@
     <ClCompile Include="classes\Item.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
+    <ClCompile Include="classes\enemy.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -218,6 +221,9 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="classes\Item.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\enemy.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
