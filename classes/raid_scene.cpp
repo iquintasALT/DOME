@@ -7,6 +7,7 @@ void RaidScene::init() {
 	player->addComponent<player_animation>();
 	player->addComponent<GravityComponent>();
 	player->addComponent<KeyboardPlayerCtrl>();
+	player->addComponent<InventoryController>();
 
 	mngr_->setHandler<Player>(player);
 

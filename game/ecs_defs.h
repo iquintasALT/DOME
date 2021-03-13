@@ -9,6 +9,7 @@ class GravityComponent;
 class KeyboardPlayerCtrl;
 class player_animation;
 class WeaponBehaviour;
+class InventoryController;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -16,7 +17,8 @@ class WeaponBehaviour;
 	GravityComponent,\
 	KeyboardPlayerCtrl,\
 	player_animation,\
-    WeaponBehaviour
+    WeaponBehaviour, \
+	InventoryController
 
 
 // groups

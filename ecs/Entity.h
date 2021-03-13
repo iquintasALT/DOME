@@ -18,7 +18,7 @@ class Entity {
 public:
 
 	Entity(Manager *mngr) :
-			active_(true), //
+			dead(true), //
 			mngr_(mngr), //
 			cmpArray_(), //
 			groups_() //
@@ -85,12 +85,19 @@ public:
 		return mngr_;
 	}
 
-	inline bool isActive() const {
-		return active_;
+	inline bool isDead() const {
+		return dead;
 	}
 
-	inline void setActive(bool state) {
-		active_ = state;
+	inline void setDead(bool state) {
+		dead = state;
+	}
+
+	inline bool isActive() const {
+		return active;
+	}
+	inline void setActive(bool _active) {
+		active = _active;
 	}
 
 	template<typename T>
@@ -123,8 +130,8 @@ public:
 	}
 
 private:
-
-	bool active_;
+	bool active;
+	bool dead;
 	Manager *mngr_;
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;

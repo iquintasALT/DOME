@@ -7,6 +7,7 @@
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/player_animation.h"
 #include "../components/weapon_behaviour.h"
+#include "../components/InventoryController.h"
 #include "../ecs/ecs.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
