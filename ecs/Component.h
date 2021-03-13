@@ -30,6 +30,7 @@ public:
 	virtual void render() {
 	}
 
+	bool enabled = true;
 protected:
 	Entity *entity_;
 

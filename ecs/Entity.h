@@ -17,11 +17,11 @@ class Entity {
 
 public:
 
-	Entity(Manager *mngr) :
-			dead(true), //
-			mngr_(mngr), //
-			cmpArray_(), //
-			groups_() //
+	Entity(Manager* mngr) :
+		dead(true), //
+		mngr_(mngr), //
+		cmpArray_(), //
+		groups_() //
 	{
 	}
 
@@ -33,7 +33,7 @@ public:
 
 	template<typename T, typename ...Ts>
 	T* addComponent(Ts &&... args) {
-		T *c = new T(std::forward<Ts>(args)...);
+		T* c = new T(std::forward<Ts>(args)...);
 		c->setEntity(this);
 		c->init();
 		constexpr auto id = ecs::cmpIdx<T>;
@@ -52,15 +52,15 @@ public:
 	void removeComponent() {
 		auto id = ecs::cmpIdx<T>;
 		if (cmpArray_[id] != nullptr) {
-			Component *old_cmp = cmpArray_[id];
+			Component* old_cmp = cmpArray_[id];
 			cmpArray_[id] = nullptr;
 			components_.erase( //
-					std::find_if( //
-							components_.begin(), //
-							components_.end(), //
-							[old_cmp](const Component *c) { //
-								return c == old_cmp;
-							}));
+				std::find_if( //
+					components_.begin(), //
+					components_.end(), //
+					[old_cmp](const Component* c) { //
+						return c == old_cmp;
+					}));
 			delete old_cmp;
 		}
 	}
@@ -77,7 +77,7 @@ public:
 		return cmpArray_[id] != nullptr;
 	}
 
-	inline void setMngr(Manager *mngr) {
+	inline void setMngr(Manager* mngr) {
 		mngr_ = mngr;
 	}
 
@@ -114,13 +114,13 @@ public:
 		groups_.reset();
 	}
 
-
 	void update() {
 		if (!active) return;
 
 		std::size_t n = components_.size();
 		for (auto i = 0u; i < n; i++) {
-			components_[i]->update();
+			if (components_[i]->enabled)
+				components_[i]->update();
 		}
 	}
 
@@ -129,14 +129,15 @@ public:
 
 		std::size_t n = components_.size();
 		for (auto i = 0u; i < n; i++) {
-			components_[i]->render();
+			if (components_[i]->enabled)
+				components_[i]->render();
 		}
 	}
 
 private:
-	bool active;
+	bool active = true;
 	bool dead;
-	Manager *mngr_;
+	Manager* mngr_;
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;
 	std::bitset<ecs::maxGroup> groups_;

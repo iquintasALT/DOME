@@ -26,7 +26,6 @@ public:
 		assert(entityImg != nullptr);
 		entityImg->setRotationOrigin(0, entityTr->getH() / 2);
 	}
-
 	virtual void update();
 private:
 	Transform* playerTr;

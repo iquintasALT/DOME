@@ -17,7 +17,6 @@ public:
 		entityTr = entity_->getComponent<Transform>();
 		assert(entityTr != nullptr);
 	}
-
 	virtual void update();
 
 private:
