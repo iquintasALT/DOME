@@ -80,6 +80,12 @@
     <ClCompile Include="components\InventoryController.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\Inventory.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\Item.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -207,6 +213,12 @@
     </ClInclude>
     <ClInclude Include="components\InventoryController.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Inventory.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\Item.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

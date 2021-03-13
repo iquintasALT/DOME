@@ -8,6 +8,7 @@
 #include "../sdlutils/InputHandler.h"
 #include "../components/Image.h"
 #include "../components/Transform.h"
+#include "../components/Inventory.h"
 
 class InventoryController: public Component
 {

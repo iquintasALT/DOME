@@ -24,11 +24,13 @@
     <ClInclude Include="classes\game_object.h" />
     <ClInclude Include="classes\game_scene.h" />
     <ClInclude Include="classes\game_state_machine.h" />
+    <ClInclude Include="classes\Item.h" />
     <ClInclude Include="classes\physiognomy.h" />
     <ClInclude Include="classes\raid_scene.h" />
     <ClInclude Include="classes\shelter_scene.h" />
     <ClInclude Include="components\GravityComponent.h" />
     <ClInclude Include="components\Image.h" />
+    <ClInclude Include="components\Inventory.h" />
     <ClInclude Include="components\InventoryController.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
     <ClInclude Include="components\player_animation.h" />
@@ -68,10 +70,12 @@
     <ClCompile Include="classes\game_object.cpp" />
     <ClCompile Include="classes\game_scene.cpp" />
     <ClCompile Include="classes\game_state_machine.cpp" />
+    <ClCompile Include="classes\Item.cpp" />
     <ClCompile Include="classes\physiognomy.cpp" />
     <ClCompile Include="classes\raid_scene.cpp" />
     <ClCompile Include="classes\shelter_scene.cpp" />
     <ClCompile Include="components\GravityComponent.cpp" />
+    <ClCompile Include="components\Inventory.cpp" />
     <ClCompile Include="components\InventoryController.cpp" />
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
     <ClCompile Include="components\weapon_behaviour.cpp" />

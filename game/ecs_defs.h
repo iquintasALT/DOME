@@ -10,6 +10,7 @@ class KeyboardPlayerCtrl;
 class player_animation;
 class WeaponBehaviour;
 class InventoryController;
+class Inventory;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -18,7 +19,8 @@ class InventoryController;
 	KeyboardPlayerCtrl,\
 	player_animation,\
     WeaponBehaviour, \
-	InventoryController
+	InventoryController, \
+	Inventory
 
 
 // groups
