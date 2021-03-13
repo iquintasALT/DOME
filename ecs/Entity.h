@@ -116,6 +116,8 @@ public:
 
 
 	void update() {
+		if (!active) return;
+
 		std::size_t n = components_.size();
 		for (auto i = 0u; i < n; i++) {
 			components_[i]->update();
@@ -123,6 +125,8 @@ public:
 	}
 
 	void render() {
+		if (!active) return;
+
 		std::size_t n = components_.size();
 		for (auto i = 0u; i < n; i++) {
 			components_[i]->render();
