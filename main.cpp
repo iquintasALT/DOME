@@ -3,7 +3,7 @@
 #include <iostream>
 #include <memory>
 #include "game/checkML.h"
-
+#include "tmxlite/Object.hpp"
 
 
 #include "game/Game.h"
