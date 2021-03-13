@@ -6,6 +6,8 @@
 #include "../components/weapon_behaviour.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../sdlutils/InputHandler.h"
+#include "../components/Image.h"
+#include "../components/Transform.h"
 
 class InventoryController: public Component
 {

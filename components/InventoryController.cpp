@@ -12,12 +12,13 @@ InventoryController::InventoryController() {
 
 void InventoryController::init() {
 	inventoryPanel = entity_->getMngr()->addEntity();
+	inventoryPanel->addComponent<Transform>(Vector2D(300, 300), Vector2D(), 300, 300, 0);
+	inventoryPanel->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
+
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
 	//playerWeapon = entity_->getComponent<WeaponBehaviour>();
 
 	assert(playerMovement != nullptr);
-
-	//assert(playerWeapon != nullptr);
 
 	Use();
 }
@@ -51,6 +52,5 @@ void InventoryController::update() {
 
 	if (!justPressed) return;
 
-	std::cout << "Hey" << std::endl;
 	Use();
 }
