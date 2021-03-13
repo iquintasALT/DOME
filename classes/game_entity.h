@@ -7,7 +7,7 @@ protected:
 	Vector2D velocity = Vector2D();
 	float mass = 0;
 	//TO DO
-	//SpriteRenderer* spriteRenderer
+	//addComponent<Image>(...);
 public:
 	Vector2D getVelocity() { return velocity; };
 	void setVelocity(Vector2D newVelocity) { size = newVelocity; };
