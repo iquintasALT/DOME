@@ -36,9 +36,9 @@ void Game::init() {
 
 	states->pushState(new RaidScene());
 	states->currentState()->init();
-	states->pushState(new ShelterScene());
-	states->currentState()->init();
-	states->popState();
+	//states->pushState(new ShelterScene());
+	//states->currentState()->init();
+	//states->popState();
 }
 
 void Game::start() {
