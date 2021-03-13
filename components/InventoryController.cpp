@@ -9,8 +9,8 @@ InventoryController::InventoryController() {
 }
 
 void InventoryController::init() {
-	inventoryPanel = entity_->getMngr()->addEntity();
 	return;
+	inventoryPanel = entity_->getMngr()->addEntity();
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
 	playerWeapon = entity_->getComponent<WeaponBehaviour>();
 
