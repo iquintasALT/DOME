@@ -18,7 +18,7 @@ public:
 		fireRate = 3;
 	}
 	virtual void init() {
-		playerTr = entity_->getMngr()->getHandler<Player>()->getComponent<Transform>();
+		playerTr = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
 		entityTr = entity_->getComponent <Transform>();
 		assert(entityTr != nullptr && playerTr != nullptr);
 

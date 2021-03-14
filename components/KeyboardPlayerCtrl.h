@@ -10,7 +10,7 @@ public:
 	KeyboardPlayerCtrl() {
 		speed = consts::PLAYER_SPEED;
 		entityTr = nullptr;
-		left = right = crouched= false;
+		left = right = crouched = false;
 	};
 
 	virtual void init() {

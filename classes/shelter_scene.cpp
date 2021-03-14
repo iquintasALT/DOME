@@ -8,5 +8,5 @@ void ShelterScene::init() {
 	player->addComponent<GravityComponent>();
 	player->addComponent<KeyboardPlayerCtrl>();
 
-	mngr_->setHandler<Player>(player);
+	mngr_->setHandler<Player_hdlr>(player);
 }

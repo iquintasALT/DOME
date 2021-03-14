@@ -1,4 +1,5 @@
 #include "KeyboardPlayerCtrl.h"
+#include "../classes/player.h"
 
 void KeyboardPlayerCtrl::update() {
 	if (!crouched) {
@@ -22,6 +23,11 @@ void KeyboardPlayerCtrl::update() {
 			entityTr->setH(entityTr->getH() / 2);
 			entityTr->setVel(Vector2D(0, 0));
 			crouched = true;
+		}
+
+		//Test key for debugging
+		if (keystates[SDL_SCANCODE_J]) {
+			dynamic_cast<Player*>(entity_)->equipWeapon(new WeaponBehaviour());
 		}
 	}
 	else if (crouched && !keystates[SDL_SCANCODE_LCTRL]) {
