@@ -16,6 +16,7 @@ class Entity {
 	friend Manager;
 
 public:
+	Entity() {};
 
 	Entity(Manager* mngr) :
 		dead(false), //
