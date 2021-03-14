@@ -9,6 +9,7 @@
 #include "tmxlite/TileLayer.hpp"
 
 #include "../sdlutils/Texture.h"
+#include "../sdlutils/SDLUtils.h"
 #include "../ecs/Manager.h"
 
 using namespace std;

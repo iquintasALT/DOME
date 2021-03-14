@@ -36,10 +36,11 @@ void Map::load(string& const path) {
     // Load all of the tilesets and store them in a data structure.
     // I chose to store them in a map.
     auto& map_tilesets = tile_map.getTilesets();
-    //for (auto& tset : map_tilesets) {
-    //    auto tex = newText
-    //    tilesets.insert(std::pair<gid, Texture*>(tset.getFirstGID(), tex));
-    //}
+    for (auto& tset : map_tilesets) {
+
+        /*auto tex = SDLUtils::instance().load_texture(tset.getImagePath(), ren);
+        tilesets.insert(std::pair<gid, Texture*>(tset.getFirstGID(), tex));*/
+    }
 
     // This is the hard part; iterate through each layer in the map,
     // poke each tile for the information you need, and store it in
@@ -105,8 +106,8 @@ void Map::load(string& const path) {
                 // the whole sheet.
                 auto ts_width = 0;
                 auto ts_height = 0;
-         /*       SDL_QueryTexture(tilesets[tset_gid],
-                    NULL, NULL, &ts_width, &ts_height);*/
+                SDL_QueryTexture(tilesets[tset_gid]->getSDLTexture(),
+                    NULL, NULL, &ts_width, &ts_height);
 
                 // Calculate the area on the tilesheet to draw from.
                 auto region_x = (cur_gid % (ts_width / tile_width)) * tile_width;

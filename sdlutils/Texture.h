@@ -45,6 +45,8 @@ public:
 		return height_;
 	}
 
+	inline SDL_Texture* getSDLTexture() { return texture_; };
+
 	// This rendering method corresponds to method SDL_RenderCopyEx.
 	//
 	// Renders part of the texture (src) to a destination rectangle (dest)
@@ -88,6 +90,7 @@ public:
 		SDL_Rect src = { 0, 0, width_, height_ };
 		render(src, dest, rotation);
 	}
+
 
 private:
 
