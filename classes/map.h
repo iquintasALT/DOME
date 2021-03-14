@@ -5,23 +5,22 @@
 #include <map>
 
 #include "tmxlite/Map.hpp"
+#include "tmxlite/Layer.hpp"
+#include "tmxlite/TileLayer.hpp"
+
 #include "../sdlutils/Texture.h"
 #include "../ecs/Manager.h"
 
 using namespace std;
 
-using name = string;
+using gid = int;
 
 struct Tile {
     Texture* sheet;
-    // x coordinate in the world
-    int x;
-    // y coordinate in the world
-    int y;
-    // the x coordinate on the sprite sheet
-    int tx;
-    // the y coordinate on the sprite sheet
-    int ty;
+    // x, y coordinate in the world
+    int x, y;
+    // the x, y coordinate on the sprite sheet
+    int tx, ty;
     int width;
     int height;
 
@@ -39,8 +38,12 @@ public:
 private:
 	tmx::Map tile_map;
 
-	vector<int> tiles;
-	map<name, Texture*> tilesets;
+    int rows, cols;
+    int tile_width, tile_height;
+	vector<Tile> tiles;
+	map<gid, Texture*> tilesets;
+
+    void load(string& const path);
 };
 
 #endif
