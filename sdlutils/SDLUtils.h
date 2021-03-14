@@ -121,7 +121,7 @@ public:
 	}
 	
 	// tilesets maps
-	inline sdl_resource_table<Music>& tilesets() {
+	inline sdl_resource_table<Texture>& tilesets() {
 		return tilesets_;
 	}
 
