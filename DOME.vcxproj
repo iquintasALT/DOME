@@ -26,7 +26,9 @@
     <ClInclude Include="classes\game_scene.h" />
     <ClInclude Include="classes\game_state_machine.h" />
     <ClInclude Include="classes\Item.h" />
+    <ClInclude Include="classes\map.h" />
     <ClInclude Include="classes\physiognomy.h" />
+    <ClInclude Include="classes\player.h" />
     <ClInclude Include="classes\raid_scene.h" />
     <ClInclude Include="classes\shelter_scene.h" />
     <ClInclude Include="components\GravityComponent.h" />
@@ -73,7 +75,9 @@
     <ClCompile Include="classes\game_scene.cpp" />
     <ClCompile Include="classes\game_state_machine.cpp" />
     <ClCompile Include="classes\Item.cpp" />
+    <ClCompile Include="classes\map.cpp" />
     <ClCompile Include="classes\physiognomy.cpp" />
+    <ClCompile Include="classes\player.cpp" />
     <ClCompile Include="classes\raid_scene.cpp" />
     <ClCompile Include="classes\shelter_scene.cpp" />
     <ClCompile Include="components\GravityComponent.cpp" />
