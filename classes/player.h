@@ -9,5 +9,5 @@ public:
 	Player(Manager* mngr_, Point2D pos);
 	WeaponBehaviour* equipWeapon(WeaponBehaviour* newWeapon);
 protected:
-	WeaponBehaviour* weapon;
+	Entity* weapon;
 };
