@@ -29,5 +29,5 @@ struct Group_1;
 #define _GRPS_LIST_  Group_1
 
 // handlers
-struct Player;
-#define _HDLRS_LIST_ Player
+struct Player_hdlr;
+#define _HDLRS_LIST_ Player_hdlr
