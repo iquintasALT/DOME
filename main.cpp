@@ -6,7 +6,6 @@
 
 
 #include "game/Game.h"
-
 void start() {
 	Game g(8000);
 

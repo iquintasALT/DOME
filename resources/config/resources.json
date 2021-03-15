@@ -1,77 +1,81 @@
 {
-  "fonts": [
-    {
-      "id": "ARIAL16",
-      "file": "resources/fonts/ARIAL.ttf",
-      "size": 16
-    },
-    {
-      "id": "ARIAL24",
-      "file": "resources/fonts/ARIAL.ttf",
-      "size": 24
-    }
-  ],
+    "fonts": [
+        {
+            "id": "ARIAL16",
+            "file": "resources/fonts/ARIAL.ttf",
+            "size": 16
+        },
+        {
+            "id": "ARIAL24",
+            "file": "resources/fonts/ARIAL.ttf",
+            "size": 24
+        }
+    ],
 
-  "images": [
-    {
-      "id": "player",
-      "file": "resources/sprites/character_sheet.png"
-    },
-    {
-      "id": "floor",
-      "file": "resources/sprites/floor_tileset.png"
-    },
-    {
-      "id": "weapons",
-      "file": "resources/sprites/weapons_sheet.png"
-    },
-    {
-      "id": "projectile",
-      "file": "resources/sprites/projectile.png"
-    }
-  ],
+    "images": [
+        {
+            "id": "player",
+            "file": "resources/sprites/character_sheet.png"
+        },
+        {
+            "id": "floor",
+            "file": "resources/sprites/floor_tileset.png"
+        },
+        {
+            "id": "weapons",
+            "file": "resources/sprites/weapons_sheet.png"
+        },
+        {
+            "id": "projectile",
+            "file": "resources/sprites/projectile.png"
+        },
+        {
+            "id": "panel",
+            "file": "resources/sprites/panel.png"
+        }
+    ],
 
-  "messages": [
-    {
-      "id": "start",
-      "text": "Press space to start",
-      "font": "ARIAL24",
-      "color": "0x441155ff"
-    },
-    {
-      "id": "continue",
-      "text": "Press space to continue",
-      "font": "ARIAL24",
-      "color": "0x112233ff",
-      "bg": "0xffffffff"
-    },
-    {
-      "id": "gameover",
-      "text": "Game Over",
-      "font": "ARIAL24",
-      "color": "0x0000ffff"
-    }
-  ],
+    "messages": [
+        {
+            "id": "start",
+            "text": "Press space to start",
+            "font": "ARIAL24",
+            "color": "0x441155ff"
+        },
+        {
+            "id": "continue",
+            "text": "Press space to continue",
+            "font": "ARIAL24",
+            "color": "0x112233ff",
+            "bg": "0xffffffff"
+        },
+        {
+            "id": "gameover",
+            "text": "Game Over",
+            "font": "ARIAL24",
+            "color": "0x0000ffff"
+        }
+    ],
 
-  "sounds": [
-    {
-      "id": "paddle_hit",
-      "file": "resources/sound/paddle_hit.wav"
-    },
-    {
-      "id": "wall_hit",
-      "file": "resources/sound/wall_hit.wav"
-    }
-  ],
+    "sounds": [
+        {
+            "id": "paddle_hit",
+            "file": "resources/sound/paddle_hit.wav"
+        },
+        {
+            "id": "wall_hit",
+            "file": "resources/sound/wall_hit.wav"
+        }
+    ],
 
-  "tilesets": [
-    {
-      "id": "walls",
-      "file": "resources/sprites/floor_tileset.png"
-    },
-    {
-      "id": "background",
-      "file": "resources/sprites/wardrobe_tileset.png"
-    }
-  ]
+    "tilesets": [
+        {
+            "id": "walls",
+            "file": "resources/sprites/floor_tileset.png"
+        },
+        {
+            "id": "background",
+            "file": "resources/sprites/wardrobe_tileset.png"
+        }
+    ]
 }

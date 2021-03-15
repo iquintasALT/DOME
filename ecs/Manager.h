@@ -53,9 +53,7 @@ public:
 	void refresh();
 
 private:
-
 	std::vector<Entity*> entities_;
 	std::array<Entity*, ecs::maxHdlr> hdlrs_;
-
 };
 

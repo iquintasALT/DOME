@@ -20,6 +20,7 @@ public:
 
 	Entity(Manager* mngr) :
 		dead(false), //
+		active(true),
 		mngr_(mngr), //
 		cmpArray_(), //
 		groups_() //

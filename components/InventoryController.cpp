@@ -2,6 +2,7 @@
 #include <iostream>
 #include "../classes/player.h"
 
+
 InventoryController::InventoryController() {
 	isOpen = true;
 	inventoryPanel = nullptr;
@@ -14,7 +15,7 @@ InventoryController::InventoryController() {
 void InventoryController::init() {
 	inventoryPanel = entity_->getMngr()->addEntity();
 	inventoryPanel->addComponent<Transform>(Vector2D(300, 300), Vector2D(), 300, 300, 0);
-	inventoryPanel->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
+	inventoryPanel->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0);
 	inventoryPanel->addComponent<Inventory>(10, 5);
 
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
@@ -27,7 +28,7 @@ void InventoryController::init() {
 }
 
 InventoryController::~InventoryController() {
-	inventoryPanel->setDead(false);
+	inventoryPanel->setDead(true);
 }
 
 void InventoryController::Use() {
@@ -53,7 +54,6 @@ void InventoryController::update() {
 		}
 	}
 
-	if (!justPressed) return;
-
-	Use();
+	if (justPressed)
+		Use();
 }
