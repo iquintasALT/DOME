@@ -60,14 +60,15 @@ void Game::start() {
 			continue;
 		}
 
-		//timer->update();
 		states->currentState()->update();
 		states->currentState()->refresh();
+		timer->update();
 		//mngr_->update();
 		//mngr_->refresh();
 
 		sdlutils().clearRenderer();
 		//mngr_->render();
+		timer->render();
 		states->currentState()->render();
 		sdlutils().presentRenderer();
 

@@ -1,10 +1,36 @@
 #include "countdown.h"
 
+std::string getHourString(int lefttime) {
+	int min = lefttime / 60;
+	int sec = lefttime % 60;
+
+	std::string aux = std::to_string(min) + ":";
+
+	if (sec < 10) aux += "0";
+	aux += std::to_string(sec);
+
+	return aux;
+}
+
 Countdown::Countdown(int totaltime)
 {
 	lefttime = totaltime; //Recibe los milisegundos de tiempo en raid
 	starttime = SDL_GetTicks();
 	updatetime = SDL_GetTicks();
+
+	std::string aux = getHourString(lefttime/1000);
+}
+
+void Countdown::render() {
+	std::string aux = getHourString(lefttime / 1000);
+	if (lefttime <= 0)
+	{
+		aux = "Carlos Leon llamalo Angel";
+	}
+
+	Texture counter = Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("ARIAL24"),
+		build_sdlcolor(0xffffffff));
+	counter.render(10, 10);
 }
 
 void Countdown::update()
@@ -12,32 +38,4 @@ void Countdown::update()
 	lefttime -= SDL_GetTicks() - starttime; //Restamos el tiempoque ha pasado
 	starttime = SDL_GetTicks();
 
-	if (lefttime <= 0)
-	{
-		std::cout << "Carlos Leon llamalo Angel";
-	}
-	else if (updatetime + 1000 <= SDL_GetTicks())
-	{
-		updatetime = SDL_GetTicks();
-		int seg = lefttime / 1000;
-		int min = seg / 60;
-		seg = seg % 60;
-		if (min < 10)
-		{
-			std::cout << "0" << min;
-		}
-		else
-		{
-			std::cout << min;
-		}
-		std::cout << ":";
-		if (seg < 10)
-		{
-			std::cout << "0" << seg << std::endl;
-		}
-		else
-		{
-			std::cout << seg << std::endl;
-		}
-	}
 }

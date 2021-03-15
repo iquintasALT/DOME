@@ -1,5 +1,6 @@
 #include "InventoryController.h"
 #include <iostream>
+#include "../classes/player.h"
 
 InventoryController::InventoryController() {
 	isOpen = true;
@@ -18,7 +19,7 @@ void InventoryController::init() {
 
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
 
-	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon()->getComponent<Weapon>();
+	//playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon()->getComponent<Weapon>();
 
 	assert(playerMovement != nullptr);
 

@@ -24,6 +24,10 @@
     {
       "id": "weapons",
       "file": "resources/sprites/weapons_sheet.png"
+    },
+    {
+      "id": "projectile",
+      "file": "resources/sprites/projectile.png"
     }
   ],
 

@@ -36,18 +36,17 @@ void Weapon::update() {
 
 	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate) {
 		counter = 0;
-
 		Entity* bullet = entity_->getMngr()->addEntity();
 
-		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), dir * 4, 16, 16, degreeAngle);
+		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), dir * 10, 64, 64, degreeAngle);
 
-		float aux1 = entityTr->getW() - bulletTr->getW() / 2; //Distancia del cañón del arma para spawnear la bala
+		float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
 
 		Vector2D centeredPos = { yCenteredPos.getX() - bulletTr->getW() / 2  ,yCenteredPos.getY() - bulletTr->getH() / 2 }; //Punto para spawnear la bala centrada
 
 		bulletTr->setPos(centeredPos + dir * aux1);
 
-		bullet->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
+		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
 	}
 }
 
