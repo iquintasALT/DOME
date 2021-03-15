@@ -4,12 +4,15 @@
 #include <string>
 
 #include "../ecs/Manager.h"
+#include "../components/map_render.h"
+
+using namespace std;
 
 class Map {
 public:
-	void addMap(Manager* mngr) {
+	static void addMap(Manager* mngr, string& const path) {
         Entity* map = mngr->addEntity();
-        //map->addComponent<MapRender>();
+        map->addComponent<MapRender>(path);
 	}
 };
 

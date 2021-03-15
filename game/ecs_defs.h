@@ -13,6 +13,7 @@ class InventoryController;
 class Inventory;
 class GameEntityComponent;
 class EnemyComponent;
+class MapRender;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -24,7 +25,8 @@ class EnemyComponent;
 	InventoryController, \
 	Inventory, \
 	GameEntityComponent, \
-	EnemyComponent
+	EnemyComponent, \
+	MapRender
 
 
 // groups
