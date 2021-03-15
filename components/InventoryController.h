@@ -3,12 +3,14 @@
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
-#include "../components/weapon_behaviour.h"
+#include "../classes/weapon_behaviour.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../sdlutils/InputHandler.h"
 #include "../components/Image.h"
 #include "../components/Transform.h"
 #include "../components/Inventory.h"
+#include "../classes/player.h"
+#include "../components/weapon.h"
 
 class InventoryController: public Component
 {
@@ -23,7 +25,7 @@ protected:
 	bool isOpen = false;
 	Entity* inventoryPanel = nullptr;
 	KeyboardPlayerCtrl* playerMovement = nullptr;
-	WeaponBehaviour* playerWeapon = nullptr;
+	Weapon* playerWeapon = nullptr;
 
 private:
 	bool used = false;
