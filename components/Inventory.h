@@ -22,6 +22,9 @@ private:
 	int width, height;
 	Transform* transform;
 	std::list<Item*> storedItems;
+
+	bool justPressed;
+	Item* selectedItem;
 };
 
 

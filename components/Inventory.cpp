@@ -3,9 +3,12 @@
 
 #include <iostream>
 Inventory::Inventory(int width, int height) : width(width), height(height) {
-	
+
 	transform = nullptr;
 	itemWidth = itemHeight = 1;
+	selectedItem = nullptr;
+
+	justPressed = false;
 }
 
 void Inventory::init() {
@@ -36,16 +39,31 @@ Inventory::~Inventory() {
 void Inventory::update() {
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 	Vector2D pos = transform->getPos();
-	int width = transform->getW();
-	int height = transform->getH();
+	int panel_width = transform->getW();
+	int panel_height = transform->getH();
 	int mouseX = mousePos.getX();
 	int mouseY = mousePos.getY();
 
-	if (mouseX > pos.getX() && mouseX < pos.getX() + width
-		&& mouseY > pos.getY() && mouseY < pos.getY() + height)
+	if (mouseX > pos.getX() && mouseX < pos.getX() + panel_width
+		&& mouseY > pos.getY() && mouseY < pos.getY() + panel_height)
 	{
-		std::cout << "HOla";
+		if (ih().getMouseButtonState(InputHandler::LEFT)) {
+			if (!justPressed) {
+				justPressed = true;
 
+				int xCell = (mouseX - pos.getX()) / panel_width * width;
+				int yCell = (mouseY - pos.getY()) / panel_height * height;
+
+				std::cout << xCell << " " << yCell << std::endl;
+			}
+		}
+		else {
+			if (justPressed) {
+				selectedItem = nullptr;
+			}
+
+			justPressed = false;
+		}
 
 
 	}
