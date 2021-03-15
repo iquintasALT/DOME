@@ -1,7 +1,11 @@
 #pragma once
 #include <string>
 #include "../sdlutils/SDLUtils.h"
+#include "../ecs/Entity.h"
+#include "../ecs/Manager.h"
 #include "../components/Image.h"
+#include "../components/Transform.h"
+#include "../components/Inventory.h"
 
 class Inventory;
 class ItemInfo {
@@ -26,17 +30,17 @@ public:
 
 class Item
 {
-	friend Inventory;
+	friend class Inventory;
 public:
-	Item(ItemInfo* info, int xPos = 0, int yPos = 0);
+	Item(ItemInfo* info, Manager* mnger, Inventory* inventory, int xPos = 0, int yPos = 0);
 	~Item();
-
+	void render();
 	void update();
 private:
 	ItemInfo* info;
 	int x, y;
 	int width, height;
-	Image* image;
+	Entity* image;
 };
 
 
