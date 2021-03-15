@@ -37,8 +37,8 @@ void MapRender::load() {
     // I chose to store them in a map.
     auto& map_tilesets = tile_map.getTilesets();
     for (auto& tset : map_tilesets) {
-        Texture* tex = &sdlutils().tilesets().find("" + tset.getFirstGID())->second;
-        tilesets.insert(std::pair<gid, Texture*>(tset.getFirstGID(), tex));
+        //Texture* tex = &sdlutils().tilesets().find("" + tset.getFirstGID())->second;
+        //tilesets.insert(std::pair<gid, Texture*>(tset.getFirstGID(), tex));
     }
 
     // This is the hard part; iterate through each layer in the map,
