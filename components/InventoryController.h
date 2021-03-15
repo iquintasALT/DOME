@@ -10,7 +10,7 @@
 #include "../components/Transform.h"
 #include "../components/Inventory.h"
 #include "../classes/player.h"
-#include "../components/weapon.h"
+//#include "../components/weapon.h"
 
 class InventoryController: public Component
 {

@@ -11,6 +11,8 @@ class player_animation;
 class Weapon;
 class InventoryController;
 class Inventory;
+class GameEntityComponent;
+class EnemyComponent;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -20,7 +22,9 @@ class Inventory;
 	player_animation,\
     Weapon, \
 	InventoryController, \
-	Inventory
+	Inventory, \
+	GameEntityComponent, \
+	EnemyComponent
 
 
 // groups

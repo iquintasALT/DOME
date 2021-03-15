@@ -1,4 +1,8 @@
 #include "weapon_behaviour.h"
+#include "../ecs/Manager.h"
+#include "../sdlutils/SDLUtils.h"
+#include "../components/Image.h"
+#include "../components/Transform.h"
 
 WeaponBehaviour::WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vector2D playerPos, Transform* playerTr) : GameEntity(mngr) {
 	mngr->addEntity(this);
