@@ -70,11 +70,11 @@
 
     "tilesets": [
         {
-            "id": "walls",
+            "id": "template_tileset",
             "file": "resources/sprites/floor_tileset.png"
         },
         {
-            "id": "background",
+            "id": "second_template_tileset",
             "file": "resources/sprites/wardrobe_tileset.png"
         }
     ]
