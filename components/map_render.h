@@ -31,12 +31,16 @@ struct Tile {
 
 class MapRender : public Component {
 public:
-	MapRender(string& const path) : path_(path) { }
+	MapRender(string& const path) : path_(path) { 
+		load();
+	}
 
 	virtual ~MapRender() { }
 
 	void render() override {
-		
+		for (auto t : tiles) {
+
+		}
 	}
 
 private:
