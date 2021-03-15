@@ -9,19 +9,20 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<player_animation>();
 	addComponent<GravityComponent>();
 	addComponent<KeyboardPlayerCtrl>();
-	addComponent<InventoryController>();
+ 	addComponent<InventoryController>();
 
-	weapon = mngr_->addEntity();
 	Vector2D playerPos = getComponent<Transform>()->getPos();
 	Transform* playerTr = getComponent<Transform>();
-	weapon->addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), Vector2D(), 32, 32, 0);
-	weapon->addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 2);
-	weapon->addComponent<WeaponBehaviour>(); 
+	//weapon = new WeaponBehaviour(3, 5, mngr_, playerPos, playerTr);
+}
+
+WeaponBehaviour* Player::getCurrentWeapon() {
+	return weapon;
 }
 
 WeaponBehaviour* Player::equipWeapon(WeaponBehaviour* newWeapon)
 {
-	WeaponBehaviour* oldWeapon = weapon->getComponent<WeaponBehaviour>();
-	*getComponent<WeaponBehaviour>() = *newWeapon;
+	WeaponBehaviour* oldWeapon = weapon;
+	weapon = newWeapon;
 	return oldWeapon;
 }

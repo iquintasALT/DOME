@@ -1,6 +1,6 @@
-#include "weapon_behaviour.h"
+#include "weapon.h"
 
-void WeaponBehaviour::update() {
+void Weapon::update() {
 	counter++;
 
 	Vector2D playerPos = playerTr->getPos();
@@ -41,5 +41,4 @@ void WeaponBehaviour::update() {
 
 		bullet->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
 	}
-
 }

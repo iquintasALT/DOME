@@ -10,13 +10,11 @@
 
 #include <math.h>
 
-class WeaponBehaviour : public Component {
+class Weapon: public Component
+{
 public:
-	WeaponBehaviour() {
-		flipped = false;
-		counter = 0;
-		fireRate = 3;
-	}
+	Weapon(float fR) : fireRate(fR), flipped(false), counter(0) {}
+
 	virtual void init() {
 		playerTr = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
 		entityTr = entity_->getComponent <Transform>();
@@ -26,12 +24,16 @@ public:
 		assert(entityImg != nullptr);
 		entityImg->setRotationOrigin(0, entityTr->getH() / 2);
 	}
+
 	virtual void update();
+
 private:
 	Transform* playerTr;
 	Transform* entityTr;
 	Image* entityImg;
+
 	bool flipped;
 	float counter;
 	float fireRate;
 };
+

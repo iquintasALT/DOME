@@ -8,7 +8,7 @@ class Image;
 class GravityComponent;
 class KeyboardPlayerCtrl;
 class player_animation;
-class WeaponBehaviour;
+class Weapon;
 class InventoryController;
 class Inventory;
 
@@ -18,7 +18,7 @@ class Inventory;
 	GravityComponent,\
 	KeyboardPlayerCtrl,\
 	player_animation,\
-    WeaponBehaviour, \
+    Weapon, \
 	InventoryController, \
 	Inventory
 

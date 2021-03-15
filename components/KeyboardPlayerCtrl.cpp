@@ -27,7 +27,7 @@ void KeyboardPlayerCtrl::update() {
 
 		//Test key for debugging
 		if (keystates[SDL_SCANCODE_J]) {
-			dynamic_cast<Player*>(entity_)->equipWeapon(new WeaponBehaviour());
+			//dynamic_cast<Player*>(entity_)->equipWeapon(new WeaponBehaviour());
 		}
 	}
 	else if (crouched && !keystates[SDL_SCANCODE_LCTRL]) {

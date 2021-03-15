@@ -62,9 +62,6 @@
     <ClCompile Include="components\GravityComponent.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\weapon_behaviour.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="classes\game_state_machine.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -94,6 +91,12 @@
     </ClCompile>
     <ClCompile Include="classes\player.cpp">
       <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\weapon_behaviour.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="components\weapon.cpp">
+      <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -202,9 +205,6 @@
     <ClInclude Include="components\GravityComponent.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\weapon_behaviour.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="classes\game_state_machine.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
@@ -237,6 +237,12 @@
     </ClInclude>
     <ClInclude Include="classes\player.h">
       <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\weapon_behaviour.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\weapon.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
