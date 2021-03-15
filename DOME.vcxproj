@@ -31,6 +31,8 @@
     <ClInclude Include="classes\player.h" />
     <ClInclude Include="classes\raid_scene.h" />
     <ClInclude Include="classes\shelter_scene.h" />
+    <ClInclude Include="components\enemy_component.h" />
+    <ClInclude Include="components\game_entity_component.h" />
     <ClInclude Include="components\GravityComponent.h" />
     <ClInclude Include="components\Image.h" />
     <ClInclude Include="components\Inventory.h" />
@@ -80,6 +82,8 @@
     <ClCompile Include="classes\player.cpp" />
     <ClCompile Include="classes\raid_scene.cpp" />
     <ClCompile Include="classes\shelter_scene.cpp" />
+    <ClCompile Include="components\enemy_component.cpp" />
+    <ClCompile Include="components\game_entity_component.cpp" />
     <ClCompile Include="components\GravityComponent.cpp" />
     <ClCompile Include="components\Inventory.cpp" />
     <ClCompile Include="components\InventoryController.cpp" />
