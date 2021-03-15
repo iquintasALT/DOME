@@ -6,6 +6,7 @@
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
+#include "../sdlutils/SDLUtils.h"
 
 #include "tmxlite/Map.hpp"
 #include "tmxlite/Layer.hpp"
@@ -39,7 +40,7 @@ public:
 
 	void render() override {
 		for (auto t : tiles) {
-
+			t->draw();
 		}
 	}
 
@@ -49,7 +50,7 @@ private:
 	string path_;
 	int rows, cols;
 	int tile_width, tile_height;
-	vector<Tile> tiles;
+	vector<Tile*> tiles;
 	map<gid, Texture*> tilesets;
 
 	void load();
