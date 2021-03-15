@@ -96,6 +96,8 @@
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="components\enemy_component.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
     <ClCompile Include="classes\weapon_behaviour.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -246,6 +248,8 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\enemy_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
     <ClInclude Include="classes\weapon_behaviour.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
