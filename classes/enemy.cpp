@@ -1,4 +1,11 @@
 #include "enemy.h"
+#include "../sdlutils/SDLUtils.h"
+#include "../ecs/Manager.h"
+#include "../components/Transform.h"
+#include "../components/player_animation.h"
+#include "../components/GravityComponent.h"
+#include "../components/Image.h"
+#include "../components/KeyboardPlayerCtrl.h"
 
 Entity* Enemy::newEnemy(Manager* mngr_, Point2D pos)
 {
@@ -7,5 +14,6 @@ Entity* Enemy::newEnemy(Manager* mngr_, Point2D pos)
 	enemy->addComponent<GravityComponent>();
 	enemy->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
 	enemy->addComponent<player_animation>();
+	enemy->addComponent<KeyboardPlayerCtrl>();
 	return enemy;
 }

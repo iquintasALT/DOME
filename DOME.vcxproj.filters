@@ -273,9 +273,6 @@
     <Filter Include="Header Files\components">
       <UniqueIdentifier>{3b47c65d-1f3b-4028-9424-c532d50350d1}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\ecs">
-      <UniqueIdentifier>{ef680165-d348-4acf-bb73-b13438b688dd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\json">
       <UniqueIdentifier>{0a48cc24-ddfa-4221-99ca-8f4163843863}</UniqueIdentifier>
     </Filter>
@@ -305,6 +302,9 @@
     </Filter>
     <Filter Include="Source Files\classes">
       <UniqueIdentifier>{5b0dc240-7768-4601-9e2a-ba93ef120f25}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ecs">
+      <UniqueIdentifier>{ef680165-d348-4acf-bb73-b13438b688dd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
