@@ -38,11 +38,19 @@ void Weapon::update() {
 		counter = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 
+
 		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), dir * 10, 64, 64, degreeAngle);
 
 		float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
 
-		Vector2D centeredPos = { yCenteredPos.getX() - bulletTr->getW() / 2  ,yCenteredPos.getY() - bulletTr->getH() / 2 }; //Punto para spawnear la bala centrada
+		float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
+
+		float offset = ((-degreeAngle * aux2) / 90);
+		if (flipped) {
+			offset = ((degreeAngle * aux2) / 180);
+		}
+
+		Vector2D centeredPos = { yCenteredPos.getX() - bulletTr->getW() / 2 - offset  ,yCenteredPos.getY() - bulletTr->getH() / 2 }; //Punto para spawnear la bala centrada
 
 		bulletTr->setPos(centeredPos + dir * aux1);
 
