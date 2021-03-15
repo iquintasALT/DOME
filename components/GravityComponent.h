@@ -1,11 +1,11 @@
 #pragma once
-#include "../ecs/Component.h"
+#include "../components/game_entity_component.h"
 #include "../ecs/Entity.h"
 #include "../components/Transform.h"
 #include "../utils/Collisions.h"
 #include "../game/constant_variables.h"
 
-class GravityComponent : public Component {
+class GravityComponent : public GameEntityComponent {
 public:
 	GravityComponent() {
 		gravity = consts::GRAVITY;

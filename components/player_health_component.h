@@ -1,7 +1,7 @@
 #pragma once
-#include "entity_component.h"
+#include "game_entity_component.h"
 
-class Player_health_component : public Entity_component
+class PlayerHealthComponent : public GameEntityComponent
 {
 
 };
