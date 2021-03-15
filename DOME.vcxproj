@@ -39,6 +39,7 @@
     <ClInclude Include="components\Inventory.h" />
     <ClInclude Include="components\InventoryController.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
+    <ClInclude Include="components\map_render.h" />
     <ClInclude Include="components\player_animation.h" />
     <ClInclude Include="components\Transform.h" />
     <ClInclude Include="components\weapon.h" />
@@ -90,6 +91,7 @@
     <ClCompile Include="components\Inventory.cpp" />
     <ClCompile Include="components\InventoryController.cpp" />
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
+    <ClCompile Include="components\map_render.cpp" />
     <ClCompile Include="components\player_animation.cpp" />
     <ClCompile Include="components\weapon.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
@@ -210,7 +212,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\SDL2_net-2.0.1\include;.\libraries\box2d-2.4.1\include;.\libraries\SDL2-2.0.14\include;.\libraries\tmxlite-1.2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\libraries\sdlgui;.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\SDL2_net-2.0.1\include;.\libraries\box2d-2.4.1\include;.\libraries\SDL2-2.0.14\include;.\libraries\tmxlite-1.2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>

@@ -107,6 +107,9 @@
     <ClCompile Include="components\player_animation.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\map_render.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -259,6 +262,9 @@
     <ClInclude Include="components\weapon.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="components\map_render.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
@@ -305,6 +311,12 @@
     </Filter>
     <Filter Include="Header Files\ecs">
       <UniqueIdentifier>{ef680165-d348-4acf-bb73-b13438b688dd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\sdlgui">
+      <UniqueIdentifier>{5b1af1cd-687e-4fcc-9ed2-8a528cf9694f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\sdlgui">
+      <UniqueIdentifier>{93fe9e39-8c65-404d-8d6c-0722e2dd4534}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

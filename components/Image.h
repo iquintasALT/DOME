@@ -3,10 +3,10 @@
 #pragma once
 
 #include "../ecs/Component.h"
+#include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
 
 #include "Transform.h"
-#include "../ecs/Entity.h"
 
 class Image : public Component {
 public:
