@@ -20,11 +20,12 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<player_animation>();
 	addComponent<GravityComponent>();
 	addComponent<KeyboardPlayerCtrl>();
- 	addComponent<InventoryController>();
 
 	Vector2D playerPos = getComponent<Transform>()->getPos();
 	Transform* playerTr = getComponent<Transform>();
-	//weapon = new WeaponBehaviour(3, 5, mngr_, playerPos, playerTr);
+	weapon = new WeaponBehaviour(3, 5, mngr_, playerPos, playerTr);
+
+	addComponent<InventoryController>();
 }
 
 WeaponBehaviour* Player::getCurrentWeapon() {
