@@ -17,6 +17,7 @@ void InventoryController::init() {
 	inventoryPanel->addComponent<Inventory>(10, 5);
 
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
+
 	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon()->getComponent<Weapon>();
 
 	assert(playerMovement != nullptr);

@@ -1,4 +1,15 @@
 #include "player.h"
+#include "../classes/weapon_behaviour.h"
+#include "../sdlutils/SDLUtils.h"
+#include "../game/ecs_defs.h"
+#include "../ecs/Manager.h"
+#include "../components/Transform.h"
+#include "../components/player_animation.h"
+#include "../components/GravityComponent.h"
+#include "../components/Image.h"
+#include "../components/KeyboardPlayerCtrl.h"
+#include "../components/InventoryController.h"
+#include "../components/weapon.h"
 
 Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 {
@@ -9,11 +20,12 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<player_animation>();
 	addComponent<GravityComponent>();
 	addComponent<KeyboardPlayerCtrl>();
- 	addComponent<InventoryController>();
 
 	Vector2D playerPos = getComponent<Transform>()->getPos();
 	Transform* playerTr = getComponent<Transform>();
-	//weapon = new WeaponBehaviour(3, 5, mngr_, playerPos, playerTr);
+	weapon = new WeaponBehaviour(3, 5, mngr_, playerPos, playerTr);
+
+	addComponent<InventoryController>();
 }
 
 WeaponBehaviour* Player::getCurrentWeapon() {

@@ -1,4 +1,12 @@
 #include "weapon.h"
+#include "../ecs/Component.h"
+#include "../ecs/Entity.h"
+#include "../game/constant_variables.h"
+#include "../ecs/Manager.h"
+#include "../sdlutils/InputHandler.h"
+#include "../components/Image.h"
+#include "../components/Transform.h"
+#include "../sdlutils/SDLUtils.h"
 
 void Weapon::update() {
 	counter++;
@@ -41,4 +49,15 @@ void Weapon::update() {
 
 		bullet->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
 	}
+}
+
+void Weapon::init()
+{
+	playerTr = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
+	entityTr = entity_->getComponent <Transform>();
+	assert(entityTr != nullptr && playerTr != nullptr);
+
+	entityImg = entity_->getComponent<Image>();
+	assert(entityImg != nullptr);
+	entityImg->setRotationOrigin(0, entityTr->getH() / 2);
 }

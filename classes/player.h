@@ -1,7 +1,7 @@
 #pragma once
 #include "game_character.h"
-#include "../classes/weapon_behaviour.h"
-#include "../components/weapon.h"
+
+class WeaponBehaviour;
 
 class Player :
 	public GameCharacter

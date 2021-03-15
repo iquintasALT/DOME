@@ -39,6 +39,7 @@
     <ClInclude Include="components\Inventory.h" />
     <ClInclude Include="components\InventoryController.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
+    <ClInclude Include="components\map_render.h" />
     <ClInclude Include="components\player_animation.h" />
     <ClInclude Include="components\Transform.h" />
     <ClInclude Include="components\weapon.h" />
@@ -56,6 +57,44 @@
     <ClInclude Include="json\JSON.h" />
     <ClInclude Include="json\JSONValue.h" />
     <ClInclude Include="json\simplejson_demo.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\button.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\checkbox.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\colorpicker.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\colorwheel.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\combobox.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\common.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\dropdownbox.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\entypo.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\fontstash.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\formhelper.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\graph.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\imagepanel.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\imageview.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\label.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\layout.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\messagedialog.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\nanort.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\nanovg.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\nanovg_rt.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\popup.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\popupbutton.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\progressbar.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\resources.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\screen.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\sdlguii.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\slider.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\stackedwidget.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\stb_image.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\stb_truetype.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\switchbox.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\tabheader.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\tabwidget.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\textbox.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\theme.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\toolbutton.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\vscrollpanel.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\widget.h" />
+    <ClInclude Include="libraries\sdlgui\sdlgui\window.h" />
     <ClInclude Include="sdlutils\Font.h" />
     <ClInclude Include="sdlutils\InputHandler.h" />
     <ClInclude Include="sdlutils\macros.h" />
@@ -90,6 +129,8 @@
     <ClCompile Include="components\Inventory.cpp" />
     <ClCompile Include="components\InventoryController.cpp" />
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
+    <ClCompile Include="components\map_render.cpp" />
+    <ClCompile Include="components\player_animation.cpp" />
     <ClCompile Include="components\weapon.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
@@ -98,6 +139,36 @@
     <ClCompile Include="json\JSON.cpp" />
     <ClCompile Include="json\JSONValue.cpp" />
     <ClCompile Include="json\somplejson_demo.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\button.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\checkbox.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\colorpicker.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\colorwheel.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\combobox.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\common.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\dropdownbox.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\graph.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\imagepanel.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\imageview.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\label.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\layout.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\loadimages.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\messagedialog.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\nanovg.c" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\popup.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\popupbutton.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\progressbar.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\resources.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\screen.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\slider.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\stackedwidget.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\switchbox.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\tabheader.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\tabwidget.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\textbox.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\theme.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\vscrollpanel.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\widget.cpp" />
+    <ClCompile Include="libraries\sdlgui\sdlgui\window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sdlutils\RandomNumberGenerator.cpp" />
     <ClCompile Include="sdlutils\SDLUtils.cpp" />
@@ -209,7 +280,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\SDL2_net-2.0.1\include;.\libraries\box2d-2.4.1\include;.\libraries\SDL2-2.0.14\include;.\libraries\tmxlite-1.2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\libraries\sdlgui;.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\SDL2_net-2.0.1\include;.\libraries\box2d-2.4.1\include;.\libraries\SDL2-2.0.14\include;.\libraries\tmxlite-1.2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
