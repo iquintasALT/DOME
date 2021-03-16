@@ -18,4 +18,5 @@ private:
 	int lefttime;
 	int starttime;
 	int updatetime;
+	Texture* counter;
 };
