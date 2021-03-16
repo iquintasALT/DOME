@@ -4,7 +4,9 @@ Buenas tardes, somos Sureffect y vamos a presentar el progreso de nuestro juego 
 //
 
 2.-Background:
-DOME es un survival shooter scroller 2D donde el jugador controlará a uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora. Cada día, deberá aprovechar las horas de luz para buscar los objetos que necesita para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el frío es mortal por lo que deberá volver al refugio a descansar y gestionar sus recursos. 
+DOME es un survival shooter scroller 2D donde el jugador controlará a uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora. 
+Cada día, deberá aprovechar las horas de luz para buscar los objetos que necesita para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el
+ frío es mortal por lo que deberá volver al refugio a descansar y gestionar sus recursos. 
 
 Algunas de las mecánicas principales están basadas en juegos como This War Of Mine, Escape from Tarkov y Metro Exudos, como podeis observar en la imagen.
 
@@ -12,25 +14,32 @@ Algunas de las mecánicas principales están basadas en juegos como This War Of 
 Apartado mecánicas
 Podemos dividir las mecánicas principales en 4 grupos:
 
-Ciclo refugio/saqueo: el jugador dispondrá de un tiempo determinado para ir a saquear y despúes deberá volver al refugio y pasar otro tiempo determinado allí. En el refugio se podrá guardar objetos, craftearlos, y reparar la nave, que es el objetivo del juego.
+Ciclo refugio/saqueo: el jugador dispondrá de un tiempo determinado para ir a saquear y despúes deberá volver al refugio y pasar otro tiempo determinado allí. En el 
+refugio se podrá guardar objetos, craftearlos, y reparar la nave, que es el objetivo del juego.
 Gestión de recursos: el jugador deberá gestionar correctamente los recursos que encuentre y saquee para tener lo necesario en cada momento y así poder sobrevivir.
-Supervivencia: el jugador se encontrará con obstáculos que hará que la supervivencia sea más complicada. Por ejemplo, habrá enemigos que le produzcan heridas, se podrá morir de hambre  o de cansancio…
-Combate: el jugador se podrá defender mediante el uso de distintas armas. El combate será de tipo point and click y contará con distintos tipos de proyectiles (rebotantes, clásicos, con carga…), al igual que con coberturas.
-Exploración: habrá un mapa con distintas zonas saqueables, de las cuales se mostrará algo de información sobre lo que se podrá encontrar allí. Las distintas zonas contarán con distintos objetos (hospital  medicinas) y la dificultad de cada sitio será distinta.
+Supervivencia: el jugador se encontrará con obstáculos que hará que la supervivencia sea más complicada. Por ejemplo, habrá enemigos que le produzcan heridas, se podrá 
+morir de hambre  o de cansancio…
+Combate: el jugador se podrá defender mediante el uso de distintas armas. El combate será de tipo point and click y contará con distintos tipos de proyectiles (rebotantes,
+ clásicos, con carga…), al igual que con coberturas.
+Exploración: habrá un mapa con distintas zonas saqueables, de las cuales se mostrará algo de información sobre lo que se podrá encontrar allí. Las distintas zonas contarán
+ con distintos objetos (hospital  medicinas) y la dificultad de cada sitio será distinta.
 El objetivo final del juego es conseguir los recursos suficientes para reparar la nave y escapar del planeta.
 
 Apartado dinámicas
-ra ganar el jugador debe aprender a gestionar correctamente sus recursos para porder sobrevivir hasta reparar la nave. Para ello deberá tomar la decisión correcta para saquear lo que necesite en cada momento y no morir. Tomar malas decisiones puede suponer la muerte.
+ra ganar el jugador debe aprender a gestionar correctamente sus recursos para porder sobrevivir hasta reparar la nave. Para ello deberá tomar la decisión correcta para 
+saquear lo que necesite en cada momento y no morir. Tomar malas decisiones puede suponer la muerte.
 
 Apartado estética
 
-La estética será en pixel art con vista lateral y con el estilo que observáis en la imagen . Estará hecho con tonos oscuros que transmitan al jugador el drama que vive el protagonista, ya que estar solo en un planeta luchando por sobrevivir es estresante.
+La estética será en pixel art con vista lateral y con el estilo que observáis en la imagen . Estará hecho con tonos oscuros que transmitan al jugador el drama que vive el
+ protagonista, ya que estar solo en un planeta luchando por sobrevivir es estresante.
 
 4.-Que ha ido bien y que ha ido mal
 Las reuniones han sido bien dirigidas y ha habido una buena comunicación de grupo, se ha logrado la mayoría de lo que se esperaba para este hito.
 
 5.-Objetivos logrados este hito:
-Distribución correcta del código, librerías necesarias implementadas. Personaje con movimiento y prototipo de arma funcional. Comenzado a implementar el inventario, enemigo básico así como las escenas de refugio y raid.
+Distribución correcta del código, librerías necesarias implementadas. Personaje con movimiento y prototipo de arma funcional. Comenzado a implementar el inventario, 
+enemigo básico así como las escenas de refugio y raid.
 
 
 6.-Plan para próximos hitos:
@@ -63,19 +72,36 @@ sus recursos.
 
 Algunas de las mecánicas principales están basadas en juegos como This War Of Mine, Escape from Tarkov y Metro Exodus, como podeis observar en la imagen.
 
-3.- Desarrollo (mecánicas y estetica):
+3.- Mecánicas , dinámicas y estética:
+Apartado mecánicas
+Podemos dividir las mecánicas principales en 4 grupos:
 
--Apartado mecánicas 
+Ciclo refugio/saqueo: el jugador dispondrá de un tiempo determinado para ir a saquear y despúes deberá volver al refugio y pasar otro tiempo determinado allí. En 
+el refugio se podrá guardar objetos, craftearlos, y reparar la nave, que es el objetivo del juego.
+Gestión de recursos: el jugador deberá gestionar correctamente los recursos que encuentre y saquee para tener lo necesario en cada momento y así poder sobrevivir.
+Supervivencia: el jugador se encontrará con obstáculos que hará que la supervivencia sea más complicada. Por ejemplo, habrá enemigos que le produzcan heridas, se podrá
+ morir de hambre  o de cansancio…
+Combate: el jugador se podrá defender mediante el uso de distintas armas. El combate será de tipo point and click y contará con distintos tipos de proyectiles (rebotantes, 
+clásicos, con carga…), al igual que con coberturas.
+Exploración: habrá un mapa con distintas zonas saqueables, de las cuales se mostrará algo de información sobre lo que se podrá encontrar allí. Las distintas zonas contarán 
+con distintos objetos (hospital  medicinas) y la dificultad de cada sitio será distinta.
+El objetivo final del juego es conseguir los recursos suficientes para reparar la nave y escapar del planeta.
 
-De todas las mecánicas de nuestro juego en este hito hemos conseguido desarrollar el inventario, cargar un tilemap, el movimiento del jugador y un prototipo funcional del arma y las balas, una inteligencia artificial
-revolucionaria y con tecnologías de ultima generación del enemigo a melee. Tambíen tenemos el timer que servirá para dividir el ciclo del juego y hemos comenzado la separacion de escenas, el menú y otras funcionalidades.
 
+Apartado dinámicas
+ra ganar el jugador debe aprender a gestionar correctamente sus recursos para porder sobrevivir hasta reparar la nave. Para ello deberá tomar la decisión correcta para 
+saquear lo que necesite en cada momento y no morir. Tomar malas decisiones puede suponer la muerte.
+
+Apartado estética
+
+La estética será en pixel art con vista lateral y con el estilo que observáis en la imagen . Estará hecho con tonos oscuros que transmitan al jugador el drama que vive el 
+protagonista, ya que estar solo en un planeta luchando por sobrevivir es estresante.
 
 
 4.-Apartado estética
 
-Para poder visualizar este magnifico progreso de las mecánicas, hemos creado ya algunos de los sprites del juego como las armas con sus distintos tiers, el personaje y su animación,un armario de cristal,
-y algunos items.
+La estética será en pixel art con vista lateral y con el estilo que observáis en la imagen . Estará hecho con tonos oscuros que transmitan al jugador el drama que vive el 
+protagonista, ya que estar solo en un planeta luchando por sobrevivir es estresante.
 
 
 5.-Que ha ido bien y que ha ido mal
