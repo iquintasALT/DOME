@@ -245,6 +245,7 @@ void SDLUtils::closeSDLExtensions() {
 	msgs_.clear();
 	images_.clear();
 	fonts_.clear();
+	tilesets_.clear();
 
 	Mix_Quit(); // quit SDL_mixer
 	IMG_Quit(); // quit SDL_image
