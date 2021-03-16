@@ -26,6 +26,7 @@ public:
 	inline Texture* texture() { return _texture; };
 
 	static ItemInfo* bottleOfWater();
+	static ItemInfo* medicine();
 };
 
 class Item

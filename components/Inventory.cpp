@@ -20,6 +20,7 @@ void Inventory::init() {
 	itemHeight = transform->getW() / height;
 
 	storeItem(new Item(ItemInfo::bottleOfWater(), entity_->getMngr(), this, 0, 0));
+	storeItem(new Item(ItemInfo::medicine(), entity_->getMngr(), this, 2, 2));
 }
 void Inventory::render() {
 	for (auto a : storedItems) {
@@ -52,15 +53,25 @@ void Inventory::update() {
 			if (!justPressed) {
 				justPressed = true;
 
-
 				selectedItem = findItemInSlot(xCell, yCell);
 			}
 		}
 		else {
 			if (selectedItem) { //ESTOY AQUI
-					if (avaliableSpace(xCell, yCell, selectedItem->width, selectedItem->height, selectedItem)) {
-						moveItem(selectedItem, xCell, yCell);
+				std::cout << xCell << " " << yCell << std::endl;
+				if (avaliableSpace(xCell, yCell, selectedItem->width, selectedItem->height, selectedItem)) {
+					moveItem(selectedItem, xCell, yCell);
+				}
+				else {
+					/*std::cout << std::endl << std::endl;
+					for (int i = 0; i < width; i++) {
+						for (int c = 0; c < height; c++) {
+							std::cout << ((grid[c][i] == nullptr ? "O" : "X"));
+						}
+						std::cout << std::endl;
 					}
+					std::cout << std::endl << std::endl;*/
+				}
 
 				selectedItem->setPosition(itemPosition(selectedItem->x, selectedItem->y));
 			}
@@ -91,8 +102,8 @@ Item* Inventory::findItemInSlot(int x, int y) {
 }
 
 bool Inventory::avaliableSpace(int x, int y, int w, int h, Item* item) {
-	if (x + w >= width || y + h >= height) return false;
-	
+	if (x + w > width || y + h > height) return false;
+
 	for (int i = x; i < width && i < x + w; i++) {
 		for (int c = y; c < height && c < y + h; c++) {
 			if (grid[i][c] != nullptr && grid[i][c] != item)
@@ -113,7 +124,7 @@ void Inventory::storeItem(Item* item) {
 }
 
 void Inventory::moveItem(Item* item, int x, int y) {
-	for (int i = item->x; i< width && i < item->x + item->width; i++) {
+	for (int i = item->x; i < width && i < item->x + item->width; i++) {
 		for (int c = item->y; c < height && c < item->y + item->height; c++) {
 			grid[x][y] = nullptr;
 		}
@@ -122,9 +133,9 @@ void Inventory::moveItem(Item* item, int x, int y) {
 	item->x = x;
 	item->y = y;
 
-	for (int i = item->x; i < width && i < item->x + item->width; i++) {
-		for (int c = item->y; c < height && c < item->y + item->height; c++) {
-			grid[x][y] = item;
+	for (int i = x; i < width && i < x + item->width; i++) {
+		for (int c = y; c < height && c < y + item->height; c++) {
+			grid[i][c] = item;
 		}
 	}
 }
