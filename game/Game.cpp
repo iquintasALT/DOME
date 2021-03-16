@@ -55,7 +55,7 @@ void Game::start() {
 		while (SDL_PollEvent(&event))
 			ih().update(event);
 
-		if (ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
+		if (ih().isKeyDown(SDL_SCANCODE_ESCAPE) || event.type == SDL_QUIT) {
 			exit = true;
 			continue;
 		}
