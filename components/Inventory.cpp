@@ -127,7 +127,7 @@ void Inventory::storeItem(Item* item) {
 void Inventory::moveItem(Item* item, int x, int y) {
 	for (int i = item->x; i < width && i < item->x + item->width; i++) {
 		for (int c = item->y; c < height && c < item->y + item->height; c++) {
-			grid[x][y] = nullptr;
+			grid[i][c] = nullptr; // Aquí estaba mal, ponía grid[x][y]
 		}
 	}
 
