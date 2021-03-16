@@ -60,6 +60,14 @@ public:
 		vel_ = vel;
 	}
 
+	void setVelX(float x) {
+		vel_.setX(x);
+	}
+
+	void setVelY(float y) {
+		vel_.setY(y);
+	}
+
 	void setPos(Vector2D pos) {
 		pos_ = pos;
 	}
