@@ -1,14 +1,14 @@
 #include "Inventory.h"
 #include "../sdlutils/InputHandler.h"
-
 #include <iostream>
-Inventory::Inventory(int width, int height) : width(width), height(height) {
 
+Inventory::Inventory(int width, int height) : width(width), height(height) {
 	transform = nullptr;
 	itemWidth = itemHeight = 1;
 	selectedItem = nullptr;
-
 	justPressed = false;
+
+	grid = std::vector<std::vector<Item*>>(width, std::vector<Item*>(height, nullptr));
 }
 
 void Inventory::init() {
@@ -19,9 +19,7 @@ void Inventory::init() {
 	itemWidth = transform->getW() / width;
 	itemHeight = transform->getW() / height;
 
-
-	storedItems.push_back(new Item(ItemInfo::bottleOfWater(), entity_->getMngr(), this, 0, 0));
-
+	storeItem(new Item(ItemInfo::bottleOfWater(), entity_->getMngr(), this, 0, 0));
 }
 void Inventory::render() {
 	for (auto a : storedItems) {
@@ -44,6 +42,9 @@ void Inventory::update() {
 	int mouseX = mousePos.getX();
 	int mouseY = mousePos.getY();
 
+	int xCell = (mouseX - pos.getX()) / panel_width * width;
+	int yCell = (mouseY - pos.getY()) / panel_height * height;
+
 	if (mouseX > pos.getX() && mouseX < pos.getX() + panel_width
 		&& mouseY > pos.getY() && mouseY < pos.getY() + panel_height)
 	{
@@ -51,24 +52,78 @@ void Inventory::update() {
 			if (!justPressed) {
 				justPressed = true;
 
-				int xCell = (mouseX - pos.getX()) / panel_width * width;
-				int yCell = (mouseY - pos.getY()) / panel_height * height;
-
 				std::cout << xCell << " " << yCell << std::endl;
+
+				selectedItem = findItemInSlot(xCell, yCell);
 			}
 		}
 		else {
-			if (justPressed) {
-				selectedItem = nullptr;
+			if (selectedItem) { //ESTOY AQUI
+				if (xCell < width && yCell < height)
+					if (avaliableSpace(xCell, yCell, selectedItem->width, selectedItem->height, selectedItem)) {
+						moveItem(selectedItem, xCell, yCell);
+					}
+				selectedItem->setPosition(itemPosition(selectedItem->x, selectedItem->y));
 			}
-
+			selectedItem = nullptr;
 			justPressed = false;
 		}
+	}
+	else {
 
+	}
 
+	if (selectedItem != nullptr) {
+		if (!ih().getMouseButtonState(InputHandler::LEFT)) {
+			selectedItem->setPosition(itemPosition(selectedItem->x, selectedItem->y));
+			selectedItem = nullptr;
+		}
+		else
+			selectedItem->setPosition(Vector2D(ih().getMousePos().first - itemWidth / 2, ih().getMousePos().second - itemHeight / 2));
 	}
 }
 
 Vector2D Inventory::itemPosition(int x, int y) {
 	return transform->getPos() + Vector2D(x * itemWidth, y * itemHeight);
+}
+
+Item* Inventory::findItemInSlot(int x, int y) {
+	return grid[x][y];
+}
+
+bool Inventory::avaliableSpace(int x, int y, int w, int h, Item* item) {
+	for (int i = x; i < x + w; i++) {
+		for (int c = y; c < y + h; c++) {
+			if (grid[i][c] != nullptr && grid[i][c] != item)
+				return false;
+		}
+	}
+	return true;
+}
+
+void Inventory::storeItem(Item* item) {
+	storedItems.push_back(item);
+
+	for (int i = item->x; i < item->x + item->width; i++) {
+		for (int c = item->y; c < item->y + item->height; c++) {
+			grid[i][c] = item;
+		}
+	}
+}
+
+void Inventory::moveItem(Item* item, int x, int y) {
+	for (int i = item->x; i < item->x + item->width; i++) {
+		for (int c = item->y; c < item->y + item->height; c++) {
+			grid[x][y] = nullptr;
+		}
+	}
+
+	item->x = x;
+	item->y = y;
+
+	for (int i = item->x; i < item->x + item->width; i++) {
+		for (int c = item->y; c < item->y + item->height; c++) {
+			grid[x][y] = item;
+		}
+	}
 }

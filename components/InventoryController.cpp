@@ -14,7 +14,7 @@ InventoryController::InventoryController() {
 
 void InventoryController::init() {
 	inventoryPanel = entity_->getMngr()->addEntity();
-	inventoryPanel->addComponent<Transform>(Vector2D(300, 300), Vector2D(), 300, 300, 0);
+	inventoryPanel->addComponent<Transform>(Vector2D(300, 150), Vector2D(), 300, 300, 0);
 	inventoryPanel->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0);
 	inventoryPanel->addComponent<Inventory>(10, 5);
 

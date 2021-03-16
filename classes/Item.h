@@ -36,11 +36,13 @@ public:
 	~Item();
 	void render();
 	void update();
+	void setPosition(Vector2D&& pos);
 private:
 	ItemInfo* info;
 	int x, y;
 	int width, height;
 	Entity* image;
+	Transform* transform;
 };
 
 

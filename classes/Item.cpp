@@ -14,9 +14,10 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 	width = info->width();
 	height = info->height();
 	image = mngr->addEntity();
-	image->addComponent<Transform>(inventory->itemPosition(x, y), 
+	transform = image->addComponent<Transform>(inventory->itemPosition(x, y), 
 		Vector2D(), inventory->itemWidth, inventory->itemHeight, 0);
 	image->addComponent<Image>(info->texture());
+
 	image->setActive(false);
 }
 
@@ -35,4 +36,8 @@ void Item::update() {
 	image->setActive(true);
 	image->update();
 	image->setActive(false);
+}
+
+void Item::setPosition(Vector2D&& pos) {
+	transform->setPos(std::move(pos));
 }
