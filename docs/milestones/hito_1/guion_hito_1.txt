@@ -121,8 +121,15 @@ Mal: Inconstancia con las reglas de formato; problemas con inclusión de librer�
 Distribución correcta del código, librerías necesarias implementadas. Personaje con movimiento y prototipo de arma funcional. Comenzado a implementar el inventario, 
 enemigo básico así como las escenas de refugio y raid.
 
-7.-Plan para próximos hitos:
-Nuestro plan para el siguiente hito seria:
-•	Desarrollar el sistema de crafteo
-•	Sistema de manejo de estados
-•	Efectos de sonido.
+7.-Planificación:
+Nuestra planificación la hemos llevado a cabo con la metodología SCRUM. Dividimos el trabajo en historias de usuario utilizando pivotal tracker. Durante la semana
+nos reunimos 2 días. Uno para comenzar el sprint, donde decidimos que historias realiza cada miembro y las estimamos utilizando planning poker. Y otro dia a mitad del sprint 
+para valorar los avances y poder adaptarse a las necesidades de cada miembro. Las reuniones y toda la comunicación las llevamos a cabo en discord. 
+
+
+8-Hitos:
+De lo que nos propusimos para este hito hemos logrado tener la base de la gestion de escenas, el inventario,  y la base del sistema de combate. Para el siguiente hito nuestro objetivo 
+es realizar el sistema de crafteo y de manejo de estados, añadir efectos de sonido, y acabar de decidir el contenido del juego.
+
+9-Demo y progreso:
+
