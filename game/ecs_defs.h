@@ -13,6 +13,8 @@ class InventoryController;
 class Inventory;
 class GameEntityComponent;
 class EnemyComponent;
+class EnemyBehaviourComponent;
+class ChasePlayer;
 class MapRender;
 
 #define _CMPS_LIST_  \
@@ -26,6 +28,8 @@ class MapRender;
 	Inventory, \
 	GameEntityComponent, \
 	EnemyComponent, \
+	EnemyBehaviourComponent, \
+	ChasePlayer, \
 	MapRender
 
 

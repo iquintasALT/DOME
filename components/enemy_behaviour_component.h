@@ -2,13 +2,25 @@
 #define ENEMYBEHAVIOUR_H_
 #include "enemy_component.h"
 
+class Player;
 class EnemyBehaviourComponent :
     public EnemyComponent
 {
 protected:
+    Transform* playerTr;
     Transform* entityTr;
 public:
     virtual void update() override = 0;
     virtual void init() override;
+};
+
+class ChasePlayer :
+    public EnemyBehaviourComponent
+{
+protected:
+    float speed;
+public:
+    ChasePlayer(float speed_);
+    virtual void update() override;
 };
 #endif

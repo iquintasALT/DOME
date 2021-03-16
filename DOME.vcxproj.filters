@@ -110,6 +110,9 @@
     <ClCompile Include="components\map_render.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\enemy_behaviour_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -263,6 +266,9 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\map_render.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\enemy_behaviour_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -6,6 +6,7 @@
 #include "../components/GravityComponent.h"
 #include "../components/Image.h"
 #include "../components/KeyboardPlayerCtrl.h"
+#include "../components/enemy_behaviour_component.h"
 
 Entity* Enemy::newEnemy(Manager* mngr_, Point2D pos)
 {
@@ -14,6 +15,6 @@ Entity* Enemy::newEnemy(Manager* mngr_, Point2D pos)
 	enemy->addComponent<GravityComponent>();
 	enemy->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
 	enemy->addComponent<player_animation>();
-	//enemy->addComponent<KeyboardPlayerCtrl>();
+	enemy->addComponent<ChasePlayer>(2.5);
 	return enemy;
 }
