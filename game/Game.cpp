@@ -29,6 +29,7 @@ Game::Game(int totaltime) {
 
 Game::~Game() {
 	delete states;
+	delete timer;
 }
 
 void Game::init() {
