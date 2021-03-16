@@ -6,6 +6,7 @@ Inventory::Inventory(int width, int height) : width(width), height(height) {
 	transform = nullptr;
 	itemWidth = itemHeight = 1;
 	selectedItem = nullptr;
+	selectedItem_ = nullptr;
 	justPressed = false;
 
 	grid = std::vector<std::vector<Item*>>(width, std::vector<Item*>(height, nullptr));
@@ -53,8 +54,23 @@ void Inventory::update() {
 		if (ih().getMouseButtonState(InputHandler::LEFT)) {
 			if (!justPressed) {
 				justPressed = true;
+				timer = 0;
+				selectedItem_ = findItemInSlot(xCell, yCell);
+			}
+			else {
+				if (selectedItem_ != nullptr) {
+					timer += 1 / consts::FRAME_RATE;
 
-				selectedItem = findItemInSlot(xCell, yCell);
+					if (timer > timeToHold) {
+						selectedItem = selectedItem_;
+						selectedItem_ = findItemInSlot(xCell, yCell);
+
+						if (selectedItem != selectedItem_)
+							selectedItem = nullptr;
+
+						selectedItem_ = nullptr;
+					}
+				}
 			}
 		}
 		else {
@@ -62,16 +78,6 @@ void Inventory::update() {
 				std::cout << xCell << " " << yCell << std::endl;
 				if (avaliableSpace(xCell, yCell, selectedItem->width, selectedItem->height, selectedItem)) {
 					moveItem(selectedItem, xCell, yCell);
-				}
-				else {
-					/*std::cout << std::endl << std::endl;
-					for (int i = 0; i < width; i++) {
-						for (int c = 0; c < height; c++) {
-							std::cout << ((grid[c][i] == nullptr ? "O" : "X"));
-						}
-						std::cout << std::endl;
-					}
-					std::cout << std::endl << std::endl;*/
 				}
 
 				selectedItem->setPosition(itemPosition(selectedItem->x, selectedItem->y));
@@ -107,7 +113,7 @@ bool Inventory::avaliableSpace(int x, int y, int w, int h, Item* item) {
 
 	for (int i = x; i < width && i < x + w; i++) {
 		for (int c = y; c < height && c < y + h; c++) {
-			if (grid[i][c] != nullptr && grid[i][c] != item) //Maybe here is the bug but it needs deeper debugging
+			if (grid[i][c] != nullptr && grid[i][c] != item) 
 				return false;
 		}
 	}
