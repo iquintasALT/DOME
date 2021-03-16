@@ -8,7 +8,7 @@ class Countdown
 {
 public:
 	Countdown(int totaltime);
-
+	virtual ~Countdown();
 	void update();
 	void render();
 

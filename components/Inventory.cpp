@@ -59,7 +59,7 @@ void Inventory::update() {
 			}
 			else {
 				if (selectedItem_ != nullptr) {
-					timer += 1 / consts::FRAME_RATE;
+					timer += 1 / consts::DELTA_TIME;
 
 					if (timer > timeToHold) {
 						selectedItem = selectedItem_;
