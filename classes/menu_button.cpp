@@ -15,13 +15,13 @@ void MenuButton::render() const {
 }
 
 bool MenuButton::handleEvents(const SDL_Event& e) {
-	if (e.type == SDL_MOUSEBUTTONUP && e.button.button == SDL_BUTTON_LEFT) {
+	/*if (e.type == SDL_MOUSEBUTTONUP && e.button.button == SDL_BUTTON_LEFT) {
 		SDL_Point p = { e.button.x, e.button.y };
 		const SDL_Rect* dest = &build_sdlrect(position.getX(), position.getY(), size.getX(), size.getY());
 		if (SDL_PointInRect(&p, dest) == SDL_TRUE) {
 			cbOnClick(game);
 			return true;
 		}
-	}
+	}*/
 	return false;
 }
