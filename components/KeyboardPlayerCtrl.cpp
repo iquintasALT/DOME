@@ -20,6 +20,8 @@ void KeyboardPlayerCtrl::update() {
 		}
 
 		if (keystates[SDL_SCANCODE_LCTRL] && entityTr->getVel().getY() == 0) {
+			// Esta línea es solo para tema visual:
+			entityTr->setPos(Vector2D(entityTr->getPos().getX(), entityTr->getPos().getY() + entityTr->getH()/2));
 			entityTr->setH(entityTr->getH() / 2);
 			entityTr->setVel(Vector2D(0, 0));
 			crouched = true;
@@ -31,6 +33,8 @@ void KeyboardPlayerCtrl::update() {
 		}
 	}
 	else if (crouched && !keystates[SDL_SCANCODE_LCTRL]) {
+		// Esta línea es para que se quede a la misma altura (no se hunda en el suelo)
+		entityTr->setPos(Vector2D(entityTr->getPos().getX(), entityTr->getPos().getY() - entityTr->getH()));
 		entityTr->setH(entityTr->getH() * 2);
 		crouched = false;
 	}

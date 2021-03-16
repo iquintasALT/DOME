@@ -19,6 +19,7 @@ public:
 	virtual ~Game();
 	void init();
 	void start();
+	GameStateMachine* getStateMachine() { return states; }
 private:
 	GameStateMachine* states;
 	Countdown* timer;

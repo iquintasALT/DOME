@@ -18,6 +18,7 @@
 #include "../utils/Vector2D.h"
 #include "box2d.h"
 
+#include "../classes/menu_scene.h"
 #include "../classes/raid_scene.h"
 #include "../classes/shelter_scene.h"
 
@@ -36,6 +37,7 @@ void Game::init() {
 	sdlutils().showCursor();
 
 	states->pushState(new RaidScene());
+	//states->pushState(new MenuScene(this));
 	states->currentState()->init();
 	//states->pushState(new ShelterScene());
 	//states->currentState()->init();
