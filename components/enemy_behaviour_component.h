@@ -19,8 +19,9 @@ class ChasePlayer :
 {
 protected:
     float speed;
+    float stopDistance;
 public:
-    ChasePlayer(float speed_);
+    ChasePlayer(float speed_, float stopDistance_);
     virtual void update() override;
 };
 #endif

@@ -9,15 +9,15 @@ void EnemyBehaviourComponent::init()
 	entityTr = entity_->getComponent<Transform>();
 }
 
-ChasePlayer::ChasePlayer(float speed_) { speed = speed_; };
+ChasePlayer::ChasePlayer(float speed_, float stopDistance_) :speed(speed_), stopDistance(stopDistance_){};
 
 void ChasePlayer::update()
 {
-	if (std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()) > 50)
+	if (std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()) > stopDistance)
 	{
-		if (playerTr->getPos().getX() - entityTr->getPos().getX() > 50)
+		if (playerTr->getPos().getX() - entityTr->getPos().getX() > 0.0)
 			entityTr->setVelX(speed);
-		else if (playerTr->getPos().getX() - entityTr->getPos().getX() < -50)
+		else if (playerTr->getPos().getX() - entityTr->getPos().getX() < 0.0)
 			entityTr->setVelX(-speed);
 	}
 	else

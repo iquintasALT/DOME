@@ -15,6 +15,6 @@ Entity* Enemy::newEnemy(Manager* mngr_, Point2D pos)
 	enemy->addComponent<GravityComponent>();
 	enemy->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
 	enemy->addComponent<player_animation>();
-	enemy->addComponent<ChasePlayer>(2.5);
+	enemy->addComponent<ChasePlayer>(2.5, 7.0);
 	return enemy;
 }
