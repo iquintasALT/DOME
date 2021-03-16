@@ -21,6 +21,7 @@ void Inventory::init() {
 
 	storeItem(new Item(ItemInfo::bottleOfWater(), entity_->getMngr(), this, 0, 0));
 	storeItem(new Item(ItemInfo::medicine(), entity_->getMngr(), this, 2, 2));
+	storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 4, 0));
 }
 void Inventory::render() {
 	for (auto a : storedItems) {
@@ -57,7 +58,7 @@ void Inventory::update() {
 			}
 		}
 		else {
-			if (selectedItem) { //ESTOY AQUI
+			if (selectedItem) { 
 				std::cout << xCell << " " << yCell << std::endl;
 				if (avaliableSpace(xCell, yCell, selectedItem->width, selectedItem->height, selectedItem)) {
 					moveItem(selectedItem, xCell, yCell);
@@ -106,7 +107,7 @@ bool Inventory::avaliableSpace(int x, int y, int w, int h, Item* item) {
 
 	for (int i = x; i < width && i < x + w; i++) {
 		for (int c = y; c < height && c < y + h; c++) {
-			if (grid[i][c] != nullptr && grid[i][c] != item)
+			if (grid[i][c] != nullptr && grid[i][c] != item) //Maybe here is the bug but it needs deeper debugging
 				return false;
 		}
 	}

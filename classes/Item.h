@@ -27,6 +27,7 @@ public:
 
 	static ItemInfo* bottleOfWater();
 	static ItemInfo* medicine();
+	static ItemInfo* food();
 };
 
 class Item

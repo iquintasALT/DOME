@@ -8,7 +8,12 @@ ItemInfo* ItemInfo::bottleOfWater()
 }
 ItemInfo* ItemInfo::medicine()
 {
-	return new ItemInfo("Bottle of water", "Scarse item, use it carefully", 1, 1,
+	return new ItemInfo("Medicine", "Mmmmmm", 2, 2,
+		&sdlutils().images().at("panel"));
+}
+ItemInfo* ItemInfo::food()
+{
+	return new ItemInfo("Angel", "I dont know what im doing", 1, 1,
 		&sdlutils().images().at("panel"));
 }
 
