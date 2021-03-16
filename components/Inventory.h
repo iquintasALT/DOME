@@ -20,7 +20,7 @@ public:
 	void storeItem(Item* item);
 	void moveItem(Item* item, int x, int y);
 private:
-	const float timeToHold = 0.1f; //seconds
+	const float timeToHold = 0.08f; //seconds
 	float timer = 0;
 
 	Vector2D itemPosition(int x, int y);
