@@ -70,8 +70,8 @@ void Game::start() {
 
 		sdlutils().clearRenderer();
 		//mngr_->render();
-		timer->render();
 		states->currentState()->render();
+		timer->render();
 		sdlutils().presentRenderer();
 
 		Uint32 frameTime = sdlutils().currRealTime() - startTime;

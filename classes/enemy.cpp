@@ -8,13 +8,12 @@
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/enemy_behaviour_component.h"
 
-Entity* Enemy::newEnemy(Manager* mngr_, Point2D pos)
+Enemy::Enemy(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 {
-	Entity* enemy = mngr_->addEntity();
-	enemy->addComponent<Transform>(pos, Vector2D(), 32, 64, 0);
-	enemy->addComponent<GravityComponent>();
-	enemy->addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
-	enemy->addComponent<player_animation>();
-	enemy->addComponent<ChasePlayer>(2.5, 7.0);
-	return enemy;
+	mngr_->addEntity(this);
+	addComponent<Transform>(pos, Vector2D(), 32, 64, 0);
+	addComponent<GravityComponent>();
+	addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
+	addComponent<player_animation>();
+	addComponent<ChasePlayer>(consts::MELEE_ENEMY_SPEED, consts::MELEE_ENEMY_STOPDISTANCE);
 }
