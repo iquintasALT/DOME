@@ -19,6 +19,11 @@ Countdown::Countdown(int totaltime)
 	updatetime = SDL_GetTicks();
 
 	std::string aux = getHourString(lefttime/1000);
+
+}
+
+Countdown::~Countdown() {
+	delete counter;
 }
 
 void Countdown::render() {
@@ -28,6 +33,8 @@ void Countdown::render() {
 		aux = "Llamalo Angel, Carlos Leon";
 	}
 
+	//delete counter;
+	if(counter == nullptr)
 	counter = new Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("ARIAL24"),
 		build_sdlcolor(0xffffffff));
 	counter.render(50, 10);
