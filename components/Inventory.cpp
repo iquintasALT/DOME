@@ -52,17 +52,16 @@ void Inventory::update() {
 			if (!justPressed) {
 				justPressed = true;
 
-				std::cout << xCell << " " << yCell << std::endl;
 
 				selectedItem = findItemInSlot(xCell, yCell);
 			}
 		}
 		else {
 			if (selectedItem) { //ESTOY AQUI
-				if (xCell < width && yCell < height)
 					if (avaliableSpace(xCell, yCell, selectedItem->width, selectedItem->height, selectedItem)) {
 						moveItem(selectedItem, xCell, yCell);
 					}
+
 				selectedItem->setPosition(itemPosition(selectedItem->x, selectedItem->y));
 			}
 			selectedItem = nullptr;
@@ -92,8 +91,10 @@ Item* Inventory::findItemInSlot(int x, int y) {
 }
 
 bool Inventory::avaliableSpace(int x, int y, int w, int h, Item* item) {
-	for (int i = x; i < x + w; i++) {
-		for (int c = y; c < y + h; c++) {
+	if (x + w >= width || y + h >= height) return false;
+	
+	for (int i = x; i < width && i < x + w; i++) {
+		for (int c = y; c < height && c < y + h; c++) {
 			if (grid[i][c] != nullptr && grid[i][c] != item)
 				return false;
 		}
@@ -112,8 +113,8 @@ void Inventory::storeItem(Item* item) {
 }
 
 void Inventory::moveItem(Item* item, int x, int y) {
-	for (int i = item->x; i < item->x + item->width; i++) {
-		for (int c = item->y; c < item->y + item->height; c++) {
+	for (int i = item->x; i< width && i < item->x + item->width; i++) {
+		for (int c = item->y; c < height && c < item->y + item->height; c++) {
 			grid[x][y] = nullptr;
 		}
 	}
@@ -121,8 +122,8 @@ void Inventory::moveItem(Item* item, int x, int y) {
 	item->x = x;
 	item->y = y;
 
-	for (int i = item->x; i < item->x + item->width; i++) {
-		for (int c = item->y; c < item->y + item->height; c++) {
+	for (int i = item->x; i < width && i < item->x + item->width; i++) {
+		for (int c = item->y; c < height && c < item->y + item->height; c++) {
 			grid[x][y] = item;
 		}
 	}
