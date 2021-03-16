@@ -4,6 +4,7 @@
 // ecs_defs.h should look like
 
 #pragma once
+#include "../game/checkML.h"
 
 // components -- forward declaration, i.e., assume they are defined somewhere
 class Transform;

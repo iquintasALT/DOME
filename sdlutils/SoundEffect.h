@@ -5,6 +5,7 @@
 #include <string>
 #include <SDL_mixer.h>
 #include <cassert>
+#include "../game/checkML.h"
 
 #define _CHECK_CHANNEL_(channel) \
 	assert(channel >= -1 && channel < static_cast<int>(channels_));

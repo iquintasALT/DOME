@@ -1,5 +1,7 @@
 #pragma once
 #include "game_object.h"
+#include "../game/checkML.h"
+
 class GameEntity :
 	public GameObject
 {

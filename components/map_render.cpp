@@ -21,6 +21,15 @@ void Tile::draw() {
 	}
 }
 
+MapRender::~MapRender() {
+	for(Tile* t: tiles)
+	{
+		delete t;
+		t = nullptr;
+	}
+	tiles.clear();
+}
+
 void MapRender::load() {
 	tile_map.load(path_);
 
