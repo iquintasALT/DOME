@@ -33,7 +33,7 @@ Game::~Game() {
 
 void Game::init() {
 
-	SDLUtils::init("DOME", 1080, 720, "resources/config/resources.json");
+	SDLUtils::init("DOME", 1088, 736, "resources/config/resources.json");
 	sdlutils().showCursor();
 
 	states->pushState(new RaidScene());
