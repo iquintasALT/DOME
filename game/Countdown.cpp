@@ -28,7 +28,7 @@ void Countdown::render() {
 		aux = "Llamalo Angel, Carlos Leon";
 	}
 
-	Texture counter = Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("ARIAL24"),
+	counter = new Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("ARIAL24"),
 		build_sdlcolor(0xffffffff));
 	counter.render(50, 10);
 }
