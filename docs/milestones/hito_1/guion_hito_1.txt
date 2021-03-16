@@ -21,7 +21,7 @@ Exploración: habrá un mapa con distintas zonas saqueables, de las cuales se mo
 El objetivo final del juego es conseguir los recursos suficientes para reparar la nave y escapar del planeta.
 
 
--Apartado dinámicas
+4.-Apartado dinámicas
 
 Para ganar el jugador debe aprender a gestionar correctamente sus recursos para poder sobrevivir hasta reparar la nave. Para ello deberá tomar la decisión correcta para saquear lo que necesite en cada momento y no morir. Tomar malas decisiones puede suponer la muerte. Se deberá tener en cuenta el espacio en el inventario, el estado del personaje y el tiempo restante para volver al refugio.
 
@@ -29,16 +29,16 @@ Para ganar el jugador debe aprender a gestionar correctamente sus recursos para 
 
 La estética será en pixel art de 32 bits con vista lateral y con el estilo que observáis en la imagen. Estará hecho con tonos oscuros que transmitan al jugador el drama que vive el protagonista, ya que estar solo en un planeta luchando por sobrevivir es estresante. Se utilizarán elementos con una estética sci-fi (ciencia ficción).
 
-4.-Que ha ido bien y que ha ido mal
+5.-Que ha ido bien y que ha ido mal
 
 Las reuniones han sido bien dirigidas y ha habido una buena comunicación de grupo, se ha logrado la mayoría de lo que se esperaba para este hito.
+Mal: Inconstancia con las reglas de formato
 
-5.-Objetivos logrados este hito
+6.-Objetivos logrados este hito
 
 Distribución correcta del código, librerías necesarias implementadas. Personaje con movimiento y prototipo de arma funcional. Comenzado a implementar el inventario, enemigo básico así como las escenas de refugio y raid.
 
-
-6.-Plan para próximos hitos:
+7.-Plan para próximos hitos:
 Nuestro plan para el siguiente hito seria:
 •	Comenzar y refinar el sistema de crafteo
 •	Tener un inventario (que será de tipo tetris).
