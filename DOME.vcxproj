@@ -19,6 +19,7 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="classes\camera.h" />
     <ClInclude Include="classes\enemy.h" />
     <ClInclude Include="classes\game_character.h" />
     <ClInclude Include="classes\game_entity.h" />
@@ -75,6 +76,7 @@
     <ClInclude Include="utils\Vector2D.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="classes\camera.cpp" />
     <ClCompile Include="classes\enemy.cpp" />
     <ClCompile Include="classes\game_character.cpp" />
     <ClCompile Include="classes\game_entity.cpp" />
