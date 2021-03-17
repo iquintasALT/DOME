@@ -92,17 +92,11 @@ Apartado dinámicas
 ra ganar el jugador debe aprender a gestionar correctamente sus recursos para porder sobrevivir hasta reparar la nave. Para ello deberá tomar la decisión correcta para 
 saquear lo que necesite en cada momento y no morir. Tomar malas decisiones puede suponer la muerte.
 
-Apartado estética
-
-La estética será en pixel art con vista lateral y con el estilo que observáis en la imagen . Estará hecho con tonos oscuros que transmitan al jugador el drama que vive el 
-protagonista, ya que estar solo en un planeta luchando por sobrevivir es estresante.
-
 
 4.-Apartado estética
 
-La estética será en pixel art con vista lateral y con el estilo que observáis en la imagen . Estará hecho con tonos oscuros que transmitan al jugador el drama que vive el 
-protagonista, ya que estar solo en un planeta luchando por sobrevivir es estresante.
-
+El estilo visual será en pixel art relativamente nítido en vista lateral. Se mantendrá un tono principalmente serio y descarnado a lo largo del juego, pero no sin pequeños momentos de levidad; el objetivo es que el jugador sienta que cada día de la partida es una victoria en sí. 
+Para reforzar esto, se empleará una paleta de colores principalmente oscura, con elementos de resaltado en colores primarios en todos los personajes y objetos importantes.
 
 5.-Que ha ido bien y que ha ido mal
 
@@ -110,11 +104,16 @@ La preproducción llevó más tiempo del previsto. Esto nos ha perjudicado en la
 rígido. Además, hemos tenido que empezar a trabajar con los sistemas entidad-componentes a la vez que hemos empezado a estudiarlas, otro obstáculo que dejará de afectarnos 
 en adelante.
 
-Bien: Las reuniones han sido bien dirigidas y ha habido una buena comunicación de grupo, se ha logrado la mayoría de lo que se esperaba para este hito. 
-El código hecho es bastante modular, de forma que el trabajo futuro será más eficiente. 
-Hemos tenido varios casos de errores que surgieron de una persona y fueron resueltas por otra, lo cual demuestra un entendimiento mutuo del código de cada uno.
+Por lo positivo: Las reuniones han sido bien reguladas y ha habido una buena comunicación de grupo, se ha logrado la mayoría de lo que se esperaba para este hito. 
 
-Mal: Inconstancia con las reglas de formato; problemas con inclusión de librerías, una materia completamente nueva para nosotros. Todo es culpa de Iván.
+En cuanto al trabajo, han habido dificultades con la inclusión de librerías, una disciplina completamente nueva para nosotros. Pero por el lado positivo se ha llegado a implementar una versión funcional del inventario, el cual no estaba previsto para este hito.
+
+El código hecho es bastante modular, de forma que el trabajo futuro será más eficiente. 
+
+Hemos tenido varios casos de errores resueltos por un integrante diferente a quien produjo el error, lo cual demuestra un entendimiento mutuo del código de cada uno.
+
+Por lo negativo: Por nuestra parte, han habido inconstancias con las reglas de formato establecidas. 
+ Todo es culpa de Iván.
 
 6.-Objetivos logrados este hito
 

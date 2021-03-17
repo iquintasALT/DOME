@@ -1,0 +1,26 @@
+
+6.-Objetivos logrados este hito
+ EMILE
+
+7.-Planificación:
+A parte de la organizacion por roles que hablamos el hito anterior, hemos organizado los sprints en 2 reuniones por semana.
+La primera para comenzar el sprint, donde decidimos que historias realiza cada miembro y las estimamos utilizando planning poker, además de comentar lo realizado durante el sprint anterior, es decir, que ha ido bien, que ha ido mal y 
+como mejorarlo. La segunda reunion la realizamos a mitad del sprint 
+para valorar los avances y poder adaptarse a las necesidades de cada miembro, por si alguien necesita ayuda o incluso puede comenzar una historia de usuario nueva. Todas estas reuniones y comunicación las llevamos a cabo en discord. 
+
+
+8-Hitos:
+En este hito subestimamos el tiempo que teniamos, pero de lo que nos propusimos para este hito hemos logrado tener la base de la gestion de escenas, el inventario,  y la base del sistema de combate. Por eso hemos pasado 
+lo que no hemos conseguido realizar al siguiente hito, como son la escena del refugio o el enemigo a distancia.
+También tenemos pensado realizar para el siguiente hito el sistema de crafteo , comenzar el de manejo de estados, añadir efectos de sonido, acabar de decidir el contenido del juego y cuando tengamos una base jugable comenzar con el QA. 
+Por ultimo para el 3 hito queremos tener una pagina web decente, arte final, musica y mapas de raid finalizados.
+
+9-Demo y progreso:
+
+Es turno de que veais el progreso de nuestro juego con la siguiente demo:
+para comenzar tenemos la escena de raid, con el timer que marcará cada parte del ciclo
+de juego implementado, como podeis ver en la esquina superior izquierda. También hemos conseguido
+hacer que el jugador se mueva, salte, y se agache, pero como no tenemos el sprite de jugador agachado pues se convierte en personaje chikito por el momento.
+En cuanto al combate hemos conseguido realizar el funcionamiento del arma haciendo que rote y que dispare.
+Hemos creado un enemigo con una IA bastante simple e incorporado un tilemap con la libreria TMX.
+Incluso tenemos una versión funcional del inventario tipo tetris.
