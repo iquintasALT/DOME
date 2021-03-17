@@ -15,5 +15,7 @@ public:
 	void FollowPlayer(Vector2D& pos);
 	Vector2D renderRect(Vector2D& imagePos,int w, int h, bool& shouldRender);
 	void MoveDir(Vector2D dir);
+
+	Point2D PointToWorldSpace(Point2D& point);
 };
 
