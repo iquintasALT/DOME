@@ -4,7 +4,6 @@
 
 #include <cassert>
 
-#include "../json/JSON.h"
 
 SDLUtils::SDLUtils() :
 		SDLUtils("SDL Demo", 600, 400) {
@@ -57,6 +56,8 @@ void SDLUtils::closeWindow() {
 	SDL_DestroyRenderer(renderer_);
 	SDL_DestroyWindow(window_);
 
+	delete jValue;
+
 	SDL_Quit(); // quit SDL
 }
 
@@ -87,7 +88,7 @@ void SDLUtils::loadReasources(std::string filename) {
 	// is correct.
 
 	// load JSON configuration file
-	JSONValue *jValue = JSON::ParseFromFile(filename);
+	jValue = JSON::ParseFromFile(filename);
 
 	// check it was loaded correctly
 	// the root must be a JSON object
