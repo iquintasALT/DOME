@@ -7,6 +7,7 @@
 #include "../components/Image.h"
 #include "../components/Transform.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../classes/camera.h"
 
 void Weapon::update() {
 	counter++;
@@ -16,6 +17,7 @@ void Weapon::update() {
 
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
+	mousePos = Camera::mainCamera->PointToWorldSpace(mousePos);
 
 	Vector2D yCenteredPos(entityTr->getPos().getX(), entityTr->getPos().getY() + entityTr->getH() * 0.37f); //Punto {0, Altura del cañón}  
 	Vector2D  dir = (mousePos - yCenteredPos).normalize();
