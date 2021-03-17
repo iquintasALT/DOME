@@ -5,7 +5,6 @@
 #include "../classes/game_scene.h"
 #include "../classes/game_state_machine.h"
 #include "../game/checkML.h"
-
 #include <memory>
 #include <stack>
 

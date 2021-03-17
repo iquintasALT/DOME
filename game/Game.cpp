@@ -13,6 +13,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
 #include "../classes/weapon_behaviour.h"
+#include "../classes/camera.h"
 
 #include "../ecs/Manager.h"
 #include "../utils/Vector2D.h"
@@ -25,16 +26,20 @@
 Game::Game(int totaltime) {
 	states = new GameStateMachine();
 	timer = new Countdown(totaltime);
+
+
+	Camera::setMain(new Camera(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
 }
 
 Game::~Game() {
 	delete states;
 	delete timer;
+	delete Camera::mainCamera;
 }
 
 void Game::init() {
 
-	SDLUtils::init("DOME", 1088, 736, "resources/config/resources.json");
+	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "resources/config/resources.json");
 	sdlutils().showCursor();
 
 	states->pushState(new RaidScene());
@@ -69,6 +74,8 @@ void Game::start() {
 		//mngr_->update();
 		//mngr_->refresh();
 
+		Camera::mainCamera->MoveDir(Vector2D(1, 0));
+
 		sdlutils().clearRenderer();
 		//mngr_->render();
 		states->currentState()->render();
@@ -80,7 +87,6 @@ void Game::start() {
 		if (frameTime < 1000 / consts::FRAME_RATE)
 			SDL_Delay((1000 / consts::FRAME_RATE) - frameTime);
 	}
-
 }
 
 

@@ -6,7 +6,7 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
 #include "../game/checkML.h"
-
+#include "../classes/camera.h";
 #include "Transform.h"
 
 class Image : public Component {
@@ -41,6 +41,7 @@ public:
 	}
 
 	virtual ~Image() {
+
 	}
 
 	virtual void init() override {
@@ -49,7 +50,12 @@ public:
 	}
 
 	void render() override {
-		SDL_Rect dest = build_sdlrect(tr_->getPos(), tr_->getW(), tr_->getH());
+		bool shouldRender = true;
+		Vector2D pos = Camera::mainCamera->renderRect(tr_->getPos(), tr_->getW(), tr_->getH(), shouldRender);
+
+		if (!shouldRender) return;
+
+		SDL_Rect dest = build_sdlrect(pos, tr_->getW(), tr_->getH());
 		if (rotationOrigin.x == -1 && rotationOrigin.y == -1)
 			tex_->render(src_, dest, tr_->getRot(), nullptr, flip_);
 		else {
