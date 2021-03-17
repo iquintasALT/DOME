@@ -95,7 +95,7 @@ saquear lo que necesite en cada momento y no morir. Tomar malas decisiones puede
 
 4.-Apartado estética
 
-El estilo visual será en pixel art relativamente nítido en vista lateral. Se mantendrá un tono principalmente serio y descarnado a lo largo del juego, pero no sin pequeños momentos de levidad; el objetivo es que el jugador sienta que cada día de la partida es una victoria en sí. 
+El estilo visual será en pixel art relativamente nítido en vista lateral. Se mantendrá un tono principalmente serio y crudo a lo largo del juego, pero no sin pequeños momentos de levedad; el objetivo es que el jugador sienta que cada día de la partida es una victoria en sí. 
 Para reforzar esto, se empleará una paleta de colores principalmente oscura, con elementos de resaltado en colores primarios en todos los personajes y objetos importantes.
 
 5.-Que ha ido bien y que ha ido mal
