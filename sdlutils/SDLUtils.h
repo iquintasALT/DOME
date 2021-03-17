@@ -14,6 +14,7 @@
 #include "Texture.h"
 #include "VirtualTimer.h"
 #include "../game/checkML.h"
+#include "../json/JSON.h"
 
 
 class SDLUtils: public Singleton<SDLUtils> {
@@ -162,6 +163,8 @@ private:
 
 	SDL_Window *window_; // the window
 	SDL_Renderer *renderer_; // the renderer
+
+	JSONValue* jValue;
 
 	sdl_resource_table<Font> fonts_; // fonts map (string -> font)
 	sdl_resource_table<Texture> images_; // textures map (string -> texture)
