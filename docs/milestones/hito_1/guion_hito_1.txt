@@ -104,7 +104,7 @@ La preproducción llevó más tiempo del previsto. Esto nos ha perjudicado en la
 rígido. Además, hemos tenido que empezar a trabajar con los sistemas entidad-componentes a la vez que hemos empezado a estudiarlas, otro obstáculo que dejará de afectarnos 
 en adelante.
 
-Por lo positivo: Las reuniones han sido bien reguladas y ha habido una buena comunicación de grupo, se ha logrado la mayoría de lo que se esperaba para este hito. 
+Las reuniones han sido bien reguladas y ha habido una buena comunicación de grupo, se ha logrado la mayoría de lo que se esperaba para este hito. 
 
 En cuanto al trabajo, han habido dificultades con la inclusión de librerías, una disciplina completamente nueva para nosotros. Pero por el lado positivo se ha llegado a implementar una versión funcional del inventario, el cual no estaba previsto para este hito.
 
@@ -114,6 +114,10 @@ Hemos tenido varios casos de errores resueltos por un integrante diferente a qui
 
 Por lo negativo: Por nuestra parte, han habido inconstancias con las reglas de formato establecidas. 
  Todo es culpa de Iván.
+
+5.-Arquitectura
+
+El juego está construido en base a una arquitectura por componentes y herencia. Partimos de una plantilla de sistema de Entidad-Componentes de la asignatura de TPV. Lucidchart, la página web que empleamos para crear los diagramas UML, nos impedía pasarnos de un límite de objetos por diagrama sin pagar, y como tacaños estudiantes rascabolsillos que somos, decidimos dividir el diagrama en tres partes: una para componentes, otra para los menús y la escena del refugio y una tercera para los entidades de las escenas de saqueo.
 
 6.-Objetivos logrados este hito
 
