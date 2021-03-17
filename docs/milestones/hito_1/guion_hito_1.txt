@@ -113,11 +113,11 @@ El código hecho es bastante modular, de forma que el trabajo futuro será más 
 Hemos tenido varios casos de errores resueltos por un integrante diferente a quien produjo el error, lo cual demuestra un entendimiento mutuo del código de cada uno.
 
 Por lo negativo: Por nuestra parte, han habido inconstancias con las reglas de formato establecidas. 
- Todo es culpa de Iván.
+Todo es culpa de Iván.
 
 5.-Arquitectura
 
-El juego está construido en base a una arquitectura por componentes y herencia. Partimos de una plantilla de sistema de Entidad-Componentes de la asignatura de TPV. Lucidchart, la página web que empleamos para crear los diagramas UML, nos impedía pasarnos de un límite de objetos por diagrama sin pagar, y como tacaños estudiantes rascabolsillos que somos, decidimos dividir el diagrama en tres partes: una para componentes, otra para los menús y la escena del refugio y una tercera para los entidades de las escenas de saqueo.
+El juego está construido en base a una arquitectura por componentes y herencia. Partimos de una plantilla de sistema de Entidad-Componentes de la asignatura de TPV. Lucidchart, la página web que empleamos para crear los diagramas UML, nos impedía pasarnos de un límite de objetos por diagrama sin pagar, y como tacaños estudiantes rascabolsillos que somos, decidimos dividir el diagrama en tres partes: una para componentes, que consisten de muchas clases de interfaz y otras funcionales, tal y como el comportamiento de cada enemigo o el funcionamiento de cada arma; otra para los menús y la escena del refugio, el cual internamente estará progrmando de forma muy similar a un menú, con botones en forma de estaciones de trabajo; y una tercera para los entidades de las escenas de saqueo, lo cual incluye el control del personaje jugador, las físicas, el mapa de juego, etc..
 
 6.-Objetivos logrados este hito
 
