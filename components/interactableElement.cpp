@@ -13,6 +13,8 @@ bool InteractableElement::CheckCollision(Point2D pos) {
 	if (inCollision && !isColliding) CollisionEnter();
 	if (!inCollision && isColliding) CollisionExit();
 
+	if (inCollision) std::cout << message;
+
 	return inCollision;
 }
 
