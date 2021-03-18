@@ -42,6 +42,8 @@
     <ClInclude Include="classes\weapon_behaviour.h" />
     <ClInclude Include="components\GravityComponent.h" />
     <ClInclude Include="components\Image.h" />
+    <ClInclude Include="components\interactableElement.h" />
+    <ClInclude Include="components\interactions.h" />
     <ClInclude Include="components\Inventory.h" />
     <ClInclude Include="components\InventoryController.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
@@ -74,6 +76,7 @@
     <ClInclude Include="sdlutils\Texture.h" />
     <ClInclude Include="sdlutils\VirtualTimer.h" />
     <ClInclude Include="utils\Collisions.h" />
+    <ClInclude Include="utils\ray_cast.h" />
     <ClInclude Include="utils\Singleton.h" />
     <ClInclude Include="utils\Vector2D.h" />
   </ItemGroup>
@@ -100,6 +103,8 @@
     <ClCompile Include="components\game_entity_component.cpp" />
     <ClCompile Include="classes\weapon_behaviour.cpp" />
     <ClCompile Include="components\GravityComponent.cpp" />
+    <ClCompile Include="components\interactableElement.cpp" />
+    <ClCompile Include="components\interactions.cpp" />
     <ClCompile Include="components\Inventory.cpp" />
     <ClCompile Include="components\InventoryController.cpp" />
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
@@ -120,6 +125,7 @@
     <ClCompile Include="sdlutils\SoundEffect.cpp" />
     <ClCompile Include="sdlutils\Texture.cpp" />
     <ClCompile Include="utils\Collisions.cpp" />
+    <ClCompile Include="utils\ray_cast.cpp" />
     <ClCompile Include="utils\Vector2D.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

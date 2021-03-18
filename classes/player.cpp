@@ -10,16 +10,18 @@
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/InventoryController.h"
 #include "../components/weapon.h"
+#include "../components/interactions.h"
 
 Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 {
 	mngr_->setHandler<Player_hdlr>(this);
 	mngr_->addEntity(this);
 	addComponent<Transform>(pos, Vector2D(), 32, 64, 0);
-	addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
+	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	addComponent<player_animation>();
 	addComponent<GravityComponent>();
 	addComponent<KeyboardPlayerCtrl>();
+	addComponent<Interactions>();
 
 	Vector2D playerPos = getComponent<Transform>()->getPos();
 	Transform* playerTr = getComponent<Transform>();

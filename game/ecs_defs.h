@@ -20,6 +20,8 @@ class MapRender;
 class KeepDistance;
 class DistanceDetection;
 class RayCastDetection;
+class Interactions;
+class InteractableElement;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -38,7 +40,8 @@ class RayCastDetection;
 	KeepDistance,\
 	DistanceDetection,\
 	RayCastDetection
-
+	Interactions, \
+	InteractableElement
 
 // groups
 
