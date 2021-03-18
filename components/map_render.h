@@ -7,6 +7,7 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../game/checkML.h"
 
 #include "tmxlite/Map.hpp"
 #include "tmxlite/Layer.hpp"
@@ -36,7 +37,7 @@ public:
 		load();
 	}
 
-	virtual ~MapRender() { }
+	virtual ~MapRender();
 
 	void render() override {
 		for (auto t : tiles) {

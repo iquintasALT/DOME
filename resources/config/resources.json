@@ -32,6 +32,14 @@
         {
             "id": "panel",
             "file": "resources/sprites/panel.png"
+        },
+        {
+            "id": "shelterButton",
+            "file": "resources/sprites/shelter_button.png"
+        },
+        {
+            "id": "raidButton",
+            "file": "resources/sprites/raid_button.png"
         }
     ],
 

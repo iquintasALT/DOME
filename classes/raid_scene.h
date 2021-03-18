@@ -3,6 +3,8 @@
 #include "enemy.h"
 #include "player.h"
 #include "map.h"
+#include "../game/checkML.h"
+
 #include <string>
 
 class RaidScene : public GameScene

@@ -1,5 +1,7 @@
 #pragma once
 #include "game_object.h"
+#include "../game/checkML.h"
+
 class GameEntity :
 	public GameObject
 {
@@ -13,6 +15,6 @@ public:
 	Vector2D getVelocity() { return velocity; };
 	void setVelocity(Vector2D newVelocity) { size = newVelocity; };
 	void scale(float scale) { size = size * scale; };
-	void update() override {};
+	//void update() override {};
 };
 

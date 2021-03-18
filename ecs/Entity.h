@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Component.h"
 #include "ecs.h"
+#include "../game/checkML.h"
 
 class Manager;
 
@@ -116,7 +117,7 @@ public:
 		groups_.reset();
 	}
 
-	void update() {
+	virtual void update() {
 		if (!active) return;
 
 		std::size_t n = components_.size();

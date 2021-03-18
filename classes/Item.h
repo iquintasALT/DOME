@@ -6,6 +6,7 @@
 #include "../components/Image.h"
 #include "../components/Transform.h"
 #include "../components/Inventory.h"
+#include "../game/checkML.h"
 
 class Inventory;
 class ItemInfo {

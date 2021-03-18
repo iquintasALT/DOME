@@ -1,0 +1,57 @@
+1. INTRO
+Buenas tardes, somos Sureffect y vamos a presentar el progreso de nuestro juego DOME.
+
+
+2. IDEA GENERAL
+
+DOME es un survival shooter scroller 2D inspirado en juegos como This War Of Mine, Escape from Tarkov y Metro Exodus.
+
+En él, controlamos uno de los últimos superviviente de una colonia establecida en el planeta Aurora, la cual se ha visto comprometida después de sufrir una brecha causada por una raza alienígena desconocida.
+
+Debido a que la integridad de la cúpula y la temperatura de la colonia desciende a cada momento que pasa, nuestro protagonista deberá explorar y gestionar sus recursos para conseguir reparar la última capsula de evacuación y así escapar antes de que la colonia sea inhabitable.
+
+
+3. JUGABILIDAD,MECÁNICAS Y DINÁMICAS
+
+3.1
+
+DOME es un survival shooter scroller 2D inspirado en juegos como This War Of Mine, Escape from Tarkov y Metro Exodus.
+
+En él, controlamos uno de los últimos superviviente de una colonia establecida en el planeta Aurora, la cual se ha visto comprometida después de sufrir una brecha causada por una raza alienígena desconocida.
+
+Debido a que la integridad de la cúpula y la temperatura de la colonia desciende a cada momento que pasa, nuestro protagonista deberá explorar y gestionar sus recursos para conseguir reparar la última capsula de evacuación y así escapar antes de que la colonia sea inhabitable.
+
+3.2
+
+Al comienzo de cada día el jugador podrá elegir una localización a la que viajar, debido a que nuestro protagonista es residente de la colonia posee cierto conocimiento de los lugares que puede visitar así como la distancia a la que se encuentran de su refugio sin embargo, alguna información relativa al estado del lugar tras el desastre será desconocida para el hasta que no visite una localización cercana previamente. 
+
+Un ejemplo de esto es como el restaurante de la esquina que debería estar lleno de comida, tras el desastre está lleno de alienígenas y la mayoría de la comida a desparecido.
+
+Una vez elegido un lugar y seleccionado su equipamiento el jugador dispondrá de un tiempo limitado dictado por las horas de luz y el tiempo de viaje a dicha localización.
+
+Deberá gestionar este tiempo para explorar y saquear recursos mientras se ocupa de los enemigos y obstáculos que presente la zona.
+
+3.3
+
+El combate será de tipo point and click y contará con distintos tipos de proyectiles como balísticos, de energía o con ricochet. 
+
+Recibir heridas afectara al estado del personaje y podrá causar el final de la partida. 
+
+Por ello, el jugador deberá gestionar su equipamiento antes de visitar una zona determinada… llevando medicinas, armas y protección suficiente para sobrevivir a los encuentros que esta pueda presentar.
+
+Si al acabar el tiempo el jugador tarda demasiado en abandonar la localización sufrirá penalizaciones por hipotermia que en caso de ser muy graves tendrán como consecuencia la muerte del mismo y por tanto el final de la partida.
+
+Además, estas localizaciones contarán con tablas de saqueo diferentes  (por ejemplo un hospital tendrá mayor posibilidad de contener medicinas) y aumentaran en dificultad según su cercanía a la brecha.
+
+
+3.4
+
+En la segunda parte de nuestro loop, durante las frías noches del planeta Aurora el jugador gestionará los recursos conseguidos durante el día en la seguridad de su refugio.
+
+En el, contará con distintas estaciones en las que podrá realizar acciones que restarán tiempo de la noche.
+
+Estas serán desde las más rutinarias como comer o dormir hasta acciones que afectan al progreso principal del juego como realizar reparaciones en la capsula de evacuación.
+
+Así, el jugador deberá aprender a gestionar correctamente sus recursos para poder sobrevivir hasta reparar la nave.
+
+Decidiendo cada día que lugar ir a saquear durante las horas de luz, usando el equipamiento correcto y manteniendo un balance entre supervivencia y progreso en el refugio durante la noche.

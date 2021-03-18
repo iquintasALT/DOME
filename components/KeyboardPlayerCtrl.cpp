@@ -1,5 +1,6 @@
 #include "KeyboardPlayerCtrl.h"
 #include "../classes/player.h"
+#include "../classes/camera.h"
 
 void KeyboardPlayerCtrl::update() {
 	if (!crouched) {
@@ -38,6 +39,8 @@ void KeyboardPlayerCtrl::update() {
 		entityTr->setH(entityTr->getH() * 2);
 		crouched = false;
 	}
+
+	//Camera::mainCamera->FollowPlayer(entityTr->getPos());
 }
 
 void KeyboardPlayerCtrl::resetSpeed() {

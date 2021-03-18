@@ -2,6 +2,7 @@
 #define GAMESTATEMACHINE_H_
 
 #include "../classes/game_scene.h"
+#include "../game/checkML.h"
 #include <stack>
 
 using namespace std;

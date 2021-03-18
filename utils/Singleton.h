@@ -3,6 +3,7 @@
 #pragma once
 #include <memory>
 #include <cassert>
+#include "../game/checkML.h"
 
 /*
  * This is an attempt to have a single Singleton class that can be used

@@ -5,6 +5,8 @@
 #include <SDL.h>
 #include <string>
 #include "../utils/Vector2D.h"
+#include "../game/checkML.h"
+
 /*
  * This file includes some SDL related methods/macros, nothing sophisticated, just
  * shortcuts for lengthy instructions
