@@ -117,7 +117,7 @@ public:
 		groups_.reset();
 	}
 
-	void update() {
+	virtual void update() {
 		if (!active) return;
 
 		std::size_t n = components_.size();

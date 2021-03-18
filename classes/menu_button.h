@@ -16,6 +16,5 @@ private:
 
 public:
 	MenuButton(Vector2D pos, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_);
-	void render() const;
-	bool handleEvents(const SDL_Event& e);
+	void update() override;
 };
