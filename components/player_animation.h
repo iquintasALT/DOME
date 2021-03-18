@@ -4,6 +4,7 @@
 #include "Image.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/checkML.h"
+#include "../sdlutils/InputHandler.h"
 
 class player_animation : public Component {
 public:
