@@ -39,7 +39,7 @@ class InteractableElement;
 	MapRender, \
 	KeepDistance,\
 	DistanceDetection,\
-	RayCastDetection
+	RayCastDetection,\
 	Interactions, \
 	InteractableElement
 
