@@ -25,7 +25,7 @@ public:
 	Vector2D dir;
 	float angleDispersion;
 	float lifeTime;
-	float rotation;
+	float initialRotation;
 	float speed;
 	int count;
 	bool burst;

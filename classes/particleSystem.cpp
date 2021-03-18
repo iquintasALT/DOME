@@ -1,15 +1,20 @@
 #include "particleSystem.h"
 #include <iostream>
+#include <math.h>
+
+#define degreesToRadians(angleDegrees) (angleDegrees * M_PI / 180.0)
+#define radiansToDegrees(angleRadians) (angleRadians * 180.0 / M_PI)
+
 ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
-texture(tex){
+	texture(tex) {
 	int w = tex->width() / cols;
 	int h = tex->height() / rows;
 	source = { w * c ,h * r,w,h };
 	lifeTime = 1;
-
-
-	distanceToOrigin = 100;
+	distanceToOrigin = 0;
 	speed = 1;
+	initialRotation = 50;
+	dir = Vector2D(1, 0);
 }
 
 ParticleSystem::~ParticleSystem() {
@@ -30,8 +35,6 @@ void ParticleSystem::init() {
 
 	for (int i = 0; i < 10; i++)
 		spawnParticle();
-
-
 }
 
 void ParticleSystem::update() {
@@ -53,7 +56,6 @@ void ParticleSystem::update() {
 }
 
 void ParticleSystem::render() {
-
 	for (auto transform_ : particles) {
 		bool shouldRender = true;
 		Vector2D relPos = transform->getPos() + transform_->getPos();
@@ -65,8 +67,15 @@ void ParticleSystem::render() {
 }
 
 void ParticleSystem::spawnParticle() {
+	//Vector2D particleSpeed = Vector2D(randomInt(-10, 11), randomInt(-10, 11)).normalize() * speed;
+
 	Vector2D particleOrigin = transform->getPos() + Vector2D(randomInt(-10, 11), randomInt(-10, 11)).normalize() * distanceToOrigin;
-	Vector2D particleSpeed = Vector2D(randomInt(-10, 11), randomInt(-10, 11)).normalize() * speed;
+
+	float rot = randomInt(-100, 101) / 100.0;
+	float angle = degreesToRadians(rot);
+	Vector2D particleSpeed = Vector2D(
+		cos(angle) * dir.getX() - sin(angle) * dir.getY(),
+		sin(angle) * dir.getX() - cos(angle) * dir.getY()) * speed;
 
 	particles.push_back(new Transform(particleOrigin, particleSpeed, width, height, 0));
 	particleLife.push_back(lifeTime);
