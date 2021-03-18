@@ -6,9 +6,9 @@
 
 MenuScene::MenuScene(Game* g) {
 	mngr_->addEntity(new MenuButton(Vector2D(1 * sdlutils().width() / 5, 2 * sdlutils().height() / 5),
-		&sdlutils().images().at("weapons"), playShelter, g, mngr_));
+		&sdlutils().images().at("shelterButton"), playShelter, g, mngr_));
 	mngr_->addEntity(new MenuButton(Vector2D(3 * sdlutils().width() / 5, 2 * sdlutils().height() / 5),
-		&sdlutils().images().at("weapons"), playRaid, g, mngr_));
+		&sdlutils().images().at("raidButton"), playRaid, g, mngr_));
 }
 
 void MenuScene::init() {
