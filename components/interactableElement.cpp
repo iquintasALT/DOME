@@ -13,27 +13,29 @@ bool InteractableElement::CheckCollision(Point2D pos) {
 	if (inCollision && !isColliding) CollisionEnter();
 	if (!inCollision && isColliding) CollisionExit();
 
-	if (inCollision) std::cout << message;
 
+	isColliding = inCollision;
 	return inCollision;
 }
 
 
 void InteractableElement::CollisionEnter() {
-	std::cout << "Collision enter";
+	std::cout << "Collision enter" << std::endl;
 }
 
 
 void InteractableElement::CollisionExit() {
-	std::cout << "Collision exit";
+	std::cout << "Collision exit" << std::endl;
 }
 
 void InteractableElement::Interact() {
-	std::cout << "Interact OWO";
+	std::cout << message << std::endl;
 }
 
 
 void InteractableElement::init(){
 	transform = entity_->getComponent<Transform>();
 	entity_->getMngr()->AddInteractableElement(this);
+
+	assert(transform != nullptr);
 }
