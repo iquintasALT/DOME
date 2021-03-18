@@ -18,6 +18,8 @@ class EnemyBehaviourComponent;
 class ChasePlayer;
 class MapRender;
 class KeepDistance;
+class DistanceDetection;
+class RayCastDetection;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -33,7 +35,9 @@ class KeepDistance;
 	EnemyBehaviourComponent, \
 	ChasePlayer, \
 	MapRender, \
-	KeepDistance
+	KeepDistance,\
+	DistanceDetection,\
+	RayCastDetection
 
 
 // groups
