@@ -13,11 +13,12 @@ private:
 
 	virtual void CollisionEnter();
 	virtual void CollisionExit();
+	virtual void Collision();
+
 public:
 	InteractableElement(std::string msg) :message(msg), transform(nullptr){};
 	void init() override; 
 	virtual void Interact();
-
 	bool CheckCollision(Point2D playerPos);
 };
 
