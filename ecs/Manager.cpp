@@ -42,3 +42,7 @@ void Manager::render() {
 	for (auto i = 0u; i < n; i++)
 		entities_[i]->render();
 }
+
+void Manager::AddInteractableElement(InteractableElement* ie) {
+	interactableElements.push_back(ie);
+}
