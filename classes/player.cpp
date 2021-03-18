@@ -10,6 +10,7 @@
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/InventoryController.h"
 #include "../components/weapon.h"
+#include "../components/interactions.h"
 
 Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 {
@@ -20,6 +21,7 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<player_animation>();
 	addComponent<GravityComponent>();
 	addComponent<KeyboardPlayerCtrl>();
+	addComponent<Interactions>();
 
 	Vector2D playerPos = getComponent<Transform>()->getPos();
 	Transform* playerTr = getComponent<Transform>();
