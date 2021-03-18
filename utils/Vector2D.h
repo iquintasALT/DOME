@@ -143,6 +143,23 @@ public:
 		return d.x_ * x_ + d.y_ * y_;
 	}
 
+	bool intersection(Point2D p1, Vector2D v1, Point2D p2, Vector2D v2, Point2D& intersect){
+		float m1 = v1.getY() / v1.getX();
+		float m2 = v2.getY() / v2.getX();
+		float n1 = v1.getY() - m1 * v1.getX();
+		float n2 = v2.getY() - m2 * v2.getX();
+		if (m1 == m2 && n1 == n2)
+		{
+			intersect = p1;
+			return true;
+		}
+		if (m1 == m2)
+			return false;
+		float x = (n2 - n1) / (m1 - m2);
+		intersect = Vector2D(x, m1 * x + n1);
+		return true;
+	}
+
 private:
 	float x_;  // first coordinate
 	float y_;  // second coordinate
