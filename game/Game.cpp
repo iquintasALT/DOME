@@ -42,8 +42,8 @@ void Game::init() {
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "resources/config/resources.json");
 	sdlutils().showCursor();
 
-	states->pushState(new RaidScene());
-	//states->pushState(new MenuScene(this));
+	//states->pushState(new RaidScene());
+	states->pushState(new MenuScene(this));
 	states->currentState()->init();
 	//states->pushState(new ShelterScene());
 	//states->currentState()->init();
@@ -74,7 +74,7 @@ void Game::start() {
 		//mngr_->update();
 		//mngr_->refresh();
 
-		Camera::mainCamera->MoveDir(Vector2D(1, 0));
+		//Camera::mainCamera->MoveDir(Vector2D(1, 0));
 
 		sdlutils().clearRenderer();
 		//mngr_->render();
