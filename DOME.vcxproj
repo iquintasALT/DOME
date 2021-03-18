@@ -73,6 +73,7 @@
     <ClInclude Include="sdlutils\Texture.h" />
     <ClInclude Include="sdlutils\VirtualTimer.h" />
     <ClInclude Include="utils\Collisions.h" />
+    <ClInclude Include="utils\ray_cast.h" />
     <ClInclude Include="utils\Singleton.h" />
     <ClInclude Include="utils\Vector2D.h" />
   </ItemGroup>
@@ -118,6 +119,7 @@
     <ClCompile Include="sdlutils\SoundEffect.cpp" />
     <ClCompile Include="sdlutils\Texture.cpp" />
     <ClCompile Include="utils\Collisions.cpp" />
+    <ClCompile Include="utils\ray_cast.cpp" />
     <ClCompile Include="utils\Vector2D.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
