@@ -126,6 +126,13 @@
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="components\enemy_detection_component.cpp">
+    <ClCompile Include="utils\ray_cast.cpp">
+      <Filter>Source Files\utils</Filter>
+    </ClCompile>
+    <ClCompile Include="components\interactableElement.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\interactions.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -299,6 +306,13 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\enemy_detection_component.h">
+    <ClInclude Include="utils\ray_cast.h">
+      <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="components\interactableElement.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\interactions.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>

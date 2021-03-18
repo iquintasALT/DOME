@@ -14,7 +14,7 @@ Enemy::Enemy(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	mngr_->addEntity(this);
 	addComponent<Transform>(pos, Vector2D(), 32, 64, 0);
 	addComponent<GravityComponent>();
-	addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
+	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	addComponent<player_animation>();
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
 	addComponent<ChasePlayer>(consts::MELEE_ENEMY_SPEED, consts::MELEE_ENEMY_STOPDISTANCE);
