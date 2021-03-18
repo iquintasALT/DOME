@@ -2,6 +2,7 @@
 #define ENEMYBEHAVIOUR_H_
 #include "enemy_component.h"
 #include "../game/checkML.h"
+#include "../components/enemy_detection_component.h"
 
 class Player;
 class EnemyBehaviourComponent :
@@ -10,6 +11,7 @@ class EnemyBehaviourComponent :
 protected:
     Transform* playerTr;
     Transform* entityTr;
+    EnemyDetectionComponent* enemyDetection;
 public:
     EnemyBehaviourComponent() : playerTr(nullptr), entityTr(nullptr) {};
     virtual void update() override = 0;
