@@ -8,7 +8,7 @@
 class player_animation : public Component {
 public:
 	player_animation() : im_(nullptr), tr_(nullptr) {
-		frameX_ = 0; frameY_ = 0;
+		frameX_ = 0; frameY_ = 0; frameDivision = 3;
 	};
 
 	virtual void init();
@@ -24,4 +24,5 @@ private:
 	Transform* tr_;
 	int frameX_; int frameY_; 
 	float frameTime = 0;
+	int frameDivision;
 };

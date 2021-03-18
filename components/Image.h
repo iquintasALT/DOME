@@ -79,6 +79,10 @@ public:
 		flip_ = flip;
 	}
 
+	inline SDL_RendererFlip getFlip() {
+		return flip_;
+	}
+
 	void setRotationOrigin(int x, int y) {
 		rotationOrigin = { x, y };
 	}
