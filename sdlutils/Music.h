@@ -4,6 +4,7 @@
 
 #include <string>
 #include <SDL_mixer.h>
+#include "../game/checkML.h"
 
 class Music {
 public:

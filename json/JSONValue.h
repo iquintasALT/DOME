@@ -29,6 +29,7 @@
 #include <string>
 
 #include "../json/JSON.h"
+#include "../game/checkML.h"
 
 class JSON;
 

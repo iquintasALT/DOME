@@ -18,7 +18,7 @@ Countdown::Countdown(int totaltime)
 	starttime = SDL_GetTicks();
 	updatetime = SDL_GetTicks();
 
-	std::string aux = getHourString(lefttime/1000);
+	std::string aux = getHourString(lefttime / 1000);
 
 }
 
@@ -34,10 +34,12 @@ void Countdown::render() {
 	}
 
 	//delete counter;
-	if(counter == nullptr)
 	counter = new Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("ARIAL24"),
 		build_sdlcolor(0xffffffff));
-	counter.render(50, 10);
+
+	counter->render(50, 10);
+	delete counter;
+	counter = nullptr;
 }
 
 void Countdown::update()

@@ -4,6 +4,7 @@
 
 #include <cmath>
 #include <ostream>
+#include "../game/checkML.h"
 
 /*
  * A class implementing a 2-dimensional vector and corresponding

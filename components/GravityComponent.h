@@ -4,6 +4,7 @@
 #include "../components/Transform.h"
 #include "../utils/Collisions.h"
 #include "../game/constant_variables.h"
+#include "../game/checkML.h"
 
 class GravityComponent : public GameEntityComponent {
 public:

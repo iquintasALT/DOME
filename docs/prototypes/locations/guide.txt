@@ -1,0 +1,4 @@
+Rectangulo rojo, enemigo a distancia
+Circulo rojo, enemigo a mele
+Rectangulo marron, Almacenamiento
+En las paredes si es rojo es que esta cerrado y verde que se puede pasar

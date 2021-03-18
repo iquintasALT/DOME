@@ -7,4 +7,6 @@ namespace consts {
 	const float PLAYER_SPEED = 3.0f;
 	const float MELEE_ENEMY_SPEED = 2.5f;
 	const float MELEE_ENEMY_STOPDISTANCE = 50.0f;
+	const int WINDOW_WIDTH = 1088;
+	const int WINDOW_HEIGHT = 736;
 }

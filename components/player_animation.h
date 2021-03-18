@@ -3,6 +3,7 @@
 #include "../ecs/Component.h"
 #include "Image.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../game/checkML.h"
 
 class player_animation : public Component {
 public:

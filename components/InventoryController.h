@@ -12,7 +12,7 @@
 #include "../classes/player.h"
 //#include "../components/weapon.h"
 #include "../components/weapon.h"
-
+#include "../game/checkML.h"
 
 class InventoryController: public Component
 {
