@@ -11,7 +11,6 @@ void start() {
 
 	g.init();
 	g.start();
-	
 }
 
 

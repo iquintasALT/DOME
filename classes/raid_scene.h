@@ -1,6 +1,7 @@
 #pragma once
 #include "game_scene.h"
 #include "enemy.h"
+#include "ranged_enemy.h"
 #include "player.h"
 #include "map.h"
 #include "../game/checkML.h"
