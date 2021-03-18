@@ -13,7 +13,12 @@ void player_animation::playerWalk() {
 		else if (x > 0) im_->setFlip(SDL_FLIP_NONE);
 	}
 	else {
-		frameY_ = 0; frameDivision = 3;
+		if (ih().isKeyDown(SDL_SCANCODE_LCTRL)) frameY_ = 2;
+		else
+		{
+			frameY_ = 0;
+		}
+		frameDivision = 3;
 		if (frameX_ > 3) frameX_ = 0;
 	}
 
