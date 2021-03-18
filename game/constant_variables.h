@@ -10,6 +10,7 @@ namespace consts {
 	const float RANGED_ENEMY_SPEED = PLAYER_SPEED / 2;
 	const float RANGED_ENEMY_MARGINDISTANCE = 250.0f;
 	const float RANGED_ENEMY_SHOOTDISTANCE = 350.0f;
+	const float ACTIVATE_ENEMY_DISTANCE = 400.0f;
 	const int WINDOW_WIDTH = 1088;
 	const int WINDOW_HEIGHT = 736;
 }

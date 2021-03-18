@@ -7,6 +7,7 @@
 #include "../components/Image.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/enemy_behaviour_component.h"
+#include "../components/enemy_detection_component.h"
 
 Enemy::Enemy(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 {
@@ -15,5 +16,6 @@ Enemy::Enemy(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<GravityComponent>();
 	addComponent<Image>(&sdlutils().images().at("player"), 2, 14, 0, 0);
 	addComponent<player_animation>();
+	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
 	addComponent<ChasePlayer>(consts::MELEE_ENEMY_SPEED, consts::MELEE_ENEMY_STOPDISTANCE);
 }

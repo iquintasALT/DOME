@@ -7,40 +7,45 @@ void EnemyBehaviourComponent::init()
 {
 	playerTr = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
 	entityTr = entity_->getComponent<Transform>();
-	assert(playerTr != nullptr && entityTr != nullptr);
+	enemyDetection = entity_->getComponent<DistanceDetection>();
+	assert(playerTr != nullptr && entityTr != nullptr && enemyDetection != nullptr);
 }
 
 ChasePlayer::ChasePlayer(float speed_, float stopDistance_) :speed(speed_), stopDistance(stopDistance_){};
 
 void ChasePlayer::update() {
-	if (std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()) > stopDistance) {
-		if (playerTr->getPos().getX() - entityTr->getPos().getX() > 0.0f)
-			entityTr->setVelX(speed);
-		else if (playerTr->getPos().getX() - entityTr->getPos().getX() < 0.0f)
-			entityTr->setVelX(-speed);
+	if (enemyDetection->isActive()) {
+		if (std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()) > stopDistance) {
+			if (playerTr->getPos().getX() - entityTr->getPos().getX() > 0.0f)
+				entityTr->setVelX(speed);
+			else if (playerTr->getPos().getX() - entityTr->getPos().getX() < 0.0f)
+				entityTr->setVelX(-speed);
+		}
+		else entityTr->setVelX(0.0);
 	}
-	else entityTr->setVelX(0.0);
 }
 
 KeepDistance::KeepDistance(float speed_, float marginDisntace_, float shootDistance_) : speed(speed_), 
 									marginDistance(marginDisntace_), shootDistance(shootDistance_) {};
 
 void KeepDistance::update() {
-	float distance = playerTr->getPos().getX() - entityTr->getPos().getX();
+	if (enemyDetection->isActive()) {
+		float distance = playerTr->getPos().getX() - entityTr->getPos().getX();
 
-	if (std::abs(distance) < marginDistance) {
-		//Enemigo a la izquierda del jugador
-		if (distance > 0.0f) entityTr->setVelX(-speed);
+		if (std::abs(distance) < marginDistance) {
+			//Enemigo a la izquierda del jugador
+			if (distance > 0.0f) entityTr->setVelX(-speed);
 
-		//Enemigo a la derecha del jugador
-		else if (distance < 0.0f) entityTr->setVelX(speed);
+			//Enemigo a la derecha del jugador
+			else if (distance < 0.0f) entityTr->setVelX(speed);
+		}
+		else if (std::abs(distance) > shootDistance) {
+			//Enemigo a la izquierda del jugador
+			if (distance > 0.0f) entityTr->setVelX(speed);
+
+			//Enemigo a la derecha del jugador
+			else if (distance < 0.0f) entityTr->setVelX(-speed);
+		}
+		else entityTr->setVelX(0.0);
 	}
-	else if (std::abs(distance) > shootDistance) {
-		//Enemigo a la izquierda del jugador
-		if (distance > 0.0f) entityTr->setVelX(speed);
-
-		//Enemigo a la derecha del jugador
-		else if (distance < 0.0f) entityTr->setVelX(-speed);
-	}
-	else entityTr->setVelX(0.0);
 }
