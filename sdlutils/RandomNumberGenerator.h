@@ -39,6 +39,5 @@ public:
 private:
 	std::mt19937 gen_;
 	std::uniform_int_distribution<int> dist_;
-
 };
 
