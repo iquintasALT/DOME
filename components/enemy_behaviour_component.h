@@ -11,6 +11,7 @@ protected:
     Transform* playerTr;
     Transform* entityTr;
 public:
+    EnemyBehaviourComponent() : playerTr(nullptr), entityTr(nullptr) {};
     virtual void update() override = 0;
     virtual void init() override;
 };
@@ -23,6 +24,16 @@ protected:
     float stopDistance;
 public:
     ChasePlayer(float speed_, float stopDistance_);
+    virtual void update() override;
+};
+
+class KeepDistance : public EnemyBehaviourComponent {
+protected:
+    float speed;
+    float marginDistance;
+    float shootDistance;
+public:
+    KeepDistance(float speed, float marginDisntace, float shootDistance);
     virtual void update() override;
 };
 #endif

@@ -13,6 +13,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../components/InventoryController.h"
 #include "../components/Inventory.h"*/
+
 class Manager;
 class GameCharacter :
     public GameEntity
