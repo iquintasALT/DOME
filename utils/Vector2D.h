@@ -143,7 +143,8 @@ public:
 		return d.x_ * x_ + d.y_ * y_;
 	}
 
-	bool intersection(Point2D p1, Vector2D v1, Point2D p2, Vector2D v2, Point2D& intersect){
+	bool intersection(const Vector2D& p1, const Vector2D& v1, const Vector2D& p2, const Vector2D& v2, Vector2D& intersect){
+
 		float m1 = v1.getY() / v1.getX();
 		float m2 = v2.getY() / v2.getX();
 		float n1 = v1.getY() - m1 * v1.getX();

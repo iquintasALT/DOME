@@ -38,4 +38,16 @@ public:
     KeepDistance(float speed, float marginDisntace, float shootDistance);
     virtual void update() override;
 };
+/*
+class FlyingChasePlayer :
+    public EnemyBehaviourComponent
+{
+protected:
+    float speed;
+    float stopDistance;
+    float hoverHeight;
+public:
+    FlyingChasePlayer(float speed_, float stopDistance_, float hoverHeight_);
+    virtual void update() override;
+};*/
 #endif
