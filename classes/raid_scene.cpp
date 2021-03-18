@@ -1,7 +1,7 @@
 #include "raid_scene.h"
 
 #include "../components/interactableElement.h"
-
+#include "../classes/particleSystem.h"
 
 void RaidScene::init() {
 	string path = "./resources/tilemap/template.tmx";
@@ -18,4 +18,7 @@ void RaidScene::init() {
 	interactableElement->addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	interactableElement->addComponent<InteractableElement>("Hola nena");
 
+	Entity* particles = mngr_->addEntity();
+	particles->addComponent<Transform>(Vector2D(200, 200), Vector2D(), 30, 30, 0);
+	particles->addComponent<ParticleSystem>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 }

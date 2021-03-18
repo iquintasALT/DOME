@@ -22,6 +22,7 @@ class DistanceDetection;
 class RayCastDetection;
 class Interactions;
 class InteractableElement;
+class ParticleSystem;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -41,7 +42,8 @@ class InteractableElement;
 	DistanceDetection,\
 	RayCastDetection,\
 	Interactions, \
-	InteractableElement
+	InteractableElement, \
+	ParticleSystem
 
 // groups
 
