@@ -32,6 +32,9 @@ void InteractableElement::Interact() {
 	std::cout << message << std::endl;
 }
 
+void InteractableElement::Collision() {
+
+}
 
 void InteractableElement::init(){
 	transform = entity_->getComponent<Transform>();
