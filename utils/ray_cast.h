@@ -43,8 +43,9 @@ public:
 		Vector2D closestEdgeDirection = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4];
 
 		Point2D intersect = Point2D();
+
 		return (Vector2D::intersection(rC.origin, rC.direction, s.vertices[closestVertex], closestEdgeDirection, intersect)
-			&& Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], intersect);
+			&& Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], intersect));
 	}
 
 	//TO DO
