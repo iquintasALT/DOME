@@ -41,6 +41,8 @@
     <ClInclude Include="classes\weapon_behaviour.h" />
     <ClInclude Include="components\GravityComponent.h" />
     <ClInclude Include="components\Image.h" />
+    <ClInclude Include="components\interactableElement.h" />
+    <ClInclude Include="components\interactions.h" />
     <ClInclude Include="components\Inventory.h" />
     <ClInclude Include="components\InventoryController.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
@@ -99,6 +101,8 @@
     <ClCompile Include="components\game_entity_component.cpp" />
     <ClCompile Include="classes\weapon_behaviour.cpp" />
     <ClCompile Include="components\GravityComponent.cpp" />
+    <ClCompile Include="components\interactableElement.cpp" />
+    <ClCompile Include="components\interactions.cpp" />
     <ClCompile Include="components\Inventory.cpp" />
     <ClCompile Include="components\InventoryController.cpp" />
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />

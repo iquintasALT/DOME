@@ -10,9 +10,10 @@
 #include "ecs.h"
 #include "Entity.h"
 
+class InteractableElement;
+
 class Manager {
 public:
-
 	Manager();
 	virtual ~Manager();
 
@@ -49,12 +50,19 @@ public:
 		return entities_;
 	}
 
+	inline const std::vector<InteractableElement*>& getInteractableElements() {
+		return interactableElements;
+	}
 	void update();
 	void render();
 	void refresh();
 
+	void AddInteractableElement(InteractableElement* ie);
 private:
 	std::vector<Entity*> entities_;
 	std::array<Entity*, ecs::maxHdlr> hdlrs_;
+
+
+	std::vector<InteractableElement*> interactableElements;
 };
 
