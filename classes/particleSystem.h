@@ -69,7 +69,7 @@ public:
 	float speed;
 	int count;
 	bool burst;
-	int rateOverTime;
+	float rateOverTime;
 
 	float particleScale = 1;
 
@@ -79,12 +79,14 @@ public:
 	bool inheritVelocity;
 	float inheritVelocityMultiplier = 1;
 	bool playOnAwake = true;
-
+	int burstCount;
+	float burstDuration;
 	bool sizeOverTime;
 	Function sizeCurve;
 
 	void Play();
 	void Stop();
+	void Burst();
 private:
 	Texture* texture;
 	SDL_Rect source;
@@ -96,6 +98,7 @@ private:
 	Transform* transform;
 
 	float rateTimer = 0;
+	float burstTimer = 0;
 
 	inline int randomInt(int min, int max);
 	void spawnParticle();

@@ -40,6 +40,10 @@
         {
             "id": "raidButton",
             "file": "resources/sprites/raid_button.png"
+        },
+        {
+            "id": "dust",
+            "file": "resources/sprites/dustParticle.png"
         }
     ],
 
