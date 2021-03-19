@@ -6,22 +6,30 @@
 #define radiansToDegrees(angleRadians) (angleRadians * 180.0 / M_PI)
 
 ParticleSystem::ParticleSystem(Transform* parent, Texture* tex, int rows, int cols, int r, int c) :
-	texture(tex) , parentTransform(parent){
+	texture(tex), parentTransform(parent) {
 	int w = tex->width() / cols;
 	int h = tex->height() / rows;
+
+	width = texture->width() * particleScale / cols;
+	height = texture->height() * particleScale / rows;
+
 	source = { w * c ,h * r,w,h };
+
+	//Particle properties
 	lifeTime = 10;
 	distanceToOrigin = 0;
-	speed = 1;
-	angleDispersion = 360;
+	speed = 2;
+	angleDispersion = 30;
 	dir = Vector2D(0, 1).normalize();
 	rateOverTime = 3;
-
 	rateTimer = 0;
 	worldPosition = true;
-	gravity = false;
-
+	gravity = true;
 	inheritVelocity = true;
+	inheritVelocityMultiplier = -1;
+	emitting = playOnAwake;
+	offset = Vector2D(0, 10);
+	particleScale = .5;
 }
 
 ParticleSystem::~ParticleSystem() {
@@ -34,22 +42,20 @@ ParticleSystem::~ParticleSystem() {
 
 void ParticleSystem::init() {
 	transform = entity_->getComponent<Transform>();
-
-	width = transform->getW();
-	height = transform->getH();
-
 	assert(transform != nullptr);
 
-	for (int i = 0; i < 10; i++)
-		spawnParticle();
+	width *= particleScale;
+	height *= particleScale;
 }
 
 void ParticleSystem::update() {
-	rateTimer += consts::DELTA_TIME;
+	if (emitting) {
+		rateTimer += consts::DELTA_TIME;
 
-	if (rateTimer > 1.0 / rateOverTime) {
-		spawnParticle();
-		rateTimer = 0;
+		if (rateTimer > 1.0 / rateOverTime) {
+			spawnParticle();
+			rateTimer = 0;
+		}
 	}
 
 	if (particles.size() <= 0) return;
@@ -85,18 +91,18 @@ void ParticleSystem::render() {
 }
 
 void ParticleSystem::spawnParticle() {
-	//Vector2D particleSpeed = Vector2D(randomInt(-10, 11), randomInt(-10, 11)).normalize() * speed;
-	Vector2D particleOrigin = Vector2D(randomInt(-10, 11), randomInt(-10, 11)).normalize() * distanceToOrigin;
+	Vector2D particleOrigin = Vector2D(randomInt(-10, 11), randomInt(-10, 11)).normalize() * distanceToOrigin + offset;
+
 	if (worldPosition) particleOrigin = particleOrigin + transform->getPos();
 
 	float rot = randomInt(-100, 101) / 100.0;
-	float angle = degreesToRadians(angleDispersion * rot);
+	float angle = degreesToRadians(angleDispersion * rot / 2);
 	Vector2D particleSpeed = Vector2D(
 		cos(angle) * dir.getX() - sin(angle) * dir.getY(),
 		sin(angle) * dir.getX() - cos(angle) * dir.getY()) * speed;
 
 	if (inheritVelocity)
-		particleSpeed = particleSpeed + parentTransform->getVel();
+		particleSpeed = particleSpeed + parentTransform->getVel() * inheritVelocityMultiplier;
 
 	particles.push_back(new Transform(particleOrigin, particleSpeed, width, height, 0));
 	particleLife.push_back(lifeTime);
@@ -104,4 +110,12 @@ void ParticleSystem::spawnParticle() {
 
 int ParticleSystem::randomInt(int min, int max) {
 	return min + rand() % (max - min);
+}
+
+void ParticleSystem::Play() {
+	emitting = true;
+	rateTimer = 0;
+}
+void ParticleSystem::Stop() {
+	emitting = false;
 }
