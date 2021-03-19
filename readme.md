@@ -125,7 +125,17 @@ Pepega a melee: comportamiento más agresivo, rushea al jugador cuando se da cue
 
 Pepega a rango: comportamiento más cauteloso, se comportan como guardias usando coberturas para frenar el avance del jugador siguen patrones de disparo que el jugador deberá usar para eliminarlos.
 
-# Medicina <a name="medi"></a>
+# Salud <a name="medi"></a>
+
+Modelo carretes:
+No hay barra de "HP"
+Cada estado que recibes se añade a una pila
+Cada estado te aplica un debufo concreto
+La mayoría de estados simplemente se quedarán ahí hasta que le apliques la medicina correcta
+El debufo del desangrado es que al pasar un tiempo te añade automáticamente más desangrados
+Algún debufo, como la concusión, se va solo tras un tiempo
+Si en algún momento tienes X debufos activos a la vez, la pantalla se vuelve muy roja por 5 segundos, si en este tiempo no te curas alguno, mueres
+Cuando vuelves al refugio, se te curan todas las heridas
 
 Heridas de bala.
 
@@ -215,7 +225,13 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 # Enemigos
 | Nombre | Sprite | .... | 
 |--------|--------|-------|
-| N/A | N/A | N/A |
+| Melé | N/A | Se acerca al jugador y le hace daño (daño/explosion) |
+| Torreta | N/A | Fijo en el suelo, dispara al jugador |
+| Volador | N/A | Vuela, persigue al jugador (bombardero, la abeja del Hollow Knight) |
+
+*MENOS PRIORIDAD:*
+| Blob de Minecraft | N/A | Le matas y se divide |
+
 
 ![Estética](./docs/headers/h_estetica.png) <a name="este"></a>
 
