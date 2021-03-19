@@ -16,7 +16,7 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	source = { w * c ,h * r,w,h };
 
 	//Particle properties
-	lifeTime = 1;
+	lifeTime = 4;
 	distanceToOrigin = 0;
 	speed = 1;
 	angleDispersion = 30;
@@ -28,7 +28,7 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	inheritVelocity = false;
 	inheritVelocityMultiplier = -1;
 	emitting = playOnAwake;
-	offset = Vector2D(0, 10);
+	offset = Vector2D(10, height / 2 + 10);
 	particleScale = .5;
 
 	sizeOverTime = true;
