@@ -12,7 +12,6 @@ public:
 	WeaponBehaviour* getCurrentWeapon();
 	WeaponBehaviour* equipWeapon(WeaponBehaviour* newWeapon);
 
-
 protected:
 	WeaponBehaviour* weapon;
 
