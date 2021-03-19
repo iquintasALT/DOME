@@ -31,6 +31,7 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<InventoryController>();
 }
 
+
 WeaponBehaviour* Player::getCurrentWeapon() {
 	return weapon;
 }

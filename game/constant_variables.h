@@ -13,4 +13,5 @@ namespace consts {
 	const float ACTIVATE_ENEMY_DISTANCE = 400.0f;
 	const int WINDOW_WIDTH = 1088;
 	const int WINDOW_HEIGHT = 736;
+	const float FALLING_DMG_SPEED = 8;
 }
