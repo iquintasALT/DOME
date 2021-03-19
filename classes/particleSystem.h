@@ -13,7 +13,7 @@
 class ParticleSystem: public Component
 {
 public:
-	ParticleSystem(Transform* parent, Texture* tex, int rows, int cols, int r, int c);
+	ParticleSystem(Texture* tex, int rows, int cols, int r, int c);
 	~ParticleSystem();
 	void update() override;
 	void init() override;
@@ -52,7 +52,6 @@ private:
 	std::vector<float> particleLife;
 	
 	bool emitting;
-	Transform* parentTransform;
 
 	Transform* transform;
 

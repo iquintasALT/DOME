@@ -5,8 +5,8 @@
 #define degreesToRadians(angleDegrees) (angleDegrees * M_PI / 180.0)
 #define radiansToDegrees(angleRadians) (angleRadians * 180.0 / M_PI)
 
-ParticleSystem::ParticleSystem(Transform* parent, Texture* tex, int rows, int cols, int r, int c) :
-	texture(tex), parentTransform(parent) {
+ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
+	texture(tex) {
 	int w = tex->width() / cols;
 	int h = tex->height() / rows;
 
@@ -102,7 +102,7 @@ void ParticleSystem::spawnParticle() {
 		sin(angle) * dir.getX() - cos(angle) * dir.getY()) * speed;
 
 	if (inheritVelocity)
-		particleSpeed = particleSpeed + parentTransform->getVel() * inheritVelocityMultiplier;
+		particleSpeed = particleSpeed + transform->getVel() * inheritVelocityMultiplier;
 
 	particles.push_back(new Transform(particleOrigin, particleSpeed, width, height, 0));
 	particleLife.push_back(lifeTime);

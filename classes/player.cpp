@@ -23,7 +23,7 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<GravityComponent>();
 	addComponent<KeyboardPlayerCtrl>();
 	addComponent<Interactions>();
-	addComponent<ParticleSystem>(t, &sdlutils().images().at("player"), 3, 14, 0, 0);
+	addComponent<ParticleSystem>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 
 	Vector2D playerPos = t->getPos();
 	weapon = new WeaponBehaviour(3, 5, mngr_, playerPos, t, 7);
