@@ -16,23 +16,28 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	source = { w * c ,h * r,w,h };
 
 	//Particle properties
-	lifeTime = 4;
+	lifeTime = 1;
 	distanceToOrigin = 0;
-	speed = 1;
+	speed = 4;
 	angleDispersion = 30;
 	dir = Vector2D(0, 1).normalize();
-	rateOverTime = 3;
+	rateOverTime = 6;
 	rateTimer = 0;
 	worldPosition = true;
-	gravity = false;
+	gravity = true;
+	gravityValue = 9.8;
 	inheritVelocity = false;
 	inheritVelocityMultiplier = -1;
 	emitting = playOnAwake;
 	offset = Vector2D(10, height / 2 + 10);
-	particleScale = .5;
-
+	particleScale = 1;
 	sizeOverTime = true;
 	sizeCurve = Function(-1, 0, 1);
+
+	burst = false;
+	burstCount = 10;
+	burstTimer = 0;
+	burstDuration = 2;
 }
 
 ParticleSystem::~ParticleSystem() {
@@ -49,6 +54,8 @@ void ParticleSystem::init() {
 
 	width *= particleScale;
 	height *= particleScale;
+
+	offset = Vector2D(0, transform->getH());
 }
 
 void ParticleSystem::update() {
@@ -61,10 +68,19 @@ void ParticleSystem::update() {
 		}
 	}
 
+	if (burst) {
+		burstTimer += consts::DELTA_TIME;
+
+		if (burstTimer > burstDuration) {
+			Burst();
+			burstTimer = 0;
+		}
+	}
+
+
 	if (particles.size() <= 0) return;
 
 	//maybe delete particles in a separate loop
-
 	for (int i = 0; i < particles.size(); i++) {
 		auto a = particles[i];
 
@@ -83,11 +99,7 @@ void ParticleSystem::update() {
 			delete particles[i];
 			particles.erase(particles.begin() + i);
 		}
-
 	}
-
-	for (int i = 0; i < 3; i++)
-		std::cout << std::endl;
 }
 
 void ParticleSystem::render() {
@@ -130,4 +142,10 @@ void ParticleSystem::Play() {
 }
 void ParticleSystem::Stop() {
 	emitting = false;
+}
+
+void ParticleSystem::Burst() {
+	for (int i = 0; i < burstCount; i++) {
+		spawnParticle();
+	}
 }

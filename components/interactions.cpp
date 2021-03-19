@@ -15,7 +15,8 @@ void Interactions::update() {
 		}
 	}
 
-	if (keystates[SDL_SCANCODE_E]) {
-		IE->Interact();
-	}
+	if (IE != nullptr)
+		if (keystates[SDL_SCANCODE_E]) {
+			IE->Interact();
+		}
 }
