@@ -13,7 +13,7 @@
 class ParticleSystem: public Component
 {
 public:
-	ParticleSystem(Texture* tex, int rows, int cols, int r, int c);
+	ParticleSystem(Transform* parent, Texture* tex, int rows, int cols, int r, int c);
 	~ParticleSystem();
 	void update() override;
 	void init() override;
@@ -29,14 +29,23 @@ public:
 	float speed;
 	int count;
 	bool burst;
+	int rateOverTime;
 
+	bool worldPosition;
+	bool gravity;
+	float gravityValue = 9.8;
+	bool inheritVelocity;
 private:
 	Texture* texture;
 	SDL_Rect source;
 	std::vector<Transform*> particles;
 	std::vector<float> particleLife;
 	
+	Transform* parentTransform;
+
 	Transform* transform;
+
+	float rateTimer = 0;
 
 	inline int randomInt(int min, int max);
 	void spawnParticle();

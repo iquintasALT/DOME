@@ -5,6 +5,9 @@
 #include "../sdlutils/InputHandler.h"
 #include "../game/constant_variables.h"
 #include "../game/checkML.h"
+#include "../ecs/Manager.h"
+#include "../classes/particleSystem.h"
+#include "../sdlutils/SDLUtils.h"
 
 class KeyboardPlayerCtrl : public Component {
 public:
@@ -17,6 +20,10 @@ public:
 	virtual void init() {
 		entityTr = entity_->getComponent<Transform>();
 		assert(entityTr != nullptr);
+
+		Entity* particles = entity_->getMngr()->addEntity();
+		dustTr = particles->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 30, 30, 0);
+		dust = particles->addComponent<ParticleSystem>(entityTr, &sdlutils().images().at("player"), 3, 14, 0, 0);
 	}
 	virtual void update();
 
@@ -26,5 +33,8 @@ private:
 	float speed;
 	bool left, right, crouched;
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
+
+	ParticleSystem* dust;
+	Transform* dustTr;
 };
 
