@@ -10,9 +10,46 @@
 #include "../components/Transform.h"
 #include <vector>
 
-class ParticleSystem: public Component
+class ParticleSystem : public Component
 {
 public:
+	struct Function {
+	private:
+		float m3, m2, m;
+		float n;
+	public:
+		Function() {
+			m3 = m2 = m = n = 0;
+		}
+		Function(float x) {
+			m = x;
+			n = m3 = m2 = 0;
+		};
+		Function(float _m, float _n) {
+			m = _m;
+			n = _n;
+			m3 = m2 = 0;
+		};
+		Function(float _m2, float _m, float _n) {
+			m = _m;
+			n = _n;
+			m2 = _m2;
+			m3 = 0;
+		};
+		Function(float _m3, float _m2, float _m, float _n) {
+			m = _m;
+			n = _n;
+			m2 = _m2;
+			m3 = _m3;
+		};
+		float Evaluate(float x) {
+			float p3 = m3 * x * x * x;
+			float p2 = m2 * x * x;
+			float p1 = m * x;
+			return p3 + p2 + p1 + n;
+		};
+	};
+
 	ParticleSystem(Texture* tex, int rows, int cols, int r, int c);
 	~ParticleSystem();
 	void update() override;
@@ -43,6 +80,9 @@ public:
 	float inheritVelocityMultiplier = 1;
 	bool playOnAwake = true;
 
+	bool sizeOverTime;
+	Function sizeCurve;
+
 	void Play();
 	void Stop();
 private:
@@ -50,7 +90,7 @@ private:
 	SDL_Rect source;
 	std::vector<Transform*> particles;
 	std::vector<float> particleLife;
-	
+
 	bool emitting;
 
 	Transform* transform;
