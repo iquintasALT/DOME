@@ -22,7 +22,10 @@ public:
 	int width;
 	int height;
 	float distanceToOrigin;
+
 	Vector2D dir;
+	Vector2D offset;
+
 	float angleDispersion;
 	float lifeTime;
 	float initialRotation;
@@ -31,16 +34,24 @@ public:
 	bool burst;
 	int rateOverTime;
 
+	float particleScale = 1;
+
 	bool worldPosition;
 	bool gravity;
 	float gravityValue = 9.8;
 	bool inheritVelocity;
+	float inheritVelocityMultiplier = 1;
+	bool playOnAwake = true;
+
+	void Play();
+	void Stop();
 private:
 	Texture* texture;
 	SDL_Rect source;
 	std::vector<Transform*> particles;
 	std::vector<float> particleLife;
 	
+	bool emitting;
 	Transform* parentTransform;
 
 	Transform* transform;

@@ -21,9 +21,9 @@ public:
 		entityTr = entity_->getComponent<Transform>();
 		assert(entityTr != nullptr);
 
-		Entity* particles = entity_->getMngr()->addEntity();
-		dustTr = particles->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 30, 30, 0);
-		dust = particles->addComponent<ParticleSystem>(entityTr, &sdlutils().images().at("player"), 3, 14, 0, 0);
+		//Entity* particles = entity_->getMngr()->addEntity();
+		//dustTr = particles->addComponent<Transform>(Vector2D(0, 0), Vector2D(), 30, 30, 0);
+		//dust = particles->addComponent<ParticleSystem>(entityTr, &sdlutils().images().at("player"), 3, 14, 0, 0);
 	}
 	virtual void update();
 

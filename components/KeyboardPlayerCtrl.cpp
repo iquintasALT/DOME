@@ -38,7 +38,7 @@ void KeyboardPlayerCtrl::update() {
 		crouched = false;
 	}
 
-	dustTr->setPos(entityTr->getPos());
+	//dustTr->setPos(entityTr->getPos());
 	//Camera::mainCamera->FollowPlayer(entityTr->getPos());
 }
 
