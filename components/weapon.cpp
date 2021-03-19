@@ -8,6 +8,7 @@
 #include "../components/Transform.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../classes/camera.h"
+#include "../components/ricochet.h"
 
 void Weapon::update() {
 	counter++;
@@ -56,7 +57,22 @@ void Weapon::update() {
 
 		bulletTr->setPos(centeredPos + dir * aux1);
 
-		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
+		
+
+		if (type == 1)
+		{
+			bullet->addComponent<Image>(&sdlutils().images().at("projectile")); //Cambiarlo cuando cada bala tenga sprite
+		}
+		else if (type == 2)
+		{
+			bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
+		}
+		else if (type == 3)
+		{
+			bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
+			bullet->addComponent<Ricochet>();
+
+		}
 	}
 }
 

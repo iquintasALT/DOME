@@ -325,6 +325,9 @@
     <ClInclude Include="classes\particleSystem.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="components\ricochet.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

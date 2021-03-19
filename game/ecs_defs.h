@@ -23,6 +23,7 @@ class RayCastDetection;
 class Interactions;
 class InteractableElement;
 class ParticleSystem;
+class Ricochet;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -42,6 +43,7 @@ class ParticleSystem;
 	DistanceDetection,\
 	RayCastDetection,\
 	Interactions, \
+	Ricochet,\
 	InteractableElement, \
 	ParticleSystem
 
