@@ -10,7 +10,7 @@ class Image;
 class Weapon: public Component
 {
 public:
-	Weapon(float fR) : fireRate(fR), flipped(false), counter(0) {}
+	Weapon(float fR, int typeOfBullet) : fireRate(fR), flipped(false), counter(0), type(typeOfBullet) {}
 
 	virtual void init();
 
@@ -24,4 +24,5 @@ private:
 	bool flipped;
 	float counter;
 	float fireRate;
+	int type;
 };

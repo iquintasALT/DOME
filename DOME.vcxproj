@@ -50,6 +50,7 @@
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
     <ClInclude Include="components\map_render.h" />
     <ClInclude Include="components\player_animation.h" />
+    <ClInclude Include="components\ricochet.h" />
     <ClInclude Include="components\Transform.h" />
     <ClInclude Include="components\weapon.h" />
     <ClInclude Include="ecs\Component.h" />

@@ -17,7 +17,7 @@
 
 class WeaponBehaviour : public GameEntity {
 public:
-	WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vector2D playerPos, Transform* playerTr);
+	WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vector2D playerPos, Transform* playerTr, int typeOfWeapon);
 
 private:
 	float dmg_;
