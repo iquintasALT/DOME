@@ -32,7 +32,7 @@ void KeyboardPlayerCtrl::update() {
 			//dynamic_cast<Player*>(entity_)->equipWeapon(new WeaponBehaviour());
 		}
 	}
-	else if (crouched && !keystates[SDL_SCANCODE_LCTRL]) {
+	else if (!keystates[SDL_SCANCODE_LCTRL]) {
 		// Esta línea es para que se quede a la misma altura (no se hunda en el suelo)
 		entityTr->setPos(Vector2D(entityTr->getPos().getX(), entityTr->getPos().getY()));
 		crouched = false;

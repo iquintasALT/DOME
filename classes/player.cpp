@@ -19,11 +19,11 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	mngr_->addEntity(this);
 	Transform* t = addComponent<Transform>(pos, Vector2D(), 32, 64, 0);
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
-	addComponent<player_animation>();
+	addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
 	addComponent<GravityComponent>();
 	addComponent<KeyboardPlayerCtrl>();
+	addComponent<player_animation>();
 	addComponent<Interactions>();
-	addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
 
 	Vector2D playerPos = t->getPos();
 	weapon = new WeaponBehaviour(3, 5, mngr_, playerPos, t, 7);
