@@ -25,6 +25,7 @@ class InteractableElement;
 class ParticleSystem;
 class Ricochet;
 class Loot;
+class RicochetWeapon;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -48,6 +49,7 @@ class Loot;
 	InteractableElement, \
 	ParticleSystem, \
 	Loot
+    RicochetWeapon
 
 // groups
 
