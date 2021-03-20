@@ -6,7 +6,7 @@
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/player_animation.h"
 #include "../classes/weapon_behaviour.h"
-#include "../classes/map.h"
+#include "../classes/tile.h"
 #include "../components/InventoryController.h"
 
 #include "../ecs/ecs.h"

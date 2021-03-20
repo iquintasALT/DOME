@@ -86,9 +86,6 @@
     <ClCompile Include="classes\enemy.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="classes\map.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="classes\player.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -144,6 +141,9 @@
     <ClCompile Include="components\ricochet.cpp" />
     <ClCompile Include="components\tile_renderer.cpp">
       <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\tile.cpp">
+      <Filter>Source Files\classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -279,9 +279,6 @@
     <ClInclude Include="classes\enemy.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="classes\map.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
     <ClInclude Include="classes\player.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
@@ -334,6 +331,9 @@
     <ClInclude Include="classes\ricochet_weapon.h" />
     <ClInclude Include="components\tile_renderer.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\tile.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
