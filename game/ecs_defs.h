@@ -48,7 +48,7 @@ class RicochetWeapon;
 	Ricochet,\
 	InteractableElement, \
 	ParticleSystem, \
-	Loot
+	Loot, \
     RicochetWeapon
 
 // groups
