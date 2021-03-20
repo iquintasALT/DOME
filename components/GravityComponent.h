@@ -11,6 +11,8 @@ public:
 	GravityComponent() {
 		gravity = consts::GRAVITY;
 		entity_ = nullptr;
+		entityTr = nullptr;
+		onFloor_ = false;
 	};
 
 	virtual void init() {
@@ -19,7 +21,15 @@ public:
 	}
 
 	virtual void update();
+
+	void reachedFloor();
+
+	bool onFloor() { return onFloor_; };
+
+	void setOnFloor(const bool floor) { onFloor_ = floor; };
+
 private:
 	Transform* entityTr;
 	float gravity;
+	bool onFloor_;
 };

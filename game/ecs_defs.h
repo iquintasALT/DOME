@@ -26,6 +26,7 @@ class ParticleSystem;
 class Ricochet;
 class Loot;
 class RicochetWeapon;
+class PlayerCollisions;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -49,12 +50,13 @@ class RicochetWeapon;
 	InteractableElement, \
 	ParticleSystem, \
 	Loot, \
-    RicochetWeapon
+    RicochetWeapon, \
+	PlayerCollisions
 
 // groups
 
-struct Group_1;
-#define _GRPS_LIST_  Group_1
+struct Wall_grp;
+#define _GRPS_LIST_  Wall_grp
 
 // handlers
 struct Player_hdlr;

@@ -25,12 +25,16 @@ void GameScene::loadMap(string& const path) {
 		mapInfo.tilesets.insert(std::pair<gid, Texture*>(tset.getFirstGID(), tex));
 	}
 
+	bool is_wall = true;
+
 	// recorremos cada una de las capas (de momento solo las de tiles) del mapa
 	auto& map_layers = mapInfo.tile_map.getLayers();
 	for (auto& layer : map_layers) {
 		// aqui comprobamos que sea la capa de tiles
 		if (layer->getType() != tmx::Layer::Type::Tile) 
 			continue;
+
+		is_wall = !is_wall;
 
 		// cargamos la capa
 		tmx::TileLayer* tile_layer = dynamic_cast<tmx::TileLayer*>(layer.get());
@@ -82,10 +86,9 @@ void GameScene::loadMap(string& const path) {
 				auto x_pos = x * mapInfo.tile_width;
 				auto y_pos = y * mapInfo.tile_height;
 
-				//bool is_wall = false;
 
 				// metemos el tile
-				Tile(mngr_, mapInfo.tilesets[tset_gid], x_pos, y_pos,
+				Tile(mngr_, mapInfo.tilesets[tset_gid], is_wall, x_pos, y_pos,
 					region_x, region_y, mapInfo.tile_width, mapInfo.tile_height);
 			}
 		}
