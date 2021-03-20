@@ -1,20 +1,16 @@
 #ifndef MAP_H
 #define MAP_H
 
-#include <string>
-
 #include "../ecs/Manager.h"
-#include "../components/map_render.h"
+#include "../components/tile_renderer.h"
 #include "../game/checkML.h"
 
 using namespace std;
 
-class Map {
+class Tile {
 public:
-	static void addMap(Manager* mngr, string& const path) {
-        Entity* map = mngr->addEntity();
-        map->addComponent<MapRender>(path);
-	}
+	Tile(Manager* mngr, Texture* tset, int x = 0, int y = 0,
+		int tx = 0, int ty = 0, int w = 0, int h = 0);
 };
 
 #endif

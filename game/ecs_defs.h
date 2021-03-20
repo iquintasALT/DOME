@@ -16,7 +16,7 @@ class GameEntityComponent;
 class EnemyComponent;
 class EnemyBehaviourComponent;
 class ChasePlayer;
-class MapRender;
+class TileRenderer;
 class KeepDistance;
 class DistanceDetection;
 class RayCastDetection;
@@ -40,7 +40,7 @@ class RicochetWeapon;
 	EnemyComponent, \
 	EnemyBehaviourComponent, \
 	ChasePlayer, \
-	MapRender, \
+	TileRenderer, \
 	KeepDistance,\
 	DistanceDetection,\
 	RayCastDetection,\

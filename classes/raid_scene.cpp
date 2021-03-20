@@ -6,7 +6,7 @@
 
 void RaidScene::init() {
 	string path = "./resources/tilemap/template.tmx";
-	Map::addMap(mngr_, path);
+	loadMap(path);
 
 	Player* player = new Player(mngr_, Point2D(200, 50));
 
