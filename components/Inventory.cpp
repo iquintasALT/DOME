@@ -43,7 +43,8 @@ void Inventory::update() {
 		int yCell = (mousePos.getY() - pos.getY()) / transform->getH() * height;
 
 		if (ih().getMouseButtonState(InputHandler::LEFT)) {
-			if (!justPressed) {
+			if (!justPressed && (other == nullptr || (other != nullptr && other->selectedItem == nullptr))) {
+
 				justPressed = true;
 				timer = 0;
 				selectedItem_ = findItemInSlot(xCell, yCell);
