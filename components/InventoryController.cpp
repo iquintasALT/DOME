@@ -13,10 +13,17 @@ InventoryController::InventoryController() {
 }
 
 void InventoryController::init() {
+	int width = 10, height = 5;
+
 	inventoryPanel = entity_->getMngr()->addEntity();
-	inventoryPanel->addComponent<Transform>(Vector2D(300, 150), Vector2D(), 300, 300, 0);
+	Transform* t = inventoryPanel->addComponent<Transform>(Vector2D(300, 150), Vector2D(), 300, 300, 0);
 	inventoryPanel->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0);
-	inventoryPanel->addComponent<Inventory>(10, 5);
+	Inventory* i = inventoryPanel->addComponent<Inventory>(width, height);
+
+	Inventory::setItemDimensions(t, width, height);
+	i->storeDefaultItems();
+
+
 
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
 

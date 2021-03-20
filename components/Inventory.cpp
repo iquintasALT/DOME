@@ -4,7 +4,7 @@
 
 Inventory::Inventory(int width, int height) : width(width), height(height) {
 	transform = nullptr;
-	itemWidth = itemHeight = 1;
+	//itemWidth = itemHeight = 1;
 	selectedItem = nullptr;
 	selectedItem_ = nullptr;
 	justPressed = false;
@@ -17,12 +17,6 @@ void Inventory::init() {
 
 	assert(transform != nullptr);
 
-	itemWidth = transform->getW() / width;
-	itemHeight = transform->getW() / height;
-
-	storeItem(new Item(ItemInfo::bottleOfWater(), entity_->getMngr(), this, 0, 0));
-	storeItem(new Item(ItemInfo::medicine(), entity_->getMngr(), this, 2, 2));
-	storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 4, 0));
 }
 void Inventory::render() {
 	for (auto a : storedItems) {
@@ -129,11 +123,20 @@ void Inventory::storeItem(Item* item) {
 		}
 	}
 }
+void Inventory::removeItem(Item* item) {
+	for (int i = item->x; i < width && i < item->x + item->width; i++) {
+		for (int c = item->y; c < height && c < item->y + item->height; c++) {
+			grid[i][c] = nullptr;
+		}
+	}
+
+	storedItems.remove(item);
+}
 
 void Inventory::moveItem(Item* item, int x, int y) {
 	for (int i = item->x; i < width && i < item->x + item->width; i++) {
 		for (int c = item->y; c < height && c < item->y + item->height; c++) {
-			grid[i][c] = nullptr; // Aquí estaba mal, ponía grid[x][y]
+			grid[i][c] = nullptr; 
 		}
 	}
 
@@ -145,4 +148,26 @@ void Inventory::moveItem(Item* item, int x, int y) {
 			grid[i][c] = item;
 		}
 	}
+}
+
+int Inventory::itemWidth = 1;
+int Inventory::itemHeight = 1;
+
+void Inventory::setItemDimensions(Transform* transform, int width, int height) {
+	itemWidth = transform->getW() / width;
+	itemHeight = transform->getW() / height;
+
+
+	std::cout << itemWidth << std::endl << std::endl << std::endl;
+}
+
+void Inventory::adjustPanelSize() {
+	transform->setW(width * itemWidth);
+	transform->setH(height * itemHeight);
+}
+
+void Inventory::storeDefaultItems() {
+	storeItem(new Item(ItemInfo::bottleOfWater(), entity_->getMngr(), this, 0, 0));
+	storeItem(new Item(ItemInfo::medicine(), entity_->getMngr(), this, 2, 2));
+	storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 4, 0));
 }

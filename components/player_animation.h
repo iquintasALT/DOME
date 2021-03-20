@@ -12,7 +12,7 @@
 
 class player_animation : public Component {
 public:
-	player_animation() : im_(nullptr), tr_(nullptr) {
+	player_animation() : im_(nullptr), tr_(nullptr), ctrl(nullptr) {
 		frameX_ = 0; frameY_ = 0; frameDivision = 3;
 	};
 
