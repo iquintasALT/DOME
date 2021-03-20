@@ -26,13 +26,17 @@ public:
 
 	static void setItemDimensions(Transform* transform, int width, int height);
 	void adjustPanelSize();
+
+	void setOther(Inventory* o) { other = o; };
 private:
 	const float timeToHold = 0.08f; //seconds
 	float timer = 0;
 
-	Inventory* player;
+	Inventory* other;
 
 	Vector2D itemPosition(int x, int y);
+	Vector2D itemPosition(int x, int y, Transform* transform);
+
 	static int itemWidth, itemHeight;
 	int width, height;
 	Transform* transform;
@@ -43,11 +47,14 @@ private:
 
 	Item* findItemInSlot(int x, int y);
 
-	bool avaliableSpace(int x, int y, int w, int h, Item* item);
+	bool avaliableSpace(int x, int y, Item* item);
 
 	bool justPressed;
 	Item* selectedItem;
 	Item* selectedItem_;
+
+	bool insideSquare(int mouseX, int mouseY, Transform* rect);
+	bool insideSquare(int mouseX, int mouseY);
 };
 
 

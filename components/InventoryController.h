@@ -24,6 +24,10 @@ public :
 	void update() override;
 	void init() override;
 	void Use();
+
+	void OpenLoot();
+
+	Inventory* inventory;
 protected:
 	bool isOpen = false;
 	Entity* inventoryPanel = nullptr;

@@ -8,7 +8,7 @@ InventoryController::InventoryController() {
 	inventoryPanel = nullptr;
 	playerMovement = nullptr;
 	playerWeapon = nullptr;
-
+	inventory = nullptr;
 	used = false;
 }
 
@@ -18,10 +18,10 @@ void InventoryController::init() {
 	inventoryPanel = entity_->getMngr()->addEntity();
 	Transform* t = inventoryPanel->addComponent<Transform>(Vector2D(300, 150), Vector2D(), 300, 300, 0);
 	inventoryPanel->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0);
-	Inventory* i = inventoryPanel->addComponent<Inventory>(width, height);
+	inventory = inventoryPanel->addComponent<Inventory>(width, height);
 
 	Inventory::setItemDimensions(t, width, height);
-	i->storeDefaultItems();
+	inventory->storeDefaultItems();
 
 
 
@@ -65,4 +65,9 @@ void InventoryController::update() {
 
 	if (justPressed)
 		Use();
+}
+
+void InventoryController::OpenLoot(){
+
+	Use();
 }
