@@ -37,19 +37,20 @@ WeaponBehaviour::WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vecto
 	else if (typeOfWeapon == 7)
 	{
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 0);
-		addComponent<Weapon>(fireRate, 3);
+		weaponMovement = addComponent<RicochetWeapon>(fireRate);
 	}
 	else if (typeOfWeapon == 8)
 	{
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 1);
-		addComponent<Weapon>(fireRate, 3);
+		weaponMovement = addComponent<RicochetWeapon>(fireRate);
 	}
 	else if (typeOfWeapon == 9)
 	{
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 2);
-		addComponent<Weapon>(fireRate, 3);
+		weaponMovement = addComponent<RicochetWeapon>(fireRate);
 	}
+}
 
-
-	
+Weapon* WeaponBehaviour::getWeaponMovement() {
+	return weaponMovement;
 }

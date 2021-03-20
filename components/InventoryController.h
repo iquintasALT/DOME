@@ -13,6 +13,7 @@
 //#include "../components/weapon.h"
 #include "../components/weapon.h"
 #include "../game/checkML.h"
+#include "../classes/weapon_behaviour.h"
 
 class InventoryController: public Component
 {
