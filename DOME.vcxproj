@@ -27,7 +27,7 @@
     <ClInclude Include="classes\game_scene.h" />
     <ClInclude Include="classes\game_state_machine.h" />
     <ClInclude Include="classes\Item.h" />
-    <ClInclude Include="classes\map.h" />
+    <ClInclude Include="classes\tile.h" />
     <ClInclude Include="classes\menu_button.h" />
     <ClInclude Include="classes\menu_scene.h" />
     <ClInclude Include="classes\particleSystem.h" />
@@ -93,7 +93,7 @@
     <ClCompile Include="classes\game_scene.cpp" />
     <ClCompile Include="classes\game_state_machine.cpp" />
     <ClCompile Include="classes\Item.cpp" />
-    <ClCompile Include="classes\map.cpp" />
+    <ClCompile Include="classes\tile.cpp" />
     <ClCompile Include="classes\menu_button.cpp" />
     <ClCompile Include="classes\menu_scene.cpp" />
     <ClCompile Include="classes\particleSystem.cpp" />
