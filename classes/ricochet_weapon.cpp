@@ -1,16 +1,16 @@
-#include "weapon.h"
-#include "../ecs/Component.h"
-#include "../ecs/Entity.h"
-#include "../game/constant_variables.h"
-#include "../ecs/Manager.h"
-#include "../sdlutils/InputHandler.h"
-#include "../components/Image.h"
+#include "ricochet_weapon.h"
+#include "../utils/Vector2D.h"
 #include "../components/Transform.h"
-#include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/InputHandler.h"
 #include "../classes/camera.h"
+#include "../components/Image.h"
+#include "../sdlutils/SDLUtils.h"
+#include "../ecs/Entity.h"
+#include "../ecs/Manager.h"
+#include "../game/constant_variables.h"
 #include "../components/ricochet.h"
 
-void Weapon::update() {
+void RicochetWeapon::update() {
 	counter++;
 
 	Vector2D playerPos = playerTr->getPos();
@@ -57,19 +57,7 @@ void Weapon::update() {
 
 		bulletTr->setPos(centeredPos + dir * aux1);
 
-		bullet->addComponent<Image>(&sdlutils().images().at("projectile")); //Cambiarlo cuando cada bala tenga sprite
-
+		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
+		bullet->addComponent<Ricochet>();
 	}
-
-}
-
-void Weapon::init()
-{
-	playerTr = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
-	entityTr = entity_->getComponent <Transform>();
-	assert(entityTr != nullptr && playerTr != nullptr);
-
-	entityImg = entity_->getComponent<Image>();
-	assert(entityImg != nullptr);
-	entityImg->setRotationOrigin(0, entityTr->getH() / 2);
 }

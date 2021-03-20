@@ -10,13 +10,13 @@ class Image;
 class Weapon: public Component
 {
 public:
-	Weapon(float fR, int typeOfBullet) : fireRate(fR), flipped(false), counter(0), type(typeOfBullet) {}
+	Weapon(float fR) : fireRate(fR), flipped(false), counter(0) {}
 
 	virtual void init();
 
 	virtual void update();
 
-private:
+protected:
 	Transform* playerTr;
 	Transform* entityTr;
 	Image* entityImg;
@@ -24,5 +24,4 @@ private:
 	bool flipped;
 	float counter;
 	float fireRate;
-	int type;
 };
