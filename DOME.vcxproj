@@ -48,6 +48,7 @@
     <ClInclude Include="components\Inventory.h" />
     <ClInclude Include="components\InventoryController.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
+    <ClInclude Include="components\loot.h" />
     <ClInclude Include="components\map_render.h" />
     <ClInclude Include="components\player_animation.h" />
     <ClInclude Include="components\ricochet.h" />
@@ -111,6 +112,7 @@
     <ClCompile Include="components\Inventory.cpp" />
     <ClCompile Include="components\InventoryController.cpp" />
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
+    <ClCompile Include="components\loot.cpp" />
     <ClCompile Include="components\map_render.cpp" />
     <ClCompile Include="components\player_animation.cpp" />
     <ClCompile Include="components\weapon.cpp" />

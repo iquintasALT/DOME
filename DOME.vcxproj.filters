@@ -140,6 +140,9 @@
     <ClCompile Include="classes\particleSystem.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\loot.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -328,6 +331,7 @@
     <ClInclude Include="components\ricochet.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="components\loot.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

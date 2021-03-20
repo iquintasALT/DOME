@@ -20,19 +20,23 @@ public:
 
 	void storeItem(Item* item);
 	void moveItem(Item* item, int x, int y);
+	void removeItem(Item* item);
+	void storeDefaultItems();
+
+	static void setItemDimensions(Transform* transform, int width, int height);
+	void adjustPanelSize();
 private:
 	const float timeToHold = 0.08f; //seconds
 	float timer = 0;
 
 	Vector2D itemPosition(int x, int y);
-	int itemWidth, itemHeight;
+	static int itemWidth, itemHeight;
 	int width, height;
 	Transform* transform;
 
 	std::list<Item*> storedItems;
 
 	std::vector<std::vector<Item*>> grid;
-
 
 	Item* findItemInSlot(int x, int y);
 
