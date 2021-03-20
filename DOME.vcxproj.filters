@@ -107,9 +107,6 @@
     <ClCompile Include="components\player_animation.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\map_render.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="components\enemy_behaviour_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -141,6 +138,11 @@
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="components\loot.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\ricochet_weapon.cpp" />
+    <ClCompile Include="components\ricochet.cpp" />
+    <ClCompile Include="components\tile_renderer.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -295,9 +297,6 @@
     <ClInclude Include="components\weapon.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\map_render.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="components\enemy_behaviour_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
@@ -332,6 +331,10 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\loot.h" />
+    <ClInclude Include="classes\ricochet_weapon.h" />
+    <ClInclude Include="components\tile_renderer.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
