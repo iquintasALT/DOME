@@ -2,7 +2,7 @@
 #include "../sdlutils/InputHandler.h"
 #include <iostream>
 
-Inventory::Inventory(int width, int height) : width(width), height(height) {
+Inventory::Inventory(int width, int height) : width(width), height(height), player(nullptr){
 	transform = nullptr;
 	//itemWidth = itemHeight = 1;
 	selectedItem = nullptr;
@@ -11,12 +11,13 @@ Inventory::Inventory(int width, int height) : width(width), height(height) {
 
 	grid = std::vector<std::vector<Item*>>(width, std::vector<Item*>(height, nullptr));
 }
+Inventory::Inventory(int width, int height, Inventory* player): Inventory(width, height){
+	this->player = player;
+}
 
 void Inventory::init() {
 	transform = entity_->getComponent<Transform>();
-
 	assert(transform != nullptr);
-
 }
 void Inventory::render() {
 	for (auto a : storedItems) {

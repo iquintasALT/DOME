@@ -11,7 +11,8 @@ class Inventory: public Component
 {
 	friend class Item;
 public:
-	Inventory(int width , int height);
+	Inventory(int width, int height);
+	Inventory(int width , int height, Inventory* player);
 	~Inventory();
 
 	void init() override;
@@ -28,6 +29,8 @@ public:
 private:
 	const float timeToHold = 0.08f; //seconds
 	float timer = 0;
+
+	Inventory* player;
 
 	Vector2D itemPosition(int x, int y);
 	static int itemWidth, itemHeight;
