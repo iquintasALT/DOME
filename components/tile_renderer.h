@@ -1,12 +1,9 @@
 #pragma once
 
-#include <vector>
-#include <map>
-
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
-#include "../sdlutils/SDLUtils.h"
+#include "../utils/Vector2D.h"
 #include "../game/checkML.h"
 
 #include "tmxlite/Map.hpp"
@@ -22,7 +19,13 @@ public:
 
 	virtual ~TileRenderer() {};
 
-	void render() override;
+	virtual void render() override;
+
+	Point2D getPos() { return Point2D(x, y); };
+
+	int getWidth() { return width; };
+
+	int getHeight() { return height; };
 
 private:
 	Texture* sheet;

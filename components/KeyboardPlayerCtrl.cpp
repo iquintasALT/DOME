@@ -16,8 +16,9 @@ void KeyboardPlayerCtrl::update() {
 			entityTr->setVel(Vector2D(0, entityTr->getVel().getY()));
 		}
 
-		if (keystates[SDL_SCANCODE_SPACE] && entityTr->getVel().getY() == 0) {
-			entityTr->setVel(Vector2D(entityTr->getVel().getX(), -speed));
+		if (keystates[SDL_SCANCODE_SPACE] && gravity_->onFloor()) {
+ 			entityTr->setVel(Vector2D(entityTr->getVel().getX(), -speed));
+			gravity_->setOnFloor(false);
 		}
 
 		if (keystates[SDL_SCANCODE_LCTRL] && entityTr->getVel().getY() == 0) {
