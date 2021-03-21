@@ -200,15 +200,37 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 |--------|--------|-----------------|-----|
 | Kit de mejora básico | N/A | 1 | Permite la mejora de armas a nivel 2 |
 | Kit de mejora avanzado | N/A | 1 | Permite la mejora de armas a nivel 3 |
-| N/A | N/A | N/A | N/A | 
+| Armas | N/A | N/A | N/A | 
+| Restos clave de la nave | N/A | N/A | N/A | 
+| Munición | N/A | N/A | N/A | 
+| Mochila | N/A | N/A | N/A | 
+| Placas de metal | N/A | N/A | N/A | 
 
 ## Genérico
-| Nombre | Sprite | Tamaño de stack | Uso |
-|--------|--------|-----------------|-----|
-| Materiales de construcción | N/A | 5 | Para hacer bla bla bla |
-| Partes mecánicas | N/A | 10 | N/A |
-| Restos electronicas | N/A | 10 | N/A |
-| N/A | N/A | N/A | N/A |
+| Nombre | Sprite | Tamaño de stack |
+|--------|--------|-----------------|
+| Materiales de construcción | N/A | 5 |
+| Partes mecánicas | N/A | 10 |
+| Restos electronicas | N/A | 10 |
+| Componentes médicos | N/A | N/A | 
+| Agua | N/A | N/A |
+| Elementos orgánicos | N/A | N/A |
+| Comida | N/A | N/A |
+
+## Crafteos
+| Objeto | Elementos necesarios | Uso |
+|--------|----------------------|-----|
+| Vendas | x componentes médicos + x agua + x elementos orgánicos | Curan sangrado |
+| Antídoto | x comida + x agua + x componenetes médicos | Cura infecciones |
+| Férula | x partes mecánicas + x agua | Cura contusiones |
+| Cohetes de la nave | x restos clave de la nave + x materiales de construcción + restos electrónicos + x placas de metal | Primera parte de la nave |
+| Arma mejorada | x partes mecánicas + x restos electrónicos + kit de mejora | Aumenta el tier del arma |
+| Munición arma clásica | x partes mecánicas + x componentes médicos + x placas de metal | Munición para el arma clásica |
+| Mochila mejorada | kit de mejora + x elementos orgánicos + x vendas |
+Mejora la mochila |
+| Placas de metal | x materiales de construcción + x partes mecánicas | Para reaizar otros crafteos |
+| Armadura mejorada | kit de mejora + x placas de metal + x elementos orgánicos | Mejora la armadura |
+
 
 # Refúgio
 
