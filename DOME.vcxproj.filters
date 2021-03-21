@@ -146,19 +146,16 @@
     <ClCompile Include="components\player_collisions.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="classes\ricochet_weapon.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
     <ClCompile Include="components\ricochet.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="classes\ricochet_weapon.cpp">
-      <Filter>Source Files\components</Filter>
+    <ClCompile Include="classes\charge_weapon.cpp">
+      <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\player_health_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="components\hunger_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="components\tiredness_component.cpp">
+    <ClCompile Include="components\charge.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -343,6 +340,7 @@
     <ClInclude Include="components\ricochet.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="components\loot.h" />
     <ClInclude Include="components\tile_renderer.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
@@ -352,19 +350,13 @@
     <ClInclude Include="components\player_collisions.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\loot.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="classes\ricochet_weapon.h">
-      <Filter>Header Files\components</Filter>
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\player_health_component.h">
-      <Filter>Header Files\components</Filter>
+    <ClInclude Include="classes\charge_weapon.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\hunger_component.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\tiredness_component.h">
+    <ClInclude Include="components\charge.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>

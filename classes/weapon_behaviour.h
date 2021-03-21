@@ -13,6 +13,7 @@
 #include "../components/weapon.h"
 #include "../game/checkML.h"
 #include "../classes/ricochet_weapon.h"
+#include "../classes/charge_weapon.h"
 #include <math.h>
 
 class WeaponBehaviour : public GameEntity {
