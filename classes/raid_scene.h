@@ -3,7 +3,7 @@
 #include "enemy.h"
 #include "ranged_enemy.h"
 #include "player.h"
-#include "map.h"
+#include "tile.h"
 #include "../game/checkML.h"
 
 #include <string>

@@ -11,6 +11,7 @@
 #include "../components/InventoryController.h"
 #include "../components/weapon.h"
 #include "../components/interactions.h"
+#include "../components/player_collisions.h"
 #include "../classes/particleSystem.h"
 
 Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
@@ -24,6 +25,7 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<KeyboardPlayerCtrl>();
 	addComponent<player_animation>();
 	addComponent<Interactions>();
+	addComponent<PlayerCollisions>(mngr_);
 
 	Vector2D playerPos = t->getPos();
 	weapon = new WeaponBehaviour(3, 5, mngr_, playerPos, t, 7);
