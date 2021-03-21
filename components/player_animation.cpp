@@ -61,19 +61,19 @@ void player_animation::init() {
 	tr_ = entity_->getComponent<Transform>();
 	ctrl = entity_->getComponent<KeyboardPlayerCtrl>();
 
-	assert(tr_ != nullptr && im_ != nullptr);
+	assert(tr_ != nullptr && im_ != nullptr && ctrl != nullptr);
 }
 bool debug = false;
 
 bool player_animation::changeAnimations() {
-	/*if (ctrl->isCrouching()) {
+	if (ctrl->isCrouching()) {
 		if (currentAnimation == animations[crouch])
 			return false;
 
 		currentAnimation = animations[crouch];
 		currentAnimation.render();
 		return true;
-	}*/
+	}
 
 	float x = tr_->getVel().getX();
 	if (x == 0) {
