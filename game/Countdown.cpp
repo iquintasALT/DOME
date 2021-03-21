@@ -30,14 +30,14 @@ void Countdown::render() {
 	std::string aux = getHourString(lefttime / 1000);
 	if (lefttime <= 0)
 	{
-		aux = "Llamalo Angel, Carlos Leon";
+		aux = "00:00";
 	}
 
 	//delete counter;
 	counter = new Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("ARIAL24"),
 		build_sdlcolor(0xffffffff));
 
-	counter->render(50, 10);
+	counter->render(1000, 10);
 	delete counter;
 	counter = nullptr;
 }

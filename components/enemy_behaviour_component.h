@@ -13,7 +13,7 @@ protected:
     Transform* entityTr;
     EnemyDetectionComponent* enemyDetection;
 public:
-    EnemyBehaviourComponent() : playerTr(nullptr), entityTr(nullptr) {};
+    EnemyBehaviourComponent() : playerTr(nullptr), entityTr(nullptr), enemyDetection(nullptr) {};
     virtual void update() override = 0;
     virtual void init() override;
 };

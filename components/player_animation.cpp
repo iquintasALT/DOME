@@ -66,14 +66,14 @@ void player_animation::init() {
 bool debug = false;
 
 bool player_animation::changeAnimations() {
-	if (ctrl->isCrouching()) {
+	/*if (ctrl->isCrouching()) {
 		if (currentAnimation == animations[crouch])
 			return false;
 
 		currentAnimation = animations[crouch];
 		currentAnimation.render();
 		return true;
-	}
+	}*/
 
 	float x = tr_->getVel().getX();
 	if (x == 0) {

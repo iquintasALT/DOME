@@ -43,6 +43,7 @@
     <ClInclude Include="components\game_entity_component.h" />
     <ClInclude Include="classes\weapon_behaviour.h" />
     <ClInclude Include="components\GravityComponent.h" />
+    <ClInclude Include="components\hunger_component.h" />
     <ClInclude Include="components\Image.h" />
     <ClInclude Include="components\interactableElement.h" />
     <ClInclude Include="components\interactions.h" />
@@ -51,9 +52,11 @@
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
     <ClInclude Include="components\loot.h" />
     <ClInclude Include="components\player_collisions.h" />
+    <ClInclude Include="components\player_health_component.h" />
     <ClInclude Include="components\tile_renderer.h" />
     <ClInclude Include="components\player_animation.h" />
     <ClInclude Include="components\ricochet.h" />
+    <ClInclude Include="components\tiredness_component.h" />
     <ClInclude Include="components\Transform.h" />
     <ClInclude Include="components\weapon.h" />
     <ClInclude Include="ecs\Component.h" />
@@ -110,6 +113,7 @@
     <ClCompile Include="components\game_entity_component.cpp" />
     <ClCompile Include="classes\weapon_behaviour.cpp" />
     <ClCompile Include="components\GravityComponent.cpp" />
+    <ClCompile Include="components\hunger_component.cpp" />
     <ClCompile Include="components\interactableElement.cpp" />
     <ClCompile Include="components\interactions.cpp" />
     <ClCompile Include="components\Inventory.cpp" />
@@ -117,9 +121,11 @@
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
     <ClCompile Include="components\loot.cpp" />
     <ClCompile Include="components\player_collisions.cpp" />
+    <ClCompile Include="components\player_health_component.cpp" />
     <ClCompile Include="components\tile_renderer.cpp" />
     <ClCompile Include="components\player_animation.cpp" />
     <ClCompile Include="components\ricochet.cpp" />
+    <ClCompile Include="components\tiredness_component.cpp" />
     <ClCompile Include="components\weapon.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
