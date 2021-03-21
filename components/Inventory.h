@@ -11,7 +11,8 @@ class Inventory: public Component
 {
 	friend class Item;
 public:
-	Inventory(int width , int height);
+	Inventory(int width, int height);
+	Inventory(int width , int height, Inventory* player);
 	~Inventory();
 
 	void init() override;
@@ -20,12 +21,23 @@ public:
 
 	void storeItem(Item* item);
 	void moveItem(Item* item, int x, int y);
+	void removeItem(Item* item);
+	void storeDefaultItems();
+
+	static void setItemDimensions(Transform* transform, int width, int height);
+	void adjustPanelSize();
+
+	void setOther(Inventory* o) { other = o; };
 private:
 	const float timeToHold = 0.08f; //seconds
 	float timer = 0;
 
+	Inventory* other;
+
 	Vector2D itemPosition(int x, int y);
-	int itemWidth, itemHeight;
+	Vector2D itemPosition(int x, int y, Transform* transform);
+
+	static int itemWidth, itemHeight;
 	int width, height;
 	Transform* transform;
 
@@ -33,14 +45,16 @@ private:
 
 	std::vector<std::vector<Item*>> grid;
 
-
 	Item* findItemInSlot(int x, int y);
 
-	bool avaliableSpace(int x, int y, int w, int h, Item* item);
+	bool avaliableSpace(int x, int y, Item* item);
 
 	bool justPressed;
 	Item* selectedItem;
 	Item* selectedItem_;
+
+	bool insideSquare(int mouseX, int mouseY, Transform* rect);
+	bool insideSquare(int mouseX, int mouseY);
 };
 
 

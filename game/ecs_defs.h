@@ -16,7 +16,7 @@ class GameEntityComponent;
 class EnemyComponent;
 class EnemyBehaviourComponent;
 class ChasePlayer;
-class MapRender;
+class TileRenderer;
 class KeepDistance;
 class DistanceDetection;
 class RayCastDetection;
@@ -24,7 +24,9 @@ class Interactions;
 class InteractableElement;
 class ParticleSystem;
 class Ricochet;
+class Loot;
 class RicochetWeapon;
+class PlayerCollisions;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -39,7 +41,7 @@ class RicochetWeapon;
 	EnemyComponent, \
 	EnemyBehaviourComponent, \
 	ChasePlayer, \
-	MapRender, \
+	TileRenderer, \
 	KeepDistance,\
 	DistanceDetection,\
 	RayCastDetection,\
@@ -47,12 +49,14 @@ class RicochetWeapon;
 	Ricochet,\
 	InteractableElement, \
 	ParticleSystem, \
-    RicochetWeapon
+	Loot, \
+    RicochetWeapon, \
+	PlayerCollisions
 
 // groups
 
-struct Group_1;
-#define _GRPS_LIST_  Group_1
+struct Wall_grp;
+#define _GRPS_LIST_  Wall_grp
 
 // handlers
 struct Player_hdlr;

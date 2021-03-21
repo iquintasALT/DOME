@@ -17,6 +17,15 @@ void Interactions::update() {
 
 	if (IE != nullptr)
 		if (keystates[SDL_SCANCODE_E]) {
-			IE->Interact();
+			if (!justPressed) {
+				IE->Interact();
+				justPressed = true;
+			}
+		}
+		else {
+			if (justPressed) {
+
+				justPressed = false;
+			}
 		}
 }
