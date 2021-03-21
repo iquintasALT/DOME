@@ -25,14 +25,17 @@ WeaponBehaviour::WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vecto
 	else if (typeOfWeapon == 4)
 	{
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 1, 0);
+		weaponMovement = addComponent<ChargeWeapon>(fireRate);
 	}
 	else if (typeOfWeapon == 5)
 	{
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 1, 1);
+		weaponMovement = addComponent<ChargeWeapon>(fireRate);
 	}
 	else if (typeOfWeapon == 6)
 	{
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 1, 2);
+		weaponMovement = addComponent<ChargeWeapon>(fireRate);
 	}
 	else if (typeOfWeapon == 7)
 	{
