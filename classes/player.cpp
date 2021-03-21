@@ -28,7 +28,7 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<PlayerCollisions>(mngr_);
 
 	Vector2D playerPos = t->getPos();
-	weapon = new WeaponBehaviour(3, 5, mngr_, playerPos, t, 7);
+	weapon = new WeaponBehaviour(2, 5, mngr_, playerPos, t,4);
 
 	addComponent<InventoryController>();
 }
