@@ -79,7 +79,6 @@ bool player_animation::changeAnimations() {
 	if (x == 0) {
 			if (currentAnimation == animations[iddle])
 				return false;
-
 		currentAnimation = animations[iddle];
 		currentAnimation.render();
 		return true;
