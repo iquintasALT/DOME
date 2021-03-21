@@ -3,8 +3,7 @@
 #include "../classes/enemy.h"
 #include "../game/checkML.h"
 
-class EnemyComponent :
-    public GameEntityComponent
-{
+class EnemyComponent : public GameEntityComponent {
+
 };
 

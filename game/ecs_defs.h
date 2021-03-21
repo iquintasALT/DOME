@@ -27,6 +27,10 @@ class Ricochet;
 class Loot;
 class RicochetWeapon;
 class PlayerCollisions;
+class PlayerHealthComponent;
+class HungerComponent;
+class TirednessComponent;
+class ThirstComponent;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -51,7 +55,11 @@ class PlayerCollisions;
 	ParticleSystem, \
 	Loot, \
     RicochetWeapon, \
-	PlayerCollisions
+	PlayerCollisions,\
+	PlayerHealthComponent,\
+	HungerComponent,\
+	TirednessComponent,\
+	ThirstComponent
 
 // groups
 

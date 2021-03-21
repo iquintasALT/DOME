@@ -2,48 +2,40 @@
 #include <vector>
 #include "../components/player_health_component.h"
 #include "../game/checkML.h"
-
+#include <list>
+#include "player.h"
+class PlayerHealthComponent;
 using namespace std;
 
-const float MAX_HEALTH = 100;
-class Physiognomy
-{
+const int MAX_MULTIPLE_STATES = 7;
+
+class Physiognomy {
 public:
-	Physiognomy() : health(MAX_HEALTH){};
+	Physiognomy(Player* player_) : player(player_) {};
 	~Physiognomy() {};
 
-	void harm(float damage);
-	void heal(float life);
-	bool alive();
-	inline float getHealth() { return health; }
-	inline void setHealth(float h) { health = h; }
-
-	/*
-	* Implementar métodos que aumenten, disminuyan, o permitan consultar un componente
-	* de fisionomia del jugador (comida, bebida, descanso, hambre, sed)
-	* 
-	* Además, ya que se contiene una lista para guardar los componentes
-	* se implementará un método que los añada a dicha lista (añadirlos en un orden especifico ayudará 
-	* a programar la logica)
-	* 
-	* void addState(Player_health_component* state) {
-		states.push_back(state);
+	template<typename T, typename ...Ts>
+	void addState(Ts &&... args) {
+		auto c = player->addComponent<T>(args);
+		healthComponents.push_back(c);
 	}
-	*/
+
+	template<typename T>
+	void addState() {
+		auto c = player->addComponent<T>();
+	    healthComponents.push_back(c);
+	}
+
+	template<typename T>
+	void removeState(T* comp) {
+		player->removeComponent<T>();
+		healthComponents.remove(comp);
+	}
+
+	bool alive();
 
 private:
-	float health;
-
-	/*
-	* Futuros atributos representando el nivel de cada estado
-	* 
-	* float thirst;
-	* float hunger;
-	* float rest;
-	* float contusion;
-	* 
-	* Futura lista de punteros a componentes de fisonomia del jugador
-	* vector<Player_health_component*> states;
-	*/
+	Player* player;
+	list<PlayerHealthComponent*> healthComponents;
 };
 

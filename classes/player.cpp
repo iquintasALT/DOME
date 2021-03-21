@@ -13,6 +13,7 @@
 #include "../components/interactions.h"
 #include "../components/player_collisions.h"
 #include "../classes/particleSystem.h"
+#include "../classes/physiognomy.h"
 
 Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 {
@@ -27,20 +28,21 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<Interactions>();
 	addComponent<PlayerCollisions>(mngr_);
 
-	Vector2D playerPos = t->getPos();
-	weapon = new WeaponBehaviour(3, 5, mngr_, playerPos, t, 7);
-
+	weapon = new WeaponBehaviour(3, 5, mngr_, t->getPos(), t, 7);
 	addComponent<InventoryController>();
-}
 
+	physiognomy = new Physiognomy(this);
+}
 
 WeaponBehaviour* Player::getCurrentWeapon() {
 	return weapon;
 }
 
-WeaponBehaviour* Player::equipWeapon(WeaponBehaviour* newWeapon)
-{
+WeaponBehaviour* Player::equipWeapon(WeaponBehaviour* newWeapon) {
 	WeaponBehaviour* oldWeapon = weapon;
 	weapon = newWeapon;
 	return oldWeapon;
+}
+Physiognomy* Player::getPhysiognomy() {
+	return physiognomy;
 }

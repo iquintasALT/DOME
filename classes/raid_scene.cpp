@@ -1,7 +1,6 @@
 #include "raid_scene.h"
 
 #include "../components/interactableElement.h"
-#include "../classes/particleSystem.h"
 #include "../components/loot.h"
 
 void RaidScene::init() {

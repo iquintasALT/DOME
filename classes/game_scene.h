@@ -8,6 +8,7 @@
 #include "../classes/weapon_behaviour.h"
 #include "../classes/tile.h"
 #include "../components/InventoryController.h"
+#include "../classes/particleSystem.h"
 
 #include "../ecs/ecs.h"
 #include "../ecs/Manager.h"
