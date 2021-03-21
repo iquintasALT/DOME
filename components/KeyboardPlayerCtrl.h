@@ -9,6 +9,7 @@
 #include "../classes/particleSystem.h"
 #include "../sdlutils/SDLUtils.h"
 
+
 class KeyboardPlayerCtrl : public Component {
 public:
 	KeyboardPlayerCtrl() {
@@ -27,6 +28,7 @@ public:
 	virtual void update();
 	inline bool isCrouching() { return crouched; }
 	void resetSpeed();
+
 private:
 	Transform* entityTr;
 	float speed;

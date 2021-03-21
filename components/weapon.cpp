@@ -15,6 +15,7 @@ void Weapon::update() {
 
 	Vector2D playerPos = playerTr->getPos();
 	entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
+	adjustToCrouching();
 
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
@@ -63,9 +64,15 @@ void Weapon::update() {
 
 }
 
+void Weapon::adjustToCrouching() {
+	if (player->getComponent<KeyboardPlayerCtrl>() != nullptr && player->getComponent<KeyboardPlayerCtrl>()->isCrouching())
+		entityTr->setPos(Vector2D(entityTr->getPos().getX(), entityTr->getPos().getY() + playerTr->getH() * 0.3f));
+}
+
 void Weapon::init()
 {
-	playerTr = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
+	player = entity_->getMngr()->getHandler<Player_hdlr>();
+	playerTr = player->getComponent<Transform>();
 	entityTr = entity_->getComponent <Transform>();
 	assert(entityTr != nullptr && playerTr != nullptr);
 
