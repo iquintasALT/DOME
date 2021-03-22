@@ -38,6 +38,8 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	burstCount = 10;
 	burstTimer = 20;
 	burstDuration = 2;
+
+	timeToDestroy = 3;
 }
 
 ParticleSystem::~ParticleSystem() {
@@ -59,12 +61,19 @@ void ParticleSystem::init() {
 }
 
 void ParticleSystem::update() {
-	if (emitting) {
+	if (emitting && !destroyParticles) {
 		rateTimer += consts::DELTA_TIME;
 
 		if (rateTimer > 1.0 / rateOverTime) {
 			spawnParticle();
 			rateTimer = 0;
+		}
+
+		if (destroyAfterTime) {
+			time += consts::DELTA_TIME;
+
+			if (time > timeToDestroy)
+				destroyParticles = true;
 		}
 	}
 
