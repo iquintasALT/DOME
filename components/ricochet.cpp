@@ -12,12 +12,14 @@ void Ricochet::init() {
 void Ricochet::createExplosion()
 {
 	auto explosion = entity_->getMngr()->addEntity();
-	Vector2D pos = tr_->getPos();
+	Vector2D pos = tr_->getPos() + Vector2D(tr_->getW() / 2, tr_->getH() / 2);
 	explosion->addComponent<Transform>(pos, Vector2D(), 10, 10, 0);
 
 	auto particles = explosion->addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
 
-	particles->angleDispersion = 360;
+	particles->distanceToOrigin = 0;
+	particles->dir = Vector2D(-1, 0);
+	particles->angleDispersion = 180;
 	particles->burst = true;
 	particles->rateOverTime = 0;
 	particles->burstCount = 100;
@@ -25,9 +27,19 @@ void Ricochet::createExplosion()
 	particles->speed = 7;
 	particles->gravity = false;
 	particles->emitting = false;
+	particles->particleScale = 2;
 
 	particles->burstDuration = 0.02f;
 	particles->burstRepeat = 8;
+
+
+	/*particles->gravity = 0;
+	particles->lifeTime = 100;
+	particles->rateOverTime = 0;
+	particles->speed = 0;
+	particles->burst = true;
+	particles->destroyAfterBurst = false;
+	particles->burstRepeat = 1;*/
 }
 
 void Ricochet::update() {
