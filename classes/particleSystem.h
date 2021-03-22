@@ -86,7 +86,7 @@ public:
 	bool destroyAfterBurst;
 	int burstRepeat = 1;
 
-	bool destroyAfterTime;
+	bool destroyAfterTime = false;
 	float timeToDestroy;
 
 	bool emitting;
@@ -110,6 +110,7 @@ private:
 
 	float rateTimer = 0;
 	float burstTimer = 0;
+	float time = 0;
 
 	inline int randomInt(int min, int max);
 	void spawnParticle();

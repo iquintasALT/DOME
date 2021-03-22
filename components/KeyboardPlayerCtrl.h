@@ -26,8 +26,6 @@ public:
 		gravity_ = entity_->getComponent<GravityComponent>();
 		assert(entityTr != nullptr);
 
-		dust = entity_->getComponent<ParticleSystem>();
-		assert(dust != nullptr);
 	}
 	virtual void update();
 	inline bool isCrouching() { return crouched; }
@@ -40,6 +38,5 @@ private:
 	bool left, right, crouched;
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
-	ParticleSystem* dust;
 };
 
