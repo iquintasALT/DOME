@@ -30,7 +30,7 @@ void GameScene::loadMap(string& const path) {
 	auto& map_layers = mapInfo.tile_map.getLayers();
 	for (auto& layer : map_layers) {
 		// aqui comprobamos que sea la capa de tiles
-		if (layer->getType() != tmx::Layer::Type::Tile) 
+		if (layer->getType() != tmx::Layer::Type::Tile)
 			continue;
 
 		// cargamos la capa
@@ -49,7 +49,7 @@ void GameScene::loadMap(string& const path) {
 				auto cur_gid = layer_tiles[tile_index].ID;
 
 				// si es 0 esta vacio asi que continuamos a la siguiente iteracion
-				if (cur_gid == 0) 
+				if (cur_gid == 0)
 					continue;
 
 				// guardamos el tileset que utiliza este tile (nos quedamos con el tileset cuyo gid sea
@@ -60,12 +60,12 @@ void GameScene::loadMap(string& const path) {
 						tset_gid = ts.first;
 						tsx_file++;
 					}
-					else 
+					else
 						break;
 				}
 
 				// si no hay tileset válido, continuamos a la siguiente iteracion
-				if (tset_gid == -1) 
+				if (tset_gid == -1)
 					continue;
 
 				// normalizamos el índice
@@ -85,10 +85,14 @@ void GameScene::loadMap(string& const path) {
 				auto x_pos = x * mapInfo.tile_width;
 				auto y_pos = y * mapInfo.tile_height;
 
-				bool is_wall = false;
-				if (mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties.size() > 0) {
-					if(mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties[0].getName() == "wall")
-					is_wall = mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties[0].getBoolValue();
+				bool is_wall = false; // Booleano de control
+				// Acceso a las propiedades de una tile dentro de un tileset (.tsx)
+				vector<tmx::Property> tile_props = mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties;
+				if (tile_props.size() > 0) {
+					// Lo separo aqui por si en algun futuro creamos más propiedades, realmente habria que hacer una busqueda
+					// de la propiedad y si esta en el vector usarla acorde
+					if (tile_props[0].getName() == "wall") 
+						is_wall = tile_props[0].getBoolValue();
 				}
 
 				// metemos el tile
