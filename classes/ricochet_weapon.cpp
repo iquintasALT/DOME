@@ -43,12 +43,10 @@ void RicochetWeapon::update() {
 		Entity* bullet = entity_->getMngr()->addEntity();
 
 
-		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), dir * 10, 64, 64, degreeAngle);
+		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), dir * 10, 64, 64, 0);
 
 		float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
-
 		float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
-
 		float offset = ((-degreeAngle * aux2) / 90);
 		if (flipped) {
 			offset = ((degreeAngle * aux2) / 180);
@@ -58,6 +56,7 @@ void RicochetWeapon::update() {
 
 
 		bulletTr->setPos(centeredPos + dir * aux1);
+		bulletTr->setRot(degreeAngle);
 
 		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
 		bullet->addComponent<Ricochet>();

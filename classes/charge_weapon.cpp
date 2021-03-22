@@ -44,7 +44,7 @@ void ChargeWeapon::update() {
 			Entity* bullet = entity_->getMngr()->addEntity();
 
 
-			Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), Vector2D(), 64, 64, degreeAngle);
+			Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), Vector2D(), 64, 64, 0);
 			bulletTr->setH(1);
 
 			//MIENTRAS NO DETECETE UNA PARED EN LA DIRECCION DEL RATÓN (ESTO ES PROVISIONAL)
@@ -53,9 +53,9 @@ void ChargeWeapon::update() {
 			}
 
 			float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
-
 			float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
 
+			std::cout << degreeAngle << std::endl;
 			float offset = ((-degreeAngle * aux2) / 90);
 			if (flipped) {
 				offset = ((degreeAngle * aux2) / 180);
@@ -65,6 +65,7 @@ void ChargeWeapon::update() {
 
 
 			bulletTr->setPos(centeredPos + dir * aux1);
+			bulletTr->setRot(degreeAngle);
 
 			bullet->addComponent<Image>(&sdlutils().images().at("charge"));
 			bullet->getComponent<Image>()->setRotationOrigin(0, bulletTr->getH() / 2);
