@@ -8,8 +8,12 @@
 class RayCast
 {
 private:
-	Point2D origin;
-	Vector2D direction;
+	Point2D origin = Point2D();
+	Vector2D direction = Vector2D();
+	Point2D pointOfImpact = NULL;
+	double distance = -1.0;
+
+	
 	class Square
 	{
 	public:
