@@ -62,7 +62,8 @@ void ChargeWeapon::update() {
 				offsetY = -offsetY;
 			}
 
-			Vector2D centeredPos = { yCenteredPos.getX() - offsetX  ,yCenteredPos.getY() - bulletTr->getH() / 2 - offsetY }; //Punto para spawnear la bala centrada
+
+			Vector2D centeredPos = { yCenteredPos.getX() - offsetX  ,entityTr->getPos().getY() + entityTr->getH() / 2 - bulletTr->getH() / 2 - offsetY }; //Punto para spawnear la bala centrada
 
 
 			bulletTr->setPos(centeredPos + dir * aux1);
@@ -70,7 +71,12 @@ void ChargeWeapon::update() {
 
 			bullet->addComponent<Image>(&sdlutils().images().at("charge"));
 			bullet->getComponent<Image>()->setRotationOrigin(0, bulletTr->getH() / 2);
-			bullet->addComponent<Charge>();
+
+			bulletTr->setPos(centeredPos + dir * aux1);
+			bulletTr->setRot(degreeAngle);
+
+
+			bullet->addComponent<Charge>(radianAngle);
 
 			//COMPROBAR COLISIONES CON ENEMIGOS
 		}

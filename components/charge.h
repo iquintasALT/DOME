@@ -9,7 +9,7 @@
 
 class Charge : public Component {
 public:
-	Charge() : tr_(nullptr) {}
+	Charge(float angle) : tr_(nullptr), angle(angle) {}
 
 	virtual ~Charge() {}
 
@@ -19,5 +19,6 @@ public:
 
 private:
 	Transform* tr_;
+	float angle;
 };
 

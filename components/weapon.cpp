@@ -55,7 +55,7 @@ void Weapon::update() {
 			offsetY = -offsetY;
 		}
 
-		Vector2D centeredPos = { yCenteredPos.getX() - bulletTr->getW() / 2 - offsetX  ,yCenteredPos.getY() - bulletTr->getH() / 2 - offsetY }; //Punto para spawnear la bala centrada
+		Vector2D centeredPos = { yCenteredPos.getX() - bulletTr->getW() / 2 - offsetX  ,entityTr->getPos().getY() + entityTr->getH() / 2 - bulletTr->getH() / 2 - offsetY }; //Punto para spawnear la bala centrada
 
 		bulletTr->setPos(centeredPos + dir * aux1);
 		bulletTr->setRot(degreeAngle);
