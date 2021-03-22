@@ -33,6 +33,7 @@ private:
 	//     |     |
 	//     D --- C
 	//
+	friend class RayCast;
 	static bool PointInRectangle(const Vector2D A, const Vector2D B,
 			const Vector2D C, const Vector2D D, Vector2D P);
 
