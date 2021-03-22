@@ -47,13 +47,15 @@ void RicochetWeapon::update() {
 
 		float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
 		float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
-		float offset = ((-degreeAngle * aux2) / 90);
+
+		float offsetX = sin(-radianAngle) * aux2;
+		float offsetY = cos(-radianAngle) * aux2;
 		if (flipped) {
-			offset = ((degreeAngle * aux2) / 180);
+			offsetX = -offsetX;
+			offsetY = -offsetY;
 		}
 
-		Vector2D centeredPos = { yCenteredPos.getX() - bulletTr->getW() / 2 - offset  ,yCenteredPos.getY() - bulletTr->getH() / 2 }; //Punto para spawnear la bala centrada
-
+		Vector2D centeredPos = { yCenteredPos.getX() - bulletTr->getW() / 2 - offsetX , entityTr->getPos().getY() + entityTr->getH() / 2 - bulletTr->getH() / 2 - offsetY}; //Punto para spawnear la bala centrada
 
 		bulletTr->setPos(centeredPos + dir * aux1);
 		bulletTr->setRot(degreeAngle);

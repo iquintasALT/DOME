@@ -55,13 +55,14 @@ void ChargeWeapon::update() {
 			float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
 			float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
 
-			std::cout << degreeAngle << std::endl;
-			float offset = ((-degreeAngle * aux2) / 90);
+			float offsetX = sin(-radianAngle) * aux2;
+			float offsetY = cos(-radianAngle) * aux2;
 			if (flipped) {
-				offset = ((degreeAngle * aux2) / 180);
+				offsetX = -offsetX;
+				offsetY = -offsetY;
 			}
 
-			Vector2D centeredPos = { yCenteredPos.getX() - offset  ,yCenteredPos.getY() - bulletTr->getH() / 2 }; //Punto para spawnear la bala centrada
+			Vector2D centeredPos = { yCenteredPos.getX() - offsetX  ,yCenteredPos.getY() - bulletTr->getH() / 2 - offsetY }; //Punto para spawnear la bala centrada
 
 
 			bulletTr->setPos(centeredPos + dir * aux1);
@@ -70,7 +71,6 @@ void ChargeWeapon::update() {
 			bullet->addComponent<Image>(&sdlutils().images().at("charge"));
 			bullet->getComponent<Image>()->setRotationOrigin(0, bulletTr->getH() / 2);
 			bullet->addComponent<Charge>();
-			bulletTr->setRot(degreeAngle);
 
 			//COMPROBAR COLISIONES CON ENEMIGOS
 		}
