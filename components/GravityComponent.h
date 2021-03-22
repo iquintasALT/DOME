@@ -8,17 +8,12 @@
 
 class GravityComponent : public GameEntityComponent {
 public:
-	GravityComponent() {
+	GravityComponent(Transform* tr_) {
 		gravity = consts::GRAVITY;
 		entity_ = nullptr;
-		entityTr = nullptr;
+		entityTr = tr_;
 		onFloor_ = false;
 	};
-
-	virtual void init() {
-		entityTr = entity_->getComponent<Transform>();
-		assert(entityTr != nullptr);
-	}
 
 	virtual void update();
 

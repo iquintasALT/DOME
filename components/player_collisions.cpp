@@ -1,19 +1,10 @@
 #include "player_collisions.h"
+#include "GravityComponent.h"
 
-PlayerCollisions::PlayerCollisions(Manager* mngr) : mngr_(mngr), gravity_(nullptr), tr_(nullptr) {};
+PlayerCollisions::PlayerCollisions(Manager* mngr, GravityComponent* gr_) : mngr_(mngr), gravity_(gr_) {};
 
-void PlayerCollisions::init() {
-	tr_ = entity_->getComponent<Transform>();
-	assert(tr_ != nullptr);
-
-	gravity_ = entity_->getComponent<GravityComponent>();
-	assert(gravity_ != nullptr);
-}
-
-void PlayerCollisions::update() {
-	auto& pos = tr_->getPos();
-	int w = tr_->getW();
-	int h = tr_->getH();
+bool PlayerCollisions::collisions(Vector2D& newPos, int const w, int const h, Vector2D& vel) {
+	bool hasCollide = false;
 
 	for (auto entity : mngr_->getEnteties()) {
 		if (entity->hasGroup<Wall_grp>()) {
@@ -24,16 +15,17 @@ void PlayerCollisions::update() {
 			int tW = tileRend->getWidth();
 			int tH = tileRend->getHeight();
 
-			if (Collisions::collides(pos, w, h, tPos, tW, tH)) {
-				if (tPos.getY() < pos.getY() + h) {
-					if (!gravity_->onFloor()) {
-						gravity_->reachedFloor();
-						tr_->setPos(Vector2D(pos.getX(), tPos.getY() - h));
-					}
+			if (Collisions::collides(newPos, w, h, tPos, tW, tH)) {
+				if (tPos.getY() < newPos.getY() + h) {
+					gravity_->reachedFloor();
 				}
-				/*else
-					tr_->setVel(Vector2D(0, tr_->getVel().getY()));*/
+				if ((tPos.getX() + tW > newPos.getX() || tPos.getX() < newPos.getX() + w) && tPos.getY() >= newPos.getY() + h) {
+					vel.setX(0);
+				}
+				hasCollide = true;
 			}
 		}
 	}
+	
+	return hasCollide;
 }

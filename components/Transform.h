@@ -6,6 +6,8 @@
 #include "../utils/Vector2D.h"
 #include "../game/checkML.h"
 
+#include "player_collisions.h"
+
 class Transform : public Component {
 public:
 	Transform() :
@@ -18,11 +20,14 @@ public:
 		vel_(vel), //
 		width_(width), //
 		height_(height), //
-		rotation_(rotation)
-	{
-	}
+		rotation_(rotation), 
+		collisions_(nullptr)
+	{ }
 
-	virtual ~Transform() {
+	virtual ~Transform() { }
+
+	virtual void init() override {
+		collisions_ = entity_->getComponent<PlayerCollisions>();
 	}
 
 	Vector2D& getPos() {
@@ -74,10 +79,19 @@ public:
 	}
 
 	void update() override {
-		pos_ = pos_ + vel_;
+		if (collisions_ != nullptr) {
+			Vector2D newPos = pos_ + vel_;
+			if (collisions_->collisions(newPos, width_, height_, vel_))
+				pos_ = pos_ + vel_;
+			else pos_ = newPos;
+		}
+		else
+			pos_ = pos_ + vel_;
 	}
 
 private:
+	PlayerCollisions* collisions_;
+
 	Vector2D pos_;
 	Vector2D vel_;
 	float width_;

@@ -6,24 +6,23 @@
 #include "../utils/Collisions.h"
 #include "../game/checkML.h"
 
-#include "Transform.h"
 #include "tile_renderer.h"
-#include "GravityComponent.h"
+
+class GravityComponent;
 
 
 class PlayerCollisions : public Component
 {
 public:
-	PlayerCollisions(Manager* mngr);
+	PlayerCollisions(Manager* mngr, GravityComponent* gr_);
 
 	~PlayerCollisions() {}
 
 	virtual void init() override;
 
-	virtual void update() override;
+	bool collisions(Vector2D& const newPos, int const w, int const h, Vector2D& vel);
 
 private:
-	Transform* tr_;
 	GravityComponent* gravity_;
 	Manager* mngr_;
 };
