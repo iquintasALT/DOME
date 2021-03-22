@@ -583,6 +583,9 @@
     <ClInclude Include="libraries\sdlgui\sdlgui\button.h">
       <Filter>Header Files\sdlgui</Filter>
     </ClInclude>
+    <ClInclude Include="components\animation_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
