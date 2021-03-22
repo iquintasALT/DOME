@@ -164,8 +164,6 @@ private:
 	SDL_Window *window_; // the window
 	SDL_Renderer *renderer_; // the renderer
 
-	JSONValue* jValue;
-
 	sdl_resource_table<Font> fonts_; // fonts map (string -> font)
 	sdl_resource_table<Texture> images_; // textures map (string -> texture)
 	sdl_resource_table<Texture> msgs_; // textures map (string -> texture)
