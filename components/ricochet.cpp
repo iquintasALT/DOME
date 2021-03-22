@@ -21,8 +21,8 @@ void Ricochet::createExplosion()
 	particles->burst = true;
 	particles->rateOverTime = 0;
 	particles->burstCount = 100;
-	particles->lifeTime = 0.5f;
-	particles->speed = 5;
+	particles->lifeTime = 0.1f;
+	particles->speed = 7;
 	particles->gravity = false;
 	particles->emitting = false;
 
