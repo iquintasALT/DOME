@@ -1,8 +1,28 @@
 #include "ricochet.h"
+#include "../ecs/Entity.h"
+#include "../ecs/Manager.h"
+#include "../components/Transform.h"
+#include "../classes/particleSystem.h"
 
 void Ricochet::init() {
 	tr_ = entity_->getComponent<Transform>();
 	assert(tr_ != nullptr);
+}
+
+void Ricochet::createExplosion()
+{
+	auto explosion = entity_->getMngr()->addEntity();
+	Vector2D pos = tr_->getPos();
+	explosion->addComponent<Transform>(pos, Vector2D(), 10, 10, 0);
+
+	auto particles = explosion->addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
+	particles->angleDispersion = 360;
+	particles->burst = true;
+	particles->rateOverTime = 0;
+	particles->burstCount = 100;
+	particles->lifeTime = 0.5;
+	particles->speed = 5;
+	particles->gravity = false;
 }
 
 void Ricochet::update() {
@@ -34,6 +54,7 @@ void Ricochet::update() {
 
 	if (n == 0)
 	{
+		createExplosion();
 		entity_->setDead(true);
 	}
 }

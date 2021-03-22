@@ -10,11 +10,13 @@
 
 class Ricochet : public Component {
 public:
-	Ricochet(): tr_(nullptr), n(4) {}
+	Ricochet(): tr_(nullptr), n(1) {}
 
 	virtual ~Ricochet() {}
 
 	void init() override;
+
+	void createExplosion();
 
 	void update() override;
 
