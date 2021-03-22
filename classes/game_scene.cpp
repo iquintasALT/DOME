@@ -25,7 +25,6 @@ void GameScene::loadMap(string& const path) {
 		mapInfo.tilesets.insert(std::pair<gid, Texture*>(tset.getFirstGID(), tex));
 	}
 
-	bool is_wall = true;
 
 	// recorremos cada una de las capas (de momento solo las de tiles) del mapa
 	auto& map_layers = mapInfo.tile_map.getLayers();
@@ -33,8 +32,6 @@ void GameScene::loadMap(string& const path) {
 		// aqui comprobamos que sea la capa de tiles
 		if (layer->getType() != tmx::Layer::Type::Tile) 
 			continue;
-
-		is_wall = !is_wall;
 
 		// cargamos la capa
 		tmx::TileLayer* tile_layer = dynamic_cast<tmx::TileLayer*>(layer.get());
@@ -57,10 +54,12 @@ void GameScene::loadMap(string& const path) {
 
 				// guardamos el tileset que utiliza este tile (nos quedamos con el tileset cuyo gid sea
 				// el mas cercano, y a la vez menor, al gid del tile)
-				auto tset_gid = -1;
+				auto tset_gid = -1, tsx_file = 0;;
 				for (auto& ts : mapInfo.tilesets) {
-					if (ts.first <= cur_gid) 
+					if (ts.first <= cur_gid) {
 						tset_gid = ts.first;
+						tsx_file++;
+					}
 					else 
 						break;
 				}
@@ -86,6 +85,11 @@ void GameScene::loadMap(string& const path) {
 				auto x_pos = x * mapInfo.tile_width;
 				auto y_pos = y * mapInfo.tile_height;
 
+				bool is_wall = false;
+				if (mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties.size() > 0) {
+					if(mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties[0].getName() == "wall")
+					is_wall = mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties[0].getBoolValue();
+				}
 
 				// metemos el tile
 				Tile(mngr_, mapInfo.tilesets[tset_gid], is_wall, x_pos, y_pos,
