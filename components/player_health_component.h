@@ -1,5 +1,7 @@
 #pragma once
 #include "game_entity_component.h"
+#include "../game/checkML.h"
+
 class PlayerHealthComponent : public GameEntityComponent
 {
 public:
