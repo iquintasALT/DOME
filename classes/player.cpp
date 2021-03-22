@@ -28,7 +28,7 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<Interactions>();
 	addComponent<PlayerCollisions>(mngr_);
 
-	weapon = new WeaponBehaviour(3, 5, mngr_, t->getPos(), t, 7);
+	weapon = new WeaponBehaviour(0.5f, 5, mngr_, t->getPos(), t, 4);
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);
