@@ -36,7 +36,7 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 
 	burst = false;
 	burstCount = 10;
-	burstTimer = 0;
+	burstTimer = 20;
 	burstDuration = 2;
 }
 
@@ -98,6 +98,11 @@ void ParticleSystem::update() {
 			particleLife.erase(particleLife.begin() + i);
 			delete particles[i];
 			particles.erase(particles.begin() + i);
+
+			if (destroyParticles && particles.size() <= 0) {
+				std::cout << std::endl << "Destroyed particles" << std::endl;
+				entity_->setDead(true);
+			}
 		}
 	}
 }
@@ -145,6 +150,12 @@ void ParticleSystem::Stop() {
 }
 
 void ParticleSystem::Burst() {
+	if (destroyAfterBurst && actualBurstCount++ >= burstRepeat)
+	{
+		destroyParticles = true;
+		return;
+	}
+
 	for (int i = 0; i < burstCount; i++) {
 		spawnParticle();
 	}

@@ -16,13 +16,18 @@ void Ricochet::createExplosion()
 	explosion->addComponent<Transform>(pos, Vector2D(), 10, 10, 0);
 
 	auto particles = explosion->addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
+
 	particles->angleDispersion = 360;
 	particles->burst = true;
 	particles->rateOverTime = 0;
 	particles->burstCount = 100;
-	particles->lifeTime = 0.5;
+	particles->lifeTime = 0.5f;
 	particles->speed = 5;
 	particles->gravity = false;
+	particles->emitting = false;
+
+	particles->burstDuration = 0.02f;
+	particles->burstRepeat = 8;
 }
 
 void Ricochet::update() {

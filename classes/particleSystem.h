@@ -82,6 +82,15 @@ public:
 	int burstCount;
 	float burstDuration;
 	bool sizeOverTime;
+
+	bool destroyAfterBurst;
+	int burstRepeat = 1;
+
+	bool destroyAfterTime;
+	float timeToDestroy;
+
+	bool emitting;
+
 	Function sizeCurve;
 
 	void Play();
@@ -93,7 +102,9 @@ private:
 	std::vector<Transform*> particles;
 	std::vector<float> particleLife;
 
-	bool emitting;
+	int actualBurstCount = 0;
+
+	bool destroyParticles = false;
 
 	Transform* transform;
 
