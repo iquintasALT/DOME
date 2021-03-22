@@ -7,6 +7,8 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/SDLUtils.h"
 #include "Transform.h"
+#include "../game/checkML.h"
+
 
 class Ricochet : public Component {
 public:

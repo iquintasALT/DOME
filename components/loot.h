@@ -5,6 +5,8 @@
 #include "../game/constant_variables.h"
 #include "../classes/player.h"
 #include <string>
+#include "../game/checkML.h"
+
 class Loot :public InteractableElement
 {
 public:

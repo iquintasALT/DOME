@@ -1,6 +1,6 @@
 #pragma once
 #include "../components/weapon.h"
-
+#include "../game/checkML.h"
 
 class RicochetWeapon: public Weapon
 {
