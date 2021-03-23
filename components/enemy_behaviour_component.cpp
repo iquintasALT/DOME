@@ -14,10 +14,14 @@ void EnemyBehaviourComponent::init()
 ChasePlayer::ChasePlayer(float speed_, float stopDistance_) :speed(speed_), stopDistance(stopDistance_){};
 
 void ChasePlayer::update() {
+//If enemy can see player
 	if (enemyDetection->isActive()) {
+		//If it is further from player than it wants to be
 		if (std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()) > stopDistance) {
+			//If it is on player's left
 			if (playerTr->getPos().getX() - entityTr->getPos().getX() > 0.0f)
 				entityTr->setVelX(speed);
+			//If it is on player's right
 			else if (playerTr->getPos().getX() - entityTr->getPos().getX() < 0.0f)
 				entityTr->setVelX(-speed);
 		}
@@ -45,6 +49,28 @@ void KeepDistance::update() {
 
 			//Enemigo a la derecha del jugador
 			else if (distance < 0.0f) entityTr->setVelX(-speed);
+		}
+		else entityTr->setVelX(0.0);
+	}
+}
+
+FlyingChasePlayer::FlyingChasePlayer(float speed_, float stopDistance_, float hoverHeight_, float attackDistance_) :
+	speed(speed_), stopDistance(stopDistance_), hoverHeight(hoverHeight_), attackDistance(attackDistance_) {};
+
+void FlyingChasePlayer::update() {
+	//If enemy can see player
+	if (enemyDetection->isActive()) {
+		//If it is further from player than it wants to be
+		if (std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()) > stopDistance) {
+			float targetX = playerTr->getPos().getX(), targetY = 0.0;
+			//If it is too far to begin attacking, it will keep its altitude
+			if (std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()) > attackDistance)
+				targetY = hoverHeight;
+			else
+				targetY = playerTr->getPos().getY();
+			
+			Point2D target = Point2D(targetX, targetY);
+			entityTr->setVel(target - entityTr->getPos());
 		}
 		else entityTr->setVelX(0.0);
 	}

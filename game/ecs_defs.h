@@ -16,8 +16,9 @@ class GameEntityComponent;
 class EnemyComponent;
 class EnemyBehaviourComponent;
 class ChasePlayer;
-class TileRenderer;
 class KeepDistance;
+class FlyingChasePlayer;
+class TileRenderer;
 class DistanceDetection;
 class RayCastDetection;
 class Interactions;
@@ -37,9 +38,9 @@ class Charge;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
-	GravityComponent,\
-	KeyboardPlayerCtrl,\
-	player_animation,\
+	GravityComponent, \
+	KeyboardPlayerCtrl, \
+	player_animation, \
     Weapon, \
 	InventoryController, \
 	Inventory, \
@@ -47,10 +48,11 @@ class Charge;
 	EnemyComponent, \
 	EnemyBehaviourComponent, \
 	ChasePlayer, \
+	KeepDistance, \
+	FlyingChasePlayer, \
 	TileRenderer, \
-	KeepDistance,\
-	DistanceDetection,\
-	RayCastDetection,\
+	DistanceDetection, \
+	RayCastDetection, \
 	Interactions, \
 	Ricochet,\
 	InteractableElement, \
@@ -58,8 +60,8 @@ class Charge;
 	Loot, \
     RicochetWeapon, \
 	PlayerHealthComponent,\
-	HungerComponent,\
-	TirednessComponent,\
+	HungerComponent, \
+	TirednessComponent, \
 	PlayerCollisions, \
 	ChargeWeapon, \
 	Charge
