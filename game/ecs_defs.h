@@ -66,7 +66,10 @@ class Charge;
 // groups
 
 struct Wall_grp;
-#define _GRPS_LIST_  Wall_grp
+struct Contact_Dmg_grp;
+#define _GRPS_LIST_  \
+	Wall_grp, \
+	Contact_Dmg_grp
 
 // handlers
 struct Player_hdlr;
