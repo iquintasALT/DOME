@@ -14,6 +14,7 @@
 #pragma once
 
 #include <sdlgui/popupbutton.h>
+#include "../../game/checkML.h"
 
 NAMESPACE_BEGIN(sdlgui)
 

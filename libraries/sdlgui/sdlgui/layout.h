@@ -15,6 +15,7 @@
 
 #include <sdlgui/common.h>
 #include <unordered_map>
+#include "../../game/checkML.h"
 
 NAMESPACE_BEGIN(sdlgui)
 

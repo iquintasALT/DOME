@@ -13,6 +13,7 @@
 #include <sdlgui/widget.h>
 #include <vector>
 #include <memory>
+#include "../../game/checkML.h"
 
 NAMESPACE_BEGIN(sdlgui)
 
