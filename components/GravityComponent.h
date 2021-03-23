@@ -14,6 +14,7 @@ public:
 		entityTr = tr_;
 		onFloor_ = false;
 	};
+	GravityComponent(){}
 
 	virtual void update();
 

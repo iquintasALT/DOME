@@ -33,6 +33,7 @@ public:
 	}
 
 	bool alive();
+	list<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
 
 private:
 	Player* player;

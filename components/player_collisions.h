@@ -14,7 +14,7 @@ class GravityComponent;
 class PlayerCollisions : public Component
 {
 public:
-	PlayerCollisions(Manager* mngr, GravityComponent* gr_);
+	PlayerCollisions(Manager* mngr, GravityComponent* gr);
 
 	~PlayerCollisions() {}
 
