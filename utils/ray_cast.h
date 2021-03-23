@@ -22,7 +22,6 @@ private:
 		Point2D centre;
 
 		Square() : vertices(std::array<Point2D, 4>()), centre(Point2D()) {};
-		Square(Point2D p) {};
 
 		Square(Point2D centre_, Point2D vertex0, Point2D vertex1): centre(centre_)
 		{
@@ -52,11 +51,9 @@ private:
 public:
 	RayCast(Point2D origin_, Vector2D direction_) {};
 	
-	template<typename ...rTs, typename ...sTs>
-	static RayCast rayCastToSquare(rTs... rCastArgs, sTs... squareArgs)
+	template<typename ...sTs>
+	static RayCast rayCastToSquare(RayCast rC, sTs... squareArgs)
 	{
-		RayCast rC = RayCast(rCastArgs);
-		//Square s = Square(); // Square(squareArgs);
 		Square s =  Square(squareArgs);
 
 		Vector2D perp = Vector2D(rC.direction.getY(), -rC.direction.getX());
