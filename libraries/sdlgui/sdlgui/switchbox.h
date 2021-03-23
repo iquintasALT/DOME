@@ -13,6 +13,7 @@
  */
 
 #pragma once
+#include "../../game/checkML.h"
 
 #include <sdlgui/checkbox.h>
 

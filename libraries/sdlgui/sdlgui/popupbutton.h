@@ -14,6 +14,7 @@
 #include <sdlgui/button.h>
 #include <sdlgui/popup.h>
 #include <sdlgui/entypo.h>
+#include "../../game/checkML.h"
 
 NAMESPACE_BEGIN(sdlgui)
 

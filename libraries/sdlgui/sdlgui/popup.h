@@ -14,6 +14,7 @@
 
 #include <sdlgui/window.h>
 #include <vector>
+#include "../../game/checkML.h"
 
 NAMESPACE_BEGIN(sdlgui)
 

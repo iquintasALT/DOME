@@ -36,6 +36,7 @@ THE SOFTWARE.
 #include <cstdlib>
 #include <cstring>
 #include <string>
+#include "../../game/checkML.h"
 
 namespace nanort {
 
