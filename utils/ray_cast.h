@@ -50,7 +50,13 @@ private:
 
 public:
 	RayCast(Point2D origin_, Vector2D direction_) {};
+
+	double getDistance() { return distance; };
+
+	Point2D getPointOfImpact() { return pointOfImpact; };
 	
+	bool hasCollision() { return distance >= 0.0; };
+
 	template<typename ...sTs>
 	static RayCast rayCastToSquare(RayCast rC, sTs... squareArgs)
 	{
