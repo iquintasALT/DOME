@@ -445,9 +445,6 @@
     <ClInclude Include="classes\tile.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\player_collisions.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
     <ClInclude Include="classes\ricochet_weapon.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
@@ -584,6 +581,9 @@
       <Filter>Header Files\sdlgui</Filter>
     </ClInclude>
     <ClInclude Include="components\animation_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\player_collisions.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
