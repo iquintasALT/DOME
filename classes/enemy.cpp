@@ -14,8 +14,8 @@ Enemy::Enemy(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 {
 	mngr_->addEntity(this)->setGroup<Contact_Dmg_grp>(true);
 	addComponent<Transform>(pos, Vector2D(), 32, 64, 0);
-	addComponent<GravityComponent>();
-	addComponent<PlayerCollisions>(mngr_);
+	auto* gr = addComponent<GravityComponent>();
+	addComponent<PlayerCollisions>(mngr_, gr);
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	//addComponent<player_animation>();
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);

@@ -9,6 +9,7 @@ class Player :
 {
 public:
 	Player(Manager* mngr_, Point2D pos);
+	~Player();
 	WeaponBehaviour* getCurrentWeapon();
 	WeaponBehaviour* equipWeapon(WeaponBehaviour* newWeapon);
 	Physiognomy* getPhysiognomy();

@@ -11,6 +11,7 @@ class HungerComponent : public PlayerHealthComponent
 {
 public:
 	HungerComponent(Vector2D position_) : hunger(MAX_HUNGER), t(nullptr), position(position_), hungerTime(sdlutils().currRealTime()) {};
+	~HungerComponent() { delete t; }
 	void init() override;
 	void update() override;
 	void render() override;

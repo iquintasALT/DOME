@@ -33,6 +33,7 @@ class TirednessComponent;
 class ChargeWeapon;
 class Charge;
 
+
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\

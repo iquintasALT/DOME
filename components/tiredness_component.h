@@ -11,6 +11,7 @@ class TirednessComponent : public PlayerHealthComponent
 {
 public:
 	TirednessComponent(Vector2D position_) : tiredness(MAX_TIREDNESS), t(nullptr), position(position_), tirednessTime(sdlutils().currRealTime()){};
+	~TirednessComponent() { delete t; }
 	void init() override;
 	void update() override;
 	void render() override;

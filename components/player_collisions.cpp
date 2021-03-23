@@ -1,7 +1,7 @@
 #include "player_collisions.h"
 #include "GravityComponent.h"
 
-PlayerCollisions::PlayerCollisions(Manager* mngr, GravityComponent* gr_) : mngr_(mngr), gravity_(gr_) {};
+PlayerCollisions::PlayerCollisions(Manager* mngr, GravityComponent* gr) : mngr_(mngr), gravity_(gr) {};
 
 bool PlayerCollisions::collisions(Vector2D& newPos, int const w, int const h, Vector2D& vel) {
 	bool hasCollide = false;
@@ -28,4 +28,7 @@ bool PlayerCollisions::collisions(Vector2D& newPos, int const w, int const h, Ve
 	}
 	
 	return hasCollide;
+}
+void PlayerCollisions::init() {
+
 }
