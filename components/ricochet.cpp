@@ -13,8 +13,13 @@ void Ricochet::init() {
 void Ricochet::createExplosion()
 {
 	auto explosion = entity_->getMngr()->addEntity();
-	Vector2D pos = tr_->getPos() + Vector2D(tr_->getW() / 2, tr_->getH() / 2);
-	explosion->addComponent<Transform>(pos, Vector2D(), 10, 10, 0);
+	Vector2D explosionOrigin = tr_->getPos() + Vector2D(tr_->getW() / 2, tr_->getH() / 2);
+
+	Point2D arribaizq = entity_->getComponent<Transform>()->getPos();
+	Point2D arribader = Point2D(entity_->getComponent<Transform>()->getPos().getX() + entity_->getComponent<Transform>()->getW(), arribaizq.getY());
+	Point2D squareCenter = Point2D(entity_->getComponent<Transform>()->getPos().getX() + (entity_->getComponent<Transform>()->getW() / 2), arribaizq.getY() + (entity_->getComponent<Transform>()->getH() / 2));
+	
+	explosion->addComponent<Transform>(explosionOrigin, Vector2D(), 10, 10, 0);
 
 	auto particles = explosion->addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
 
@@ -43,16 +48,13 @@ void Ricochet::createExplosion()
 	particles->burstRepeat = 1;*/
 
 	float x2 = entity_->getComponent<Transform>()->getPos().getX() + (entity_->getComponent<Transform>()->getW()/2);
-	float y2 = entity_->getComponent<Transform>()->getPos().getY() - (entity_->getComponent<Transform>()->getH()/2);
-	Point2D center = pos;
+	float y2 = entity_->getComponent<Transform>()->getPos().getY() + (entity_->getComponent<Transform>()->getH()/2);
 	Vector2D direction = Vector2D(x2,y2);
 
-	RayCast range = RayCast(center, direction);
+	RayCast range = RayCast(squareCenter, direction - explosionOrigin);
 
-	Point2D arribaizq = Point2D(entity_->getComponent<Transform>()->getPos().getX(), entity_->getComponent<Transform>()->getPos().getY());
-	Point2D arribader = Point2D(entity_->getComponent<Transform>()->getPos().getX() + entity_->getComponent<Transform>()->getW() / 2, entity_->getComponent<Transform>()->getPos().getY() / 2);
 	//Colision enemigos
-	if (RayCast::rayCastToSquare(range, Point2D(x2,y2), arribaizq, arribader).hasCollision())//despuesde la coma los puntos del player
+	if (RayCast::rayCastToSquare(range, Point2D(x2,y2), arribader, arribaizq).hasCollision())//despuesde la coma los puntos del player
 	{
 		std::cout << range.getDistance();
 	}

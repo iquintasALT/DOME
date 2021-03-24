@@ -55,7 +55,7 @@ public:
 
 	Point2D getPointOfImpact() { return pointOfImpact; };
 	
-	bool hasCollision(float maxRange = std::numeric_limits<float>::max()) { return distance >= 0.0 && distance<maxRange; };
+	bool hasCollision(float maxRange = std::numeric_limits<float>::max()) { return distance >= 0.0 && distance < maxRange; };
 	/*
 	template<typename ...sTs>
 	static RayCast rayCastToSquare(RayCast rC, sTs... squareArgs)
