@@ -50,11 +50,10 @@ void Ricochet::createExplosion()
 	RayCast range = RayCast(center, direction);
 
 	Point2D arribaizq = Point2D(entity_->getComponent<Transform>()->getPos().getX(), entity_->getComponent<Transform>()->getPos().getY());
-	Point2D arribader = Point2D(entity_->getComponent<Transform>()->getPos().getX() + entity_->getComponent<Transform>()->getW(), entity_->getComponent<Transform>()->getPos().getY());
+	Point2D arribader = Point2D(entity_->getComponent<Transform>()->getPos().getX() + entity_->getComponent<Transform>()->getW() / 2, entity_->getComponent<Transform>()->getPos().getY() / 2);
 	//Colision enemigos
 	if (RayCast::rayCastToSquare(range, Point2D(x2,y2), arribaizq, arribader).hasCollision())//despuesde la coma los puntos del player
 	{
-
 		std::cout << range.getDistance();
 	}
 
