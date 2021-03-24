@@ -11,7 +11,7 @@ class RayCast
 private:
 	Point2D origin = Point2D();
 	Vector2D direction = Vector2D();
-	Point2D pointOfImpact = NULL;
+	Point2D pointOfImpact = Point2D();
 	double distance = -1.0;
 
 	
@@ -121,7 +121,7 @@ public:
 		}
 		else // if there was no collision
 		{
-			rC.pointOfImpact = NULL;
+			rC.pointOfImpact = Point2D();
 			rC.distance = -1.0;
 		}
 		return rC;
