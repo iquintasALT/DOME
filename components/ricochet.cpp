@@ -3,6 +3,7 @@
 #include "../ecs/Manager.h"
 #include "../components/Transform.h"
 #include "../classes/particleSystem.h"
+#include "../utils/ray_cast.h"
 
 void Ricochet::init() {
 	tr_ = entity_->getComponent<Transform>();
@@ -32,7 +33,7 @@ void Ricochet::createExplosion()
 	particles->burstDuration = 0.02f;
 	particles->burstRepeat = 8;
 
-
+	
 	/*particles->gravity = 0;
 	particles->lifeTime = 100;
 	particles->rateOverTime = 0;
@@ -40,6 +41,28 @@ void Ricochet::createExplosion()
 	particles->burst = true;
 	particles->destroyAfterBurst = false;
 	particles->burstRepeat = 1;*/
+
+	float x2 = entity_->getComponent<Transform>()->getPos().getX() + (entity_->getComponent<Transform>()->getW()/2);
+	float y2 = entity_->getComponent<Transform>()->getPos().getY() - (entity_->getComponent<Transform>()->getH()/2);
+	Point2D center = pos;
+	Vector2D direction(x2,y2);
+
+	RayCast explosion(center, direction);
+
+	Point2D arribaizq(entity_->getComponent<Transform>()->getPos().getX(), entity_->getComponent<Transform>()->getPos().getY());
+	Point2D abajoder(entity_->getComponent<Transform>()->getPos().getX() + entity_->getComponent<Transform>()->getW(), entity_->getComponent<Transform>()->getPos().getY() - entity_->getComponent<Transform>()->getH());
+	//Colision enemigos
+	//if (rayCastToSquare<Point2D, Point2D, Point2D>(explosion, Point2D(x2,y2), arribaizq, abajoder).hasCollision())//despuesde la coma los puntos del player
+	//{
+
+	//	std::cout << "choque";
+	//}
+
+	//Colision enemigos (Cuando esten hechos xd)
+	/*for (auto& e : entity_->getMngr()->getEnteties())
+	{
+
+	}*/
 }
 
 void Ricochet::update() {
