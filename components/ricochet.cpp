@@ -45,18 +45,18 @@ void Ricochet::createExplosion()
 	float x2 = entity_->getComponent<Transform>()->getPos().getX() + (entity_->getComponent<Transform>()->getW()/2);
 	float y2 = entity_->getComponent<Transform>()->getPos().getY() - (entity_->getComponent<Transform>()->getH()/2);
 	Point2D center = pos;
-	Vector2D direction(x2,y2);
+	Vector2D direction = Vector2D(x2,y2);
 
-	RayCast explosion(center, direction);
+	RayCast range = RayCast(center, direction);
 
-	Point2D arribaizq(entity_->getComponent<Transform>()->getPos().getX(), entity_->getComponent<Transform>()->getPos().getY());
-	Point2D abajoder(entity_->getComponent<Transform>()->getPos().getX() + entity_->getComponent<Transform>()->getW(), entity_->getComponent<Transform>()->getPos().getY() - entity_->getComponent<Transform>()->getH());
+	Point2D arribaizq = Point2D(entity_->getComponent<Transform>()->getPos().getX(), entity_->getComponent<Transform>()->getPos().getY());
+	Point2D arribader = Point2D(entity_->getComponent<Transform>()->getPos().getX() + entity_->getComponent<Transform>()->getW(), entity_->getComponent<Transform>()->getPos().getY());
 	//Colision enemigos
-	//if (rayCastToSquare<Point2D, Point2D, Point2D>(explosion, Point2D(x2,y2), arribaizq, abajoder).hasCollision())//despuesde la coma los puntos del player
-	//{
+	if (RayCast::rayCastToSquare(range, Point2D(x2,y2), arribaizq, arribader).hasCollision())//despuesde la coma los puntos del player
+	{
 
-	//	std::cout << "choque";
-	//}
+		std::cout << range.getDistance();
+	}
 
 	//Colision enemigos (Cuando esten hechos xd)
 	/*for (auto& e : entity_->getMngr()->getEnteties())
