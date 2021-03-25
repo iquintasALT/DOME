@@ -47,11 +47,12 @@ void Ricochet::createExplosion()
 	particles->destroyAfterBurst = false;
 	particles->burstRepeat = 1;*/
 
-	float x2 = entity_->getComponent<Transform>()->getPos().getX() + (entity_->getComponent<Transform>()->getW()/2);
-	float y2 = entity_->getComponent<Transform>()->getPos().getY() + (entity_->getComponent<Transform>()->getH()/2);
+	float x2 = playerTr->getPos().getX() + (playerTr->getW()/2);
+	float y2 = playerTr->getPos().getY() + (playerTr->getH()/2);
 	Vector2D direction = Vector2D(x2,y2);
 
 	RayCast range = RayCast(squareCenter, direction - explosionOrigin);
+
 
 	//Colision enemigos
 	if (RayCast::rayCastToSquare(range, Point2D(x2,y2), arribader, arribaizq).hasCollision())//despuesde la coma los puntos del player
