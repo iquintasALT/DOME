@@ -61,6 +61,6 @@ void RicochetWeapon::update() {
 		bulletTr->setRot(degreeAngle);
 
 		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
-		bullet->addComponent<Ricochet>();
+		bullet->addComponent<Ricochet>(playerTr);
 	}
 }

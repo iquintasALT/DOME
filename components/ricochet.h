@@ -12,7 +12,7 @@
 
 class Ricochet : public Component {
 public:
-	Ricochet(): tr_(nullptr), n(1) {}
+	Ricochet(Transform* player): tr_(nullptr), playerTr(player), n(1) {}
 
 	virtual ~Ricochet() {}
 
@@ -24,5 +24,6 @@ public:
 
 private:
 	Transform* tr_;
+	Transform* playerTr;
 	int n; //numero rebotes
 };
