@@ -6,6 +6,9 @@
 #include <limits>
 #include "../game/checkML.h"
 
+class Transform;
+class Entity;
+
 class RayCast
 {
 private:
@@ -127,6 +130,10 @@ public:
 			distance = -1.0;
 		}
 	}
+
+	void rayCastToSquare(Transform* transform);
+
+	void rayCastToSquare(Entity* entity);
 };
 
 #endif
