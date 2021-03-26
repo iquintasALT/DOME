@@ -58,6 +58,10 @@ public:
 		return rotation_;
 	}
 
+	Point2D getSize() const {
+		return Point2D(width_, height_);
+	}
+
 	void setRot(float rot) {
 		rotation_ = rot;
 	}
