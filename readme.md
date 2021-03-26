@@ -72,7 +72,7 @@ El jugador dispondrá de un inventario por bloques, como en los comienzos de la 
 
 Además, habrá una seccion en la que el jugador pueda establecer su equipamiento (armas, armaduras).
 
-## Armas 
+## Armas
 
 Existen tres categorías de armas que facilitan el combate contra ciertos enemigos, (ciertos enemigos son resistentes, con algunas armas será más facil dar al enemigo, etc.) que además podrán ser mejoradas en el refugio para obtener distintos efectos/estadísticas.
 
@@ -88,7 +88,7 @@ Además, durante la raid, podremos cambiar entre arma principal y la que haya en
 
 ## Armaduras
 
-Afecta la resistencia del jugador, ciertas mejoras o armaduras darán resistencia a efectos para por ejemplo poder saquear una zona contaminada o con radiación. El 
+Afecta la resistencia del jugador, ciertas mejoras o armaduras darán resistencia a efectos para por ejemplo poder saquear una zona contaminada o con radiación. El
 
 ## Mochilas
 
@@ -107,17 +107,11 @@ Aumenta la capacidad del inventario del jugador.
 
 # Supervivencia <a name="supe"></a>
 
-- **Comida:** Si se pasan dos días sin comer, se aplicará el debufo de hambre. 
-//Hay dos tipos de ración de comida: proteínas (carne) y vitaminas (verdura). Comer uno de cada en un solo día se considera una comida completa, y aportará un bufo al jugador que le otorgará un 15% de probabilidad de evitar sufrir heridas cuando recibe daño. Este efecto dura un día.//
-
-- **Descanso:** Por cada 30 minutos por encima de 6 horas que se duerme, el tiempo de viaje a una raid se reduce en un 5%, hasta un máximo de 40% de reducción. De tal forma que el de tiempo jugable final de la raid será Tf = (12-Tv) + min(0.4, 0.05*(m/30))*(12-Tv); siendo Tf el tiempo final, Tv el tiempo de viaje no modificado, m/30 el número de incrementos de 30 minutos dormidos por encima de las 6 horas. Esta modificación se aplica también en negativo, de tal forma que si se duermen solo 4 horas, el tiempo de viaje a la raid se incrementa un 20%, reduciendo la cantidad de tiempo que se tiene para jugar el nivel.
-Además, se reducirá la velocidad de movimiento del jugador durante la raid.
+- **Cansancio:** El cansancio es un debufo stackeable que reduce la velocidad de movimiento en la raid y el tiempo de viaje hacia las localizaciones.
+Para reestablecer niveles de cansancio se podrá descansar en el refugio y cuanto más tiempo se dedique a dormir, mas descansado estará el jugador y por lo tanto
+su velocidad de movimiento mejorará.
 
 - **Hambre:** El hambre es un debufo stackeable que reduce el espacio de carga. Cada nivel de hambre adquirido incrementa la velocidad a la que la condición de desangrado se propaga. Comer una ración de comida restará dos niveles de hambre; comer una comida completa restará todos los niveles de hambre.
-
-- **Sed:** La sed es un debufo que reduce la precisión de las armas, incrementando el índice de desviación de cada bala disparada. Este debufo se limpia cuando se bebe una ración de agua.
-
-Ciertas mejoras del refugio pueden hacer esto más llevadero, una cama mejor te permite estar sin dormir durante 2 días o algo así.
 
 # Enemigos <a name="enem"></a>
 
@@ -174,7 +168,7 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 
 # Contenedores
 
-| Nombre | Sprite | Loot table | 
+| Nombre | Sprite | Loot table |
 |--------|--------|-------|
 | Estantería | N/A | Componentes electrónicos (5-10) / Materiales (10-20) |
 | N/A | N/A | N/A |
@@ -187,24 +181,24 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 | Tier 1 Weapon | ![alt text](./docs/images/w_tier_1.png)| Tier 2 Weapon | ![alt text](./docs/images/w_tier_2.png)| Tier 3 Weapon | ![alt text](./docs/images/w_tier_3.png)|
 
 ## Armaduras/Trajes
-| Nombre | Sprite | Stats | 
+| Nombre | Sprite | Stats |
 |--------|--------|-------|
 | N/A | N/A | N/A |
 
 # Loot en localización
 
-![loot](./docs/images/loot_system.png) 
+![loot](./docs/images/loot_system.png)
 
 ## Específico
 | Nombre | Sprite | Tamaño de stack | Uso |
 |--------|--------|-----------------|-----|
 | Kit de mejora básico | N/A | 1 | Permite la mejora de armas a nivel 2 |
 | Kit de mejora avanzado | N/A | 1 | Permite la mejora de armas a nivel 3 |
-| Armas | N/A | N/A | N/A | 
-| Restos clave de la nave | N/A | N/A | N/A | 
-| Munición | N/A | N/A | N/A | 
-| Mochila | N/A | N/A | N/A | 
-| Placas de metal | N/A | N/A | N/A | 
+| Armas | N/A | N/A | N/A |
+| Restos clave de la nave | N/A | N/A | N/A |
+| Munición | N/A | N/A | N/A |
+| Mochila | N/A | N/A | N/A |
+| Placas de metal | N/A | N/A | N/A |
 
 ## Genérico
 | Nombre | Sprite | Tamaño de stack |
@@ -212,7 +206,7 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 | Materiales de construcción | N/A | 5 |
 | Partes mecánicas | N/A | 10 |
 | Restos electronicas | N/A | 10 |
-| Componentes médicos | N/A | N/A | 
+| Componentes médicos | N/A | N/A |
 | Agua | N/A | N/A |
 | Elementos orgánicos | N/A | N/A |
 | Comida | N/A | N/A |
@@ -235,17 +229,17 @@ Mejora la mochila |
 # Refúgio
 
 ## Estación médica
-| Crafteo/Acción | Sprite | Coste | Tiempo (Coste) | 
+| Crafteo/Acción | Sprite | Coste | Tiempo (Coste) |
 |-----|-----|-----|-----|
 | N/A | N/A | N/A | N/A |
 
 ## Taller
-| Crafteo/Acción | Sprite | Coste | Tiempo (Coste) | 
+| Crafteo/Acción | Sprite | Coste | Tiempo (Coste) |
 |-----|-----|-----|-----|
 | N/A | N/A | N/A | N/A |
 
 # Enemigos
-| Nombre | Sprite | .... | 
+| Nombre | Sprite | .... |
 |--------|--------|-------|
 | Melé | N/A | Se acerca al jugador y le hace daño (daño/explosion) |
 | Torreta | N/A | Fijo en el suelo, dispara al jugador |
