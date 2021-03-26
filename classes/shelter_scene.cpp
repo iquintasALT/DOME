@@ -10,8 +10,7 @@ void ShelterScene::init() {
 	player->addComponent<GravityComponent>(tr);
 	player->addComponent<KeyboardPlayerCtrl>();
 	player->addComponent<player_animation>();
-	player->addComponent<HungerComponent>(Vector2D(10, 10));
-	player->addComponent<TirednessComponent>(Vector2D(150, 10));
-
+	player->addComponent<HungerComponent>();
+	player->addComponent<TirednessComponent>();
 	mngr_->setHandler<Player_hdlr>(player);
 }
