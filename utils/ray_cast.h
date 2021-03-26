@@ -49,7 +49,7 @@ private:
 	}
 
 public:
-	RayCast(Point2D origin_, Vector2D direction_) {};
+	RayCast(Point2D origin_, Vector2D direction_) : origin(origin_), direction(direction_) {};
 
 	double getDistance() { return distance; };
 
@@ -92,7 +92,7 @@ public:
 		}
 	}
 	*/
-	static RayCast rayCastToSquare(RayCast rC, Vector2D centro, Point2D esq1, Point2D esq2)
+	static RayCast rayCastToSquare(RayCast& rC, Vector2D centro, Point2D esq1, Point2D esq2)
 	{
 		Square s = Square(centro, esq1, esq2);
 
