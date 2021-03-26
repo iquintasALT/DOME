@@ -147,8 +147,8 @@ public:
 
 		float m1 = v1.getY() / v1.getX();
 		float m2 = v2.getY() / v2.getX();
-		float n1 = v1.getY() - m1 * v1.getX();
-		float n2 = v2.getY() - m2 * v2.getX();
+		float n1 = p1.getY() - m1 * v1.getX();
+		float n2 = p2.getY() - m2 * v2.getX();
 		if (m1 == m2 && n1 == n2)
 		{
 			intersect = p1;
