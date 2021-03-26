@@ -55,7 +55,8 @@ void Ricochet::createExplosion()
 
 
 	//Colision enemigos
-	if (RayCast::rayCastToSquare(range, Point2D(x2,y2), arribader, arribaizq).hasCollision())//despuesde la coma los puntos del player
+	range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
+	if (range.hasCollision())
 	{
 		std::cout << range.getDistance();
 	}

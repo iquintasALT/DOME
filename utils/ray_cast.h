@@ -92,39 +92,40 @@ public:
 		}
 	}
 	*/
-	static RayCast rayCastToSquare(RayCast& rC, Vector2D centro, Point2D esq1, Point2D esq2)
-	{
-		Square s = Square(centro, esq1, esq2);
 
-		Vector2D perp = Vector2D(rC.direction.getY(), -rC.direction.getX());
+
+	void rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex1)
+	{
+		Square s = Square(centre, vertex0, vertex1);
+
+		Vector2D perp = Vector2D(direction.getY(), -direction.getX());
 
 		Point2D closestPointInLine = Point2D();
-		Vector2D::intersection(s.centre, perp, rC.origin, rC.direction, closestPointInLine);
+		Vector2D::intersection(s.centre, perp, origin, direction, closestPointInLine);
 
 		short int closestVertex = getClosestVertex(closestPointInLine, s);
 		Vector2D closestEdgeDirection = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4];
 
-		Vector2D::intersection(rC.origin, rC.direction, s.vertices[closestVertex], closestEdgeDirection, rC.pointOfImpact);
+		Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection, pointOfImpact);
 
-		if (Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], rC.pointOfImpact)) // if collision occurred
+		if (Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact)) // if collision occurred
 		{
 			Point2D intersect = Point2D();
 			double auxDistance = 0.0f;
 			closestEdgeDirection = s.vertices[closestVertex] - s.vertices[(closestVertex - 1) % 4];
 
-			Vector2D::intersection(rC.origin, rC.direction, s.vertices[closestVertex], closestEdgeDirection, intersect);
+			Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection, intersect);
 
-			if ((intersect - rC.origin).magnitude() > (rC.pointOfImpact - rC.origin).magnitude())
-				rC.pointOfImpact = intersect;
+			if ((intersect - origin).magnitude() > (pointOfImpact - origin).magnitude())
+				pointOfImpact = intersect;
 
-			rC.distance = (rC.pointOfImpact - rC.origin).magnitude();
+			distance = (pointOfImpact - origin).magnitude();
 		}
 		else // if there was no collision
 		{
-			rC.pointOfImpact = Point2D();
-			rC.distance = -1.0;
+			pointOfImpact = Point2D();
+			distance = -1.0;
 		}
-		return rC;
 	}
 };
 
