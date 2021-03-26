@@ -3,6 +3,8 @@
 void GravityComponent::update() {
 	if (!onFloor_)
 		entityTr->setVelY(entityTr->getVel().getY() + gravity / consts::FRAME_RATE);
+
+	if (entityTr->getPos().getY() > 600) entityTr->setVelY(0);
 }
 
 void GravityComponent::reachedFloor() {

@@ -16,6 +16,7 @@ public:
 	KeyboardPlayerCtrl() {
 		speed = consts::PLAYER_SPEED;
 		entityTr = nullptr;
+		gravity_ = nullptr;
 		left = right = crouched = false;
 	};
 
@@ -30,6 +31,8 @@ public:
 	virtual void update();
 	inline bool isCrouching() { return crouched; }
 	void resetSpeed();
+	float getSpeed();
+	void setSpeed(float speed);
 
 private:
 	Transform* entityTr;

@@ -45,3 +45,9 @@ void KeyboardPlayerCtrl::update() {
 void KeyboardPlayerCtrl::resetSpeed() {
 	entityTr->setVel(Vector2D(0, entityTr->getVel().getY()));
 }
+float KeyboardPlayerCtrl::getSpeed() {
+	return speed;
+}
+void KeyboardPlayerCtrl::setSpeed(float speed_) {
+	speed = speed_;
+}

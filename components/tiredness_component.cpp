@@ -2,26 +2,30 @@
 #include "../sdlutils/InputHandler.h"
 
 void TirednessComponent::init() {
-	t = new Texture(sdlutils().renderer(), "TIREDNESS: " + std::to_string((int)tiredness), sdlutils().fonts().at("ARIAL24"),
-		build_sdlcolor(0xffffffff));
+	kb = entity_->getComponent<KeyboardPlayerCtrl>();
+	assert(kb != nullptr);
 }
-void TirednessComponent::update() {
-	if (ih().isKeyDown(SDLK_2)) {
-		sleep(20);
-	}
 
-	if (sdlutils().currRealTime() > tirednessTime + 5000) {
-		tirednessTime = sdlutils().currRealTime();
-		tiredness--;
-	}
+void TirednessComponent::sleep(int hours) {
+	if (sleepLog.size() >= 3) sleepLog.pop_back();
+	sleepLog.push_front(hours);
 }
-void TirednessComponent::render() {
-	delete t;
-	t = new Texture(sdlutils().renderer(), "TIREDNESS: " + std::to_string((int)tiredness), sdlutils().fonts().at("ARIAL16"),
-		build_sdlcolor(0xffffffff));
-	t->render(position.getX(), position.getY());
+void TirednessComponent::calculatePlayerSpeed() {
+	float vel = kb->getSpeed();
+	vel *= tiredness;
+
+	kb->setSpeed(vel);
 }
-void TirednessComponent::sleep(float tiredness_) {
-	tiredness += tiredness_;
-	if (tiredness > MAX_TIREDNESS) tiredness = MAX_TIREDNESS;
+
+void TirednessComponent::calculateTiredness() {
+	int amount = 0;
+	for (int a : sleepLog) amount += a;
+
+	tiredness = amount / (PREVIOUS_DAYS * MAX_SLEEP_HOURS);
+}
+
+void TirednessComponent::updateLevel() {
+	if (tiredness >= NONETIRED_LEVEL) tirednessLevel = tirednessLevel::NONE;
+	else if (tiredness >= TIRED_LEVEL) tirednessLevel = tirednessLevel::TIRED;
+	else tirednessLevel = tirednessLevel::EXHAUSTED;
 }

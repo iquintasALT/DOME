@@ -7,8 +7,8 @@ class PlayerHealthComponent : public GameEntityComponent
 public:
 	PlayerHealthComponent() {};
 	virtual ~PlayerHealthComponent() {};
-	virtual void init() = 0;
-	virtual void update() = 0;
-	virtual void render() = 0;
+	virtual void init() {};
+	virtual void update() {};
+	virtual void render() {};
 };
 
