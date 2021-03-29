@@ -5,7 +5,7 @@
  </editorsettings>
  <tileset firstgid="1" source="template_tileset.tsx"/>
  <tileset firstgid="29" source="second_template_tileset.tsx"/>
- <layer id="2" name="Tile Layer 2" width="50" height="50">
+ <layer id="2" name="Background" width="50" height="50">
   <data encoding="csv">
 0,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,30,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 0,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,34,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -59,7 +59,7 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <layer id="1" name="Tile Layer 1" width="50" height="50">
+ <layer id="1" name="Walls" width="50" height="50">
   <data encoding="csv">
 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,2,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
 1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -113,21 +113,9 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="3" name="Object Layer 1">
-  <object id="2" x="0" y="0" width="32" height="640">
-   <properties>
-    <property name="collider" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="3" x="0" y="640" width="1088" height="96">
-   <properties>
-    <property name="collider" type="bool" value="true"/>
-   </properties>
-  </object>
-  <object id="4" x="1056" y="0" width="32" height="640">
-   <properties>
-    <property name="collider" type="bool" value="true"/>
-   </properties>
-  </object>
+ <objectgroup id="3" name="Collisions">
+  <object id="2" name="collider" x="0" y="0" width="32" height="640"/>
+  <object id="3" name="collider" x="0" y="640" width="1088" height="96"/>
+  <object id="4" name="collider" x="1056" y="0" width="32" height="640"/>
  </objectgroup>
 </map>
