@@ -14,14 +14,15 @@
 class Manager;
 
 class Game {
+private:
+	GameStateMachine* states;
+	Countdown* timer;
+
 public:
 	Game(int totaltime); 
 	virtual ~Game();
 	void init();
 	void start();
-	GameStateMachine* getStateMachine() { return states; }
-private:
-	GameStateMachine* states;
-	Countdown* timer;
+	inline GameStateMachine* getStateMachine() { return states; }
 };
 

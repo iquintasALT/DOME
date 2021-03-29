@@ -11,15 +11,6 @@
 #include <iostream>
 
 class player_animation : public animation_component {
-public:
-	player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr) {};
-
-	virtual void init();
-
-	virtual ~player_animation() {};
-
-	virtual void update();
-
 private:
 	const enum animations_name { iddle = 0, walking, crouch };
 	Animation animations[3]{
@@ -35,4 +26,13 @@ private:
 	Image* im_;
 	Transform* tr_;
 	KeyboardPlayerCtrl* ctrl;
+
+public:
+	player_animation();
+
+	virtual void init();
+
+	virtual ~player_animation();
+
+	virtual void update();
 };

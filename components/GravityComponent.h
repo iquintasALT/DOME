@@ -7,27 +7,23 @@
 #include "../game/checkML.h"
 
 class GravityComponent : public GameEntityComponent {
-public:
-	GravityComponent() {
-		gravity = consts::GRAVITY;
-		onFloor_ = false;
-	};
+private:
+	Transform* entityTr;
+	float gravity;
+	bool onFloor_;
 
-	virtual void init() override{
-		entityTr = entity_->getComponent<Transform>();
-		assert(entityTr != nullptr);
-	}
+public:
+	GravityComponent();
+
+	inline ~GravityComponent() {};
+
+	virtual void init() override;
 
 	virtual void update();
 
 	void reachedFloor();
 
-	bool onFloor() { return onFloor_; };
+	inline bool onFloor() { return onFloor_; };
 
-	void setOnFloor(const bool floor) { onFloor_ = floor; };
-
-private:
-	Transform* entityTr;
-	float gravity;
-	bool onFloor_;
+	inline void setOnFloor(const bool floor) { onFloor_ = floor; };
 };

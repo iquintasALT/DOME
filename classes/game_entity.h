@@ -2,8 +2,7 @@
 #include "game_object.h"
 #include "../game/checkML.h"
 
-class GameEntity :
-	public GameObject
+class GameEntity : public GameObject
 {
 protected:
 	Vector2D velocity = Vector2D();
@@ -11,10 +10,10 @@ protected:
 	//TO DO
 	//addComponent<Image>(...);
 public:
-	GameEntity(Manager* mngr_) : GameObject(mngr_) {};
-	Vector2D getVelocity() { return velocity; };
-	void setVelocity(Vector2D newVelocity) { size = newVelocity; };
-	void scale(float scale) { size = size * scale; };
+	inline GameEntity(Manager* mngr_) : GameObject(mngr_) {};
+	inline Vector2D getVelocity() { return velocity; };
+	inline void setVelocity(Vector2D newVelocity) { size = newVelocity; };
+	inline void scale(float scale) { size = size * scale; };
 	//void update() override {};
 };
 

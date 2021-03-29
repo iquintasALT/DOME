@@ -15,8 +15,7 @@
 #include "../components/Inventory.h"*/
 
 class Manager;
-class GameCharacter :
-    public GameEntity
+class GameCharacter : public GameEntity
 {
 public:
     GameCharacter(Manager* mngr_) : GameEntity(mngr_) {}

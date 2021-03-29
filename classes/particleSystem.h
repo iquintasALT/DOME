@@ -13,6 +13,25 @@
 
 class ParticleSystem : public Component
 {
+private:
+	Texture* texture;
+	SDL_Rect source;
+	vector<Transform*> particles;
+	vector<float> particleLife;
+
+	int actualBurstCount = 0;
+
+	bool destroyParticles = false;
+
+	Transform* transform;
+
+	float rateTimer = 0;
+	float burstTimer = 0;
+	float time = 0;
+
+	inline int randomInt(int min, int max);
+	void spawnParticle();
+
 public:
 	struct Function {
 	private:
@@ -97,23 +116,5 @@ public:
 	void Play();
 	void Stop();
 	void Burst();
-private:
-	Texture* texture;
-	SDL_Rect source;
-	std::vector<Transform*> particles;
-	std::vector<float> particleLife;
-
-	int actualBurstCount = 0;
-
-	bool destroyParticles = false;
-
-	Transform* transform;
-
-	float rateTimer = 0;
-	float burstTimer = 0;
-	float time = 0;
-
-	inline int randomInt(int min, int max);
-	void spawnParticle();
 };
 

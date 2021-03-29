@@ -25,8 +25,14 @@ enum class tirednessLevel { NONE, TIRED, EXHAUSTED };
 
 class TirednessComponent : public PlayerHealthComponent
 {
+private:
+	float tiredness;
+	KeyboardPlayerCtrl* kb;
+	tirednessLevel tirednessLevel;
+	list<int> sleepLog;
+
 public:
-	TirednessComponent() : tiredness(1.0f), tirednessLevel(tirednessLevel::NONE), kb(nullptr){};
+	TirednessComponent();
 	void init() override;
 	void updateLevel(); //Actualiza el nivel de cansacio de jugador en base a su cansancio
 	void calculatePlayerSpeed(); //Calcula velocidad del jugador en base a su cansancio y la modifica (velocidad del transform)
@@ -36,11 +42,6 @@ public:
 	void calculateTiredness(); //Metodo que se llama al principio de cada para calcular el cansancio del jugador en base a las horas dormidas durante los ultimos dias
 	void sleep(int hours); //Horas descansadas como parametro
 
-	void setTiredness(float a) { tiredness = a; }
-private:
-	float tiredness;
-	KeyboardPlayerCtrl* kb;
-	tirednessLevel tirednessLevel;
-	list<int> sleepLog;
+	inline void setTiredness(float a) { tiredness = a; }
 };
 

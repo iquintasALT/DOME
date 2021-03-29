@@ -10,6 +10,7 @@
 
 class RaidScene : public GameScene
 {
+public:
 	 void init() override;
 };
 

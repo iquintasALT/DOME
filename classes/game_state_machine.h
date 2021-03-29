@@ -16,9 +16,9 @@ public:
 	~GameStateMachine();
 	void changeState(GameScene* gs);
 	//metodo para obtener el estado en el que nos encontramos
-	GameScene* currentState() { return states.top(); };
+	inline GameScene* currentState() { return states.top(); };
 	void popState();
 	//metodo para agregar nuevo estado a la cola
-	void pushState(GameScene* gs) { states.push(gs); };
+	inline void pushState(GameScene* gs) { states.push(gs); };
 };
 #endif

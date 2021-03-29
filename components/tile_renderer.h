@@ -13,20 +13,6 @@
 using namespace std;
 
 class TileRenderer : public Component {
-public:
-	TileRenderer(Texture* tset, int x = 0, int y = 0, 
-		int tx = 0, int ty = 0, int w = 0, int h = 0);
-
-	virtual ~TileRenderer() {};
-
-	virtual void render() override;
-
-	Point2D getPos() { return Point2D(x, y); };
-
-	int getWidth() { return width; };
-
-	int getHeight() { return height; };
-
 private:
 	Texture* sheet;
 	// x, y en el mundo
@@ -35,4 +21,18 @@ private:
 	int tx, ty;
 	// ancho y alto del tile
 	int width, height;
+
+public:
+	TileRenderer(Texture* tset, int x = 0, int y = 0, 
+		int tx = 0, int ty = 0, int w = 0, int h = 0);
+
+	virtual ~TileRenderer() {};
+
+	virtual void render() override;
+
+	inline Point2D getPos() { return Point2D(x, y); };
+
+	inline int getWidth() { return width; };
+
+	inline int getHeight() { return height; };
 };

@@ -1,6 +1,8 @@
 #include "tiredness_component.h"
 #include "../sdlutils/InputHandler.h"
 
+TirednessComponent::TirednessComponent() : tiredness(1.0f), tirednessLevel(tirednessLevel::NONE), kb(nullptr) {};
+
 void TirednessComponent::init() {
 	kb = entity_->getComponent<KeyboardPlayerCtrl>();
 	assert(kb != nullptr);
@@ -10,6 +12,7 @@ void TirednessComponent::sleep(int hours) {
 	if (sleepLog.size() >= 3) sleepLog.pop_back();
 	sleepLog.push_front(hours);
 }
+
 void TirednessComponent::calculatePlayerSpeed() {
 	float vel = kb->getSpeed();
 	vel *= tiredness;
