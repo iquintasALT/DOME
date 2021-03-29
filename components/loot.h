@@ -7,13 +7,10 @@
 #include <string>
 #include "../game/checkML.h"
 
+using namespace std;
+
 class Loot :public InteractableElement
 {
-public:
-	Loot(std::string mssg);
-	void init() override;
-	void Interact() override;
-
 private:
 	bool isOpen = false;
 
@@ -21,5 +18,9 @@ private:
 	Inventory* playerInventory;
 	InventoryController* inventoryController;
 
+public:
+	Loot(string mssg);
+	void init() override;
+	void Interact() override;
 };
 

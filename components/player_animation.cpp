@@ -4,6 +4,10 @@ Image* player_animation::Animation::image = nullptr;
 int player_animation::Animation::width = 1;
 int player_animation::Animation::height = 1;
 
+player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr) {};
+
+player_animation::~player_animation() {}
+
 void player_animation::update() {
 	if (changeAnimations()) {
 		timer = 0; return;

@@ -151,6 +151,7 @@
     <ClCompile Include="classes\ranged_enemy.cpp" />
     <ClCompile Include="classes\ricochet_weapon.cpp" />
     <ClCompile Include="classes\shelter_scene.cpp" />
+    <ClCompile Include="components\animation_component.cpp" />
     <ClCompile Include="components\charge.cpp" />
     <ClCompile Include="components\enemy_behaviour_component.cpp" />
     <ClCompile Include="components\enemy_component.cpp" />
@@ -171,6 +172,7 @@
     <ClCompile Include="components\player_animation.cpp" />
     <ClCompile Include="components\ricochet.cpp" />
     <ClCompile Include="components\tiredness_component.cpp" />
+    <ClCompile Include="components\Transform.cpp" />
     <ClCompile Include="components\weapon.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />

@@ -17,6 +17,15 @@
 
 class InventoryController: public Component
 {
+private:
+	bool used = false;
+
+protected:
+	bool isOpen = false;
+	Entity* inventoryPanel = nullptr;
+	KeyboardPlayerCtrl* playerMovement = nullptr;
+	Weapon* playerWeapon = nullptr;
+
 public :
 	InventoryController();
 	~InventoryController();
@@ -28,13 +37,5 @@ public :
 	void OpenLoot();
 
 	Inventory* inventory;
-protected:
-	bool isOpen = false;
-	Entity* inventoryPanel = nullptr;
-	KeyboardPlayerCtrl* playerMovement = nullptr;
-	Weapon* playerWeapon = nullptr;
-
-private:
-	bool used = false;
 };
 

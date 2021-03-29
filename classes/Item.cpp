@@ -1,5 +1,7 @@
 #include "Item.h"
 
+ItemInfo::ItemInfo(string name, string description, int width, int height, Texture* texture) :
+	_name(name), _description(description), _width(width), _height(height), _texture(texture) {};
 
 ItemInfo* ItemInfo::bottleOfWater()
 {

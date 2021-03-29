@@ -5,6 +5,10 @@
 #include "../classes/particleSystem.h"
 #include "../utils/ray_cast.h"
 
+Ricochet::Ricochet(Transform* player) : tr_(nullptr), playerTr(player), n(1) {}
+
+Ricochet::~Ricochet() {}
+
 void Ricochet::init() {
 	tr_ = entity_->getComponent<Transform>();
 	assert(tr_ != nullptr);

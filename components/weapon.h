@@ -10,15 +10,6 @@ class Image;
 
 class Weapon : public Component
 {
-public:
-	Weapon(float fR) : fireRate(fR), flipped(false), counter(0) {}
-
-	virtual void init();
-
-	virtual void update();
-
-	void adjustToCrouching();
-
 protected:
 	Entity* player;
 	Transform* playerTr;
@@ -28,4 +19,15 @@ protected:
 	bool flipped;
 	float counter;
 	float fireRate;
+
+public:
+	Weapon(float fR);
+
+	~Weapon();
+
+	virtual void init();
+
+	virtual void update();
+
+	void adjustToCrouching();
 };

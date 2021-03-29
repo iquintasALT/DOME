@@ -10,6 +10,10 @@
 #include "../classes/camera.h"
 #include "../components/ricochet.h"
 
+Weapon::Weapon(float fR) : fireRate(fR), flipped(false), counter(0), entityImg(nullptr) {}
+
+Weapon::~Weapon() {}
+
 void Weapon::update() {
 	counter++;
 

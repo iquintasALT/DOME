@@ -29,7 +29,8 @@ public:
 	static void setItemDimensions(Transform* transform, int width, int height);
 	void adjustPanelSize();
 
-	void setOther(Inventory* o) { other = o; };
+	inline void setOther(Inventory* o) { other = o; };
+
 private:
 	const float timeToHold = 0.08f; //seconds
 	float timer = 0;

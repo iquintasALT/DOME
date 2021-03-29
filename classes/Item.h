@@ -8,20 +8,21 @@
 #include "../components/Inventory.h"
 #include "../game/checkML.h"
 
+using namespace std;
+
 class Inventory;
 class ItemInfo {
 private:
-	ItemInfo(std::string name, std::string description, int width, int height, Texture* texture) :
-		_name(name), _description(description), _width(width), _height(height), _texture(texture) {};
-	std::string _name;
-	std::string _description;
+	ItemInfo(string name, string description, int width, int height, Texture* texture);
+	string _name;
+	string _description;
 	int _width;
 	int _height;
 	Texture* _texture;
 
 public:
-	inline std::string name() { return _name; };
-	inline std::string description() { return _description; };
+	inline string name() { return _name; };
+	inline string description() { return _description; };
 	inline int width() { return _width; };
 	inline int height() { return _height; };
 	inline Texture* texture() { return _texture; };
