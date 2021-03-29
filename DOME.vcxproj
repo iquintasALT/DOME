@@ -41,7 +41,7 @@
     <ClInclude Include="classes\shelter_scene.h" />
     <ClInclude Include="components\animation_component.h" />
     <ClInclude Include="components\charge.h" />
-    <ClInclude Include="components\collider.h" />
+    <ClInclude Include="components\box_collider.h" />
     <ClInclude Include="components\enemy_behaviour_component.h" />
     <ClInclude Include="components\enemy_component.h" />
     <ClInclude Include="components\enemy_detection_component.h" />
@@ -153,6 +153,7 @@
     <ClCompile Include="classes\ricochet_weapon.cpp" />
     <ClCompile Include="classes\shelter_scene.cpp" />
     <ClCompile Include="components\animation_component.cpp" />
+    <ClCompile Include="components\box_collider.cpp" />
     <ClCompile Include="components\charge.cpp" />
     <ClCompile Include="components\enemy_behaviour_component.cpp" />
     <ClCompile Include="components\enemy_component.cpp" />

@@ -10,7 +10,6 @@
 
 class GravityComponent;
 
-
 class PlayerCollisions : public Component
 {
 private:
