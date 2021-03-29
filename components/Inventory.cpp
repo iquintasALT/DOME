@@ -97,7 +97,8 @@ void Inventory::update() {
 					other->storeItem(selectedItem);
 					selectedItem->setPosition(itemPosition(selectedItem->x, selectedItem->y, other->transform));
 
-				}else{
+				}
+				else {
 					selectedItem->setPosition(itemPosition(selectedItem->x, selectedItem->y));
 				}
 
@@ -207,3 +208,5 @@ bool Inventory::insideSquare(int mouseX, int mouseY) {
 	return mouseX > pos.getX() && mouseX < pos.getX() + transform->getW()
 		&& mouseY > pos.getY() && mouseY < pos.getY() + transform->getH();
 }
+
+list<Item*>& Inventory::getItems() { return storedItems; };

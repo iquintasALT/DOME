@@ -40,6 +40,8 @@ public:
 	void render();
 	void update();
 	void setPosition(Vector2D&& pos);
+	ItemInfo* getItemInfo();
+
 private:
 	ItemInfo* info;
 	int x, y;
