@@ -28,32 +28,32 @@ public:
 
 	virtual void init() override;
 
-	Vector2D& getPos() { return pos_; }
+	inline Vector2D& getPos() { return pos_; }
 
-	Vector2D& getVel() { return vel_; }
+	inline Vector2D& getVel() { return vel_; }
 
-	float getH() const { return height_; }
+	inline float getH() const { return height_; }
 
-	void setH(float height) { height_ = height; }
+	inline void setH(float height) { height_ = height; }
 
-	float getW() const { return width_; }
+	inline float getW() const { return width_; }
 
-	void setW(float width) { width_ = width; }
+	inline void setW(float width) { width_ = width; }
 
-	float getRot() const {return rotation_;}
+	inline float getRot() const {return rotation_;}
 
-	Point2D getSize() const { return Point2D(width_, height_); }
+	inline Point2D getSize() const { return Point2D(width_, height_); }
 
-	void setRot(float rot) { rotation_ = rot; }
+	inline void setRot(float rot) { rotation_ = rot; }
 
-	void setVel(Vector2D vel) { vel_ = vel; }
+	inline void setVel(Vector2D vel) { vel_ = vel; }
 
-	void setVelX(float x) { vel_.setX(x); }
+	inline void setVelX(float x) { vel_.setX(x); }
 
-	void setVelY(float y) { vel_.setY(y); }
+	inline void setVelY(float y) { vel_.setY(y); }
 
-	void setPos(Vector2D pos) { pos_ = pos; }
+	inline void setPos(Vector2D pos) { pos_ = pos; }
 
-	void update() override;
+	inline void update() override;
 };
 
