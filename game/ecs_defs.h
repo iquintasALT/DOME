@@ -33,7 +33,7 @@ class HungerComponent;
 class TirednessComponent;
 class ChargeWeapon;
 class Charge;
-
+class BoxCollider;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -64,7 +64,8 @@ class Charge;
 	TirednessComponent, \
 	PlayerCollisions, \
 	ChargeWeapon, \
-	Charge
+	Charge, \
+	BoxCollider
 
 // groups
 

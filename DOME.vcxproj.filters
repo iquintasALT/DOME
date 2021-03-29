@@ -266,6 +266,9 @@
     <ClCompile Include="components\Transform.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\box_collider.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -598,7 +601,7 @@
     <ClInclude Include="classes\crafting_system.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\collider.h">
+    <ClInclude Include="components\box_collider.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>

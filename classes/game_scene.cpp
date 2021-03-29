@@ -83,18 +83,18 @@ void GameScene::loadMap(string& const path) {
 					auto x_pos = x * mapInfo.tile_width;
 					auto y_pos = y * mapInfo.tile_height;
 
-					bool is_wall = false; // Booleano de control
-					// Acceso a las propiedades de una tile dentro de un tileset (.tsx)
-					vector<tmx::Property> tile_props = mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties;
-					if (tile_props.size() > 0) {
-						// Lo separo aqui por si en algun futuro creamos más propiedades, realmente habria que hacer una busqueda
-						// de la propiedad y si esta en el vector usarla acorde
-						if (tile_props[0].getName() == "wall")
-							is_wall = tile_props[0].getBoolValue();
-					}
+					//bool is_wall = false; // Booleano de control
+					//// Acceso a las propiedades de una tile dentro de un tileset (.tsx)
+					//vector<tmx::Property> tile_props = mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties;
+					//if (tile_props.size() > 0) {
+					//	// Lo separo aqui por si en algun futuro creamos más propiedades, realmente habria que hacer una busqueda
+					//	// de la propiedad y si esta en el vector usarla acorde
+					//	if (tile_props[0].getName() == "wall")
+					//		is_wall = tile_props[0].getBoolValue();
+					//}
 
 					// metemos el tile
-					Tile(mngr_, mapInfo.tilesets[tset_gid], is_wall, x_pos, y_pos,
+					Tile(mngr_, mapInfo.tilesets[tset_gid], x_pos, y_pos,
 						region_x, region_y, mapInfo.tile_width, mapInfo.tile_height);
 				}
 			}
@@ -107,9 +107,10 @@ void GameScene::loadMap(string& const path) {
 			for (auto obj : objs) {
 				if (obj.getName() == "collider") {
 					auto collider = mngr_->addEntity();
+					collider->setGroup<Wall_grp>(true);
 					auto aabb = obj.getAABB();
 					collider->addComponent<Transform>(Point2D(aabb.left, aabb.top), Vector2D(), aabb.width, aabb.height);
-					//collider->addComponent<Collider>();
+					collider->addComponent<BoxCollider>();
 				}
 			}
 		}

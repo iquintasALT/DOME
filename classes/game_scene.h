@@ -7,6 +7,7 @@
 #include "../components/player_animation.h"
 #include "../classes/weapon_behaviour.h"
 #include "../classes/tile.h"
+#include "../components/box_collider.h"
 #include "../components/InventoryController.h"
 #include "../classes/particleSystem.h"
 
