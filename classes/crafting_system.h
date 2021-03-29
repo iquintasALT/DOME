@@ -20,12 +20,11 @@ using Crafts = std::map < std::string, std::vector<I>> ; //NOMBRE / ITEMS NECESA
 
 class CraftingSystem
 {
-public:
-	CraftingSystem(Manager* mngr);
-	void CraftItem(std::string item);
-
 private:
 	Crafts crafts;
 	Inventory* playerInventory;
+public:
+	CraftingSystem(Manager* mngr);
+	void CraftItem(std::string item);
 };
 
