@@ -257,6 +257,9 @@
     <ClCompile Include="libraries\sdlgui\sdlgui\checkbox.cpp">
       <Filter>Source Files\sdlgui</Filter>
     </ClCompile>
+    <ClCompile Include="classes\crafting_system.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -585,6 +588,9 @@
     </ClInclude>
     <ClInclude Include="components\player_collisions.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\crafting_system.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

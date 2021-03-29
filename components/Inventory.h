@@ -19,6 +19,8 @@ public:
 	void update() override;
 	void render() override;
 
+	list<Item*>& getItems();
+
 	void storeItem(Item* item);
 	void moveItem(Item* item, int x, int y);
 	void removeItem(Item* item);
