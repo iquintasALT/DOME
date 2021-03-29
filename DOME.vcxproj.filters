@@ -598,6 +598,9 @@
     <ClInclude Include="classes\crafting_system.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
+    <ClInclude Include="components\collider.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
