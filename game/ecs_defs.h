@@ -12,7 +12,6 @@ class player_animation;
 class Weapon;
 class InventoryController;
 class Inventory;
-class GameEntityComponent;
 class EnemyComponent;
 class EnemyBehaviourComponent;
 class ChasePlayer;
@@ -44,7 +43,6 @@ class BoxCollider;
     Weapon, \
 	InventoryController, \
 	Inventory, \
-	GameEntityComponent, \
 	EnemyComponent, \
 	EnemyBehaviourComponent, \
 	ChasePlayer, \

@@ -45,7 +45,6 @@
     <ClInclude Include="components\enemy_behaviour_component.h" />
     <ClInclude Include="components\enemy_component.h" />
     <ClInclude Include="components\enemy_detection_component.h" />
-    <ClInclude Include="components\game_entity_component.h" />
     <ClInclude Include="classes\weapon_behaviour.h" />
     <ClInclude Include="components\GravityComponent.h" />
     <ClInclude Include="components\hunger_component.h" />

@@ -406,9 +406,6 @@
     <ClInclude Include="classes\player.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\game_entity_component.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="components\enemy_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
