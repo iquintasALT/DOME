@@ -157,7 +157,6 @@
     <ClCompile Include="components\enemy_behaviour_component.cpp" />
     <ClCompile Include="components\enemy_component.cpp" />
     <ClCompile Include="components\enemy_detection_component.cpp" />
-    <ClCompile Include="components\game_entity_component.cpp" />
     <ClCompile Include="classes\weapon_behaviour.cpp" />
     <ClCompile Include="components\GravityComponent.cpp" />
     <ClCompile Include="components\hunger_component.cpp" />
