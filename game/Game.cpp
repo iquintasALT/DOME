@@ -60,8 +60,11 @@ void Game::start() {
 		Uint32 startTime = sdlutils().currRealTime();
 
 		//ih().clearState();
-		while (SDL_PollEvent(&event))
+		while (SDL_PollEvent(&event)) {
 			ih().update(event);
+			auto s = dynamic_cast<ShelterScene*>(states->currentState());
+			if (s != nullptr) s->updateScreen(&event);
+		}
 
 		if (ih().isKeyDown(SDL_SCANCODE_ESCAPE) || event.type == SDL_QUIT) {
 			exit = true;
