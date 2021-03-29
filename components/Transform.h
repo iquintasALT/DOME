@@ -15,7 +15,7 @@ public:
 	}
 
 	Transform(Vector2D pos, Vector2D vel, float width, float height,
-		float rotation) :
+		float rotation = 0) :
 		pos_(pos), //
 		vel_(vel), //
 		width_(width), //

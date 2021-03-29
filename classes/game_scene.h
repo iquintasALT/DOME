@@ -20,6 +20,7 @@
 #include "tmxlite/Map.hpp"
 #include "tmxlite/Layer.hpp"
 #include "tmxlite/TileLayer.hpp"
+#include "tmxlite/ObjectGroup.hpp"
 #include "tmxlite/Tileset.hpp"
 
 #include <memory>
@@ -47,7 +48,7 @@ public:
 	//metodos para llamar al manager de la escena
 	void update() { mngr_->update(); }
 	void refresh() {mngr_->refresh(); }
-	void render() {mngr_->render(); }
+	virtual void render() {mngr_->render(); }
 
 protected:
 	Manager* mngr_;

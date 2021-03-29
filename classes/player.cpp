@@ -19,10 +19,10 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 {
 	mngr_->setHandler<Player_hdlr>(this);
 	mngr_->addEntity(this);
-	Transform* t = addComponent<Transform>(pos, Vector2D(), 32, 64, 0);
+	Transform* t = addComponent<Transform>(pos, Vector2D(), 32, 64);
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
-	auto*  gr = addComponent<GravityComponent>(t);
+	auto*  gr = addComponent<GravityComponent>();
 	addComponent<KeyboardPlayerCtrl>();
 	addComponent<player_animation>();
 	addComponent<Interactions>();
