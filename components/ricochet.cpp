@@ -19,8 +19,8 @@ void Ricochet::createExplosion()
 	auto explosion = entity_->getMngr()->addEntity();
 	Vector2D explosionOrigin = tr_->getPos() + Vector2D(tr_->getW() / 2, tr_->getH() / 2);
 
-	Point2D arribaizq = entity_->getComponent<Transform>()->getPos();
-	Point2D arribader = Point2D(entity_->getComponent<Transform>()->getPos().getX() + entity_->getComponent<Transform>()->getW(), arribaizq.getY());
+	Point2D arribaizq = playerTr->getPos();
+	Point2D arribader = Point2D(playerTr->getPos().getX() + playerTr->getW(), arribaizq.getY());
 	Point2D squareCenter = Point2D(entity_->getComponent<Transform>()->getPos().getX() + (entity_->getComponent<Transform>()->getW() / 2), arribaizq.getY() + (entity_->getComponent<Transform>()->getH() / 2));
 	
 	explosion->addComponent<Transform>(explosionOrigin, Vector2D(), 10, 10, 0);
