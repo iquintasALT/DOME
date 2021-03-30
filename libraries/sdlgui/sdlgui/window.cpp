@@ -145,7 +145,7 @@ struct Window::AsyncTexture
 };
 
 Window::Window(Widget *parent, const std::string &title)
-    : Widget(parent), mTitle(title), mButtonPanel(nullptr), mModal(false), mDrag(false) 
+    : Widget(parent), mTitle(title), mButtonPanel(nullptr), mModal(false), mDrag(false), dragEnabled(false)
 {
   _titleTex.dirty = true;
 }
@@ -307,7 +307,7 @@ void Window::center()
 bool Window::mouseDragEvent(const Vector2i &, const Vector2i &rel,
                             int button, int /* modifiers */) 
 {
-    if (mDrag && (button & (1 << SDL_BUTTON_LEFT)) != 0)
+    if (mDrag && dragEnabled && (button & (1 << SDL_BUTTON_LEFT)) != 0) //aqui
     {
         _pos += rel;
         _pos = _pos.cmax({ 0, 0 });
@@ -322,7 +322,7 @@ bool Window::mouseButtonEvent(const Vector2i &p, int button, bool down, int modi
     if (Widget::mouseButtonEvent(p, button, down, modifiers))
         return true;
     if (button == SDL_BUTTON_LEFT) {
-        mDrag = down && (p.y - _pos.y) < mTheme->mWindowHeaderHeight;
+        mDrag = dragEnabled && down && (p.y - _pos.y) < mTheme->mWindowHeaderHeight;
         return true;
     }
     return false;
