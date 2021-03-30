@@ -36,20 +36,7 @@ private:
 	};
 
 private:
-	static short int getClosestVertex(const Point2D& p, const Square& s)
-	{
-		short int closest = 0;
-		float distance = std::numeric_limits<float>::max();
-		for (short int i = 0; i < 4; i++)
-		{
-			if ((s.vertices[i] - p).magnitude() < distance)
-			{
-				closest = i;
-				distance = (s.vertices[i] - p).magnitude();
-			}
-		}
-		return closest;
-	}
+	static short int getClosestVertex(const Point2D& p, const Square& s);
 
 public:
 	RayCast(Point2D origin_, Vector2D direction_) : origin(origin_), direction(direction_) {};
@@ -59,81 +46,19 @@ public:
 	Point2D getPointOfImpact() { return pointOfImpact; };
 	
 	bool hasCollision(float maxRange = std::numeric_limits<float>::max()) { return distance >= 0.0 && distance < maxRange; };
-	/*
-	template<typename ...sTs>
-	static RayCast rayCastToSquare(RayCast rC, sTs... squareArgs)
-	{
-		Square s =  Square(squareArgs);
 
-		Vector2D perp = Vector2D(rC.direction.getY(), -rC.direction.getX());
-
-		Point2D closestPointInLine = Point2D();
-		Vector2D::intersection(s.centre, perp, rC.origin, rC.direction, closestPointInLine);
-
-		short int closestVertex = getClosestVertex(closestPointInLine, s);
-		Vector2D closestEdgeDirection = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4];
-
-		Vector2D::intersection(rC.origin, rC.direction, s.vertices[closestVertex], closestEdgeDirection, rC.pointOfImpact);
-		
-		if (Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], rC.pointOfImpact)) // if collision occurred
-		{
-			Point2D intersect = Point2D();
-			double auxDistance = 0.0f;
-			closestEdgeDirection = s.vertices[closestVertex] - s.vertices[(closestVertex - 1) % 4];
-
-			Vector2D::intersection(rC.origin, rC.direction, s.vertices[closestVertex], closestEdgeDirection, intersect);
-
-			if ((intersect - rC.origin).magnitude() > (rC.pointOfImpact - rC.origin).magnitude())
-				rC.pointOfImpact = intersect;
-
-			rC.distance = (rC.pointOfImpact - rC.origin).magnitude();
-		}
-		else // if there was no collision
-		{
-			rC.pointOfImpact = NULL;
-			rC.distance = -1.0;
-		}
-	}
-	*/
-
-
-	void rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex1)
-	{
-		Square s = Square(centre, vertex0, vertex1);
-
-		Vector2D perp = Vector2D(direction.getY(), -direction.getX());
-
-		Point2D closestPointInLine = Point2D();
-		Vector2D::intersection(s.centre, perp, origin, direction, closestPointInLine);
-
-		short int closestVertex = getClosestVertex(closestPointInLine, s);
-		Vector2D closestEdgeDirection = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4];
-
-		Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection, pointOfImpact);
-
-		if (Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact)) // if collision occurred
-		{
-			Point2D intersect = Point2D();
-			double auxDistance = 0.0f;
-			closestEdgeDirection = s.vertices[closestVertex] - s.vertices[(closestVertex - 1) % 4];
-
-			Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection, intersect);
-
-			if ((intersect - origin).magnitude() > (pointOfImpact - origin).magnitude())
-				pointOfImpact = intersect;
-
-			distance = (pointOfImpact - origin).magnitude();
-		}
-		else // if there was no collision
-		{
-			pointOfImpact = Point2D();
-			distance = -1.0;
-		}
-	}
+	void rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex1);
 
 	void rayCastToSquare(Transform* transform);
 
 	void rayCastToSquare(Entity* entity);
+
+	/*template <typename Group>
+	void rayCastToGroup(Entity* entity)
+	{
+		entity->getMngr()->getEnteties();
+		entity->hasGroup<Group>();
+	}*/
 };
 
 #endif
