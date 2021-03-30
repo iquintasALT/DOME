@@ -16,32 +16,45 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 
 	//Calculate intersection between raycast line and each edge that connects to the vertex closest to ray origin
 	Point2D pointOfImpact1, pointOfImpact2;
-	bool col1 = Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection1, pointOfImpact1), 
+	bool col1 = (Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection1, pointOfImpact1)),
 		col2 = Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection2, pointOfImpact2);
-	if (col1 && col2)
-	{
-		if ((pointOfImpact1 - origin).magnitude() > (pointOfImpact2 - origin).magnitude())
-			pointOfImpact = pointOfImpact1;
-		else
-			pointOfImpact = pointOfImpact2;
 
-		distance = (pointOfImpact - origin).magnitude();
-	}
-	else if (col1)
-	{
-		pointOfImpact = pointOfImpact1;
-		distance = (pointOfImpact - origin).magnitude();
-	}
-	else if (col2)
-	{
-		pointOfImpact = pointOfImpact2;
-		distance = (pointOfImpact - origin).magnitude();
-	}
-	else
+	//Move both points of impact ever so slightly closer to square center, to account for floating point imprecision
+	pointOfImpact1 = pointOfImpact1 + Vector2D(centre - pointOfImpact1) * 0.001;
+	pointOfImpact2 = pointOfImpact2 + Vector2D(centre - pointOfImpact2) * 0.001;
+
+	col1 &= Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact1);
+	col2 &= Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact2);
+
+	if (!col1 && !col2)
 	{
 		pointOfImpact = Point2D();
 		distance = -1.0;
+		
 	}
+	else
+	{
+		if (col1 && col2)
+		{
+			if ((pointOfImpact1 - origin).magnitude() > (pointOfImpact2 - origin).magnitude())
+				pointOfImpact = pointOfImpact1;
+			else
+				pointOfImpact = pointOfImpact2;
+
+			distance = (pointOfImpact - origin).magnitude();
+		}
+		else if (col2)
+		{
+			pointOfImpact = pointOfImpact1;
+			distance = (pointOfImpact - origin).magnitude();
+		}
+		else
+		{
+			pointOfImpact = pointOfImpact2;
+			distance = (pointOfImpact - origin).magnitude();
+		}
+	}
+	
 	/*
 	if (Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact)) // if collision occurred
 	{

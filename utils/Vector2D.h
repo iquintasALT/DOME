@@ -133,6 +133,11 @@ public:
 		return Vector2D(x_ * d, y_ * d);
 	}
 
+	// multiplication by constant (scaling)
+	inline Vector2D operator*(double d) const {
+		return Vector2D(x_ * d, y_ * d);
+	}
+
 	// division by constant (scaling)
 	inline Vector2D operator/(float d) const {
 		return Vector2D(x_ / d, y_ / d);
