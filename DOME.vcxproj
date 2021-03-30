@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="classes\camera.h" />
     <ClInclude Include="classes\charge_weapon.h" />
+    <ClInclude Include="classes\crafting_system.h" />
     <ClInclude Include="classes\enemy.h" />
     <ClInclude Include="classes\game_character.h" />
     <ClInclude Include="classes\game_entity.h" />
@@ -40,10 +41,10 @@
     <ClInclude Include="classes\shelter_scene.h" />
     <ClInclude Include="components\animation_component.h" />
     <ClInclude Include="components\charge.h" />
+    <ClInclude Include="components\box_collider.h" />
     <ClInclude Include="components\enemy_behaviour_component.h" />
     <ClInclude Include="components\enemy_component.h" />
     <ClInclude Include="components\enemy_detection_component.h" />
-    <ClInclude Include="components\game_entity_component.h" />
     <ClInclude Include="classes\weapon_behaviour.h" />
     <ClInclude Include="components\GravityComponent.h" />
     <ClInclude Include="components\hunger_component.h" />
@@ -132,6 +133,7 @@
   <ItemGroup>
     <ClCompile Include="classes\camera.cpp" />
     <ClCompile Include="classes\charge_weapon.cpp" />
+    <ClCompile Include="classes\crafting_system.cpp" />
     <ClCompile Include="classes\enemy.cpp" />
     <ClCompile Include="classes\game_character.cpp" />
     <ClCompile Include="classes\game_entity.cpp" />
@@ -149,11 +151,12 @@
     <ClCompile Include="classes\ranged_enemy.cpp" />
     <ClCompile Include="classes\ricochet_weapon.cpp" />
     <ClCompile Include="classes\shelter_scene.cpp" />
+    <ClCompile Include="components\animation_component.cpp" />
+    <ClCompile Include="components\box_collider.cpp" />
     <ClCompile Include="components\charge.cpp" />
     <ClCompile Include="components\enemy_behaviour_component.cpp" />
     <ClCompile Include="components\enemy_component.cpp" />
     <ClCompile Include="components\enemy_detection_component.cpp" />
-    <ClCompile Include="components\game_entity_component.cpp" />
     <ClCompile Include="classes\weapon_behaviour.cpp" />
     <ClCompile Include="components\GravityComponent.cpp" />
     <ClCompile Include="components\hunger_component.cpp" />
@@ -169,6 +172,7 @@
     <ClCompile Include="components\player_animation.cpp" />
     <ClCompile Include="components\ricochet.cpp" />
     <ClCompile Include="components\tiredness_component.cpp" />
+    <ClCompile Include="components\Transform.cpp" />
     <ClCompile Include="components\weapon.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />

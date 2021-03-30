@@ -17,10 +17,11 @@
 #include <math.h>
 
 class WeaponBehaviour : public GameEntity {
-public:
-	WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vector2D playerPos, Transform* playerTr, int typeOfWeapon);
-	Weapon* getWeaponMovement();
 private:
 	float dmg_;
 	Weapon* weaponMovement;
+
+public:
+	WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vector2D playerPos, Transform* playerTr, int typeOfWeapon);
+	Weapon* getWeaponMovement();
 };

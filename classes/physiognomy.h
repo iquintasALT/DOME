@@ -10,33 +10,33 @@ using namespace std;
 const int MAX_MULTIPLE_STATES = 7;
 
 class Physiognomy {
+private:
+	Player* player;
+	list<PlayerHealthComponent*> healthComponents;
+
 public:
-	Physiognomy(Player* player_) : player(player_) {};
-	~Physiognomy() {};
+	inline Physiognomy(Player* player_) : player(player_) {};
+	inline ~Physiognomy() {};
 
 	template<typename T, typename ...Ts>
-	void addState(Ts &&... args) {
+	inline void addState(Ts &&... args) {
 		auto c = player->addComponent<T>(args);
 		healthComponents.push_back(c);
 	}
 
 	template<typename T>
-	void addState() {
+	inline void addState() {
 		auto c = player->addComponent<T>();
 	    healthComponents.push_back(c);
 	}
 
 	template<typename T>
-	void removeState(T* comp) {
+	inline void removeState(T* comp) {
 		player->removeComponent<T>();
 		healthComponents.remove(comp);
 	}
 
-	bool alive();
-	list<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
-
-private:
-	Player* player;
-	list<PlayerHealthComponent*> healthComponents;
+	inline bool alive() { return healthComponents.size() < MAX_MULTIPLE_STATES; };
+	inline list<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
 };
 

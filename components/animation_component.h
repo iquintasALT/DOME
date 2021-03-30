@@ -18,49 +18,23 @@ protected:
 		float speed;
 		bool loop;
 	public:
-		static void setImage(Image* img) {
-			image = img;
-			assert(image != nullptr);
-			width = image->getSrc().w;
-			height = image->getSrc().h;
-		}
+		Animation(int frame, int frameCount, bool loop = true, float animationSpeed = 1);
 
-		Animation(int frame, int frameCount, bool loop = true, float animationSpeed = 1) {
-			this->frameCount = frameCount;
-			frameRow = frame;
-			currentFrame = 0;
-			speed = animationSpeed * frameCount * consts::DELTA_TIME;
-			this->loop = loop;
-		}
+		static void setImage(Image* img);
 
-		void advanceFrame() {
-			if (++currentFrame >= frameCount) {
-				if (loop)
-					currentFrame = 0;
-				else currentFrame = frameCount - 1;
-			}
+		void advanceFrame();
 
-			render();
-		}
+		void render();
 
-		void render() {
-			SDL_Rect source{ currentFrame * width, frameRow * height, width, height };
-			image->setSrc(source);
-		}
+		inline bool operator == (Animation& other) { return frameRow == other.frameRow; }
 
-		bool operator == (Animation& other) {
-			return frameRow == other.frameRow;
-		}
+		inline bool operator != (Animation& other) { return frameRow != other.frameRow; }
 
-		bool operator != (Animation& other) {
-			return frameRow != other.frameRow;
-		}
-
-		float animationSpeed() { return speed; };
+		inline float animationSpeed() { return speed; };
 	};
 
 public:
-	animation_component() {};
+	inline animation_component() {};
 
-	virtual ~animation_component() {};
+	inline virtual ~animation_component() {};
 };

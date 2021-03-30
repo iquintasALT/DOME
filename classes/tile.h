@@ -9,7 +9,7 @@ using namespace std;
 
 class Tile {
 public:
-	Tile(Manager* mngr, Texture* tset, bool wall, int x = 0, int y = 0,
+	Tile(Manager* mngr, Texture* tset, int x = 0, int y = 0,
 		int tx = 0, int ty = 0, int w = 0, int h = 0);
 };
 

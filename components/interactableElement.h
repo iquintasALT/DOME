@@ -6,10 +6,12 @@
 #include <string>
 #include "../game/checkML.h"
 
+using namespace std;
+
 class InteractableElement: public Component
 {
 private:
-	std::string message;
+	string message;
 	Transform* transform;
 	bool isColliding = false;
 
@@ -18,7 +20,7 @@ private:
 	virtual void Collision();
 
 public:
-	InteractableElement(std::string msg) :message(msg), transform(nullptr){};
+	InteractableElement(string msg);
 	void init() override; 
 	virtual void Interact();
 	bool CheckCollision(Point2D playerPos);

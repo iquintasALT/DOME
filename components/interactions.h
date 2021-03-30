@@ -15,6 +15,7 @@ private:
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
 	bool justPressed;
+
 public:
 	Interactions() : manager(nullptr), transform(nullptr) { justPressed = false; };
 	void update() override;

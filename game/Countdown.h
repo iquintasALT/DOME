@@ -7,17 +7,17 @@
 
 class Countdown
 {
+private:
+	int lefttime;
+	int starttime;
+	int updatetime;
+	Texture* counter;
+
 public:
 	Countdown(int totaltime);
 	virtual ~Countdown();
 	void update();
 	void render();
 
-	bool keepPlaying() { return lefttime > 0; }
-
-private:
-	int lefttime;
-	int starttime;
-	int updatetime;
-	Texture* counter;
+	inline bool keepPlaying() { return lefttime > 0; }
 };

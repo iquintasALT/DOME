@@ -5,9 +5,8 @@
 
 class ChargeWeapon : public Weapon
 {
-
 public:
-	ChargeWeapon(float fR) : Weapon(fR) {};
+	ChargeWeapon(float fR);
 	virtual void update();
 };
 

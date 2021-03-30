@@ -12,28 +12,6 @@
 
 
 class KeyboardPlayerCtrl : public Component {
-public:
-	KeyboardPlayerCtrl() {
-		speed = consts::PLAYER_SPEED;
-		entityTr = nullptr;
-		gravity_ = nullptr;
-		left = right = crouched = false;
-	};
-
-	virtual void init() {
-		entityTr = entity_->getComponent<Transform>();
-		assert(entityTr != nullptr);
-
-		gravity_ = entity_->getComponent<GravityComponent>();
-		assert(entityTr != nullptr);
-
-	}
-	virtual void update();
-	inline bool isCrouching() { return crouched; }
-	void resetSpeed();
-	float getSpeed();
-	void setSpeed(float speed);
-
 private:
 	Transform* entityTr;
 	GravityComponent* gravity_;
@@ -41,5 +19,17 @@ private:
 	bool left, right, crouched;
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
+public:
+	KeyboardPlayerCtrl();
+
+	virtual void init();
+
+	virtual void update();
+
+	inline bool isCrouching() { return crouched; }
+
+	void resetSpeed();
+	float getSpeed();
+	void setSpeed(float speed);
 };
 

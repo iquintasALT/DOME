@@ -2,6 +2,22 @@
 #include "../classes/player.h"
 #include "../classes/camera.h"
 
+KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
+	speed = consts::PLAYER_SPEED;
+	entityTr = nullptr;
+	gravity_ = nullptr;
+	left = right = crouched = false;
+};
+
+void KeyboardPlayerCtrl::init() {
+	entityTr = entity_->getComponent<Transform>();
+	assert(entityTr != nullptr);
+
+	gravity_ = entity_->getComponent<GravityComponent>();
+	assert(entityTr != nullptr);
+
+}
+
 void KeyboardPlayerCtrl::update() {
 	if (!crouched) {
 		if (keystates[SDL_SCANCODE_D]) {
