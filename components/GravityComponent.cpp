@@ -3,6 +3,7 @@
 GravityComponent::GravityComponent() {
 	gravity = consts::GRAVITY;
 	onFloor_ = false;
+	entityTr = nullptr;
 }
 
 void GravityComponent::init() {

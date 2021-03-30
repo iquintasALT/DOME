@@ -21,6 +21,6 @@ public:
 
 	virtual void init() override;
 
-	void collision(Entity* ent);
+	bool collision(Transform* ent);
 };
 
