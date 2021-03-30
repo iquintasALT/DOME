@@ -5,14 +5,15 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 {
 	//Create square from points given
 	Square s = Square(centre, vertex0, vertex1);
-	//Calculate perpendicular direction vector to raycast direction
-	Vector2D perp = Vector2D(direction.getY(), -direction.getX());
 
 	//Calculate which vertex from square is closest to ray origin
 	short int closestVertex = getClosestVertex(origin, s);
 	//Choose one of the two sides that converge at closestVertex
-	Vector2D closestEdgeDirection1 = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4];
-	Vector2D closestEdgeDirection2 = s.vertices[closestVertex] - s.vertices[(closestVertex - 1) % 4];
+	Vector2D closestEdgeDirection1 = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4], closestEdgeDirection2;
+	if (closestVertex == 0)
+		closestEdgeDirection2 = s.vertices[closestVertex] - s.vertices[3];
+	else
+		closestEdgeDirection2 = s.vertices[closestVertex] - s.vertices[(closestVertex - 1) % 4];
 
 	//Calculate intersection between raycast line and each edge that connects to the vertex closest to ray origin
 	Point2D pointOfImpact1, pointOfImpact2;
