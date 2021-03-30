@@ -40,6 +40,8 @@ public:
     /// Set whether or not this is a modal dialog
     void setModal(bool modal) { mModal = modal; }
 
+    void setDrag(bool condition) { dragEnabled = condition; }
+
     /// Return the panel used to house window buttons
     Widget *buttonPanel();
 
@@ -80,6 +82,7 @@ protected:
 
     bool mModal;
     bool mDrag;
+    bool dragEnabled;
 
     struct AsyncTexture;
     typedef std::shared_ptr<AsyncTexture> AsyncTexturePtr;
