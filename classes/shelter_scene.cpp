@@ -55,11 +55,14 @@ void ShelterScene::init() {
 
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui
 	sc_ = new Screen(sdlutils().window(), Vector2i(sdlutils().width(), sdlutils().height()), "Refugio");
+	//se cargan las imagenes de los posibles crafteos
+	craftIcons = loadImageDirectory(sdlutils().renderer(), "./resources/sprites/crafticons");
 	//sc_->sdlgui::Screen::initialize(sdlutils().window()); ???
 	
 	//ORDEN: 1.CREAR TODOS LOS WIDGETS, 2.ESCONDERLOS, 3.REABRIRLOS CUANDO SE PULSA SU BOTON
 
-	auto& ventana1 = createSimpleWidget(); //se crea ya escondida
+	auto& ventana1 = CraftingWidget(); //se crea ya escondida
+	
 	
 
 	//std::function<void()> muestraVentana1 = [&]() { showWidget(ventana1, true); };
@@ -120,6 +123,20 @@ sdlgui::Widget& ShelterScene::createSimpleWidget()
 	
 	//se esconde la ventana
 	showWidget(widget, false);
+	return widget;
+}
+
+sdlgui::Widget& ShelterScene::CraftingWidget()
+{
+	Widget& widget = createSimpleWidget();
+
+	auto& box = widget.widget().boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2);
+	auto x = box.dropdownbox(std::vector<std::string>{ "Dropdown item 1", "Dropdown item 2", "Dropdown item 3" });
+	x.setIcon(ENTYPO_ICON_TOOLS);
+
+	box.boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2).imgpanel(craftIcons);
+
+
 	return widget;
 }
 
