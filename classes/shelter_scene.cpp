@@ -54,23 +54,24 @@ void ShelterScene::init() {
 	mngr_->setHandler<Player_hdlr>(player);
 
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui
-	sc_ = new Screen(sdlutils().window(), Vector2i(sdlutils().width(), sdlutils().height()), "test");
+	sc_ = new Screen(sdlutils().window(), Vector2i(sdlutils().width(), sdlutils().height()), "Refugio");
 	//sc_->sdlgui::Screen::initialize(sdlutils().window()); ???
 	
 	//ORDEN: 1.CREAR TODOS LOS WIDGETS, 2.ESCONDERLOS, 3.REABRIRLOS CUANDO SE PULSA SU BOTON
 
-	auto& ventana1 = createSimpleWidget(); //se crea ya escondido
-	//capturar todo el scope con [&] supongo que esta feo, ESTO HAY QUE CAMBIARLO PERO AUN NO SE COMO
-	std::function<void()> muestraVentana1 = [&]() { showWidget(ventana1, true); };
-	createSimpleButton(Vector2i(500, 100), "INVENTARIO", "Abre el Inventario", muestraVentana1);
+	auto& ventana1 = createSimpleWidget(); //se crea ya escondida
+	
 
-	createSimpleButton(Vector2i(500, 200), "CRAFTEO", "Abre la lista de posibles crafteos", muestraVentana1);
+	//std::function<void()> muestraVentana1 = [&]() { showWidget(ventana1, true); };
+	createSimpleButton(Vector2i(500, 100), "INVENTARIO", "Abre el Inventario", ventana1);
 
-	createSimpleButton(Vector2i(500, 300), "DESCANSO", "Permite dormir y recuperar fuerzas", muestraVentana1);
+	createSimpleButton(Vector2i(500, 200), "CRAFTEO", "Abre la lista de posibles crafteos", ventana1);
 
-	createSimpleButton(Vector2i(500, 400), "REPARAR NAVE", "Abre el Inventario", muestraVentana1);
+	createSimpleButton(Vector2i(500, 300), "DESCANSO", "Permite dormir y recuperar fuerzas", ventana1);
 
-	createSimpleButton(Vector2i(500, 500), "COMENZAR RAID", "Abre el Inventario", muestraVentana1);
+	createSimpleButton(Vector2i(500, 400), "REPARAR NAVE", "Abre el Inventario", ventana1);
+
+	createSimpleButton(Vector2i(500, 500), "COMENZAR RAID", "Abre el Inventario", ventana1);
 
 
 	//al colocarlo todo, se utiliza esta funcion para pasarle la info al render
@@ -94,6 +95,12 @@ void ShelterScene::showWidget(Widget& widget, bool cond)
 {
 	widget.setEnabled(cond);
 	widget.setVisible(cond);
+	if (cond) {
+		sc_->moveWindowToFront(widget.window());
+		widget.setSize(Vector2i(sdlutils().width() * 3 / 4, sdlutils().height() * 3 / 4));
+		sc_->centerWindow(widget.window());
+	}
+
 }
 
 sdlgui::Widget& ShelterScene::createSimpleWidget()
@@ -101,37 +108,34 @@ sdlgui::Widget& ShelterScene::createSimpleWidget()
 	auto& widget = sc_->window("VENTANA POR HACER", Vector2i{ 0, 0 })
 		.withLayout<GroupLayout>();
 
-	//botones genericos
-	auto& tools = widget.widget().boxlayout(Orientation::Horizontal, Alignment::Fill, 300, 6);
-	tools.toolbutton(ENTYPO_ICON_CLOUD)._and()
-		.toolbutton(ENTYPO_ICON_FF)._and()
-		.toolbutton(ENTYPO_ICON_COMPASS);
-
-	//funcion lambda usada en el boton
-	auto f = []() -> void {
-		cout << 23 << endl;
+	////funcion lambda usada en el boton
+	auto f = [&]() -> void {
+		showWidget(widget,false);
 	};
 
-	
-	auto exitButton = tools.toolbutton(ENTYPO_ICON_CROSS);
-	//boton basico
+	//boton para cerrar la ventana
 	widget
-		.button("Plain button", f)
-		.withTooltip("This is plain button tips");
+		.button("CERRAR", f)
+		.withTooltip("Cierra esta ventana").withLayout<BoxLayout>(Orientation::Horizontal);
 	
+	//se esconde la ventana
 	showWidget(widget, false);
 	return widget;
 }
 
 sdlgui::Widget& ShelterScene::createSimpleButton(Vector2i pos, string buttonText, string description,
-	std::function<void()> f)
+	Widget& ventana)
 {
 	//ventana que contiene al boton
 	auto& nwindow = sc_->window(buttonText, pos)
 		.withLayout<GroupLayout>();
-	//boton
+
+	//funcion lambda que abre la ventana indicada
+	//capturar todo el scope con [&] supongo que esta feo, ESTO HAY QUE CAMBIARLO PERO AUN NO SE COMO
+	std::function<void()> muestraVentana = [&]() { showWidget(ventana, true); };
+	//boton para abrir la ventana indicada
 	nwindow
-		.button("ABRIR", f)
+		.button("ABRIR", muestraVentana)
 		.withTooltip(description);
 
 	return nwindow;
