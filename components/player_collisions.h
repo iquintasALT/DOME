@@ -14,15 +14,14 @@ class PlayerCollisions : public Component
 {
 private:
 	GravityComponent* gravity_;
-	Manager* mngr_;
 
 public:
-	PlayerCollisions(Manager* mngr, GravityComponent* gr);
+	PlayerCollisions();
 
 	~PlayerCollisions() {}
 
 	virtual void init() override;
 
-	bool collisions(Vector2D& const newPos, int const w, int const h, Vector2D& vel);
+	void update() override;
 };
 
