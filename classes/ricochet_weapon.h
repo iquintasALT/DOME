@@ -6,7 +6,8 @@
 class RicochetWeapon: public Weapon
 {
 public:
-	RicochetWeapon(float fR, Transform* player) : Weapon(fR), playerTr(player) {}; //El fireRate en este arma es el tiempo que tienes que mantener pulsado el raton
+	//El fireRate en este arma es el tiempo que tienes que mantener pulsado el raton
+	inline RicochetWeapon(float fR, Transform* player) : Weapon(fR), playerTr(player) {}; 
 	virtual void update();
 
 private:

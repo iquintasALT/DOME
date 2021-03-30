@@ -1,6 +1,9 @@
 #include "interactableElement.h"
 #include "../ecs/Manager.h"
 #include <iostream>
+
+InteractableElement::InteractableElement(string msg) :message(msg), transform(nullptr) {}
+
 bool InteractableElement::CheckCollision(Point2D pos) {
 	bool inCollision = false;
 

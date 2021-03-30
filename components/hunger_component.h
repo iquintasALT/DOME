@@ -20,15 +20,17 @@ enum class hungerLevel { NONE, HUNGRY, STARVING };
 
 class HungerComponent : public PlayerHealthComponent
 {
+private:
+	float hunger;
+	hungerLevel hungerLevel;
+	//Puntero a los componentes de daño en raid a los que afecte el hambre (acumulativos) para aumentarles 
+	//el tiempo de acumulacion en base al nivel de hambre
+
 public:
-	HungerComponent() : hunger(1.0f), hungerLevel(hungerLevel::NONE) {};
+	HungerComponent();
 	void init() override;
 	void updateLevel();
 
 	void eat(float hunger_);
-private:
-	float hunger;
-	hungerLevel hungerLevel;
-	//Puntero a los componentes de daño en raid a los que afecte el hambre (acumulativos) para aumentarles el tiempo de acumulacion en base al nivel de hambre
 };
 

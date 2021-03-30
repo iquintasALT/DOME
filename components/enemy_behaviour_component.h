@@ -6,25 +6,25 @@
 #include "../utils/ray_cast.h"
 
 //class Player;
-class EnemyBehaviourComponent :
-    public EnemyComponent
+class EnemyBehaviourComponent : public EnemyComponent
 {
 protected:
     Transform* playerTr;
     Transform* entityTr;
     EnemyDetectionComponent* enemyDetection;
+
 public:
-    EnemyBehaviourComponent() : playerTr(nullptr), entityTr(nullptr), enemyDetection(nullptr) {};
-    virtual void update() override = 0;
+    inline EnemyBehaviourComponent() : playerTr(nullptr), entityTr(nullptr), enemyDetection(nullptr) {};
+    inline virtual void update() override = 0;
     virtual void init() override;
 };
 
-class ChasePlayer :
-    public EnemyBehaviourComponent
+class ChasePlayer : public EnemyBehaviourComponent
 {
 protected:
     float speed;
     float stopDistance;
+
 public:
     ChasePlayer(float speed_, float stopDistance_);
     virtual void update() override;
@@ -35,19 +35,20 @@ protected:
     float speed;
     float marginDistance;
     float shootDistance;
+
 public:
     KeepDistance(float speed, float marginDisntace, float shootDistance);
     virtual void update() override;
 };
 
-class FlyingChasePlayer :
-    public EnemyBehaviourComponent
+class FlyingChasePlayer : public EnemyBehaviourComponent
 {
 protected:
     float speed;
     float stopDistance;
     float hoverHeight;
     float attackDistance; //Distance at which the enemy will begin to lose altitude to attack player
+
 public:
     FlyingChasePlayer(float speed_, float stopDistance_, float hoverHeight_, float attackDistance_);
     virtual void update() override;

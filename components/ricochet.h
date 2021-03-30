@@ -11,19 +11,19 @@
 
 
 class Ricochet : public Component {
-public:
-	Ricochet(Transform* player): tr_(nullptr), playerTr(player), n(1) {}
+private:
+	Transform* tr_;
+	Transform* playerTr;
+	int n; //numero rebotes
 
-	virtual ~Ricochet() {}
+public:
+	Ricochet(Transform* player);
+
+	virtual ~Ricochet();
 
 	void init() override;
 
 	void createExplosion();
 
 	void update() override;
-
-private:
-	Transform* tr_;
-	Transform* playerTr;
-	int n; //numero rebotes
 };

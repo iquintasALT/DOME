@@ -12,7 +12,6 @@ class player_animation;
 class Weapon;
 class InventoryController;
 class Inventory;
-class GameEntityComponent;
 class EnemyComponent;
 class EnemyBehaviourComponent;
 class ChasePlayer;
@@ -33,7 +32,7 @@ class HungerComponent;
 class TirednessComponent;
 class ChargeWeapon;
 class Charge;
-
+class BoxCollider;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -44,7 +43,6 @@ class Charge;
     Weapon, \
 	InventoryController, \
 	Inventory, \
-	GameEntityComponent, \
 	EnemyComponent, \
 	EnemyBehaviourComponent, \
 	ChasePlayer, \
@@ -64,7 +62,8 @@ class Charge;
 	TirednessComponent, \
 	PlayerCollisions, \
 	ChargeWeapon, \
-	Charge
+	Charge, \
+	BoxCollider
 
 // groups
 

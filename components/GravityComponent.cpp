@@ -1,5 +1,15 @@
 #include "GravityComponent.h"
 
+GravityComponent::GravityComponent() {
+	gravity = consts::GRAVITY;
+	onFloor_ = false;
+}
+
+void GravityComponent::init() {
+	entityTr = entity_->getComponent<Transform>();
+	assert(entityTr != nullptr);
+}
+
 void GravityComponent::update() {
 	if (!onFloor_)
 		entityTr->setVelY(entityTr->getVel().getY() + gravity / consts::FRAME_RATE);

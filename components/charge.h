@@ -9,17 +9,17 @@
 #include "../game/checkML.h"
 
 class Charge : public Component {
-public:
-	Charge(float angle) : tr_(nullptr), angle(angle) {}
+private:
+	Transform* tr_;
+	float angle;
 
-	virtual ~Charge() {}
+public:
+	inline Charge(float angle) : tr_(nullptr), angle(angle) {}
+
+	inline virtual ~Charge() {}
 
 	void init() override;
 
 	virtual void update() override;
-
-private:
-	Transform* tr_;
-	float angle;
 };
 

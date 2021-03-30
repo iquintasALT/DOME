@@ -1,6 +1,7 @@
 #pragma once
 #include "game_character.h"
 #include "../game/checkML.h"
+
 class RangedEnemy : public GameCharacter
 {
 public:

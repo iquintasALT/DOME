@@ -19,6 +19,8 @@ public:
 	void update() override;
 	void render() override;
 
+	list<Item*>& getItems();
+
 	void storeItem(Item* item);
 	void moveItem(Item* item, int x, int y);
 	void removeItem(Item* item);
@@ -27,7 +29,8 @@ public:
 	static void setItemDimensions(Transform* transform, int width, int height);
 	void adjustPanelSize();
 
-	void setOther(Inventory* o) { other = o; };
+	inline void setOther(Inventory* o) { other = o; };
+
 private:
 	const float timeToHold = 0.08f; //seconds
 	float timer = 0;

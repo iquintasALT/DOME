@@ -3,6 +3,8 @@
 #include "menu_button.h"
 #include "../game/checkML.h"
 
+using namespace std;
+
 class Game;
 
 class MenuScene : public GameScene

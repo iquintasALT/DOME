@@ -89,9 +89,6 @@
     <ClCompile Include="classes\player.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\game_entity_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="components\enemy_component.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -257,6 +254,18 @@
     <ClCompile Include="libraries\sdlgui\sdlgui\checkbox.cpp">
       <Filter>Source Files\sdlgui</Filter>
     </ClCompile>
+    <ClCompile Include="classes\crafting_system.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="components\animation_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\Transform.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\box_collider.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -393,9 +402,6 @@
     </ClInclude>
     <ClInclude Include="classes\player.h">
       <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="components\game_entity_component.h">
-      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\enemy_component.h">
       <Filter>Header Files\components</Filter>
@@ -584,6 +590,12 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\player_collisions.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\crafting_system.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\box_collider.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
