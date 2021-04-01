@@ -31,7 +31,6 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 	{
 		pointOfImpact = Point2D();
 		distance = -1.0;
-		
 	}
 	else
 	{
@@ -41,19 +40,12 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 				pointOfImpact = pointOfImpact1;
 			else
 				pointOfImpact = pointOfImpact2;
-
-			distance = (pointOfImpact - origin).magnitude();
 		}
-		else if (col2)
-		{
+		else if (col1)
 			pointOfImpact = pointOfImpact1;
-			distance = (pointOfImpact - origin).magnitude();
-		}
 		else
-		{
 			pointOfImpact = pointOfImpact2;
-			distance = (pointOfImpact - origin).magnitude();
-		}
+		distance = (pointOfImpact - origin).magnitude();
 	}
 	
 	/*
