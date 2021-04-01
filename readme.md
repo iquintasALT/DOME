@@ -121,29 +121,24 @@ Pepega a rango: comportamiento más cauteloso, se comportan como guardias usando
 
 # Salud <a name="medi"></a>
 
-Modelo carretes:
-No hay barra de "HP"
-Cada estado que recibes se añade a una pila
-Cada estado te aplica un debufo concreto
-La mayoría de estados simplemente se quedarán ahí hasta que le apliques la medicina correcta
-El debufo del desangrado es que al pasar un tiempo te añade automáticamente más desangrados
-Algún debufo, como la concusión, se va solo tras un tiempo
-Si en algún momento tienes X debufos activos a la vez, la pantalla se vuelve muy roja por 5 segundos, si en este tiempo no te curas alguno, mueres
-Cuando vuelves al refugio, se te curan todas las heridas
+El sistema de salud en raid se basa en un modelo de carretes. No hay barra de salud como tal.
+Cada estado que recibes se añade a una pila de tal forma que se van acumulando y cada uno de aplica un debufo concreto.
+La mayoría de estados simplemente se quedarán ahí hasta que le apliques la medicina correcta y algunos de estos se acumularán y podrán generar más estados, como por ejemplo
+el desangrado. Otros daños como una contusión, aplica un debufo por un tiempo y luego desaparece solo.
+Si en algún momento tienes X debufos activos a la vez, la pantalla se vuelve muy roja por 5 segundos, si en este tiempo no te curas alguno, mueres.
+Cuando vuelves al refugio, se te curan todas las heridas.
 
-Heridas de bala.
+Algún ejemplo de daño en raid:
 
-Heridas por corte o mordeduras si hacemos enemigo a melee.
+Daño por bala o proyectil enemigo (Lo que causaría desangrado).
 
-Heridas por rebuscar en ciertos objetos peligrosos (estilo Darkest Dungeon).
+Daño por cortes o mordeduras de enemigos.
 
-Muerte por infección por no tratar las heridas de manera correcta.
+Daño por caer desde gran altura. (Rotura de huesos).
 
-Muerte por no comer beber o descansar.
+Daño por intoxicación (Radiación o gases dañinos).
 
-Muerte por enfermedad al comer comida cruda o algo así.
-
-Medicina para contrarrestarlo antibióticos(infecciones) vendajes(sangrados o laceraciones leves) kit medico (sacar balas grapar heridas graves o laceraciones profundas).
+Daño por hipotermia.
 
 ![Dinámicas](./docs/headers/h_dinamicas.png) <a name="dina"></a>
 
