@@ -14,8 +14,9 @@
 #include "../components/player_collisions.h"
 #include "../classes/particleSystem.h"
 #include "../classes/physiognomy.h"
+#include "../components/tiredness_component.h"
 
-Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
+Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 {
 	mngr_->setHandler<Player_hdlr>(this);
 	mngr_->addEntity(this);
@@ -27,6 +28,7 @@ Player::Player(Manager* mngr_, Point2D pos) :GameCharacter(mngr_)
 	addComponent<KeyboardPlayerCtrl>();
 	addComponent<player_animation>();
 	addComponent<Interactions>();
+	addComponent<TirednessComponent>();
 
 	weapon = new WeaponBehaviour(0.5f, 5, mngr_, t->getPos(), t, 8);
 	addComponent<InventoryController>();

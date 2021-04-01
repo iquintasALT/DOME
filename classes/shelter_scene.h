@@ -16,6 +16,5 @@ public:
 	void showWidget(sdlgui::Widget& widget, bool cond);
 	sdlgui::Widget& createSimpleWidget();
 	sdlgui::Widget& CraftingWidget();
-	sdlgui::Widget& createSimpleButton(sdlgui::Vector2i pos, string buttonText, string description,
-		sdlgui::Widget& ventana);
+	sdlgui::Widget& createSimpleButton(sdlgui::Vector2i pos, string buttonText, string description, sdlgui::Widget& ventana);
 };
