@@ -29,18 +29,17 @@ private:
 	float tiredness;
 	KeyboardPlayerCtrl* kb;
 	tirednessLevel tirednessLevel;
-	list<int> sleepLog;
 
 public:
 	TirednessComponent();
 	void init() override;
 	void updateLevel(); //Actualiza el nivel de cansacio de jugador en base a su cansancio
-	void calculatePlayerSpeed(); //Calcula velocidad del jugador en base a su cansancio y la modifica (velocidad del transform)
+	void calculatePlayerSpeed() const ; //Calcula velocidad del jugador en base a su cansancio y la modifica (velocidad del transform)
 	 
-	//void calculateTravelSpeed(); //Metodo que en base al cansancio, aumente  en un cierto % el tiempo de viaje a las localizaciones (necesita el sistema de localizaciones)
+	void calculateTravelSpeed() const; //Metodo que en base al cansancio, aumente  en un cierto % el tiempo de viaje a las localizaciones (necesita el sistema de localizaciones)
 
-	void calculateTiredness(); //Metodo que se llama al principio de cada para calcular el cansancio del jugador en base a las horas dormidas durante los ultimos dias
 	void sleep(int hours); //Horas descansadas como parametro
+	void increaseTiredness(float tiredness);
 
 	inline void setTiredness(float a) { tiredness = a; }
 };
