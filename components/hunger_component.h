@@ -28,8 +28,8 @@ private:
 
 public:
 	HungerComponent();
-	void init() override;
 	void updateLevel();
+	int calculateBledingSpeed(); //Metodo que se encarga del debufo del hambre (Velocidad de desangrado)
 
 	void eat(float hunger_);
 };

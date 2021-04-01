@@ -130,15 +130,15 @@ Cuando vuelves al refugio, se te curan todas las heridas.
 
 Algún ejemplo de daño en raid:
 
-Daño por bala o proyectil enemigo (Lo que causaría desangrado).
+Daño por bala o proyectil enemigo (Lo que causaría desangrado). Este daño, si no se cura, hace que cada cierto tiempo se añada un nuevo estado de desangrado al sistema. (Permanente hasta ser curado)
 
-Daño por cortes o mordeduras de enemigos.
+Daño por cortes o mordeduras de enemigos. Este daño aumenta el tiempo que tardan en desaparecer los daños temporales. (Permanente hasta ser curado)
 
-Daño por caer desde gran altura. (Rotura de huesos).
+Daño por caer desde gran altura. (Rotura de huesos). Este daño hace que el jugador no pueda saltar. (Temporal)
 
-Daño por intoxicación (Radiación o gases dañinos).
+Daño por intoxicación (Radiación o gases dañinos). Este daño hace que la distancia para ser detectado por los enemigos se reduzca. (Temporal)
 
-Daño por hipotermia.
+Daño por hipotermia. Este daño aplica un debufo en el disparo, aumentando la dispersión de las balas. (Permanente e incurable, es decir, marca el límite de tiempo que el jugador puede esta en raid)
 
 ![Dinámicas](./docs/headers/h_dinamicas.png) <a name="dina"></a>
 

@@ -8,8 +8,5 @@ class PlayerHealthComponent : public Component
 public:
 	PlayerHealthComponent() {};
 	virtual ~PlayerHealthComponent() {};
-	virtual void init() {};
-	virtual void update() {};
-	virtual void render() {};
 };
 

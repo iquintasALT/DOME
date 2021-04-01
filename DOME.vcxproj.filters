@@ -266,6 +266,12 @@
     <ClCompile Include="components\box_collider.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\bledout_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\pain_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -596,6 +602,12 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\box_collider.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\bledout_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\pain_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
