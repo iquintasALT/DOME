@@ -26,5 +26,6 @@ private:
 public:
 	CraftingSystem(Manager* mngr);
 	void CraftItem(std::string item);
+	Crafts* getCrafts();
 };
 

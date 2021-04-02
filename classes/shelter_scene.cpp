@@ -26,6 +26,7 @@
 #include <sdlgui/formhelper.h>
 #include <memory>
 
+
 //#if defined(_WIN32)
 //#include <windows.h>
 //#endif
@@ -53,17 +54,19 @@ void ShelterScene::init() {
 	player->addComponent<TirednessComponent>();
 	mngr_->setHandler<Player_hdlr>(player);
 
+	craftSys = new CraftingSystem(mngr_);
+
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui
 	sc_ = new Screen(sdlutils().window(), Vector2i(sdlutils().width(), sdlutils().height()), "Refugio");
 	//se cargan las imagenes de los posibles crafteos
-	craftIcons = loadImageDirectory(sdlutils().renderer(), "./resources/sprites/crafticons");
+	//craftIcons = loadImageDirectory(sdlutils().renderer(), "./resources/sprites/crafticons");
 	//sc_->sdlgui::Screen::initialize(sdlutils().window()); ???
-	
+
 	//ORDEN: 1.CREAR TODOS LOS WIDGETS, 2.ESCONDERLOS, 3.REABRIRLOS CUANDO SE PULSA SU BOTON
 
 	auto& ventana1 = CraftingWidget(); //se crea ya escondida
-	
-	
+
+
 
 	//std::function<void()> muestraVentana1 = [&]() { showWidget(ventana1, true); };
 	createSimpleButton(Vector2i(500, 100), "INVENTARIO", "Abre el Inventario", ventana1);
@@ -108,19 +111,19 @@ void ShelterScene::showWidget(Widget& widget, bool cond)
 
 sdlgui::Widget& ShelterScene::createSimpleWidget()
 {
-	auto& widget = sc_->window("VENTANA POR HACER", Vector2i{ 0, 0 })
+	auto& widget = sc_->window("Crafting", Vector2i{ 0, 0 })
 		.withLayout<GroupLayout>();
 
 	////funcion lambda usada en el boton
 	auto f = [&]() -> void {
-		showWidget(widget,false);
+		showWidget(widget, false);
 	};
 
 	//boton para cerrar la ventana
 	widget
 		.button("CERRAR", f)
 		.withTooltip("Cierra esta ventana").withLayout<BoxLayout>(Orientation::Horizontal);
-	
+
 	//se esconde la ventana
 	showWidget(widget, false);
 	return widget;
@@ -128,11 +131,30 @@ sdlgui::Widget& ShelterScene::createSimpleWidget()
 
 sdlgui::Widget& ShelterScene::CraftingWidget()
 {
+	Crafts* crafts = craftSys->getCrafts();
+
 	Widget& widget = createSimpleWidget();
 
-	auto& box = widget.widget().boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2);
-	auto x = box.dropdownbox(std::vector<std::string>{ "Dropdown item 1", "Dropdown item 2", "Dropdown item 3" });
-	x.setIcon(ENTYPO_ICON_TOOLS);
+	auto& box = widget.widget().boxlayout(Orientation::Vertical, Alignment::Middle, 0, 2);
+
+	int aux = 0;
+	//cambiar el 10 por el numero total de items
+	for (int i = 0 + aux; i < 2 + aux && i + aux < 10; ++i) {
+		auto it = crafts->begin();
+
+		for (int j = 0; j < it->second.size(); j++) {
+			string path = "./resources/sprites/crafticons/GkDJ2G5_32x.png";
+			SDL_Texture* tex = IMG_LoadTexture(sdlutils().renderer(), path.c_str());
+			ImageInfo img{ tex,32,32,path };
+			SDL_QueryTexture(tex, nullptr, nullptr, &img.w, &img.h);
+			craftIcons.push_back(img);
+		}
+		box.boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2).imgpanel(craftIcons);
+		craftIcons.clear();
+	}
+
+	//auto x = box.dropdownbox(std::vector<std::string>{ "Dropdown item 1", "Dropdown item 2", "Dropdown item 3" });
+	//x.setIcon(ENTYPO_ICON_TOOLS);
 
 	box.boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2).imgpanel(craftIcons);
 
