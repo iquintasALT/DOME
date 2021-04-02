@@ -44,6 +44,8 @@ void CraftingSystem::CraftItem(std::string item) {
 	if (itemsNeeded.size() == 0) {
 		for (Item* i : itemsToDelete)
 			playerInventory->removeItem(i);
-			//playerInventory->storeItem() //CREAR ITEM CON ENUMS PARA ALMACENARLO (PENDIENTE DE HACER CON YOJHAN <3)
+		//playerInventory->storeItem() //CREAR ITEM CON ENUMS PARA ALMACENARLO (PENDIENTE DE HACER CON YOJHAN <3)
 	}
 }
+
+Crafts* CraftingSystem::getCrafts() { return &crafts; }
