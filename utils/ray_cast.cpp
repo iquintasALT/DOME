@@ -5,22 +5,50 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 {
 	//Create square from points given
 	Square s = Square(centre, vertex0, vertex1);
-	//Calculate perpendicular direction vector to raycast direction
-	Vector2D perp = Vector2D(direction.getY(), -direction.getX());
-	//Closest point in raycast line to square centre
-	Point2D closestPointInLine = Point2D();
-	//Intersection between raycast line and imaginary perpendicular line originating from centre of square
-	//Used to calculate closest point of raycast line to square centre
 
-	Vector2D::intersection(origin, direction, s.centre, perp, closestPointInLine);
-	//Calculate which vertex from square is closest to closestPointInLine
-	short int closestVertex = getClosestVertex(closestPointInLine, s);
+	//Calculate which vertex from square is closest to ray origin
+	short int closestVertex = getClosestVertex(origin, s);
 	//Choose one of the two sides that converge at closestVertex
-	Vector2D closestEdgeDirection = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4];
+	Vector2D closestEdgeDirection1 = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4], closestEdgeDirection2;
+	if (closestVertex == 0)
+		closestEdgeDirection2 = s.vertices[closestVertex] - s.vertices[3];
+	else
+		closestEdgeDirection2 = s.vertices[closestVertex] - s.vertices[(closestVertex - 1) % 4];
 
-	//Intersection between raycast line and first of two sides of the square with which it could possibly collide
-	Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection, pointOfImpact);
+	//Calculate intersection between raycast line and each edge that connects to the vertex closest to ray origin
+	Point2D pointOfImpact1, pointOfImpact2;
+	bool col1 = (Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection1, pointOfImpact1)),
+		col2 = Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection2, pointOfImpact2);
 
+	//Move both points of impact ever so slightly closer to square center, to account for floating point imprecision
+	pointOfImpact1 = pointOfImpact1 + Vector2D(centre - pointOfImpact1) * 0.001;
+	pointOfImpact2 = pointOfImpact2 + Vector2D(centre - pointOfImpact2) * 0.001;
+
+	col1 &= Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact1);
+	col2 &= Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact2);
+
+	if (!col1 && !col2)
+	{
+		pointOfImpact = Point2D();
+		distance = -1.0;
+	}
+	else
+	{
+		if (col1 && col2)
+		{
+			if ((pointOfImpact1 - origin).magnitude() > (pointOfImpact2 - origin).magnitude())
+				pointOfImpact = pointOfImpact1;
+			else
+				pointOfImpact = pointOfImpact2;
+		}
+		else if (col1)
+			pointOfImpact = pointOfImpact1;
+		else
+			pointOfImpact = pointOfImpact2;
+		distance = (pointOfImpact - origin).magnitude();
+	}
+	
+	/*
 	if (Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact)) // if collision occurred
 	{
 		//Repeat necessary calculations for other eligible side
@@ -40,7 +68,7 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 	{
 		pointOfImpact = Point2D();
 		distance = -1.0;
-	}
+	}*/
 }
 
 void RayCast::rayCastToSquare(Transform* transform)

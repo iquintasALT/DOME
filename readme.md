@@ -121,29 +121,24 @@ Pepega a rango: comportamiento más cauteloso, se comportan como guardias usando
 
 # Salud <a name="medi"></a>
 
-Modelo carretes:
-No hay barra de "HP"
-Cada estado que recibes se añade a una pila
-Cada estado te aplica un debufo concreto
-La mayoría de estados simplemente se quedarán ahí hasta que le apliques la medicina correcta
-El debufo del desangrado es que al pasar un tiempo te añade automáticamente más desangrados
-Algún debufo, como la concusión, se va solo tras un tiempo
-Si en algún momento tienes X debufos activos a la vez, la pantalla se vuelve muy roja por 5 segundos, si en este tiempo no te curas alguno, mueres
-Cuando vuelves al refugio, se te curan todas las heridas
+El sistema de salud en raid se basa en un modelo de carretes. No hay barra de salud como tal.
+Cada estado que recibes se añade a una pila de tal forma que se van acumulando y cada uno de aplica un debufo concreto.
+La mayoría de estados simplemente se quedarán ahí hasta que le apliques la medicina correcta y algunos de estos se acumularán y podrán generar más estados, como por ejemplo
+el desangrado. Otros daños como una contusión, aplica un debufo por un tiempo y luego desaparece solo.
+Si en algún momento tienes X debufos activos a la vez, la pantalla se vuelve muy roja por 5 segundos, si en este tiempo no te curas alguno, mueres.
+Cuando vuelves al refugio, se te curan todas las heridas.
 
-Heridas de bala.
+Algún ejemplo de daño en raid:
 
-Heridas por corte o mordeduras si hacemos enemigo a melee.
+Daño por bala o proyectil enemigo (Lo que causaría desangrado). Este daño, si no se cura, hace que cada cierto tiempo se añada un nuevo estado de desangrado al sistema. (Permanente hasta ser curado)
 
-Heridas por rebuscar en ciertos objetos peligrosos (estilo Darkest Dungeon).
+Daño por cortes o mordeduras de enemigos. Este daño aumenta el tiempo que tardan en desaparecer los daños temporales. (Permanente hasta ser curado)
 
-Muerte por infección por no tratar las heridas de manera correcta.
+Daño por caer desde gran altura. (Rotura de huesos). Este daño hace que el jugador no pueda saltar. (Temporal)
 
-Muerte por no comer beber o descansar.
+Daño por intoxicación (Radiación o gases dañinos). Este daño hace que la distancia para ser detectado por los enemigos se reduzca. (Temporal)
 
-Muerte por enfermedad al comer comida cruda o algo así.
-
-Medicina para contrarrestarlo antibióticos(infecciones) vendajes(sangrados o laceraciones leves) kit medico (sacar balas grapar heridas graves o laceraciones profundas).
+Daño por hipotermia. Este daño aplica un debufo en el disparo, aumentando la dispersión de las balas. (Permanente e incurable, es decir, marca el límite de tiempo que el jugador puede esta en raid)
 
 ![Dinámicas](./docs/headers/h_dinamicas.png) <a name="dina"></a>
 

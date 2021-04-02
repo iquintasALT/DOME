@@ -143,17 +143,40 @@ public:
 		return d.x_ * x_ + d.y_ * y_;
 	}
 
-	static bool intersection(const Vector2D& p1, const Vector2D& v1, const Vector2D& p2, const Vector2D& v2, Vector2D& intersect){
+	static bool verticalCollision(const Vector2D& pVert, const Vector2D& p2, const Vector2D& v2, Vector2D& intersect) {
+		//Both vectors are vertical and the same
+		if (v2.getX() == 0.0 && p2.getX() == pVert.getX())
+		{
+			intersect = Vector2D(p2.getX(), 0.0);
+			return true;
+		}
+		//Both vectors are vertical and parallel
+		if (v2.getX() == 0.0)
+			return false;
 
+		float m2 = v2.getY() / v2.getX();
+		float n2 = p2.getY() - m2 * p2.getX();
+		float y = pVert.getX() * m2 + n2;
+		intersect = Vector2D(pVert.getX(), y);
+		return true;
+	}
+
+	static bool intersection(const Vector2D& p1, const Vector2D& v1, const Vector2D& p2, const Vector2D& v2, Vector2D& intersect){
+		if (v1.getX() == 0.0)
+			return verticalCollision(p1, p2, v2, intersect);
+		if (v2.getX() == 0.0)
+			return verticalCollision(p2, p1, v1, intersect);
 		float m1 = v1.getY() / v1.getX();
 		float m2 = v2.getY() / v2.getX();
-		float n1 = p1.getY() - m1 * v1.getX();
-		float n2 = p2.getY() - m2 * v2.getX();
+		float n1 = p1.getY() - m1 * p1.getX();
+		float n2 = p2.getY() - m2 * p2.getX();
+		//Lines are the same
 		if (m1 == m2 && n1 == n2)
 		{
 			intersect = p1;
 			return true;
 		}
+		//Vectors have the same incline
 		if (m1 == m2)
 			return false;
 		float x = (n2 - n1) / (m1 - m2);
