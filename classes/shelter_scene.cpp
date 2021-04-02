@@ -135,7 +135,10 @@ sdlgui::Widget& ShelterScene::CraftingWidget()
 
 	Widget& widget = createSimpleWidget();
 
-	auto& box = widget.widget().boxlayout(Orientation::Vertical, Alignment::Middle, 0, 2);
+
+	//auto& box = widget.widget().boxlayout
+	auto box = widget.add<Widget>();
+	box->boxlayout(Orientation::Vertical, Alignment::Middle, 0, 2);
 
 	int aux = 0;
 	//cambiar el 10 por el numero total de items
@@ -148,15 +151,19 @@ sdlgui::Widget& ShelterScene::CraftingWidget()
 			ImageInfo img{ tex,32,32,path };
 			SDL_QueryTexture(tex, nullptr, nullptr, &img.w, &img.h);
 			craftIcons.push_back(img);
+			box->boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2).imgpanel(craftIcons);
+			craftIcons.clear();
 		}
-		box.boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2).imgpanel(craftIcons);
-		craftIcons.clear();
+		box = widget.add<Widget>();
+		box->boxlayout(Orientation::Vertical, Alignment::Middle, 0, 2);
+
+
 	}
 
 	//auto x = box.dropdownbox(std::vector<std::string>{ "Dropdown item 1", "Dropdown item 2", "Dropdown item 3" });
 	//x.setIcon(ENTYPO_ICON_TOOLS);
 
-	box.boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2).imgpanel(craftIcons);
+	box->boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2).imgpanel(craftIcons);
 
 
 	return widget;
