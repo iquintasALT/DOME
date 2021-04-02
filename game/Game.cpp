@@ -27,7 +27,6 @@ Game::Game(int totaltime) {
 	states = new GameStateMachine();
 	timer = new Countdown(totaltime);
 
-
 	Camera::setMain(new Camera(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
 }
 
@@ -42,12 +41,8 @@ void Game::init() {
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "resources/config/resources.json");
 	sdlutils().showCursor();
 
-	//states->pushState(new RaidScene());
 	states->pushState(new MenuScene(this));
 	states->currentState()->init();
-	//states->pushState(new ShelterScene());
-	//states->currentState()->init();
-	//states->popState();
 }
 
 void Game::start() {
@@ -74,13 +69,10 @@ void Game::start() {
 		states->currentState()->update();
 		states->currentState()->refresh();
 		timer->update();
-		//mngr_->update();
-		//mngr_->refresh();
 
 		//Camera::mainCamera->MoveDir(Vector2D(1, 0));
 
 		sdlutils().clearRenderer();
-		//mngr_->render();
 		states->currentState()->render();
 		timer->render();
 		sdlutils().presentRenderer();

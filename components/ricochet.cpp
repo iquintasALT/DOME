@@ -16,12 +16,13 @@ void Ricochet::init() {
 
 void Ricochet::createExplosion()
 {
+	auto transf = entity_->getComponent<Transform>();
 	auto explosion = entity_->getMngr()->addEntity();
 	Vector2D explosionOrigin = tr_->getPos() + Vector2D(tr_->getW() / 2, tr_->getH() / 2);
 
 	Point2D arribaizq = playerTr->getPos();
 	Point2D arribader = Point2D(playerTr->getPos().getX() + playerTr->getW(), arribaizq.getY());
-	Point2D squareCenter = Point2D(entity_->getComponent<Transform>()->getPos().getX() + (entity_->getComponent<Transform>()->getW() / 2), arribaizq.getY() + (entity_->getComponent<Transform>()->getH() / 2));
+	Point2D rayCastOrigin = Point2D(transf->getPos().getX() + (transf->getW() / 2), transf->getPos().getY() + (transf->getH() / 2));
 	
 	explosion->addComponent<Transform>(explosionOrigin, Vector2D(), 10, 10, 0);
 
@@ -55,15 +56,15 @@ void Ricochet::createExplosion()
 	float y2 = playerTr->getPos().getY() + (playerTr->getH()/2);
 	Vector2D direction = Vector2D(x2,y2);
 
-	RayCast range = RayCast(squareCenter, direction - explosionOrigin);
+	RayCast range = RayCast(rayCastOrigin, direction - explosionOrigin);
 
 
 	//Colision enemigos
 	range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
-	if (range.hasCollision())
-	{
+	//if (range.hasCollision())
+	//{
 		std::cout << range.getDistance();
-	}
+	//}
 
 	//Colision enemigos (Cuando esten hechos xd)
 	/*for (auto& e : entity_->getMngr()->getEnteties())
