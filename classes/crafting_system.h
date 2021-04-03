@@ -19,7 +19,7 @@ struct ITEMS_SPRITESHEET_INFO {
 	int col;
 };
 
-vector<ITEMS_SPRITESHEET_INFO>ITEMS_INFO = {
+const vector<ITEMS_SPRITESHEET_INFO>ITEMS_INFO = {
 	//poner fila y columna de cada item
 };
 
@@ -39,7 +39,7 @@ private:
 	Inventory* playerInventory;
 public:
 	CraftingSystem(Manager* mngr);
-	void CraftItem(std::string item);
+	void CraftItem(ITEMS item);
 	Crafts* getCrafts();
 };
 
