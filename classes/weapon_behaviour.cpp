@@ -40,17 +40,17 @@ WeaponBehaviour::WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vecto
 	else if (typeOfWeapon == 7)
 	{
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 0);
-		weaponMovement = addComponent<RicochetWeapon>(fireRate, playerTr);
+		weaponMovement = addComponent<RicochetWeapon>(fireRate, playerTr, 2, 1); //Ultimas variables numero de rebotes y tier del arma para explosion
 	}
 	else if (typeOfWeapon == 8)
 	{
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 1);
-		weaponMovement = addComponent<RicochetWeapon>(fireRate, playerTr);
+		weaponMovement = addComponent<RicochetWeapon>(fireRate, playerTr, 3, 2);
 	}
 	else if (typeOfWeapon == 9)
 	{
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 2);
-		weaponMovement = addComponent<RicochetWeapon>(fireRate, playerTr);
+		weaponMovement = addComponent<RicochetWeapon>(fireRate, playerTr, 4, 3);
 	}
 }
 

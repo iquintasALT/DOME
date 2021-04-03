@@ -15,9 +15,10 @@ private:
 	Transform* tr_;
 	Transform* playerTr;
 	int n; //numero rebotes
+	int tier;
 
 public:
-	Ricochet(Transform* player);
+	Ricochet(Transform* player, int nrebotes, int typeOfWeapon);
 
 	virtual ~Ricochet();
 
