@@ -5,7 +5,6 @@
 #include "../ecs/Manager.h"
 #include "../components/Transform.h"
 #include "../components/player_animation.h"
-#include "../components/GravityComponent.h"
 #include "../components/Image.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/InventoryController.h"
@@ -23,7 +22,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	Transform* t = addComponent<Transform>(pos, Vector2D(), 32, 64);
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
-	addComponent<GravityComponent>();
+	addComponent<RigidBody>();
 	addComponent<PlayerCollisions>();
 	addComponent<KeyboardPlayerCtrl>();
 	addComponent<player_animation>();

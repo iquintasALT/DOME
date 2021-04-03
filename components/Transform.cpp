@@ -13,5 +13,5 @@ void Transform::init() {
 }
 
 void Transform::update() {
-	pos_ = pos_ + vel_;
+	//pos_ = pos_ + vel_;
 }
