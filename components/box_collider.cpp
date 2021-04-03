@@ -11,12 +11,15 @@ bool BoxCollider::collision(Transform* trEnt_) {
 	int w = trEnt_->getW();
 	int h = trEnt_->getH();
 
+	bool below = false;
+
 	if (tr_->getPos().getY() < pos.getY() + h) {
 		pos.setY(tr_->getPos().getY() - h);
-		return true;
+		below = true;
 	}
 	if (tr_->getPos().getX() + tr_->getW() > pos.getX() || tr_->getPos().getX() < pos.getX() + w) {
 		trEnt_->getVel().setX(0);
-		return false;
 	}
+
+	return below;
 }

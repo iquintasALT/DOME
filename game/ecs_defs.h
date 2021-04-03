@@ -34,6 +34,7 @@ class ChargeWeapon;
 class Charge;
 class BoxCollider;
 class BledoutComponent;
+class RigidBody;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -65,7 +66,8 @@ class BledoutComponent;
 	ChargeWeapon, \
 	Charge, \
 	BoxCollider,\
-	BledoutComponent
+	BledoutComponent, \
+    RigidBody
 
 // groups
 
