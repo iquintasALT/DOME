@@ -275,6 +275,9 @@
     <ClCompile Include="components\enemy_contact_damege.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\rigid_body.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -614,6 +617,9 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\enemy_contact_damege.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\rigid_body.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>

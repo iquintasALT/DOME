@@ -60,6 +60,7 @@
     <ClInclude Include="components\player_collisions.h" />
     <ClInclude Include="components\enemy_contact_damege.h" />
     <ClInclude Include="components\player_health_component.h" />
+    <ClInclude Include="components\rigid_body.h" />
     <ClInclude Include="components\tile_renderer.h" />
     <ClInclude Include="components\player_animation.h" />
     <ClInclude Include="components\ricochet.h" />
@@ -174,6 +175,7 @@
     <ClCompile Include="components\player_collisions.cpp" />
     <ClCompile Include="components\enemy_contact_damege.cpp" />
     <ClCompile Include="components\player_health_component.cpp" />
+    <ClCompile Include="components\rigid_body.cpp" />
     <ClCompile Include="components\tile_renderer.cpp" />
     <ClCompile Include="components\player_animation.cpp" />
     <ClCompile Include="components\ricochet.cpp" />
