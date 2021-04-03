@@ -4,6 +4,7 @@
 #include "../ecs/Entity.h"
 #include "../utils/Vector2D.h"
 #include "../game/checkML.h"
+#include "../game/constant_variables.h"
 
 #include "Transform.h"
 
@@ -14,10 +15,11 @@ private:
 	Vector2D vel_;
 	float rotation_;
 
-public:
-	RigidBody();
+	float gravity;
+	bool onFloor_, grActive_;
 
-	RigidBody(Vector2D vel, float rotation = 0);
+public:
+	RigidBody(Vector2D vel = Vector2D(), float rotation = 0, bool gravity = true);
 
 	virtual ~RigidBody();
 
@@ -34,6 +36,14 @@ public:
 	inline void setVelX(float x) { vel_.setX(x); }
 
 	inline void setVelY(float y) { vel_.setY(y); }
+
+	virtual void applyGravity();
+
+	void reachedFloor();
+
+	inline bool onFloor() { return onFloor_; };
+
+	inline void setOnFloor(const bool floor) { onFloor_ = floor; };
 
 	inline void update() override;
 };
