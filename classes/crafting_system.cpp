@@ -24,7 +24,7 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 	crafts.emplace(ARMOUR_UPGRADE, std::vector<I>{I{ METAL_PLATES ,1 }, I{ ORGANIC_MATERIAL ,1 }, I{ UPGRADE_KIT,1 }});
 }
 
-void CraftingSystem::CraftItem(std::string item) {
+void CraftingSystem::CraftItem(ITEMS item) {
 	vector<I> itemsNeeded = (*crafts.find(item)).second;
 	list<Item*> itemsList = playerInventory->getItems();
 	list<Item*> itemsToDelete;
