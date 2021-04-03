@@ -30,7 +30,7 @@ struct CraftableItem {
 };
 using I = CraftableItem;
 
-using Crafts = std::map < std::string, std::vector<I>>; //NOMBRE / ITEMS NECESARIOS
+using Crafts = std::map < ITEMS, std::vector<I>>; //NOMBRE / ITEMS NECESARIOS
 
 class CraftingSystem
 {
