@@ -55,6 +55,7 @@ void ShelterScene::init() {
 	mngr_->setHandler<Player_hdlr>(player);
 
 	craftSys = new CraftingSystem(mngr_);
+	craftSysIndex = 0;
 
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui
 	sc_ = new Screen(sdlutils().window(), Vector2i(sdlutils().width(), sdlutils().height()), "Refugio");
@@ -140,15 +141,15 @@ sdlgui::Widget& ShelterScene::CraftingWidget()
 	auto box = widget.add<Widget>();
 	box->boxlayout(Orientation::Vertical, Alignment::Middle, 0, 2);
 
-	int aux = 0;
+	int aux = craftSysIndex;
 	//cambiar el 10 por el numero total de items
-	for (int i = 0 + aux; i < 2 + aux && i + aux < 10; ++i) {
+	for (int i = 0 + craftSysIndex; i - aux < 4 && i + craftSysIndex < 10; ++i) {
 		auto it = crafts->begin();
 
 		for (int j = 0; j < it->second.size(); j++) {
-			string path = "./resources/sprites/crafticons/GkDJ2G5_32x.png";
+			string path = "./resources/sprites/items_sheet.png";
 			SDL_Texture* tex = IMG_LoadTexture(sdlutils().renderer(), path.c_str());
-			ImageInfo img{ tex,32,32,path };
+			ImageInfo img{ tex,32,32,0,0, 3, 3 };
 			SDL_QueryTexture(tex, nullptr, nullptr, &img.w, &img.h);
 			craftIcons.push_back(img);
 			box->boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2).imgpanel(craftIcons);
@@ -156,8 +157,6 @@ sdlgui::Widget& ShelterScene::CraftingWidget()
 		}
 		box = widget.add<Widget>();
 		box->boxlayout(Orientation::Vertical, Alignment::Middle, 0, 2);
-
-
 	}
 
 	//auto x = box.dropdownbox(std::vector<std::string>{ "Dropdown item 1", "Dropdown item 2", "Dropdown item 3" });

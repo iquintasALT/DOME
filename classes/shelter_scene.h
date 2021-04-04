@@ -11,6 +11,7 @@ private:
 	sdlgui::Screen* sc_;
 	sdlgui::ListImages craftIcons;
 	CraftingSystem* craftSys;
+	int craftSysIndex;
 
 public:
 	void init() override;
