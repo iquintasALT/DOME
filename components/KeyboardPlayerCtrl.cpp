@@ -4,6 +4,7 @@
 
 KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	speed = consts::PLAYER_SPEED;
+	jumpSpeed = consts::JUMP_SPEED;
 	entityTr = nullptr;
 	gravity_ = nullptr;
 	left = right = crouched = false;
@@ -33,7 +34,7 @@ void KeyboardPlayerCtrl::update() {
 		}
 
 		if (keystates[SDL_SCANCODE_SPACE] && gravity_->onFloor()) {
- 			entityTr->setVel(Vector2D(entityTr->getVel().getX(), -speed));
+ 			entityTr->setVel(Vector2D(entityTr->getVel().getX(), -jumpSpeed));
 			gravity_->setOnFloor(false);
 		}
 
@@ -66,4 +67,7 @@ float KeyboardPlayerCtrl::getSpeed() {
 }
 void KeyboardPlayerCtrl::setSpeed(float speed_) {
 	speed = speed_;
+}
+void KeyboardPlayerCtrl::setJumpSpeed(float jumpSpeed_) {
+	jumpSpeed = jumpSpeed_;
 }

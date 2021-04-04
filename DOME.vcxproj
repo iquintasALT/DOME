@@ -43,6 +43,7 @@
     <ClInclude Include="components\bledout_component.h" />
     <ClInclude Include="components\charge.h" />
     <ClInclude Include="components\box_collider.h" />
+    <ClInclude Include="components\contusion_component.h" />
     <ClInclude Include="components\enemy_behaviour_component.h" />
     <ClInclude Include="components\enemy_component.h" />
     <ClInclude Include="components\enemy_detection_component.h" />
@@ -52,6 +53,7 @@
     <ClInclude Include="components\Image.h" />
     <ClInclude Include="components\interactableElement.h" />
     <ClInclude Include="components\interactions.h" />
+    <ClInclude Include="components\intoxication_component.h" />
     <ClInclude Include="components\Inventory.h" />
     <ClInclude Include="components\InventoryController.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
@@ -157,6 +159,7 @@
     <ClCompile Include="components\bledout_component.cpp" />
     <ClCompile Include="components\box_collider.cpp" />
     <ClCompile Include="components\charge.cpp" />
+    <ClCompile Include="components\contusion_component.cpp" />
     <ClCompile Include="components\enemy_behaviour_component.cpp" />
     <ClCompile Include="components\enemy_component.cpp" />
     <ClCompile Include="components\enemy_detection_component.cpp" />
@@ -165,6 +168,7 @@
     <ClCompile Include="components\hunger_component.cpp" />
     <ClCompile Include="components\interactableElement.cpp" />
     <ClCompile Include="components\interactions.cpp" />
+    <ClCompile Include="components\intoxication_component.cpp" />
     <ClCompile Include="components\Inventory.cpp" />
     <ClCompile Include="components\InventoryController.cpp" />
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />

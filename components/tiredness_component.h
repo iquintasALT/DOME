@@ -6,6 +6,7 @@
 #include "../utils/Vector2D.h"
 #include "../components/Transform.h"
 #include "../components/KeyboardPlayerCtrl.h"
+#include "../game/constant_variables.h"
 #include <list>
 
 /*
@@ -15,11 +16,6 @@
 * (Apenas cansado, cansado y exhausto).
 * Si está exhasuto la velocidad de movimiento es tan baja que el jugador apenas podrá moverse.
 */
-const int MAX_SLEEP_HOURS = 8; //Horas máximas de sueño en una noche
-const int PREVIOUS_DAYS = 3; //Dias previos para calcular las horas
-
-const float NONETIRED_LEVEL = 0.75f; //Por encinma del 75% estará en NONE y por debajo en TIRED
-const float TIRED_LEVEL = 0.35f; //Por encima del 35% estará en TIRED y por debajo en EXHASUTED
 
 enum class tirednessLevel { NONE, TIRED, EXHAUSTED };
 
@@ -41,6 +37,6 @@ public:
 	void sleep(int hours); //Horas descansadas como parametro
 	void increaseTiredness(float tiredness);
 
-	inline void setTiredness(float a) { tiredness = a; }
+	void setTiredness(float tiredness);
 };
 

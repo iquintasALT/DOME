@@ -15,6 +15,11 @@
 #include "../classes/particleSystem.h"
 #include "../classes/physiognomy.h"
 #include "../components/bledout_component.h"
+#include "../components/pain_component.h"
+#include "../components/contusion_component.h"
+#include "../components/intoxication_component.h"
+#include "../components/hunger_component.h"
+#include "../components/tiredness_component.h"
 
 Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 {
@@ -28,12 +33,15 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<KeyboardPlayerCtrl>();
 	addComponent<player_animation>();
 	addComponent<Interactions>();
+	addComponent<HungerComponent>();
+	addComponent<TirednessComponent>();
 
 	weapon = new WeaponBehaviour(0.5f, 5, mngr_, t->getPos(), t, 8);
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);
-
+	physiognomy->addState<ContusionComponent>();
+	physiognomy->addState<PainComponent>();
 
 }
 Player::~Player() {

@@ -119,8 +119,7 @@ public:
 	virtual void update() {
 		if (!active) return;
 
-		std::size_t n = components_.size();
-		for (auto i = 0u; i < n; i++) {
+		for (auto i = 0u; i < components_.size(); i++) {
 			if (components_[i]->enabled)
 				components_[i]->update();
 		}
@@ -129,8 +128,7 @@ public:
 	void render() {
 		if (!active) return;
 
-		std::size_t n = components_.size();
-		for (auto i = 0u; i < n; i++) {
+		for (auto i = 0u; i < components_.size(); i++) {
 			if (components_[i]->enabled)
 				components_[i]->render();
 		}
