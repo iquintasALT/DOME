@@ -70,7 +70,7 @@ class RigidBody;
 	BleedoutComponent,\
 	PainComponent,\
 	ContusionComponent,\
-	IntoxicationComponent
+	IntoxicationComponent,\
     RigidBody
 
 // groups

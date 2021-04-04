@@ -59,9 +59,6 @@
     <ClCompile Include="sdlutils\Texture.cpp">
       <Filter>Source Files\sdlutils</Filter>
     </ClCompile>
-    <ClCompile Include="components\GravityComponent.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="classes\game_state_machine.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -275,6 +272,15 @@
     <ClCompile Include="components\enemy_contact_damege.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\contusion_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\intoxication_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\rigid_body.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -378,9 +384,6 @@
     </ClInclude>
     <ClInclude Include="sdlutils\VirtualTimer.h">
       <Filter>Header Files\sdlutils</Filter>
-    </ClInclude>
-    <ClInclude Include="components\GravityComponent.h">
-      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="classes\game_state_machine.h">
       <Filter>Header Files\classes</Filter>
@@ -614,6 +617,15 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\enemy_contact_damege.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\contusion_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\intoxication_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\rigid_body.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
