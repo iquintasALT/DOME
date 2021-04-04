@@ -6,7 +6,6 @@
 // components -- forward declaration, i.e., assume they are defined somewhere
 class Transform;
 class Image;
-class GravityComponent;
 class KeyboardPlayerCtrl;
 class player_animation;
 class Weapon;
@@ -39,7 +38,6 @@ class RigidBody;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
-	GravityComponent, \
 	KeyboardPlayerCtrl, \
 	player_animation, \
     Weapon, \
