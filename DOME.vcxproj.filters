@@ -272,10 +272,7 @@
     <ClCompile Include="components\pain_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\contusion_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="components\intoxication_component.cpp">
+    <ClCompile Include="components\enemy_contact_damege.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -616,10 +613,7 @@
     <ClInclude Include="components\pain_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\contusion_component.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\intoxication_component.h">
+    <ClInclude Include="components\enemy_contact_damege.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>

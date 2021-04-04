@@ -1,6 +1,7 @@
 #pragma once
 #include "../classes/game_scene.h"
 #include "../game/checkML.h"
+#include "../classes/crafting_system.h"
 #include <sdlgui/screen.h>
 #include <functional>
 
@@ -9,6 +10,9 @@ class ShelterScene : public GameScene {
 private:
 	sdlgui::Screen* sc_;
 	sdlgui::ListImages craftIcons;
+	CraftingSystem* craftSys;
+	int craftSysIndex;
+
 public:
 	void init() override;
 	void render() override;

@@ -3,7 +3,6 @@
 #include "../ecs/Manager.h"
 #include "../components/Transform.h"
 #include "../components/player_animation.h"
-#include "../components/GravityComponent.h"
 #include "../components/Image.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/enemy_behaviour_component.h"
@@ -17,14 +16,12 @@ Enemy::Enemy(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	mngr_->addEntity(this)->setGroup<Contact_Dmg_grp>(true);
 	addComponent<Transform>(pos, Vector2D(), 32, 64, 0);
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
-	addComponent<GravityComponent>();
-	addComponent<PlayerCollisions>();
+	addComponent<RigidBody>();
 }
 
 DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 {
-	addComponent<GravityComponent>();
-	addComponent<PlayerCollisions>();//**********
+	addComponent<PlayerCollisions>();
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	//addComponent<player_animation>();
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
