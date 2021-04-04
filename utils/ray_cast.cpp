@@ -1,5 +1,6 @@
 #include "ray_cast.h"
 #include "../components/Transform.h"
+#include "../ecs/Entity.h"
 
 void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex1)
 {

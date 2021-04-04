@@ -9,6 +9,8 @@
 
 #include "Transform.h"
 
+class RigidBody;
+
 class BoxCollider : public Component
 {
 private:
@@ -21,6 +23,6 @@ public:
 
 	virtual void init() override;
 
-	bool collision(Transform* ent);
+	bool collision(Transform* ent, RigidBody* rb_);
 };
 
