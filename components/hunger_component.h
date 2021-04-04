@@ -4,6 +4,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/checkML.h"
 #include "../utils/Vector2D.h"
+#include "../game/constant_variables.h"
 
 /*
 * HungerComponent es un component para el jugador que mide su nivel de hambre.
@@ -12,9 +13,6 @@
 * Depnde de tres niveles de hambre en los que el jugador se puede encontrar (APENAS HAMBRIENTO, HAMBRIENTO, MUY HAMBRIENTO)
 * En el estado MUY HAMBRIENTO, las daños que reciba el jugador empeorarán muy rápido y serán de dificil curación.
 */
-
-const float NONEHUNGER_LEVEL = 0.75f; //Por encinma del 75% estará en NONE y por debajo en HUNGER
-const float HUNGER_LEVEL = 0.35f; //Por encima del 35% estará en HUNGER y por debajo en STARVING
 
 enum class hungerLevel { NONE, HUNGRY, STARVING };
 
@@ -30,6 +28,7 @@ public:
 	HungerComponent();
 	void updateLevel();
 	int calculateBledingSpeed(); //Metodo que se encarga del debufo del hambre (Velocidad de desangrado)
+	void setHunger(float hunger);
 
 	void eat(float hunger_);
 };

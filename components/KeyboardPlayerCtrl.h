@@ -16,6 +16,7 @@ private:
 	Transform* entityTr;
 	GravityComponent* gravity_;
 	float speed;
+	float jumpSpeed;
 	bool left, right, crouched;
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
@@ -31,5 +32,6 @@ public:
 	void resetSpeed();
 	float getSpeed();
 	void setSpeed(float speed);
+	void setJumpSpeed(float jumpSpeed);
 };
 

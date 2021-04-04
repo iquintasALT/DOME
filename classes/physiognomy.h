@@ -4,10 +4,17 @@
 #include "../game/checkML.h"
 #include <list>
 #include "player.h"
+#include "../game/constant_variables.h"
 class PlayerHealthComponent;
 using namespace std;
 
-const int MAX_MULTIPLE_STATES = 7;
+/*
+* La fisonomia del jugador es un sistema que se encarga de los daños que puede sufrir el jugador durante una raid.
+* Por lo tanto, los estados de refugio (hambre y cansacio) no se manejan en este sistema, simplemente se añaden al principio de la escena
+* Sin embargo, estados como el desangrado, hipotermia, etc.. son añadidos exclusivamente durante las raid.
+* Al volver al refugio despues de una raid, se anulan todos estos daños.
+* Si el numero de estados es mayor que un número máximo determinado, el jugador muere.
+*/
 
 class Physiognomy {
 private:
@@ -36,7 +43,7 @@ public:
 		healthComponents.remove(comp);
 	}
 
-	inline bool alive() { return healthComponents.size() < MAX_MULTIPLE_STATES; };
+	inline bool alive() { return healthComponents.size() < consts::MAX_MULTIPLE_STATES; };
 	inline list<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
 };
 

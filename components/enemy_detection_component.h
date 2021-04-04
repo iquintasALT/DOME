@@ -23,6 +23,7 @@ protected:
 public:
 	DistanceDetection(float distance);
 	virtual void update() override;
+	void setDistance(float dist);
 };
 
 class RayCastDetection : public EnemyDetectionComponent {

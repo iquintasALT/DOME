@@ -9,7 +9,7 @@ void TirednessComponent::init() {
 }
 
 void TirednessComponent::sleep(int hours) {
-	float tirednessRestored = ((hours * 100) / MAX_SLEEP_HOURS) /100;
+	float tirednessRestored = ((hours * 100) / consts::MAX_SLEEP_HOURS) /100;
 	tiredness += tirednessRestored;
 	if (tiredness > 1.0f) tiredness = 1.0f;
 	updateLevel();
@@ -17,7 +17,9 @@ void TirednessComponent::sleep(int hours) {
 
 void TirednessComponent::calculatePlayerSpeed() const {
 	float vel = kb->getSpeed();
-	vel *= tiredness;
+
+	if (tiredness > 0.5f) vel *= tiredness;
+	else vel *= tiredness + tiredness / 4;
 
 	kb->setSpeed(vel);
 }
@@ -31,7 +33,11 @@ void TirednessComponent::calculateTravelSpeed() const{
 }
 
 void TirednessComponent::updateLevel() {
-	if (tiredness >= NONETIRED_LEVEL) tirednessLevel = tirednessLevel::NONE;
-	else if (tiredness >= TIRED_LEVEL) tirednessLevel = tirednessLevel::TIRED;
+	if (tiredness >= consts::NONETIRED_LEVEL) tirednessLevel = tirednessLevel::NONE;
+	else if (tiredness >= consts::TIRED_LEVEL) tirednessLevel = tirednessLevel::TIRED;
 	else tirednessLevel = tirednessLevel::EXHAUSTED;
+}
+void TirednessComponent::setTiredness(float tiredness_) {
+	tiredness = tiredness_;
+	calculatePlayerSpeed();
 }

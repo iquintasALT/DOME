@@ -33,7 +33,10 @@ class TirednessComponent;
 class ChargeWeapon;
 class Charge;
 class BoxCollider;
-class BledoutComponent;
+class BleedoutComponent;
+class PainComponent;
+class ContusionComponent;
+class IntoxicationComponent;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -65,7 +68,10 @@ class BledoutComponent;
 	ChargeWeapon, \
 	Charge, \
 	BoxCollider,\
-	BledoutComponent
+	BleedoutComponent,\
+	PainComponent,\
+	ContusionComponent,\
+	IntoxicationComponent
 
 // groups
 
