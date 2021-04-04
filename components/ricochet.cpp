@@ -5,7 +5,7 @@
 #include "../classes/particleSystem.h"
 #include "../utils/ray_cast.h"
 
-Ricochet::Ricochet(Transform* player) : tr_(nullptr), playerTr(player), n(1) {}
+Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon) {}
 
 Ricochet::~Ricochet() {}
 
@@ -102,7 +102,10 @@ void Ricochet::update() {
 
 	if (n == 0)
 	{
-		createExplosion();
+		if (tier == 3)
+		{
+			createExplosion();
+		}
 		entity_->setDead(true);
 	}
 }
