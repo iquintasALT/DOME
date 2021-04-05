@@ -272,13 +272,16 @@
     <ClCompile Include="components\enemy_contact_damege.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\rigid_body.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\workshop.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
     <ClCompile Include="components\contusion_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="components\intoxication_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="components\rigid_body.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -288,9 +291,6 @@
     </ClInclude>
     <ClInclude Include="ecs\Component.h">
       <Filter>Header Files\ecs</Filter>
-    </ClInclude>
-    <ClInclude Include="game\constant_variables.h">
-      <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="game\countdown.h">
       <Filter>Header Files\classes</Filter>
@@ -619,13 +619,19 @@
     <ClInclude Include="components\enemy_contact_damege.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\contusion_component.h">
+    <ClInclude Include="components\rigid_body.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="game\constant_variables.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\workshop.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\intoxication_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\rigid_body.h">
+    <ClInclude Include="components\contusion_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>

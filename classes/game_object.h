@@ -16,6 +16,6 @@ public:
 	inline void setPosition(Point2D newPosition) { position = newPosition; };
 	inline void setSize(Vector2D newSize) { size = newSize; };
 	inline void scale(float scale) { size = size * scale; };
-	//virtual void update() {};
+	virtual void update() {};
 };
 
