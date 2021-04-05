@@ -48,6 +48,14 @@
         {
             "id": "charge",
             "file": "resources/sprites/charge_projectile.png"
+        },
+        {
+            "id": "craft_bg",
+            "file": "resources/sprites/craft_ui/bg.png"
+        },
+        {
+            "id": "craft_back_button",
+            "file": "resources/sprites/craft_ui/back_button.png"
         }
     ],
 

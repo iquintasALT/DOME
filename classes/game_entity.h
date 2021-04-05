@@ -14,6 +14,6 @@ public:
 	inline Vector2D getVelocity() { return velocity; };
 	inline void setVelocity(Vector2D newVelocity) { size = newVelocity; };
 	inline void scale(float scale) { size = size * scale; };
-	//void update() override {};
+	virtual void update(){};
 };
 

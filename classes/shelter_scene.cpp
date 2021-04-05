@@ -55,7 +55,9 @@ void ShelterScene::init() {
 	mngr_->setHandler<Player_hdlr>(player);
 
 	craftSys = new CraftingSystem(mngr_);
-	craftSysIndex = 0;
+
+	Manager* uselessMngr = new Manager();
+	workshop = new Workshop(uselessMngr);
 
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui
 	sc_ = new Screen(sdlutils().window(), Vector2i(sdlutils().width(), sdlutils().height()), "Refugio");
@@ -65,20 +67,19 @@ void ShelterScene::init() {
 
 	//ORDEN: 1.CREAR TODOS LOS WIDGETS, 2.ESCONDERLOS, 3.REABRIRLOS CUANDO SE PULSA SU BOTON
 
-	auto& ventana1 = CraftingWidget(); //se crea ya escondida
+	auto& ventana1 = createSimpleWidget(); //se crea ya escondida
 
 
 
-	//std::function<void()> muestraVentana1 = [&]() { showWidget(ventana1, true); };
-	createSimpleButton(Vector2i(500, 100), "INVENTARIO", "Abre el Inventario", ventana1);
+	//createSimpleButton(Vector2i(500, 100), "INVENTARIO", "Abre el Inventario", ventana1);
+	std::function<void()> abreCrafteos = [&]() { workshop->setRenderFlag(true); };
+	sdlgui::Widget& window = createSimpleButton(Vector2i(500, 200), "CRAFTEO", "Abre la lista de posibles crafteos", abreCrafteos);
 
-	createSimpleButton(Vector2i(500, 200), "CRAFTEO", "Abre la lista de posibles crafteos", ventana1);
+	//createSimpleButton(Vector2i(500, 300), "DESCANSO", "Permite dormir y recuperar fuerzas", ventana1);
 
-	createSimpleButton(Vector2i(500, 300), "DESCANSO", "Permite dormir y recuperar fuerzas", ventana1);
+	//createSimpleButton(Vector2i(500, 400), "REPARAR NAVE", "Abre el Inventario", ventana1);
 
-	createSimpleButton(Vector2i(500, 400), "REPARAR NAVE", "Abre el Inventario", ventana1);
-
-	createSimpleButton(Vector2i(500, 500), "COMENZAR RAID", "Abre el Inventario", ventana1);
+	//createSimpleButton(Vector2i(500, 500), "COMENZAR RAID", "Abre el Inventario", ventana1);
 
 
 	//al colocarlo todo, se utiliza esta funcion para pasarle la info al render
@@ -91,10 +92,12 @@ void ShelterScene::render()
 {
 	GameScene::render();
 	sc_->drawAll();
+	workshop->render();
 }
 
 void ShelterScene::updateScreen(SDL_Event* e)
 {
+	workshop->update();
 	sc_->onEvent(*e);
 }
 
@@ -130,57 +133,17 @@ sdlgui::Widget& ShelterScene::createSimpleWidget()
 	return widget;
 }
 
-sdlgui::Widget& ShelterScene::CraftingWidget()
-{
-	Crafts* crafts = craftSys->getCrafts();
-
-	Widget& widget = createSimpleWidget();
-
-
-	//auto& box = widget.widget().boxlayout
-	auto box = widget.add<Widget>();
-	box->boxlayout(Orientation::Vertical, Alignment::Middle, 0, 2);
-
-	int aux = craftSysIndex;
-	//cambiar el 10 por el numero total de items
-	for (int i = 0 + craftSysIndex; i - aux < 4 && i + craftSysIndex < 10; ++i) {
-		auto it = crafts->begin();
-
-		for (int j = 0; j < it->second.size(); j++) {
-			string path = "./resources/sprites/items_sheet.png";
-			SDL_Texture* tex = IMG_LoadTexture(sdlutils().renderer(), path.c_str());
-			ImageInfo img{ tex,32,32,0,0, 3, 3 };
-			SDL_QueryTexture(tex, nullptr, nullptr, &img.w, &img.h);
-			craftIcons.push_back(img);
-			box->boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2).imgpanel(craftIcons);
-			craftIcons.clear();
-		}
-		box = widget.add<Widget>();
-		box->boxlayout(Orientation::Vertical, Alignment::Middle, 0, 2);
-	}
-
-	//auto x = box.dropdownbox(std::vector<std::string>{ "Dropdown item 1", "Dropdown item 2", "Dropdown item 3" });
-	//x.setIcon(ENTYPO_ICON_TOOLS);
-
-	box->boxlayout(Orientation::Horizontal, Alignment::Middle, 0, 2).imgpanel(craftIcons);
-
-
-	return widget;
-}
 
 sdlgui::Widget& ShelterScene::createSimpleButton(Vector2i pos, string buttonText, string description,
-	Widget& ventana)
+	std::function<void()> func)
 {
 	//ventana que contiene al boton
 	auto& nwindow = sc_->window(buttonText, pos)
 		.withLayout<GroupLayout>();
 
-	//funcion lambda que abre la ventana indicada
-	//capturar todo el scope con [&] supongo que esta feo, ESTO HAY QUE CAMBIARLO PERO AUN NO SE COMO
-	std::function<void()> muestraVentana = [&]() { showWidget(ventana, true); };
 	//boton para abrir la ventana indicada
 	nwindow
-		.button("ABRIR", muestraVentana)
+		.button("ABRIR", func)
 		.withTooltip(description);
 
 	return nwindow;
