@@ -37,6 +37,7 @@ class PainComponent;
 class ContusionComponent;
 class IntoxicationComponent;
 class RigidBody;
+class EnemyContactDamage;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -71,7 +72,8 @@ class RigidBody;
 	PainComponent,\
 	ContusionComponent,\
 	IntoxicationComponent,\
-    RigidBody
+    RigidBody,\
+	EnemyContactDamage
 
 // groups
 

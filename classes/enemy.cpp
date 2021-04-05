@@ -8,6 +8,7 @@
 #include "../components/enemy_behaviour_component.h"
 #include "../components/enemy_detection_component.h"
 #include "../components/player_collisions.h"
+#include "../components/enemy_contact_damege.h"
 
 
 //WHEN COLLISIONS ARE FIXED TO NOT DEPEND ON GRAVITY, COLLISIONS WILL BE MOVED TO BASE CLASS
@@ -17,6 +18,7 @@ Enemy::Enemy(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<Transform>(pos, Vector2D(), 32, 64, 0);
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	addComponent<RigidBody>();
+	addComponent<EnemyContactDamage>();
 }
 
 DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
