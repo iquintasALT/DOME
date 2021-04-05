@@ -9,14 +9,20 @@ void EnemyContactDamage::init() {
 }
 
 void EnemyContactDamage::update() {
-	//falta hacer
-	//for (auto entity : entity_->getMngr()->getEnteties()) {
-	//	if (entity->hasGroup<Contact_Dmg_grp>()) {
-	//		auto e_tr = entity->getComponent<Transform>();
-	//		if (Collisions::collides(tr->getPos(), tr->getW(), tr->getH(),
-	//			e_tr->getPos(), e_tr->getW(), e_tr->getH())) {
-	//			//aplicar efecto x metiendo el componente necesario
-	//		}
-	//	}
-	//}
+	if (!collision) {
+		auto player_tr = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
+		if (Collisions::collides(tr->getPos(), tr->getW(), tr->getH(),
+			player_tr->getPos(),player_tr->getW(), player_tr->getH())) {
+			//aplicar efecto x metiendo el componente necesario
+			cout << "enemigo choca a jugador" << cooldown <<  endl;
+			collision = true;
+		}
+	}
+	else {
+		cooldown += consts::DELTA_TIME;
+		if (cooldown > 2) {
+			collision = false;
+			cooldown = 0;
+		}
+	}
 }
