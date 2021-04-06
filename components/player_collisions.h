@@ -8,12 +8,12 @@
 
 #include "tile_renderer.h"
 
-class GravityComponent;
+class RigidBody;
 
 class PlayerCollisions : public Component
 {
 private:
-	GravityComponent* gravity_;
+	RigidBody* rb_;
 
 public:
 	PlayerCollisions();

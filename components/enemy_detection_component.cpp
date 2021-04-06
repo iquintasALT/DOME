@@ -11,6 +11,10 @@ void EnemyDetectionComponent::init() {
 
 DistanceDetection::DistanceDetection(float distance_) : distance(distance_) {};
 
+void DistanceDetection::setDistance(float dist) {
+	distance = dist;
+}
+
 void DistanceDetection::update() {
 	float distanceToPlayer = std::abs(std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()));
 

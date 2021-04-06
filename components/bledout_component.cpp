@@ -4,16 +4,18 @@
 #include "../components/hunger_component.h"
 #include "../sdlutils/SDLUtils.h"
 
-void BledoutComponent::init() {
+void BleedoutComponent::init() {
 	accumulatedTime = sdlutils().currRealTime();
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
 
 	hunger = entity_->getComponent<HungerComponent>();
+	assert(hunger != nullptr);
 }
 
-void BledoutComponent::update() {
+void BleedoutComponent::update() {
 	if (sdlutils().currRealTime() > accumulatedTime + hunger->calculateBledingSpeed()) {
 		accumulatedTime = sdlutils().currRealTime();
 		phys->getHealthComponents()->push_back(this);
+		cout << "DESANGRADO\n";
 	}
 }

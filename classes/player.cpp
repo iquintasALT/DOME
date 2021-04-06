@@ -5,7 +5,6 @@
 #include "../ecs/Manager.h"
 #include "../components/Transform.h"
 #include "../components/player_animation.h"
-#include "../components/GravityComponent.h"
 #include "../components/Image.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/InventoryController.h"
@@ -15,6 +14,11 @@
 #include "../classes/particleSystem.h"
 #include "../classes/physiognomy.h"
 #include "../components/bledout_component.h"
+#include "../components/pain_component.h"
+#include "../components/contusion_component.h"
+#include "../components/intoxication_component.h"
+#include "../components/hunger_component.h"
+#include "../components/tiredness_component.h"
 
 Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 {
@@ -23,17 +27,20 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	Transform* t = addComponent<Transform>(pos, Vector2D(), 32, 64);
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
-	addComponent<GravityComponent>();
+	addComponent<RigidBody>();
 	addComponent<PlayerCollisions>();
 	addComponent<KeyboardPlayerCtrl>();
 	addComponent<player_animation>();
 	addComponent<Interactions>();
+	addComponent<HungerComponent>();
+	addComponent<TirednessComponent>();
 
 	weapon = new WeaponBehaviour(0.5f, 5, mngr_, t->getPos(), t, 8);
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);
-
+	physiognomy->addState<ContusionComponent>();
+	physiognomy->addState<PainComponent>();
 
 }
 Player::~Player() {

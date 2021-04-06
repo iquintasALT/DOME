@@ -6,7 +6,6 @@
 // components -- forward declaration, i.e., assume they are defined somewhere
 class Transform;
 class Image;
-class GravityComponent;
 class KeyboardPlayerCtrl;
 class player_animation;
 class Weapon;
@@ -33,12 +32,16 @@ class TirednessComponent;
 class ChargeWeapon;
 class Charge;
 class BoxCollider;
-class BledoutComponent;
+class BleedoutComponent;
+class PainComponent;
+class ContusionComponent;
+class IntoxicationComponent;
+class RigidBody;
+class EnemyContactDamage;
 
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
-	GravityComponent, \
 	KeyboardPlayerCtrl, \
 	player_animation, \
     Weapon, \
@@ -65,7 +68,12 @@ class BledoutComponent;
 	ChargeWeapon, \
 	Charge, \
 	BoxCollider,\
-	BledoutComponent
+	BleedoutComponent,\
+	PainComponent,\
+	ContusionComponent,\
+	IntoxicationComponent,\
+    RigidBody,\
+	EnemyContactDamage
 
 // groups
 

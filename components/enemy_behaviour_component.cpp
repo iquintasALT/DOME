@@ -11,6 +11,8 @@ void EnemyBehaviourComponent::init()
 	assert(playerTr != nullptr && entityTr != nullptr && enemyDetection != nullptr);
 }
 
+//--------------------------------------------------------------------------------------------------------------
+
 ChasePlayer::ChasePlayer(float speed_, float stopDistance_) :speed(speed_), stopDistance(stopDistance_){};
 
 void ChasePlayer::update() {
@@ -29,8 +31,12 @@ void ChasePlayer::update() {
 	}
 }
 
-KeepDistance::KeepDistance(float speed_, float marginDisntace_, float shootDistance_) : speed(speed_), 
-									marginDistance(marginDisntace_), shootDistance(shootDistance_) {};
+//--------------------------------------------------------------------------------------------------------------
+
+KeepDistance::KeepDistance(float speed_, float marginDistance_, float shootDistance_) : speed(speed_), 
+marginDistance(marginDistance_), shootDistance(shootDistance_) {
+	assert(marginDistance < shootDistance);
+};
 
 void KeepDistance::update() {
 	if (enemyDetection->isActive()) {
@@ -54,6 +60,8 @@ void KeepDistance::update() {
 	}
 }
 
+//--------------------------------------------------------------------------------------------------------------
+
 FlyingChasePlayer::FlyingChasePlayer(float speed_, float stopDistance_, float hoverHeight_, float attackDistance_) :
 	speed(speed_), stopDistance(stopDistance_), hoverHeight(hoverHeight_), attackDistance(attackDistance_) {};
 
@@ -63,15 +71,22 @@ void FlyingChasePlayer::update() {
 		//If it is further from player than it wants to be
 		if (std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()) > stopDistance) {
 			float targetX = playerTr->getPos().getX(), targetY = 0.0;
-			//If it is too far to begin attacking, it will keep its altitude
+
+			//Get current height
+			RayCast distanceToFloor = RayCast(entityTr->getPos(), Vector2D(0.0, 1.0));
+			distanceToFloor.distanceToGroup<Wall_grp>(entity_);
+			Point2D floorPoint = distanceToFloor.getPointOfImpact();
+
+			//If it is too far to begin attacking, it will attempt to maintain its hoverHeight
 			if (std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()) > attackDistance)
-				targetY = hoverHeight;
+				targetY = floorPoint.getY() - hoverHeight;
 			else
 				targetY = playerTr->getPos().getY();
-			
+
 			Point2D target = Point2D(targetX, targetY);
+			//Set speed to travel towards target
 			entityTr->setVel(target - entityTr->getPos());
 		}
-		else entityTr->setVelX(0.0);
+		else entityTr->setVel(Vector2D());
 	}
 }

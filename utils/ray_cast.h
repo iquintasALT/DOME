@@ -5,6 +5,7 @@
 #include <array>
 #include <limits>
 #include "../game/checkML.h"
+#include "../ecs/Entity.h"
 
 class Transform;
 class Entity;
@@ -53,12 +54,25 @@ public:
 
 	void rayCastToSquare(Entity* entity);
 
-	/*template <typename Group>
-	void rayCastToGroup(Entity* entity)
+	/// Calculates minimum distance in a specified direction to any and all entities with transforms that belong to a certain group.
+	/// Makes modifications to RayCast to display point of nearest collision and distance, which it returns
+	/// If no collision is detected, distance will be -1.0
+	template <typename Group>
+	double distanceToGroup(Entity* entity)
 	{
-		entity->getMngr()->getEnteties();
-		entity->hasGroup<Group>();
-	}*/
+		auto entities = entity->getMngr()->getEnteties();
+		RayCast aux = RayCast(*this);
+		for (Entity* e : entities)
+		{
+			if (e->hasGroup<Group>() && e->hasComponent<Transform>())
+			{
+				aux.rayCastToSquare(e->getComponent<Transform>());
+				if (aux.distance != -1.0 && aux.distance < distance)
+					*this = RayCast(aux);
+			}
+		}
+		return distance;
+	}
 };
 
 #endif
