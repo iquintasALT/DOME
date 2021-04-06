@@ -16,6 +16,7 @@ void start() {
 int main(int, char**) {
 	//memory leaks
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
+
 	try {
 		start();
 	} catch (const std::string &e) { // catch exceptions thrown as strings

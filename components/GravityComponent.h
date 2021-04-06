@@ -1,25 +1,25 @@
 #pragma once
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
-#include "../components/Transform.h"
 #include "../utils/Collisions.h"
 #include "../game/constant_variables.h"
 #include "../game/checkML.h"
 
-class GravityComponent : public Component {
+#include "rigid_body.h"
+
+class RigidBody : public Component {
 private:
-	Transform* entityTr;
 	float gravity;
 	bool onFloor_;
 
 public:
-	GravityComponent();
+	RigidBody();
 
-	inline ~GravityComponent() {};
+	inline ~RigidBody() {};
 
 	virtual void init() override;
 
-	virtual void update();
+	virtual void applyGravity();
 
 	void reachedFloor();
 

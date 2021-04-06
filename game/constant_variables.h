@@ -5,6 +5,7 @@ namespace consts {
 	const float FRAME_RATE = 60.0f;
 	const float DELTA_TIME = 1 / FRAME_RATE;
 	const float PLAYER_SPEED = 3.0f;
+	const float JUMP_SPEED = 3.0f;
 	const float MELEE_ENEMY_SPEED = 2.5f;
 	const float MELEE_ENEMY_STOPDISTANCE = 50.0f;
 	const float RANGED_ENEMY_SPEED = PLAYER_SPEED / 2;
@@ -15,4 +16,18 @@ namespace consts {
 	const int WINDOW_HEIGHT = 736;
 	const float FALLING_DMG_SPEED = 8;
 	const float CHARGEWEAPON_HEIGHT = 15;
+
+	//Physiognomy
+	const int MAX_MULTIPLE_STATES = 6;
+	const float NONEHUNGER_LEVEL = 0.75f; //Por encinma del 75% estará en NONE y por debajo en HUNGER
+	const float HUNGER_LEVEL = 0.35f; //Por encima del 35% estará en HUNGER y por debajo en STARVING
+	const int MAX_SLEEP_HOURS = 8; //Horas máximas de sueño en una noche
+	const float NONETIRED_LEVEL = 0.75f; //Por encinma del 75% estará en NONE y por debajo en TIRED
+	const float TIRED_LEVEL = 0.35f; //Por encima del 35% estará en TIRED y por debajo en EXHASUTED
+	const int MAX_NEWDAMAGE_TIME = 10000; 
+	const int TIME_PER_NEWSUMOFTIME = 8000; //Tiempo mayor al que añada, si no, los daños temporales nunca terminarian sin la necesidad de ser curados
+	const int CONTUSION_TIME_TO_END = 10000; 
+	const int INTOXICATION_TIME_TO_END = 20000; 
+	const int TIME_TO_INCREASE_CONTUSION = 5000;
+	const int TIME_TO_INCREASE_INTOXICATION = 5000;
 }

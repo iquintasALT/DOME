@@ -2,6 +2,7 @@
 #include "../sdlutils/InputHandler.h"
 #include "../components/bledout_component.h"
 
+
 HungerComponent::HungerComponent() : hunger(1.0f), hungerLevel(hungerLevel::NONE) {}
 
 void HungerComponent::eat(float hunger_) {
@@ -10,10 +11,13 @@ void HungerComponent::eat(float hunger_) {
 }
 
 void HungerComponent::updateLevel() {
-	if (hunger >= NONEHUNGER_LEVEL) hungerLevel = hungerLevel::NONE;
-	else if (hunger >= HUNGER_LEVEL) hungerLevel = hungerLevel::HUNGRY;
+	if (hunger >= consts::NONEHUNGER_LEVEL) hungerLevel = hungerLevel::NONE;
+	else if (hunger >= consts::HUNGER_LEVEL) hungerLevel = hungerLevel::HUNGRY;
 	else hungerLevel = hungerLevel::STARVING;
 }
 int HungerComponent::calculateBledingSpeed() {
-	return (hunger * MAX_NEWDAMAGE_TIME) / 100;
+	return (hunger * consts::MAX_NEWDAMAGE_TIME);
+}
+void HungerComponent::setHunger(float hunger_) {
+	hunger = hunger_;
 }

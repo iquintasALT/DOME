@@ -3,7 +3,6 @@
 #include "Game.h"
 #include "../components/Transform.h"
 #include "../components/Image.h"
-#include "../components/GravityComponent.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/player_animation.h"
 #include "../components/weapon.h"
@@ -17,7 +16,6 @@
 
 #include "../ecs/Manager.h"
 #include "../utils/Vector2D.h"
-#include "box2d.h"
 
 #include "../classes/menu_scene.h"
 #include "../classes/raid_scene.h"
