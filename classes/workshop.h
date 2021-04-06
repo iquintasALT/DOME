@@ -4,6 +4,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Image.h"
 #include "../components/Transform.h"
+#include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
 #include "../utils/Collisions.h"
 #include <vector>
@@ -11,15 +12,12 @@
 class Workshop : public GameEntity
 {
 private:
-	Image* renderImg;
-	Vector2D bg_pos;
-	Vector2D bg_size;
-	std::string bgName;
-	Vector2D bButton_pos;
-	Vector2D bButton_size;
-	std::string bButtonName;
+	Entity* bg;
+	Transform* bg_tr;
+	Entity* bButton;
+	Transform* bButton_tr;
 
-	std::vector<Image*>craftList;
+	std::vector<Entity*>craftList;
 	Transform* tr;
 
 	bool renderFlag;
@@ -27,7 +25,7 @@ private:
 public:
 	Workshop(Manager* mngr_);
 
-	void setImg(Vector2D pos, Vector2D size, std::string name);
+	void setImg(Entity* entity,Vector2D pos, Vector2D size, std::string name);
 	virtual void render();
 	virtual void update();
 	void setRenderFlag(bool set);

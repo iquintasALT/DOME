@@ -4,34 +4,34 @@ Workshop::Workshop(Manager* mngr_) : GameEntity(mngr_) {
 	mngr_->addEntity(this);
 	renderFlag = false;
 
-	bg_size = { 930, 630 };
-	bg_pos = Vector2D(sdlutils().width() / 2 - bg_size.getX() / 2, sdlutils().height() / 2 - bg_size.getY() / 2);
-	bButton_size = { 65,64 };
-	bButton_pos = Vector2D(bg_pos.getX() - bButton_size.getX() / 2, bg_pos.getY() - bButton_size.getY() / 2);
-	tr = addComponent<Transform>(bg_pos, Vector2D(), 930, 630, 0);
+	bg = mngr_->addEntity();
+	bButton = mngr_->addEntity();
 
-	bgName = "craft_bg";
-	bButtonName = "craft_back_button";
+	Vector2D bg_size = { 930, 630 };
+	Vector2D bg_pos = Vector2D(sdlutils().width() / 2 - bg_size.getX() / 2, sdlutils().height() / 2 - bg_size.getY() / 2);
+	Vector2D bButton_size = { 65,64 };
+	Vector2D bButton_pos = Vector2D(bg_pos.getX() - bButton_size.getX() / 2, bg_pos.getY() - bButton_size.getY() / 2);
 
-	renderImg = nullptr;
+	setImg(bg, bg_pos, bg_size, "craft_bg");
+	setImg(bButton, bButton_pos, bButton_size, "craft_back_button");
+	bg_tr = bg->getComponent<Transform>();
+	bButton_tr = bButton->getComponent<Transform>();
 }
+
 
 void Workshop::setRenderFlag(bool set) {
 	renderFlag = set;
 }
 
-void Workshop::setImg(Vector2D pos, Vector2D size, std::string name) {
-	tr->setPos(pos);
-	tr->setW(size.getX());
-	tr->setH(size.getY());
-	removeComponent<Image>();
-	renderImg = addComponent<Image>(&sdlutils().images().at(name));
+void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
+	entity->addComponent<Transform>(pos, Vector2D(), size.getX(), size.getY(), 0);
+	entity->addComponent<Image>(&sdlutils().images().at(name));
 }
 
 void Workshop::update() {
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
-		if (ih().getMouseButtonState(InputHandler::LEFT) && Collisions::collides(mousePos, 1, 1, bButton_pos, bButton_size.getX(), bButton_size.getY())) {
+		if (ih().getMouseButtonState(InputHandler::LEFT) && Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
 			renderFlag = false;
 		}
 	}
@@ -39,10 +39,7 @@ void Workshop::update() {
 
 void Workshop::render() {
 	if (renderFlag) {
-		setImg(bg_pos, bg_size, bgName);
-		renderImg->render();
-
-		setImg(bButton_pos, bButton_size, bButtonName);
-		renderImg->render();
+		bg->render();
+		bButton->render();
 	}
 }
