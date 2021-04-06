@@ -11,6 +11,8 @@ void EnemyBehaviourComponent::init()
 	assert(playerTr != nullptr && entityTr != nullptr && enemyDetection != nullptr);
 }
 
+//--------------------------------------------------------------------------------------------------------------
+
 ChasePlayer::ChasePlayer(float speed_, float stopDistance_) :speed(speed_), stopDistance(stopDistance_){};
 
 void ChasePlayer::update() {
@@ -29,8 +31,12 @@ void ChasePlayer::update() {
 	}
 }
 
+//--------------------------------------------------------------------------------------------------------------
+
 KeepDistance::KeepDistance(float speed_, float marginDisntace_, float shootDistance_) : speed(speed_), 
-									marginDistance(marginDisntace_), shootDistance(shootDistance_) {};
+marginDistance(marginDisntace_), shootDistance(shootDistance_) {
+	assert(marginDistance < shootDistance);
+};
 
 void KeepDistance::update() {
 	if (enemyDetection->isActive()) {
@@ -53,6 +59,8 @@ void KeepDistance::update() {
 		else entityTr->setVelX(0.0);
 	}
 }
+
+//--------------------------------------------------------------------------------------------------------------
 
 FlyingChasePlayer::FlyingChasePlayer(float speed_, float stopDistance_, float hoverHeight_, float attackDistance_) :
 	speed(speed_), stopDistance(stopDistance_), hoverHeight(hoverHeight_), attackDistance(attackDistance_) {};
