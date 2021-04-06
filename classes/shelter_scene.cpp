@@ -56,7 +56,7 @@ void ShelterScene::init() {
 
 	craftSys = new CraftingSystem(mngr_);
 
-	Manager* uselessMngr = new Manager();
+	uselessMngr = new Manager();
 	workshop = new Workshop(uselessMngr, craftSys);
 
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui

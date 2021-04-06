@@ -14,8 +14,10 @@ void GameStateMachine::changeState(GameScene* gs) {
 //metodo para quitar un estado de la cima de la pila
 void GameStateMachine::popState() {
 	//si hay estados, eliminamos su memoria y lo sacamos de la pila
-	if (!states.empty()) { 
-		delete states.top();
+	if (!states.empty()) {
+		ShelterScene* aux = dynamic_cast<ShelterScene*>(states.top());
+		if (aux != nullptr)delete aux;
+		else delete states.top();
 		states.pop();
 	}
 }

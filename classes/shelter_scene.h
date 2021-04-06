@@ -13,8 +13,10 @@ private:
 	sdlgui::ListImages craftIcons;
 	CraftingSystem* craftSys;
 	Workshop* workshop;
+	Manager* uselessMngr;
 
 public:
+	virtual ~ShelterScene() { delete craftSys, delete uselessMngr; workshop->setActive(false); };
 	void init() override;
 	void render() override;
 	void updateScreen(SDL_Event* e);
