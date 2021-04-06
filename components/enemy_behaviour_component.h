@@ -19,6 +19,8 @@ public:
     virtual void init() override;
 };
 
+//--------------------------------------------------------------------------------------------------------------
+//Follows player on X axis anytime it is further than stopDistance from player
 class ChasePlayer : public EnemyBehaviourComponent
 {
 protected:
@@ -30,6 +32,8 @@ public:
     virtual void update() override;
 };
 
+//--------------------------------------------------------------------------------------------------------------
+//Maintains distance from the player within a margin: no closer than marginDistance and no further than shootDistance
 class KeepDistance : public EnemyBehaviourComponent {
 protected:
     float speed;
@@ -37,10 +41,14 @@ protected:
     float shootDistance;
 
 public:
-    KeepDistance(float speed, float marginDisntace, float shootDistance);
+    KeepDistance(float speed, float marginDistance, float shootDistance);
     virtual void update() override;
 };
 
+//--------------------------------------------------------------------------------------------------------------
+/// While far from the player, maintains hoverHeight above the closest floor
+/// When it comes within attackDistance of player, it will begin to match the player's altitude
+/// Stops still when within stopDistance of the player
 class FlyingChasePlayer : public EnemyBehaviourComponent
 {
 protected:
@@ -53,4 +61,7 @@ public:
     FlyingChasePlayer(float speed_, float stopDistance_, float hoverHeight_, float attackDistance_);
     virtual void update() override;
 };
+
+//--------------------------------------------------------------------------------------------------------------
+
 #endif

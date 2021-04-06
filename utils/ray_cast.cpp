@@ -25,9 +25,11 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 	pointOfImpact1 = pointOfImpact1 + Vector2D(centre - pointOfImpact1) * 0.001;
 	pointOfImpact2 = pointOfImpact2 + Vector2D(centre - pointOfImpact2) * 0.001;
 
+	//See if either or both points of collision are within rectangle bounds
 	col1 &= Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact1);
 	col2 &= Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact2);
 
+	//If neither collision was registered, the ray does not intersect the rectangle
 	if (!col1 && !col2)
 	{
 		pointOfImpact = Point2D();
@@ -35,6 +37,7 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 	}
 	else
 	{
+		//If both collisions registered, save the one nearest to ray origin
 		if (col1 && col2)
 		{
 			if ((pointOfImpact1 - origin).magnitude() > (pointOfImpact2 - origin).magnitude())
@@ -42,34 +45,13 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 			else
 				pointOfImpact = pointOfImpact2;
 		}
+		//Otherwise, save the only collision point
 		else if (col1)
 			pointOfImpact = pointOfImpact1;
 		else
 			pointOfImpact = pointOfImpact2;
 		distance = (pointOfImpact - origin).magnitude();
 	}
-	
-	/*
-	if (Collisions::PointInRectangle(s.vertices[0], s.vertices[1], s.vertices[2], s.vertices[3], pointOfImpact)) // if collision occurred
-	{
-		//Repeat necessary calculations for other eligible side
-		Point2D intersect = Point2D();
-		double auxDistance = 0.0f;
-		closestEdgeDirection = s.vertices[closestVertex] - s.vertices[(closestVertex - 1) % 4];
-
-		Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection, intersect);
-
-		//Compare both sides to see which is closer
-		if ((intersect - origin).magnitude() > (pointOfImpact - origin).magnitude())
-			pointOfImpact = intersect;
-
-		distance = (pointOfImpact - origin).magnitude();
-	}
-	else // if there was no collision
-	{
-		pointOfImpact = Point2D();
-		distance = -1.0;
-	}*/
 }
 
 void RayCast::rayCastToSquare(Transform* transform)
