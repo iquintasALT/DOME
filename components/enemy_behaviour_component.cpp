@@ -33,8 +33,8 @@ void ChasePlayer::update() {
 
 //--------------------------------------------------------------------------------------------------------------
 
-KeepDistance::KeepDistance(float speed_, float marginDisntace_, float shootDistance_) : speed(speed_), 
-marginDistance(marginDisntace_), shootDistance(shootDistance_) {
+KeepDistance::KeepDistance(float speed_, float marginDistance_, float shootDistance_) : speed(speed_), 
+marginDistance(marginDistance_), shootDistance(shootDistance_) {
 	assert(marginDistance < shootDistance);
 };
 
