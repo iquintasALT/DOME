@@ -49,7 +49,7 @@ protected:
 public:
 	//constructora que crea el manager de gObjects de la clase
 	inline GameScene() { mngr_ = new Manager(); }
-	inline ~GameScene() { delete mngr_; }
+	inline virtual ~GameScene() { delete mngr_; }
 	//creacion de objetos, que sera diferente en cada escena
 	inline virtual void init() = 0;
 	//metodos para llamar al manager de la escena
