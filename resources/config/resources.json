@@ -64,6 +64,10 @@
         {
             "id": "craft_arrow",
             "file": "resources/sprites/craft_ui/arrow.png"
+        },
+        {
+            "id": "items",
+            "file": "resources/sprites/items_sheet.png"
         }
     ],
 

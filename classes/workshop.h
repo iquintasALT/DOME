@@ -32,7 +32,9 @@ private:
 
 	int listIndex;
 	bool renderFlag;
+	bool mouseClick;
 	CraftingSystem* craftSys;
+	std::vector<ITEMS> workshopItems;
 
 public:
 	Workshop(Manager* mngr_, CraftingSystem* cs);

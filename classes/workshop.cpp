@@ -5,6 +5,9 @@ Workshop::Workshop(Manager* mngr_, CraftingSystem* cs) : GameEntity(mngr_) {
 	mngr_->addEntity(this);
 	renderFlag = false;
 	listIndex = 0;
+	mouseClick = false;
+	workshopItems = { SPACESHIP_ROCKETS, METAL_PLATES, WEAPON_UPGRADE,  CLASSIC_AMMO, BACKPACK_UPGRADE, ARMOUR_UPGRADE };
+
 
 	//INICIALIZACION IMAGENES DEL FONDO, FLECHAS Y X PARA SALIR
 	bg = mngr_->addEntity();
@@ -60,9 +63,19 @@ void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string n
 void Workshop::update() {
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
-		if (ih().getMouseButtonState(InputHandler::LEFT) && Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
-			renderFlag = false;
+		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
+			mouseClick = true;
+
+			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH()))
+				renderFlag = false;
+			else if (Collisions::collides(mousePos, 1, 1, arrowUp_tr->getPos(), arrowUp_tr->getW(), arrowUp_tr->getH())) {
+				if (listIndex > 0)listIndex--;
+			}
+			else if (Collisions::collides(mousePos, 1, 1, arrowDown_tr->getPos(), arrowDown_tr->getW(), arrowDown_tr->getH())) {
+				if (listIndex < workshopItems.size() - 4) listIndex++;
+			}
 		}
+		else { mouseClick = false; }
 	}
 }
 
@@ -77,6 +90,21 @@ void Workshop::render() {
 		for (int i = 0; i < 4; ++i) {
 			craftList[i].index = listIndex + i;
 			craftList[i].slot->render();
+
+			int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[craftList[i].index])->first].row;
+			int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[craftList[i].index])->first].col;
+			std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[craftList[i].index])->first].itemName;
+			float offsetX = craftList_tr[i]->getPos().getX() + 35;
+			float offsetY = craftList_tr[i]->getPos().getY() + 17.5f;
+
+			Entity* aux = getMngr()->addEntity();
+			aux->addComponent<Transform>(Vector2D{ offsetX,offsetY }, Vector2D(), 64, 64, 0);
+			aux->addComponent<Image>(&sdlutils().images().at("items"), 3, 3, imgRow, imgCol)->render();
+			Texture* text = new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
+			SDL_Rect dest{ offsetX + 80 ,craftList_tr[i]->getPos().getY() + craftList_tr[i]->getH() / 2 - text->height() / 2  ,text->width(),text->height() };
+			text->render(dest, 0);
+			delete text;
+			aux->setActive(false);
 		}
 	}
 }
