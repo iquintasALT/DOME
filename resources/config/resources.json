@@ -56,6 +56,14 @@
         {
             "id": "craft_back_button",
             "file": "resources/sprites/craft_ui/back_button.png"
+        },
+        {
+            "id": "craft_slot_box",
+            "file": "resources/sprites/craft_ui/slot.png"
+        },
+        {
+            "id": "craft_arrow",
+            "file": "resources/sprites/craft_ui/arrow.png"
         }
     ],
 
