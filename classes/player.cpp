@@ -13,9 +13,9 @@
 #include "../components/player_collisions.h"
 #include "../classes/particleSystem.h"
 #include "../classes/physiognomy.h"
-#include "../components/bledout_component.h"
+#include "../components/bleedout_component.h"
 #include "../components/pain_component.h"
-#include "../components/contusion_component.h"
+#include "../components/concussion_component.h"
 #include "../components/intoxication_component.h"
 #include "../components/hunger_component.h"
 #include "../components/tiredness_component.h"
@@ -39,7 +39,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);
-	physiognomy->addState<ContusionComponent>();
+	physiognomy->addState<ConcussionComponent>();
 	physiognomy->addState<PainComponent>();
 
 }

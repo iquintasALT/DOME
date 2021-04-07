@@ -41,10 +41,10 @@
     <ClInclude Include="classes\shelter_scene.h" />
     <ClInclude Include="classes\workshop.h" />
     <ClInclude Include="components\animation_component.h" />
-    <ClInclude Include="components\bledout_component.h" />
+    <ClInclude Include="components\bleedout_component.h" />
     <ClInclude Include="components\charge.h" />
     <ClInclude Include="components\box_collider.h" />
-    <ClInclude Include="components\contusion_component.h" />
+    <ClInclude Include="components\concussion_component.h" />
     <ClInclude Include="components\enemy_attack_component.h" />
     <ClInclude Include="components\enemy_behaviour_component.h" />
     <ClInclude Include="components\enemy_component.h" />
@@ -160,11 +160,11 @@
     <ClCompile Include="classes\shelter_scene.cpp" />
     <ClCompile Include="classes\workshop.cpp" />
     <ClCompile Include="components\animation_component.cpp" />
-    <ClCompile Include="components\bledout_component.cpp" />
+    <ClCompile Include="components\bleedout_component.cpp" />
     <ClCompile Include="components\box_collider.cpp" />
     <ClCompile Include="components\charge.cpp" />
-    <ClCompile Include="components\contusion_component.cpp" />
-    <ClCompile Include="components\EnemyAttackComponent.cpp" />
+    <ClCompile Include="components\concussion_component.cpp" />
+    <ClCompile Include="components\enemy_attack_component.cpp" />
     <ClCompile Include="components\enemy_behaviour_component.cpp" />
     <ClCompile Include="components\enemy_component.cpp" />
     <ClCompile Include="components\enemy_detection_component.cpp" />

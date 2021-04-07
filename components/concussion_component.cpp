@@ -1,13 +1,13 @@
-#include "contusion_component.h"
+#include "concussion_component.h"
 #include "../classes/player.h"
 #include "KeyboardPlayerCtrl.h"
 #include "../classes/physiognomy.h"
 
-ContusionComponent::~ContusionComponent() {
+ConcussionComponent::~ConcussionComponent() {
 	activateJump();
 }
 
-void ContusionComponent::init() {
+void ConcussionComponent::init() {
 	kb = static_cast<Player*>(entity_)->getComponent<KeyboardPlayerCtrl>();
 	assert(kb != nullptr);
 
@@ -17,18 +17,18 @@ void ContusionComponent::init() {
 	cancelJump();
 }
 
-void ContusionComponent::update() {
+void ConcussionComponent::update() {
 	if (sdlutils().currRealTime() > time + consts::CONTUSION_TIME_TO_END) {
-		phys->removeState<ContusionComponent>(this);
+		phys->removeState<ConcussionComponent>(this);
 	}
 }
 
-void ContusionComponent::cancelJump() {
+void ConcussionComponent::cancelJump() {
 	kb->setJumpSpeed(0.0f);
 }
-void ContusionComponent::activateJump() {
+void ConcussionComponent::activateJump() {
 	kb->setJumpSpeed(consts::JUMP_SPEED);
 }
-void ContusionComponent::increaseTime(int time_) {
+void ConcussionComponent::increaseTime(int time_) {
 	time += time_;
 }

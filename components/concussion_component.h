@@ -12,15 +12,15 @@ class Physiognomy;
 * En el tiempo en el que este daño este activo, el jugador no podrá saltar.
 */
 
-class ContusionComponent : public PlayerHealthComponent
+class ConcussionComponent : public PlayerHealthComponent
 {
 private:
 	Physiognomy* phys;
 	int time;
 	KeyboardPlayerCtrl* kb;
 public:
-	ContusionComponent() : kb(nullptr), time(0), phys(nullptr) {};
-	~ContusionComponent();
+	ConcussionComponent() : kb(nullptr), time(0), phys(nullptr) {};
+	~ConcussionComponent();
 	void init() override;
 	void update() override;
 

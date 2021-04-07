@@ -2,7 +2,7 @@
 #include "player_health_component.h"
 #include "../game/checkML.h"
 #include "../sdlutils/SDLUtils.h"
-class ContusionComponent;
+class ConcussionComponent;
 class IntoxicationComponent;
 class Physiognomy;
 

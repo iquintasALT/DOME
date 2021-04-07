@@ -34,7 +34,7 @@ class Charge;
 class BoxCollider;
 class BleedoutComponent;
 class PainComponent;
-class ContusionComponent;
+class ConcussionComponent;
 class IntoxicationComponent;
 class RigidBody;
 class EnemyContactDamage;
@@ -70,7 +70,7 @@ class EnemyContactDamage;
 	BoxCollider,\
 	BleedoutComponent,\
 	PainComponent,\
-	ContusionComponent,\
+	ConcussionComponent,\
 	IntoxicationComponent,\
     RigidBody,\
 	EnemyContactDamage

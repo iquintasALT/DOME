@@ -3,18 +3,17 @@
 #include "enemy_component.h"
 #include "../game/checkML.h"
 #include "../components/enemy_detection_component.h"
-#include "../utils/ray_cast.h"
 
 //class Player;
 class EnemyBehaviourComponent : public EnemyComponent
 {
 protected:
-    Transform* playerTr;
-    Transform* entityTr;
+    Transform* playerTr_;
+    Transform* tr_;
     EnemyDetectionComponent* enemyDetection;
 
 public:
-    inline EnemyBehaviourComponent() : playerTr(nullptr), entityTr(nullptr), enemyDetection(nullptr) {};
+    inline EnemyBehaviourComponent() : playerTr_(nullptr), tr_(nullptr), enemyDetection(nullptr) {};
     inline virtual void update() override = 0;
     virtual void init() override;
 };
