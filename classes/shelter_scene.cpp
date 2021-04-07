@@ -88,16 +88,20 @@ void ShelterScene::init() {
 
 
 
+void ShelterScene::update() {
+	mngr_->update();
+	workshop->update();
+}
+
 void ShelterScene::render()
 {
-	GameScene::render();
+	mngr_->render();
 	sc_->drawAll();
 	workshop->render();
 }
 
 void ShelterScene::updateScreen(SDL_Event* e)
 {
-	workshop->update();
 	sc_->onEvent(*e);
 }
 

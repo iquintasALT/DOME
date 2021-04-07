@@ -9,6 +9,11 @@
             "id": "ARIAL24",
             "file": "resources/fonts/ARIAL.ttf",
             "size": 24
+        },
+        {
+            "id": "ARIAL32",
+            "file": "resources/fonts/ARIAL.ttf",
+            "size": 32
         }
     ],
 
