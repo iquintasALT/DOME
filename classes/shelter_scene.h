@@ -18,7 +18,8 @@ private:
 public:
 	virtual ~ShelterScene() { delete craftSys, delete uselessMngr; workshop->setActive(false); };
 	void init() override;
-	void render() override;
+	virtual void update();
+	virtual void render() override;
 	void updateScreen(SDL_Event* e);
 	void showWidget(sdlgui::Widget& widget, bool cond);
 	sdlgui::Widget& createSimpleWidget();
