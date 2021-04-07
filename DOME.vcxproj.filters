@@ -284,6 +284,9 @@
     <ClCompile Include="components\intoxication_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\EnemyAttackComponent.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -632,6 +635,9 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\contusion_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\enemy_attack_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
