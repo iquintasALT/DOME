@@ -9,6 +9,7 @@
 #include "../sdlutils/InputHandler.h"
 #include "../utils/Collisions.h"
 #include "../game/checkML.h"
+#include "../components/Inventory.h"
 #include <vector>
 
 struct Slot {
@@ -27,21 +28,31 @@ private:
 	Transform* arrowUp_tr;
 	Entity* arrowDown;
 	Transform* arrowDown_tr;
+	Entity* craftButton;
+	Transform* craftButton_tr;
 
 	std::vector<Slot>craftList;
 	std::vector<Transform*>craftList_tr;
 
 	int listIndex;
 	bool renderFlag;
+
+	bool renderRightWindow;
+	int	 rightWindowIndex;
+
 	bool mouseClick;
 	CraftingSystem* craftSys;
 	std::vector<ITEMS> workshopItems;
+	Inventory* playerInv;
 
 public:
 	Workshop(Manager* mngr_, CraftingSystem* cs);
+	virtual void init();
 
 	void setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name);
+	void renderImg(float posX, float posY, int row, int col, int sizeX = 64, int sizeY = 64);
 	virtual void render();
+	void rightWindowRender();
 	virtual void update();
 	void setRenderFlag(bool set);
 };
