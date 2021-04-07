@@ -1,4 +1,4 @@
-#include "bledout_component.h"
+#include "bleedout_component.h"
 #include "../classes/player.h"
 #include "../classes/physiognomy.h"
 #include "../components/hunger_component.h"

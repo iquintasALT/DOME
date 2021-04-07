@@ -263,9 +263,6 @@
     <ClCompile Include="components\box_collider.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\bledout_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="components\pain_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -278,13 +275,16 @@
     <ClCompile Include="classes\workshop.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\contusion_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="components\intoxication_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\EnemyAttackComponent.cpp">
+    <ClCompile Include="components\enemy_attack_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\concussion_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\bleedout_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -613,9 +613,6 @@
     <ClInclude Include="components\box_collider.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\bledout_component.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="components\pain_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
@@ -634,10 +631,13 @@
     <ClInclude Include="components\intoxication_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\contusion_component.h">
+    <ClInclude Include="components\enemy_attack_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\enemy_attack_component.h">
+    <ClInclude Include="components\concussion_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\bleedout_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
