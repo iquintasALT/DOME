@@ -17,7 +17,7 @@ namespace consts {
 	const float FALLING_DMG_SPEED = 8;
 	const float CHARGEWEAPON_HEIGHT = 15;
 
-	//Physiognomy
+	//PHYSIOGNOMY
 	const int MAX_MULTIPLE_STATES = 6;
 	const float NONEHUNGER_LEVEL = 0.75f; //Por encinma del 75% estará en NONE y por debajo en HUNGER
 	const float HUNGER_LEVEL = 0.35f; //Por encima del 35% estará en HUNGER y por debajo en STARVING
@@ -30,4 +30,6 @@ namespace consts {
 	const int INTOXICATION_TIME_TO_END = 20000; 
 	const int TIME_TO_INCREASE_CONTUSION = 5000;
 	const int TIME_TO_INCREASE_INTOXICATION = 5000;
+	const int TIME_TO_DECREASE_HUNGER = 10000;
+	const float HUNGER_TO_DECREASE = 0.15f;
 }

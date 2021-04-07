@@ -16,6 +16,5 @@ void BleedoutComponent::update() {
 	if (sdlutils().currRealTime() > accumulatedTime + hunger->calculateBleedingSpeed()) {
 		accumulatedTime = sdlutils().currRealTime();
 		phys->getHealthComponents()->push_back(this);
-		cout << "DESANGRADO\n";
 	}
 }

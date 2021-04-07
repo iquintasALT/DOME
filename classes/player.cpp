@@ -19,6 +19,7 @@
 #include "../components/intoxication_component.h"
 #include "../components/hunger_component.h"
 #include "../components/tiredness_component.h"
+#include "../components/hypothermia_component.h"
 
 Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 {
@@ -39,8 +40,8 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);
-	physiognomy->addState<ConcussionComponent>();
-	physiognomy->addState<PainComponent>();
+	physiognomy->addState<IntoxicationComponent>();
+
 
 }
 Player::~Player() {
