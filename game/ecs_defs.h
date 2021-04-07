@@ -41,6 +41,7 @@ class ConcussionComponent;
 class IntoxicationComponent;
 class RigidBody;
 class EnemyContactDamage;
+class HypothermiaComponent;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -79,7 +80,8 @@ class EnemyContactDamage;
 	ConcussionComponent,\
 	IntoxicationComponent,\
     RigidBody,\
-	EnemyContactDamage
+	EnemyContactDamage,\
+	HypothermiaComponent
 
 // groups
 

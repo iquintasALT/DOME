@@ -21,3 +21,10 @@ int HungerComponent::calculateBleedingSpeed() {
 void HungerComponent::setHunger(float hunger_) {
 	hunger = hunger_;
 }
+void HungerComponent::decreaseHunger(float hunger_) {
+	hunger -= hunger_;
+	if (hunger < 0) hunger = 0;
+}
+float HungerComponent::getHunger() {
+	return hunger;
+}

@@ -29,6 +29,8 @@ public:
 	void updateLevel();
 	int calculateBleedingSpeed(); //Metodo que se encarga del debufo del hambre (Velocidad de desangrado)
 	void setHunger(float hunger);
+	void decreaseHunger(float hunger);
+	float getHunger();
 
 	void eat(float hunger_);
 };
