@@ -13,10 +13,10 @@ class Entity;
 class RayCast
 {
 private:
-	Point2D origin = Point2D();
-	Vector2D direction = Vector2D();
-	Point2D pointOfImpact = Point2D();
-	double distance = -1.0;
+	Point2D origin_ = Point2D();
+	Vector2D direction_ = Vector2D();
+	Point2D pointOfImpact_ = Point2D();
+	double distance_ = -1.0;
 
 	
 	class Square
@@ -40,13 +40,16 @@ private:
 	static short int getClosestVertex(const Point2D& p, const Square& s);
 
 public:
-	RayCast(Point2D origin_, Vector2D direction_) : origin(origin_), direction(direction_) {};
+	RayCast(Point2D origin, Vector2D direction) : origin_(origin), direction_(direction) {};
 
-	double getDistance() { return distance; };
+	//Create a raycast pointing towards the centre of a tranform and trace to it
+	RayCast(Point2D origin, Transform* tr);
 
-	Point2D getPointOfImpact() { return pointOfImpact; };
+	double getDistance() { return distance_; };
+
+	Point2D getPointOfImpact() { return pointOfImpact_; };
 	
-	bool hasCollision(float maxRange = std::numeric_limits<float>::max()) { return distance >= 0.0 && distance < maxRange; };
+	bool hasCollision(float maxRange = std::numeric_limits<float>::max()) { return distance_ >= 0.0 && distance_ < maxRange; };
 
 	void rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex1);
 
@@ -67,11 +70,11 @@ public:
 			if (e->hasGroup<Group>() && e->hasComponent<Transform>())
 			{
 				aux.rayCastToSquare(e->getComponent<Transform>());
-				if (aux.distance != -1.0 && aux.distance < distance)
+				if (aux.distance_ != -1.0 && aux.distance_ < distance_)
 					*this = RayCast(aux);
 			}
 		}
-		return distance;
+		return distance_;
 	}
 
 	// Returns true if transform is less than 0.2 above an object of group Wall_grp
