@@ -75,7 +75,7 @@ public:
 	}
 
 	// Returns true if transform is less than 0.2 above an object of group Wall_grp
-	bool isGrounded(Transform* tr);
+	static bool isGrounded(Transform* tr);
 };
 
 #endif
