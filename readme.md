@@ -136,9 +136,9 @@ Daño por cortes o mordeduras de enemigos. Este daño aumenta el tiempo que tard
 
 Daño por caer desde gran altura. (Rotura de huesos). Este daño hace que el jugador no pueda saltar. (Temporal)
 
-Daño por intoxicación (Radiación o gases dañinos). Este daño hace que la distancia para ser detectado por los enemigos se reduzca. (Temporal)
+Daño por intoxicación (Radiación o gases dañinos). Este daño aumenta el hambre del jugador en un cierto porcentaje cada cierto tiempo. (Temporal)
 
-Daño por hipotermia. Este daño aplica un debufo en el disparo, aumentando la dispersión de las balas. (Permanente e incurable, es decir, marca el límite de tiempo que el jugador puede esta en raid)
+Daño por hipotermia. Este daño es algo distinto al resto. No es provocado por ningún enemigo, aparece si quedan pocas horas para que caiga la noche, y va avanzando a medida que el jugador permanece en la raid. Es una forma de avisar al jugador de que va a anochecer y necesita volver al refugio.
 
 ![Dinámicas](./docs/headers/h_dinamicas.png) <a name="dina"></a>
 
