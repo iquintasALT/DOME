@@ -16,6 +16,8 @@ private:
 	Transform* playerTr;
 	int n; //numero rebotes
 	int tier;
+	int damage;
+	int explosion = 100; // Daño de la explosion
 
 public:
 	Ricochet(Transform* player, int nrebotes, int typeOfWeapon);
