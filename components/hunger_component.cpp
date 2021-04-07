@@ -15,7 +15,7 @@ void HungerComponent::updateLevel() {
 	else if (hunger >= consts::HUNGER_LEVEL) hungerLevel = hungerLevel::HUNGRY;
 	else hungerLevel = hungerLevel::STARVING;
 }
-int HungerComponent::calculateBledingSpeed() {
+int HungerComponent::calculateBleedingSpeed() {
 	return (hunger * consts::MAX_NEWDAMAGE_TIME);
 }
 void HungerComponent::setHunger(float hunger_) {

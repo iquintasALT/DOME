@@ -6,7 +6,7 @@
 PlayerCollisions::PlayerCollisions() : rb_(nullptr){};
 
 void PlayerCollisions::update() {
-	for (auto entity : entity_->getMngr()->getEnteties()) {
+	for (auto entity : entity_->getMngr()->getEntities()) {
 		if (entity->hasGroup<Wall_grp>()) {
 			auto tileRend = entity->getComponent<Transform>();
 			assert(tileRend != nullptr);

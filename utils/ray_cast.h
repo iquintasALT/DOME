@@ -60,7 +60,7 @@ public:
 	template <typename Group>
 	double distanceToGroup(Entity* entity)
 	{
-		auto entities = entity->getMngr()->getEnteties();
+		auto entities = entity->getMngr()->getEntities();
 		RayCast aux = RayCast(*this);
 		for (Entity* e : entities)
 		{
