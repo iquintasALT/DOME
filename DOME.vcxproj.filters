@@ -287,7 +287,9 @@
     <ClCompile Include="components\bleedout_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\hypothermia_component.cpp" />
+    <ClCompile Include="components\hypothermia_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -641,7 +643,9 @@
     <ClInclude Include="components\bleedout_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\hypothermia_component.h" />
+    <ClInclude Include="components\hypothermia_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
