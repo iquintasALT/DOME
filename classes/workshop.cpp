@@ -103,7 +103,7 @@ void Workshop::update() {
 				}
 			}
 		}
-		else { mouseClick = false; }
+		else if(!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
 	}
 }
 
@@ -201,6 +201,6 @@ void Workshop::rightWindowRender() {
 void Workshop::renderImg(float posX, float posY, int row, int col, int sizeX, int sizeY) {
 	Entity* aux = getMngr()->addEntity();
 	aux->addComponent<Transform>(Vector2D{ posX,posY }, Vector2D(), sizeX, sizeY, 0);
-	aux->addComponent<Image>(&sdlutils().images().at("items"), 3, 3, row, col)->render();
+	aux->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, row, col)->render();
 	aux->setActive(false);
 }

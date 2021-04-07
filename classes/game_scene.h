@@ -53,8 +53,8 @@ public:
 	//creacion de objetos, que sera diferente en cada escena
 	inline virtual void init() = 0;
 	//metodos para llamar al manager de la escena
-	inline void update() { mngr_->update(); }
-	inline void refresh() { mngr_->refresh(); }
+	inline virtual void update() { mngr_->update(); }
+	inline virtual void refresh() { mngr_->refresh(); }
 	inline virtual void render() { mngr_->render(); }
 };
 
