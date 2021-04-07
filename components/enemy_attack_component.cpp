@@ -17,6 +17,23 @@ void EnemyAttackComponent::init()
 
 //--------------------------------------------------------------------------------------------------------------
 
+bool MeleeAttack::attack()
+{
+	/// Set length of jump to maximum length at most, or less, if closer to player than leap permits
+	Vector2D jump = Vector2D(std::min(lunge.getX(), std::abs(playerTr_->getPos().getX() - tr_->getPos().getX())),
+		-std::min(lunge.getY(), std::abs(playerTr_->getPos().getY() - tr_->getPos().getY())));
+
+	//Ensure that boost is in correct direction
+	if (tr_->getPos().getX() > playerTr_->getPos().getX())
+		jump.setX(-jump.getX());
+	if (tr_->getPos().getY() < playerTr_->getPos().getY())
+		jump.setY(-jump.getY());
+
+	return true;
+}
+
+//--------------------------------------------------------------------------------------------------------------
+
 bool GroundedMeleeAttack::attack()
 {
 	// Only attacks if grounded
