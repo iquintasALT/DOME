@@ -17,6 +17,7 @@ class ChasePlayer;
 class KeepDistance;
 class FlyingChasePlayer;
 class EnemyAttackComponent;
+class GroundedMeleeAttack;
 class TileRenderer;
 class DistanceDetection;
 class RayCastDetection;
@@ -54,6 +55,7 @@ class EnemyContactDamage;
 	KeepDistance, \
 	FlyingChasePlayer, \
 	EnemyAttackComponent, \
+	GroundedMeleeAttack, \
 	TileRenderer, \
 	DistanceDetection, \
 	RayCastDetection, \
