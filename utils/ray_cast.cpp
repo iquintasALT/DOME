@@ -2,13 +2,19 @@
 #include "../components/Transform.h"
 #include "../ecs/Entity.h"
 
+RayCast::RayCast(Point2D origin, Transform* tr): origin_(origin)
+{
+	direction_ = Point2D(tr->getPos() + tr->getSize() / 2.0) - origin_;
+	rayCastToSquare(tr);
+}
+
 void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex1)
 {
 	//Create square from points given
 	Square s = Square(centre, vertex0, vertex1);
 
 	//Calculate which vertex from square is closest to ray origin
-	short int closestVertex = getClosestVertex(origin, s);
+	short int closestVertex = getClosestVertex(origin_, s);
 	//Choose one of the two sides that converge at closestVertex
 	Vector2D closestEdgeDirection1 = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4], closestEdgeDirection2;
 	if (closestVertex == 0)
@@ -18,8 +24,8 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 
 	//Calculate intersection between raycast line and each edge that connects to the vertex closest to ray origin
 	Point2D pointOfImpact1, pointOfImpact2;
-	bool col1 = (Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection1, pointOfImpact1)),
-		col2 = Vector2D::intersection(origin, direction, s.vertices[closestVertex], closestEdgeDirection2, pointOfImpact2);
+	bool col1 = (Vector2D::intersection(origin_, direction_, s.vertices[closestVertex], closestEdgeDirection1, pointOfImpact1)),
+		col2 = Vector2D::intersection(origin_, direction_, s.vertices[closestVertex], closestEdgeDirection2, pointOfImpact2);
 
 	//Move both points of impact ever so slightly closer to square center, to account for floating point imprecision
 	pointOfImpact1 = pointOfImpact1 + Vector2D(centre - pointOfImpact1) * 0.001;
@@ -32,25 +38,25 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 	//If neither collision was registered, the ray does not intersect the rectangle
 	if (!col1 && !col2)
 	{
-		pointOfImpact = Point2D();
-		distance = -1.0;
+		pointOfImpact_ = Point2D();
+		distance_ = -1.0;
 	}
 	else
 	{
 		//If both collisions registered, save the one nearest to ray origin
 		if (col1 && col2)
 		{
-			if ((pointOfImpact1 - origin).magnitude() > (pointOfImpact2 - origin).magnitude())
-				pointOfImpact = pointOfImpact1;
+			if ((pointOfImpact1 - origin_).magnitude() > (pointOfImpact2 - origin_).magnitude())
+				pointOfImpact_ = pointOfImpact1;
 			else
-				pointOfImpact = pointOfImpact2;
+				pointOfImpact_ = pointOfImpact2;
 		}
 		//Otherwise, save the only collision point
 		else if (col1)
-			pointOfImpact = pointOfImpact1;
+			pointOfImpact_ = pointOfImpact1;
 		else
-			pointOfImpact = pointOfImpact2;
-		distance = (pointOfImpact - origin).magnitude();
+			pointOfImpact_ = pointOfImpact2;
+		distance_ = (pointOfImpact_ - origin_).magnitude();
 	}
 }
 
@@ -86,5 +92,5 @@ bool RayCast::isGrounded(Transform* tr)
 {
 	RayCast rC = RayCast(tr->getPos() + Vector2D(tr->getW() / 2, tr->getH()), Vector2D(0.0, -1.0));
 	rC.distanceToGroup<Wall_grp>(tr->getEntity());
-	return rC.distance != -1.0 && rC.distance < 0.2;
+	return rC.distance_ != -1.0 && rC.distance_ < 0.2;
 }
