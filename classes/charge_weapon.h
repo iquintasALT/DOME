@@ -5,8 +5,10 @@
 
 class ChargeWeapon : public Weapon
 {
+private:
+	int tier;
 public:
-	ChargeWeapon(float fR);
+	ChargeWeapon(float fR, int type);
 	virtual void update();
 };
 
