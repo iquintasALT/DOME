@@ -5,7 +5,21 @@
 #include "../classes/particleSystem.h"
 #include "../utils/ray_cast.h"
 
-Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon) {}
+Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon) 
+{
+	if (tier == 1)
+	{
+		damage = 20;
+	}
+	else if (tier == 2)
+	{
+		damage = 25;
+	}
+	else if (tier == 3)
+	{
+		damage = 30;
+	}
+}
 
 Ricochet::~Ricochet() {}
 
