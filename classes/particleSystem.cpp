@@ -14,6 +14,10 @@ public:
 		tr = _tr;
 		rb = new RigidBody(vel, tr);
 	}
+	~DynamicBody() {
+		delete tr;
+		delete rb;
+	}
 };
 
 ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
