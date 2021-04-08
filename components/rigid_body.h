@@ -20,7 +20,7 @@ private:
 
 public:
 	RigidBody(Vector2D vel = Vector2D(), float rotation = 0, bool gravity = true);
-
+	RigidBody(Vector2D vel, Transform* tr);
 	virtual ~RigidBody();
 
 	virtual void init() override;

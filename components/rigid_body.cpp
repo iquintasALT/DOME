@@ -3,6 +3,15 @@
 RigidBody::RigidBody(Vector2D vel, float rotation, bool gravity) : tr_(nullptr), vel_(vel), rotation_(rotation), 
 			grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY) { }
 
+RigidBody::RigidBody(Vector2D vel, Transform* tr) {
+	vel_ = vel;
+	tr_ = tr;
+	rotation_ = 0;
+	gravity = 0;
+	onFloor_ = false;
+	grActive_ = false;
+}
+
 RigidBody::~RigidBody() {};
 
 void RigidBody::init() {

@@ -5,6 +5,17 @@
 #define degreesToRadians(angleDegrees) (angleDegrees * M_PI / 180.0)
 #define radiansToDegrees(angleRadians) (angleRadians * 180.0 / M_PI)
 
+struct ParticleSystem::DynamicBody {
+public:
+	RigidBody* rb;
+	Transform* tr;
+
+	DynamicBody(Transform* _tr, Vector2D vel) {
+		tr = _tr;
+		rb = new RigidBody(vel, tr);
+	}
+};
+
 ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	texture(tex) {
 	int w = tex->width() / cols;
@@ -54,6 +65,8 @@ void ParticleSystem::init() {
 	transform = entity_->getComponent<Transform>();
 	assert(transform != nullptr);
 
+	rb = entity_->getComponent<RigidBody>();
+
 	width *= particleScale;
 	height *= particleScale;
 
@@ -93,14 +106,14 @@ void ParticleSystem::update() {
 	for (int i = 0; i < particles.size(); i++) {
 		auto a = particles[i];
 
-		a->update();
+		a->rb->update();
 
 		float life = particleLife[i];
-		a->setW(width * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
-		a->setH(height * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
+		a->tr->setW(width * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
+		a->tr->setH(height * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
 
 		if (gravity)
-			a->setVel(a->getVel() + Vector2D(0, gravityValue * consts::DELTA_TIME));
+			a->rb->setVel(a->rb->getVel() + Vector2D(0, gravityValue * consts::DELTA_TIME));
 		particleLife[i] -= consts::DELTA_TIME;
 
 		if (particleLife[i] < 0) {
@@ -117,7 +130,8 @@ void ParticleSystem::update() {
 }
 
 void ParticleSystem::render() {
-	for (auto transform_ : particles) {
+	for (auto a : particles) {
+		auto transform_ = a->tr;
 		bool shouldRender = true;
 		Vector2D relPos = transform_->getPos();
 		if (!worldPosition) relPos = relPos + transform->getPos();
@@ -139,10 +153,10 @@ void ParticleSystem::spawnParticle() {
 		cos(angle) * dir.getX() - sin(angle) * dir.getY(),
 		sin(angle) * dir.getX() - cos(angle) * dir.getY()) * speed;
 
-	if (inheritVelocity)
-		particleSpeed = particleSpeed + transform->getVel() * inheritVelocityMultiplier;
+	if (inheritVelocity && rb != nullptr)
+		particleSpeed = particleSpeed + rb->getVel() * inheritVelocityMultiplier;
 
-	particles.push_back(new Transform(particleOrigin, particleSpeed, width, height, 0));
+	particles.push_back(new DynamicBody(new Transform(particleOrigin, particleSpeed, width, height, 0), particleSpeed));
 	particleLife.push_back(lifeTime);
 }
 
@@ -169,3 +183,4 @@ void ParticleSystem::Burst() {
 		spawnParticle();
 	}
 }
+
