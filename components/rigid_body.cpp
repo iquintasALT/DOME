@@ -1,7 +1,10 @@
 #include "rigid_body.h"
+#include "box_collider.h"
 
-RigidBody::RigidBody(Vector2D vel, float rotation, bool gravity) : tr_(nullptr), vel_(vel), rotation_(rotation), 
-			grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY) { }
+#include <iostream>
+
+RigidBody::RigidBody(Vector2D vel, float rotation, bool gravity) : tr_(nullptr), vel_(vel), rotation_(rotation),
+grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY), collide(true) { }
 
 RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 	vel_ = vel;
@@ -10,6 +13,7 @@ RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 	gravity = 0;
 	onFloor_ = false;
 	grActive_ = false;
+	collide = false;
 }
 
 RigidBody::~RigidBody() {};
@@ -21,8 +25,40 @@ void RigidBody::init() {
 }
 
 void RigidBody::update() {
+
+	if (collide) {
+		for (auto collider : entity_->getMngr()->getColliders()) {
+
+			bool collision = false;
+
+			Transform* colliderTr = collider->getTransform();
+
+			auto& pos = tr_->getPos();
+			auto& colliderPos = colliderTr->getPos();
+
+			if (pos.getX() < colliderPos.getX() + colliderTr->getW() &&
+				pos.getX() + tr_->getW() > colliderPos.getX() &&
+				pos.getY() < colliderPos.getY() + colliderTr->getH() &&
+				pos.getY() + tr_->getH() > colliderPos.getY())
+			{
+				collision = true;
+			}
+
+			if (collision)
+				std::cout << "Hola parece que las colisiones funcionan" << std::endl;
+
+			if (collider->isTrigger()) {
+
+			}
+			else {
+
+			}
+		}
+	}
+
+
 	tr_->getPos() = tr_->getPos() + vel_;
-	if(grActive_) applyGravity();
+	if (grActive_) applyGravity();
 }
 
 void RigidBody::applyGravity() {

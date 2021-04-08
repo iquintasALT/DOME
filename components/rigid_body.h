@@ -18,6 +18,8 @@ private:
 	float gravity;
 	bool onFloor_, grActive_;
 
+	bool collide;
+
 public:
 	RigidBody(Vector2D vel = Vector2D(), float rotation = 0, bool gravity = true);
 	RigidBody(Vector2D vel, Transform* tr);

@@ -16,13 +16,18 @@ class BoxCollider : public Component
 private:
 	Transform* tr_;
 
+	bool trigger;
 public:
-	inline BoxCollider() : tr_(nullptr) {};
+	inline BoxCollider(bool isTrigger = false) : tr_(nullptr), trigger(isTrigger) {};
 
 	inline ~BoxCollider() {};
 
 	virtual void init() override;
 
+	inline bool isTrigger() { return trigger; };
+
 	bool collision(Transform* ent, RigidBody* rb_);
+
+	inline Transform* getTransform() { return tr_; };
 };
 

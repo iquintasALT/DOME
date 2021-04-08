@@ -46,3 +46,7 @@ void Manager::render() {
 void Manager::AddInteractableElement(InteractableElement* ie) {
 	interactableElements.push_back(ie);
 }
+
+void Manager::AddCollider(BoxCollider* bc) {
+	colliders.push_back(bc);
+}
