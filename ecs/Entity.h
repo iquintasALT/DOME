@@ -11,7 +11,7 @@
 #include "../game/checkML.h"
 
 class Manager;
-
+class BoxCollider;
 class Entity {
 	friend Manager;
 
@@ -134,9 +134,21 @@ public:
 		}
 	}
 
+	void onCollision(BoxCollider* collider) {
+		for (int i = 0; i < components_.size(); i++) {
+			components_[i]->OnCollision(collider);
+		}
+	};
+	void onTrigger(BoxCollider* collider) {
+		for (int i = 0; i < components_.size(); i++) {
+			components_[i]->OnTrigger(collider);
+		}
+	};
+
 private:
 	bool active = true;
 	bool dead;
+
 	Manager* mngr_;
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;
