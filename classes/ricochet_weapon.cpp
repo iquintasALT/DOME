@@ -25,7 +25,7 @@ void RicochetWeapon::update() {
 	Vector2D  dir = (mousePos - yCenteredPos).normalize();
 
 	float radianAngle = atan2(dir.getY(), dir.getX());
-	float degreeAngle = (radianAngle * 180) / M_PI;
+	float degreeAngle = (radianAngle * 180.0) / M_PI;
 
 	if (!flipped && (degreeAngle > 90 || degreeAngle < -90)) {
 		entityImg->setFlip(SDL_FLIP_VERTICAL);
