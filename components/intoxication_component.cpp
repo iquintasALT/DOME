@@ -22,6 +22,6 @@ void IntoxicationComponent::update() {
 	else if (actTime > timeToApplyHunger + consts::TIME_TO_DECREASE_HUNGER) {
 		timeToApplyHunger = actTime;
 		hunger->decreaseHunger(consts::HUNGER_TO_DECREASE);
-		cout << hunger->getHunger();
+		cout <<"Hunger: " << hunger->getHunger();
 	}
 }

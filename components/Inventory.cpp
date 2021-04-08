@@ -180,8 +180,6 @@ void Inventory::setItemDimensions(Transform* transform, int width, int height) {
 	itemWidth = transform->getW() / width;
 	itemHeight = transform->getW() / height;
 
-
-	std::cout << itemWidth << std::endl << std::endl << std::endl;
 }
 
 void Inventory::adjustPanelSize() {
