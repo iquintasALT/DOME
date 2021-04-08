@@ -47,3 +47,16 @@ protected:
 public:
     GroundedMeleeAttack(Vector2D lungeThrust = Vector2D(3.0, 2.0)) : MeleeAttack(lungeThrust) {};
 };
+
+//--------------------------------------------------------------------------------------------------------------
+
+class RangedAttack :
+    public EnemyAttackComponent
+{
+protected:
+    float range_;
+
+    virtual bool attack() override;
+public:
+    RangedAttack(float range = 300.0) : range_(range) {};
+};

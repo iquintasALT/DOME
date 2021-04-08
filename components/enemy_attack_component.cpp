@@ -52,3 +52,18 @@ bool GroundedMeleeAttack::attack()
 	}
 	else return false;
 }
+
+//--------------------------------------------------------------------------------------------------------------
+
+bool RangedAttack::attack()
+{
+	RayCast rC = RayCast(tr_->getPos(), playerTr_);
+	if (rC.getDistance() < range_)
+	{
+		/// TO DO
+		/// fire a bullet
+
+		return true;
+	}
+	else return false;
+}
