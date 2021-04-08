@@ -1,6 +1,7 @@
 #include "rigid_body.h"
 #include "box_collider.h"
 
+#include "KeyboardPlayerCtrl.h"
 #include <iostream>
 
 RigidBody::RigidBody(Vector2D vel, float rotation, bool gravity) : tr_(nullptr), vel_(vel), rotation_(rotation),
@@ -25,7 +26,6 @@ void RigidBody::init() {
 }
 
 void RigidBody::update() {
-
 	if (collide) {
 		for (auto collider : entity_->getMngr()->getColliders()) {
 
@@ -33,30 +33,42 @@ void RigidBody::update() {
 
 			Transform* colliderTr = collider->getTransform();
 
-			auto& pos = tr_->getPos();
-			auto& colliderPos = colliderTr->getPos();
+			auto pos = tr_->getPos();
+			auto nextPos = tr_->getPos() + vel_;
+			auto colliderPos = colliderTr->getPos();
 
-			if (pos.getX() < colliderPos.getX() + colliderTr->getW() &&
-				pos.getX() + tr_->getW() > colliderPos.getX() &&
-				pos.getY() < colliderPos.getY() + colliderTr->getH() &&
-				pos.getY() + tr_->getH() > colliderPos.getY())
+			if (nextPos.getX() < colliderPos.getX() + colliderTr->getW() &&
+				nextPos.getX() + tr_->getW() > colliderPos.getX() &&
+				nextPos.getY() < colliderPos.getY() + colliderTr->getH() &&
+				nextPos.getY() + tr_->getH() > colliderPos.getY())
 			{
 				collision = true;
 			}
 
-			if (collision)
-				std::cout << "Hola parece que las colisiones funcionan" << std::endl;
+			if (collision) {
+				if (collider->isTrigger()) {
 
-			if (collider->isTrigger()) {
-
-			}
-			else {
-
+				}
+				else {
+					if (pos.getY() + tr_->getH() <= colliderPos.getY())
+					{
+						vel_.setY(0);
+						onFloor_ = true;
+					}
+					else if (pos.getY() >= colliderPos.getY() + colliderTr->getH()) {
+						vel_.setY(0);
+					}
+					
+					if (pos.getX() + tr_->getW() <= colliderPos.getX()) {
+						vel_.setX(0);
+					}
+					else if (pos.getX() >= colliderPos.getX() + colliderTr->getW()) {
+						vel_.setX(0);
+					}
+				}
 			}
 		}
 	}
-
-
 	tr_->getPos() = tr_->getPos() + vel_;
 	if (grActive_) applyGravity();
 }
