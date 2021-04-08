@@ -11,6 +11,7 @@
 class RigidBody : public Component {
 private:
 	Transform* tr_;
+	BoxCollider* boxColl;
 
 	Vector2D vel_;
 	float rotation_;

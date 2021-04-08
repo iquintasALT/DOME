@@ -22,6 +22,7 @@ RigidBody::~RigidBody() {};
 
 void RigidBody::init() {
 	tr_ = entity_->getComponent<Transform>();
+	boxColl = entity_->getComponent<BoxCollider>();
 
 	assert(tr_ != nullptr);
 }
@@ -29,6 +30,8 @@ void RigidBody::init() {
 void RigidBody::update() {
 	if (collide) {
 		for (auto collider : entity_->getMngr()->getColliders()) {
+			if (collider == boxColl)
+				continue;
 
 			bool collision = false;
 
