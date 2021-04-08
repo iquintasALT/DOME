@@ -19,6 +19,7 @@ class FlyingChasePlayer;
 class EnemyAttackComponent;
 class MeleeAttack;
 class GroundedMeleeAttack;
+class RangedAttack;
 class TileRenderer;
 class DistanceDetection;
 class RayCastDetection;
@@ -59,6 +60,7 @@ class HypothermiaComponent;
 	EnemyAttackComponent, \
 	MeleeAttack, \
 	GroundedMeleeAttack, \
+	RangedAttack, \
 	TileRenderer, \
 	DistanceDetection, \
 	RayCastDetection, \
