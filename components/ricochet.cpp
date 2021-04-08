@@ -4,21 +4,11 @@
 #include "../components/Transform.h"
 #include "../classes/particleSystem.h"
 #include "../utils/ray_cast.h"
+#include "../components/box_collider.h"
 
-Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon) 
+Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon)
 {
-	if (tier == 1)
-	{
-		damage = 20;
-	}
-	else if (tier == 2)
-	{
-		damage = 25;
-	}
-	else if (tier == 3)
-	{
-		damage = 30;
-	}
+	damage = 15 + 5 * tier;
 }
 
 Ricochet::~Ricochet() {}
@@ -33,8 +23,6 @@ void Ricochet::init() {
 
 void Ricochet::createExplosion()
 {
-	std::cout << "EXPLOSION";
-
 	auto transf = entity_->getComponent<Transform>();
 	auto explosion = entity_->getMngr()->addEntity();
 	Vector2D explosionOrigin = tr_->getPos() + Vector2D(tr_->getW() / 2, tr_->getH() / 2);
@@ -42,7 +30,7 @@ void Ricochet::createExplosion()
 	Point2D arribaizq = playerTr->getPos();
 	Point2D arribader = Point2D(playerTr->getPos().getX() + playerTr->getW(), arribaizq.getY());
 	Point2D rayCastOrigin = Point2D(transf->getPos().getX() + (transf->getW() / 2), transf->getPos().getY() + (transf->getH() / 2));
-	
+
 	explosion->addComponent<Transform>(explosionOrigin, Vector2D(), 10, 10, 0);
 
 	auto particles = explosion->addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
@@ -62,7 +50,7 @@ void Ricochet::createExplosion()
 	particles->burstDuration = 0.02f;
 	particles->burstRepeat = 8;
 
-	
+
 	/*particles->gravity = 0;
 	particles->lifeTime = 100;
 	particles->rateOverTime = 0;
@@ -71,18 +59,17 @@ void Ricochet::createExplosion()
 	particles->destroyAfterBurst = false;
 	particles->burstRepeat = 1;*/
 
-	float x2 = playerTr->getPos().getX() + (playerTr->getW()/2);
-	float y2 = playerTr->getPos().getY() + (playerTr->getH()/2);
-	Vector2D direction = Vector2D(x2,y2);
+	float x2 = playerTr->getPos().getX() + (playerTr->getW() / 2);
+	float y2 = playerTr->getPos().getY() + (playerTr->getH() / 2);
+	Vector2D direction = Vector2D(x2, y2);
 
 	RayCast range = RayCast(rayCastOrigin, direction - explosionOrigin);
-
 
 	//Colision enemigos
 	range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
 	//if (range.hasCollision())
 	//{
-		std::cout << range.getDistance();
+	std::cout << "\nRango Raycast " << range.getDistance();
 	//}
 
 	//Colision enemigos (Cuando esten hechos xd)
@@ -92,17 +79,15 @@ void Ricochet::createExplosion()
 	}*/
 }
 
-
 void Ricochet::OnCollision(BoxCollider* collider) {
-	auto& pos = tr_->getPos();
-	auto& vel = rb->getVel();
+	/*rb->setVel(Vector2D(0, 0));
+	std::cout << tr_->getPos().getX() << " " << tr_->getW() << " " << collider->getTransform()->getPos().getX() << endl;
+	std::cout << tr_->getPos().getX()+ tr_->getW() <<  endl;
+	return;*/
 
-	n--;
 
-	if (n == 0) {
-		{
-			createExplosion();
-		}
+	if (--n == 0) {
+		createExplosion();
 		entity_->setDead(true);
 	}
 }
