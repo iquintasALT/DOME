@@ -25,11 +25,14 @@ Ricochet::~Ricochet() {}
 
 void Ricochet::init() {
 	tr_ = entity_->getComponent<Transform>();
-	assert(tr_ != nullptr);
+	rb = entity_->getComponent<RigidBody>();
+	assert(tr_ != nullptr && rb != nullptr);
 }
 
 void Ricochet::createExplosion()
 {
+	std::cout << "EXPLOSION";
+
 	auto transf = entity_->getComponent<Transform>();
 	auto explosion = entity_->getMngr()->addEntity();
 	Vector2D explosionOrigin = tr_->getPos() + Vector2D(tr_->getW() / 2, tr_->getH() / 2);
@@ -89,7 +92,7 @@ void Ricochet::createExplosion()
 
 void Ricochet::update() {
 	auto& pos = tr_->getPos();
-	auto& vel = tr_->getVel();
+	auto& vel = rb->getVel();
 	auto height = tr_->getH();
 	auto width = tr_->getW();
 
