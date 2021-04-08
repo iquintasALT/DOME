@@ -47,7 +47,7 @@ void RigidBody::update() {
 
 			if (collision) {
 				if (collider->isTrigger()) {
-
+					entity_->onTrigger(collider);
 				}
 				else {
 					if (pos.getY() + tr_->getH() <= colliderPos.getY())
@@ -58,13 +58,15 @@ void RigidBody::update() {
 					else if (pos.getY() >= colliderPos.getY() + colliderTr->getH()) {
 						vel_.setY(0);
 					}
-					
+
 					if (pos.getX() + tr_->getW() <= colliderPos.getX()) {
 						vel_.setX(0);
 					}
 					else if (pos.getX() >= colliderPos.getX() + colliderTr->getW()) {
 						vel_.setX(0);
 					}
+
+					entity_->onCollision(collider);
 				}
 			}
 		}

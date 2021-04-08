@@ -71,3 +71,4 @@ void InventoryController::OpenLoot(){
 
 	Use();
 }
+

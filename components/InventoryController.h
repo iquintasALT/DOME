@@ -36,6 +36,7 @@ public :
 
 	void OpenLoot();
 
+
 	Inventory* inventory;
 };
 
