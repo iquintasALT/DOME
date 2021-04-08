@@ -28,16 +28,17 @@ void RigidBody::init() {
 }
 
 void RigidBody::update() {
+	bool collision = false;
 	if (collide) {
 		for (auto collider : entity_->getMngr()->getColliders()) {
 			if (collider == boxColl)
 				continue;
 
-			bool collision = false;
+			collision = false;
 
 			Transform* colliderTr = collider->getTransform();
 
-			auto pos = tr_->getPos();
+			auto& pos = tr_->getPos();
 			auto nextPos = tr_->getPos() + vel_;
 			auto colliderPos = colliderTr->getPos();
 
@@ -54,29 +55,54 @@ void RigidBody::update() {
 					entity_->onTrigger(collider);
 				}
 				else {
-					entity_->onCollision(collider);
-
+					bool horizontal = false;
+					bool vertical = false;
 					if (pos.getY() + tr_->getH() <= colliderPos.getY())
 					{
 						vel_.setY(vel_.getY() * -bounciness);
 						onFloor_ = true;
+
+						pos.setY(colliderPos.getY() - tr_->getH() - 1);
+
+						horizontal = true;
+						//pos.setX(pos.getX() + vel_.getX());
 					}
 					else if (pos.getY() >= colliderPos.getY() + colliderTr->getH()) {
 						vel_.setY(vel_.getY() * -bounciness);
+
+						pos.setY(colliderPos.getY() + colliderTr->getH() + 1);
+
+						horizontal = true;
+						//pos.setX(pos.getX() + vel_.getX());
 					}
 
 					if (pos.getX() + tr_->getW() <= colliderPos.getX()) {
 						vel_.setX(vel_.getX() * -bounciness);
+
+						pos.setX(colliderPos.getX() - tr_->getW() - 1);
+
+						vertical = true;
+						//pos.setY(pos.getY() + vel_.getY());
 					}
 					else if (pos.getX() >= colliderPos.getX() + colliderTr->getW()) {
 						vel_.setX(vel_.getX() * -bounciness);
+						pos.setX(colliderPos.getX() + colliderTr->getW() + 1);
+
+						vertical = true;
+						//pos.setY(pos.getY() + vel_.getY());
 					}
 
+					if (horizontal)
+						pos.setX(pos.getX() + vel_.getX());
+					if (vertical)
+						pos.setY(pos.getY() + vel_.getY());
+					entity_->onCollision(collider);
 				}
 			}
 		}
 	}
-	tr_->getPos() = tr_->getPos() + vel_;
+	if (!collision)
+		tr_->getPos() = tr_->getPos() + vel_;
 	if (grActive_) applyGravity();
 }
 
