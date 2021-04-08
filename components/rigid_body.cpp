@@ -76,8 +76,6 @@ void RigidBody::update() {
 void RigidBody::applyGravity() {
 	if (!onFloor_)
 		setVelY(vel_.getY() + gravity / consts::FRAME_RATE);
-
-	//if (entityTr->getPos().getY() > 600) entityTr->setVelY(0);
 }
 
 void RigidBody::reachedFloor() {
