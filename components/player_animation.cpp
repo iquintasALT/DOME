@@ -4,7 +4,7 @@ Image* player_animation::Animation::image = nullptr;
 int player_animation::Animation::width = 1;
 int player_animation::Animation::height = 1;
 
-player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr) {};
+player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr), rb(nullptr) {};
 
 player_animation::~player_animation() {}
 
@@ -23,9 +23,10 @@ void player_animation::update() {
 void player_animation::init() {
 	Animation::setImage(im_ = entity_->getComponent<Image>());
 	tr_ = entity_->getComponent<Transform>();
+	rb = entity_->getComponent<RigidBody>();
 	ctrl = entity_->getComponent<KeyboardPlayerCtrl>();
 
-	assert(tr_ != nullptr && im_ != nullptr && ctrl != nullptr);
+	assert(tr_ != nullptr && im_ != nullptr && ctrl != nullptr && rb != nullptr);
 }
 bool debug = false;
 
@@ -39,7 +40,8 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
-	float x = tr_->getVel().getX();
+	//float x = tr_->getVel().getX();
+	float x = rb->getVel().getX();
 	if (x == 0) {
 			if (currentAnimation == animations[iddle])
 				return false;

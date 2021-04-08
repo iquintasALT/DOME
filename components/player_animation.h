@@ -7,7 +7,7 @@
 #include "../sdlutils/InputHandler.h"
 #include "../game/constant_variables.h"
 #include "../components/KeyboardPlayerCtrl.h"
-
+#include "../components/rigid_body.h"
 #include <iostream>
 
 class player_animation : public animation_component {
@@ -25,6 +25,7 @@ private:
 //-----------------------------------------------------------------------------
 	Image* im_;
 	Transform* tr_;
+	RigidBody* rb;
 	KeyboardPlayerCtrl* ctrl;
 
 public:
