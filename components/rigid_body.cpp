@@ -5,7 +5,7 @@
 #include <iostream>
 
 RigidBody::RigidBody(Vector2D vel, float rotation, bool gravity) : tr_(nullptr), vel_(vel), rotation_(rotation),
-grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY), collide(true) { }
+grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY), collide(true), bounciness(0) { }
 
 RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 	vel_ = vel;
@@ -15,6 +15,7 @@ RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 	onFloor_ = false;
 	grActive_ = false;
 	collide = false;
+	bounciness = 0;
 }
 
 RigidBody::~RigidBody() {};
@@ -50,23 +51,24 @@ void RigidBody::update() {
 					entity_->onTrigger(collider);
 				}
 				else {
+					entity_->onCollision(collider);
+
 					if (pos.getY() + tr_->getH() <= colliderPos.getY())
 					{
-						vel_.setY(0);
+						vel_.setY(vel_.getY() * -bounciness);
 						onFloor_ = true;
 					}
 					else if (pos.getY() >= colliderPos.getY() + colliderTr->getH()) {
-						vel_.setY(0);
+						vel_.setY(vel_.getY() * -bounciness);
 					}
 
 					if (pos.getX() + tr_->getW() <= colliderPos.getX()) {
-						vel_.setX(0);
+						vel_.setX(vel_.getX() * -bounciness);
 					}
 					else if (pos.getX() >= colliderPos.getX() + colliderTr->getW()) {
-						vel_.setX(0);
+						vel_.setX(vel_.getX() * -bounciness);
 					}
 
-					entity_->onCollision(collider);
 				}
 			}
 		}

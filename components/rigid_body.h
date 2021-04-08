@@ -49,4 +49,7 @@ public:
 	inline void setOnFloor(const bool floor) { onFloor_ = floor; };
 
 	inline void update() override;
+
+
+	float bounciness;
 };

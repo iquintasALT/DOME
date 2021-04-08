@@ -27,6 +27,8 @@ void Ricochet::init() {
 	tr_ = entity_->getComponent<Transform>();
 	rb = entity_->getComponent<RigidBody>();
 	assert(tr_ != nullptr && rb != nullptr);
+
+	rb->bounciness = 1;
 }
 
 void Ricochet::createExplosion()
@@ -90,36 +92,14 @@ void Ricochet::createExplosion()
 	}*/
 }
 
-void Ricochet::update() {
+
+void Ricochet::OnCollision(BoxCollider* collider) {
 	auto& pos = tr_->getPos();
 	auto& vel = rb->getVel();
-	auto height = tr_->getH();
-	auto width = tr_->getW();
 
-	if (pos.getY() < 0) {
-		pos.setY(0);
-		vel.setY(-vel.getY());
-		n--;
-	}
-	else if (pos.getX() < 0) {
-		pos.setX(0);
-		vel.setX(-vel.getX());
-		n--;
-	}
-	else if (pos.getY() + height > sdlutils().height()) {
-		pos.setY(sdlutils().height() - height);
-		vel.setY(-vel.getY());
-		n--;
-	}
-	else if (pos.getX() + width > sdlutils().width()) {
-		pos.setX(sdlutils().width() - width);
-		vel.setX(-vel.getX());
-		n--;
-	}
+	n--;
 
-	if (n == 0)
-	{
-		if (tier == 3)
+	if (n == 0) {
 		{
 			createExplosion();
 		}
