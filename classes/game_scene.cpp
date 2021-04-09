@@ -109,7 +109,7 @@ void GameScene::loadMap(string& const path) {
 					auto collider = mngr_->addEntity();
 					collider->setGroup<Wall_grp>(true);
 					auto aabb = obj.getAABB();
-					collider->addComponent<Transform>(Point2D(aabb.left, aabb.top), Vector2D(), aabb.width, aabb.height);
+					collider->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					collider->addComponent<BoxCollider>();
 				}
 			}

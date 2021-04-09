@@ -13,7 +13,6 @@ private:
 	PlayerCollisions* collisions_;
 
 	Vector2D pos_;
-	Vector2D vel_;
 	float width_;
 	float height_;
 	float rotation_;
@@ -21,7 +20,7 @@ private:
 public:
 	Transform();
 
-	Transform(Vector2D pos, Vector2D vel, float width, float height,
+	Transform(Vector2D pos,float width, float height,
 		float rotation = 0);
 
 	virtual ~Transform();
@@ -29,8 +28,6 @@ public:
 	virtual void init() override;
 
 	inline Vector2D& getPos() { return pos_; }
-
-	inline Vector2D& getVel() { return vel_; }
 
 	inline float getH() const { return height_; }
 
@@ -46,14 +43,6 @@ public:
 
 	inline void setRot(float rot) { rotation_ = rot; }
 
-	inline void setVel(Vector2D vel) { vel_ = vel; }
-
-	inline void setVelX(float x) { vel_.setX(x); }
-
-	inline void setVelY(float y) { vel_.setY(y); }
-
 	inline void setPos(Vector2D pos) { pos_ = pos; }
-
-	inline void update() override;
 };
 
