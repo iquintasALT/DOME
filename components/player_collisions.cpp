@@ -20,7 +20,6 @@ void PlayerCollisions::update() {
 
 			if (Collisions::collides(tr_->getPos(), tr_->getW(), tr_->getH(), tPos, tW, tH)) {
 				auto collider = entity->getComponent<BoxCollider>();
-				if (collider->collision(tr_, rb_)) rb_->reachedFloor();
 			}
 		}
 	}

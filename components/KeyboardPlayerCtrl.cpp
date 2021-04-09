@@ -21,6 +21,7 @@ void KeyboardPlayerCtrl::OnCollision(BoxCollider* bc) {
 		std::cout << "OUCH, CAI DESDE MUY ALTO Y YOJHAN ES FEO";
 }
 
+
 void KeyboardPlayerCtrl::update() {
 	if (!crouched) {
 		if (keystates[SDL_SCANCODE_D]) {
@@ -37,7 +38,6 @@ void KeyboardPlayerCtrl::update() {
 
 		if (keystates[SDL_SCANCODE_SPACE] && rb_->onFloor()) {
 			rb_->setVel(Vector2D(rb_->getVel().getX(), -jumpSpeed));
-			rb_->setOnFloor(false);
 		}
 
 		if (keystates[SDL_SCANCODE_LCTRL] && rb_->getVel().getY() == 0) {

@@ -41,11 +41,7 @@ public:
 
 	virtual void applyGravity();
 
-	void reachedFloor();
-
 	inline bool onFloor() { return onFloor_; };
-
-	inline void setOnFloor(const bool floor) { onFloor_ = floor; };
 
 	inline void update() override;
 
