@@ -132,7 +132,7 @@ Algún ejemplo de daño en raid:
 
 Daño por bala o proyectil enemigo (Lo que causaría desangrado). Este daño, si no se cura, hace que cada cierto tiempo se añada un nuevo estado de desangrado al sistema. (Permanente hasta ser curado)
 
-Daño por cortes o mordeduras de enemigos. Este daño aumenta el tiempo que tardan en desaparecer los daños temporales. (Permanente hasta ser curado)
+Daño por cortes o mordeduras de enemigos. Este daño aumenta el tiempo que tardan en desaparecer los daños temporales y reduce el daño de las balas del jugador. (Permanente hasta ser curado)
 
 Daño por caer desde gran altura. (Rotura de huesos). Este daño hace que el jugador no pueda saltar. (Temporal)
 

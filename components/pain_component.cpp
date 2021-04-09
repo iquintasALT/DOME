@@ -2,10 +2,12 @@
 #include "../classes/physiognomy.h"
 #include "concussion_component.h"
 #include "intoxication_component.h"
+#include "../ecs/Manager.h"
 
 void PainComponent::init() {
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
 	time = sdlutils().currRealTime();
+	//weapon = entity_->getComponent<WeaponBehaviour>();
 }
 void PainComponent::increaseTime() {
 	for (auto b : *phys->getHealthComponents()) {
@@ -22,4 +24,7 @@ void PainComponent::update() {
 		time = sdlutils().currRealTime();
 		increaseTime();
 	}
+}
+void PainComponent::newState() {
+
 }
