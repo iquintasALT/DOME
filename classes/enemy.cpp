@@ -17,7 +17,7 @@ Enemy::Enemy(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 {
 	mngr_->addEntity(this)->setGroup<Contact_Dmg_grp>(true);
 	addComponent<Transform>(pos, 32, 64, 0);
-	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
+	//addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);/
 	addComponent<RigidBody>();
 	addComponent<EnemyContactDamage>();
 }
