@@ -18,7 +18,6 @@ private:
 	virtual void CollisionEnter();
 	virtual void CollisionExit();
 	virtual void Collision();
-
 public:
 	InteractableElement(string msg);
 	void init() override; 
