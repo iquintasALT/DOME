@@ -8,6 +8,7 @@ class Transform;
 class Image;
 class KeyboardPlayerCtrl;
 class player_animation;
+class enemy_animation;
 class Weapon;
 class InventoryController;
 class Inventory;
@@ -49,6 +50,7 @@ class HypothermiaComponent;
 	Image,\
 	KeyboardPlayerCtrl, \
 	player_animation, \
+	enemy_animation, \
     Weapon, \
 	InventoryController, \
 	Inventory, \
