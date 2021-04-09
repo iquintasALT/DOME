@@ -14,7 +14,7 @@
 #define __SDLGUI_SCREEN_H__
 
 #include <sdlgui/window.h>
-#include "../../game/checkML.h"
+#include "../../utils/checkML.h"
 
 union SDL_Event;
 struct SDL_Window;

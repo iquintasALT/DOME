@@ -9,7 +9,7 @@
 #include "../ecs/Entity.h"
 #include "../components/Transform.h"
 #include <vector>
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../components/rigid_body.h"
 
 class ParticleSystem : public Component

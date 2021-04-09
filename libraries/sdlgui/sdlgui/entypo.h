@@ -5,7 +5,7 @@
 
 #pragma once
 
-#include "../../game/checkML.h"
+#include "../../utils/checkML.h"
 
 #define ENTYPO_ICON_PHONE                0x1F4DE
 #define ENTYPO_ICON_MOBILE               0x1F4F1

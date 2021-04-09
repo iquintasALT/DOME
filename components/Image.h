@@ -5,7 +5,7 @@
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../classes/camera.h";
 #include "Transform.h"
 

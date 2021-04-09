@@ -44,12 +44,6 @@
     <ClCompile Include="sdlutils\SDLUtils.cpp">
       <Filter>Source Files\sdlutils</Filter>
     </ClCompile>
-    <ClCompile Include="sdlutils\sdlutils_demo.cpp">
-      <Filter>Source Files\sdlutils</Filter>
-    </ClCompile>
-    <ClCompile Include="json\somplejson_demo.cpp">
-      <Filter>Source Files\json</Filter>
-    </ClCompile>
     <ClCompile Include="utils\Vector2D.cpp">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
@@ -307,9 +301,6 @@
     <ClInclude Include="game\ecs_defs.h">
       <Filter>Header Files\ecs</Filter>
     </ClInclude>
-    <ClInclude Include="ecs\ecs_defs_example.h">
-      <Filter>Header Files\ecs</Filter>
-    </ClInclude>
     <ClInclude Include="ecs\Entity.h">
       <Filter>Header Files\ecs</Filter>
     </ClInclude>
@@ -367,12 +358,6 @@
     <ClInclude Include="sdlutils\SDLUtils.h">
       <Filter>Header Files\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="sdlutils\sdlutils_demo.h">
-      <Filter>Header Files\sdlutils</Filter>
-    </ClInclude>
-    <ClInclude Include="json\simplejson_demo.h">
-      <Filter>Header Files\json</Filter>
-    </ClInclude>
     <ClInclude Include="utils\Singleton.h">
       <Filter>Header Files\utils</Filter>
     </ClInclude>
@@ -401,9 +386,6 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\shelter_scene.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="game\checkML.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\InventoryController.h">
@@ -645,6 +627,9 @@
     </ClInclude>
     <ClInclude Include="components\hypothermia_component.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="utils\checkML.h">
+      <Filter>Header Files\utils</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

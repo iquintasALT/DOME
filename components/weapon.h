@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../ecs/Component.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include <math.h>
 

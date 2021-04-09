@@ -3,7 +3,7 @@
 #include "../components/animation_component.h"
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../sdlutils/InputHandler.h"
 #include "../game/constant_variables.h"
 #include "../components/KeyboardPlayerCtrl.h"

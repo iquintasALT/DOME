@@ -1,6 +1,6 @@
 #pragma once
 #include "enemy_component.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 class EnemyDetectionComponent : public EnemyComponent {
 protected:

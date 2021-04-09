@@ -1,6 +1,6 @@
 #pragma once
 #include "../components/weapon.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../components/Transform.h"
 
 class RicochetWeapon: public Weapon
