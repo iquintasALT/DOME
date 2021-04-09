@@ -20,10 +20,12 @@ private:
 	int time;
 	Physiognomy* phys;
 	Weapon* weapon;
+	int originalDmg;
 public:
-	PainComponent() : phys(nullptr), time(0), weapon(nullptr) {};
-	void newState();
+	PainComponent() : phys(nullptr), time(0), weapon(nullptr), originalDmg(0) {};
+	~PainComponent();
 	void increaseTime();
+	void reduceWeaponDamage();
 	void init() override;
 	void update() override;
 };

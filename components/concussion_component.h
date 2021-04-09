@@ -2,6 +2,7 @@
 #include "player_health_component.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/checkML.h"
+#include "../game/constant_variables.h"
 class KeyboardPlayerCtrl;
 class Player;
 class Physiognomy;
@@ -24,8 +25,7 @@ public:
 	void init() override;
 	void update() override;
 
-	void newState();
-	void increaseTime(int time);
+	void increaseTime(int time_ = consts::CONTUSION_INCREASE_TIME);
 	void cancelJump();
 	void activateJump();
 };

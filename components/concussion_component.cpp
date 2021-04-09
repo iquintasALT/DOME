@@ -18,8 +18,8 @@ void ConcussionComponent::init() {
 }
 
 void ConcussionComponent::update() {
-	if (sdlutils().currRealTime() > time + consts::CONTUSION_TIME_TO_END) {
-		//phys->removeState<ConcussionComponent>(this);
+	if (sdlutils().currRealTime() > time + consts::CONTUSION_TIME) {
+		phys->removeConcussionState();
 	}
 }
 
@@ -28,9 +28,6 @@ void ConcussionComponent::cancelJump() {
 }
 void ConcussionComponent::activateJump() {
 	kb->setJumpSpeed(consts::JUMP_SPEED);
-}
-void ConcussionComponent::newState() {
-
 }
 void ConcussionComponent::increaseTime(int time_) {
 	time += time_;

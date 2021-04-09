@@ -43,7 +43,7 @@ public:
 	void removeBleedState();
 	void removePainState();
 	void removeIntoxicationState();
-	void reemoveConcussionState();
+	void removeConcussionState();
 
 	int getNumStates() { return numStates; }
 	void moveElems(int i);
