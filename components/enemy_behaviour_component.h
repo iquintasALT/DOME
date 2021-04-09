@@ -1,7 +1,7 @@
 #ifndef ENEMYBEHAVIOUR_H_
 #define ENEMYBEHAVIOUR_H_
 #include "enemy_component.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../components/enemy_detection_component.h"
 
 //class Player;

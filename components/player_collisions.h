@@ -4,7 +4,7 @@
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
 #include "../utils/Collisions.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 #include "tile_renderer.h"
 

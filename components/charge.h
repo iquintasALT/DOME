@@ -6,7 +6,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
 #include "Transform.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 class Charge : public Component {
 private:

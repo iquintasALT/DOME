@@ -7,7 +7,7 @@
 #include <random>
 
 #include "RandomNumberGenerator.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 class RandomNumberGenerator {
 public:

@@ -2,7 +2,7 @@
 
 #include "../ecs/Component.h"
 #include "../components/Image.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../game/constant_variables.h"
 
 class animation_component : public Component {

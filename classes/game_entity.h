@@ -1,6 +1,6 @@
 #pragma once
 #include "game_object.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 class GameEntity : public GameObject
 {

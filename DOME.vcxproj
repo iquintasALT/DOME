@@ -73,18 +73,15 @@
     <ClInclude Include="components\weapon.h" />
     <ClInclude Include="ecs\Component.h" />
     <ClInclude Include="ecs\ecs.h" />
-    <ClInclude Include="ecs\ecs_defs_example.h" />
     <ClInclude Include="ecs\Entity.h" />
     <ClInclude Include="ecs\Manager.h" />
     <ClInclude Include="ecs\mpl.h" />
-    <ClInclude Include="game\checkML.h" />
     <ClInclude Include="game\countdown.h" />
     <ClInclude Include="game\ecs_defs.h" />
     <ClInclude Include="game\Game.h" />
     <ClInclude Include="game\constant_variables.h" />
     <ClInclude Include="json\JSON.h" />
     <ClInclude Include="json\JSONValue.h" />
-    <ClInclude Include="json\simplejson_demo.h" />
     <ClInclude Include="libraries\sdlgui\sdlgui\button.h" />
     <ClInclude Include="libraries\sdlgui\sdlgui\checkbox.h" />
     <ClInclude Include="libraries\sdlgui\sdlgui\colorpicker.h" />
@@ -129,10 +126,10 @@
     <ClInclude Include="sdlutils\Music.h" />
     <ClInclude Include="sdlutils\RandomNumberGenerator.h" />
     <ClInclude Include="sdlutils\SDLUtils.h" />
-    <ClInclude Include="sdlutils\sdlutils_demo.h" />
     <ClInclude Include="sdlutils\SoundEffect.h" />
     <ClInclude Include="sdlutils\Texture.h" />
     <ClInclude Include="sdlutils\VirtualTimer.h" />
+    <ClInclude Include="utils\checkML.h" />
     <ClInclude Include="utils\Collisions.h" />
     <ClInclude Include="utils\ray_cast.h" />
     <ClInclude Include="utils\Singleton.h" />
@@ -196,7 +193,6 @@
     <ClCompile Include="game\Game.cpp" />
     <ClCompile Include="json\JSON.cpp" />
     <ClCompile Include="json\JSONValue.cpp" />
-    <ClCompile Include="json\somplejson_demo.cpp" />
     <ClCompile Include="libraries\sdlgui\sdlgui\button.cpp" />
     <ClCompile Include="libraries\sdlgui\sdlgui\checkbox.cpp" />
     <ClCompile Include="libraries\sdlgui\sdlgui\colorpicker.cpp" />
@@ -230,7 +226,6 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sdlutils\RandomNumberGenerator.cpp" />
     <ClCompile Include="sdlutils\SDLUtils.cpp" />
-    <ClCompile Include="sdlutils\sdlutils_demo.cpp" />
     <ClCompile Include="sdlutils\SoundEffect.cpp" />
     <ClCompile Include="sdlutils\Texture.cpp" />
     <ClCompile Include="utils\Collisions.cpp" />

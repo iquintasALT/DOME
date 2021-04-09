@@ -2,7 +2,7 @@
 #include "game_object.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/Texture.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 class Game;
 

@@ -11,7 +11,7 @@
 #include <math.h>
 #include <assert.h>
 #include <istream>
-#include "../../game/checkML.h"
+#include "../../utils/checkML.h"
 #if defined(_WIN32)
 #include <SDL.h>
 #else
