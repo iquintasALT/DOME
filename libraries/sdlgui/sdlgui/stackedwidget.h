@@ -16,7 +16,7 @@
 #pragma once
 
 #include <sdlgui/widget.h>
-#include "../../game/checkML.h"
+#include "../../utils/checkML.h"
 
 NAMESPACE_BEGIN(sdlgui)
 

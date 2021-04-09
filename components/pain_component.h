@@ -1,6 +1,6 @@
 #pragma once
 #include "player_health_component.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../sdlutils/SDLUtils.h"
 class ConcussionComponent;
 class IntoxicationComponent;

@@ -1,6 +1,6 @@
 #pragma once
 #include "../classes/game_scene.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../classes/crafting_system.h"
 #include "../classes/workshop.h"
 #include <sdlgui/screen.h>

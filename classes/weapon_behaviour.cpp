@@ -6,7 +6,7 @@
 
 WeaponBehaviour::WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vector2D playerPos, Transform* playerTr , int typeOfWeapon) : GameEntity(mngr) {
 	mngr->addEntity(this);
-	addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), Vector2D(), 32, 32, 0);
+	addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), 32, 32, 0);
 	dmg_ = dmg;
 
 	//Cada arma que tenga un numero del 1 al 3 la primera del 3 al 6 segunda y del 6 al 9 tercera
@@ -17,6 +17,7 @@ WeaponBehaviour::WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vecto
 	else if(typeOfWeapon == 2)
 	{ 
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, 1);
+		addComponent<Weapon>(fireRate);
 	}
 	else if (typeOfWeapon == 3)
 	{

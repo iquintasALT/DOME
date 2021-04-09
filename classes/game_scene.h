@@ -8,14 +8,14 @@
 #include "../classes/tile.h"
 #include "../components/box_collider.h"
 #include "../components/InventoryController.h"
-#include "../classes/particleSystem.h"
+#include "../components/particleSystem.h"
 
 #include "../ecs/ecs.h"
 #include "../ecs/Manager.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
 #include "../utils/Vector2D.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 #include "tmxlite/Map.hpp"
 #include "tmxlite/Layer.hpp"

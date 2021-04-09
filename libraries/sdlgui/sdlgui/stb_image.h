@@ -214,7 +214,7 @@ recognized, you are granted a perpetual, irrevocable license to copy,
 distribute, and modify this file as you see fit.
 
 */
-#include "../../game/checkML.h"
+#include "../../utils/checkML.h"
 #ifndef STBI_INCLUDE_STB_IMAGE_H
 #define STBI_INCLUDE_STB_IMAGE_H
 

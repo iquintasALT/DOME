@@ -12,11 +12,11 @@ class IntoxicationComponent;
 using namespace std;
 
 /*
-* La fisonomia del jugador es un sistema que se encarga de los daños que puede sufrir el jugador durante una raid.
-* Por lo tanto, los estados de refugio (hambre y cansacio) no se manejan en este sistema, simplemente se añaden al principio de la escena
-* Sin embargo, estados como el desangrado, contusion, etc.. son añadidos exclusivamente durante las raid.
-* Al volver al refugio despues de una raid, se anulan todos estos daños.
-* Si el numero de estados es mayor que un número máximo determinado, el jugador muere.
+* La fisonomia del jugador es un sistema que se encarga de los daï¿½os que puede sufrir el jugador durante una raid.
+* Por lo tanto, los estados de refugio (hambre y cansacio) no se manejan en este sistema, simplemente se aï¿½aden al principio de la escena
+* Sin embargo, estados como el desangrado, contusion, etc.. son aï¿½adidos exclusivamente durante las raid.
+* Al volver al refugio despues de una raid, se anulan todos estos daï¿½os.
+* Si el numero de estados es mayor que un nï¿½mero mï¿½ximo determinado, el jugador muere.
 */
 
 class Physiognomy {
@@ -33,7 +33,7 @@ public:
 	inline Physiognomy(Player* player_) : player(player_), healthComponents(consts::MAX_MULTIPLE_STATES) {
 		numStates = 0; numBleedStates = 0; painAdded = false; intoxicationAdded = false; concussionAdded = false; };
 
-	//Añadir estados al sistema
+	//Aï¿½adir estados al sistema
 	void addBleedState();
 	void addPainState();
 	void addIntoxicationState();
@@ -51,4 +51,3 @@ public:
 	inline bool alive() { return numStates < consts::MAX_MULTIPLE_STATES; };
 	inline vector<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
 };
-

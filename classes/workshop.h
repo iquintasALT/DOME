@@ -8,7 +8,7 @@
 #include "../classes/crafting_system.h"
 #include "../sdlutils/InputHandler.h"
 #include "../utils/Collisions.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../components/Inventory.h"
 #include <vector>
 

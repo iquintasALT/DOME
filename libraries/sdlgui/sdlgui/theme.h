@@ -15,7 +15,7 @@
 
 #include <sdlgui/common.h>
 #include <mutex>
-#include "../../game/checkML.h"
+#include "../../utils/checkML.h"
 
 struct SDL_Renderer;
 struct SDL_Texture;

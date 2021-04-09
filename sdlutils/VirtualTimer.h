@@ -4,7 +4,7 @@
 
 #include <SDL.h>
 #include <cassert>
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 class VirtualTimer {
 public:

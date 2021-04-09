@@ -4,7 +4,7 @@
 #include "../ecs/Entity.h"
 #include "../components/Transform.h"
 #include <string>
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 using namespace std;
 

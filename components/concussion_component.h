@@ -1,7 +1,7 @@
 #pragma once
 #include "player_health_component.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 class KeyboardPlayerCtrl;
 class Player;
 class Physiognomy;

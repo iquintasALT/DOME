@@ -1,7 +1,7 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
 #pragma once
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 // components -- forward declaration, i.e., assume they are defined somewhere
 class Transform;
@@ -19,6 +19,7 @@ class FlyingChasePlayer;
 class EnemyAttackComponent;
 class MeleeAttack;
 class GroundedMeleeAttack;
+class RangedAttack;
 class TileRenderer;
 class DistanceDetection;
 class RayCastDetection;
@@ -59,6 +60,7 @@ class HypothermiaComponent;
 	EnemyAttackComponent, \
 	MeleeAttack, \
 	GroundedMeleeAttack, \
+	RangedAttack, \
 	TileRenderer, \
 	DistanceDetection, \
 	RayCastDetection, \
@@ -94,3 +96,11 @@ struct Contact_Dmg_grp;
 // handlers
 struct Player_hdlr;
 #define _HDLRS_LIST_ Player_hdlr
+
+// collision layers
+struct CollLayer1;
+#define _COLLISIONS_LIST_ CollLayer1
+
+// render layers
+struct RenderLayer1;
+#define _RENDER_LIST_ RenderLayer1

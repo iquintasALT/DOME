@@ -15,7 +15,7 @@
 
 #include <sdlgui/widget.h>
 #include <functional>
-#include "../../game/checkML.h"
+#include "../../utils/checkML.h"
 
 NAMESPACE_BEGIN(sdlgui)
 

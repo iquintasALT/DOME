@@ -3,7 +3,7 @@
 #define GAMECHARACTER_H_
 
 #include "game_entity.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 /*#include "../ecs/Manager.h"
 #include "../components/Transform.h"
 #include "../components/Image.h"

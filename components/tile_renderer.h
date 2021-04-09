@@ -4,7 +4,7 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
 #include "../utils/Vector2D.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 #include "tmxlite/Map.hpp"
 #include "tmxlite/Layer.hpp"

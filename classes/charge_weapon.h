@@ -1,12 +1,12 @@
 #pragma once
 #include "../components/weapon.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 
 class ChargeWeapon : public Weapon
 {
 private:
-	int tier;
+	int damage;
 public:
 	ChargeWeapon(float fR, int type);
 	virtual void update();

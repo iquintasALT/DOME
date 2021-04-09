@@ -9,14 +9,17 @@
 #include "../ecs/Entity.h"
 #include "../components/Transform.h"
 #include <vector>
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
+#include "../components/rigid_body.h"
 
 class ParticleSystem : public Component
 {
 private:
+	struct DynamicBody;
+
 	Texture* texture;
 	SDL_Rect source;
-	vector<Transform*> particles;
+	vector<DynamicBody*> particles;
 	vector<float> particleLife;
 
 	int actualBurstCount = 0;
@@ -24,6 +27,7 @@ private:
 	bool destroyParticles = false;
 
 	Transform* transform;
+	RigidBody* rb;
 
 	float rateTimer = 0;
 	float burstTimer = 0;
