@@ -25,6 +25,8 @@ public:
 	RigidBody(Vector2D vel = Vector2D(), bool gravity = true);
 	RigidBody(Vector2D vel, Transform* tr);
 
+	Vector2D collisionVelocity;
+
 	virtual ~RigidBody();
 
 	virtual void init() override;
