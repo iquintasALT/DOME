@@ -28,6 +28,12 @@ void RigidBody::init() {
 
 void RigidBody::update() {
 	bool collision = false;
+
+	bool verticalCollision = false;
+	bool horizontalCollision = false;
+
+	auto& pos = tr_->getPos();
+
 	if (collide) {
 		for (auto collider : entity_->getMngr()->getColliders()) {
 			if (collider == boxColl)
@@ -37,7 +43,6 @@ void RigidBody::update() {
 
 			Transform* colliderTr = collider->getTransform();
 
-			auto& pos = tr_->getPos();
 			auto nextPos = tr_->getPos() + vel_;
 			auto colliderPos = colliderTr->getPos();
 
@@ -54,8 +59,6 @@ void RigidBody::update() {
 					entity_->onTrigger(collider);
 				}
 				else {
-					bool horizontal = false;
-					bool vertical = false;
 					if (pos.getY() + tr_->getH() <= colliderPos.getY())
 					{
 						vel_.setY(vel_.getY() * -bounciness);
@@ -63,38 +66,34 @@ void RigidBody::update() {
 
 						pos.setY(colliderPos.getY() - tr_->getH() - 1);
 
-						horizontal = true;
-						//pos.setX(pos.getX() + vel_.getX());
+						verticalCollision = true;
 					}
 					else if (pos.getY() >= colliderPos.getY() + colliderTr->getH()) {
 						vel_.setY(vel_.getY() * -bounciness);
 
 						pos.setY(colliderPos.getY() + colliderTr->getH() + 1);
 
-						horizontal = true;
-						//pos.setX(pos.getX() + vel_.getX());
+						verticalCollision = true;
 					}
 
-					if (pos.getX() + tr_->getW() <= colliderPos.getX()) {
+					else if (pos.getX() + tr_->getW() <= colliderPos.getX()) {
 						vel_.setX(vel_.getX() * -bounciness);
 
 						pos.setX(colliderPos.getX() - tr_->getW() - 1);
-
-						vertical = true;
-						//pos.setY(pos.getY() + vel_.getY());
+						horizontalCollision = true;
 					}
 					else if (pos.getX() >= colliderPos.getX() + colliderTr->getW()) {
 						vel_.setX(vel_.getX() * -bounciness);
-						pos.setX(colliderPos.getX() + colliderTr->getW() + 1);
 
-						vertical = true;
-						//pos.setY(pos.getY() + vel_.getY());
+						pos.setX(colliderPos.getX() + colliderTr->getW() + 1);
+						horizontalCollision = true;
 					}
 
-					if (horizontal)
+					/*if (verticalCollision)
 						pos.setX(pos.getX() + vel_.getX());
-					if (vertical)
-						pos.setY(pos.getY() + vel_.getY());
+					else
+						pos.setY(pos.getY() + vel_.getY());*/
+
 					entity_->onCollision(collider);
 				}
 			}
@@ -102,6 +101,13 @@ void RigidBody::update() {
 	}
 	if (!collision)
 		tr_->getPos() = tr_->getPos() + vel_;
+	else {
+		if (!verticalCollision)
+			pos.setY(pos.getY() + vel_.getY());
+
+		if (!horizontalCollision)
+			pos.setX(pos.getX() + vel_.getX());
+	}
 	if (grActive_) applyGravity();
 }
 
