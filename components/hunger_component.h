@@ -5,7 +5,6 @@
 #include "../utils/checkML.h"
 #include "../utils/Vector2D.h"
 #include "../game/constant_variables.h"
-class BleedoutComponent;
 
 /*
 * HungerComponent es un component para el jugador que mide su nivel de hambre.
@@ -22,17 +21,14 @@ class HungerComponent : public PlayerHealthComponent
 private:
 	float hunger;
 	hungerLevel hungerLevel;
-	BleedoutComponent* bleed;
 public:
 	HungerComponent();
-	void init() override;
 
 	void updateLevel();
 	int calculateBleedingSpeed(); //Metodo que se encarga del debufo del hambre (Velocidad de desangrado)
 	void setHunger(float hunger);
 	void decreaseHunger(float hunger);
 	float getHunger();
-
 	void eat(float hunger_);
 };
 
