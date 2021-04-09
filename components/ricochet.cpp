@@ -79,13 +79,7 @@ void Ricochet::createExplosion()
 }
 
 void Ricochet::OnCollision(BoxCollider* collider) {
-	/*rb->setVel(Vector2D(0, 0));
-	std::cout << tr_->getPos().getX() << " " << tr_->getW() << " " << collider->getTransform()->getPos().getX() << endl;
-	std::cout << tr_->getPos().getX()+ tr_->getW() <<  endl;
-	return;*/
-
-
-	if (--n == 0) {
+	if (n-- == 0) {
 		createExplosion();
 		entity_->setDead(true);
 	}
