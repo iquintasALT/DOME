@@ -1,10 +1,13 @@
 #include "loot.h"
 
+const float Loot::margin = 100;
+
 Loot::Loot(std::string mssg) : 
 	InteractableElement(mssg),
 	inventory(nullptr), playerInventory(nullptr),
 	inventoryController(nullptr), inventoryEntity(nullptr){
 	isOpen = false;
+	playerTransform = nullptr;
 }
 
 void Loot::Interact() {
@@ -13,7 +16,10 @@ void Loot::Interact() {
 	playerInventory->setOther((isOpen ? inventory : nullptr));
 
 	if (isOpen) {
-		playerInventory->moveInventory(new Vector2D(0, 0));
+		float maxWidth = playerTransform->getW() + inventoryTransform->getW() + margin;
+		float x = (sdlutils().width() - maxWidth) / 2;
+
+		playerInventory->moveInventory(new Vector2D(x, playerTransform->getPos().getY()));
 	}
 	else {
 		playerInventory->defaultPosition();
@@ -33,13 +39,15 @@ void Loot::init() {
 	assert(playerInventory != nullptr);
 
 	inventoryEntity = entity_->getMngr()->addEntity();
-	auto* tr = inventoryEntity->addComponent<Transform>(Vector2D(0, 0), 100, 100, 0);
+	inventoryTransform = inventoryEntity->addComponent<Transform>(Vector2D(0, 0), 100, 100, 0);
 	
-	Transform* playerTransform = playerInventory->getEntity()->getComponent<Transform>();
-	Point2D playerInventoryPos = playerTransform->getPos();
-	float width = playerTransform->getW();
+	playerTransform = playerInventory->getEntity()->getComponent<Transform>();
+	
+	float maxWidth = playerTransform->getW() + inventoryTransform->getW() + margin;
+	float x = (sdlutils().width() - maxWidth) / 2 + playerTransform->getW();
 
-	tr->setPos(playerInventoryPos + Vector2D(width + 100, 0));
+
+	inventoryTransform->setPos(new Vector2D(x, playerTransform->getPos().getY()));
 
 	inventoryEntity->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0);
 
