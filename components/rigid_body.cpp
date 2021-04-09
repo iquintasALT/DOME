@@ -27,7 +27,6 @@ RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 
 	
 }
-
 RigidBody::~RigidBody() {};
 
 void RigidBody::init() {
@@ -65,10 +64,10 @@ void RigidBody::update() {
 			auto nextPos = tr_->getPos() + vel_;
 			auto colliderPos = colliderTr->getPos();
 
-			if (nextPos.getX() < colliderPos.getX() + colliderTr->getW() &&
-				nextPos.getX() + tr_->getW() > colliderPos.getX() &&
-				nextPos.getY() < colliderPos.getY() + colliderTr->getH() &&
-				nextPos.getY() + tr_->getH() > colliderPos.getY())
+			if (nextPos.getX() <= colliderPos.getX() + colliderTr->getW() &&
+				nextPos.getX() + tr_->getW() >= colliderPos.getX() &&
+				nextPos.getY() <= colliderPos.getY() + colliderTr->getH() &&
+				nextPos.getY() + tr_->getH() >= colliderPos.getY())
 			{
 				thisCollision = true;
 			}
@@ -113,8 +112,9 @@ void RigidBody::update() {
 			collision |= thisCollision;
 		}
 	}
-	if (!collision)
+	if (!collision) {
 		tr_->getPos() = tr_->getPos() + vel_;
+	}
 	else {
 		if (!verticalCollision)
 			pos.setY(pos.getY() + vel_.getY());
