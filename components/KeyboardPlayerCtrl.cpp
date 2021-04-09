@@ -1,6 +1,7 @@
 #include "KeyboardPlayerCtrl.h"
 #include "../classes/player.h"
 #include "../classes/camera.h"
+#include "../game/constant_variables.h"
 
 KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	speed = consts::PLAYER_SPEED;
@@ -13,6 +14,11 @@ void KeyboardPlayerCtrl::init() {
 	rb_ = entity_->getComponent<RigidBody>();
 	tr_ = entity_->getComponent<Transform>();
 	assert(rb_ != nullptr && tr_ != nullptr);
+}
+
+void KeyboardPlayerCtrl::OnCollision(BoxCollider* bc) {
+	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED)
+		std::cout << "OUCH, CAI DESDE MUY ALTO Y YOJHAN ES FEO";
 }
 
 void KeyboardPlayerCtrl::update() {
@@ -30,7 +36,7 @@ void KeyboardPlayerCtrl::update() {
 		}
 
 		if (keystates[SDL_SCANCODE_SPACE] && rb_->onFloor()) {
- 			rb_->setVel(Vector2D(rb_->getVel().getX(), -jumpSpeed));
+			rb_->setVel(Vector2D(rb_->getVel().getX(), -jumpSpeed));
 			rb_->setOnFloor(false);
 		}
 

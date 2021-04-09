@@ -21,6 +21,8 @@ private:
 	bool left, right, crouched;
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
+	void OnCollision(BoxCollider* bc) override;
+
 public:
 	KeyboardPlayerCtrl();
 

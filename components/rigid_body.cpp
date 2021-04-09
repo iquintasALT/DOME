@@ -45,6 +45,8 @@ void RigidBody::update() {
 
 	auto& pos = tr_->getPos();
 
+	collisionVelocity = vel_;
+
 	if (collide) {
 		for (auto collider : entity_->getMngr()->getColliders()) {
 			if (collider == boxColl)
@@ -105,12 +107,6 @@ void RigidBody::update() {
 						pos.setX(colliderPos.getX() + colliderTr->getW() + 1);
 						horizontalCollision = true;
 					}
-
-					/*if (verticalCollision)
-						pos.setX(pos.getX() + vel_.getX());
-					else
-						pos.setY(pos.getY() + vel_.getY());*/
-
 					entity_->onCollision(collider);
 				}
 			}
