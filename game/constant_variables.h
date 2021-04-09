@@ -16,6 +16,7 @@ namespace consts {
 	const int WINDOW_HEIGHT = 736;
 	const float FALLING_DMG_SPEED = 8;
 	const float CHARGEWEAPON_HEIGHT = 15;
+	const int COLLISION_LAYERS = 16;
 
 	//PHYSIOGNOMY
 	const int MAX_MULTIPLE_STATES = 6; //Numero de estados de daño que el jugador puede tener

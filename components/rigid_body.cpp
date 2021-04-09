@@ -5,7 +5,12 @@
 #include <iostream>
 
 RigidBody::RigidBody(Vector2D vel, bool gravity) : tr_(nullptr), vel_(vel),
-grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY), collide(true), bounciness(0) { }
+grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY), collide(true), bounciness(0)
+{
+	for (bool b : collisions)
+		b = false;
+	collisions[0] = true;
+}
 
 RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 	vel_ = vel;
@@ -15,6 +20,12 @@ RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 	grActive_ = false;
 	collide = false;
 	bounciness = 0;
+
+	for (bool b : collisions)
+		b = false;
+	collisions[0] = true;
+
+	
 }
 
 RigidBody::~RigidBody() {};
@@ -38,6 +49,12 @@ void RigidBody::update() {
 		for (auto collider : entity_->getMngr()->getColliders()) {
 			if (collider == boxColl)
 				continue;
+
+			if (collider->collisionLayer != 0) {
+				if (!collisions[collider->collisionLayer]) {
+					continue;
+				}
+			}
 
 			collision = false;
 

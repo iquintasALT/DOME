@@ -9,6 +9,7 @@
 #include "Transform.h"
 
 class RigidBody : public Component {
+	friend BoxCollider;
 private:
 	Transform* tr_;
 	BoxCollider* boxColl;
@@ -19,7 +20,7 @@ private:
 	bool onFloor_, grActive_;
 
 	bool collide;
-
+	bool collisions[consts::COLLISION_LAYERS];
 public:
 	RigidBody(Vector2D vel = Vector2D(), bool gravity = true);
 	RigidBody(Vector2D vel, Transform* tr);
@@ -45,6 +46,10 @@ public:
 	inline void setOnFloor(const bool floor) { onFloor_ = floor; };
 
 	inline void update() override;
+
+	inline void addCollisionLayer(int l) { collisions[l] = true; };
+	inline void removeCollisionLayer(int l) { collisions[l] = false; };
+	inline bool checkCollisionLayer(int l) { return collisions[l]; };
 
 	float bounciness;
 };
