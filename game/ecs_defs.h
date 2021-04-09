@@ -96,3 +96,11 @@ struct Contact_Dmg_grp;
 // handlers
 struct Player_hdlr;
 #define _HDLRS_LIST_ Player_hdlr
+
+// collision layers
+struct CollLayer1;
+#define _COLLISIONS_LIST_ CollLayer1
+
+// render layers
+struct RenderLayer1;
+#define _RENDER_LIST_ RenderLayer1
