@@ -26,6 +26,7 @@ public:
 	void init() override;
 	void update() override;
 
+	void newState();
 	void increaseTime(int time);
 };
 

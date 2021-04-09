@@ -24,4 +24,6 @@ private:
 public:
 	WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vector2D playerPos, Transform* playerTr, int typeOfWeapon);
 	Weapon* getWeaponMovement();
+	void setDmg(float dmg) { dmg_ = dmg; }
+	float getDmg() { return dmg_; }
 };

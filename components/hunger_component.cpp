@@ -5,6 +5,10 @@
 
 HungerComponent::HungerComponent() : hunger(1.0f), hungerLevel(hungerLevel::NONE) {}
 
+void HungerComponent::init() {
+
+}
+
 void HungerComponent::eat(float hunger_) {
 	hunger += hunger_;
 	updateLevel();
