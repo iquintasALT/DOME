@@ -4,7 +4,7 @@ Image* player_animation::Animation::image = nullptr;
 int player_animation::Animation::width = 1;
 int player_animation::Animation::height = 1;
 
-player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr), rb(nullptr) {};
+player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){};
 
 player_animation::~player_animation() {}
 
@@ -25,8 +25,9 @@ void player_animation::init() {
 	tr_ = entity_->getComponent<Transform>();
 	rb = entity_->getComponent<RigidBody>();
 	ctrl = entity_->getComponent<KeyboardPlayerCtrl>();
-
-	assert(tr_ != nullptr && im_ != nullptr && ctrl != nullptr && rb != nullptr);
+	walkDust = entity_->getComponent<ParticleSystem>();
+	walkDust->Stop();
+	assert(tr_ != nullptr && im_ != nullptr && ctrl != nullptr && rb != nullptr && walkDust != nullptr);
 }
 bool debug = false;
 
@@ -40,13 +41,13 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
-	//float x = tr_->getVel().getX();
 	float x = rb->getVel().getX();
 	if (x == 0) {
-			if (currentAnimation == animations[iddle])
-				return false;
+		if (currentAnimation == animations[iddle])
+			return false;
 		currentAnimation = animations[iddle];
 		currentAnimation.render();
+		walkDust->Stop();
 		return true;
 	}
 
@@ -55,6 +56,7 @@ bool player_animation::changeAnimations() {
 
 	if (currentAnimation != animations[walking]) {
 		currentAnimation = animations[walking];
+		walkDust->Play();
 		return true;
 	}
 	return false;
