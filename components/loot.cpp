@@ -2,10 +2,10 @@
 
 const float Loot::margin = 100;
 
-Loot::Loot(std::string mssg) : 
+Loot::Loot(std::string mssg) :
 	InteractableElement(mssg),
 	inventory(nullptr), playerInventory(nullptr),
-	inventoryController(nullptr), inventoryEntity(nullptr){
+	inventoryController(nullptr), inventoryEntity(nullptr) {
 	isOpen = false;
 	playerTransform = nullptr;
 }
@@ -34,20 +34,20 @@ void Loot::init() {
 
 	inventoryController = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<InventoryController>();
 	playerInventory = inventoryController->inventory;
-	
+
 	assert(inventoryController != nullptr);
 	assert(playerInventory != nullptr);
 
 	inventoryEntity = entity_->getMngr()->addEntity();
 	inventoryTransform = inventoryEntity->addComponent<Transform>(Vector2D(0, 0), 100, 100, 0);
-	
+
 	playerTransform = playerInventory->getEntity()->getComponent<Transform>();
-	
+
 	float maxWidth = playerTransform->getW() + inventoryTransform->getW() + margin;
 	float x = (sdlutils().width() - maxWidth) / 2 + playerTransform->getW();
 
 
-	inventoryTransform->setPos(new Vector2D(x, playerTransform->getPos().getY()));
+	inventoryTransform->setPos(Vector2D(x, playerTransform->getPos().getY()));
 
 	inventoryEntity->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0);
 
