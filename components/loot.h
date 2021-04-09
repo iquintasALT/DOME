@@ -12,8 +12,9 @@ using namespace std;
 class Loot :public InteractableElement
 {
 private:
-	bool isOpen = false;
+	bool isOpen;
 
+	Entity* inventoryEntity;
 	Inventory* inventory;
 	Inventory* playerInventory;
 	InventoryController* inventoryController;

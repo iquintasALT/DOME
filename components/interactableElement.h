@@ -23,6 +23,6 @@ public:
 	InteractableElement(string msg);
 	void init() override; 
 	virtual void Interact();
-	bool CheckCollision(Point2D playerPos);
+	bool CheckCollision(Point2D playerPos, float width, float height);
 };
 
