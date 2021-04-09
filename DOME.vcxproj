@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="classes\camera.h" />
     <ClInclude Include="classes\charge_weapon.h" />
+    <ClInclude Include="classes\countdown.h" />
     <ClInclude Include="classes\crafting_system.h" />
     <ClInclude Include="classes\enemy.h" />
     <ClInclude Include="classes\game_character.h" />
@@ -76,7 +77,6 @@
     <ClInclude Include="ecs\Entity.h" />
     <ClInclude Include="ecs\Manager.h" />
     <ClInclude Include="ecs\mpl.h" />
-    <ClInclude Include="game\countdown.h" />
     <ClInclude Include="game\ecs_defs.h" />
     <ClInclude Include="game\Game.h" />
     <ClInclude Include="game\constant_variables.h" />
@@ -138,6 +138,7 @@
   <ItemGroup>
     <ClCompile Include="classes\camera.cpp" />
     <ClCompile Include="classes\charge_weapon.cpp" />
+    <ClCompile Include="classes\countdown.cpp" />
     <ClCompile Include="classes\crafting_system.cpp" />
     <ClCompile Include="classes\enemy.cpp" />
     <ClCompile Include="classes\game_character.cpp" />
@@ -187,9 +188,7 @@
     <ClCompile Include="components\tiredness_component.cpp" />
     <ClCompile Include="components\Transform.cpp" />
     <ClCompile Include="components\weapon.cpp" />
-    <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
-    <ClCompile Include="game\countdown.cpp" />
     <ClCompile Include="game\Game.cpp" />
     <ClCompile Include="json\JSON.cpp" />
     <ClCompile Include="json\JSONValue.cpp" />
@@ -224,7 +223,6 @@
     <ClCompile Include="libraries\sdlgui\sdlgui\widget.cpp" />
     <ClCompile Include="libraries\sdlgui\sdlgui\window.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="sdlutils\RandomNumberGenerator.cpp" />
     <ClCompile Include="sdlutils\SDLUtils.cpp" />
     <ClCompile Include="sdlutils\SoundEffect.cpp" />
     <ClCompile Include="sdlutils\Texture.cpp" />
