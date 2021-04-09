@@ -18,11 +18,10 @@ private:
 	virtual void CollisionEnter();
 	virtual void CollisionExit();
 	virtual void Collision();
-
 public:
 	InteractableElement(string msg);
 	void init() override; 
 	virtual void Interact();
-	bool CheckCollision(Point2D playerPos);
+	bool CheckCollision(Point2D playerPos, float width, float height);
 };
 
