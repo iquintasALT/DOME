@@ -107,9 +107,6 @@
     <ClCompile Include="components\interactions.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="classes\particleSystem.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="components\loot.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -278,6 +275,9 @@
     <ClCompile Include="classes\countdown.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
+    <ClCompile Include="components\particleSystem.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -422,9 +422,6 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\interactions.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\particleSystem.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\ricochet.h">
@@ -624,6 +621,9 @@
     </ClInclude>
     <ClInclude Include="classes\countdown.h">
       <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\particleSystem.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

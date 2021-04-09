@@ -33,7 +33,6 @@
     <ClInclude Include="classes\tile.h" />
     <ClInclude Include="classes\menu_button.h" />
     <ClInclude Include="classes\menu_scene.h" />
-    <ClInclude Include="classes\particleSystem.h" />
     <ClInclude Include="classes\physiognomy.h" />
     <ClInclude Include="classes\player.h" />
     <ClInclude Include="classes\raid_scene.h" />
@@ -62,6 +61,7 @@
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
     <ClInclude Include="components\loot.h" />
     <ClInclude Include="components\pain_component.h" />
+    <ClInclude Include="components\particleSystem.h" />
     <ClInclude Include="components\player_collisions.h" />
     <ClInclude Include="components\enemy_contact_damege.h" />
     <ClInclude Include="components\player_health_component.h" />
@@ -150,7 +150,6 @@
     <ClCompile Include="classes\tile.cpp" />
     <ClCompile Include="classes\menu_button.cpp" />
     <ClCompile Include="classes\menu_scene.cpp" />
-    <ClCompile Include="classes\particleSystem.cpp" />
     <ClCompile Include="classes\physiognomy.cpp" />
     <ClCompile Include="classes\player.cpp" />
     <ClCompile Include="classes\raid_scene.cpp" />
@@ -178,6 +177,7 @@
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
     <ClCompile Include="components\loot.cpp" />
     <ClCompile Include="components\pain_component.cpp" />
+    <ClCompile Include="components\particleSystem.cpp" />
     <ClCompile Include="components\player_collisions.cpp" />
     <ClCompile Include="components\enemy_contact_damege.cpp" />
     <ClCompile Include="components\player_health_component.cpp" />

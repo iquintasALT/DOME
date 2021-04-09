@@ -11,7 +11,7 @@
 #include "../components/weapon.h"
 #include "../components/interactions.h"
 #include "../components/player_collisions.h"
-#include "../classes/particleSystem.h"
+#include "../components/particleSystem.h"
 #include "../classes/physiognomy.h"
 #include "../components/bleedout_component.h"
 #include "../components/pain_component.h"

@@ -2,7 +2,7 @@
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../components/Transform.h"
-#include "../classes/particleSystem.h"
+#include "../components/particleSystem.h"
 #include "../utils/ray_cast.h"
 #include "../components/box_collider.h"
 

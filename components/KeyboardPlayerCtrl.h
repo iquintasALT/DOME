@@ -5,7 +5,7 @@
 #include "../utils/checkML.h"
 #include "../game/constant_variables.h"
 #include "../ecs/Manager.h"
-#include "../classes/particleSystem.h"
+#include "../components/particleSystem.h"
 #include "../sdlutils/SDLUtils.h"
 
 #include "rigid_body.h"

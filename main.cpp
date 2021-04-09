@@ -2,10 +2,11 @@
 
 #include <iostream>
 #include <memory>
-#include "game/checkML.h"
+
+#include "./utils/checkML.h"
+#include "./game/Game.h"
 
 
-#include "game/Game.h"
 void start() {
 	Game g(8000);
 
