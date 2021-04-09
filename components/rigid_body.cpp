@@ -58,19 +58,15 @@ void RigidBody::update() {
 				}
 			}
 
-			bool thisCollision = false;
 			Transform* colliderTr = collider->getTransform();
 
 			auto nextPos = tr_->getPos() + vel_;
 			auto colliderPos = colliderTr->getPos();
 
-			if (nextPos.getX() <= colliderPos.getX() + colliderTr->getW() &&
+			bool thisCollision = nextPos.getX() <= colliderPos.getX() + colliderTr->getW() &&
 				nextPos.getX() + tr_->getW() >= colliderPos.getX() &&
 				nextPos.getY() <= colliderPos.getY() + colliderTr->getH() &&
-				nextPos.getY() + tr_->getH() >= colliderPos.getY())
-			{
-				thisCollision = true;
-			}
+				nextPos.getY() + tr_->getH() >= colliderPos.getY();
 
 			if (thisCollision) {
 				if (collider->isTrigger()) {
