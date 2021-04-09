@@ -46,7 +46,7 @@ void ChargeWeapon::update() {
 			Entity* bullet = entity_->getMngr()->addEntity();
 
 
-			Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), Vector2D(), 64, 64, 0);
+			Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 64, 64, 0);
 			bulletTr->setH(1);
 
 			//MIENTRAS NO DETECETE UNA PARED EN LA DIRECCION DEL RATÓN (ESTO ES PROVISIONAL)

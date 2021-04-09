@@ -4,13 +4,12 @@
 #include "KeyboardPlayerCtrl.h"
 #include <iostream>
 
-RigidBody::RigidBody(Vector2D vel, float rotation, bool gravity) : tr_(nullptr), vel_(vel), rotation_(rotation),
+RigidBody::RigidBody(Vector2D vel, bool gravity) : tr_(nullptr), vel_(vel),
 grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY), collide(true), bounciness(0) { }
 
 RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 	vel_ = vel;
 	tr_ = tr;
-	rotation_ = 0;
 	gravity = 0;
 	onFloor_ = false;
 	grActive_ = false;
