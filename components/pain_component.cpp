@@ -7,7 +7,7 @@
 void PainComponent::init() {
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
 	time = sdlutils().currRealTime();
-	weapon = entity_->getComponent<WeaponBehaviour>();
+	//weapon = entity_->getComponent<WeaponBehaviour>();
 }
 void PainComponent::increaseTime() {
 	for (auto b : *phys->getHealthComponents()) {
