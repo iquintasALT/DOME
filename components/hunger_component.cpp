@@ -1,7 +1,7 @@
 #include "hunger_component.h"
 #include "../sdlutils/InputHandler.h"
 
-HungerComponent::HungerComponent() : hunger(1.0f), hungerLevel(hungerLevel::NONE), bleed(nullptr) {}
+HungerComponent::HungerComponent() : hunger(1.0f), hungerLevel(hungerLevel::NONE) {}
 
 void HungerComponent::eat(float hunger_) {
 	hunger += hunger_;
