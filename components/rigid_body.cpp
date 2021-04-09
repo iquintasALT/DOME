@@ -46,8 +46,6 @@ void RigidBody::update() {
 	auto& pos = tr_->getPos();
 
 	collisionVelocity = vel_;
-	onFloor_ = false;
-
 
 	if (collide) {
 		for (auto collider : entity_->getMngr()->getColliders()) {
@@ -129,4 +127,10 @@ void RigidBody::update() {
 void RigidBody::applyGravity() {
 	if (!onFloor_)
 		setVelY(vel_.getY() + gravity / consts::FRAME_RATE);
+}
+
+void RigidBody::reachedFloor() {
+	if (vel_.getY() > consts::FALLING_DMG_SPEED) std::cout << "OUCH, CAI DESDE MUY ALTO Y YOJHAN ES FEO";
+	setVelY(0);
+	setOnFloor(true);
 }
