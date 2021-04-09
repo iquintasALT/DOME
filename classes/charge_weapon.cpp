@@ -10,7 +10,9 @@
 #include "../game/constant_variables.h"
 #include "../components/charge.h"
 
-ChargeWeapon::ChargeWeapon(float fR, int type) : Weapon(fR) { tier = type; };
+ChargeWeapon::ChargeWeapon(float fR, int type) : Weapon(fR) { 
+	damage = 75 * type; 
+};
 
 void ChargeWeapon::update() {
 	Vector2D playerPos = playerTr->getPos();
@@ -78,7 +80,7 @@ void ChargeWeapon::update() {
 			bulletTr->setRot(degreeAngle);
 
 
-			bullet->addComponent<Charge>(radianAngle, tier);
+			bullet->addComponent<Charge>(radianAngle);
 
 			//COMPROBAR COLISIONES CON ENEMIGOS
 		}

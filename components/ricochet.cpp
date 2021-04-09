@@ -8,7 +8,6 @@
 
 Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon)
 {
-	damage = 15 + 5 * tier;
 }
 
 Ricochet::~Ricochet() {}
