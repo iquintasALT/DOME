@@ -15,9 +15,9 @@ class player_animation : public animation_component {
 private:
 	const enum animations_name { iddle = 0, walking, crouch };
 	Animation animations[3]{
-	Animation(iddle, 3),
+	Animation(iddle, 4),
 	Animation(walking, 14),
-	Animation(crouch, 3) };
+	Animation(crouch, 4) };
 
 	Animation currentAnimation = animations[iddle];
 	float timer = 0;

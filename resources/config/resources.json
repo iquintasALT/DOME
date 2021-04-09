@@ -23,6 +23,10 @@
             "file": "resources/sprites/character_sheet.png"
         },
         {
+            "id": "enemy",
+            "file":  "resources/sprites/enemy_sheet.png"
+        },
+        {
             "id": "floor",
             "file": "resources/sprites/floor_tileset.png"
         },
