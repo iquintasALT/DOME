@@ -2,10 +2,10 @@
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../game/constant_variables.h"
 #include "../ecs/Manager.h"
-#include "../classes/particleSystem.h"
+#include "../components/particleSystem.h"
 #include "../sdlutils/SDLUtils.h"
 
 #include "rigid_body.h"

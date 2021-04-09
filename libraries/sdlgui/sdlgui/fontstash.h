@@ -15,7 +15,7 @@
 //    misrepresented as being the original software.
 // 3. This notice may not be removed or altered from any source distribution.
 //
-#include "../../game/checkML.h"
+#include "../../utils/checkML.h"
 #ifndef FONS_H
 #define FONS_H
 

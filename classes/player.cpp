@@ -11,7 +11,7 @@
 #include "../components/weapon.h"
 #include "../components/interactions.h"
 #include "../components/player_collisions.h"
-#include "../classes/particleSystem.h"
+#include "../components/particleSystem.h"
 #include "../classes/physiognomy.h"
 #include "../components/bleedout_component.h"
 #include "../components/pain_component.h"
@@ -20,23 +20,24 @@
 #include "../components/hunger_component.h"
 #include "../components/tiredness_component.h"
 #include "../components/hypothermia_component.h"
+#include "../components/box_collider.h"
 
 Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 {
 	mngr_->setHandler<Player_hdlr>(this);
 	mngr_->addEntity(this);
-	Transform* t = addComponent<Transform>(pos, Vector2D(), 32, 64);
+	Transform* t = addComponent<Transform>(pos, 32, 64);
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
+	//addComponent<BoxCollider>();
 	addComponent<RigidBody>();
-	addComponent<PlayerCollisions>();
 	addComponent<KeyboardPlayerCtrl>();
 	addComponent<player_animation>();
 	addComponent<Interactions>();
 	addComponent<HungerComponent>();
 	addComponent<TirednessComponent>();
-
-	weapon = new WeaponBehaviour(0.5f, 5, mngr_, t->getPos(), t, 8);
+	
+	weapon = new WeaponBehaviour(0.5f, 5, mngr_, t->getPos(), t, 7);
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);

@@ -6,9 +6,10 @@
 #include <vector>
 #include <list>
 
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "ecs.h"
 #include "Entity.h"
+class BoxCollider;
 
 class InteractableElement;
 
@@ -53,16 +54,23 @@ public:
 	inline const std::vector<InteractableElement*>& getInteractableElements() {
 		return interactableElements;
 	}
+
+	inline const std::vector<BoxCollider*>& getColliders() {
+		return colliders;
+	}
+
 	void update();
 	void render();
 	void refresh();
 
 	void AddInteractableElement(InteractableElement* ie);
+	void AddCollider(BoxCollider* bc);
 private:
 	std::vector<Entity*> entities_;
 	std::array<Entity*, ecs::maxHdlr> hdlrs_;
 
 
 	std::vector<InteractableElement*> interactableElements;
+	std::vector<BoxCollider*> colliders;
 };
 

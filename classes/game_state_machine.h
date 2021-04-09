@@ -2,7 +2,7 @@
 #define GAMESTATEMACHINE_H_
 
 #include "../classes/game_scene.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../classes/shelter_scene.h"
 #include <stack>
 

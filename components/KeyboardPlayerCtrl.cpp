@@ -11,7 +11,8 @@ KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 
 void KeyboardPlayerCtrl::init() {
 	rb_ = entity_->getComponent<RigidBody>();
-	assert(rb_ != nullptr);
+	tr_ = entity_->getComponent<Transform>();
+	assert(rb_ != nullptr && tr_ != nullptr);
 }
 
 void KeyboardPlayerCtrl::update() {

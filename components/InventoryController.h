@@ -12,7 +12,7 @@
 #include "../classes/player.h"
 //#include "../components/weapon.h"
 #include "../components/weapon.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 #include "../classes/weapon_behaviour.h"
 
 class InventoryController: public Component
@@ -35,6 +35,7 @@ public :
 	void Use();
 
 	void OpenLoot();
+
 
 	Inventory* inventory;
 };

@@ -3,7 +3,7 @@
 #include "../sdlutils/InputHandler.h"
 #include "../ecs/Component.h"
 #include "../Components/Transform.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 class Manager;
 class Interactions: public Component

@@ -6,7 +6,7 @@
 #include "../components/Image.h"
 #include "../components/Transform.h"
 #include "../components/Inventory.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 using namespace std;
 

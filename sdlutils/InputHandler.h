@@ -7,7 +7,7 @@
 #include <array>
 
 #include "../utils/Singleton.h"
-#include "../game/checkML.h"
+#include "../utils/checkML.h"
 
 // Instead of a Singleton class, we could make it part of
 // SDLUtils as well.
