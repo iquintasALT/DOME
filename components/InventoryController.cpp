@@ -16,7 +16,11 @@ void InventoryController::init() {
 	int width = 10, height = 5;
 
 	inventoryPanel = entity_->getMngr()->addEntity();
-	Transform* t = inventoryPanel->addComponent<Transform>(Vector2D(300, 150), 300, 300, 0);
+	float trwidth = 450;
+	float trheight = 450;
+	float xpos = (sdlutils().width() - trwidth) / 2;
+	float ypos = (sdlutils().height() - trheight) / 2;
+	Transform* t = inventoryPanel->addComponent<Transform>(Vector2D(xpos, ypos), trwidth, trheight, 0);
 	inventoryPanel->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0);
 	inventory = inventoryPanel->addComponent<Inventory>(width, height);
 
@@ -24,12 +28,10 @@ void InventoryController::init() {
 	inventory->storeDefaultItems();
 
 
-
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
 
 
 	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon()->getWeaponMovement();
-
 
 	assert(playerMovement != nullptr);
 

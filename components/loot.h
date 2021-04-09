@@ -12,12 +12,15 @@ using namespace std;
 class Loot :public InteractableElement
 {
 private:
-	bool isOpen = false;
+	static const float margin;
+	bool isOpen;
 
+	Entity* inventoryEntity;
 	Inventory* inventory;
 	Inventory* playerInventory;
 	InventoryController* inventoryController;
-
+	Transform* playerTransform;
+	Transform* inventoryTransform;
 public:
 	Loot(string mssg);
 	void init() override;

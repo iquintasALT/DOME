@@ -9,16 +9,31 @@ Inventory::Inventory(int width, int height) : width(width), height(height), othe
 	selectedItem_ = nullptr;
 	justPressed = false;
 
+	originalPos = Vector2D();
+
 	grid = std::vector<std::vector<Item*>>(width, std::vector<Item*>(height, nullptr));
 }
 Inventory::Inventory(int width, int height, Inventory* player) : Inventory(width, height) {
 
 	this->other = player;
+	originalPos = Vector2D();
+}
+void Inventory::defaultPosition() {
+	moveInventory(originalPos);
+}
+
+void Inventory::moveInventory(Point2D pos) {
+	transform->setPos(pos);
+
+	for (auto a : storedItems) {
+		a->image->getComponent<Transform>()->setPos(itemPosition(a->x, a->y));
+	}
 }
 
 void Inventory::init() {
 	transform = entity_->getComponent<Transform>();
 	assert(transform != nullptr);
+	originalPos = transform->getPos();
 }
 void Inventory::render() {
 	for (auto a : storedItems) {

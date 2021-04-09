@@ -26,13 +26,10 @@
 #include <sdlgui/formhelper.h>
 #include <memory>
 
-
 //#if defined(_WIN32)
 //#include <windows.h>
 //#endif
 //#include <iostream>
-
-
 
 using std::cout;
 using std::cerr;
@@ -69,8 +66,6 @@ void ShelterScene::init() {
 
 	auto& ventana1 = createSimpleWidget(); //se crea ya escondida
 
-
-
 	//createSimpleButton(Vector2i(500, 100), "INVENTARIO", "Abre el Inventario", ventana1);
 	std::function<void()> abreCrafteos = [&]() { workshop->setRenderFlag(true); };
 	sdlgui::Widget& window = createSimpleButton(Vector2i(500, 200), "CRAFTEO", "Abre la lista de posibles crafteos", abreCrafteos);
@@ -80,7 +75,6 @@ void ShelterScene::init() {
 	//createSimpleButton(Vector2i(500, 400), "REPARAR NAVE", "Abre el Inventario", ventana1);
 
 	//createSimpleButton(Vector2i(500, 500), "COMENZAR RAID", "Abre el Inventario", ventana1);
-
 
 	//al colocarlo todo, se utiliza esta funcion para pasarle la info al render
 	sc_->performLayout(sdlutils().renderer());

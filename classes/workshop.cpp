@@ -74,6 +74,7 @@ void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string n
 }
 
 void Workshop::update() {
+	getMngr()->refresh();
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {

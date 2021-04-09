@@ -10,7 +10,7 @@ void Interactions::init() {
 void Interactions::update() {
 	InteractableElement* IE = nullptr;
 	for (auto ie : manager->getInteractableElements()) {
-		if (ie->CheckCollision(transform->getPos())) {
+		if (ie->CheckCollision(transform->getPos(), transform->getW(), transform->getH())) {
 			IE = ie;
 		}
 	}
