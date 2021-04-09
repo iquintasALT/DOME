@@ -4,13 +4,14 @@
 
 InteractableElement::InteractableElement(string msg) :message(msg), transform(nullptr) {}
 
-bool InteractableElement::CheckCollision(Point2D pos) {
+bool InteractableElement::CheckCollision(Point2D pos, float width, float height) {
 	bool inCollision = false;
-
-	inCollision = pos.getX() > transform->getPos().getX() &&
-		pos.getX() < transform->getPos().getX() + transform->getW() &&
-		pos.getY() > transform->getPos().getY() &&
-		pos.getY() < transform->getPos().getY() + transform->getH();
+	float x = pos.getX() + width / 2;
+	float y = pos.getY() + height / 2;
+	inCollision = x > transform->getPos().getX() &&
+			      x < transform->getPos().getX() + transform->getW() &&
+		          y > transform->getPos().getY() &&
+		          y < transform->getPos().getY() + transform->getH();
 
 
 	if (inCollision && !isColliding) CollisionEnter();
