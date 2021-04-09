@@ -18,12 +18,9 @@
 
 class WeaponBehaviour : public GameEntity {
 private:
-	float dmg_;
 	Weapon* weaponMovement;
 
 public:
-	WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vector2D playerPos, Transform* playerTr, int typeOfWeapon);
+	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr, int typeOfWeapon);
 	Weapon* getWeaponMovement();
-	void setDmg(float dmg) { dmg_ = dmg; }
-	float getDmg() { return dmg_; }
 };

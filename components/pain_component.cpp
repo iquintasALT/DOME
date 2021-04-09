@@ -3,11 +3,13 @@
 #include "concussion_component.h"
 #include "intoxication_component.h"
 #include "../ecs/Manager.h"
+#include "../components/weapon.h"
+#include "../classes/weapon_behaviour.h"
 
 void PainComponent::init() {
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
 	time = sdlutils().currRealTime();
-	//weapon = entity_->getComponent<WeaponBehaviour>();
+	weapon = static_cast<Player*>(entity_)->getCurrentWeapon()->getWeaponMovement();
 }
 void PainComponent::increaseTime() {
 	for (auto b : *phys->getHealthComponents()) {

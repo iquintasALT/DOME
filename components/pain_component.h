@@ -6,6 +6,7 @@ class ConcussionComponent;
 class IntoxicationComponent;
 class Physiognomy;
 class WeaponBehaviour;
+class Weapon;
 
 /*
 * PainComponent es un daño en raid que el jugador puede sufrir debido a cortes o mordeduras de los enemigos a melee.
@@ -18,7 +19,7 @@ class PainComponent : public PlayerHealthComponent
 private:
 	int time;
 	Physiognomy* phys;
-	WeaponBehaviour* weapon;
+	Weapon* weapon;
 public:
 	PainComponent() : phys(nullptr), time(0), weapon(nullptr) {};
 	void newState();
