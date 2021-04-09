@@ -6,7 +6,7 @@
 class ChargeWeapon : public Weapon
 {
 private:
-	int tier;
+	int damage;
 public:
 	ChargeWeapon(float fR, int type);
 	virtual void update();
