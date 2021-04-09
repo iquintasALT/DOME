@@ -12,9 +12,8 @@ class Charge : public Component {
 private:
 	Transform* tr_;
 	float angle;
-	int damage;
 public:
-	inline Charge(float angle, int type) : tr_(nullptr), angle(angle) { damage = 75 * type; }
+	inline Charge(float angle) : tr_(nullptr), angle(angle) { }
 
 	inline virtual ~Charge() {}
 

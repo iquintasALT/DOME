@@ -17,6 +17,7 @@ WeaponBehaviour::WeaponBehaviour(float fireRate, float dmg, Manager* mngr, Vecto
 	else if(typeOfWeapon == 2)
 	{ 
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, 1);
+		addComponent<Weapon>(fireRate);
 	}
 	else if (typeOfWeapon == 3)
 	{

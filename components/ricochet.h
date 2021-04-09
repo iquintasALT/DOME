@@ -17,7 +17,6 @@ private:
 	RigidBody* rb;
 	int n; //numero rebotes
 	int tier;
-	int damage;
 	int explosion = 100; // Daño de la explosion
 
 	void OnCollision(BoxCollider* collider) override;
