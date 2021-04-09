@@ -41,10 +41,6 @@ void KeyboardPlayerCtrl::update() {
 			crouched = true;
 		}
 
-		//Test key for debugging
-		if (keystates[SDL_SCANCODE_J]) {
-			//dynamic_cast<Player*>(entity_)->equipWeapon(new WeaponBehaviour());
-		}
 	}
 	else if (!keystates[SDL_SCANCODE_LCTRL]) {
 		// Esta l�nea es para que se quede a la misma altura (no se hunda en el suelo)
@@ -52,7 +48,7 @@ void KeyboardPlayerCtrl::update() {
 		crouched = false;
 	}
 
-	//Camera::mainCamera->FollowPlayer(entityTr->getPos());
+	//Camera::mainCamera->FollowPlayer(tr_->getPos());
 }
 
 void KeyboardPlayerCtrl::resetSpeed() {

@@ -8,6 +8,7 @@
 #include "../game/constant_variables.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/rigid_body.h"
+#include "../components/particleSystem.h"
 #include <iostream>
 
 class player_animation : public animation_component {
@@ -27,6 +28,8 @@ private:
 	Transform* tr_;
 	RigidBody* rb;
 	KeyboardPlayerCtrl* ctrl;
+
+	ParticleSystem* walkDust;
 
 public:
 	player_animation();
