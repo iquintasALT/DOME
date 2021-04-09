@@ -8,7 +8,7 @@
 #include "../classes/tile.h"
 #include "../components/box_collider.h"
 #include "../components/InventoryController.h"
-#include "../classes/particleSystem.h"
+#include "../components/particleSystem.h"
 
 #include "../ecs/ecs.h"
 #include "../ecs/Manager.h"
