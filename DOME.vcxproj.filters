@@ -278,6 +278,9 @@
     <ClCompile Include="components\particleSystem.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\enemy_animation.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -623,6 +626,9 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\particleSystem.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\enemy_animation.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
