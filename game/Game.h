@@ -1,7 +1,7 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
 #pragma once
-#include "../game/countdown.h"
+#include "../classes/countdown.h"
 #include "../classes/game_scene.h"
 #include "../classes/game_state_machine.h"
 #include "../utils/checkML.h"

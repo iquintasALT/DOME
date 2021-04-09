@@ -5,15 +5,6 @@
     <ClCompile Include="utils\Collisions.cpp">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
-    <ClCompile Include="game\countdown.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="ecs\Entity.cpp">
-      <Filter>Source Files\ecs</Filter>
-    </ClCompile>
-    <ClCompile Include="game\Game.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="classes\game_character.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -37,9 +28,6 @@
     </ClCompile>
     <ClCompile Include="classes\physiognomy.cpp">
       <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="sdlutils\RandomNumberGenerator.cpp">
-      <Filter>Source Files\sdlutils</Filter>
     </ClCompile>
     <ClCompile Include="sdlutils\SDLUtils.cpp">
       <Filter>Source Files\sdlutils</Filter>
@@ -284,6 +272,12 @@
     <ClCompile Include="components\hypothermia_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="game\Game.cpp">
+      <Filter>Source Files\game</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\countdown.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -292,13 +286,7 @@
     <ClInclude Include="ecs\Component.h">
       <Filter>Header Files\ecs</Filter>
     </ClInclude>
-    <ClInclude Include="game\countdown.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
     <ClInclude Include="ecs\ecs.h">
-      <Filter>Header Files\ecs</Filter>
-    </ClInclude>
-    <ClInclude Include="game\ecs_defs.h">
       <Filter>Header Files\ecs</Filter>
     </ClInclude>
     <ClInclude Include="ecs\Entity.h">
@@ -306,9 +294,6 @@
     </ClInclude>
     <ClInclude Include="sdlutils\Font.h">
       <Filter>Header Files\sdlutils</Filter>
-    </ClInclude>
-    <ClInclude Include="game\Game.h">
-      <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\game_character.h">
       <Filter>Header Files\classes</Filter>
@@ -607,9 +592,6 @@
     <ClInclude Include="components\rigid_body.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="game\constant_variables.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
     <ClInclude Include="classes\workshop.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
@@ -630,6 +612,18 @@
     </ClInclude>
     <ClInclude Include="utils\checkML.h">
       <Filter>Header Files\utils</Filter>
+    </ClInclude>
+    <ClInclude Include="game\Game.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\constant_variables.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="game\ecs_defs.h">
+      <Filter>Header Files\game</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\countdown.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -683,6 +677,12 @@
     </Filter>
     <Filter Include="Source Files\sdlgui">
       <UniqueIdentifier>{93fe9e39-8c65-404d-8d6c-0722e2dd4534}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\game">
+      <UniqueIdentifier>{a466ea0a-784b-45e6-8a08-041e846eb5d7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\game">
+      <UniqueIdentifier>{4f169d5b-452d-457a-abfd-0a54f7199ddd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
