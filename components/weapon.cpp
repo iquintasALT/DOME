@@ -11,11 +11,10 @@
 #include "../components/ricochet.h"
 #include "../components/rigid_body.h"
 
-
 #include <iostream>
 
-Weapon::Weapon(float fR) : fireRate(fR), flipped(false), counter(0), entityImg(nullptr) {}
-
+Weapon::Weapon(float fR, int dam) : fireRate(fR), flipped(false), counter(0), entityImg(nullptr), damage(dam), player(nullptr), 
+																						playerTr(nullptr), entityTr(nullptr) {}
 Weapon::~Weapon() {}
 
 void Weapon::update() {
@@ -33,7 +32,7 @@ void Weapon::update() {
 	Vector2D  dir = (mousePos - yCenteredPos).normalize();
 
 	float radianAngle = atan2(dir.getY(), dir.getX());
-	float degreeAngle = (radianAngle * 180) / M_PI;
+	float degreeAngle = (radianAngle * 180.0) / M_PI;
 
 	if (!flipped && (degreeAngle > 90 || degreeAngle < -90)) {
 		entityImg->setFlip(SDL_FLIP_VERTICAL);

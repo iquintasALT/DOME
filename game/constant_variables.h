@@ -32,4 +32,34 @@ namespace consts {
 	const int TIME_TO_INCREASE_INTOXICATION = 5000;
 	const int TIME_TO_DECREASE_HUNGER = 10000;
 	const float HUNGER_TO_DECREASE = 0.15f;
+
+	//WEAPONS
+
+	//Basic Weapon
+	const int WEAPON_TIER1_DAMAGE = 100;
+	const int WEAPON_TIER2_DAMAGE = 100;
+	const int WEAPON_TIER3_DAMAGE = 100;
+
+	const int WEAPON_TIER1_FIRERATE = 100;
+	const int WEAPON_TIER2_FIRERATE = 100;
+	const int WEAPON_TIER3_FIRERATE = 100;
+
+	//Ricochet Weapon
+	const int RICOCHET_TIER1_DAMAGE = 100;
+	const int RICOCHET_TIER2_DAMAGE = 100;
+	const int RICOCHET_TIER3_DAMAGE = 100;
+
+	const int RICOCHET_TIER1_FIRERATE = 100;
+	const int RICOCHET_TIER2_FIRERATE = 100;
+	const int RICOCHET_TIER3_FIRERATE = 100;
+
+	//Charge Weapon
+	const int CHARGE_TIER1_DAMAGE = 100;
+	const int CHARGE_TIER2_DAMAGE = 100;
+	const int CHARGE_TIER3_DAMAGE = 100;
+
+	const int CHARGE_TIER1_FIRERATE = 100;
+	const int CHARGE_TIER2_FIRERATE = 100;
+	const int CHARGE_TIER3_FIRERATE = 100;
+
 }
