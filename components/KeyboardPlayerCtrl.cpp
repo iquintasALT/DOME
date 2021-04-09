@@ -1,6 +1,7 @@
 #include "KeyboardPlayerCtrl.h"
 #include "../classes/player.h"
 #include "../classes/camera.h"
+#include "../game/constant_variables.h"
 
 KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	speed = consts::PLAYER_SPEED;
@@ -13,6 +14,11 @@ void KeyboardPlayerCtrl::init() {
 	rb_ = entity_->getComponent<RigidBody>();
 	tr_ = entity_->getComponent<Transform>();
 	assert(rb_ != nullptr && tr_ != nullptr);
+}
+
+void KeyboardPlayerCtrl::OnCollision(BoxCollider* bc) {
+	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED)
+		std::cout << "OUCH, CAI DESDE MUY ALTO Y YOJHAN ES FEO";
 }
 
 void KeyboardPlayerCtrl::update() {
@@ -30,7 +36,7 @@ void KeyboardPlayerCtrl::update() {
 		}
 
 		if (keystates[SDL_SCANCODE_SPACE] && rb_->onFloor()) {
- 			rb_->setVel(Vector2D(rb_->getVel().getX(), -jumpSpeed));
+			rb_->setVel(Vector2D(rb_->getVel().getX(), -jumpSpeed));
 			rb_->setOnFloor(false);
 		}
 
@@ -41,10 +47,6 @@ void KeyboardPlayerCtrl::update() {
 			crouched = true;
 		}
 
-		//Test key for debugging
-		if (keystates[SDL_SCANCODE_J]) {
-			//dynamic_cast<Player*>(entity_)->equipWeapon(new WeaponBehaviour());
-		}
 	}
 	else if (!keystates[SDL_SCANCODE_LCTRL]) {
 		// Esta l�nea es para que se quede a la misma altura (no se hunda en el suelo)
@@ -52,7 +54,7 @@ void KeyboardPlayerCtrl::update() {
 		crouched = false;
 	}
 
-	//Camera::mainCamera->FollowPlayer(entityTr->getPos());
+	//Camera::mainCamera->FollowPlayer(tr_->getPos());
 }
 
 void KeyboardPlayerCtrl::resetSpeed() {
