@@ -4,6 +4,7 @@
 #include "../components/concussion_component.h"
 #include "../components/player_health_component.h"
 #include "../components/intoxication_component.h"
+#include "../components/hypothermia_component.h"
 
 void Physiognomy::addBleedState() {
 	assert(numStates < consts::MAX_MULTIPLE_STATES);
@@ -110,5 +111,23 @@ void Physiognomy::removeConcussionState() {
 			return;
 		}
 	}
+}
+void Physiognomy::addHypothermiaState() {
+	hypothermia = player->addComponent<HypothermiaComponent>();
+}
+void Physiognomy::removeHypothermiaState() {
+	assert(player->getComponent<HypothermiaComponent>() != nullptr);
+	player->removeComponent<HypothermiaComponent>();
+	hypothermia = nullptr;
+}
+
+void Physiognomy::removeAllStates() {
+	for (int i = 0; i < numBleedStates; i++) removeBleedState();
+	for (int i = 0; i < numStates; i++) {
+		if (dynamic_cast<ConcussionComponent*>(healthComponents[i]) != nullptr) removeConcussionState();
+		else if (dynamic_cast<PainComponent*>(healthComponents[i]) != nullptr) removePainState();
+		else if (dynamic_cast<IntoxicationComponent*>(healthComponents[i]) != nullptr) removeIntoxicationState();
+	}
+	if (hypothermia != nullptr) player->removeComponent<HypothermiaComponent>();
 }
 

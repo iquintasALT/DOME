@@ -9,6 +9,7 @@ class BleedoutComponent;
 class PainComponent;
 class ContussionComponent;
 class IntoxicationComponent;
+class HypothermiaComponent;
 using namespace std;
 
 /*
@@ -23,6 +24,7 @@ class Physiognomy {
 private:
 	Player* player;
 	vector<PlayerHealthComponent*> healthComponents;
+	HypothermiaComponent* hypothermia;
 	int numStates;
 
 	int numBleedStates;
@@ -30,7 +32,7 @@ private:
 	bool intoxicationAdded;
 	bool concussionAdded;
 public:
-	inline Physiognomy(Player* player_) : player(player_), healthComponents(consts::MAX_MULTIPLE_STATES) {
+	inline Physiognomy(Player* player_) : player(player_), healthComponents(consts::MAX_MULTIPLE_STATES), hypothermia(nullptr) {
 		numStates = 0; numBleedStates = 0; painAdded = false; intoxicationAdded = false; concussionAdded = false; };
 
 	//A�adir estados al sistema
@@ -38,12 +40,17 @@ public:
 	void addPainState();
 	void addIntoxicationState();
 	void addConcussionState();
+	void addHypothermiaState();
 
 	//Borrar estados del sistema
 	void removeBleedState();
 	void removePainState();
 	void removeIntoxicationState();
 	void removeConcussionState();
+	void removeHypothermiaState();
+
+	//Borra todos los estados (cuando se abandona la raid)
+	void removeAllStates();
 
 	int getNumStates() { return numStates; }
 	void moveElems(int i);
