@@ -12,8 +12,9 @@
 class HypothermiaComponent : public PlayerHealthComponent
 {
 private:
-
+	float hypothermia;
 public:
-
+	HypothermiaComponent() : hypothermia(0){}
+	void init() override;
 };
 
