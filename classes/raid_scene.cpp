@@ -16,5 +16,5 @@ void RaidScene::init() {
 	Entity* interactableElement = mngr_->addEntity();
 	interactableElement->addComponent<Transform>(Vector2D(20, 600), 64, 64, 0);
 	interactableElement->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
-	interactableElement->addComponent<Loot>("Hola nena");
+	interactableElement->addComponent<Loot>("Hola nena", 5, 5);
 }
