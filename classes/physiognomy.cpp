@@ -6,6 +6,11 @@
 #include "../components/intoxication_component.h"
 #include "../components/hypothermia_component.h"
 
+void Physiognomy::checkAlive() {
+	if (numStates < consts::MAX_MULTIPLE_STATES) playerAlive = true;
+	else playerAlive = false;
+}
+
 void Physiognomy::addBleedState() {
 	assert(numStates < consts::MAX_MULTIPLE_STATES);
 	if (numStates < consts::MAX_MULTIPLE_STATES) {
@@ -14,6 +19,7 @@ void Physiognomy::addBleedState() {
 
 		numBleedStates++;
 		numStates++;
+		checkAlive();
 	}
 }
 
@@ -24,6 +30,7 @@ void Physiognomy::addPainState() {
 		healthComponents[numStates] = c;
 		numStates++;
 		painAdded = true;
+		checkAlive();
 	}
 	else player->getComponent<PainComponent>()->reduceWeaponDamage();
 }
@@ -35,6 +42,7 @@ void Physiognomy::addIntoxicationState() {
 		healthComponents[numStates] = c;
 		numStates++;
 		intoxicationAdded = true;
+		checkAlive();
 	}
 	else player->getComponent<IntoxicationComponent>()->increaseTime();
 }
@@ -46,13 +54,15 @@ void Physiognomy::addConcussionState() {
 		healthComponents[numStates] = c;
 		numStates++;
 		concussionAdded = true;
+		checkAlive();
 	}
 	else player->getComponent<ConcussionComponent>()->increaseTime();
 }
 
 void Physiognomy::moveElems(int i) {
 	for (int c = i; c < numStates - 1; c++) {
-		healthComponents[c] = healthComponents[c + 1];
+		int a = c + 1; //Evitando un warning
+		healthComponents[c] = healthComponents[a];
 	}
 }
 
@@ -129,5 +139,13 @@ void Physiognomy::removeAllStates() {
 		else if (dynamic_cast<IntoxicationComponent*>(healthComponents[i]) != nullptr) removeIntoxicationState();
 	}
 	if (hypothermia != nullptr) player->removeComponent<HypothermiaComponent>();
+}
+
+bool Physiognomy::alive() {
+	return playerAlive;
+}
+void Physiognomy::die() {
+	playerAlive = false;
+	removeAllStates();
 }
 

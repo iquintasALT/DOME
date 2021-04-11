@@ -15,7 +15,6 @@ class Manager;
 class Game {
 private:
 	GameStateMachine* states;
-	Countdown* timer;
 
 public:
 	Game(int totaltime); 

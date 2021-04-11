@@ -86,6 +86,10 @@ public:
 	void setRotationOrigin(int x, int y) {
 		rotationOrigin = { x, y };
 	}
+	
+	void setAlpha(Uint8 alpha) {
+		tex_->setAlpha(alpha);
+	}
 
 	SDL_Point getOrigin() {
 		return rotationOrigin;

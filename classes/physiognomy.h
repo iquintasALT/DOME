@@ -26,16 +26,20 @@ private:
 	vector<PlayerHealthComponent*> healthComponents;
 	HypothermiaComponent* hypothermia;
 	int numStates;
+	bool playerAlive;
 
 	int numBleedStates;
 	bool painAdded;
 	bool intoxicationAdded;
 	bool concussionAdded;
+
+	void checkAlive();
+	void moveElems(int i);
 public:
 	inline Physiognomy(Player* player_) : player(player_), healthComponents(consts::MAX_MULTIPLE_STATES), hypothermia(nullptr) {
-		numStates = 0; numBleedStates = 0; painAdded = false; intoxicationAdded = false; concussionAdded = false; };
+		numStates = 0; numBleedStates = 0; painAdded = false; intoxicationAdded = false; concussionAdded = false; playerAlive = true; }
 
-	//A�adir estados al sistema
+	//Añadir estados al sistema
 	void addBleedState();
 	void addPainState();
 	void addIntoxicationState();
@@ -51,10 +55,9 @@ public:
 
 	//Borra todos los estados (cuando se abandona la raid)
 	void removeAllStates();
-
 	int getNumStates() { return numStates; }
-	void moveElems(int i);
 
-	inline bool alive() { return numStates < consts::MAX_MULTIPLE_STATES; };
+	void die();
+	inline bool alive();
 	inline vector<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
 };

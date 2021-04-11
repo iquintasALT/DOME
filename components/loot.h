@@ -9,6 +9,7 @@
 
 using namespace std;
 
+class Manager;
 class Loot :public InteractableElement
 {
 private:
@@ -21,9 +22,14 @@ private:
 	InventoryController* inventoryController;
 	Transform* playerTransform;
 	Transform* inventoryTransform;
+
+	int invenWidth, invenHeight;
 public:
-	Loot(string mssg);
+	Loot(string mssg, int width, int height);
 	void init() override;
 	void Interact() override;
+	inline Inventory* getInventory() { return inventory; }
+
+
 };
 

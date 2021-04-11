@@ -278,7 +278,11 @@
     <ClCompile Include="components\particleSystem.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\enemy_animation.cpp">
+    <ClCompile Include="classes\hud.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="components\enemy_animation.cpp" />
+    <ClCompile Include="components\classic_bullet.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -628,7 +632,11 @@
     <ClInclude Include="components\particleSystem.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\enemy_animation.h">
+    <ClInclude Include="classes\hud.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\enemy_animation.h" />
+    <ClInclude Include="components\classic_bullet.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
