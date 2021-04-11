@@ -48,6 +48,8 @@ public:
 
 	inline SDL_Texture* getSDLTexture() { return texture_; };
 
+	void setAlpha(Uint8 alpha); //0-255
+
 	// This rendering method corresponds to method SDL_RenderCopyEx.
 	//
 	// Renders part of the texture (src) to a destination rectangle (dest)
