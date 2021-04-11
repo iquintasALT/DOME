@@ -110,8 +110,16 @@ struct Background;
 struct Walls;
 struct Player;
 struct Enemy;
+struct Bullets;
+struct Loot;
+struct Interface;
+struct Item;
 #define _RENDER_LIST_ \
 	Background, \
 	Walls, \
 	Player, \
-	Enemy
+	Enemy, \
+	Bullets, \
+	Loot, \
+	Interface, \
+	Item
