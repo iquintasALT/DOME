@@ -12,7 +12,6 @@ private:
 
 public:
 
-	int getChargerBullets() { return actcharger; }
 	ChargeWeapon(float fR, int dam);
 	virtual void update();
 };

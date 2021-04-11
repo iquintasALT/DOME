@@ -27,6 +27,12 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 	bool col1 = (Vector2D::intersection(origin_, direction_, s.vertices[closestVertex], closestEdgeDirection1, pointOfImpact1)),
 		col2 = Vector2D::intersection(origin_, direction_, s.vertices[closestVertex], closestEdgeDirection2, pointOfImpact2);
 
+	//Check that collision point is in the direction the ray is pointing, and not behind
+	col1 &= (direction_.getX() > 0.0 == pointOfImpact1.getX() > origin_.getX() && 
+		direction_.getY() > 0.0 == pointOfImpact1.getY() > origin_.getY());
+	col2 &= (direction_.getX() > 0.0 == pointOfImpact2.getX() > origin_.getX() && 
+		direction_.getY() > 0.0 == pointOfImpact2.getY() > origin_.getY());
+
 	//Move both points of impact ever so slightly closer to square center, to account for floating point imprecision
 	pointOfImpact1 = pointOfImpact1 + Vector2D(centre - pointOfImpact1) * 0.001;
 	pointOfImpact2 = pointOfImpact2 + Vector2D(centre - pointOfImpact2) * 0.001;
@@ -47,9 +53,9 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 		if (col1 && col2)
 		{
 			if ((pointOfImpact1 - origin_).magnitude() > (pointOfImpact2 - origin_).magnitude())
-				pointOfImpact_ = pointOfImpact1;
-			else
 				pointOfImpact_ = pointOfImpact2;
+			else
+				pointOfImpact_ = pointOfImpact1;
 		}
 		//Otherwise, save the only collision point
 		else if (col1)
@@ -91,6 +97,6 @@ short int RayCast::getClosestVertex(const Point2D& p, const Square& s)
 bool RayCast::isGrounded(Transform* tr)
 {
 	RayCast rC = RayCast(tr->getPos() + Vector2D(tr->getW() / 2, tr->getH()), Vector2D(0.0, -1.0));
-	rC.distanceToGroup<Wall_grp>(tr->getEntity());
+	rC.distanceToGroup<Wall_grp>(tr->getEntity()->getMngr());
 	return rC.distance_ != -1.0 && rC.distance_ < 0.2;
 }
