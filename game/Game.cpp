@@ -20,6 +20,7 @@
 #include "../classes/menu_scene.h"
 #include "../classes/raid_scene.h"
 #include "../classes/shelter_scene.h"
+#include "../classes/locations_scene.h"
 
 Game::Game(int totaltime) {
 	states = new GameStateMachine();
@@ -61,6 +62,7 @@ void Game::start() {
 			exit = true;
 			continue;
 		}
+		
 
 		states->currentState()->update();
 		states->currentState()->refresh();

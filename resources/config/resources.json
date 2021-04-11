@@ -75,8 +75,16 @@
             "file": "resources/sprites/craft_ui/arrow.png"
         },
         {
-            "id": "items",
-            "file": "resources/sprites/items_sheet.png"
+          "id": "items",
+          "file": "resources/sprites/items_sheet.png"
+        },
+        {
+          "id": "frost",
+          "file": "resources/sprites/frost.png"
+        },
+        {
+          "id": "locations_image",
+          "file": "resources/sprites/locations_image.png"
         }
     ],
 
