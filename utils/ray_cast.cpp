@@ -16,7 +16,7 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 	//Calculate which vertex from square is closest to ray origin
 	short int closestVertex = getClosestVertex(origin_, s);
 	//Choose one of the two sides that converge at closestVertex
-	Vector2D closestEdgeDirection1 = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4], closestEdgeDirection2;
+ 	Vector2D closestEdgeDirection1 = s.vertices[closestVertex] - s.vertices[(closestVertex + 1) % 4], closestEdgeDirection2;
 	if (closestVertex == 0)
 		closestEdgeDirection2 = s.vertices[closestVertex] - s.vertices[3];
 	else
