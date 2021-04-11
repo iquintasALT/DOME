@@ -27,6 +27,12 @@ void RayCast::rayCastToSquare(Vector2D centre, Vector2D vertex0, Vector2D vertex
 	bool col1 = (Vector2D::intersection(origin_, direction_, s.vertices[closestVertex], closestEdgeDirection1, pointOfImpact1)),
 		col2 = Vector2D::intersection(origin_, direction_, s.vertices[closestVertex], closestEdgeDirection2, pointOfImpact2);
 
+	//Check that collision point is in the direction the ray is pointing, and not behind
+	col1 &= (direction_.getX() > 0.0 == pointOfImpact1.getX() > origin_.getX() && 
+		direction_.getY() > 0.0 == pointOfImpact1.getY() > origin_.getY());
+	col2 &= (direction_.getX() > 0.0 == pointOfImpact2.getX() > origin_.getX() && 
+		direction_.getY() > 0.0 == pointOfImpact2.getY() > origin_.getY());
+
 	//Move both points of impact ever so slightly closer to square center, to account for floating point imprecision
 	pointOfImpact1 = pointOfImpact1 + Vector2D(centre - pointOfImpact1) * 0.001;
 	pointOfImpact2 = pointOfImpact2 + Vector2D(centre - pointOfImpact2) * 0.001;
