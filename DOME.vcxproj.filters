@@ -278,6 +278,9 @@
     <ClCompile Include="components\particleSystem.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="classes\hud.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -624,6 +627,9 @@
     </ClInclude>
     <ClInclude Include="components\particleSystem.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\hud.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

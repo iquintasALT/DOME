@@ -38,7 +38,7 @@ void RicochetWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate && actcharger > 0) {
 		counter = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 
@@ -62,5 +62,21 @@ void RicochetWeapon::update() {
 
 		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
 		bullet->addComponent<Ricochet>(playerTr, nbounce, ntier);
+
+		actcharger--;
+
+		if (actcharger == 0)
+		{
+			if (nbullets >= charger)
+			{
+				actcharger = charger;
+				nbullets -= charger;
+			}
+			else
+			{
+				actcharger = nbullets;
+				nbullets = 0;
+			}
+		}
 	}
 }
