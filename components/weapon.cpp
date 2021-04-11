@@ -69,6 +69,7 @@ void Weapon::update() {
 		bulletTr->setRot(degreeAngle);
 
 		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
+		bullet->addComponent<ClassicBullet>(playerTr, 0);
 
 		if (actcharger == 0)
 		{

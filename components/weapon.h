@@ -30,6 +30,8 @@ public:
 
 	~Weapon();
 
+	int getChargerBullets() { return actcharger; }
+
 	virtual void init();
 
 	virtual void update();
