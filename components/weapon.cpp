@@ -1,4 +1,4 @@
-#include "weapon.h"
+ï»¿#include "weapon.h"
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
 #include "../game/constant_variables.h"
@@ -9,12 +9,13 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../classes/camera.h"
 #include "../components/ricochet.h"
+#include "../components/classic_bullet.h"
 #include "../components/rigid_body.h"
 
 #include <iostream>
 
-Weapon::Weapon(float fR, int dam) : fireRate(fR), flipped(false), counter(0), entityImg(nullptr), damage(dam), player(nullptr), 
-																						playerTr(nullptr), entityTr(nullptr) {}
+Weapon::Weapon(float fR, int dam) : fireRate(fR), flipped(false), counter(0), entityImg(nullptr), damage(dam), player(nullptr),
+playerTr(nullptr), entityTr(nullptr) {}
 Weapon::~Weapon() {}
 
 void Weapon::update() {
@@ -28,7 +29,7 @@ void Weapon::update() {
 
 	mousePos = Camera::mainCamera->PointToWorldSpace(mousePos);
 
-	Vector2D yCenteredPos(entityTr->getPos().getX(), entityTr->getPos().getY() + entityTr->getH() * 0.37f); //Punto {0, Altura del cañón}  
+	Vector2D yCenteredPos(entityTr->getPos().getX(), entityTr->getPos().getY() + entityTr->getH() * 0.37f); //Punto {0, Altura del caï¿½ï¿½n}  
 	Vector2D  dir = (mousePos - yCenteredPos).normalize();
 
 	float radianAngle = atan2(dir.getY(), dir.getX());
@@ -52,7 +53,7 @@ void Weapon::update() {
 		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
 		RigidBody* rb = bullet->addComponent<RigidBody>(dir * 10.0, false);
 
-		float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
+		float aux1 = entityTr->getW() - 8; //Distancia del caï¿½ï¿½n del arma para spawnear la bala
 		float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
 
 		float offsetX = sin(-radianAngle) * aux2;

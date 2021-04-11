@@ -45,25 +45,25 @@ namespace consts {
 	const int WEAPON_TIER2_DAMAGE = 100;
 	const int WEAPON_TIER3_DAMAGE = 100;
 
-	const int WEAPON_TIER1_FIRERATE = 100;
-	const int WEAPON_TIER2_FIRERATE = 100;
-	const int WEAPON_TIER3_FIRERATE = 100;
+	const int WEAPON_TIER1_FIRERATE = 1.75f;
+	const int WEAPON_TIER2_FIRERATE = 1.75f;
+	const int WEAPON_TIER3_FIRERATE = 1.75f;
 
 	//Ricochet Weapon
 	const int RICOCHET_TIER1_DAMAGE = 100;
 	const int RICOCHET_TIER2_DAMAGE = 100;
 	const int RICOCHET_TIER3_DAMAGE = 100;
 
-	const int RICOCHET_TIER1_FIRERATE = 100;
-	const int RICOCHET_TIER2_FIRERATE = 100;
-	const int RICOCHET_TIER3_FIRERATE = 100;
+	const int RICOCHET_TIER1_FIRERATE = 1.75f;
+	const int RICOCHET_TIER2_FIRERATE = 1.75f;
+	const int RICOCHET_TIER3_FIRERATE = 1.75f;
 
 	//Charge Weapon
 	const int CHARGE_TIER1_DAMAGE = 100;
 	const int CHARGE_TIER2_DAMAGE = 100;
 	const int CHARGE_TIER3_DAMAGE = 100;
 
-	const int CHARGE_TIER1_FIRERATE = 100;
-	const int CHARGE_TIER2_FIRERATE = 100;
-	const int CHARGE_TIER3_FIRERATE = 100;
+	const int CHARGE_TIER1_FIRERATE = 1;
+	const int CHARGE_TIER2_FIRERATE = 1;
+	const int CHARGE_TIER3_FIRERATE = 1;
 }
