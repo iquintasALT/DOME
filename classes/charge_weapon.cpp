@@ -42,7 +42,7 @@ void ChargeWeapon::update() {
 		counter++;
 	}
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) {
-		if (counter >= fireRate * consts::FRAME_RATE) {
+		if (counter >= fireRate * consts::FRAME_RATE && actcharger > 0) {
 			Entity* bullet = entity_->getMngr()->addEntity();
 
 
@@ -81,6 +81,21 @@ void ChargeWeapon::update() {
 			bullet->addComponent<Charge>(radianAngle);
 
 			//COMPROBAR COLISIONES CON ENEMIGOS
+			actcharger--;
+
+			if (actcharger == 0)
+			{
+				if (nbullets >= charger)
+				{
+					actcharger = charger;
+					nbullets -= charger;
+				}
+				else
+				{
+					actcharger = nbullets;
+					nbullets = 0;
+				}
+			}
 		}
 		counter = 0;
 	}
