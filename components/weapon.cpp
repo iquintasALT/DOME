@@ -45,7 +45,7 @@ void Weapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate && actcharger > 0) {
 		counter = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 
@@ -68,6 +68,20 @@ void Weapon::update() {
 		bulletTr->setRot(degreeAngle);
 
 		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
+
+		if (actcharger == 0)
+		{
+			if (nbullets >= charger)
+			{
+				actcharger = charger;
+				nbullets -= charger;
+			}
+			else
+			{
+				actcharger = nbullets;
+				nbullets = 0;
+			}
+		}
 	}
 
 }

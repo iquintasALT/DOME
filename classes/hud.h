@@ -15,6 +15,8 @@ private:
 
 	Texture* nbullets;
 	Texture* ncharger;
+	Texture* state1;
+	Texture* state2;
 public:
 	hud(Transform* initialPos, Player* p);
 

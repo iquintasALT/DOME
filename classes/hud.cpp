@@ -1,5 +1,8 @@
 #include "hud.h"
 #include <string> 
+#include "../classes/weapon_behaviour.h"
+#include "../classes/charge_weapon.h"
+#include "ricochet_weapon.h"
 
 hud::hud(Transform* initialPos, Player* p)
 {
@@ -7,6 +10,9 @@ hud::hud(Transform* initialPos, Player* p)
 	player = p;
 
 	time = new Countdown(1000); //Hay que pasarle el pos Cam para que se mueva
+
+	state1 = &sdlutils().images().at("player");
+	state2 = &sdlutils().images().at("player");
 }
 
 void hud::init()
@@ -18,7 +24,7 @@ void hud::update()
 {
 	time->update();
 
-	//bullets = player->getCurrentWeapon()->GetWeaponMOvement()->GetBullets(); //No hay todavia
+	bullets = player->getCurrentWeapon()->getWeaponMovement()->getChargerBullets();
 }
 
 void hud::render()
@@ -32,4 +38,15 @@ void hud::render()
 	nbullets->render(posCam->getPos().getX() + 50, posCam->getPos().getY() + 500);
 	delete nbullets;
 	nbullets = nullptr;
+
+	//Renderizar los estados
+
+	Vector2D aux = Vector2D(10 + 35 + posCam->getPos().getX(), 10 + posCam->getPos().getY());
+	SDL_Rect dest = build_sdlrect(aux, 33, 33);
+	state1->render(dest);
+
+	aux = Vector2D(10 + 70 + posCam->getPos().getX(), 10 + posCam->getPos().getY());
+	dest = build_sdlrect(aux, 33, 33);
+	state2->render(dest);
+
 }
