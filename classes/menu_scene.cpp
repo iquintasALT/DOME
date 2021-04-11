@@ -20,6 +20,6 @@ void MenuScene::playShelter(Game* g) {
 }
 
 void MenuScene::playRaid(Game* g) {
-	g->getStateMachine()->pushState(new RaidScene());
+	g->getStateMachine()->pushState(new RaidScene("./resources/tilemap/template.tmx"));
 	g->getStateMachine()->currentState()->init();
 }

@@ -67,4 +67,8 @@ namespace consts {
 	const int CHARGE_TIER1_FIRERATE = 1;
 	const int CHARGE_TIER2_FIRERATE = 1;
 	const int CHARGE_TIER3_FIRERATE = 1;
+
+	//LOCALIZACIONES
+	const int NUM_LOCATIONS = 5;
+
 }

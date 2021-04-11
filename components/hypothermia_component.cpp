@@ -6,6 +6,7 @@
 void HypothermiaComponent::init() {
 	time = sdlutils().currRealTime();
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
+	frost = &sdlutils().images().at("frost");
 }
 
 void HypothermiaComponent::update() {
@@ -13,4 +14,9 @@ void HypothermiaComponent::update() {
 		phys->die();
 	}
 	hypothermia = (float)(100 * sdlutils().currRealTime() / (consts::HYPOTHERMIA_TIME))/100;
+}
+
+void HypothermiaComponent::render() {
+	frost->setAlpha(hypothermia * 255);
+	frost->render(build_sdlrect(0, 0, sdlutils().width(), sdlutils().height()));
 }

@@ -66,13 +66,16 @@ public:
 	{
 		auto entities = entityManager->getEntities();
 		RayCast aux = RayCast(*this);
+		Entity* lepepe;
 		for (Entity* e : entities)
 		{
 			if (e->hasGroup<Group>() && e->hasComponent<Transform>())
 			{
 				aux.rayCastToSquare(e->getComponent<Transform>());
-				if (aux.distance_ != -1.0 && (aux.distance_ < distance_ || distance_ == -1.0))
+				if (aux.distance_ != -1.0 && (aux.distance_ < distance_ || distance_ == -1.0)) {
 					*this = RayCast(aux);
+					lepepe = e;
+				}
 			}
 		}
 		return distance_;

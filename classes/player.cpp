@@ -37,7 +37,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<HungerComponent>();
 	addComponent<TirednessComponent>();
 	
-	weapon = new WeaponBehaviour(mngr_, t->getPos(), t, 1);
+	weapon = new WeaponBehaviour(mngr_, t->getPos(), t, 4);
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);
