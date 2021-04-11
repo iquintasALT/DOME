@@ -57,12 +57,12 @@ void ChargeWeapon::update() {
 			RayCast raycast = RayCast(yCenteredPos, dir);
 			float width = raycast.distanceToGroup<Wall_grp>(entity_->getMngr()) - aux1;
 
-		//	std::cout << actcharger << std::endl;
-		//	std::cout << nbullets << std::endl;
+			//	std::cout << actcharger << std::endl;
+			//	std::cout << nbullets << std::endl;
 
 			float squareX = consts::WINDOW_WIDTH * consts::WINDOW_WIDTH;
 
-			if (width != -1)
+			if (width + aux1 != -1)
 				bulletTr->setW(width);
 			else bulletTr->setW(sqrt(squareX + squareX));
 
