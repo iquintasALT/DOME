@@ -9,6 +9,7 @@
 #include "../ecs/Manager.h"
 #include "../game/constant_variables.h"
 #include "../components/charge.h"
+#include "../utils/ray_cast.h"
 
 ChargeWeapon::ChargeWeapon(float fR, int dam) : Weapon(fR, dam) {};
 
@@ -49,13 +50,22 @@ void ChargeWeapon::update() {
 			Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 64, 64, 0);
 			bulletTr->setH(1);
 
-			//MIENTRAS NO DETECETE UNA PARED EN LA DIRECCION DEL RATÓN (ESTO ES PROVISIONAL)
-			while (entityTr->getPos().getX() + bulletTr->getW() < consts::WINDOW_WIDTH) {
-				bulletTr->setW(bulletTr->getW() + 1);
-			}
-
 			float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
 			float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
+
+			Transform auxMousePos = Transform(mousePos, 1, 1, 0);
+			RayCast raycast = RayCast(yCenteredPos, dir);
+			float width = raycast.distanceToGroup<Wall_grp>(entity_->getMngr()) - aux1;
+
+		//	std::cout << actcharger << std::endl;
+		//	std::cout << nbullets << std::endl;
+
+			float squareX = consts::WINDOW_WIDTH * consts::WINDOW_WIDTH;
+
+			if (width != -1)
+				bulletTr->setW(width);
+			else bulletTr->setW(sqrt(squareX + squareX));
+
 
 			float offsetX = sin(-radianAngle) * aux2;
 			float offsetY = cos(-radianAngle) * aux2;
@@ -73,10 +83,6 @@ void ChargeWeapon::update() {
 
 			bullet->addComponent<Image>(&sdlutils().images().at("charge"));
 			bullet->getComponent<Image>()->setRotationOrigin(0, bulletTr->getH() / 2);
-
-			bulletTr->setPos(centeredPos + dir * aux1);
-			bulletTr->setRot(degreeAngle);
-
 
 			bullet->addComponent<Charge>(radianAngle);
 

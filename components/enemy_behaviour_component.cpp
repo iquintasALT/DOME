@@ -75,7 +75,7 @@ void FlyingChasePlayer::update() {
 
 			//Get current height
 			RayCast distanceToFloor = RayCast(tr_->getPos(), Vector2D(0.0, 1.0));
-			distanceToFloor.distanceToGroup<Wall_grp>(entity_);
+			distanceToFloor.distanceToGroup<Wall_grp>(entity_->getMngr());
 			Point2D floorPoint = distanceToFloor.getPointOfImpact();
 
 			//If it is too far to begin attacking, it will attempt to maintain its hoverHeight
