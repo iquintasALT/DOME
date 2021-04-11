@@ -6,6 +6,7 @@
 #include <limits>
 #include "../utils/checkML.h"
 #include "../ecs/Entity.h"
+#include "../ecs/Manager.h"
 
 class Transform;
 class Entity;
