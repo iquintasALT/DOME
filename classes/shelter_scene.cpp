@@ -55,7 +55,7 @@ void ShelterScene::init() {
 
 	uselessMngr = new Manager();
 	mechanical_Workshop = new Workshop(uselessMngr, craftSys);
-	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{SPACESHIP_ROCKETS, METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO, BACKPACK_UPGRADE, ARMOUR_UPGRADE });
+	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO, BACKPACK_UPGRADE, ARMOUR_UPGRADE });
 
 	medical_Workshop = new Workshop(uselessMngr, craftSys);
 	medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT});

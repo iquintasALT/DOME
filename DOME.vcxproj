@@ -45,6 +45,7 @@
     <ClInclude Include="components\bleedout_component.h" />
     <ClInclude Include="components\charge.h" />
     <ClInclude Include="components\box_collider.h" />
+    <ClInclude Include="components\classic_bullet.h" />
     <ClInclude Include="components\concussion_component.h" />
     <ClInclude Include="components\enemy_animation.h" />
     <ClInclude Include="components\enemy_attack_component.h" />
@@ -164,6 +165,7 @@
     <ClCompile Include="components\bleedout_component.cpp" />
     <ClCompile Include="components\box_collider.cpp" />
     <ClCompile Include="components\charge.cpp" />
+    <ClCompile Include="components\classic_bullet.cpp" />
     <ClCompile Include="components\concussion_component.cpp" />
     <ClCompile Include="components\enemy_animation.cpp" />
     <ClCompile Include="components\enemy_attack_component.cpp" />
