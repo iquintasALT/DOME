@@ -23,14 +23,12 @@
 
 Game::Game(int totaltime) {
 	states = new GameStateMachine();
-	timer = new Countdown(totaltime);
 
 	Camera::setMain(new Camera(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
 }
 
 Game::~Game() {
 	delete states;
-	delete timer;
 	delete Camera::mainCamera;
 }
 
@@ -66,13 +64,11 @@ void Game::start() {
 
 		states->currentState()->update();
 		states->currentState()->refresh();
-		timer->update();
 
 		//Camera::mainCamera->MoveDir(Vector2D(1, 0));
 
 		sdlutils().clearRenderer();
 		states->currentState()->render();
-		timer->render();
 		sdlutils().presentRenderer();
 
 		Uint32 frameTime = sdlutils().currRealTime() - startTime;

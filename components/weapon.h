@@ -21,10 +21,16 @@ protected:
 	float counter;
 	float fireRate;
 
+	int charger = 30; //Pasar por referencia cuando este
+	int actcharger = 30;
+	int nbullets = 50;
+
 public:
 	Weapon(float fR, int dam);
 
 	~Weapon();
+
+	int getChargerBullets() { return actcharger; }
 
 	virtual void init();
 

@@ -41,6 +41,9 @@ Texture::Texture(SDL_Renderer *renderer, const std::string &fileName) {
 	renderer_ = renderer;
 
 }
+void Texture::setAlpha(Uint8 alpha) {
+	SDL_SetTextureAlphaMod(texture_, alpha);
+}
 
 Texture::Texture(SDL_Renderer *renderer, const std::string &text,
 		const Font &font, const SDL_Color &fgColor) {
