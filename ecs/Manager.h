@@ -70,6 +70,7 @@ public:
 
 	void AddInteractableElement(InteractableElement* ie);
 	void AddCollider(BoxCollider* bc);
+
 private:
 	std::vector<Entity*> entities_;
 	std::array<Entity*, ecs::maxHdlr> hdlrs_;

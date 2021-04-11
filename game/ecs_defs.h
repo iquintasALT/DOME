@@ -109,9 +109,9 @@ struct Player_hdlr;
 struct Background;
 struct Walls;
 struct Player;
-struct Bullets;
+struct Enemy;
 #define _RENDER_LIST_ \
 	Background, \
 	Walls, \
 	Player, \
-	Bullets
+	Enemy
