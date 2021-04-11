@@ -1,5 +1,6 @@
 #pragma once
 #include "player_health_component.h"
+#include "../sdlutils/Texture.h"
 class Physiognomy;
 
 /*
@@ -13,12 +14,14 @@ class Physiognomy;
 class HypothermiaComponent : public PlayerHealthComponent
 {
 private:
+	Texture* frost;
 	Physiognomy* phys;
 	float hypothermia;
 	int time;
 public:
-	HypothermiaComponent() : hypothermia(0), time(0), phys(nullptr){}
+	HypothermiaComponent() : hypothermia(0), time(0), phys(nullptr), frost(nullptr){}
 	void init() override;
 	void update() override;
+	void render() override;
 };
 

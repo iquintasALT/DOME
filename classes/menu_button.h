@@ -9,7 +9,7 @@ class Game;
 using CallBackOnClick = void(Game* g);
 
 class MenuButton : public GameObject {
-private:
+protected:
 	CallBackOnClick* cbOnClick;
 	Texture* tex;
 	Game* game;

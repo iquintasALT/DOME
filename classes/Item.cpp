@@ -1,21 +1,21 @@
 #include "Item.h"
 
-ItemInfo::ItemInfo(string name, string description, int width, int height, Texture* texture) :
+ItemInfo::ItemInfo(ITEMS name, string description, int width, int height, Texture* texture) :
 	_name(name), _description(description), _width(width), _height(height), _texture(texture) {};
 
 ItemInfo* ItemInfo::bottleOfWater()
 {
-	return new ItemInfo("Bottle of water", "Scarse item, use it carefully", 1, 2,
+	return new ItemInfo(WATER, "Scarse item, use it carefully", 1, 2,
 		&sdlutils().images().at("panel"));
 }
 ItemInfo* ItemInfo::medicine()
 {
-	return new ItemInfo("Medicine", "Mmmmmm", 2, 2,
+	return new ItemInfo(ANTIDOTE, "Mmmmmm", 2, 2,
 		&sdlutils().images().at("panel"));
 }
 ItemInfo* ItemInfo::food()
 {
-	return new ItemInfo("Angel", "I dont know what im doing", 1, 1,
+	return new ItemInfo(FOOD, "I dont know what im doing", 1, 1,
 		&sdlutils().images().at("panel"));
 }
 

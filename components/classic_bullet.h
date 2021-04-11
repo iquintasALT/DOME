@@ -23,7 +23,4 @@ public:
 	virtual ~ClassicBullet();
 
 	void init() override;
-
-	void createExplosion();
-
 };

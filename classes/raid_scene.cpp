@@ -4,8 +4,7 @@
 #include "../components/loot.h"
 
 void RaidScene::init() {
-	string path = "./resources/tilemap/template.tmx";
-	loadMap(path);
+	loadMap(path_);
 
 	Player* player = new Player(mngr_, Point2D(200, 50));
 

@@ -10,18 +10,23 @@
 
 using namespace std;
 
+enum ITEMS {
+	BANDAGE, MEDICAL_COMPONENTS, WATER, ORGANIC_MATERIAL, MECANICAL_COMPONENTS, ANTIDOTE, FOOD, SPLINT, SPACESHIP_ROCKETS, SPACESHIP_KEY_ITEMS,
+	BUILDING_PARTS, ELECTRONIC_REMAINS, METAL_PLATES, WEAPON_UPGRADE, UPGRADE_KIT, CLASSIC_AMMO, BACKPACK_UPGRADE, ARMOUR_UPGRADE
+};
+
 class Inventory;
 class ItemInfo {
 private:
-	ItemInfo(string name, string description, int width, int height, Texture* texture);
-	string _name;
+	ItemInfo(ITEMS name, string description, int width, int height, Texture* texture);
+	ITEMS _name;
 	string _description;
 	int _width;
 	int _height;
 	Texture* _texture;
 
 public:
-	inline string name() { return _name; };
+	inline ITEMS name() { return _name; };
 	inline string description() { return _description; };
 	inline int width() { return _width; };
 	inline int height() { return _height; };
