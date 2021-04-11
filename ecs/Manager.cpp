@@ -32,8 +32,7 @@ void Manager::refresh() {
 }
 
 void Manager::update() {
-	auto n = entities_.size();
-	for (auto i = 0u; i < n; i++)
+	for (auto i = 0u; i < entities_.size(); i++)
 		entities_[i]->update();
 }
 
