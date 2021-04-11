@@ -8,15 +8,16 @@
 #include "../game/constant_variables.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/rigid_body.h"
+#include "../components/particleSystem.h"
 #include <iostream>
 
 class player_animation : public animation_component {
 private:
 	const enum animations_name { iddle = 0, walking, crouch };
 	Animation animations[3]{
-	Animation(iddle, 3),
+	Animation(iddle, 4),
 	Animation(walking, 14),
-	Animation(crouch, 3) };
+	Animation(crouch, 4) };
 
 	Animation currentAnimation = animations[iddle];
 	float timer = 0;
@@ -27,6 +28,8 @@ private:
 	Transform* tr_;
 	RigidBody* rb;
 	KeyboardPlayerCtrl* ctrl;
+
+	ParticleSystem* walkDust;
 
 public:
 	player_animation();

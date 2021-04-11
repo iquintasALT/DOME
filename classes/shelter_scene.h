@@ -12,11 +12,12 @@ private:
 	sdlgui::Screen* sc_;
 	sdlgui::ListImages craftIcons;
 	CraftingSystem* craftSys;
-	Workshop* workshop;
+	Workshop* mechanical_Workshop;
+	Workshop* medical_Workshop;
 	Manager* uselessMngr;
 
 public:
-	virtual ~ShelterScene() { delete craftSys, delete uselessMngr; workshop->setActive(false); };
+	virtual ~ShelterScene() { delete craftSys, delete uselessMngr; };
 	void init() override;
 	virtual void update();
 	virtual void render() override;

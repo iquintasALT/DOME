@@ -26,6 +26,6 @@ public:
 	void init() override;
 	void update() override;
 
-	void increaseTime(int time);
+	void increaseTime(int time = consts::INTOXICATION_TIME);
 };
 

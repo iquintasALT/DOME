@@ -7,7 +7,7 @@ class RicochetWeapon: public Weapon
 {
 public:
 	//El fireRate en este arma es el tiempo que tienes que mantener pulsado el raton
-	inline RicochetWeapon(float fR, Transform* player, int bounce, int tier) : Weapon(fR), playerTr(player), ntier(tier), nbounce(bounce) { damage = 75 * tier; };
+	inline RicochetWeapon(float fR, int dam, Transform* player, int bounce, int tier) : Weapon(fR, dam), playerTr(player), ntier(tier), nbounce(bounce) {};
 	virtual void update();
 
 private:
@@ -19,4 +19,3 @@ private:
 	int nbullets = 50;
 	int nbounce;
 };
-

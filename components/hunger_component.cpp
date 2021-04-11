@@ -1,7 +1,5 @@
 #include "hunger_component.h"
 #include "../sdlutils/InputHandler.h"
-#include "../components/bleedout_component.h"
-
 
 HungerComponent::HungerComponent() : hunger(1.0f), hungerLevel(hungerLevel::NONE) {}
 

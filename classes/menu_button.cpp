@@ -10,7 +10,7 @@ MenuButton::MenuButton(Vector2D pos, Texture* t, CallBackOnClick* function, Game
 	tex = t;
 	game = g;
 	cbOnClick = function;
-	addComponent<Transform>(position, Vector2D(0, 0), size.getX(), size.getY(), 0);
+	addComponent<Transform>(position, size.getX(), size.getY(), 0);
 	addComponent<Image>(tex);
 }
 

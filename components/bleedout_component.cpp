@@ -3,6 +3,7 @@
 #include "../classes/physiognomy.h"
 #include "../components/hunger_component.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/InputHandler.h"
 
 void BleedoutComponent::init() {
 	accumulatedTime = sdlutils().currRealTime();
@@ -15,6 +16,6 @@ void BleedoutComponent::init() {
 void BleedoutComponent::update() {
 	if (sdlutils().currRealTime() > accumulatedTime + hunger->calculateBleedingSpeed()) {
 		accumulatedTime = sdlutils().currRealTime();
-		phys->getHealthComponents()->push_back(this);
+		phys->addBleedState();
 	}
 }

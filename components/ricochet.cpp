@@ -30,7 +30,7 @@ void Ricochet::createExplosion()
 	Point2D arribader = Point2D(playerTr->getPos().getX() + playerTr->getW(), arribaizq.getY());
 	Point2D rayCastOrigin = Point2D(transf->getPos().getX() + (transf->getW() / 2), transf->getPos().getY() + (transf->getH() / 2));
 
-	explosion->addComponent<Transform>(explosionOrigin, Vector2D(), 10, 10, 0);
+	explosion->addComponent<Transform>(explosionOrigin, 10, 10, 0);
 
 	auto particles = explosion->addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
 
@@ -79,13 +79,7 @@ void Ricochet::createExplosion()
 }
 
 void Ricochet::OnCollision(BoxCollider* collider) {
-	/*rb->setVel(Vector2D(0, 0));
-	std::cout << tr_->getPos().getX() << " " << tr_->getW() << " " << collider->getTransform()->getPos().getX() << endl;
-	std::cout << tr_->getPos().getX()+ tr_->getW() <<  endl;
-	return;*/
-
-
-	if (--n == 0) {
+	if (n-- == 0) {
 		createExplosion();
 		entity_->setDead(true);
 	}

@@ -1,13 +1,13 @@
 #include "enemy_behaviour_component.h"
+
 #include "Transform.h"
-#include "../ecs/Entity.h"
-#include "../ecs/Manager.h"
-#include "../utils/ray_cast.h"
+#include "rigid_body.h"
 
 void EnemyBehaviourComponent::init()
 {
 	playerTr_ = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
 	tr_ = entity_->getComponent<Transform>();
+	rb_ = entity_->getComponent<RigidBody>();
 	enemyDetection = entity_->getComponent<DistanceDetection>();
 	assert(playerTr_ != nullptr && tr_ != nullptr && enemyDetection != nullptr);
 }
@@ -23,12 +23,12 @@ void ChasePlayer::update() {
 		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > stopDistance) {
 			//If it is on player's left
 			if (playerTr_->getPos().getX() - tr_->getPos().getX() > 0.0f)
-				tr_->setVelX(speed);
+				rb_->setVelX(speed);
 			//If it is on player's right
 			else if (playerTr_->getPos().getX() - tr_->getPos().getX() < 0.0f)
-				tr_->setVelX(-speed);
+				rb_->setVelX(-speed);
 		}
-		else tr_->setVelX(0.0);
+		else rb_->setVelX(0.0);
 	}
 }
 
@@ -45,19 +45,19 @@ void KeepDistance::update() {
 
 		if (std::abs(distance) < marginDistance) {
 			//Enemigo a la izquierda del jugador
-			if (distance > 0.0f) tr_->setVelX(-speed);
+			if (distance > 0.0f) rb_->setVelX(-speed);
 
 			//Enemigo a la derecha del jugador
-			else if (distance < 0.0f) tr_->setVelX(speed);
+			else if (distance < 0.0f) rb_->setVelX(speed);
 		}
 		else if (std::abs(distance) > shootDistance) {
 			//Enemigo a la izquierda del jugador
-			if (distance > 0.0f) tr_->setVelX(speed);
+			if (distance > 0.0f) rb_->setVelX(speed);
 
 			//Enemigo a la derecha del jugador
-			else if (distance < 0.0f) tr_->setVelX(-speed);
+			else if (distance < 0.0f) rb_->setVelX(-speed);
 		}
-		else tr_->setVelX(0.0);
+		else rb_->setVelX(0.0);
 	}
 }
 
@@ -86,8 +86,8 @@ void FlyingChasePlayer::update() {
 
 			Point2D target = Point2D(targetX, targetY);
 			//Set speed to travel towards target
-			tr_->setVel(target - tr_->getPos());
+			rb_->setVel(target - tr_->getPos());
 		}
-		else tr_->setVel(Vector2D());
+		else rb_->setVel(Vector2D());
 	}
 }

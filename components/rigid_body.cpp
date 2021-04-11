@@ -4,20 +4,29 @@
 #include "KeyboardPlayerCtrl.h"
 #include <iostream>
 
-RigidBody::RigidBody(Vector2D vel, float rotation, bool gravity) : tr_(nullptr), vel_(vel), rotation_(rotation),
-grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY), collide(true), bounciness(0) { }
+RigidBody::RigidBody(Vector2D vel, bool gravity) : tr_(nullptr), vel_(vel),
+grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY), collide(true), bounciness(0)
+{
+	for (bool b : collisions)
+		b = false;
+	collisions[0] = true;
+}
 
 RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 	vel_ = vel;
 	tr_ = tr;
-	rotation_ = 0;
 	gravity = 0;
 	onFloor_ = false;
 	grActive_ = false;
 	collide = false;
 	bounciness = 0;
-}
 
+	for (bool b : collisions)
+		b = false;
+	collisions[0] = true;
+
+	
+}
 RigidBody::~RigidBody() {};
 
 void RigidBody::init() {
@@ -29,80 +38,86 @@ void RigidBody::init() {
 
 void RigidBody::update() {
 	bool collision = false;
+
+	bool verticalCollision = false;
+	bool horizontalCollision = false;
+
+	auto& pos = tr_->getPos();
+
+	collisionVelocity = vel_;
+	onFloor_ = false;
+
 	if (collide) {
 		for (auto collider : entity_->getMngr()->getColliders()) {
 			if (collider == boxColl)
 				continue;
 
-			collision = false;
+			if (collider->collisionLayer != 0) {
+				if (!collisions[collider->collisionLayer]) {
+					continue;
+				}
+			}
 
 			Transform* colliderTr = collider->getTransform();
 
-			auto& pos = tr_->getPos();
 			auto nextPos = tr_->getPos() + vel_;
 			auto colliderPos = colliderTr->getPos();
 
-			if (nextPos.getX() < colliderPos.getX() + colliderTr->getW() &&
-				nextPos.getX() + tr_->getW() > colliderPos.getX() &&
-				nextPos.getY() < colliderPos.getY() + colliderTr->getH() &&
-				nextPos.getY() + tr_->getH() > colliderPos.getY())
-			{
-				collision = true;
-			}
+			bool thisCollision = nextPos.getX() <= colliderPos.getX() + colliderTr->getW() &&
+				nextPos.getX() + tr_->getW() >= colliderPos.getX() &&
+				nextPos.getY() <= colliderPos.getY() + colliderTr->getH() &&
+				nextPos.getY() + tr_->getH() >= colliderPos.getY();
 
-			if (collision) {
+			if (thisCollision) {
 				if (collider->isTrigger()) {
 					entity_->onTrigger(collider);
 				}
 				else {
-					bool horizontal = false;
-					bool vertical = false;
 					if (pos.getY() + tr_->getH() <= colliderPos.getY())
 					{
 						vel_.setY(vel_.getY() * -bounciness);
 						onFloor_ = true;
 
-						pos.setY(colliderPos.getY() - tr_->getH() - 1);
+						pos.setY(colliderPos.getY() - tr_->getH());
 
-						horizontal = true;
-						//pos.setX(pos.getX() + vel_.getX());
+						verticalCollision = true;
 					}
 					else if (pos.getY() >= colliderPos.getY() + colliderTr->getH()) {
 						vel_.setY(vel_.getY() * -bounciness);
 
 						pos.setY(colliderPos.getY() + colliderTr->getH() + 1);
 
-						horizontal = true;
-						//pos.setX(pos.getX() + vel_.getX());
+						verticalCollision = true;
 					}
 
-					if (pos.getX() + tr_->getW() <= colliderPos.getX()) {
+					else if (pos.getX() + tr_->getW() <= colliderPos.getX()) {
 						vel_.setX(vel_.getX() * -bounciness);
 
-						pos.setX(colliderPos.getX() - tr_->getW() - 1);
-
-						vertical = true;
-						//pos.setY(pos.getY() + vel_.getY());
+						pos.setX(colliderPos.getX() - tr_->getW());
+						horizontalCollision = true;
 					}
 					else if (pos.getX() >= colliderPos.getX() + colliderTr->getW()) {
 						vel_.setX(vel_.getX() * -bounciness);
+
 						pos.setX(colliderPos.getX() + colliderTr->getW() + 1);
-
-						vertical = true;
-						//pos.setY(pos.getY() + vel_.getY());
+						horizontalCollision = true;
 					}
-
-					if (horizontal)
-						pos.setX(pos.getX() + vel_.getX());
-					if (vertical)
-						pos.setY(pos.getY() + vel_.getY());
 					entity_->onCollision(collider);
 				}
 			}
+			collision |= thisCollision;
 		}
 	}
-	if (!collision)
+	if (!collision) {
 		tr_->getPos() = tr_->getPos() + vel_;
+	}
+	else {
+		if (!verticalCollision)
+			pos.setY(pos.getY() + vel_.getY());
+
+		if (!horizontalCollision)
+			pos.setX(pos.getX() + vel_.getX());
+	}
 	if (grActive_) applyGravity();
 }
 

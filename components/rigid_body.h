@@ -9,29 +9,27 @@
 #include "Transform.h"
 
 class RigidBody : public Component {
+	friend BoxCollider;
 private:
 	Transform* tr_;
 	BoxCollider* boxColl;
 
 	Vector2D vel_;
-	float rotation_;
 
 	float gravity;
 	bool onFloor_, grActive_;
 
 	bool collide;
-
+	bool collisions[consts::COLLISION_LAYERS];
 public:
-	RigidBody(Vector2D vel = Vector2D(), float rotation = 0, bool gravity = true);
+	RigidBody(Vector2D vel = Vector2D(), bool gravity = true);
 	RigidBody(Vector2D vel, Transform* tr);
+
+	Vector2D collisionVelocity;
 
 	virtual ~RigidBody();
 
 	virtual void init() override;
-
-	inline float getRot() const { return rotation_; }
-
-	inline void setRot(float rot) { rotation_ = rot; }
 
 	inline Vector2D& getVel() { return vel_; }
 
@@ -51,6 +49,9 @@ public:
 
 	inline void update() override;
 
+	inline void addCollisionLayer(int l) { collisions[l] = true; };
+	inline void removeCollisionLayer(int l) { collisions[l] = false; };
+	inline bool checkCollisionLayer(int l) { return collisions[l]; };
 
 	float bounciness;
 };

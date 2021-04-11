@@ -9,8 +9,8 @@ class animation_component : public Component {
 protected:
 	struct Animation {
 	protected:
-		static Image* image;
-		static int width, height;
+		Image* image;
+		int width, height;
 
 		int frameRow;
 		int frameCount;
@@ -20,7 +20,7 @@ protected:
 	public:
 		Animation(int frame, int frameCount, bool loop = true, float animationSpeed = 1);
 
-		static void setImage(Image* img);
+		void setImage(Image* img);
 
 		void advanceFrame();
 
