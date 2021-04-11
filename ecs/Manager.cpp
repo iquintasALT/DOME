@@ -38,12 +38,8 @@ void Manager::update() {
 }
 
 void Manager::render() {
-	//auto n = entities_.size();
-	//for (auto i = 0u; i < n; i++)
-	//	entities_[i]->render();
-
 	for (auto i = 0u; i < renders_.size(); i++)
-		for (auto j = 0u; j < renders_[i].size(); i++)
+		for (auto j = 0u; j < renders_[i].size(); j++)
 			renders_[i][j]->render();
 }
 
