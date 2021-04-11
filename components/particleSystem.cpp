@@ -160,7 +160,7 @@ void ParticleSystem::spawnParticle() {
 	if (inheritVelocity && rb != nullptr)
 		particleSpeed = particleSpeed + rb->getVel() * inheritVelocityMultiplier;
 
-	particles.push_back(new DynamicBody(new Transform(particleOrigin, particleSpeed, width, height, 0), particleSpeed));
+	particles.push_back(new DynamicBody(new Transform(particleOrigin, width, height, 0), particleSpeed));
 	particleLife.push_back(lifeTime);
 }
 

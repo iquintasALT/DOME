@@ -16,12 +16,11 @@ void IntoxicationComponent::increaseTime(int time_) {
 }
 void IntoxicationComponent::update() {
 	auto actTime = sdlutils().currRealTime();
-	if (actTime > time + consts::INTOXICATION_TIME_TO_END) {
-		phys->removeState<IntoxicationComponent>(this);
+	if (actTime > time + consts::INTOXICATION_TIME) {
+		phys->removeIntoxicationState();
 	}
 	else if (actTime > timeToApplyHunger + consts::TIME_TO_DECREASE_HUNGER) {
 		timeToApplyHunger = actTime;
 		hunger->decreaseHunger(consts::HUNGER_TO_DECREASE);
-		cout <<"Hunger: " << hunger->getHunger();
 	}
 }

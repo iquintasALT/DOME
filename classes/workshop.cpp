@@ -6,7 +6,6 @@ Workshop::Workshop(Manager* mngr_, CraftingSystem* cs) : GameEntity(mngr_) {
 	renderFlag = false;
 	listIndex = 0;
 	mouseClick = false;
-	workshopItems = { SPACESHIP_ROCKETS, METAL_PLATES, WEAPON_UPGRADE,  CLASSIC_AMMO, BACKPACK_UPGRADE, ARMOUR_UPGRADE };
 
 	renderRightWindow = false;
 	rightWindowIndex = 0;
@@ -38,19 +37,6 @@ Workshop::Workshop(Manager* mngr_, CraftingSystem* cs) : GameEntity(mngr_) {
 	arrowDown_tr = arrowDown->getComponent<Transform>();
 	arrowDown->getComponent<Image>()->setFlip(SDL_FLIP_VERTICAL);
 
-	//INICIALIZACION SLOTS DE LA LISTA 
-	for (int i = 0; i < 4; ++i) {
-		Slot aux = { 0,mngr_->addEntity() };
-		setImg(aux.slot, Vector2D(), Vector2D{ 365,105 }, "craft_slot_box");
-		craftList.push_back(aux);
-	}
-	float offsetX = bg_tr->getPos().getX() + 45;
-	float offsetY = bg_tr->getPos().getY() + 50;
-	for (int i = 0; i < 4; ++i) {
-		craftList[i].slot->getComponent<Transform>()->setPos(Vector2D{ offsetX,offsetY });
-		craftList_tr.push_back(craftList[i].slot->getComponent<Transform>());
-		offsetY += craftList[i].slot->getComponent<Transform>()->getH() + 35;
-	}
 
 
 	Vector2D craftButton_pos = { bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f) - 132.5f, bg_tr->getPos().getY() + bg_tr->getH() - 105.0f / 1.5f };
@@ -58,6 +44,24 @@ Workshop::Workshop(Manager* mngr_, CraftingSystem* cs) : GameEntity(mngr_) {
 	//BOTON DE CRAFTEO
 	setImg(craftButton, craftButton_pos, Vector2D{ 265,105 }, "craft_slot_box");
 	craftButton_tr = craftButton->getComponent<Transform>();
+}
+
+void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
+	workshopItems = move(items);
+
+	//INICIALIZACION SLOTS DE LA LISTA 
+	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
+		Slot aux = { 0,getMngr()->addEntity() };
+		setImg(aux.slot, Vector2D(), Vector2D{ 365,105 }, "craft_slot_box");
+		craftList.push_back(aux);
+	}
+	float offsetX = bg_tr->getPos().getX() + 45;
+	float offsetY = bg_tr->getPos().getY() + 50;
+	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
+		craftList[i].slot->getComponent<Transform>()->setPos(Vector2D{ offsetX,offsetY });
+		craftList_tr.push_back(craftList[i].slot->getComponent<Transform>());
+		offsetY += craftList[i].slot->getComponent<Transform>()->getH() + 35;
+	}
 }
 
 void Workshop::init() {
@@ -69,14 +73,16 @@ void Workshop::setRenderFlag(bool set) {
 }
 
 void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
-	entity->addComponent<Transform>(pos, Vector2D(), size.getX(), size.getY(), 0);
+	entity->addComponent<Transform>(pos, size.getX(), size.getY(), 0);
 	entity->addComponent<Image>(&sdlutils().images().at(name));
 }
 
 void Workshop::update() {
+	getMngr()->refresh();
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
+			std::cout << listIndex << std::endl;
 			mouseClick = true;
 
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
@@ -87,10 +93,11 @@ void Workshop::update() {
 				if (listIndex > 0)listIndex--;
 			}
 			else if (Collisions::collides(mousePos, 1, 1, arrowDown_tr->getPos(), arrowDown_tr->getW(), arrowDown_tr->getH())) {
-				if (listIndex < workshopItems.size() - 4) listIndex++;
+				int aux = workshopItems.size();
+				if (listIndex < aux - 4) listIndex++;
 			}
 
-			for (int i = 0; i < 4; ++i) {
+			for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 				if (Collisions::collides(mousePos, 1, 1, craftList_tr[i]->getPos(), craftList_tr[i]->getW(), craftList_tr[i]->getH())) {
 					renderRightWindow = true;
 					rightWindowIndex = craftList[i].index;
@@ -103,11 +110,12 @@ void Workshop::update() {
 				}
 			}
 		}
-		else if(!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
+		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
 	}
 }
 
 void Workshop::render() {
+	getMngr()->refresh();
 	if (renderFlag) {
 		bg->render();
 		bButton->render();
@@ -115,7 +123,7 @@ void Workshop::render() {
 		arrowUp->render();
 		arrowDown->render();
 
-		for (int i = 0; i < 4; ++i) {
+		for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 			craftList[i].index = listIndex + i;
 			craftList[i].slot->render();
 
@@ -200,7 +208,7 @@ void Workshop::rightWindowRender() {
 
 void Workshop::renderImg(float posX, float posY, int row, int col, int sizeX, int sizeY) {
 	Entity* aux = getMngr()->addEntity();
-	aux->addComponent<Transform>(Vector2D{ posX,posY }, Vector2D(), sizeX, sizeY, 0);
+	aux->addComponent<Transform>(Vector2D{ posX,posY }, sizeX, sizeY, 0);
 	aux->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, row, col)->render();
 	aux->setActive(false);
 }

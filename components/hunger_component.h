@@ -21,17 +21,14 @@ class HungerComponent : public PlayerHealthComponent
 private:
 	float hunger;
 	hungerLevel hungerLevel;
-	//Puntero a los componentes de daño en raid a los que afecte el hambre (acumulativos) para aumentarles 
-	//el tiempo de acumulacion en base al nivel de hambre
-
 public:
 	HungerComponent();
+
 	void updateLevel();
 	int calculateBleedingSpeed(); //Metodo que se encarga del debufo del hambre (Velocidad de desangrado)
 	void setHunger(float hunger);
 	void decreaseHunger(float hunger);
 	float getHunger();
-
 	void eat(float hunger_);
 };
 

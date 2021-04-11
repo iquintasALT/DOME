@@ -18,7 +18,6 @@ private:
 	int accumulatedTime;
 	Physiognomy* phys;
 	HungerComponent* hunger;
-
 public:
 	BleedoutComponent() : accumulatedTime(0), phys(nullptr), hunger(nullptr) {};
 	void init() override;

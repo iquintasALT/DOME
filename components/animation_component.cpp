@@ -13,6 +13,7 @@ animation_component::Animation::Animation(int frame, int frameCount, bool loop, 
 	currentFrame = 0;
 	speed = animationSpeed * frameCount * consts::DELTA_TIME;
 	this->loop = loop;
+	image = nullptr; width = height = 0;
 }
 
 void animation_component::Animation::advanceFrame() {

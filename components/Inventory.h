@@ -30,8 +30,11 @@ public:
 	void adjustPanelSize();
 
 	inline void setOther(Inventory* o) { other = o; };
+	void defaultPosition();
 
+	void moveInventory(Point2D pos);
 private:
+	Point2D originalPos;
 	const float timeToHold = 0.08f; //seconds
 	float timer = 0;
 
