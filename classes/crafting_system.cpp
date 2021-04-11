@@ -31,14 +31,14 @@ void CraftingSystem::CraftItem(ITEMS item) {
 
 	bool affordable = true;
 	for (Item* invItem : itemsList) {
-		string nameToFind = invItem->getItemInfo()->name();
+		ITEMS nameToFind = invItem->getItemInfo()->name();
 
-		/*for (int i = 0; i < itemsNeeded.size(); ++i) {
+		for (int i = 0; i < itemsNeeded.size(); ++i) {
 			if (nameToFind == itemsNeeded[i].name) {
 				itemsNeeded[i].cantidad--; itemsToDelete.push_back(invItem);
 				if (itemsNeeded[i].cantidad <= 0)itemsNeeded.erase(itemsNeeded.begin() + i);
 			}
-		}*/
+		}
 	}
 
 	if (itemsNeeded.size() == 0) {
