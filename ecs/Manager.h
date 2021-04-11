@@ -9,8 +9,8 @@
 #include "../utils/checkML.h"
 #include "ecs.h"
 #include "Entity.h"
-class BoxCollider;
 
+class BoxCollider;
 class InteractableElement;
 
 class Manager {
@@ -20,7 +20,7 @@ public:
 
 	// entities
 	Entity* addEntity() {
-		Entity *e = new Entity(this);
+		Entity* e = new Entity(this);
 		if (e != nullptr) {
 			e->resetGroups();
 			entities_.emplace_back(e);
@@ -38,7 +38,7 @@ public:
 
 	// handlers
 	template<typename T>
-	inline void setHandler(Entity *e) {
+	inline void setHandler(Entity* e) {
 		hdlrs_[ecs::hdlrIdx<T>] = e;
 	}
 
@@ -59,6 +59,11 @@ public:
 		return colliders;
 	}
 
+	template<typename T>
+	inline void addRenderLayer(Component* render) {
+		renders_[ecs::rndIdx<T>].emplace_back(render);
+	}
+
 	void update();
 	void render();
 	void refresh();
@@ -69,8 +74,8 @@ private:
 	std::vector<Entity*> entities_;
 	std::array<Entity*, ecs::maxHdlr> hdlrs_;
 
-
 	std::vector<InteractableElement*> interactableElements;
 	std::vector<BoxCollider*> colliders;
+	std::array<std::vector<Component*>, ecs::maxRender> renders_;
 };
 

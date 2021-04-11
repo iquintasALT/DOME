@@ -27,7 +27,8 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	mngr_->setHandler<Player_hdlr>(this);
 	mngr_->addEntity(this);
 	Transform* t = addComponent<Transform>(pos, 32, 64);
-	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
+	Component* img = addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
+	mngr_->addRenderLayer<Player>(img);
 	addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
 	//addComponent<BoxCollider>();
 	auto rb = addComponent<RigidBody>();
