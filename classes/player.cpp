@@ -41,6 +41,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);
+	physiognomy->addHypothermiaState();
 }
 Player::~Player() {
 	delete physiognomy;
