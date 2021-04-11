@@ -102,9 +102,16 @@ struct Player_hdlr;
 #define _HDLRS_LIST_ Player_hdlr
 
 // collision layers
-struct CollLayer1;
-#define _COLLISIONS_LIST_ CollLayer1
+//struct CollLayer1;
+//#define _COLLISIONS_LIST_ CollLayer1
 
 // render layers
-struct RenderLayer1;
-#define _RENDER_LIST_ RenderLayer1
+struct Background;
+struct Walls;
+struct Player;
+struct Bullets;
+#define _RENDER_LIST_ \
+	Background, \
+	Walls, \
+	Player, \
+	Bullets
