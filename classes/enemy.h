@@ -5,7 +5,7 @@
 class Enemy : public GameCharacter
 {
 public:
-	Enemy(Manager* mngr_, Point2D pos);
+	Enemy(Manager* mngr_, Point2D pos, bool hasGravity);
 };
 
 class DefaultEnemy : public Enemy

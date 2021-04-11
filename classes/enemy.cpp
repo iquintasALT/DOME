@@ -13,13 +13,13 @@
 
 
 //WHEN COLLISIONS ARE FIXED TO NOT DEPEND ON GRAVITY, COLLISIONS WILL BE MOVED TO BASE CLASS
-Enemy::Enemy(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
+Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacter(mngr_)
 {
 	mngr_->addEntity(this)->setGroup<Contact_Dmg_grp>(true);
 	addComponent<Transform>(pos, 32, 64, 0);
 	//addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);/
-	addComponent<RigidBody>();
-	addComponent<EnemyContactDamage>();
+	addComponent<RigidBody>(Vector2D(), hasGravity);
+	//addComponent<EnemyContactDamage>();
 }
 
 DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
@@ -31,10 +31,10 @@ DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 	addComponent<ChasePlayer>(consts::MELEE_ENEMY_SPEED, consts::MELEE_ENEMY_STOPDISTANCE);
 }
 
-FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
+FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos, false)
 {
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	//addComponent<player_animation>();
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
-	addComponent<FlyingChasePlayer>(consts::MELEE_ENEMY_SPEED / 2, consts::MELEE_ENEMY_STOPDISTANCE, 50.0, 40.0);
+	addComponent<FlyingChasePlayer>(consts::MELEE_ENEMY_SPEED / 2, consts::MELEE_ENEMY_STOPDISTANCE, 150.0, 200.0);
 }

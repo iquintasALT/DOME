@@ -66,10 +66,6 @@ void Ricochet::createExplosion()
 
 	//Colision enemigos
 	range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
-	//if (range.hasCollision())
-	//{
-	std::cout << "\nRango Raycast " << range.getDistance();
-	//}
 
 	//Colision enemigos (Cuando esten hechos xd)
 	/*for (auto& e : entity_->getMngr()->getEnteties())

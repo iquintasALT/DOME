@@ -60,13 +60,13 @@ public:
 class FlyingChasePlayer : public EnemyBehaviourComponent
 {
 protected:
-    float speed;
-    float stopDistance;
-    float hoverHeight;
-    float attackDistance; //Distance at which the enemy will begin to lose altitude to attack player
+    float speed_;
+    float stopDistance_;
+    float hoverHeight_;
+    float attackDistance_; //Distance at which the enemy will begin to lose altitude to attack player
 
 public:
-    FlyingChasePlayer(float speed_, float stopDistance_, float hoverHeight_, float attackDistance_);
+    FlyingChasePlayer(float speed, float stopDistance, float hoverHeight, float attackDistance);
     virtual void update() override;
 };
 

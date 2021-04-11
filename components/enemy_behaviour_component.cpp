@@ -63,31 +63,67 @@ void KeepDistance::update() {
 
 //--------------------------------------------------------------------------------------------------------------
 
-FlyingChasePlayer::FlyingChasePlayer(float speed_, float stopDistance_, float hoverHeight_, float attackDistance_) :
-	speed(speed_), stopDistance(stopDistance_), hoverHeight(hoverHeight_), attackDistance(attackDistance_) {};
+FlyingChasePlayer::FlyingChasePlayer(float speed, float stopDistance, float hoverHeight, float attackDistance) :
+	speed_(speed), stopDistance_(stopDistance), hoverHeight_(hoverHeight), attackDistance_(attackDistance) 
+{
+	//rb_->setGravity(0.0f);
+};
 
 void FlyingChasePlayer::update() {
+	/*
 	//If enemy can see player
 	if (enemyDetection->isActive()) {
+		float targetY = 0.0;
+		//Get current height
+		RayCast distanceToFloor = RayCast(tr_->getPos(), Vector2D(0.0, 1.0));
+		distanceToFloor.distanceToGroup<Wall_grp>(entity_);
+		Point2D floorPoint = distanceToFloor.getPointOfImpact();
+
+		//If it is too far to begin attacking, it will attempt to maintain its hoverHeight
+		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > attackDistance_)
+			targetY = floorPoint.getY() - hoverHeight_;
+		else
+			targetY = playerTr_->getPos().getY();
 		//If it is further from player than it wants to be
-		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > stopDistance) {
-			float targetX = playerTr_->getPos().getX(), targetY = 0.0;
+		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > stopDistance_) {
+			float targetX = playerTr_->getPos().getX();
 
-			//Get current height
-			RayCast distanceToFloor = RayCast(tr_->getPos(), Vector2D(0.0, 1.0));
-			distanceToFloor.distanceToGroup<Wall_grp>(entity_);
-			Point2D floorPoint = distanceToFloor.getPointOfImpact();
-
-			//If it is too far to begin attacking, it will attempt to maintain its hoverHeight
-			if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > attackDistance)
-				targetY = floorPoint.getY() - hoverHeight;
-			else
-				targetY = playerTr_->getPos().getY();
 
 			Point2D target = Point2D(targetX, targetY);
 			//Set speed to travel towards target
-			rb_->setVel(target - tr_->getPos());
+			rb_->setVel((target - tr_->getPos()).normalize() * speed_);
 		}
 		else rb_->setVel(Vector2D());
+	}*/
+
+	Vector2D target = tr_->getPos();
+	//If it can detect the player and is further from player than it wants to be
+	if (enemyDetection->isActive() && (playerTr_->getPos() - tr_->getPos()).magnitude() > stopDistance_)
+	{
+		//If it is further from player than it wants to be, it will approach player horizontally
+		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > stopDistance_) {
+			target.setX(playerTr_->getPos().getX());
+		}
+
+		//If it is too far to begin attacking, it will attempt to maintain its hoverHeight
+		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > attackDistance_)
+		{
+			//Get point of floor directly below 
+			RayCast distanceToFloor = RayCast(tr_->getPos(), Vector2D(0.0, 1.0));
+			distanceToFloor.distanceToGroup<Wall_grp>(entity_->getMngr());
+			Point2D floorPoint = distanceToFloor.getPointOfImpact();
+
+			target.setY(floorPoint.getY() - hoverHeight_);			
+		}
+		// If it is within attack range, it will home in on the player vertically as well
+		else
+			target.setY(playerTr_->getPos().getY() - 50.0);
+
+		//Set speed to travel towards target
+		rb_->setVel((target - tr_->getPos()).normalize() * speed_);
+		/*cout << "Player position: " << playerTr_->getPos().getX() << ", " << playerTr_->getPos().getY() 
+			<< "      Target: " << target.getX() << ", " << target.getY() << endl;*/
 	}
+	else
+		rb_->setVel(Vector2D());
 }
