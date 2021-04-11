@@ -91,6 +91,6 @@ short int RayCast::getClosestVertex(const Point2D& p, const Square& s)
 bool RayCast::isGrounded(Transform* tr)
 {
 	RayCast rC = RayCast(tr->getPos() + Vector2D(tr->getW() / 2, tr->getH()), Vector2D(0.0, -1.0));
-	rC.distanceToGroup<Wall_grp>(tr->getEntity());
+	rC.distanceToGroup<Wall_grp>(tr->getEntity()->getMngr());
 	return rC.distance_ != -1.0 && rC.distance_ < 0.2;
 }

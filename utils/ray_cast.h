@@ -61,16 +61,16 @@ public:
 	/// Makes modifications to RayCast to display point of nearest collision and distance, which it returns
 	/// If no collision is detected, distance will be -1.0
 	template <typename Group>
-	double distanceToGroup(Entity* entity)
+	double distanceToGroup(Manager* entityManager)
 	{
-		auto entities = entity->getMngr()->getEntities();
+		auto entities = entityManager->getEntities();
 		RayCast aux = RayCast(*this);
 		for (Entity* e : entities)
 		{
 			if (e->hasGroup<Group>() && e->hasComponent<Transform>())
 			{
 				aux.rayCastToSquare(e->getComponent<Transform>());
-				if (aux.distance_ != -1.0 && aux.distance_ < distance_)
+				if (aux.distance_ != -1.0 && (aux.distance_ < distance_ || distance_ == -1.0))
 					*this = RayCast(aux);
 			}
 		}
