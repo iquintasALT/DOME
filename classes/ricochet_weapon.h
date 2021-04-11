@@ -14,6 +14,9 @@ private:
 	Transform* playerTr;
 	int ntier;
 	int damage;
+	int charger = 30; //Pasar por referencia cuando este
+	int actcharger = 30;
+	int nbullets = 50;
 	int nbounce;
 };
 
