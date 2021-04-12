@@ -20,8 +20,6 @@ private:
 public:
 	hud(Manager* m, Transform* initialPos, Player* p);
 
-	void init();
-
 	void update() override;
 
 	void render() override;
