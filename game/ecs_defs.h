@@ -26,9 +26,10 @@ class DistanceDetection;
 class RayCastDetection;
 class Interactions;
 class InteractableElement;
+class Loot;
+class BackToShelter;
 class ParticleSystem;
 class Ricochet;
-class Loot;
 class RicochetWeapon;
 class PlayerCollisions;
 class PlayerHealthComponent;
@@ -70,8 +71,9 @@ class ClassicBullet;
 	Interactions, \
 	Ricochet,\
 	InteractableElement, \
-	ParticleSystem, \
 	Loot, \
+	BackToShelter, \
+	ParticleSystem, \
     RicochetWeapon, \
 	PlayerHealthComponent,\
 	HungerComponent, \

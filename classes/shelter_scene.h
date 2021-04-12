@@ -17,6 +17,7 @@ private:
 	Manager* uselessMngr;
 
 public:
+	ShelterScene(Game* game) :GameScene(game) {};
 	virtual ~ShelterScene() { delete craftSys, delete uselessMngr; };
 	void init() override;
 	virtual void update();

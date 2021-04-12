@@ -10,7 +10,7 @@ using namespace std;
 
 class InteractableElement: public Component
 {
-private:
+protected:
 	string message;
 	Transform* transform;
 	bool isColliding = false;
@@ -23,5 +23,6 @@ public:
 	void init() override; 
 	virtual void Interact();
 	bool CheckCollision(Point2D playerPos, float width, float height);
+	bool CheckCollision(Transform* tr) { return CheckCollision(tr->getPos(), tr->getW(), tr->getH()); };
 };
 

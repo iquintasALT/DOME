@@ -1,7 +1,7 @@
 #include "raid_scene.h"
 
-#include "../components/interactableElement.h"
 #include "../components/loot.h"
+#include "../components/back_to_shelter.h"
 
 void RaidScene::init() {
 	loadMap(path_);
@@ -16,4 +16,9 @@ void RaidScene::init() {
 	interactableElement->addComponent<Transform>(Vector2D(20, 600), 64, 64, 0);
 	interactableElement->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
 	interactableElement->addComponent<Loot>("Hola nena", 5, 5);
+
+	Entity* returnToShelter = mngr_->addEntity();
+	returnToShelter->addComponent<Transform>(Vector2D(900, 600), 64, 64, 0);
+	returnToShelter->addComponent<BackToShelter>(g_);
+	returnToShelter->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
 }

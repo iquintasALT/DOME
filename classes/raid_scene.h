@@ -13,7 +13,7 @@ class RaidScene : public GameScene
 private:
 	string path_;
 public:
-	RaidScene(string path) { path_ = path; }
+	RaidScene(string path, Game* game): GameScene(game) { path_ = path; }
 	void init() override;
 };
 

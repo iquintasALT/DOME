@@ -6,7 +6,7 @@
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
 
-LocationsScene::LocationsScene(Game* g) {
+LocationsScene::LocationsScene(Game* g):GameScene(g) {
 	mngr_->addEntity(new MenuButton(Vector2D(100, 300),
 		&sdlutils().images().at("shelterButton"), changeToRaid, g, mngr_));
 
@@ -16,11 +16,11 @@ LocationsScene::LocationsScene(Game* g) {
 }
 
 void LocationsScene::changeToRaid2(Game* g) {
-	g->getStateMachine()->changeState(new RaidScene("./resources/tilemap/template.tmx"));
+	g->getStateMachine()->changeState(new RaidScene("./resources/tilemap/template.tmx", g));
 	g->getStateMachine()->currentState()->init();
 }
 void LocationsScene::changeToRaid(Game* g) {
-	g->getStateMachine()->changeState(new RaidScene("./resources/tilemap/template.tmx"));
+	g->getStateMachine()->changeState(new RaidScene("./resources/tilemap/template.tmx", g));
 	g->getStateMachine()->currentState()->init();
 }
 

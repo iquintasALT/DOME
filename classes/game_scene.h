@@ -29,6 +29,8 @@ using namespace std;
 
 using gid = unsigned int;
 
+class Game;
+
 struct MapInfo {
 	tmx::Map tile_map;
 	string path_;
@@ -42,13 +44,14 @@ class GameScene
 protected:
 	Manager* mngr_;
 	MapInfo mapInfo;
+	Game* g_;
 
 	//funcion de cargado de mapa usable por todas las escenas de juego
 	void loadMap(string& const path);
 
 public:
 	//constructora que crea el manager de gObjects de la clase
-	inline GameScene() { mngr_ = new Manager(); }
+	inline GameScene(Game* game) { mngr_ = new Manager(); g_ = game; }
 	inline virtual ~GameScene() { delete mngr_; }
 	//creacion de objetos, que sera diferente en cada escena
 	inline virtual void init() = 0;
