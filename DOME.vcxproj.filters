@@ -291,6 +291,15 @@
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="components\back_to_shelter.cpp" />
+    <ClCompile Include="classes\ship_station.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\navigation_station.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\sleep_station.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -651,6 +660,15 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\back_to_shelter.h" />
+    <ClInclude Include="classes\ship_station.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\sleep_station.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\navigation_station.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
