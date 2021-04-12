@@ -2,9 +2,11 @@
 #include <map>
 #include <iostream>
 #include <vector>
-#include "../components/Inventory.h"
+#include "../components/InventoryController.h"
+#include "../components/loot.h"
 #include "../ecs/Manager.h"
 #include "../classes/player.h"
+#include "../ecs/Manager.h"
 #include "../utils/checkML.h"
 #include <vector>
 
@@ -44,7 +46,7 @@ private:
 	Inventory* playerInventory;
 public:
 	CraftingSystem(Manager* mngr);
-	void CraftItem(ITEMS item);
+	void CraftItem(ITEMS item , int x, int y);
 	Crafts* getCrafts();
 };
 
