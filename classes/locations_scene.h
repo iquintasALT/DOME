@@ -5,8 +5,9 @@
 class Game;
 class LocationButton;
 
-const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/template.tmx", "B", "C", "D", "E" };
-enum BUTTONID { Farmacia, Nose1, Nose2, Nose3 };
+const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/template.tmx", "./resources/tilemap/zona_hospital.tmx",
+												"C", "D", "E" };
+enum BUTTONID { Farmacia, Hospital, Nose2, Nose3 };
 
 class LocationsScene : public GameScene
 {
