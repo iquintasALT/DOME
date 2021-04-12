@@ -54,7 +54,7 @@ void KeyboardPlayerCtrl::update() {
 		crouched = false;
 	}
 
-	//Camera::mainCamera->FollowPlayer(tr_->getPos());
+	Camera::mainCamera->FollowPlayer(tr_->getPos());
 }
 
 void KeyboardPlayerCtrl::resetSpeed() {
