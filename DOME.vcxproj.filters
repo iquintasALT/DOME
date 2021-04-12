@@ -290,6 +290,7 @@
     <ClCompile Include="classes\locations_scene.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
+    <ClCompile Include="components\back_to_shelter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -649,6 +650,7 @@
     <ClInclude Include="classes\locations_scene.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
+    <ClInclude Include="components\back_to_shelter.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
