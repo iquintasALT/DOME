@@ -16,5 +16,5 @@ protected:
 
 public:
 	MenuButton(Vector2D pos, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_);
-	void update() override;
+	virtual void update() override;
 };
