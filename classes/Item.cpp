@@ -26,7 +26,6 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 	width = info->width();
 	height = info->height();
 	image = mngr->addEntity();
-	mngr->addRenderLayer<Item>(image);
 	transform = image->addComponent<Transform>(inventory->itemPosition(x, y),
 		Inventory::itemWidth * width, Inventory::itemHeight * height, 0);
 	image->addComponent<Image>(info->texture());

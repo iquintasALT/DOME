@@ -83,7 +83,6 @@ void GameScene::loadMap(string& const path) {
 					auto x_pos = x * mapInfo.tile_width;
 					auto y_pos = y * mapInfo.tile_height;
 
-
 					//bool is_wall = false; // Booleano de control
 					//// Acceso a las propiedades de una tile dentro de un tileset (.tsx)
 					//vector<tmx::Property> tile_props = mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties;
@@ -94,11 +93,8 @@ void GameScene::loadMap(string& const path) {
 					//		is_wall = tile_props[0].getBoolValue();
 					//}
 
-					//propiedades de la capa de tiles
-					vector<tmx::Property> tl_props = tile_layer->getProperties();
-
 					// metemos el tile
-					Tile(mngr_, mapInfo.tilesets[tset_gid], tl_props[0].getStringValue(), x_pos, y_pos,
+					Tile(mngr_, mapInfo.tilesets[tset_gid], x_pos, y_pos,
 						region_x, region_y, mapInfo.tile_width, mapInfo.tile_height);
 				}
 			}

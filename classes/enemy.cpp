@@ -17,13 +17,13 @@ Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacte
 {
 	mngr_->addEntity(this)->setGroup<Contact_Dmg_grp>(true);
 	addComponent<Transform>(pos, 32, 64, 0);
-	addComponent<RigidBody>();
-	addComponent<EnemyContactDamage>();
+	//addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);/
+	addComponent<RigidBody>(Vector2D(), hasGravity);
+	//addComponent<EnemyContactDamage>();
 }
 
 DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 {
-	mngr_->addRenderLayer<Enemy>(this);
 	addComponent<PlayerCollisions>();
 	addComponent<Image>(&sdlutils().images().at("enemy"), 2, 9, 0, 0);
 	addComponent<enemy_animation>();
@@ -33,7 +33,6 @@ DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 
 FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos, false)
 {
-	mngr_->addRenderLayer<Enemy>(this);
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	//addComponent<player_animation>();
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);

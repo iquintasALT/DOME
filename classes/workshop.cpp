@@ -75,7 +75,6 @@ void Workshop::setRenderFlag(bool set) {
 void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
 	entity->addComponent<Transform>(pos, size.getX(), size.getY(), 0);
 	entity->addComponent<Image>(&sdlutils().images().at(name));
-	getMngr()->addRenderLayer<Interface>(entity);
 }
 
 void Workshop::update() {
@@ -210,8 +209,6 @@ void Workshop::rightWindowRender() {
 void Workshop::renderImg(float posX, float posY, int row, int col, int sizeX, int sizeY) {
 	Entity* aux = getMngr()->addEntity();
 	aux->addComponent<Transform>(Vector2D{ posX,posY }, sizeX, sizeY, 0);
-	Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, row, col);
-	img->render();
-
+	aux->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, row, col)->render();
 	aux->setActive(false);
 }
