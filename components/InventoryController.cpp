@@ -22,8 +22,6 @@ void InventoryController::init() {
 	float ypos = (sdlutils().height() - trheight) / 2;
 	Transform* t = inventoryPanel->addComponent<Transform>(Vector2D(xpos, ypos), trwidth, trheight, 0);
 	inventoryPanel->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0);
-	entity_->getMngr()->addRenderLayer<Interface>(inventoryPanel);
-
 	inventory = inventoryPanel->addComponent<Inventory>(width, height);
 
 	Inventory::setItemDimensions(t, width, height);

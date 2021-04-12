@@ -12,7 +12,6 @@ MenuButton::MenuButton(Vector2D pos, Texture* t, CallBackOnClick* function, Game
 	cbOnClick = function;
 	addComponent<Transform>(position, size.getX(), size.getY(), 0);
 	addComponent<Image>(tex);
-	mngr_->addRenderLayer<Interface>(this);
 }
 
 void MenuButton::update() {
