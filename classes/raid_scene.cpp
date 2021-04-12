@@ -2,6 +2,8 @@
 
 #include "../components/interactableElement.h"
 #include "../components/loot.h"
+#include "hud.h"
+#include "../classes/camera.h"
 
 void RaidScene::init() {
 	loadMap(path_);
@@ -10,10 +12,12 @@ void RaidScene::init() {
 
 	Enemy* enemy = new FlyingEnemy(mngr_, Point2D(750, 50));
 
+	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player);
 	//RangedEnemy* rangedEnemy = new RangedEnemy(mngr_, Point2D(800, 50));
 
 	Entity* interactableElement = mngr_->addEntity();
 	interactableElement->addComponent<Transform>(Vector2D(20, 600), 64, 64, 0);
 	interactableElement->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
+	mngr_->addRenderLayer<Loot>(interactableElement);
 	interactableElement->addComponent<Loot>("Hola nena", 5, 5);
 }
