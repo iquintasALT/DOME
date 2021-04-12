@@ -3,10 +3,10 @@
 
 Tile::Tile(Manager* mngr, Texture* tset, string layer, int x, int y, int tx, int ty, int w, int h) {
 	auto tile = mngr->addEntity();
-	Component* tr = tile->addComponent<TileRenderer>(tset, x, y, tx, ty, w, h);
+	tile->addComponent<TileRenderer>(tset, x, y, tx, ty, w, h);
 
 	if(layer == string("Background"))
-		mngr->addRenderLayer<Background>(tr);
+		mngr->addRenderLayer<Background>(tile);
 	else 
-		mngr->addRenderLayer<Walls>(tr);
+		mngr->addRenderLayer<Walls>(tile);
 }

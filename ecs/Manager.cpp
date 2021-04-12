@@ -40,8 +40,8 @@ void Manager::update() {
 void Manager::render() {
 	for (auto i = 0u; i < renders_.size(); i++)
 		for (auto j = 0u; j < renders_[i].size(); j++)
-			if (renders_[i][j]->enabled)
-				renders_[i][j]->render();
+			renders_[i][j]->render();
+
 }
 
 void Manager::AddInteractableElement(InteractableElement* ie) {

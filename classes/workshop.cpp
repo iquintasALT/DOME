@@ -74,8 +74,8 @@ void Workshop::setRenderFlag(bool set) {
 
 void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
 	entity->addComponent<Transform>(pos, size.getX(), size.getY(), 0);
-	Component* img = entity->addComponent<Image>(&sdlutils().images().at(name));
-	getMngr()->addRenderLayer<Interface>(img);
+	entity->addComponent<Image>(&sdlutils().images().at(name));
+	getMngr()->addRenderLayer<Interface>(entity);
 }
 
 void Workshop::update() {
