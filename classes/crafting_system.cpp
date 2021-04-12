@@ -1,7 +1,7 @@
 #include "crafting_system.h"
 
 CraftingSystem::CraftingSystem(Manager* mngr) {
-	playerInventory = mngr->getHandler<Player_hdlr>()->getComponent<Inventory>();
+	playerInventory = mngr->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 
 	//CAMBIAR A ENUM
 	crafts.emplace(BANDAGE, std::vector<I>{I{ MEDICAL_COMPONENTS,1 }, I{ WATER,1 }, I{ ORGANIC_MATERIAL ,1 }});
@@ -10,7 +10,7 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 
 	crafts.emplace(SPLINT, std::vector<I>{I{ MECANICAL_COMPONENTS,1 }, I{ WATER ,1 }});
 
-	crafts.emplace(SPACESHIP_ROCKETS, std::vector<I>{I{SPACESHIP_KEY_ITEMS ,1 },
+	crafts.emplace(SPACESHIP_ROCKETS, std::vector<I>{I{ SPACESHIP_KEY_ITEMS ,1 },
 		I{ BUILDING_PARTS ,1 }, I{ ELECTRONIC_REMAINS,1 }, I{ METAL_PLATES ,1 }});
 
 	crafts.emplace(WEAPON_UPGRADE, std::vector<I>{I{ MECANICAL_COMPONENTS,1 }, I{ ELECTRONIC_REMAINS,1 }, I{ UPGRADE_KIT,1 }});
@@ -24,7 +24,7 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 	crafts.emplace(ARMOUR_UPGRADE, std::vector<I>{I{ METAL_PLATES ,1 }, I{ ORGANIC_MATERIAL ,1 }, I{ UPGRADE_KIT,1 }});
 }
 
-void CraftingSystem::CraftItem(ITEMS item) {
+void CraftingSystem::CraftItem(ITEMS item, int x, int y) {
 	vector<I> itemsNeeded = (*crafts.find(item)).second;
 	list<Item*> itemsList = playerInventory->getItems();
 	list<Item*> itemsToDelete;
@@ -41,11 +41,17 @@ void CraftingSystem::CraftItem(ITEMS item) {
 		}
 	}
 
-	if (itemsNeeded.size() == 0) {
-		for (Item* i : itemsToDelete)
-			playerInventory->removeItem(i);
-		//playerInventory->storeItem() //CREAR ITEM CON ENUMS PARA ALMACENARLO (PENDIENTE DE HACER CON YOJHAN <3)
-	}
+	//if (itemsNeeded.size() == 0) {
+	for (Item* i : itemsToDelete)
+		playerInventory->removeItem(i);
+	Entity* auxEntity = playerInventory->getEntity()->getMngr()->addEntity();
+	ItemInfo* info = ItemInfo::bottleOfWater();
+	auxEntity->addComponent<Transform>(Vector2D(x, y), info->width(), info->height(), 0);
+	Loot* invAux = auxEntity->addComponent<Loot>("hola nena",info->width(), info->height());
+	invAux->getInventory()->storeItem(new Item{ info,auxEntity->getMngr(),invAux->getInventory(),0,0 });
+	invAux->Interact();
+	
+	//}
 }
 
 Crafts* CraftingSystem::getCrafts() { return &crafts; }
