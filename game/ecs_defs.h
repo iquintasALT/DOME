@@ -106,6 +106,7 @@ struct Player_hdlr;
 //#define _COLLISIONS_LIST_ CollLayer1
 
 // render layers
+struct Default;
 struct Background;
 struct Walls;
 struct Player;
@@ -116,6 +117,7 @@ struct Interface;
 struct Item;
 #define _RENDER_LIST_ \
 	Background, \
+	Default, \
 	Walls, \
 	Player, \
 	Enemy, \
