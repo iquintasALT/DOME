@@ -5,6 +5,7 @@
 #include "ricochet_weapon.h"
 #include "../ecs/Manager.h"
 
+#include <iostream>
 hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 {
 	posCam = initialPos;
@@ -16,11 +17,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 	state2 = &sdlutils().images().at("player");
 
 	m->addEntity(this);
-}
-
-void hud::init()
-{
-
+	m->addRenderLayer<Interface>(this);
 }
 
 void hud::update()
@@ -34,7 +31,6 @@ void hud::render()
 {
 	//Arriba derecha
 	time->render();
-
 	nbullets = new Texture(sdlutils().renderer(), to_string(bullets), sdlutils().fonts().at("ARIAL24"),
 		build_sdlcolor(0xffffffff));
 
