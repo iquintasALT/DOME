@@ -53,7 +53,7 @@ void Loot::init() {
 	inventory = inventoryEntity->addComponent<Inventory>(invenWidth, invenHeight);
 	
 	inventory->adjustPanelSize();
-	inventory->storeDefaultItems();
+	//inventory->storeDefaultItems();
 	inventory->setOther(playerInventory);
 
 

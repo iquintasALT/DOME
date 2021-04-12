@@ -1,11 +1,14 @@
 #include "workshop.h"
 
-Workshop::Workshop(Manager* mngr_, CraftingSystem* cs) : GameEntity(mngr_) {
+Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : GameEntity(mngr_) {
 	craftSys = cs;
 	mngr_->addEntity(this);
 	renderFlag = false;
 	listIndex = 0;
 	mouseClick = false;
+
+	realMngr_;
+	playerInv = realMngr_->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 
 	renderRightWindow = false;
 	rightWindowIndex = 0;
@@ -64,10 +67,6 @@ void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
 	}
 }
 
-void Workshop::init() {
-	playerInv = getMngr()->getHandler<Player_hdlr>()->getComponent<Inventory>();
-}
-
 void Workshop::setRenderFlag(bool set) {
 	renderFlag = set;
 }
@@ -107,7 +106,9 @@ void Workshop::update() {
 
 			if (renderRightWindow) {
 				if (Collisions::collides(mousePos, 1, 1, craftButton_tr->getPos(), craftButton_tr->getW(), craftButton_tr->getH())) {
-					std::cout << "se vienen cositas" << std::endl;
+					craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3);
+					renderRightWindow = false;
+					renderFlag = false;
 				}
 			}
 		}
@@ -179,14 +180,17 @@ void Workshop::rightWindowRender() {
 		for (int i = 0; i < itemsNeeded.size(); ++i) {
 			renderImg(offsetX, offsetY, ITEMS_INFO[itemsNeeded[i].name].row, ITEMS_INFO[itemsNeeded[i].name].col, 48, 48);
 
-			//ESPERAR A QUE YOJHAN CAMBIE LO DEL INVENTARIO
-			/*for (Item* item : playerInv->getItems()) {
-				if (item->getItemInfo()->name() == ITEMS_INFO[itemsNeeded[i].name)
-			}*/
+			int aux = 0;
+			list<Item*> items = playerInv->getItems();
+			for (auto it = items.begin(); it != items.end(); ++it)
+			{
+				if ((*it)->getItemInfo()->name() == itemsNeeded[i].name)
+					aux++;
+			}
 
 
-			text = new Texture(sdlutils().renderer(), to_string(itemsNeeded[i].cantidad), sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
-			dest = { (int)(offsetX + 48) , (int)offsetY + 48 - text->height() / 2 ,text->width(),text->height() };
+			text = new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i].cantidad), sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
+			dest = { (int)(offsetX + 30) , (int)offsetY + 48 - text->height() / 2 ,text->width(),text->height() };
 			text->render(dest, 0);
 			delete text;
 
