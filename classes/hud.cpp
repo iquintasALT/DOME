@@ -3,8 +3,9 @@
 #include "../classes/weapon_behaviour.h"
 #include "../classes/charge_weapon.h"
 #include "ricochet_weapon.h"
+#include "../ecs/Manager.h"
 
-hud::hud(Transform* initialPos, Player* p)
+hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 {
 	posCam = initialPos;
 	player = p;
@@ -13,6 +14,8 @@ hud::hud(Transform* initialPos, Player* p)
 
 	state1 = &sdlutils().images().at("player");
 	state2 = &sdlutils().images().at("player");
+
+	m->addEntity(this);
 }
 
 void hud::init()
