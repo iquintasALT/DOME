@@ -25,6 +25,7 @@ public:
 		cmpArray_(), //
 		groups_() //
 	{
+		mngr->addRenderLayer<Default>(this);
 	}
 
 	virtual ~Entity() {
@@ -125,7 +126,7 @@ public:
 		}
 	}
 
-	void render() {
+	virtual void render() {
 		if (!active) return;
 
 		for (auto i = 0u; i < components_.size(); i++) {

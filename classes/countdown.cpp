@@ -19,11 +19,12 @@ Countdown::Countdown(int totaltime)
 	updatetime = SDL_GetTicks();
 
 	std::string aux = getHourString(lefttime / 1000);
-
 }
 
 Countdown::~Countdown() {
-	delete counter;
+	//if (counter != nullptr){
+		//delete counter;
+	//}
 }
 
 void Countdown::render() {

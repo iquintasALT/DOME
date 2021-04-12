@@ -37,7 +37,10 @@ struct ___DummyHandler____;
 #define _HDLRS_LIST_ ___DummyHandler____
 #endif
 
-
+#ifndef  _RENDER_LIST_
+struct ___DummyHandler____;
+#define _RENDER_LIST_ ___DummyHandler____
+#endif
 
 class Entity;
 class Component;
@@ -47,6 +50,7 @@ namespace ecs {
 using ComponentsList = mpl::TypeList<_CMPS_LIST_>;
 using GroupsList = mpl::TypeList<_GRPS_LIST_>;
 using HdlrsList = mpl::TypeList<_HDLRS_LIST_>;
+using RenderList = mpl::TypeList<_RENDER_LIST_>;
 
 
 template<typename T>
@@ -58,10 +62,14 @@ constexpr std::size_t grpIdx = mpl::IndexOf<T, GroupsList>();
 template<typename T>
 constexpr std::size_t hdlrIdx = mpl::IndexOf<T, HdlrsList>();
 
+template<typename T>
+constexpr std::size_t rndIdx = mpl::IndexOf<T, RenderList>();
+
 
 constexpr std::size_t maxComponent = ComponentsList::size;
 constexpr std::size_t maxGroup = GroupsList::size;
 constexpr std::size_t maxHdlr = HdlrsList::size;
+constexpr std::size_t maxRender = RenderList::size;
 
 }
 

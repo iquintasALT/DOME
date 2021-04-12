@@ -3,8 +3,10 @@
 #include "../classes/weapon_behaviour.h"
 #include "../classes/charge_weapon.h"
 #include "ricochet_weapon.h"
+#include "../ecs/Manager.h"
 
-hud::hud(Transform* initialPos, Player* p)
+#include <iostream>
+hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 {
 	posCam = initialPos;
 	player = p;
@@ -13,11 +15,9 @@ hud::hud(Transform* initialPos, Player* p)
 
 	state1 = &sdlutils().images().at("player");
 	state2 = &sdlutils().images().at("player");
-}
 
-void hud::init()
-{
-
+	m->addEntity(this);
+	m->addRenderLayer<Interface>(this);
 }
 
 void hud::update()
@@ -31,7 +31,6 @@ void hud::render()
 {
 	//Arriba derecha
 	time->render();
-
 	nbullets = new Texture(sdlutils().renderer(), to_string(bullets), sdlutils().fonts().at("ARIAL24"),
 		build_sdlcolor(0xffffffff));
 
@@ -41,12 +40,11 @@ void hud::render()
 
 	//Renderizar los estados
 
-	Vector2D aux = Vector2D(10 + 35 + posCam->getPos().getX(), 10 + posCam->getPos().getY());
+	Vector2D aux = Vector2D(10 + 35 , 10);
 	SDL_Rect dest = build_sdlrect(aux, 33, 33);
 	state1->render(dest);
 
-	aux = Vector2D(10 + 70 + posCam->getPos().getX(), 10 + posCam->getPos().getY());
+	aux = Vector2D(10 + 70, 10);
 	dest = build_sdlrect(aux, 33, 33);
 	state2->render(dest);
-
 }
