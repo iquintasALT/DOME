@@ -25,7 +25,7 @@ public:
 		cmpArray_(), //
 		groups_() //
 	{
-		mngr->addRenderLayer<Default>(this);
+		//mngr->addRenderLayer<Default>(this);
 	}
 
 	virtual ~Entity() {
