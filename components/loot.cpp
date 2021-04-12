@@ -50,6 +50,7 @@ void Loot::init() {
 	inventoryEntity->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0);
 
 	inventory = inventoryEntity->addComponent<Inventory>(invenWidth, invenHeight);
+	
 	inventory->adjustPanelSize();
 	inventory->storeDefaultItems();
 	inventory->setOther(playerInventory);

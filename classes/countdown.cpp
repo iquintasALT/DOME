@@ -23,7 +23,8 @@ Countdown::Countdown(int totaltime)
 }
 
 Countdown::~Countdown() {
-	delete counter;
+	if (counter != nullptr)
+		delete counter;
 }
 
 void Countdown::render() {
