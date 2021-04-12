@@ -44,12 +44,11 @@ void hud::render()
 
 	//Renderizar los estados
 
-	Vector2D aux = Vector2D(10 + 35 + posCam->getPos().getX(), 10 + posCam->getPos().getY());
+	Vector2D aux = Vector2D(10 + 35 , 10);
 	SDL_Rect dest = build_sdlrect(aux, 33, 33);
 	state1->render(dest);
 
-	aux = Vector2D(10 + 70 + posCam->getPos().getX(), 10 + posCam->getPos().getY());
+	aux = Vector2D(10 + 70, 10);
 	dest = build_sdlrect(aux, 33, 33);
 	state2->render(dest);
-
 }
