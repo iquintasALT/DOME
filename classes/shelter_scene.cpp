@@ -40,25 +40,18 @@ using std::endl;
 using namespace sdlgui;
 
 void ShelterScene::init() {
-	Entity* player = mngr_->addEntity();
-	mngr_->addRenderLayer<Player>(player);
-	auto tr = player->addComponent<Transform>(Vector2D(), 32, 64, 0);
-	player->addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
-	player->addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
-	player->addComponent<RigidBody>();
-	player->addComponent<KeyboardPlayerCtrl>();
-	player->addComponent<player_animation>();
-	player->addComponent<HungerComponent>();
-	player->addComponent<TirednessComponent>();
+	Player* player = new Player(mngr_, Point2D(200, 50));
+
+
 	mngr_->setHandler<Player_hdlr>(player);
 
 	craftSys = new CraftingSystem(mngr_);
 
 	uselessMngr = new Manager();
-	mechanical_Workshop = new Workshop(uselessMngr, craftSys);
+	mechanical_Workshop = new Workshop(mngr_,uselessMngr, craftSys);
 	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO, BACKPACK_UPGRADE, ARMOUR_UPGRADE });
 
-	medical_Workshop = new Workshop(uselessMngr, craftSys);
+	medical_Workshop = new Workshop(mngr_,uselessMngr, craftSys);
 	medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT});
 
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui
