@@ -24,7 +24,7 @@ public:
 
 	void update() override;
 
-	void render() override;
+	void render();
 
 
 	~hud() { delete time; }
