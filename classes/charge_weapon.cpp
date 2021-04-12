@@ -71,7 +71,8 @@ void ChargeWeapon::update() {
 			bulletTr->setPos(centeredPos + dir * aux1);
 			bulletTr->setRot(degreeAngle);
 
-			entity_->getMngr()->addRenderLayer<Bullets>(bullet->addComponent<Image>(&sdlutils().images().at("charge")));
+			entity_->getMngr()->addRenderLayer<Bullets>(bullet);
+			bullet->addComponent<Image>(&sdlutils().images().at("charge"));
 			bullet->getComponent<Image>()->setRotationOrigin(0, bulletTr->getH() / 2);
 
 			bulletTr->setPos(centeredPos + dir * aux1);

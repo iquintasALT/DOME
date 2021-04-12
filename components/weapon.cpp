@@ -68,8 +68,8 @@ void Weapon::update() {
 		bulletTr->setPos(centeredPos + dir * aux1);
 		bulletTr->setRot(degreeAngle);
 
-		Component* img = bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
-		entity_->getMngr()->addRenderLayer<Bullets>(img);
+		entity_->getMngr()->addRenderLayer<Bullets>(bullet);
+		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
 		bullet->addComponent<ClassicBullet>(playerTr, 0);
 
 		if (actcharger == 0)

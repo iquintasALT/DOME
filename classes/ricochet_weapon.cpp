@@ -60,8 +60,8 @@ void RicochetWeapon::update() {
 		bulletTr->setPos(centeredPos + dir * aux1);
 		bulletTr->setRot(degreeAngle);
 
-		Component* img = bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
-		entity_->getMngr()->addRenderLayer<Bullets>(img);
+		entity_->getMngr()->addRenderLayer<Bullets>(bullet);
+		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
 		bullet->addComponent<Ricochet>(playerTr, nbounce, ntier);
 
 		actcharger--;

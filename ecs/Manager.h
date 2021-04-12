@@ -60,8 +60,8 @@ public:
 	}
 
 	template<typename T>
-	inline void addRenderLayer(Component* render) {
-		renders_[ecs::rndIdx<T>].emplace_back(render);
+	inline void addRenderLayer(Entity* renderObj) {
+		renders_[ecs::rndIdx<T>].emplace_back(renderObj);
 	}
 
 	void update();
@@ -77,6 +77,6 @@ private:
 
 	std::vector<InteractableElement*> interactableElements;
 	std::vector<BoxCollider*> colliders;
-	std::array<std::vector<Component*>, ecs::maxRender> renders_;
+	std::array<std::vector<Entity*>, ecs::maxRender> renders_;
 };
 

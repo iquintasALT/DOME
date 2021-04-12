@@ -26,10 +26,10 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 	width = info->width();
 	height = info->height();
 	image = mngr->addEntity();
+	mngr->addRenderLayer<Item>(image);
 	transform = image->addComponent<Transform>(inventory->itemPosition(x, y),
 		Inventory::itemWidth * width, Inventory::itemHeight * height, 0);
-	Component* img = image->addComponent<Image>(info->texture());
-	mngr->addRenderLayer<Item>(img);
+	image->addComponent<Image>(info->texture());
 
 	image->setActive(false);
 }
