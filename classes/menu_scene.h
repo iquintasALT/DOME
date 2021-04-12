@@ -13,7 +13,7 @@ private:
 	std::list<MenuButton*> buttons;
 
 public: 
-	MenuScene(Game* g);
+	MenuScene(Game* game);
 	void init() override;
 	static void playShelter(Game* g);
 	static void playRaid(Game* g);
