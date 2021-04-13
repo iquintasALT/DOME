@@ -54,6 +54,8 @@ void ShelterScene::init() {
 	medical_Workshop = new Workshop(mngr_,uselessMngr, craftSys);
 	medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT});
 
+	sleep_Station = new SleepStation(uselessMngr);
+
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui
 	sc_ = new Screen(sdlutils().window(), Vector2i(sdlutils().width(), sdlutils().height()), "Refugio");
 	//se cargan las imagenes de los posibles crafteos
@@ -67,9 +69,11 @@ void ShelterScene::init() {
 	//createSimpleButton(Vector2i(500, 100), "INVENTARIO", "Abre el Inventario", ventana1);
 	std::function<void()> openMechanicalWorkshop = [&]() { mechanical_Workshop->setRenderFlag(true); };
 	std::function<void()> openMedicalWorkshop = [&]() { medical_Workshop->setRenderFlag(true); };
+	std::function<void()> openSleepStation = [&]() { sleep_Station->setRenderFlag(true); };
 
 	sdlgui::Widget& windowMechWorkshop = createSimpleButton(Vector2i(500, 200), "MECHANICAL WORKSHOP", "Abre la lista de posibles crafteos", openMechanicalWorkshop);
-	sdlgui::Widget& windowMedWorkshop = createSimpleButton(Vector2i(500, 500), "MEDICAL WORKSHOP", "Abre la lista de posibles crafteos", openMedicalWorkshop);
+	sdlgui::Widget& windowMedWorkshop = createSimpleButton(Vector2i(500, 300), "MEDICAL WORKSHOP", "Abre la lista de posibles crafteos", openMedicalWorkshop);
+	sdlgui::Widget& windowSleepStation = createSimpleButton(Vector2i(500, 400), "SLEEP STATION", "Abre la lista de posibles crafteos", openSleepStation);
 
 	//createSimpleButton(Vector2i(500, 300), "DESCANSO", "Permite dormir y recuperar fuerzas", ventana1);
 
@@ -88,6 +92,7 @@ void ShelterScene::update() {
 
 	mechanical_Workshop->update();
 	medical_Workshop->update();
+	sleep_Station->update();
 }
 
 void ShelterScene::render()
@@ -97,6 +102,7 @@ void ShelterScene::render()
 
 	mechanical_Workshop->render();
 	medical_Workshop->render();
+	sleep_Station->render();
 }
 
 void ShelterScene::updateScreen(SDL_Event* e)
