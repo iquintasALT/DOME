@@ -8,10 +8,9 @@ class LocationButton : public MenuButton
 private:
 	int index;
 	CallBackOnClickLocation* cb;
-protected:
-	static int INDEX;
+
 public:
-	LocationButton(Vector2D pos, Texture* t, CallBackOnClickLocation* function, Game* g, Manager* mngr_);
+	LocationButton(Vector2D pos, Texture* t, Game* g, Manager* mngr_, int number);
 	void update() override;
 	int getIndex() { return index; }
 };
