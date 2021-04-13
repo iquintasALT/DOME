@@ -85,6 +85,10 @@
         {
           "id": "locations_image",
           "file": "resources/sprites/locations_image.png"
+        },
+        {
+          "id": "clock",
+          "file": "resources/sprites/clock.png"
         }
     ],
 

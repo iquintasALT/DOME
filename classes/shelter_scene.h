@@ -3,6 +3,7 @@
 #include "../utils/checkML.h"
 #include "../classes/crafting_system.h"
 #include "../classes/workshop.h"
+#include "../classes/sleep_station.h"
 #include <sdlgui/screen.h>
 #include <functional>
 
@@ -14,6 +15,7 @@ private:
 	CraftingSystem* craftSys;
 	Workshop* mechanical_Workshop;
 	Workshop* medical_Workshop;
+	SleepStation* sleep_Station;
 	Manager* uselessMngr;
 
 public:
