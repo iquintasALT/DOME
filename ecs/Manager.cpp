@@ -11,6 +11,8 @@ Manager::~Manager() {
 	for (auto e : entities_) {
 		delete e;
 	}
+
+	entities_.clear();
 }
 
 void Manager::refresh() {
@@ -33,7 +35,8 @@ void Manager::refresh() {
 
 void Manager::update() {
 	for (auto i = 0u; i < entities_.size(); i++)
-		entities_[i]->update();
+		if (entities_[i]->active)
+			entities_[i]->update();
 }
 
 void Manager::render() {

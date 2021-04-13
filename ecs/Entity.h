@@ -32,6 +32,8 @@ public:
 		for (auto c : components_) {
 			delete c;
 		}
+
+		components_.clear();
 	}
 
 	template<typename T, typename ...Ts>
