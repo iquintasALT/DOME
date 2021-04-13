@@ -15,7 +15,7 @@
 //WHEN COLLISIONS ARE FIXED TO NOT DEPEND ON GRAVITY, COLLISIONS WILL BE MOVED TO BASE CLASS
 Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacter(mngr_)
 {
-	mngr_->addEntity(this)->setGroup<Contact_Dmg_grp>(true);
+	mngr_->addEntity(this)->setGroup<Enemy_grp>(true);
 	addComponent<Transform>(pos, 32, 64, 0);
 	addComponent<RigidBody>();
 	addComponent<EnemyContactDamage>();

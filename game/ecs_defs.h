@@ -92,10 +92,11 @@ class ClassicBullet;
 // groups
 
 struct Wall_grp;
-struct Contact_Dmg_grp;
+struct Enemy_grp;
 #define _GRPS_LIST_  \
 	Wall_grp, \
-	Contact_Dmg_grp
+	Enemy_grp
+	
 
 // handlers
 struct Player_hdlr;

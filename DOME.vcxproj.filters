@@ -303,6 +303,9 @@
     <ClCompile Include="classes\location_button.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
+    <ClCompile Include="components\player_damage.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -674,6 +677,9 @@
     </ClInclude>
     <ClInclude Include="classes\location_button.h">
       <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\player_damage.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
