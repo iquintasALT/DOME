@@ -14,6 +14,16 @@
             "id": "ARIAL32",
             "file": "resources/fonts/ARIAL.ttf",
             "size": 32
+        },
+        {
+            "id": "OrbitronRegular",
+            "file": "resources/fonts/Orbitron-Regular.ttf",
+            "size": 24
+        },
+        {
+            "id": "OrbitronBold",
+            "file": "resources/fonts/Orbitron-Bold.ttf",
+            "size": 24
         }
     ],
 
