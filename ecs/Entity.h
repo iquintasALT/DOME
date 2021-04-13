@@ -120,8 +120,6 @@ public:
 	}
 
 	virtual void update() {
-		if (!active) return;
-
 		for (auto i = 0u; i < components_.size(); i++) {
 			if (components_[i]->enabled)
 				components_[i]->update();

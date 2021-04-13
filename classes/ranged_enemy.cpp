@@ -20,5 +20,4 @@ RangedEnemy::RangedEnemy(Manager* mngr_, Point2D pos) : GameCharacter(mngr_){
 	addComponent<KeepDistance>(consts::RANGED_ENEMY_SPEED, consts::RANGED_ENEMY_MARGINDISTANCE, consts::RANGED_ENEMY_SHOOTDISTANCE);
 	addComponent<EnemyContactDamage>();
 	addComponent<PlayerCollisions>();
-	
 }
