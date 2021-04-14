@@ -25,12 +25,15 @@ public:
 		cmpArray_(), //
 		groups_() //
 	{
+		//mngr->addRenderLayer<Default>(this);
 	}
 
 	virtual ~Entity() {
 		for (auto c : components_) {
 			delete c;
 		}
+
+		components_.clear();
 	}
 
 	template<typename T, typename ...Ts>
@@ -117,15 +120,13 @@ public:
 	}
 
 	virtual void update() {
-		if (!active) return;
-
 		for (auto i = 0u; i < components_.size(); i++) {
 			if (components_[i]->enabled)
 				components_[i]->update();
 		}
 	}
 
-	void render() {
+	virtual void render() {
 		if (!active) return;
 
 		for (auto i = 0u; i < components_.size(); i++) {

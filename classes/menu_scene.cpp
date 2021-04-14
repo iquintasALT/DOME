@@ -11,8 +11,7 @@ MenuScene::MenuScene(Game* game) :GameScene(game) {
 		&sdlutils().images().at("raidButton"), playRaid, g_, mngr_));
 }
 
-void MenuScene::init() {
-}
+void MenuScene::init() {}
 
 void MenuScene::playShelter(Game* g) {
 	g->getStateMachine()->pushState(new ShelterScene(g));

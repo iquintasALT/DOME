@@ -290,7 +290,22 @@
     <ClCompile Include="classes\locations_scene.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\back_to_shelter.cpp">
+    <ClCompile Include="components\back_to_shelter.cpp" />
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\ship_station.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\navigation_station.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\sleep_station.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\location_button.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="components\player_damage.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -652,7 +667,22 @@
     <ClInclude Include="classes\locations_scene.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\back_to_shelter.h">
+    <ClInclude Include="components\back_to_shelter.h" />
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\ship_station.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\sleep_station.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\navigation_station.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\location_button.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\player_damage.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>

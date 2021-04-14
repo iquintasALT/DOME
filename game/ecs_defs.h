@@ -94,19 +94,37 @@ class ClassicBullet;
 // groups
 
 struct Wall_grp;
-struct Contact_Dmg_grp;
+struct Enemy_grp;
 #define _GRPS_LIST_  \
 	Wall_grp, \
-	Contact_Dmg_grp
+	Enemy_grp
+	
 
 // handlers
 struct Player_hdlr;
 #define _HDLRS_LIST_ Player_hdlr
 
 // collision layers
-struct CollLayer1;
-#define _COLLISIONS_LIST_ CollLayer1
+//struct CollLayer1;
+//#define _COLLISIONS_LIST_ CollLayer1
 
 // render layers
-struct RenderLayer1;
-#define _RENDER_LIST_ RenderLayer1
+struct Default;
+struct Background;
+struct Walls;
+struct Player;
+struct Enemy;
+struct Bullets;
+struct Loot;
+struct Interface;
+struct Item;
+#define _RENDER_LIST_ \
+	Background, \
+	Default, \
+	Walls, \
+	Player, \
+	Enemy, \
+	Bullets, \
+	Loot, \
+	Interface, \
+	Item
