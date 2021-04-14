@@ -11,6 +11,8 @@ Manager::~Manager() {
 	for (auto e : entities_) {
 		delete e;
 	}
+
+	entities_.clear();
 }
 
 void Manager::refresh() {
@@ -33,13 +35,15 @@ void Manager::refresh() {
 
 void Manager::update() {
 	for (auto i = 0u; i < entities_.size(); i++)
-		entities_[i]->update();
+		if (entities_[i]->active)
+			entities_[i]->update();
 }
 
 void Manager::render() {
-	auto n = entities_.size();
-	for (auto i = 0u; i < n; i++)
-		entities_[i]->render();
+	for (auto i = 0u; i < renders_.size(); i++)
+		for (auto j = 0u; j < renders_[i].size(); j++)
+			if (!renders_[i][j]->dead)
+				renders_[i][j]->render();
 }
 
 void Manager::AddInteractableElement(InteractableElement* ie) {

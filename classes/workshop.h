@@ -9,7 +9,7 @@
 #include "../sdlutils/InputHandler.h"
 #include "../utils/Collisions.h"
 #include "../utils/checkML.h"
-#include "../components/Inventory.h"
+#include "../components/InventoryController.h"
 #include <vector>
 
 struct Slot {
@@ -46,8 +46,7 @@ private:
 	Inventory* playerInv;
 
 public:
-	Workshop(Manager* mngr_, CraftingSystem* cs);
-	virtual void init();
+	Workshop(Manager* realMngr_,Manager* mngr_, CraftingSystem* cs);
 
 	void setWorkshopItems(vector<ITEMS>&& items);
 	void setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name);
