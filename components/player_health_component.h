@@ -9,9 +9,8 @@ class PlayerHealthComponent : public Component
 protected:
 	Texture* t;
 public:
-	PlayerHealthComponent() {};
+	PlayerHealthComponent() : t(nullptr){};
 	virtual ~PlayerHealthComponent() {};
-	void setTexture(Texture* aux) { t = aux; }
 	Texture* getTexture() { return t; }
 };
 
