@@ -13,7 +13,6 @@ enum BUTTONID { Farmacia, Hospital, Nose2, Nose3 };
 class LocationsScene : public GameScene
 {
 private:
-	Game* game;
 	int buttonNumber = 0;
 	bool mouseClick = false;
 	LocationButton* button;
