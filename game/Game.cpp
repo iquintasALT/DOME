@@ -38,7 +38,7 @@ void Game::init() {
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "resources/config/resources.json");
 	sdlutils().showCursor();
 
-	states->pushState(new LocationsScene(this));
+	states->pushState(new MenuScene(this));
 	states->currentState()->init();
 }
 

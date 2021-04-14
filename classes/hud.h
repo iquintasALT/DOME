@@ -12,11 +12,10 @@ private:
 	Countdown* time;
 
 	int bullets = 0;
+	vector<PlayerHealthComponent*>* states;
 
 	Texture* nbullets;
 	Texture* ncharger;
-	Texture* state1;
-	Texture* state2;
 public:
 	hud(Manager* m, Transform* initialPos, Player* p);
 
