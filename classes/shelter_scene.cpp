@@ -1,6 +1,8 @@
 #include "../classes/shelter_scene.h"
 #include "../components/hunger_component.h"
 #include "../components/tiredness_component.h"
+#include "../game/Game.h"
+#include "locations_scene.h"
 
 #include <sdlgui/window.h>
 #include <sdlgui/layout.h>
@@ -70,10 +72,12 @@ void ShelterScene::init() {
 	std::function<void()> openMechanicalWorkshop = [&]() { mechanical_Workshop->setRenderFlag(true); };
 	std::function<void()> openMedicalWorkshop = [&]() { medical_Workshop->setRenderFlag(true); };
 	std::function<void()> openSleepStation = [&]() { sleep_Station->setRenderFlag(true); };
+	std::function<void()> openRaidMap = [&]() {g_->getStateMachine()->pushState(new LocationsScene(g_)); };
 
 	sdlgui::Widget& windowMechWorkshop = createSimpleButton(Vector2i(500, 200), "MECHANICAL WORKSHOP", "Abre la lista de posibles crafteos", openMechanicalWorkshop);
 	sdlgui::Widget& windowMedWorkshop = createSimpleButton(Vector2i(500, 300), "MEDICAL WORKSHOP", "Abre la lista de posibles crafteos", openMedicalWorkshop);
 	sdlgui::Widget& windowSleepStation = createSimpleButton(Vector2i(500, 400), "SLEEP STATION", "Abre la lista de posibles crafteos", openSleepStation);
+	sdlgui::Widget& raidMapStation = createSimpleButton(Vector2i(500, 500), "MAP OF DOME 42", "Abre el mapa de la cúpula", openRaidMap);
 
 	//createSimpleButton(Vector2i(500, 300), "DESCANSO", "Permite dormir y recuperar fuerzas", ventana1);
 
