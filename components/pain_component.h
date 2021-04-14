@@ -22,7 +22,9 @@ private:
 	Weapon* weapon;
 	int originalDmg;
 public:
-	PainComponent() : phys(nullptr), time(0), weapon(nullptr), originalDmg(0) {};
+	PainComponent() : phys(nullptr), time(0), weapon(nullptr), originalDmg(0) {
+		t = &sdlutils().images().at("player");
+	};
 	~PainComponent();
 	void increaseTime();
 	void reduceWeaponDamage();

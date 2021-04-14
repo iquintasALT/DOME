@@ -2,6 +2,7 @@
 #include "player_health_component.h"
 #include "../utils/checkML.h"
 #include "../game/constant_variables.h"
+#include "../sdlutils/SDLUtils.h"
 class KeyboardPlayerCtrl;
 class Player;
 class Physiognomy;
@@ -21,7 +22,7 @@ private:
 	Physiognomy* phys;
 	HungerComponent* hunger;
 public:
-	IntoxicationComponent() : time(0), timeToApplyHunger(0), phys(nullptr), hunger(nullptr){};
+	IntoxicationComponent() : time(0), timeToApplyHunger(0), phys(nullptr), hunger(nullptr){ t = &sdlutils().images().at("enemy"); };
 	~IntoxicationComponent() {};
 	void init() override;
 	void update() override;
