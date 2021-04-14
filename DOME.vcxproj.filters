@@ -290,7 +290,7 @@
     <ClCompile Include="classes\locations_scene.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\back_to_shelter.cpp" />
+    <ClCompile Include="components\back_to_shelter.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\ship_station.cpp">
@@ -667,7 +667,7 @@
     <ClInclude Include="classes\locations_scene.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\back_to_shelter.h" />
+    <ClInclude Include="components\back_to_shelter.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\ship_station.h">
