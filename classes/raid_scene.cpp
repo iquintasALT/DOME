@@ -21,8 +21,9 @@ void RaidScene::init() {
 	mngr_->addRenderLayer<Loot>(interactableElement);
 	interactableElement->addComponent<Loot>("Hola nena", 5, 5);
 
-	Entity* returnToShelter = mngr_->addEntity();
+	Entity* returnToShelter = mngr_->addEntity(); 
 	returnToShelter->addComponent<Transform>(Vector2D(900, 600), 64, 64, 0);
 	returnToShelter->addComponent<BackToShelter>(g_);
 	returnToShelter->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
+	mngr_->addRenderLayer<Loot>(returnToShelter);
 }
