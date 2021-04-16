@@ -6,6 +6,7 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Gam
 	renderFlag = false;
 	listIndex = 0;
 	mouseClick = false;
+	loot = nullptr;
 
 	realMngr_;
 	playerInv = realMngr_->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
@@ -81,8 +82,9 @@ void Workshop::update() {
 	getMngr()->refresh();
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
+
+
 		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
-			std::cout << listIndex << std::endl;
 			mouseClick = true;
 
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
@@ -106,10 +108,27 @@ void Workshop::update() {
 
 			if (renderRightWindow) {
 				if (Collisions::collides(mousePos, 1, 1, craftButton_tr->getPos(), craftButton_tr->getW(), craftButton_tr->getH())) {
-					craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3);
+					craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this);
+
 					renderRightWindow = false;
 					renderFlag = false;
 				}
+			}
+		}
+		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
+	}
+
+	if (loot != nullptr) {
+		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
+		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
+			mouseClick = true;
+
+			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
+				loot->Interact();
+				loot->getEntity()->setActive(false);
+				loot = nullptr;
+				renderFlag = true;
+				renderRightWindow = true;
 			}
 		}
 		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
@@ -144,6 +163,9 @@ void Workshop::render() {
 
 			rightWindowRender();
 		}
+	}
+	else if (loot != nullptr) {
+		bButton->render();
 	}
 }
 
@@ -214,7 +236,7 @@ void Workshop::rightWindowRender() {
 void Workshop::renderImg(float posX, float posY, int row, int col, int sizeX, int sizeY) {
 	Entity* aux = getMngr()->addEntity();
 	aux->addComponent<Transform>(Vector2D{ posX,posY }, sizeX, sizeY, 0);
-	Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, row, col);
+	Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, row, col);
 	img->render();
 
 	aux->setActive(false);
