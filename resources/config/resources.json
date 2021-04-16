@@ -97,8 +97,12 @@
           "file": "resources/sprites/locations_image.png"
         },
         {
-          "id": "clock",
-          "file": "resources/sprites/clock.png"
+            "id": "clock",
+            "file": "resources/sprites/clock.png"
+        },
+        {
+            "id": "dclock",
+            "file": "resources/sprites/digital_clock.png"
         }
     ],
 

@@ -12,10 +12,14 @@ private:
 	Countdown* time;
 
 	int bullets = 0;
+	int charger = 0;
+	int totalBullet = 0;
 	vector<PlayerHealthComponent*>* states;
 
 	Texture* nbullets;
 	Texture* ncharger;
+	Texture* totalBullets;
+	Texture* timer;
 public:
 	hud(Manager* m, Transform* initialPos, Player* p);
 

@@ -14,11 +14,15 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 	player = p;
 
 	time = new Countdown(10000); //Hay que pasarle el pos Cam para que se mueva
+	timer = &sdlutils().images().at("dclock");
 
 	m->addEntity(this);
 	m->addRenderLayer<Interface>(this);
 
 	states = player->getPhysiognomy()->getHealthComponents();
+
+
+	charger = player->getCurrentWeapon()->getWeaponMovement()->getTamCharger();
 }
 
 void hud::update()
@@ -26,22 +30,34 @@ void hud::update()
 	time->update();
 
 	bullets = player->getCurrentWeapon()->getWeaponMovement()->getChargerBullets();
-
+	totalBullet = player->getCurrentWeapon()->getWeaponMovement()->getTotalBullets();
+	if (totalBullet < 0) totalBullet = 0;
 }
 
 void hud::render()
 {
 	//Arriba derecha
+	Vector2D aux = Vector2D(995, 9);
+	SDL_Rect dest = build_sdlrect(aux, 75, 35);
+	timer->render(dest);
+
 	time->render();
 
-	//Renderizar las balas
-	nbullets = new Texture(sdlutils().renderer(), to_string(bullets), sdlutils().fonts().at("OrbitronRegular"),
+	//Renderizar las balas cargador
+	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(charger), sdlutils().fonts().at("OrbitronRegular"),
 		build_sdlcolor(0xffffffff));
 
-	nbullets->render(posCam->getPos().getX() + 50, posCam->getPos().getY() + 500);
+	nbullets->render(posCam->getPos().getX() - 50, posCam->getPos().getY() + 550);
 	delete nbullets;
 	nbullets = nullptr;
 
+	//Numero pequeñito
+	nbullets = new Texture(sdlutils().renderer(), to_string(totalBullet), sdlutils().fonts().at("OrbitronRegular"),
+		build_sdlcolor(0xffffffff));
+
+	nbullets->render(posCam->getPos().getX() -30, posCam->getPos().getY() + 570);
+	delete nbullets;
+	nbullets = nullptr;
 	//Renderizar los estados
 
 	for (int i = 0; i < player->getPhysiognomy()->getNumStates(); i++)
