@@ -89,9 +89,9 @@ void ChargeWeapon::update() {
 
 			//COMPROBAR COLISIONES CON ENEMIGOS
 			actcharger--;
-
-			if (actcharger == 0)
+			if (actcharger == 0 && nbullets > 0)
 			{
+				nbullets -= charger;
 				if (nbullets >= charger)
 				{
 					actcharger = charger;
