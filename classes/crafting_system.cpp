@@ -26,6 +26,8 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 }
 
 void CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws) {
+	itemsToDelete.clear();
+
 	vector<I> itemsNeeded = (*crafts.find(item)).second;
 	list<Item*> itemsList = playerInventory->getItems();
 	list<Item*> itemsToDelete;
@@ -43,8 +45,7 @@ void CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws) {
 	}
 
 	//if (itemsNeeded.size() == 0) {
-	for (Item* i : itemsToDelete)
-		playerInventory->removeItem(i);
+
 	Entity* auxEntity = playerInventory->getEntity()->getMngr()->addEntity();
 	ItemInfo* info = ItemInfo::bottleOfWater();
 	auxEntity->addComponent<Transform>(Vector2D(x, y), info->width(), info->height(), 0);
@@ -56,8 +57,11 @@ void CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws) {
 	//}
 }
 
-void CraftingSystem::UnCraftItem(ITEMS item) {
-
+void CraftingSystem::FinishCraft() {
+	std::cout << "deleted items" << std::endl;
+	for (Item* i : itemsToDelete)
+		playerInventory->removeItem(i);
+	itemsToDelete.clear();
 }
 
 Crafts* CraftingSystem::getCrafts() { return &crafts; }

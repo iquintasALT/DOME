@@ -124,6 +124,11 @@ void Workshop::update() {
 			mouseClick = true;
 
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
+
+				if (loot->getInventory()->getItems().empty()) {
+					craftSys->FinishCraft();
+				}
+
 				loot->Interact();
 				loot->getEntity()->setActive(false);
 				loot = nullptr;
