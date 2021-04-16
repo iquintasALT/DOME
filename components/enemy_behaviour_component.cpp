@@ -75,8 +75,8 @@ void FlyingChasePlayer::update() {
 	if (enemyDetection->isActive() && (playerTr_->getPos() - tr_->getPos()).magnitude() > stopDistance_)
 	{
 		//If it is further from player than it wants to be, it will approach player horizontally
-		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > stopDistance_) {
-			target.setX(playerTr_->getPos().getX());
+		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > attackDistance_) {
+			target.setX((playerTr_->getPos().getX() + tr_->getPos().getX()) / 2);
 		}
 
 		//If it is too far to begin attacking, it will attempt to maintain its hoverHeight
