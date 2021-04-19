@@ -127,6 +127,6 @@
   <object id="8" name="collider" x="704.279" y="512" width="127.722" height="31.8333"/>
   <object id="10" name="stair" x="798.894" y="351.561" width="33.0606" height="160.091"/>
   <object id="14" name="stair" x="959.652" y="353.136" width="33.0606" height="160.091"/>
-  <object id="16" name="collider" x="832.275" y="384.174" width="127.358" height="31.8333"/>
+  <object id="16" name="collider" x="832.65" y="384.174" width="126.983" height="31.8333"/>
  </objectgroup>
 </map>
