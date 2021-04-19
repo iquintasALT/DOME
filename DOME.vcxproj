@@ -49,6 +49,7 @@
     <ClInclude Include="components\animation_component.h" />
     <ClInclude Include="components\back_to_shelter.h" />
     <ClInclude Include="components\bleedout_component.h" />
+    <ClInclude Include="components\CameraMovement.h" />
     <ClInclude Include="components\charge.h" />
     <ClInclude Include="components\box_collider.h" />
     <ClInclude Include="components\classic_bullet.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="components\back_to_shelter.cpp" />
     <ClCompile Include="components\bleedout_component.cpp" />
     <ClCompile Include="components\box_collider.cpp" />
+    <ClCompile Include="components\CameraMovement.cpp" />
     <ClCompile Include="components\charge.cpp" />
     <ClCompile Include="components\classic_bullet.cpp" />
     <ClCompile Include="components\concussion_component.cpp" />

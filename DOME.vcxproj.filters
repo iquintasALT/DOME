@@ -308,6 +308,9 @@
     <ClCompile Include="components\player_damage.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\CameraMovement.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -687,6 +690,9 @@
     </ClInclude>
     <ClInclude Include="sdlutils\SoundManager.h">
       <Filter>Header Files\sdlutils</Filter>
+    </ClInclude>
+    <ClInclude Include="components\CameraMovement.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
