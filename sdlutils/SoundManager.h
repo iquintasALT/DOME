@@ -3,6 +3,10 @@
 #include <iostream>
 #include <SDL.h>
 #include <array>
+#include <map>
+
+#include "Music.h"
+#include "SoundEffect.h"
 
 #include "../utils/Singleton.h"
 #include "../utils/checkML.h"
@@ -12,137 +16,27 @@ class SoundManager : public Singleton<SoundManager> {
 	friend Singleton<SoundManager>;
 
 public:
-	enum MOUSEBUTTON : uint8_t {
-		LEFT = 0, MIDDLE = 1, RIGHT = 2
-	};
+	template<typename T>
+	using sdl_resource_table = std::map<std::string, T>;
 
 	virtual ~SoundManager() {
+		musics_.clear();
+		sfx_.clear();
 	}
 
-	// clear the state
-	inline void clearState() {
-		isKeyDownEvent_ = false;
-		isKeyUpEvent_ = false;
-		isMouseButtonEvent_ = false;
-		isMouseMotionEvent_ = false;
-		for (auto i = 0u; i < 3; i++) {
-			mbState_[i] = false;
-		}
+	void addMusic(std::string key, std::string path) {
+		musics_.emplace(key, path);
 	}
 
-	// update the state with a new event
-	inline void update(const SDL_Event& event) {
-		switch (event.type) {
-		case SDL_KEYDOWN:
-			onKeyDown(event);
-			break;
-		case SDL_KEYUP:
-			onKeyUp(event);
-			break;
-		case SDL_MOUSEMOTION:
-			onMouseMotion(event);
-			break;
-		case SDL_MOUSEBUTTONDOWN:
-			onMouseButtonChange(event, true);
-			break;
-		case SDL_MOUSEBUTTONUP:
-			onMouseButtonChange(event, false);
-			break;
-		default:
-			break;
-		}
+	void addSFX(std::string key, std::string path) {
+		sfx_.emplace(key, path);
 	}
-
-	// keyboard
-	inline bool keyDownEvent() {
-		return isKeyDownEvent_;
-	}
-
-	inline bool keyUpEvent() {
-		return isKeyUpEvent_;
-	}
-
-	inline bool isKeyDown(SDL_Scancode key) {
-		return keyDownEvent() && kbState_[key] == 1;
-	}
-
-	inline bool isKeyDown(SDL_Keycode key) {
-		return isKeyDown(SDL_GetScancodeFromKey(key));
-	}
-
-	inline bool isKeyUp(SDL_Scancode key) {
-		return keyUpEvent() && kbState_[key] == 0;
-	}
-
-	inline bool isKeyUp(SDL_Keycode key) {
-		return isKeyUp(SDL_GetScancodeFromKey(key));
-	}
-
-	// mouse
-	inline bool mouseMotionEvent() {
-		return isMouseMotionEvent_;
-	}
-
-	inline bool mouseButtonEvent() {
-		return isMouseButtonEvent_;
-	}
-
-	inline const std::pair<Sint32, Sint32>& getMousePos() {
-		return mousePos_;
-	}
-
-	inline int getMouseButtonState(MOUSEBUTTON b) {
-		return mbState_[b];
-	}
-
-	// TODO add support for Joystick, see Chapter 4 of
-	// the book 'SDL Game Development'
 
 private:
-	SoundManager() {
-		kbState_ = SDL_GetKeyboardState(0);
-		clearState();
-	}
+	SoundManager() {}
 
-	inline void onKeyDown(const SDL_Event&) {
-		isKeyDownEvent_ = true;
-	}
-
-	inline void onKeyUp(const SDL_Event&) {
-		isKeyUpEvent_ = true;
-	}
-
-	inline void onMouseMotion(const SDL_Event& event) {
-		isMouseMotionEvent_ = true;
-		mousePos_.first = event.motion.x;
-		mousePos_.second = event.motion.y;
-
-	}
-
-	inline void onMouseButtonChange(const SDL_Event& event, bool isDown) {
-		isMouseButtonEvent_ = true;
-		switch (event.button.button) {
-		case SDL_BUTTON_LEFT:
-			mbState_[LEFT] = isDown;
-			break;
-		case SDL_BUTTON_MIDDLE:
-			mbState_[MIDDLE] = isDown;
-			break;
-		case SDL_BUTTON_RIGHT:
-			mbState_[RIGHT] = isDown;
-			break;
-		default:
-			break;
-		}
-	}
-
-	bool isKeyUpEvent_;
-	bool isKeyDownEvent_;
-	bool isMouseMotionEvent_;
-	bool isMouseButtonEvent_;
-	std::pair<Sint32, Sint32> mousePos_;
-	std::array<bool, 3> mbState_;
-	const Uint8* kbState_;
+	sdl_resource_table<SoundEffect> sfx_; // sounds map (string -> sound)
+	sdl_resource_table<Music> musics_; // musics map (string -> music)
 };
 
 // SoundManager::instance()->method() --> soundManager().method()
