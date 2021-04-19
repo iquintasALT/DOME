@@ -24,6 +24,17 @@ public:
 	virtual ~SoundManager() {
 		musics_.clear();
 		sfx_.clear();
+
+		TTF_Quit(); // quit SDL_ttf
+	}
+
+	void initMixer() {
+		// initialize SDL_Mixer
+		int mixOpenAudio = Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
+		assert(mixOpenAudio == 0);
+		int mixInit_ret = Mix_Init(MIX_INIT_FLAC | MIX_INIT_MOD | MIX_INIT_MP3 | MIX_INIT_OGG);
+		assert(mixInit_ret != 0);
+		SoundEffect::setNumberofChannels(8); // we start with 8 channels
 	}
 
 	void addMusic(std::string key, std::string path) {
@@ -71,16 +82,18 @@ public:
 
 	void setMusicVolume(float musV) {
 		musicVolume = musV;
-		// aqui va el bucle que setea el volumen por cada cancion
-		/*for(int i = 0; i < musics_.size(); ++i)
-			musics_[i]*/
+		for (sdl_resource_table<Music>::iterator it = musics_.begin();
+			it != musics_.end(); ++it) {
+			(*it).second.setMusicVolume(musicVolume);
+		}
 	}
 
 	void setSFXVolume(float sfxV) {
 		sfxVolume = sfxV;
-		// aqui va el bucle que setea el volumen por cada sonido
-		/*for(int i = 0; i < sfx_.size(); ++i)
-			sfx_[i]*/
+		for (sdl_resource_table<SoundEffect>::iterator it = sfx_.begin();
+			it != sfx_.end(); ++it) {
+			(*it).second.setChannelVolume(sfxVolume);
+		}
 	}
 
 private:
