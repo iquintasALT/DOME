@@ -1,8 +1,9 @@
 #pragma once
-#include "game_scene.h"
-#include "../game/constant_variables.h"
+
 #include <vector>
+#include "game_scene.h"
 #include "location_button.h"
+#include "../game/constant_variables.h"
 
 class Game;
 
@@ -15,8 +16,7 @@ class LocationsScene : public GameScene
 private:
 	int buttonNumber = 0;
 	bool mouseClick = false;
-	LocationButton* button;
-	LocationButton* shelter;
+	vector<Entity*> locations;
 
 public:
 	LocationsScene(Game* g);
@@ -24,6 +24,6 @@ public:
 	void update() override;
 
 	void changeToRaid(Game* g, int index);
-	void aux(Game* g);
+	void anActualGoodName(Game* g);
 };
 
