@@ -43,7 +43,16 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
+
+	float mouseX = ih().getMousePos().first;
+	float playerX = tr_->getPos().getX() + tr_->getW() / 2;
+
 	float x = rb->getVel().getX();
+	float xdir = mouseX - playerX;
+
+	if (xdir < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
+	else  im_->setFlip(SDL_FLIP_NONE);
+
 	if (x == 0) {
 		if (currentAnimation == animations[iddle])
 			return false;
@@ -53,9 +62,7 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
-	if (x < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
-	else  im_->setFlip(SDL_FLIP_NONE);
-
+	
 	if (currentAnimation != animations[walking]) {
 		currentAnimation = animations[walking];
 		walkDust->Play();
