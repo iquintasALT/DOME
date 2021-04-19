@@ -5,7 +5,7 @@
 void BoxCollider::init() {
 	tr_ = entity_->getComponent<Transform>();
 
-	entity_->getMngr()->AddCollider(this);
+	itCollisions = entity_->getMngr()->AddCollider(this);
 	assert(tr_ != nullptr);
 }
 

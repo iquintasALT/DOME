@@ -69,7 +69,7 @@ public:
 	void refresh();
 
 	void AddInteractableElement(InteractableElement* ie);
-	void AddCollider(BoxCollider* bc);
+	std::vector<BoxCollider*>::iterator AddCollider(BoxCollider* bc);
 
 private:
 	std::vector<Entity*> entities_;

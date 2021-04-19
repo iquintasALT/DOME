@@ -7,7 +7,7 @@
 RigidBody::RigidBody(Vector2D vel, bool gravity) : tr_(nullptr), vel_(vel),
 grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY), collide(true), bounciness(0)
 {
-	for (bool b : collisions)
+	for (bool& b : collisions)
 		b = false;
 	collisions[0] = true;
 }
@@ -21,7 +21,7 @@ RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 	collide = false;
 	bounciness = 0;
 
-	for (bool b : collisions)
+	for (bool& b : collisions)
 		b = false;
 	collisions[0] = true;
 }
@@ -45,8 +45,11 @@ void RigidBody::update() {
 	collisionVelocity = vel_;
 	onFloor_ = false;
 
+	
+
 	if (collide) {
 		for (auto collider : entity_->getMngr()->getColliders()) {
+			if (collider == nullptr) return;
 			if (collider == boxColl)
 				continue;
 

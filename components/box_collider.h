@@ -20,6 +20,7 @@ private:
 
 	bool trigger;
 	int collisionLayer;
+	std::vector<BoxCollider*>::iterator itCollisions;
 public:
 	inline BoxCollider(bool isTrigger = false, int collisionLayer = 0) : tr_(nullptr),
 		trigger(isTrigger), collisionLayer(collisionLayer) {
@@ -33,6 +34,8 @@ public:
 	virtual void init() override;
 
 	inline bool isTrigger() { return trigger; };
+
+	inline std::vector<BoxCollider*>::iterator getCollisionIterator() { return itCollisions; };
 
 	bool collision(Transform* ent, RigidBody* rb_);
 

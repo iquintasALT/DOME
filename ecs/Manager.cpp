@@ -1,6 +1,7 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
 #include "Manager.h"
+#include "../components/box_collider.h"
 
 #include <algorithm>
 
@@ -21,11 +22,14 @@ void Manager::refresh() {
 		std::remove_if( //
 			entities_.begin(), //
 			entities_.end(), //
-			[](const Entity* e) { //
+			[&]( Entity* e) { //
 				if (!e->isDead()) {
 					return false;
 				}
 				else {
+					if (e->hasComponent<BoxCollider>()) {
+						colliders.erase(e->getComponent<BoxCollider>()->getCollisionIterator());
+					}
 					delete e;
 					return true;
 				}
@@ -50,6 +54,9 @@ void Manager::AddInteractableElement(InteractableElement* ie) {
 	interactableElements.push_back(ie);
 }
 
-void Manager::AddCollider(BoxCollider* bc) {
-	colliders.push_back(bc);
+std::vector<BoxCollider*>::iterator Manager::AddCollider(BoxCollider* bc) {
+	//colliders.push_back(bc);
+	std::vector<BoxCollider*>::iterator it = colliders.end();
+	it = colliders.insert(it, bc);
+	return it;
 }
