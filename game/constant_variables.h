@@ -8,11 +8,14 @@ namespace consts {
 	const float JUMP_SPEED = 3.0f;
 	const float STAIRS_SPEED = 1.5f;
 	const float MELEE_ENEMY_SPEED = 2.5f;
-	const float MELEE_ENEMY_STOPDISTANCE = 50.0f;
+	const float MELEE_ENEMY_STOPDISTANCE = 80.0f;
 	const float RANGED_ENEMY_SPEED = PLAYER_SPEED / 2;
 	const float RANGED_ENEMY_MARGINDISTANCE = 250.0f;
 	const float RANGED_ENEMY_SHOOTDISTANCE = 350.0f;
+	const float FLYING_ENEMY_HOVERHEIGHT = 160.0f;
+	const float FLYING_ENEMY_APPROACHDISTANCE = 180.0f;
 	const float ACTIVATE_ENEMY_DISTANCE = 400.0f;
+	const short int ENEMY_ATTACK_COOLDOWN = 1000;
 	const int WINDOW_WIDTH = 1088;
 	const int WINDOW_HEIGHT = 736;
 	const float FALLING_DMG_SPEED = 8;

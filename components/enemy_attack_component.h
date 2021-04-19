@@ -9,15 +9,15 @@ class EnemyAttackComponent :
 protected:
     Transform* tr_;
     Transform* playerTr_;
-
-    EnemyAttackComponent(Transform* transform = nullptr, Transform* playerTransform = nullptr) : 
-        tr_(transform), playerTr_(playerTransform) {};
+    RigidBody* rb_;
+    
     // attack is bool so that behaviour knows whether to start attack cooldown
-    virtual bool attack() = 0;
+    virtual bool attack() { return false; };
     // Returns a vector pointing towards the player
     Vector2D getTarget();
 public:
-    virtual void update() override = 0;
+    EnemyAttackComponent(Transform* transform = nullptr, Transform* playerTransform = nullptr) : 
+        tr_(transform), playerTr_(playerTransform) {};
     virtual void init() override;
 };
 
@@ -34,7 +34,7 @@ protected:
     /// Leaps at player, entering attack mode
     virtual bool attack() override;
 public:
-    MeleeAttack(Vector2D lungeThrust = Vector2D(3.0, 2.0)) : lunge(lungeThrust) {};
+    MeleeAttack(Vector2D lungeThrust = Vector2D(4.0, 2.0)) : lunge(lungeThrust) {};
 };
 
 //--------------------------------------------------------------------------------------------------------------

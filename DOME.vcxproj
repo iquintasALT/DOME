@@ -137,6 +137,7 @@
     <ClInclude Include="sdlutils\RandomNumberGenerator.h" />
     <ClInclude Include="sdlutils\SDLUtils.h" />
     <ClInclude Include="sdlutils\SoundEffect.h" />
+    <ClInclude Include="sdlutils\SoundManager.h" />
     <ClInclude Include="sdlutils\Texture.h" />
     <ClInclude Include="sdlutils\VirtualTimer.h" />
     <ClInclude Include="utils\checkML.h" />
