@@ -32,11 +32,50 @@ public:
 		sfx_.emplace(key, path);
 	}
 
+	void playMusic(std::string key) {
+		if (&musics_.at(key) != currentMusic) {
+			currentMusic->pauseMusic();
+			currentMusic = &musics_.at(key);
+			currentMusic->play();
+		}
+	}
+
+	void playSFX(std::string key) {
+		if (&sfx_.at(key) != currentSFX) {
+			currentSFX->pauseChannel();
+			currentSFX = &sfx_.at(key);
+			currentSFX->play();
+		}
+	}
+
+	float getMusicVolume() { return musicVolume; }
+
+	float getSFXVolume() { return sfxVolume; }
+
+	void setMusicVolume(float musV) {
+		musicVolume = musV;
+		// aqui va el bucle que setea el volumen por cada cancion
+		/*for(int i = 0; i < musics_.size(); ++i)
+			musics_[i]*/
+	}
+
+	void setSFXVolume(float sfxV) {
+		sfxVolume = sfxV;
+		// aqui va el bucle que setea el volumen por cada sonido
+		/*for(int i = 0; i < sfx_.size(); ++i)
+			sfx_[i]*/
+	}
+
 private:
 	SoundManager() {}
 
 	sdl_resource_table<SoundEffect> sfx_; // sounds map (string -> sound)
 	sdl_resource_table<Music> musics_; // musics map (string -> music)
+
+	Music* currentMusic = nullptr;
+	SoundEffect* currentSFX = nullptr;
+
+	float musicVolume = 0, sfxVolume = 0;
 };
 
 // SoundManager::instance()->method() --> soundManager().method()
