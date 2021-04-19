@@ -2,7 +2,6 @@
 
 #include <vector>
 #include "game_scene.h"
-#include "location_button.h"
 #include "../game/constant_variables.h"
 
 class Game;
