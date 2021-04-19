@@ -11,12 +11,17 @@ LocationsScene::LocationsScene(Game* g) : GameScene(g) {
 	background->addComponent<Transform>(Vector2D(sdlutils().width() / 2 - sdlutils().height() / 2, 0),
 		sdlutils().height(), sdlutils().height());
 	background->addComponent<Image>(&sdlutils().images().at("location_image"), 1, 3, 0, 0);
-
 	mngr_->addRenderLayer<Background>(background);
-	button = new LocationButton(Vector2D(100, 300), &sdlutils().images().at("raidButton"), g, mngr_, buttonNumber++);
-	mngr_->addEntity(button);
-	shelter = new LocationButton(Vector2D(400, 300), &sdlutils().images().at("shelterButton"), g, mngr_, buttonNumber++);
-	mngr_->addEntity(shelter);
+
+	// this here is so we are aware that this is not roght but I need to wait till we have all locations srry
+	int numLoc = 2;
+	for (int i = 0; i < numLoc; ++i) {
+		auto button = mngr_->addEntity();
+		button->addComponent<Transform>(Vector2D(250 + 300 * i, 300), 75, 75);
+		button->addComponent<Image>(&sdlutils().images().at("location_icons"), 2, 3, 0 + 1 * i, 0);
+		mngr_->addRenderLayer<Background>(button);
+		locations.push_back(button);
+	}
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
@@ -24,24 +29,28 @@ void LocationsScene::changeToRaid(Game* g, int index) {
 	g->getStateMachine()->currentState()->init();
 }
 
-void LocationsScene::update() {
-	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
-	if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
-		mouseClick = true;
-
-		if (Collisions::collides(mousePos, 1, 1, button->getComponent<Transform>()->getPos(), button->getComponent<Transform>()->getW(),
-			button->getComponent<Transform>()->getH())) {
-			changeToRaid(g_, 0);
-		}
-		else if (Collisions::collides(mousePos, 1, 1, shelter->getComponent<Transform>()->getPos(), shelter->getComponent<Transform>()->getW(),
-			shelter->getComponent<Transform>()->getH())) {
-			aux(g_);
-		}
-	}
-	else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
-}
-
-void LocationsScene::aux(Game* g) {
+void LocationsScene::anActualGoodName(Game* g) {
 	g->getStateMachine()->pushState(new ShelterScene(g));
 	g->getStateMachine()->currentState()->init();
 }
+
+void LocationsScene::update() {
+	int i = 0;
+	while (i < locations.size()) {
+		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
+		auto buttonTr = locations[i]->getComponent<Transform>();
+
+		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
+			if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
+				// THIS IS SO BAD IT'S BURNING MY SOUL
+				if (i == 0) changeToRaid(g_, i);
+				else anActualGoodName(g_);
+				mouseClick = true;
+			}
+		}
+		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
+
+		++i;
+	}
+}
+

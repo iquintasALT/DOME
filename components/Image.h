@@ -21,7 +21,7 @@ public:
 	{
 		int w = tex->width() / cols;
 		int h = tex->height() / rows;
-		src_ = { w * c ,h * r,w,h };
+		src_ = { w * c ,h * r, w, h };
 	}
 
 	virtual ~Image() {}
@@ -42,6 +42,11 @@ public:
 			tex_->render(src_, dest, tr_->getRot(), nullptr, flip_);
 		else
 			tex_->render(src_, dest, tr_->getRot(), &rotationOrigin, flip_);
+	}
+
+	// util por si queremos hacer algun tipo de pequeña animacion en cosas como tooltips o interfaces
+	inline void changeFrame(int newC, int newR) {
+		src_ = { newC * src_.w, newR * src_.h, src_.w, src_.h };
 	}
 
 	inline SDL_Rect& getSrc() {
@@ -67,7 +72,7 @@ public:
 	void setRotationOrigin(int x, int y) {
 		rotationOrigin = { x, y };
 	}
-	
+
 	void setAlpha(Uint8 alpha) {
 		tex_->setAlpha(alpha);
 	}
