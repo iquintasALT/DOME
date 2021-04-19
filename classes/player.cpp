@@ -27,7 +27,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	mngr_->setHandler<Player_hdlr>(this);
 	mngr_->addEntity(this);
 	Transform* t = addComponent<Transform>(pos, 32, 64);
-	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
+	addComponent<Image>(&sdlutils().images().at("player"), 5, 14, 0, 0);
 	mngr_->addRenderLayer<Player>(this);
 	addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
 	addComponent<BoxCollider>();
@@ -38,7 +38,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<HungerComponent>();
 	addComponent<TirednessComponent>();
 	
-	weapon = new WeaponBehaviour(mngr_, t->getPos(), t, 1);
+	weapon = new WeaponBehaviour(mngr_, t->getPos(), t, 5);
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);

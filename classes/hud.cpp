@@ -52,10 +52,10 @@ void hud::render()
 	nbullets = nullptr;
 
 	//Numero pequeñito
-	nbullets = new Texture(sdlutils().renderer(), to_string(totalBullet), sdlutils().fonts().at("OrbitronRegular"),
+	nbullets = new Texture(sdlutils().renderer(), to_string(totalBullet), sdlutils().fonts().at("Orbitron12"),
 		build_sdlcolor(0xffffffff));
 
-	nbullets->render(posCam->getPos().getX() -30, posCam->getPos().getY() + 570);
+	nbullets->render(posCam->getPos().getX(), posCam->getPos().getY() + 570);
 	delete nbullets;
 	nbullets = nullptr;
 	//Renderizar los estados
