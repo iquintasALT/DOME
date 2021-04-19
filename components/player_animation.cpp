@@ -43,7 +43,6 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
-
 	float mouseX = ih().getMousePos().first;
 	float playerX = tr_->getPos().getX() + tr_->getW() / 2;
 
@@ -61,7 +60,6 @@ bool player_animation::changeAnimations() {
 		walkDust->Stop();
 		return true;
 	}
-
 	
 	if (currentAnimation != animations[walking]) {
 		currentAnimation = animations[walking];
