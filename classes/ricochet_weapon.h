@@ -23,5 +23,9 @@ private:
 	int tcharger = actcharger;
 	int nbullets = 50;
 	int nbounce;
+
+	float recharge = 0;
+	bool recharging = false;
+
 };
 

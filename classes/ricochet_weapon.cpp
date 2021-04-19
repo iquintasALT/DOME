@@ -9,6 +9,7 @@
 #include "../ecs/Manager.h"
 #include "../game/constant_variables.h"
 #include "../components/ricochet.h"
+#include "../game/constant_variables.h"
 
 void RicochetWeapon::update() {
 	counter++;
@@ -38,7 +39,7 @@ void RicochetWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate && actcharger > 0) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate && actcharger > 0 && !recharging) {
 		counter = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 
@@ -67,6 +68,7 @@ void RicochetWeapon::update() {
 		actcharger--;
 		if (actcharger == 0 && nbullets > 0)
 		{
+			recharging = true;
 			nbullets -= tcharger;
 			if (nbullets >= charger)
 			{
@@ -79,5 +81,15 @@ void RicochetWeapon::update() {
 			}
 			tcharger = actcharger;
 		}
+	}
+
+	if (recharging)
+	{
+		recharge += consts::DELTA_TIME;
+	}
+	if (recharge > 2.0) //Tiempo de recarga en segundos
+	{
+		recharge = 0;
+		recharging = false;
 	}
 }
