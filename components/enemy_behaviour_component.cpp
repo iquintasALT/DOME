@@ -1,61 +1,75 @@
 #include "enemy_behaviour_component.h"
-
 #include "Transform.h"
 #include "rigid_body.h"
+#include "enemy_attack_component.h"
+#include "../../sdlutils/SDLUtils.h"
+
+void EnemyBehaviourComponent::update()
+{
+	if (attack_ != nullptr && (playerTr_->getPos() - tr_->getPos()).magnitude() < attackDistance_ && 
+		sdlutils().currRealTime() - lastAttack_ >= attackCooldown_)
+		if(attack_->attack())
+			lastAttack_ = sdlutils().currRealTime();
+}
 
 void EnemyBehaviourComponent::init()
 {
 	playerTr_ = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
 	tr_ = entity_->getComponent<Transform>();
 	rb_ = entity_->getComponent<RigidBody>();
-	enemyDetection = entity_->getComponent<DistanceDetection>();
-	assert(playerTr_ != nullptr && tr_ != nullptr && enemyDetection != nullptr);
+	enemyDetection_ = entity_->getComponent<DistanceDetection>();
+	attack_ = entity_->getComponent<EnemyAttackComponent>();
+	assert(playerTr_ != nullptr && tr_ != nullptr && enemyDetection_ != nullptr && attack_ != nullptr);
 }
 
 //--------------------------------------------------------------------------------------------------------------
 
-ChasePlayer::ChasePlayer(float speed_, float stopDistance_) :speed(speed_), stopDistance(stopDistance_){};
+ChasePlayer::ChasePlayer(float speed, float attackDistance) :EnemyBehaviourComponent(speed, attackDistance){};
 
 void ChasePlayer::update() {
 //If enemy can see player
-	if (enemyDetection->isActive()) {
-		//If it is further from player than it wants to be
-		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > stopDistance) {
+	if (enemyDetection_->isActive()) {
+		//If it is further from player than it wants to be and is moving slower than its speed
+		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > attackDistance_ &&
+			rb_->getVel().magnitude() < speed_) {
+
 			//If it is on player's left
 			if (playerTr_->getPos().getX() - tr_->getPos().getX() > 0.0f)
-				rb_->setVelX(speed);
+				rb_->setVelX(speed_);
 			//If it is on player's right
 			else if (playerTr_->getPos().getX() - tr_->getPos().getX() < 0.0f)
-				rb_->setVelX(-speed);
+				rb_->setVelX(-speed_);
 		}
+		else if (rb_->getVel().magnitude() < speed_)
+			rb_->setVel(rb_->getVel() * 0.95);
 		else rb_->setVelX(0.0);
 	}
 }
 
 //--------------------------------------------------------------------------------------------------------------
 
-KeepDistance::KeepDistance(float speed_, float marginDistance_, float shootDistance_) : speed(speed_), 
-marginDistance(marginDistance_), shootDistance(shootDistance_) {
-	assert(marginDistance < shootDistance);
+KeepDistance::KeepDistance(float speed, float marginDistance, float attackDistance) : 
+	EnemyBehaviourComponent(speed, attackDistance), marginDistance_(marginDistance_) {
+	assert(marginDistance_ < attackDistance_);
 };
 
 void KeepDistance::update() {
-	if (enemyDetection->isActive()) {
+	if (enemyDetection_->isActive()) {
 		float distance = playerTr_->getPos().getX() - tr_->getPos().getX();
 
-		if (std::abs(distance) < marginDistance) {
+		if (std::abs(distance) < marginDistance_) {
 			//Enemigo a la izquierda del jugador
-			if (distance > 0.0f) rb_->setVelX(-speed);
+			if (distance > 0.0f) rb_->setVelX(-speed_);
 
 			//Enemigo a la derecha del jugador
-			else if (distance < 0.0f) rb_->setVelX(speed);
+			else if (distance < 0.0f) rb_->setVelX(speed_);
 		}
-		else if (std::abs(distance) > shootDistance) {
+		else if (std::abs(distance) > attackDistance_) {
 			//Enemigo a la izquierda del jugador
-			if (distance > 0.0f) rb_->setVelX(speed);
+			if (distance > 0.0f) rb_->setVelX(speed_);
 
 			//Enemigo a la derecha del jugador
-			else if (distance < 0.0f) rb_->setVelX(-speed);
+			else if (distance < 0.0f) rb_->setVelX(-speed_);
 		}
 		else rb_->setVelX(0.0);
 	}
@@ -63,13 +77,11 @@ void KeepDistance::update() {
 
 //--------------------------------------------------------------------------------------------------------------
 
-FlyingChasePlayer::FlyingChasePlayer(float speed, float stopDistance, float hoverHeight, float attackDistance) :
-	speed_(speed), stopDistance_(stopDistance), hoverHeight_(hoverHeight), attackDistance_(attackDistance) 
-{
-	//rb_->setGravity(0.0f);
-};
+FlyingChasePlayer::FlyingChasePlayer(float speed, float attackDistance, float hoverHeight, float approachDistance) :
+	EnemyBehaviourComponent(speed, attackDistance), hoverHeight_(hoverHeight), approachDistance_(approachDistance) { };
 
 void FlyingChasePlayer::update() {
+	this->EnemyBehaviourComponent::update();
 	Vector2D target = tr_->getPos();
 	//If it can detect the player and is further from player than it wants to be
 	if (enemyDetection->isActive() && (playerTr_->getPos() - tr_->getPos()).magnitude() > stopDistance_)

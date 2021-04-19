@@ -53,6 +53,33 @@ public:
 		return c;
 	}
 
+	template<typename T, typename ActualType, typename ...Ts>
+	inline ActualType* addComponent2(Ts &&...args) {
+		// Create the desired component
+		ActualType* c = new ActualType(std::forward<Ts>(args)...);
+
+		// Assign entity_ pointer
+		c->setEntity(this);
+		// Initialize component
+		c->init();
+
+		/// Assign the component an "erroneous" id corresponding to the parent component
+		/// This will disguise the child as its parent, so that the child is returned when the parent is asked for
+		/// or removed when we attempt to remove the parent
+		constexpr auto id = ecs::cmpIdx<T>;
+		
+		// Assure that we do not have two components with the same id on the same entity
+		if (cmpArray_[id] != nullptr) {
+			removeComponent<T>();
+		}
+
+		// Insert the component into the position of the component array that corresponds to the parent
+		cmpArray_[id] = c;
+		// Add the component to the component list as normal
+		components_.emplace_back(c);
+		return c;
+	}
+
 	template<typename T>
 	void removeComponent() {
 		auto id = ecs::cmpIdx<T>;
