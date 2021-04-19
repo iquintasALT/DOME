@@ -34,3 +34,28 @@ public:
 
 	virtual void update();
 };
+
+class flying_enemy_animation : public animation_component {
+private:
+	const enum animations_name { idle };
+	Animation animations[1]{
+	Animation(idle, 4) };
+
+	Animation currentAnimation = animations[idle];
+	float timer = 0;
+
+	bool changeAnimations();
+	//-----------------------------------------------------------------------------
+	Image* im_;
+	Transform* tr_;
+	RigidBody* rb;
+
+public:
+	flying_enemy_animation();
+
+	virtual void init();
+
+	virtual ~flying_enemy_animation();
+
+	virtual void update();
+};
