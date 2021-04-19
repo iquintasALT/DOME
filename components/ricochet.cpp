@@ -74,7 +74,7 @@ void Ricochet::createExplosion()
 	}*/
 }
 
-void Ricochet::OnCollision(BoxCollider* collider) {
+void Ricochet::OnCollision(Entity* collider) {
 	if (n-- == 0) {
 		createExplosion();
 		entity_->setDead(true);

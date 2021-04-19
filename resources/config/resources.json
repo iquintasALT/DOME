@@ -54,7 +54,11 @@
         },
         {
             "id": "enemy",
-            "file":  "resources/sprites/enemy_sheet.png"
+            "file": "resources/sprites/enemy_sheet.png"
+        },
+        {
+            "id": "flying_enemy",
+            "file": "resources/sprites/flying_enemy_sheet.png"
         },
         {
             "id": "floor",
