@@ -10,6 +10,7 @@
 #include "../components/enemy_attack_component.h"
 #include "../components/player_collisions.h"
 #include "../components/enemy_contact_damege.h"
+#include "../components/box_collider.h"
 
 
 Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacter(mngr_)
@@ -17,6 +18,7 @@ Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacte
 	mngr_->addEntity(this)->setGroup<Enemy_grp>(true);
 	addComponent<Transform>(pos, 32, 64, 0);
 	addComponent<RigidBody>();
+	addComponent<BoxCollider>(false, 1);
 	addComponent<EnemyContactDamage>();
 }
 

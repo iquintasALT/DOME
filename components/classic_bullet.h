@@ -8,6 +8,8 @@
 #include "../utils/checkML.h"
 #include "../components/rigid_body.h"
 
+
+
 class ClassicBullet : public Component {
 private:
 	Transform* tr_;
