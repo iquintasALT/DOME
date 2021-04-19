@@ -39,6 +39,8 @@ public:
 
 	inline void setVelY(float y) { vel_.setY(y); }
 
+	inline void setGravity(float gr) { gravity = gr; }
+
 	virtual void applyGravity();
 
 	void reachedFloor();

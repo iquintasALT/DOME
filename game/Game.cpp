@@ -38,7 +38,7 @@ void Game::init() {
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "resources/config/resources.json");
 	sdlutils().showCursor();
 
-	states->pushState(new ShelterScene(this));
+	states->pushState(new RaidScene("./resources/tilemap/template.tmx",this));
 	states->currentState()->init();
 }
 
