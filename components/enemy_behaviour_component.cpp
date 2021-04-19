@@ -83,16 +83,14 @@ FlyingChasePlayer::FlyingChasePlayer(float speed, float attackDistance, float ho
 void FlyingChasePlayer::update() {
 	this->EnemyBehaviourComponent::update();
 	Vector2D target = tr_->getPos();
-	//If it can detect the player and is further from player than it wants to be
-	if (enemyDetection->isActive() && (playerTr_->getPos() - tr_->getPos()).magnitude() > stopDistance_)
+	//If it can detect the player
+	if (enemyDetection_->isActive())
 	{
-		//If it is further from player than it wants to be, it will approach player horizontally
-		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > attackDistance_) {
-			target.setX((playerTr_->getPos().getX() + tr_->getPos().getX()) / 2);
-		}
+		// Approach player horizontally
+			target.setX(playerTr_->getPos().getX());
 
 		//If it is too far to begin attacking, it will attempt to maintain its hoverHeight
-		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > attackDistance_)
+		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > approachDistance_)
 		{
 			//Get point of floor directly below 
 			RayCast distanceToFloor = RayCast(tr_->getPos(), Vector2D(0.0, 1.0));
@@ -105,10 +103,12 @@ void FlyingChasePlayer::update() {
 		else
 			target.setY(playerTr_->getPos().getY() - 50.0);
 
-		//Set speed to travel towards target
-		rb_->setVel((target - tr_->getPos()).normalize() * speed_);
-		/*cout << "Player position: " << playerTr_->getPos().getX() << ", " << playerTr_->getPos().getY() 
-			<< "      Target: " << target.getX() << ", " << target.getY() << endl;*/
+		// Set speed to travel towards target
+		if (rb_->getVel().magnitude() < speed_ + 0.1)
+			rb_->setVel((target - tr_->getPos()).normalize() * speed_);
+		// If it is being knocked back or is mid-lunge, it will decelerate
+		else if (rb_->getVel().magnitude() > 0.01)
+			rb_->setVel(rb_->getVel() * 0.95);
 	}
 	else
 		rb_->setVel(Vector2D());

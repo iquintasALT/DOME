@@ -7,7 +7,7 @@ namespace consts {
 	const float PLAYER_SPEED = 3.0f;
 	const float JUMP_SPEED = 3.0f;
 	const float MELEE_ENEMY_SPEED = 2.5f;
-	const float MELEE_ENEMY_STOPDISTANCE = 50.0f;
+	const float MELEE_ENEMY_STOPDISTANCE = 80.0f;
 	const float RANGED_ENEMY_SPEED = PLAYER_SPEED / 2;
 	const float RANGED_ENEMY_MARGINDISTANCE = 250.0f;
 	const float RANGED_ENEMY_SHOOTDISTANCE = 350.0f;
