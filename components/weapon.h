@@ -25,6 +25,8 @@ protected:
 	int actcharger = 30;
 	int nbullets = 50;
 	int tcharger = actcharger;
+	float recharge = 0;
+	bool recharging = false;
 
 public:
 	Weapon(float fR, int dam);

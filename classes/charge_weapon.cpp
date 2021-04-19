@@ -10,6 +10,7 @@
 #include "../game/constant_variables.h"
 #include "../components/charge.h"
 #include "../utils/ray_cast.h"
+#include "../game/constant_variables.h"
 
 ChargeWeapon::ChargeWeapon(float fR, int dam) : Weapon(fR, dam) {};
 
@@ -39,7 +40,7 @@ void ChargeWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT)) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && !recharging) {
 		counter++;
 	}
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) {
@@ -91,6 +92,7 @@ void ChargeWeapon::update() {
 			actcharger--;
 			if (actcharger == 0 && nbullets > 0)
 			{
+				recharging = true;
 				nbullets -= tcharger;
 				if (nbullets >= charger)
 				{
@@ -105,5 +107,15 @@ void ChargeWeapon::update() {
 			}
 		}
 		counter = 0;
+	}
+
+	if (recharging)
+	{
+		recharge += consts::DELTA_TIME;
+	}
+	if (recharge > 2.0) //Tiempo de recarga en segundos
+	{
+		recharge = 0;
+		recharging = false;
 	}
 }
