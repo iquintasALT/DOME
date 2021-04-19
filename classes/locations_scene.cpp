@@ -7,7 +7,13 @@
 #include "../sdlutils/SDLUtils.h"
 
 LocationsScene::LocationsScene(Game* g) : GameScene(g) {
-	button = new LocationButton(Vector2D(100, 300), &sdlutils().images().at("location_icon"), g, mngr_, buttonNumber++);
+	auto background = mngr_->addEntity();
+	background->addComponent<Transform>(Vector2D(sdlutils().width() / 2 - sdlutils().height() / 2, 0),
+		sdlutils().height(), sdlutils().height());
+	background->addComponent<Image>(&sdlutils().images().at("location_image"), 1, 3, 0, 0);
+
+	mngr_->addRenderLayer<Background>(background);
+	button = new LocationButton(Vector2D(100, 300), &sdlutils().images().at("raidButton"), g, mngr_, buttonNumber++);
 	mngr_->addEntity(button);
 	shelter = new LocationButton(Vector2D(400, 300), &sdlutils().images().at("shelterButton"), g, mngr_, buttonNumber++);
 	mngr_->addEntity(shelter);
@@ -16,11 +22,6 @@ LocationsScene::LocationsScene(Game* g) : GameScene(g) {
 void LocationsScene::changeToRaid(Game* g, int index) {
 	g->getStateMachine()->changeState(new RaidScene(paths[index], g));
 	g->getStateMachine()->currentState()->init();
-}
-
-void LocationsScene::render() {
-	sdlutils().images().at("locations_image").render(build_sdlrect(0, 0, sdlutils().width(), sdlutils().height()));
-	GameScene::render();
 }
 
 void LocationsScene::update() {

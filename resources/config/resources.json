@@ -118,7 +118,7 @@
     },
     {
       "id": "location_image",
-      "file": "resources/sprites/location_image.png"
+      "file": "resources/sprites/location_map.png"
     },
     {
       "id": "location_icons",
