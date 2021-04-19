@@ -11,38 +11,20 @@
 
 class Image : public Component {
 public:
-	Image(Texture* tex) :
-		tr_(nullptr), //
-		tex_(tex), //
-		src_({ 0,0,tex->width(),tex->width() }),
-		flip_(SDL_FLIP_NONE),
-		rotationOrigin({ -1, -1 })
-	{
-	}
+	Image(Texture* tex) : tr_(nullptr), tex_(tex), src_({ 0,0,tex->width(),tex->width() }),
+		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }) {}
 
-	Image(Texture* tex, SDL_Rect src) :
-		tr_(nullptr), //
-		tex_(tex), //
-		src_(src),
-		flip_(SDL_FLIP_NONE),
-		rotationOrigin({ -1, -1 })
-	{
-	}
+	Image(Texture* tex, SDL_Rect src) : tr_(nullptr), tex_(tex), src_(src),
+		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }) {}
 
-	Image(Texture* tex, int rows, int cols, int r, int c) :
-		tr_(nullptr), //
-		tex_(tex), //
-		flip_(SDL_FLIP_NONE),
-		rotationOrigin({ -1, -1 })
+	Image(Texture* tex, int rows, int cols, int r, int c) : tr_(nullptr), tex_(tex), flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 })
 	{
 		int w = tex->width() / cols;
 		int h = tex->height() / rows;
 		src_ = { w * c ,h * r,w,h };
 	}
 
-	virtual ~Image() {
-
-	}
+	virtual ~Image() {}
 
 	virtual void init() override {
 		tr_ = entity_->getComponent<Transform>();
@@ -58,9 +40,8 @@ public:
 		SDL_Rect dest = build_sdlrect(pos, tr_->getW(), tr_->getH());
 		if (rotationOrigin.x == -1 && rotationOrigin.y == -1)
 			tex_->render(src_, dest, tr_->getRot(), nullptr, flip_);
-		else {
+		else
 			tex_->render(src_, dest, tr_->getRot(), &rotationOrigin, flip_);
-		}
 	}
 
 	inline SDL_Rect& getSrc() {
