@@ -20,14 +20,14 @@ void KeyboardPlayerCtrl::init() {
 	assert(rb_ != nullptr && tr_ != nullptr);
 }
 
-void KeyboardPlayerCtrl::OnCollision(BoxCollider* bc) {
+void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
 	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED)
 		std::cout << "OUCH, QUE DOLOR, TENGA USTED MÁS CUIDADO JUGADOR";
 }
 
-void KeyboardPlayerCtrl::OnTrigger(BoxCollider* bc) {
-	if (bc->getEntity()->hasGroup<Stairs_grp>()) {
-		auto stairTr = bc->getEntity()->getComponent<Transform>();
+void KeyboardPlayerCtrl::OnTrigger(Entity* bc) {
+	if (bc->hasGroup<Stairs_grp>()) {
+		auto stairTr = bc->getComponent<Transform>();
 		stairPosition = stairTr->getPos();
 		stairSize = stairTr->getSize();
 		inStairTrigger = true;

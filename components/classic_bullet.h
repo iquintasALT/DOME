@@ -15,7 +15,7 @@ private:
 	RigidBody* rb;
 	int tier;
 
-	void OnCollision(BoxCollider* collider) override;
+	void OnCollision(Entity* collider) override;
 
 public:
 	ClassicBullet(Transform* player, int typeOfWeapon);

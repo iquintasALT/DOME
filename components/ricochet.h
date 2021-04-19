@@ -19,7 +19,7 @@ private:
 	int tier;
 	int explosion = 100; // Daño de la explosion
 
-	void OnCollision(BoxCollider* collider) override;
+	void OnCollision(Entity* collider) override;
 
 public:
 	Ricochet(Transform* player, int nrebotes, int typeOfWeapon);

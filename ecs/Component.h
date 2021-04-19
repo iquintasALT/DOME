@@ -4,8 +4,6 @@
 #include "../utils/checkML.h"
 
 class Entity;
-class BoxCollider;
-
 class Component {
 	friend Entity;
 public:
@@ -37,7 +35,7 @@ public:
 protected:
 	Entity *entity_;
 
-	virtual void OnCollision(BoxCollider* collider) {};
-	virtual void OnTrigger(BoxCollider* collider) {};
+	virtual void OnCollision(Entity* collider) {};
+	virtual void OnTrigger(Entity* collider) {};
 };
 

@@ -18,6 +18,6 @@ void ClassicBullet::init() {
 	assert(tr_ != nullptr && rb != nullptr);
 }
 
-void ClassicBullet::OnCollision(BoxCollider* collider) {
+void ClassicBullet::OnCollision(Entity* collider) {
 	entity_->setDead(true);
 }
