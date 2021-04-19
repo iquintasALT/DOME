@@ -302,9 +302,6 @@
     <ClCompile Include="classes\sleep_station.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="classes\location_button.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="components\player_damage.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -680,9 +677,6 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\navigation_station.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\location_button.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\player_damage.h">

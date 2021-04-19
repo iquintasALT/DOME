@@ -1,7 +1,6 @@
 #include "locations_scene.h"
 #include "../game/Game.h"
 #include "../classes/raid_scene.h"
-#include "../classes/location_button.h"
 #include "../sdlutils/Texture.h"
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
