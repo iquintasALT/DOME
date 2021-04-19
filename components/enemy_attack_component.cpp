@@ -13,6 +13,7 @@ void EnemyAttackComponent::init()
 {
 	tr_ = entity_->getComponent<Transform>();
 	playerTr_ = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
+	rb_ = entity_->getComponent<RigidBody>();
 }
 
 //--------------------------------------------------------------------------------------------------------------
@@ -28,6 +29,8 @@ bool MeleeAttack::attack()
 		jump.setX(-jump.getX());
 	if (tr_->getPos().getY() < playerTr_->getPos().getY())
 		jump.setY(-jump.getY());
+
+	rb_->setVel(jump);
 
 	return true;
 }
