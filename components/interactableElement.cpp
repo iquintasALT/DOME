@@ -2,7 +2,7 @@
 #include "../ecs/Manager.h"
 #include <iostream>
 
-InteractableElement::InteractableElement(string msg) :message(msg), transform(nullptr) {}
+InteractableElement::InteractableElement(string msg) : message(msg), transform(nullptr) {}
 
 bool InteractableElement::CheckCollision(Point2D pos, float width, float height) {
 	bool inCollision = false;

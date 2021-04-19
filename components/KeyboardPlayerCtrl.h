@@ -18,10 +18,13 @@ private:
 	
 	float speed;
 	float jumpSpeed;
-	bool left, right, crouched;
+	float stairsSpeed;
+	bool left, right, crouched, up, down, inStairTrigger, inStair;
+	Vector2D stairPosition, stairSize;
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
 	void OnCollision(BoxCollider* bc) override;
+	void OnTrigger(BoxCollider* bc) override;
 
 public:
 	KeyboardPlayerCtrl();

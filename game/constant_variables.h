@@ -6,6 +6,7 @@ namespace consts {
 	const float DELTA_TIME = 1 / FRAME_RATE;
 	const float PLAYER_SPEED = 3.0f;
 	const float JUMP_SPEED = 3.0f;
+	const float STAIRS_SPEED = 1.5f;
 	const float MELEE_ENEMY_SPEED = 2.5f;
 	const float MELEE_ENEMY_STOPDISTANCE = 50.0f;
 	const float RANGED_ENEMY_SPEED = PLAYER_SPEED / 2;

@@ -30,8 +30,8 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	mngr_->addRenderLayer<Player>(this);
 	addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
-	//addComponent<BoxCollider>();
-	auto rb = addComponent<RigidBody>();
+	addComponent<BoxCollider>();
+	addComponent<RigidBody>();
 	addComponent<KeyboardPlayerCtrl>();
 	addComponent<player_animation>();
 	addComponent<Interactions>();
@@ -42,8 +42,6 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);
-	physiognomy->addPainState();
-	physiognomy->addIntoxicationState();
 }
 Player::~Player() {
 	delete physiognomy;

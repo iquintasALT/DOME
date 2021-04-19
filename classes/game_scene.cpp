@@ -116,6 +116,13 @@ void GameScene::loadMap(string& const path) {
 					collider->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					collider->addComponent<BoxCollider>(false, 0);
 				}
+				else if (obj.getName() == "stair") {
+					auto stair = mngr_->addEntity();
+					stair->setGroup<Stairs_grp>(true);
+					auto aabb = obj.getAABB();
+					stair->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
+					stair->addComponent<BoxCollider>(true, 0);
+				}
 			}
 		}
 	}
