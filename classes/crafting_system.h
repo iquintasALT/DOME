@@ -10,6 +10,7 @@
 #include "../utils/checkML.h"
 #include <vector>
 
+class Workshop;
 #include <utility>
 
 //enum ITEMS {
@@ -44,9 +45,11 @@ class CraftingSystem
 private:
 	Crafts crafts;
 	Inventory* playerInventory;
+	list<Item*>  itemsToDelete;
 public:
 	CraftingSystem(Manager* mngr);
-	void CraftItem(ITEMS item , int x, int y);
+	void CraftItem(ITEMS item, int x, int y, Workshop* ws);
+	void FinishCraft();
 	Crafts* getCrafts();
 };
 

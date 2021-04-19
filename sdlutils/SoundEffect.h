@@ -14,20 +14,20 @@ class SoundEffect {
 public:
 
 	// cannot copy objects of this type!
-	SoundEffect& operator=(SoundEffect &other) = delete;
+	SoundEffect& operator=(SoundEffect& other) = delete;
 	SoundEffect(const SoundEffect&) = delete;
 
-	SoundEffect(const std::string &fileName) {
+	SoundEffect(const std::string& fileName) {
 		chunk_ = Mix_LoadWAV(fileName.c_str());
 		assert(chunk_ != nullptr);
 	}
 
-	SoundEffect(SoundEffect &&other) noexcept {
+	SoundEffect(SoundEffect&& other) noexcept {
 		chunk_ = other.chunk_;
 		other.chunk_ = nullptr;
 	}
 
-	SoundEffect& operator=(SoundEffect &&other) noexcept {
+	SoundEffect& operator=(SoundEffect&& other) noexcept {
 		this->~SoundEffect();
 		chunk_ = other.chunk_;
 		other.chunk_ = nullptr;
@@ -46,7 +46,6 @@ public:
 	}
 
 	// static methods for sound effects
-	//
 	inline static void pauseChannel(int channel = -1) {
 		_CHECK_CHANNEL_(channel);
 		Mix_Pause(channel);
@@ -69,7 +68,7 @@ public:
 	}
 
 	inline static int setNumberofChannels(int n) {
-		assert(n>0);
+		assert(n > 0);
 		return channels_ = Mix_AllocateChannels(n);
 	}
 
@@ -79,7 +78,7 @@ private:
 		assert(channel >= -1 && channel < static_cast<int>(channels_));
 	}
 
-	Mix_Chunk *chunk_;
+	Mix_Chunk* chunk_;
 	static int channels_; // initialized in cpp
 };
 

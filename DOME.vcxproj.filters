@@ -685,6 +685,9 @@
     <ClInclude Include="components\player_damage.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="sdlutils\SoundManager.h">
+      <Filter>Header Files\sdlutils</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

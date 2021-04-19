@@ -46,7 +46,7 @@ void SDLUtils::initWindow() {
 	assert(renderer_ != nullptr);
 
 	// hide cursor by default
-	hideCursor();
+	// hideCursor();
 
 }
 
@@ -73,8 +73,7 @@ void SDLUtils::initSDLExtensions() {
 	// initialize SDL_Mixer
 	int mixOpenAudio = Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
 	assert(mixOpenAudio == 0);
-	int mixInit_ret = Mix_Init(
-			MIX_INIT_FLAC | MIX_INIT_MOD | MIX_INIT_MP3 | MIX_INIT_OGG);
+	int mixInit_ret = Mix_Init(MIX_INIT_FLAC | MIX_INIT_MOD | MIX_INIT_MP3 | MIX_INIT_OGG);
 	assert(mixInit_ret != 0);
 	SoundEffect::setNumberofChannels(8); // we start with 8 channels
 
@@ -153,17 +152,12 @@ void SDLUtils::loadReasources(std::string filename) {
 					std::string txt = vObj["text"]->AsString();
 					auto &font = fonts_.at(vObj["font"]->AsString());
 					if (vObj["bg"] == nullptr)
-						msgs_.emplace(key,
-								Texture(renderer(), txt, font,
-										build_sdlcolor(
-												vObj["color"]->AsString())));
+						msgs_.emplace(key, Texture(renderer(), txt, font,
+										build_sdlcolor(vObj["color"]->AsString())));
 					else
-						msgs_.emplace(key,
-								Texture(renderer(), txt, font,
-										build_sdlcolor(
-												vObj["color"]->AsString()),
-										build_sdlcolor(
-												vObj["bg"]->AsString())));
+						msgs_.emplace(key, Texture(renderer(), txt, font,
+										build_sdlcolor(vObj["color"]->AsString()),
+										build_sdlcolor(vObj["bg"]->AsString())));
 				} else {
 					throw "'messages' array in '" + filename
 							+ "' includes and invalid value";
@@ -183,7 +177,7 @@ void SDLUtils::loadReasources(std::string filename) {
 					JSONObject vObj = v->AsObject();
 					std::string key = vObj["id"]->AsString();
 					std::string file = vObj["file"]->AsString();
-					sounds_.emplace(key, SoundEffect(file));
+					soundManager().addSFX(key, file);
 				} else {
 					throw "'sounds' array in '" + filename
 							+ "' includes and invalid value";
@@ -203,7 +197,7 @@ void SDLUtils::loadReasources(std::string filename) {
 					JSONObject vObj = v->AsObject();
 					std::string key = vObj["id"]->AsString();
 					std::string file = vObj["file"]->AsString();
-					musics_.emplace(key, Music(file));
+					soundManager().addMusic(key, file);
 				} else {
 					throw "'musics' array in '" + filename
 							+ "' includes and invalid value";
@@ -241,8 +235,6 @@ void SDLUtils::loadReasources(std::string filename) {
 
 void SDLUtils::closeSDLExtensions() {
 
-	musics_.clear();
-	sounds_.clear();
 	msgs_.clear();
 	images_.clear();
 	fonts_.clear();

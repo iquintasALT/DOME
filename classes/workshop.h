@@ -45,8 +45,10 @@ private:
 	std::vector<ITEMS> workshopItems;
 	Inventory* playerInv;
 
+	Loot* loot;
+
 public:
-	Workshop(Manager* realMngr_,Manager* mngr_, CraftingSystem* cs);
+	Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs);
 
 	void setWorkshopItems(vector<ITEMS>&& items);
 	void setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name);
@@ -55,5 +57,9 @@ public:
 	void rightWindowRender();
 	virtual void update();
 	void setRenderFlag(bool set);
+
+	void setLoot(Loot* l) {
+		loot = l;
+	}
 };
 
