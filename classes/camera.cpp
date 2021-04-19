@@ -1,5 +1,6 @@
 #include "camera.h"
 #include <iostream>
+#include "../game/constant_variables.h"
 
 Camera* Camera::mainCamera = nullptr;
 
@@ -17,6 +18,10 @@ void Camera::setMain(Camera* cam) {
 
 void Camera::Move(Vector2D& newPos) {
 	pos = newPos;
+}
+
+void Camera::Lerp(const Vector2D& newPos) {
+	pos = Vector2D::Lerp(pos, newPos - Vector2D(width / 2, height / 2), 0.7f * consts::DELTA_TIME) ;
 }
 
 void Camera::MoveDir(Vector2D dir) {

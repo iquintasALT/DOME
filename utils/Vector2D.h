@@ -5,7 +5,7 @@
 #include <cmath>
 #include <ostream>
 #include "../utils/checkML.h"
-
+#include <iostream>
 /*
  * A class implementing a 2-dimensional vector and corresponding
  * operations. All operations generate new Vector2D, they do not
@@ -18,23 +18,23 @@ public:
 
 	// various constructors
 	Vector2D() noexcept :
-			x_(), y_() {
+		x_(), y_() {
 	}
 
-	Vector2D(const Vector2D &v) :
-			x_(v.getX()), y_(v.getY()) {
+	Vector2D(const Vector2D& v) :
+		x_(v.getX()), y_(v.getY()) {
 	}
 
-	Vector2D(Vector2D &&v) :
-			x_(v.getX()), y_(v.getY()) {
+	Vector2D(Vector2D&& v) :
+		x_(v.getX()), y_(v.getY()) {
 	}
 
-	Vector2D(const Vector2D *v) :
-			x_(v->getX()), y_(v->getY()) {
+	Vector2D(const Vector2D* v) :
+		x_(v->getX()), y_(v->getY()) {
 	}
 
 	Vector2D(float x, float y) :
-			x_(x), y_(y) {
+		x_(x), y_(y) {
 	}
 
 	~Vector2D() {
@@ -63,30 +63,30 @@ public:
 		y_ = y;
 	}
 
-	inline void set(const Vector2D &v) {
+	inline void set(const Vector2D& v) {
 		x_ = v.x_;
 		y_ = v.y_;
 	}
 
-	inline void set(const Vector2D &&v) {
+	inline void set(const Vector2D&& v) {
 		x_ = v.x_;
 		y_ = v.y_;
 	}
 
-	inline void set(const Vector2D *v) {
+	inline void set(const Vector2D* v) {
 		x_ = v->x_;
 		y_ = v->y_;
 	}
 
 	// copy assignment
-	inline Vector2D& operator=(const Vector2D &v) {
+	inline Vector2D& operator=(const Vector2D& v) {
 		x_ = v.x_;
 		y_ = v.y_;
 		return *this;
 	}
 
 	// move assignment - not really needed
-	inline Vector2D& operator=(const Vector2D &&v) {
+	inline Vector2D& operator=(const Vector2D&& v) {
 		x_ = v.x_;
 		y_ = v.y_;
 		return *this;
@@ -116,15 +116,15 @@ public:
 	//
 	//   this->rotate(angle) == v
 	//
-	float angle(const Vector2D &v) const;
+	float angle(const Vector2D& v) const;
 
 	// vector subtraction
-	inline Vector2D operator-(const Vector2D &v) const {
+	inline Vector2D operator-(const Vector2D& v) const {
 		return Vector2D(x_ - v.x_, y_ - v.y_);
 	}
 
 	// vector addition
-	inline Vector2D operator+(const Vector2D &v) const {
+	inline Vector2D operator+(const Vector2D& v) const {
 		return Vector2D(x_ + v.x_, y_ + v.y_);
 	}
 
@@ -139,7 +139,7 @@ public:
 	}
 
 	// scalar multiplication
-	inline float operator *(const Vector2D &d) const {
+	inline float operator *(const Vector2D& d) const {
 		return d.x_ * x_ + d.y_ * y_;
 	}
 
@@ -161,7 +161,7 @@ public:
 		return true;
 	}
 
-	static bool intersection(const Vector2D& p1, const Vector2D& v1, const Vector2D& p2, const Vector2D& v2, Vector2D& intersect){
+	static bool intersection(const Vector2D& p1, const Vector2D& v1, const Vector2D& p2, const Vector2D& v2, Vector2D& intersect) {
 		if (v1.getX() == 0.0)
 			return verticalCollision(p1, p2, v2, intersect);
 		if (v2.getX() == 0.0)
@@ -184,6 +184,22 @@ public:
 		return true;
 	}
 
+	inline static Vector2D Lerp(Vector2D const& a, Vector2D const& b, float i) {
+		if (i < 0) return a;
+		if (i > 1) return b;
+		float x = Lerp(a.getX(), b.getX(), i);
+		float y = Lerp(a.getY(), b.getY(), i);
+
+		std::cout << a.getX() << " " << b.getX() << " " << x << std::endl;
+		return Vector2D(x, y);
+	}
+	inline static float Lerp(float a, float b, float i) {
+		if (i < 0) return a;
+		if (i > 1) return b;
+		if (b < a) return Lerp(b, a, i);
+		return a + (b - a) * i;
+	}
+
 private:
 	float x_;  // first coordinate
 	float y_;  // second coordinate
@@ -191,6 +207,6 @@ private:
 
 // needed for printing a value of tyep Vector2D with std::cout.
 // The definition is in .cpp
-std::ostream& operator<<(std::ostream &os, const Vector2D &v);
+std::ostream& operator<<(std::ostream& os, const Vector2D& v);
 
 using Point2D = Vector2D;
