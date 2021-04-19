@@ -62,9 +62,6 @@ class ClassicBullet;
 	KeepDistance, \
 	FlyingChasePlayer, \
 	EnemyAttackComponent, \
-	MeleeAttack, \
-	GroundedMeleeAttack, \
-	RangedAttack, \
 	TileRenderer, \
 	DistanceDetection, \
 	RayCastDetection, \
