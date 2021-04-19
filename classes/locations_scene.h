@@ -21,7 +21,6 @@ private:
 public:
 	LocationsScene(Game* g);
 	void init() override {};
-	void render() override;
 	void update() override;
 
 	void changeToRaid(Game* g, int index);
