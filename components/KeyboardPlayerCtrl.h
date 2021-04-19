@@ -23,8 +23,8 @@ private:
 	Vector2D stairPosition, stairSize;
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
-	void OnCollision(BoxCollider* bc) override;
-	void OnTrigger(BoxCollider* bc) override;
+	void OnCollision(Entity* bc) override;
+	void OnTrigger(Entity* bc) override;
 
 public:
 	KeyboardPlayerCtrl();

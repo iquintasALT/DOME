@@ -24,8 +24,6 @@ RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 	for (bool b : collisions)
 		b = false;
 	collisions[0] = true;
-
-	
 }
 RigidBody::~RigidBody() {};
 
@@ -70,7 +68,9 @@ void RigidBody::update() {
 
 			if (thisCollision) {
 				if (collider->isTrigger()) {
-					entity_->onTrigger(collider);
+					auto other = collider->getEntity();
+					entity_->onTrigger(other);
+					other->onTrigger(entity_);
 				}
 				else {
 					if (pos.getY() + tr_->getH() <= colliderPos.getY())
@@ -102,7 +102,10 @@ void RigidBody::update() {
 						pos.setX(colliderPos.getX() + colliderTr->getW() + 1);
 						horizontalCollision = true;
 					}
-					entity_->onCollision(collider);
+
+					auto other = collider->getEntity();
+					entity_->onCollision(other);
+					other->onCollision(entity_);
 				}
 			}
 			collision |= thisCollision;
