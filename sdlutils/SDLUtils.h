@@ -6,13 +6,14 @@
 #include <string>
 #include <map>
 
-#include "../utils/Singleton.h"
 #include "RandomNumberGenerator.h"
 #include "Font.h"
-#include "Music.h"
-#include "SoundEffect.h"
 #include "Texture.h"
 #include "VirtualTimer.h"
+
+#include "SoundManager.h"
+
+#include "../utils/Singleton.h"
 #include "../utils/checkML.h"
 #include "../json/JSON.h"
 
@@ -111,16 +112,6 @@ public:
 	inline sdl_resource_table<Texture>& msgs() {
 		return msgs_;
 	}
-
-	// sound effects map
-	inline sdl_resource_table<SoundEffect>& soundEffects() {
-		return sounds_;
-	}
-
-	// musics maps
-	inline sdl_resource_table<Music>& musics() {
-		return musics_;
-	}
 	
 	// tilesets maps
 	inline sdl_resource_table<Texture>& tilesets() {
@@ -168,8 +159,6 @@ private:
 	sdl_resource_table<Texture> images_; // textures map (string -> texture)
 	sdl_resource_table<Texture> msgs_; // textures map (string -> texture)
 	sdl_resource_table<Texture> tilesets_; // textures map (string -> texture)
-	sdl_resource_table<SoundEffect> sounds_; // sounds map (string -> sound)
-	sdl_resource_table<Music> musics_; // musics map (string -> music)
 
 	RandomNumberGenerator random_; // (pseudo) random numbers generator
 	VirtualTimer timer_; // virtual timer
@@ -178,7 +167,6 @@ private:
 
 // This macro defines a compact way for using the singleton SDLUtils, instead of
 // writing SDLUtils::instance()->method() we write sdlutils().method()
-//
 inline SDLUtils& sdlutils() {
 	return *SDLUtils::instance();
 }
