@@ -11,7 +11,7 @@
 #include "../utils/checkML.h"
 
 class Manager;
-class BoxCollider;
+
 class Entity {
 	friend Manager;
 
@@ -162,12 +162,12 @@ public:
 		}
 	}
 
-	void onCollision(BoxCollider* collider) {
+	void onCollision(Entity* collider) {
 		for (int i = 0; i < components_.size(); i++) {
 			components_[i]->OnCollision(collider);
 		}
 	};
-	void onTrigger(BoxCollider* collider) {
+	void onTrigger(Entity* collider) {
 		for (int i = 0; i < components_.size(); i++) {
 			components_[i]->OnTrigger(collider);
 		}
