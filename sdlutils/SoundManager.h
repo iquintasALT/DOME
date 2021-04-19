@@ -11,6 +11,8 @@
 #include "../utils/Singleton.h"
 #include "../utils/checkML.h"
 
+enum class MusicState { PLAYING, PAUSED, LOOPED };
+
 class SoundManager : public Singleton<SoundManager> {
 
 	friend Singleton<SoundManager>;
@@ -46,6 +48,21 @@ public:
 			currentSFX = &sfx_.at(key);
 			currentSFX->play();
 		}
+	}
+
+	void stopCurrentMusic() {
+		if (currentMusic != nullptr)
+			currentMusic->haltMusic();
+	}
+
+	void pauseCurrentMusic() {
+		if (currentMusic != nullptr)
+			currentMusic->pauseMusic();
+	}
+
+	void resumeCurrentMusic() {
+		if (currentMusic != nullptr)
+			currentMusic->resumeMusic();
 	}
 
 	float getMusicVolume() { return musicVolume; }
