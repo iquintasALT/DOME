@@ -245,29 +245,29 @@
   <object id="29" name="cover" x="1088" y="1332" width="34" height="34"/>
  </objectgroup>
  <objectgroup id="6" name="Collisions">
-  <object id="31" x="448" y="416" width="32" height="672"/>
-  <object id="33" x="480" y="992" width="768" height="32"/>
-  <object id="35" x="448" y="1216" width="32" height="192"/>
-  <object id="36" x="480" y="1376" width="1920" height="32"/>
-  <object id="39" x="0" y="1184" width="992" height="32"/>
-  <object id="40" x="672" y="1216" width="32" height="64"/>
-  <object id="41" x="1728" y="416" width="32" height="864"/>
-  <object id="42" x="1024" y="1184" width="704" height="32"/>
-  <object id="43" x="1504" y="1216" width="32" height="64"/>
-  <object id="45" x="1280" y="992" width="448" height="32"/>
-  <object id="46" x="1344" y="1024" width="32" height="64"/>
-  <object id="47" x="1024" y="800" width="704" height="32"/>
-  <object id="48" x="1504" y="832" width="32" height="64"/>
-  <object id="49" x="480" y="800" width="512" height="32"/>
-  <object id="50" x="736" y="832" width="32" height="64"/>
-  <object id="51" x="480" y="608" width="768" height="32"/>
-  <object id="52" x="736" y="640" width="32" height="64"/>
-  <object id="54" x="480" y="416" width="1248" height="32"/>
-  <object id="55" x="1280" y="608" width="448" height="32"/>
-  <object id="56" x="1504" y="640" width="32" height="64"/>
-  <object id="57" x="1504" y="448" width="32" height="64"/>
-  <object id="58" x="736" y="448" width="32" height="64"/>
-  <object id="59" x="448" y="1408" width="1952" height="192"/>
-  <object id="60" x="0" y="1216" width="448" height="384"/>
+  <object id="31" name="collision" x="448" y="416" width="32" height="672"/>
+  <object id="33" name="collision" x="480" y="992" width="768" height="32"/>
+  <object id="35" name="collision" x="448" y="1216" width="32" height="192"/>
+  <object id="36" name="collision" x="480" y="1376" width="1920" height="32"/>
+  <object id="39" name="collision" x="0" y="1184" width="992" height="32"/>
+  <object id="40" name="collision" x="672" y="1216" width="32" height="64"/>
+  <object id="41" name="collision" x="1728" y="416" width="32" height="864"/>
+  <object id="42" name="collision" x="1024" y="1184" width="704" height="32"/>
+  <object id="43" name="collision" x="1504" y="1216" width="32" height="64"/>
+  <object id="45" name="collision" x="1280" y="992" width="448" height="32"/>
+  <object id="46" name="collision" x="1344" y="1024" width="32" height="64"/>
+  <object id="47" name="collision" x="1024" y="800" width="704" height="32"/>
+  <object id="48" name="collision" x="1504" y="832" width="32" height="64"/>
+  <object id="49" name="collision" x="480" y="800" width="512" height="32"/>
+  <object id="50" name="collision" x="736" y="832" width="32" height="64"/>
+  <object id="51" name="collision" x="480" y="608" width="768" height="32"/>
+  <object id="52" name="collision" x="736" y="640" width="32" height="64"/>
+  <object id="54" name="collision" x="480" y="416" width="1248" height="32"/>
+  <object id="55" name="collision" x="1280" y="608" width="448" height="32"/>
+  <object id="56" name="collision" x="1504" y="640" width="32" height="64"/>
+  <object id="57" name="collision" x="1504" y="448" width="32" height="64"/>
+  <object id="58" name="collision" x="736" y="448" width="32" height="64"/>
+  <object id="59" name="collision" x="448" y="1408" width="1952" height="192"/>
+  <object id="60" name="collision" x="0" y="1216" width="448" height="384"/>
  </objectgroup>
 </map>
