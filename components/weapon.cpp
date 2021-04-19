@@ -74,17 +74,17 @@ void Weapon::update() {
 		actcharger--;
 		if (actcharger == 0 && nbullets>0)
 		{
-			nbullets -= charger;
+			nbullets -= tcharger;
 			if (nbullets >= charger)
 			{
 				actcharger = charger;
-				nbullets -= charger;
 			}
 			else
 			{
 				actcharger = nbullets;
 				nbullets = 0;
 			}
+			tcharger = actcharger;
 		}
 	}
 

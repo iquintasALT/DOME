@@ -10,20 +10,20 @@ class Music {
 public:
 
 	// cannot copy objects of this type!
-	Music& operator=(Music &other) = delete;
+	Music& operator=(Music& other) = delete;
 	Music(const Music&) = delete;
 
-	Music(const std::string &fileName) {
+	Music(const std::string& fileName) {
 		music_ = Mix_LoadMUS(fileName.c_str());
 		assert(music_ != nullptr);
 	}
 
-	Music(Music &&other) noexcept {
+	Music(Music&& other) noexcept {
 		music_ = other.music_;
 		other.music_ = nullptr;
 	}
 
-	Music& operator=(Music &&other) noexcept {
+	Music& operator=(Music&& other) noexcept {
 		this->~Music();
 		music_ = other.music_;
 		other.music_ = nullptr;
@@ -59,6 +59,6 @@ public:
 
 
 private:
-	Mix_Music *music_;
+	Mix_Music* music_;
 };
 

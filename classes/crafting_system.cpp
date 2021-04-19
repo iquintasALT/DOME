@@ -1,4 +1,5 @@
 #include "crafting_system.h"
+#include "../classes/workshop.h"
 
 CraftingSystem::CraftingSystem(Manager* mngr) {
 	playerInventory = mngr->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
@@ -24,7 +25,9 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 	crafts.emplace(ARMOUR_UPGRADE, std::vector<I>{I{ METAL_PLATES ,1 }, I{ ORGANIC_MATERIAL ,1 }, I{ UPGRADE_KIT,1 }});
 }
 
-void CraftingSystem::CraftItem(ITEMS item, int x, int y) {
+void CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws) {
+	itemsToDelete.clear();
+
 	vector<I> itemsNeeded = (*crafts.find(item)).second;
 	list<Item*> itemsList = playerInventory->getItems();
 	list<Item*> itemsToDelete;
@@ -42,16 +45,23 @@ void CraftingSystem::CraftItem(ITEMS item, int x, int y) {
 	}
 
 	//if (itemsNeeded.size() == 0) {
-	for (Item* i : itemsToDelete)
-		playerInventory->removeItem(i);
+
 	Entity* auxEntity = playerInventory->getEntity()->getMngr()->addEntity();
 	ItemInfo* info = ItemInfo::bottleOfWater();
 	auxEntity->addComponent<Transform>(Vector2D(x, y), info->width(), info->height(), 0);
-	Loot* invAux = auxEntity->addComponent<Loot>("hola nena",info->width(), info->height());
+	Loot* invAux = auxEntity->addComponent<Loot>("hola nena", info->width(), info->height());
 	invAux->getInventory()->storeItem(new Item{ info,auxEntity->getMngr(),invAux->getInventory(),0,0 });
 	invAux->Interact();
-	
+
+	ws->setLoot(invAux);
 	//}
+}
+
+void CraftingSystem::FinishCraft() {
+	std::cout << "deleted items" << std::endl;
+	for (Item* i : itemsToDelete)
+		playerInventory->removeItem(i);
+	itemsToDelete.clear();
 }
 
 Crafts* CraftingSystem::getCrafts() { return &crafts; }
