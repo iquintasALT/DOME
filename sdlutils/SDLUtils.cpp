@@ -44,10 +44,6 @@ void SDLUtils::initWindow() {
 	renderer_ = SDL_CreateRenderer(window_, -1,
 			SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
 	assert(renderer_ != nullptr);
-
-	// hide cursor by default
-	// hideCursor();
-
 }
 
 void SDLUtils::closeWindow() {
@@ -70,13 +66,8 @@ void SDLUtils::initSDLExtensions() {
 			IMG_INIT_JPG | IMG_INIT_PNG | IMG_INIT_TIF | IMG_INIT_WEBP);
 	assert(imgInit_ret != 0);
 
-	// initialize SDL_Mixer
-	int mixOpenAudio = Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048);
-	assert(mixOpenAudio == 0);
-	int mixInit_ret = Mix_Init(MIX_INIT_FLAC | MIX_INIT_MOD | MIX_INIT_MP3 | MIX_INIT_OGG);
-	assert(mixInit_ret != 0);
-	SoundEffect::setNumberofChannels(8); // we start with 8 channels
-
+	// initialize SDL_mixer
+	soundManager().initMixer();
 }
 
 void SDLUtils::loadReasources(std::string filename) {
@@ -242,6 +233,4 @@ void SDLUtils::closeSDLExtensions() {
 
 	Mix_Quit(); // quit SDL_mixer
 	IMG_Quit(); // quit SDL_image
-	TTF_Quit(); // quit SDL_ttf
 }
-

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="75" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="55">
+<map version="1.4" tiledversion="1.4.2" orientation="orthogonal" renderorder="right-down" width="75" height="50" tilewidth="32" tileheight="32" infinite="0" nextlayerid="6" nextobjectid="71">
  <editorsettings>
   <export target="template.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" source="template_tileset.tsx"/>
- <tileset firstgid="36" source="second_template_tileset.tsx"/>
+ <tileset firstgid="106" source="second_template_tileset.tsx"/>
  <layer id="3" name="Background" width="75" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
@@ -59,6 +59,24 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
+ <objectgroup id="5" name="colision">
+  <object id="55" name="colision" x="0" y="1183.21" width="2398.4" height="34.8858"/>
+  <object id="56" name="colision" x="476.773" y="604.688" width="767.488" height="34.8858"/>
+  <object id="57" name="colision" x="476.773" y="607.595" width="31.9787" height="473.866"/>
+  <object id="58" name="colision" x="479.68" y="1180.3" width="34.8858" height="223.851"/>
+  <object id="59" x="563.988" y="1444.85"/>
+  <object id="60" name="colision" x="482.587" y="1375.08" width="1343.1" height="31.9787"/>
+  <object id="61" name="colision" x="470.959" y="793.653" width="1351.83" height="34.8858"/>
+  <object id="62" name="colision" x="959.36" y="604.688" width="31.9787" height="98.8432"/>
+  <object id="63" name="colision" x="1215.19" y="590.152" width="34.8858" height="206.408"/>
+  <object id="64" name="colision" x="1787.9" y="790.746" width="34.8858" height="619.224"/>
+  <object id="65" name="colision" x="479.68" y="988.432" width="1308.22" height="34.8858"/>
+  <object id="66" name="colision" x="962.268" y="790.746" width="29.0715" height="95.936"/>
+  <object id="67" name="colision" x="1569.86" y="793.653" width="31.9787" height="101.75"/>
+  <object id="68" name="colision" x="1575.68" y="994.246" width="26.1644" height="101.75"/>
+  <object id="69" name="colision" x="863.424" y="1174.49" width="34.8858" height="104.658"/>
+  <object id="70" name="colision" x="1566.96" y="1180.3" width="34.8858" height="104.658"/>
+ </objectgroup>
  <layer id="1" name="Walls" width="75" height="50">
   <data encoding="csv">
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
