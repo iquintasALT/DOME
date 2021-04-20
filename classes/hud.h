@@ -27,7 +27,8 @@ public:
 
 	void render() override;
 
-
-	~hud() { delete time; }
+	~hud() { delete time; 
+	delete posCam;
+	}
 };
 
