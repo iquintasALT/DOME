@@ -80,6 +80,7 @@ void KeyboardPlayerCtrl::update() {
 		if (keystates[SDL_SCANCODE_W]) {
 			rb_->setVel(Vector2D(0, -stairsSpeed));
 			up = true;
+			tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
 			if (tr_->getPos().getY() + tr_->getH() < stairPosition.getY()) {
 				inStairTrigger = false;
 				inStair = false;
@@ -88,6 +89,7 @@ void KeyboardPlayerCtrl::update() {
 		else if (keystates[SDL_SCANCODE_S]) {
 			rb_->setVel(Vector2D(0, stairsSpeed));
 			down = true;
+			tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
 			if (tr_->getPos().getY() > stairPosition.getY()+stairSize.getY()) {
 				inStairTrigger = false;
 				inStair = false;
