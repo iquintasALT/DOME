@@ -190,7 +190,6 @@ public:
 		float x = Lerp(a.getX(), b.getX(), i);
 		float y = Lerp(a.getY(), b.getY(), i);
 
-		std::cout << a.getX() << " " << b.getX() << " " << x << std::endl;
 		return Vector2D(x, y);
 	}
 	inline static float Lerp(float a, float b, float i) {
