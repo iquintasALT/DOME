@@ -28,7 +28,16 @@ void Manager::refresh() {
 				}
 				else {
 					if (e->hasComponent<BoxCollider>()) {
-						colliders.erase(e->getComponent<BoxCollider>()->getCollisionIterator());
+						//colliders.erase(e->getComponent<BoxCollider>()->getCollisionIterator()); NO SE PUEDE ACCEDER A getCollisionIterator porque tras borrar puede tener un iterador no valido
+						//solucion fea temporal, buscarlo
+						vector<BoxCollider*>::iterator it = colliders.begin();
+						while (it != colliders.end()) {
+							if ((*it)->getEntity() == e) {
+								it = colliders.erase(it);
+								break;
+							}
+							else it++;
+						}
 					}
 					delete e;
 					return true;

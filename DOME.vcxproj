@@ -54,6 +54,7 @@
     <ClInclude Include="components\box_collider.h" />
     <ClInclude Include="components\classic_bullet.h" />
     <ClInclude Include="components\concussion_component.h" />
+    <ClInclude Include="components\cover_component.h" />
     <ClInclude Include="components\enemy_animation.h" />
     <ClInclude Include="components\enemy_attack_component.h" />
     <ClInclude Include="components\enemy_behaviour_component.h" />
@@ -83,7 +84,6 @@
     <ClInclude Include="components\tiredness_component.h" />
     <ClInclude Include="components\Transform.h" />
     <ClInclude Include="components\weapon.h" />
-    <ClInclude Include="cover_component.h" />
     <ClInclude Include="ecs\Component.h" />
     <ClInclude Include="ecs\ecs.h" />
     <ClInclude Include="ecs\Entity.h" />
@@ -184,6 +184,7 @@
     <ClCompile Include="components\charge.cpp" />
     <ClCompile Include="components\classic_bullet.cpp" />
     <ClCompile Include="components\concussion_component.cpp" />
+    <ClCompile Include="components\cover_component.cpp" />
     <ClCompile Include="components\enemy_animation.cpp" />
     <ClCompile Include="components\enemy_attack_component.cpp" />
     <ClCompile Include="components\enemy_behaviour_component.cpp" />
@@ -212,7 +213,6 @@
     <ClCompile Include="components\tiredness_component.cpp" />
     <ClCompile Include="components\Transform.cpp" />
     <ClCompile Include="components\weapon.cpp" />
-    <ClCompile Include="cover_component.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
     <ClCompile Include="game\Game.cpp" />
     <ClCompile Include="json\JSON.cpp" />

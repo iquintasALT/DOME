@@ -311,7 +311,9 @@
     <ClCompile Include="classes\cover.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="cover_component.cpp" />
+    <ClCompile Include="components\cover_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -695,7 +697,9 @@
     <ClInclude Include="classes\cover.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="cover_component.h" />
+    <ClInclude Include="components\cover_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
