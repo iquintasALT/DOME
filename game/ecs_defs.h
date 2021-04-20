@@ -9,6 +9,7 @@ class Image;
 class KeyboardPlayerCtrl;
 class player_animation;
 class enemy_animation;
+class flying_enemy_animation;
 class Weapon;
 class InventoryController;
 class Inventory;
@@ -53,6 +54,7 @@ class ClassicBullet;
 	KeyboardPlayerCtrl, \
 	player_animation, \
 	enemy_animation, \
+	flying_enemy_animation, \
     Weapon, \
 	InventoryController, \
 	Inventory, \
