@@ -123,10 +123,10 @@
   <object id="2" name="collider" x="0" y="0" width="32" height="640"/>
   <object id="3" name="collider" x="0" y="640" width="1088" height="96"/>
   <object id="4" name="collider" x="1056" y="0" width="32" height="640"/>
-  <object id="6" name="stair" x="670.94" y="479.94" width="33.0606" height="160.091"/>
-  <object id="8" name="collider" x="704.279" y="512" width="127.722" height="31.8333"/>
-  <object id="10" name="stair" x="798.894" y="351.561" width="33.0606" height="160.091"/>
-  <object id="14" name="stair" x="959.652" y="353.136" width="33.0606" height="160.091"/>
-  <object id="16" name="collider" x="832.65" y="384.174" width="126.983" height="31.8333"/>
+  <object id="6" name="stair" x="670.94" y="511.94" width="33.0606" height="128.091"/>
+  <object id="8" name="collider" x="705.779" y="512" width="126.222" height="31.8333"/>
+  <object id="10" name="stair" x="798.894" y="384.061" width="33.0606" height="127.591"/>
+  <object id="14" name="stair" x="959.652" y="383.863" width="33.0606" height="129.364"/>
+  <object id="16" name="collider" x="833.4" y="384.174" width="124.608" height="31.8333"/>
  </objectgroup>
 </map>
