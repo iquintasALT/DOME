@@ -25,7 +25,7 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 	crafts.emplace(ARMOUR_UPGRADE, std::vector<I>{I{ METAL_PLATES ,1 }, I{ ORGANIC_MATERIAL ,1 }, I{ UPGRADE_KIT,1 }});
 }
 
-void CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws) {
+bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws) {
 	itemsToDelete.clear();
 
 	vector<I> itemsNeeded = (*crafts.find(item)).second;
@@ -53,7 +53,10 @@ void CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws) {
 		invAux->Interact();
 
 		ws->setLoot(invAux);
+
+		return true;
 	}
+	else return false;
 }
 
 void CraftingSystem::FinishCraft() {
