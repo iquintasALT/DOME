@@ -100,6 +100,25 @@ void Weapon::update() {
 	}
 }
 
+void Weapon::recharger()
+{
+	if (nbullets > 0)
+	{
+		recharging = true;
+		nbullets -= tcharger;
+		if (nbullets >= charger-actcharger)
+		{
+			actcharger = charger;
+		}
+		else
+		{
+			actcharger += nbullets;
+			nbullets = 0;
+		}
+		tcharger = actcharger;
+	}
+}
+
 void Weapon::adjustToCrouching() {
 	if (player->getComponent<KeyboardPlayerCtrl>() != nullptr && player->getComponent<KeyboardPlayerCtrl>()->isCrouching())
 		entityTr->setPos(Vector2D(entityTr->getPos().getX(), entityTr->getPos().getY() + playerTr->getH() * 0.3f));
