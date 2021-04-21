@@ -314,6 +314,7 @@
     <ClCompile Include="components\cover_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\TextWithBackGround.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -700,6 +701,7 @@
     <ClInclude Include="components\cover_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="components\TextWithBackGround.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
