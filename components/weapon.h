@@ -41,6 +41,7 @@ public:
 
 	virtual void update();
 
+	void recharger();
 	int getDamage() { return damage; }
 	void setDamage(int damage_) { damage = damage_; }
 

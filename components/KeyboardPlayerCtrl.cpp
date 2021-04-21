@@ -69,6 +69,15 @@ void KeyboardPlayerCtrl::update() {
 				crouched = true;
 			}
 
+			if (keystates[SDL_SCANCODE_R]) //Recargar balas
+			{
+			
+			}
+
+			if (keystates[SDL_SCANCODE_X]) //Cambiar arma
+			{
+
+			}
 		}
 		else if (!keystates[SDL_SCANCODE_LCTRL]) {
 			// Esta l�nea es para que se quede a la misma altura (no se hunda en el suelo)
