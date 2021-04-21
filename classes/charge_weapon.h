@@ -6,12 +6,6 @@
 class ChargeWeapon : public Weapon
 {
 private:
-	int charger = 30; //Pasar por referencia cuando este
-	int actcharger = 30;
-	int nbullets = 50;
-	int tcharger = actcharger;
-	float recharge = 0;
-	bool recharging = false;
 public:
 
 	ChargeWeapon(float fR, int dam);

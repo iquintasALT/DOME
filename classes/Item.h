@@ -18,19 +18,21 @@ enum ITEMS {
 class Inventory;
 class ItemInfo {
 private:
-	ItemInfo(ITEMS name, string description, int width, int height, Texture* texture);
+	ItemInfo(ITEMS name, string description, int width, int height, int row, int col);
 	ITEMS _name;
 	string _description;
 	int _width;
 	int _height;
-	Texture* _texture;
+	int _row;
+	int _col;
 
 public:
 	inline ITEMS name() { return _name; };
 	inline string description() { return _description; };
 	inline int width() { return _width; };
 	inline int height() { return _height; };
-	inline Texture* texture() { return _texture; };
+	inline int row() { return _row; }
+	inline int col() { return _col; }
 
 	static ItemInfo* bottleOfWater();
 	static ItemInfo* medicine();
