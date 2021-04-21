@@ -1,7 +1,7 @@
 #include "TextWithBackGround.h"
 #include "../sdlutils/SDLUtils.h"
 
-TextWithBackground::TextWithBackground(std::string msg, Font & font, SDL_Color & col, Texture* tex) {
+TextWithBackground::TextWithBackground(std::string msg, Font & font, SDL_Color col, Texture* tex) {
 	tr = nullptr;
 	texture = tex;
 	message = msg;
@@ -17,25 +17,28 @@ void TextWithBackground::init() {
 	std::string str = message + " ";
 	std::string second = "";
 	auto renderer = sdlutils().renderer();
+	return;
 	do {
 		second = "";
 		do {
 			if (t != nullptr) delete t;
 
-			second = str[str.size() - 1] + second;
-			str.pop_back();
+			if (str.size() > 0) {
+				second = str[str.size() - 1] + second;
+				str.pop_back();
+			}
 			t = new Texture(renderer, message, *_font, _col);
 			text.push_back(t);
-		} while (t->width() > tr->getW());
+		} while (t->width() > tr->getW() ||str.size() == 0);
 		str = second;
-	} while (second != "");
+	} while (second != "" || str.size() == 0);
 }
 
 void TextWithBackground::render() {
-	SDL_Rect pos{tr->getPos().getX(), tr->getPos().getY(), tr->getW(), tr->getH()};
+	SDL_Rect pos{tr->getPos().getX(), tr->getPos().getY(), tr->getW(), texture->height()};
 	texture->render(pos);
 	for (int i = 0; i < text.size(); i++) {
-		pos.y += 10;
+		pos.y += texture->height();
 		text[i]->render(pos);
 	}
 }
