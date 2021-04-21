@@ -21,12 +21,12 @@ protected:
 	float counter;
 	float fireRate;
 
-	int charger = 30; //Pasar por referencia cuando este
-	int actcharger = 30;
-	int nbullets = 50;
-	int tcharger = actcharger;
-	float recharge = 0;
-	bool recharging = false;
+	int charger; //Pasar por referencia cuando este
+	int actcharger;
+	int nbullets;
+	int tcharger;
+	float recharge;
+	bool recharging;
 
 public:
 	Weapon(float fR, int dam);

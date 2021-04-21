@@ -19,8 +19,14 @@
 class WeaponBehaviour : public GameEntity {
 private:
 	Weapon* weaponMovement;
-
+	Transform* pl;
+	int type;
+	int type1 = 2;
+	int type2 = 2; //Pasar por referencia el level de cada arma
+	int type3 = 2;
 public:
 	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr, int typeOfWeapon);
 	Weapon* getWeaponMovement();
+
+	void changeWeapon();
 };

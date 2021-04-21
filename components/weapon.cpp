@@ -16,7 +16,15 @@
 #include <iostream>
 
 Weapon::Weapon(float fR, int dam) : fireRate(fR), flipped(false), counter(0), entityImg(nullptr), damage(dam), player(nullptr),
-playerTr(nullptr), entityTr(nullptr) {}
+playerTr(nullptr), entityTr(nullptr)
+{
+	charger = 30; //Pasar por referencia cuando este
+	actcharger = 30;
+	nbullets = 50;
+	tcharger = actcharger;
+	recharge = 0;
+	recharging = false;
+}
 Weapon::~Weapon() {}
 
 void Weapon::update() {
@@ -102,10 +110,11 @@ void Weapon::update() {
 
 void Weapon::recharger()
 {
-	if (nbullets > 0)
+	std::cout << nbullets << " ";
+	if (nbullets > 0 && actcharger < charger && !recharging)
 	{
 		recharging = true;
-		nbullets -= tcharger;
+		nbullets -= tcharger - actcharger;
 		if (nbullets >= charger-actcharger)
 		{
 			actcharger = charger;
