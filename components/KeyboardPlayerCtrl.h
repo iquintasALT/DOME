@@ -19,7 +19,7 @@ private:
 	float speed;
 	float jumpSpeed;
 	float stairsSpeed;
-	bool left, right, crouched, up, down, inStairTrigger, inStair;
+	bool left, right, crouched, up, down, inStairTrigger, inStair, xClicked;
 	Vector2D stairPosition, stairSize;
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 

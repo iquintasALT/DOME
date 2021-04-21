@@ -3,6 +3,7 @@
 #include "../classes/camera.h"
 #include "../game/constant_variables.h"
 #include "../components/box_collider.h"
+#include "../classes/weapon_behaviour.h"
 
 KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	speed = consts::PLAYER_SPEED;
@@ -11,7 +12,7 @@ KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	tr_ = nullptr;
 	rb_ = nullptr;
 	
-	left = inStair = inStairTrigger = right = crouched = up = down =  false;
+	left = xClicked = inStair = inStairTrigger = right = crouched = up = down =  false;
 };
 
 void KeyboardPlayerCtrl::init() {
@@ -69,6 +70,23 @@ void KeyboardPlayerCtrl::update() {
 				crouched = true;
 			}
 
+			if (keystates[SDL_SCANCODE_R]) //Recargar balas
+			{
+				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
+
+				aux->getWeaponMovement()->recharger();
+			}
+
+			if (keystates[SDL_SCANCODE_X] && !xClicked) //Cambiar arma
+			{
+				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
+				aux->changeWeapon();
+				xClicked = true;
+			}
+			else if (!keystates[SDL_SCANCODE_X] && xClicked)
+			{
+				xClicked = false;
+			}
 		}
 		else if (!keystates[SDL_SCANCODE_LCTRL]) {
 			// Esta l�nea es para que se quede a la misma altura (no se hunda en el suelo)
