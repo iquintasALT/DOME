@@ -108,10 +108,12 @@ void Workshop::update() {
 
 			if (renderRightWindow) {
 				if (Collisions::collides(mousePos, 1, 1, craftButton_tr->getPos(), craftButton_tr->getW(), craftButton_tr->getH())) {
-					craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this);
+					bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this);
 
-					renderRightWindow = false;
-					renderFlag = false;
+					if (isCraftable) {
+						renderRightWindow = false;
+						renderFlag = false;
+					}
 				}
 			}
 		}
