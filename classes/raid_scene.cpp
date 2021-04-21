@@ -5,6 +5,8 @@
 #include "hud.h"
 #include "../classes/camera.h"
 
+#include "../components/TextWithBackGround.h"
+
 void RaidScene::init() {
 	loadMap(path_);
 
@@ -28,4 +30,11 @@ void RaidScene::init() {
 	returnToShelter->addComponent<BackToShelter>(g_);
 	returnToShelter->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
 	mngr_->addRenderLayer<Loot>(returnToShelter);
+
+
+	Entity* text = mngr_->addEntity();
+	text->addComponent<Transform>(Vector2D(), 200, 10, 0);
+	text->addComponent<TextWithBackground>("Hola me llaman Yojhan pero no soy muy guapo", 
+		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("panel"));
+	mngr_->addRenderLayer<Interface>(text);
 }

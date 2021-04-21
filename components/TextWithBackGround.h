@@ -19,7 +19,7 @@ private:
 	Font* _font;
 	SDL_Color _col;
 public:
-	TextWithBackground(std::string str, Font & font, SDL_Color & color, Texture* texture );
+	TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture* texture );
 	~TextWithBackground();
 	void init() override;
 	void render() override;
