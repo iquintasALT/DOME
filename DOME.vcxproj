@@ -73,6 +73,7 @@
     <ClInclude Include="components\loot.h" />
     <ClInclude Include="components\pain_component.h" />
     <ClInclude Include="components\particleSystem.h" />
+    <ClInclude Include="components\pause_scene.h" />
     <ClInclude Include="components\player_collisions.h" />
     <ClInclude Include="components\enemy_contact_damege.h" />
     <ClInclude Include="components\player_damage.h" />
@@ -203,6 +204,7 @@
     <ClCompile Include="components\loot.cpp" />
     <ClCompile Include="components\pain_component.cpp" />
     <ClCompile Include="components\particleSystem.cpp" />
+    <ClCompile Include="components\pause_scene.cpp" />
     <ClCompile Include="components\player_collisions.cpp" />
     <ClCompile Include="components\enemy_contact_damege.cpp" />
     <ClCompile Include="components\player_damage.cpp" />
