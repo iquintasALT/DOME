@@ -17,6 +17,7 @@ Inventory::Inventory(int width, int height) : width(width), height(height), othe
 	toolTips = nullptr;
 	toolTipsTr = nullptr;
 	toolTipsText = nullptr;
+	showToolTip = false;
 }
 Inventory::Inventory(int width, int height, Inventory* player) : Inventory(width, height) {
 
@@ -41,7 +42,6 @@ void Inventory::init() {
 	originalPos = transform->getPos();
 
 
-
 	toolTips = entity_->getMngr()->addEntity();
 	toolTipsTr = toolTips->addComponent<Transform>(Vector2D(100, 100), 500, 10, 0);
 	toolTipsText = toolTips->addComponent<TextWithBackground>("Inventario",
@@ -54,6 +54,7 @@ void Inventory::render() {
 		a->render();
 	}
 
+	if(showToolTip)
 	toolTipsText->render();
 }
 
@@ -73,6 +74,13 @@ void Inventory::update() {
 		int xCell = (mousePos.getX() - pos.getX()) / transform->getW() * width;
 		int yCell = (mousePos.getY() - pos.getY()) / transform->getH() * height;
 
+		auto hoverItem = findItemInSlot(xCell, yCell);
+		showToolTip = hoverItem != nullptr;
+		if (showToolTip) {
+			toolTipsText->changeText(hoverItem->getItemInfo()->description());
+			toolTipsTr->setPos(mousePos);
+		}
+
 		if (ih().getMouseButtonState(InputHandler::LEFT)) {
 			if (!justPressed && (other == nullptr || (other != nullptr && other->selectedItem == nullptr))) {
 
@@ -86,7 +94,7 @@ void Inventory::update() {
 
 					if (timer > timeToHold) {
 						selectedItem = selectedItem_;
-						selectedItem_ = findItemInSlot(xCell, yCell);
+						//selectedItem_ = findItemInSlot(xCell, yCell);
 
 						if (selectedItem != selectedItem_)
 							selectedItem = nullptr;
