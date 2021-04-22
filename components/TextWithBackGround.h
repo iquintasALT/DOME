@@ -18,10 +18,18 @@ private:
 	std::string message;
 	Font* _font;
 	SDL_Color _col;
+
+	void changeTextTextures();
+
+	bool _appearingText;
+	std::string finalMessage;
+	int currentIndex;
 public:
-	TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture* texture );
+	TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture* texture, bool appearingText = false);
 	~TextWithBackground();
+	void changeText(std::string txt);
 	void init() override;
 	void render() override;
+	void update() override;
 };
 
