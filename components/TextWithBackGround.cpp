@@ -1,6 +1,7 @@
 #include "TextWithBackGround.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
+#include "../utils/checkML.h"
 
 TextWithBackground::TextWithBackground(std::string msg, Font& font, SDL_Color col, Texture* tex, bool appearingText) {
 	tr = nullptr;
@@ -8,7 +9,7 @@ TextWithBackground::TextWithBackground(std::string msg, Font& font, SDL_Color co
 	message = msg;
 	_font = &font;
 	_col = col;
-	_appearingText = true;
+	_appearingText = appearingText;
 	currentIndex = 0;
 }
 
