@@ -1,6 +1,7 @@
 #include "Inventory.h"
 #include "../sdlutils/InputHandler.h"
 #include <iostream>
+#include "../components/TextWithBackGround.h"
 
 Inventory::Inventory(int width, int height) : width(width), height(height), other(nullptr) {
 	transform = nullptr;
@@ -12,6 +13,10 @@ Inventory::Inventory(int width, int height) : width(width), height(height), othe
 	originalPos = Vector2D();
 
 	grid = std::vector<std::vector<Item*>>(width, std::vector<Item*>(height, nullptr));
+
+	toolTips = nullptr;
+	toolTipsTr = nullptr;
+	toolTipsText = nullptr;
 }
 Inventory::Inventory(int width, int height, Inventory* player) : Inventory(width, height) {
 
@@ -34,11 +39,22 @@ void Inventory::init() {
 	transform = entity_->getComponent<Transform>();
 	assert(transform != nullptr);
 	originalPos = transform->getPos();
+
+
+
+	toolTips = entity_->getMngr()->addEntity();
+	toolTipsTr = toolTips->addComponent<Transform>(Vector2D(100, 100), 500, 10, 0);
+	toolTipsText = toolTips->addComponent<TextWithBackground>("Inventario",
+		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("dust"));
+	entity_->getMngr()->addRenderLayer<Interface>(toolTips);
+	toolTips->setActive(false);
 }
 void Inventory::render() {
 	for (auto a : storedItems) {
 		a->render();
 	}
+
+	toolTipsText->render();
 }
 
 Inventory::~Inventory() {
