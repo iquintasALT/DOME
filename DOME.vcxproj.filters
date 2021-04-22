@@ -317,6 +317,9 @@
     <ClCompile Include="components\TextWithBackGround.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\pause_scene.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -705,6 +708,9 @@
     </ClInclude>
     <ClInclude Include="components\TextWithBackGround.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\pause_scene.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
