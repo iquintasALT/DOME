@@ -3,10 +3,10 @@
 #include "../components/Image.h"
 #include "../sdlutils/InputHandler.h"
 
-MenuButton::MenuButton(Vector2D pos, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_) 
+MenuButton::MenuButton(Vector2D pos, Vector2D size_, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_)
 	: GameObject(mngr_) {
 	position = pos;
-	size = Vector2D(sdlutils().width() / 5, sdlutils().height() / 5);
+	size = size_;
 	tex = t;
 	game = g;
 	cbOnClick = function;
