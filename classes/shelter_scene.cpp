@@ -3,6 +3,7 @@
 #include "../components/tiredness_component.h"
 #include "../game/Game.h"
 #include "locations_scene.h"
+#include "../classes/pause_scene.h"
 
 #include <sdlgui/window.h>
 #include <sdlgui/layout.h>
@@ -97,6 +98,11 @@ void ShelterScene::update() {
 	mechanical_Workshop->update();
 	medical_Workshop->update();
 	sleep_Station->update();
+
+	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
+		g_->getStateMachine()->pushState(new PauseScene(g_));
+		g_->getStateMachine()->currentState()->init();
+	}
 }
 
 void ShelterScene::render()

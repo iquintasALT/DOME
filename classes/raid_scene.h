@@ -15,5 +15,6 @@ private:
 public:
 	RaidScene(string path, Game* game): GameScene(game) { path_ = path; }
 	void init() override;
+	void update() override;
 };
 

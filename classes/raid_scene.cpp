@@ -1,10 +1,11 @@
 #include "raid_scene.h"
-
+#include "../game/Game.h"
 #include "../components/loot.h"
 #include "../components/back_to_shelter.h"
 #include "hud.h"
+#include "../classes/pause_scene.h"
 #include "../classes/camera.h"
-
+#include "../sdlutils/InputHandler.h"
 #include "../components/TextWithBackGround.h"
 
 void RaidScene::init() {
@@ -36,4 +37,13 @@ void RaidScene::init() {
 	text->addComponent<TextWithBackground>("Hola me llaman Yojhan, me gusta programar pero no soy muy guapo", 
 		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("panel"), true);
 	mngr_->addRenderLayer<Interface>(text);*/
+}
+
+void RaidScene::update() {
+	GameScene::update();
+	
+	if (ih().keyUpEvent() && ih().isKeyUp(SDL_SCANCODE_ESCAPE)) {
+		g_->getStateMachine()->pushState(new PauseScene(g_));
+		g_->getStateMachine()->currentState()->init();
+	}
 }
