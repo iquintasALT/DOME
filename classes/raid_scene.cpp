@@ -34,6 +34,6 @@ void RaidScene::init() {
 	/*Entity* text = mngr_->addEntity();
 	text->addComponent<Transform>(Vector2D(100, 100), 200, 10, 0);
 	text->addComponent<TextWithBackground>("Hola me llaman Yojhan, me gusta programar pero no soy muy guapo", 
-		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("panel"));
+		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("panel"), true);
 	mngr_->addRenderLayer<Interface>(text);*/
 }

@@ -66,6 +66,7 @@ private:
 	Entity* toolTips;
 	Transform* toolTipsTr;
 	TextWithBackground* toolTipsText;
+	bool showToolTip;
 };
 
 
