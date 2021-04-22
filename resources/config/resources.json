@@ -78,11 +78,15 @@
     },
     {
       "id": "shelterButton",
-      "file": "resources/sprites/shelter_button.png"
+      "file": "resources/sprites/buttons/shelter_button.png"
+    },
+    {
+      "id": "resumeButton",
+      "file": "resources/sprites/buttons/resume_button.png"
     },
     {
       "id": "raidButton",
-      "file": "resources/sprites/raid_button.png"
+      "file": "resources/sprites/buttons/raid_button.png"
     },
     {
       "id": "dust",

@@ -58,7 +58,7 @@ void Game::start() {
 			if (s != nullptr) s->updateScreen(&event);
 		}
 
-		if (ih().isKeyDown(SDL_SCANCODE_ESCAPE) || event.type == SDL_QUIT) {
+		if (event.type == SDL_QUIT) {
 			exit = true;
 			continue;
 		}
