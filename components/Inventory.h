@@ -7,6 +7,7 @@
 #include "../utils/checkML.h"
 
 #include <list>
+class TextWithBackground;
 class Inventory: public Component
 {
 	friend class Item;
@@ -61,6 +62,10 @@ private:
 
 	bool insideSquare(int mouseX, int mouseY, Transform* rect);
 	bool insideSquare(int mouseX, int mouseY);
+
+	Entity* toolTips;
+	Transform* toolTipsTr;
+	TextWithBackground* toolTipsText;
 };
 
 
