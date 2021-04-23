@@ -8,11 +8,9 @@ inventoryDropdown::slot::~slot() {
 	if (texture != nullptr)
 		delete texture;
 	texture = nullptr;
-	std::cout << "destruido correctamente";
 }
 
 inventoryDropdown::inventoryDropdown(Texture* texture, std::vector<inventoryDropdown::slot*> slot, float width) : slots(slot), texture(texture), width(width) {
-
 }
 
 inventoryDropdown::~inventoryDropdown() {
@@ -57,4 +55,5 @@ bool inventoryDropdown::onClick(Vector2D& const mousePos) {
 
 void inventoryDropdown::setPos(Vector2D& const mousePos) {
 	position = mousePos;
+
 }
