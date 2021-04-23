@@ -8,11 +8,14 @@
 
 using namespace std;
 
+class TextWithBackground;
 class InteractableElement: public Component
 {
 protected:
-	string message;
-	Transform* transform;
+	string message_;
+	Transform* tr_;
+	// Tooltip text if required
+	TextWithBackground* toolTip_;
 	bool isColliding = false;
 
 	virtual void CollisionEnter();
