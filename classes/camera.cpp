@@ -8,6 +8,8 @@ Camera::Camera(Vector2D&& initial, int cam_w, int cam_h) {
 	pos = std::move(initial);
 	width = cam_w;
 	height = cam_h;
+
+	xmin = ymin = xmax = ymax = 0;
 }
 
 void Camera::setMain(Camera* cam) {
@@ -21,7 +23,25 @@ void Camera::Move(Vector2D& newPos) {
 }
 
 void Camera::Lerp(const Vector2D& newPos) {
-	pos = Vector2D::Lerp(pos, newPos - Vector2D(width / 2, height / 2), 0.7f * consts::DELTA_TIME) ;
+	if ((pos - newPos).magnitude() > 2)
+		pos = Vector2D::Lerp(pos, newPos - Vector2D(width / 2, height / 2), 0.7f * consts::DELTA_TIME);
+}
+void Camera::LerpWithBounds(const Vector2D& newPos) {
+	Lerp(newPos);
+
+	Vector2D& p = pos;
+	if (p.getX() < xmin) p.setX(xmin);
+	else if (p.getX() > xmax) p.setX(xmax);
+
+	if (p.getY() < ymin) p.setY(ymin);
+	else if (p.getY() > ymax) p.setY(ymax);
+}
+
+void Camera::setBounds(float a, float b, float c, float d) {
+	xmin = a;
+	ymin = b;
+	xmax = c;
+	ymax = d;
 }
 
 void Camera::MoveDir(Vector2D dir) {
@@ -33,10 +53,10 @@ void Camera::FollowPlayer(Vector2D& playerPos) {
 }
 
 
-Vector2D Camera::renderRect(Vector2D& imagePos,int w, int h, bool& shouldRender) {
-	if (!(imagePos.getX() + width > pos.getX() && 
+Vector2D Camera::renderRect(Vector2D& imagePos, int w, int h, bool& shouldRender) {
+	if (!(imagePos.getX() + width > pos.getX() &&
 		imagePos.getX() < pos.getX() + width &&
-		imagePos.getY() + height > pos.getY() && 
+		imagePos.getY() + height > pos.getY() &&
 		imagePos.getY() < pos.getY() + height))
 	{
 		shouldRender = false;

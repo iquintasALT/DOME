@@ -7,7 +7,7 @@ class Camera
 private:
 	Vector2D pos;
 	int width, height;
-
+	float xmin, ymin, xmax, ymax;
 public:
 	static Camera* mainCamera;
 	
@@ -15,6 +15,8 @@ public:
 	static void setMain(Camera* cam);
 	void Move(Vector2D& v);
 	void Lerp(const Vector2D& v);
+	void LerpWithBounds(const Vector2D& v);
+	void setBounds(float xmin, float ymin, float xmax, float ymax);
 	void FollowPlayer(Vector2D& pos);
 	Vector2D renderRect(Vector2D& imagePos,int w, int h, bool& shouldRender);
 	void MoveDir(Vector2D dir);
