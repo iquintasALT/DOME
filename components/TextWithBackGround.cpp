@@ -4,22 +4,22 @@
 #include "../utils/checkML.h"
 
 TextWithBackground::TextWithBackground(std::string msg, Font& font, SDL_Color col, Texture* tex, bool appearingText) {
-	tr = nullptr;
-	texture = tex;
-	message = msg;
-	_font = &font;
-	_col = col;
-	_appearingText = appearingText;
+	tr_ = nullptr;
+	texture_ = tex;
+	message_ = msg;
+	font_ = &font;
+	col_ = col;
+	appearingText_ = appearingText;
 	currentIndex = 0;
 }
 
 void TextWithBackground::init() {
-	tr = entity_->getComponent<Transform>();
-	assert(tr != nullptr);
+	tr_ = entity_->getComponent<Transform>();
+	assert(tr_ != nullptr);
 
-	if (_appearingText) {
-		finalMessage = message;
-		message = "";
+	if (appearingText_) {
+		finalMessage_ = message_;
+		message_ = "";
 	}
 	else
 		changeTextTextures();
@@ -27,30 +27,30 @@ void TextWithBackground::init() {
 
 void TextWithBackground::render() {
 	float y = 0;
-	for (int i = 0; i < text.size(); i++)
-		y += text[i]->height();
+	for (int i = 0; i < text_.size(); i++)
+		y += text_[i]->height();
 
-	if (texture != nullptr) {
-		SDL_Rect pos{ tr->getPos().getX(), tr->getPos().getY(), tr->getW(), y };
-		texture->render(pos);
+	if (texture_ != nullptr) {
+		SDL_Rect pos{ tr_->getPos().getX(), tr_->getPos().getY(), tr_->getW(), y };
+		texture_->render(pos);
 	}
 
-	SDL_Rect textPos{ tr->getPos().getX(), tr->getPos().getY(), tr->getW(), 10 };
-	for (int i = 0; i < text.size(); i++) {
-		textPos.h = text[i]->height();
-		textPos.w = text[i]->width();
-		text[i]->render(textPos);
-		textPos.y += text[i]->height();
+	SDL_Rect textPos{ tr_->getPos().getX(), tr_->getPos().getY(), tr_->getW(), 10 };
+	for (int i = 0; i < text_.size(); i++) {
+		textPos.h = text_[i]->height();
+		textPos.w = text_[i]->width();
+		text_[i]->render(textPos);
+		textPos.y += text_[i]->height();
 	}
 }
 
 void TextWithBackground::changeTextTextures() {
-	for (int i = 0; i < text.size(); i++)
-		delete text[i];
-	text.clear();
+	for (int i = 0; i < text_.size(); i++)
+		delete text_[i];
+	text_.clear();
 
 	Texture* t = nullptr;
-	std::string str = message;
+	std::string str = message_;
 	std::string second = "";
 	auto renderer = sdlutils().renderer();
 
@@ -60,9 +60,9 @@ void TextWithBackground::changeTextTextures() {
 		bool completed = false;
 		added = false;
 		do {
-			t = new Texture(renderer, str, *_font, _col);
+			t = new Texture(renderer, str, *font_, col_);
 
-			completed = t->width() > tr->getW();
+			completed = t->width() > tr_->getW();
 
 			if (completed && str.size() > 0) {
 				second = str[str.size() - 1] + second;
@@ -76,34 +76,34 @@ void TextWithBackground::changeTextTextures() {
 				second.pop_back();
 
 			if (t != nullptr)
-				text.push_back(t);
+				text_.push_back(t);
 		} while (completed && str.size() > 0);
 		str = second;
 	} while (added);
 }
 
 void TextWithBackground::changeText(std::string txt) {
-	message = txt;
+	message_ = txt;
 	changeTextTextures();
 }
 TextWithBackground::~TextWithBackground() {
-	for (auto a : text) {
+	for (auto a : text_) {
 		delete a;
 	}
-	text.clear();
+	text_.clear();
 }
 
 float t = 0;
 void TextWithBackground::update() {
-	if (!_appearingText) return;
+	if (!appearingText_) return;
 
 	t += consts::DELTA_TIME;
 	if (t > .1f) {
 		t = 0;
-		message += finalMessage[currentIndex++];
+		message_ += finalMessage_[currentIndex++];
 		changeTextTextures();
 
-		if (currentIndex >= finalMessage.size())
-			_appearingText = false;
+		if (currentIndex >= finalMessage_.size())
+			appearingText_ = false;
 	}
 }
