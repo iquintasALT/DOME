@@ -19,6 +19,9 @@ void KeyboardPlayerCtrl::init() {
 	rb_ = entity_->getComponent<RigidBody>();
 	tr_ = entity_->getComponent<Transform>();
 	assert(rb_ != nullptr && tr_ != nullptr);
+
+
+	Camera::mainCamera->setBounds(-100, 0, 800, 300);
 }
 
 void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
@@ -122,7 +125,8 @@ void KeyboardPlayerCtrl::update() {
 	}
 
 	//Camera::mainCamera->FollowPlayer(tr_->getPos());
-	Camera::mainCamera->Lerp(tr_->getPos());
+	//Camera::mainCamera->Lerp(tr_->getPos());
+	Camera::mainCamera->LerpWithBounds(tr_->getPos());
 }
 
 void KeyboardPlayerCtrl::resetSpeed() {
