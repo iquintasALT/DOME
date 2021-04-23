@@ -1,11 +1,15 @@
 #include "Item.h"
 
-ItemInfo::ItemInfo(ITEMS name, string description, int width, int height, int row, int col) :
-	_name(name), _description(description), _width(width), _height(height), _row(row), _col(col) {};
+ItemInfo::ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity* p)> f) :
+	_name(name), _description(description), _width(width), _height(height), _row(row), _col(col), function(f) {};
 
 ItemInfo* ItemInfo::bottleOfWater()
 {
-	return new ItemInfo(WATER, "Scarse item, use it carefully", 1, 2, 4, 0);
+	auto f = [](Entity* player) {
+		std::cout << "has usado la botella de agua";
+	};
+
+	return new ItemInfo(WATER, "Scarse item, use it carefully", 1, 2, 4, 0, f);
 }
 ItemInfo* ItemInfo::medicine()
 {

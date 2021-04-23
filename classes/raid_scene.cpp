@@ -31,17 +31,12 @@ void RaidScene::init() {
 	returnToShelter->addComponent<BackToShelter>(g_);
 	returnToShelter->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
 	mngr_->addRenderLayer<Loot>(returnToShelter);
-
-	/*Entity* text = mngr_->addEntity();
-	text->addComponent<Transform>(Vector2D(100, 100), 200, 10, 0);
-	text->addComponent<TextWithBackground>("Hola me llaman Yojhan, me gusta programar pero no soy muy guapo", 
-		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("panel"), true);
-	mngr_->addRenderLayer<Interface>(text);*/
 }
 
 void RaidScene::update() {
 	GameScene::update();
 	
+	return;
 	if (ih().keyUpEvent() && ih().isKeyUp(SDL_SCANCODE_ESCAPE)) {
 		g_->getStateMachine()->pushState(new PauseScene(g_));
 		g_->getStateMachine()->currentState()->init();
