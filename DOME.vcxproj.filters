@@ -320,6 +320,9 @@
     <ClCompile Include="classes\pause_scene.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
+    <ClCompile Include="classes\inventoryDropdown.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -710,6 +713,9 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="classes\pause_scene.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\inventoryDropdown.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
