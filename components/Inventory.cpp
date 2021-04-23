@@ -81,7 +81,11 @@ void Inventory::update() {
 			toolTipsTr->setPos(mousePos);
 		}
 
-		if (ih().getMouseButtonState(InputHandler::LEFT)) {
+		if (ih().getMouseButtonState(InputHandler::RIGHT)) {
+			hoverItem->getItemInfo()->execute(entity_);
+		}
+
+		else if (ih().getMouseButtonState(InputHandler::LEFT)) {
 			if (!justPressed && (other == nullptr || (other != nullptr && other->selectedItem == nullptr))) {
 
 				justPressed = true;
