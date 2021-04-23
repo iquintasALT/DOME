@@ -47,7 +47,7 @@ void Loot::init() {
 
 	inventoryEntity = entity_->getMngr()->addEntity();
 	inventoryTransform = inventoryEntity->addComponent<Transform>(Vector2D(0, 0), 100, 100, 0);
-	inventoryEntity->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0);
+	inventoryEntity->addComponent<Image>(&sdlutils().images().at("panel"), 1, 1, 0, 0, true);
 	entity_->getMngr()->addRenderLayer<Interface>(inventoryEntity);
 
 	inventory = inventoryEntity->addComponent<Inventory>(invenWidth, invenHeight);
