@@ -11,14 +11,13 @@ MenuButton::MenuButton(Vector2D pos, Vector2D size_, Texture* t, CallBackOnClick
 	game = g;
 	cbOnClick = function;
 	addComponent<Transform>(position, size.getX(), size.getY(), 0);
-	addComponent<Image>(tex);
+	addComponent<Image>(tex, 1, 1, 0, 0, true);
 	mngr_->addRenderLayer<Interface>(this);
 }
 
 void MenuButton::update() {
 	if (ih().getMouseButtonState(InputHandler::LEFT)){
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
-		mousePos = Camera::mainCamera->PointToWorldSpace(mousePos);
 		 
 		if (mousePos.getX() >= position.getX() && mousePos.getY() >= position.getY() &&
 		mousePos.getX() <= position.getX() + size.getX() && mousePos.getY() <= position.getY() + size.getY()) {
