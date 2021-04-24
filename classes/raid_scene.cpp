@@ -21,8 +21,8 @@ void RaidScene::init() {
 	//RangedEnemy* rangedEnemy = new RangedEnemy(mngr_, Point2D(800, 50));
 
 	Entity* interactableElement = mngr_->addEntity();
-	interactableElement->addComponent<Transform>(Vector2D(20, 600), 64, 64, 0);
-	interactableElement->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
+	interactableElement->addComponent<Transform>(Vector2D(20, 575), 64, 64, 0);
+	interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
 	mngr_->addRenderLayer<Loot>(interactableElement);
 	interactableElement->addComponent<Loot>("Hola nena", 5, 5);
 
