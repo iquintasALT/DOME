@@ -14,6 +14,8 @@ void GameScene::loadMap(string& const path) {
 	mapInfo.tile_width = tilesize.x;
 	mapInfo.tile_height = tilesize.y;
 
+	Camera::mainCamera->setBounds(0, 0, mapInfo.cols * mapInfo.tile_width, mapInfo.rows * mapInfo.tile_height);
+
 	// cargamos y almacenamos los tilesets utilizados por el tilemap
 	// (el mapa utiliza el índice [gid] del primer tile cargado del tileset como clave)
 	// (para poder cargar los tilesets del archivo .tmx, les ponemos de nombre 
@@ -116,7 +118,7 @@ void GameScene::loadMap(string& const path) {
 					collider->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					collider->addComponent<BoxCollider>(false, 0);
 				}
-				else if (obj.getName() == "stair") {
+				else if (obj.getName() == "stairs") {
 					auto stair = mngr_->addEntity();
 					stair->setGroup<Stairs_grp>(true);
 					auto aabb = obj.getAABB();
@@ -125,7 +127,9 @@ void GameScene::loadMap(string& const path) {
 				}
 				else if (obj.getName() == "playerSpawn") {
 					auto aabb = obj.getAABB();
-					Player* player = new Player(mngr_, Point2D(aabb.left, aabb.top));
+					new Player(mngr_, Point2D(aabb.left, aabb.top));
+					auto camPos = Vector2D(aabb.left - sdlutils().width() / 2, aabb.top - sdlutils().height() / 2);
+					Camera::mainCamera->Move(camPos);
 				}
 			}
 		}

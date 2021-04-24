@@ -8,6 +8,7 @@ private:
 	Vector2D pos;
 	int width, height;
 	float xmin, ymin, xmax, ymax;
+
 public:
 	static Camera* mainCamera;
 	

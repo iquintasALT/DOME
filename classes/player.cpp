@@ -43,6 +43,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 
 	physiognomy = new Physiognomy(this);
 }
+
 Player::~Player() {
 	delete physiognomy;
 }
@@ -56,6 +57,7 @@ WeaponBehaviour* Player::equipWeapon(WeaponBehaviour* newWeapon) {
 	weapon = newWeapon;
 	return oldWeapon;
 }
+
 Physiognomy* Player::getPhysiognomy() {
 	return physiognomy;
 }

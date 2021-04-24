@@ -10,6 +10,7 @@
 #include "../classes/weapon_behaviour.h"
 #include "../classes/tile.h"
 #include "../classes/player.h"
+#include "../classes/camera.h"
 
 #include "../ecs/ecs.h"
 #include "../ecs/Manager.h"
@@ -51,8 +52,7 @@ protected:
 	void loadMap(string& const path);
 
 public:
-	virtual inline int getSize() { return 0; };
-		//constructora que crea el manager de gObjects de la clase
+	//constructora que crea el manager de gObjects de la clase
 	inline GameScene(Game* game) { mngr_ = new Manager(); g_ = game; }
 	inline virtual ~GameScene() { delete mngr_; }
 	//creacion de objetos, que sera diferente en cada escena
