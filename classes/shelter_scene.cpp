@@ -46,7 +46,7 @@ void ShelterScene::init() {
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
 
-	Player* player = new Player(mngr_, Point2D(200, 50));
+	Player* player = new Player(mngr_, Point2D(200, 250));
 
 
 	mngr_->setHandler<Player_hdlr>(player);

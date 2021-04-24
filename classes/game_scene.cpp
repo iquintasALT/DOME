@@ -109,7 +109,7 @@ void GameScene::loadMap(string& const path) {
 			auto& objs = object_layer->getObjects();
 
 			for (auto obj : objs) {
-				if (obj.getName() == "collider") {
+				if (obj.getName() == "collision") {
 					auto collider = mngr_->addEntity();
 					collider->setGroup<Wall_grp>(true);
 					auto aabb = obj.getAABB();
