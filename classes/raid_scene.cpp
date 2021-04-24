@@ -36,8 +36,7 @@ void RaidScene::init() {
 void RaidScene::update() {
 	GameScene::update();
 	
-	return;
-	if (ih().keyUpEvent() && ih().isKeyUp(SDL_SCANCODE_ESCAPE)) {
+	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		g_->getStateMachine()->pushState(new PauseScene(g_));
 		g_->getStateMachine()->currentState()->init();
 	}
