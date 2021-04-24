@@ -8,8 +8,9 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Gam
 	mouseClick = false;
 	loot = nullptr;
 
-	realMngr_;
+
 	playerInv = realMngr_->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
+	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
 
 	renderRightWindow = false;
 	rightWindowIndex = 0;
@@ -74,13 +75,23 @@ void Workshop::setRenderFlag(bool set) {
 
 void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
 	entity->addComponent<Transform>(pos, size.getX(), size.getY(), 0);
-	entity->addComponent<Image>(&sdlutils().images().at(name),1,1,0,0,true);
+	entity->addComponent<Image>(&sdlutils().images().at(name), 1, 1, 0, 0, true);
 	getMngr()->addRenderLayer<Interface>(entity);
 }
 
 void Workshop::update() {
+	Entity::update();
 	getMngr()->refresh();
+
+	if (ih().isKeyDown(SDL_SCANCODE_E) && !renderFlag) {
+		myTr = getComponent<Transform>();
+		if (Collisions::collides(myTr->getPos(), myTr->getW(), myTr->getH(), playerTr->getPos(), playerTr->getW(), playerTr->getW())) {
+			renderFlag = true;
+		}
+	}
+
 	if (renderFlag) {
+		playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
 
@@ -89,6 +100,7 @@ void Workshop::update() {
 
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
 				renderFlag = false;
+				playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = true;
 				renderRightWindow = false;
 			}
 			else if (Collisions::collides(mousePos, 1, 1, arrowUp_tr->getPos(), arrowUp_tr->getW(), arrowUp_tr->getH())) {
@@ -113,6 +125,7 @@ void Workshop::update() {
 					if (isCraftable) {
 						renderRightWindow = false;
 						renderFlag = false;
+						playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = true;
 					}
 				}
 			}
@@ -143,6 +156,7 @@ void Workshop::update() {
 }
 
 void Workshop::render() {
+	Entity::render();
 	getMngr()->refresh();
 	if (renderFlag) {
 		bg->render();
@@ -243,7 +257,7 @@ void Workshop::rightWindowRender() {
 void Workshop::renderImg(float posX, float posY, int row, int col, int sizeX, int sizeY) {
 	Entity* aux = getMngr()->addEntity();
 	aux->addComponent<Transform>(Vector2D{ posX,posY }, sizeX, sizeY, 0);
-	Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, row, col,true);
+	Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, row, col, true);
 	img->render();
 
 	aux->setActive(false);
