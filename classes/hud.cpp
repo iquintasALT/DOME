@@ -21,7 +21,6 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 
 	states = player->getPhysiognomy()->getHealthComponents();
 
-
 	charger = player->getCurrentWeapon()->getWeaponMovement()->getTamCharger();
 }
 

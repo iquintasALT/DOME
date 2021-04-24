@@ -11,7 +11,7 @@
 void RaidScene::init() {
 	loadMap(path_);
 
-	Player* player = new Player(mngr_, Point2D(200, 50));
+	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 
 	Enemy* enemy = new FlyingEnemy(mngr_, Point2D(750, 50));
 	Enemy* enemy2 = new FlyingEnemy(mngr_, Point2D(700, 50));
