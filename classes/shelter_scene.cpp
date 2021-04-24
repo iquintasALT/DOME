@@ -43,6 +43,9 @@ using std::endl;
 using namespace sdlgui;
 
 void ShelterScene::init() {
+	string path_ = "./resources/tilemap/zona_shelter.tmx";
+	loadMap(path_);
+
 	Player* player = new Player(mngr_, Point2D(200, 50));
 
 
