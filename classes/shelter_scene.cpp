@@ -46,18 +46,17 @@ void ShelterScene::init() {
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
 
-	Player* player = new Player(mngr_, Point2D(200, 250));
-
+	Player* player = dynamic_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 
 	mngr_->setHandler<Player_hdlr>(player);
 
 	craftSys = new CraftingSystem(mngr_);
 
 	uselessMngr = new Manager();
-	mechanical_Workshop = new Workshop(mngr_,uselessMngr, craftSys);
+	mechanical_Workshop = new Workshop(mngr_, uselessMngr, craftSys);
 	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO, BACKPACK_UPGRADE, ARMOUR_UPGRADE });
 
-	medical_Workshop = new Workshop(mngr_,uselessMngr, craftSys);
+	medical_Workshop = new Workshop(mngr_, uselessMngr, craftSys);
 	medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT});
 
 	sleep_Station = new SleepStation(uselessMngr);

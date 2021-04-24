@@ -4,7 +4,7 @@
 #include "player.h"
 #include "../classes/countdown.h"
 #include "../components/Transform.h"
-class hud: public Entity
+class hud : public Entity
 {
 private:
 	Transform* posCam;
@@ -27,8 +27,5 @@ public:
 
 	void render() override;
 
-	~hud() { delete time; 
-	delete posCam;
-	}
+	~hud() { delete time; delete posCam; }
 };
-

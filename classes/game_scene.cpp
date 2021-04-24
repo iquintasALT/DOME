@@ -123,6 +123,10 @@ void GameScene::loadMap(string& const path) {
 					stair->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					stair->addComponent<BoxCollider>(true, 0);
 				}
+				else if (obj.getName() == "playerSpawn") {
+					auto aabb = obj.getAABB();
+					Player* player = new Player(mngr_, Point2D(aabb.left, aabb.top));
+				}
 			}
 		}
 	}
