@@ -15,7 +15,6 @@ RangedEnemy::RangedEnemy(Manager* mngr_, Point2D pos) : GameCharacter(mngr_){
 	addComponent<Transform>(pos, 32, 64, 0);
 	addComponent<RigidBody>();
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
-	//addComponent<player_animation>();
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
 	addComponent<KeepDistance>(consts::RANGED_ENEMY_SPEED, consts::RANGED_ENEMY_MARGINDISTANCE, consts::RANGED_ENEMY_SHOOTDISTANCE);
 	addComponent<EnemyContactDamage>();
