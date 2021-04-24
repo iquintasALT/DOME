@@ -5,11 +5,6 @@
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
 
-LocationsScene::LocationsScene(Game* g) : GameScene(g) {
-
-}
-
-
 void LocationsScene::init()
 {
 	auto background = mngr_->addEntity();
@@ -21,7 +16,6 @@ void LocationsScene::init()
 	// this here is so we are aware that this is not roght but I need to wait till we have all locations srry
 
 	int numLoc = 2;
-	locations.clear();
 	locations.reserve(numLoc);
 	for (int i = 0; i < numLoc; ++i) {
 		auto button = mngr_->addEntity();
@@ -30,10 +24,7 @@ void LocationsScene::init()
 		mngr_->addRenderLayer<Background>(button);
 		locations.push_back(button);
 	}
-
-	std::cout << "El puto tamaño del array: " << locations.size() << std::endl << std::endl << std::endl;
 }
-
 
 void LocationsScene::changeToRaid(Game* g, int index) {
 	g->getStateMachine()->changeState(new RaidScene(paths[index], g));
@@ -55,16 +46,13 @@ void LocationsScene::update() {
 				if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
 					// THIS IS SO BAD IT'S BURNING MY SOUL
 					if (i == 0) changeToRaid(g_, i);
-					else {
-						anActualGoodName(g_);}
+					else anActualGoodName(g_);
 					mouseClick = true;
 					return;
 				}
 			}
 		}
-		else if (mouseClick) {
-			mouseClick = false;
-		}
+		else if (mouseClick) mouseClick = false;
 	}
 }
 

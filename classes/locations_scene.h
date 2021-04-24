@@ -18,8 +18,7 @@ private:
 	vector<Entity*> locations;
 
 public:
-	inline int getSize() override { return locations.size(); };
-	LocationsScene(Game* g);
+	LocationsScene(Game* g) : GameScene(g) {};
 	void init() override;
 	void update() override;
 

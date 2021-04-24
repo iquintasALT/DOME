@@ -1,9 +1,12 @@
 #pragma once
+
+#include "../components/Transform.h"
+#include "player.h"
+#include "countdown.h"
+
 #include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
-#include "player.h"
-#include "../classes/countdown.h"
-#include "../components/Transform.h"
+
 class hud : public Entity
 {
 private:
@@ -20,6 +23,7 @@ private:
 	Texture* ncharger;
 	Texture* totalBullets;
 	Texture* timer;
+
 public:
 	hud(Manager* m, Transform* initialPos, Player* p);
 
