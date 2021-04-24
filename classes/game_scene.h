@@ -50,7 +50,8 @@ protected:
 	void loadMap(string& const path);
 
 public:
-	//constructora que crea el manager de gObjects de la clase
+	virtual inline int getSize() { return 0; };
+		//constructora que crea el manager de gObjects de la clase
 	inline GameScene(Game* game) { mngr_ = new Manager(); g_ = game; }
 	inline virtual ~GameScene() { delete mngr_; }
 	//creacion de objetos, que sera diferente en cada escena

@@ -18,8 +18,9 @@ private:
 	vector<Entity*> locations;
 
 public:
+	inline int getSize() override { return locations.size(); };
 	LocationsScene(Game* g);
-	void init() override {};
+	void init() override;
 	void update() override;
 
 	void changeToRaid(Game* g, int index);
