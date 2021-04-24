@@ -63,7 +63,7 @@ void Game::start() {
 			continue;
 		}
 		
-
+		//std::cout << std::endl << states->currentState()->getSize() << std::endl;
 		states->currentState()->update();
 		states->currentState()->refresh();
 
