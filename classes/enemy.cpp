@@ -16,7 +16,7 @@
 Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacter(mngr_)
 {
 	mngr_->addEntity(this)->setGroup<Enemy_grp>(true);
-	addComponent<Transform>(pos, 32, 64, 0);
+	addComponent<Transform>(pos);
 	addComponent<RigidBody>();
 	addComponent<BoxCollider>(false, 1);
 	addComponent<EnemyContactDamage>();
@@ -24,6 +24,7 @@ Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacte
 
 DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 {
+	this->getComponent<Transform>()->setSize(32, 64);
 	mngr_->addRenderLayer<Enemy>(this);
 	addComponent<PlayerCollisions>();
 	addComponent<Image>(&sdlutils().images().at("enemy"), 2, 9, 0, 0);
@@ -35,6 +36,7 @@ DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 
 FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos, false)
 {
+	this->getComponent<Transform>()->setSize(32, 32);
 	mngr_->addRenderLayer<Enemy>(this);
 	addComponent<Image>(&sdlutils().images().at("flying_enemy"), 1, 4, 0, 0);
 	addComponent<RigidBody>(Vector2D(), false);
