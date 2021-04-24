@@ -31,6 +31,7 @@ private:
 	Entity* craftButton;
 	Transform* craftButton_tr;
 
+
 	std::vector<Slot>craftList;
 	std::vector<Transform*>craftList_tr;
 
@@ -40,10 +41,14 @@ private:
 	bool renderRightWindow;
 	int	 rightWindowIndex;
 
+	Transform* myTr;
+
 	bool mouseClick;
 	CraftingSystem* craftSys;
 	std::vector<ITEMS> workshopItems;
 	Inventory* playerInv;
+	Transform* playerTr;
+
 
 	Loot* loot;
 
