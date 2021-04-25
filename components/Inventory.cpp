@@ -107,6 +107,7 @@ void Inventory::update() {
 		if (dropDownActive && !justPressed && ih().getMouseButtonState(InputHandler::LEFT)) {
 			dropDown->onClick(mousePos);
 			dropDownActive = false;
+			justPressed = true;
 		}
 
 		if (dropDownActive)
