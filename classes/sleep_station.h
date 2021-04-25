@@ -13,14 +13,16 @@
 #include <vector>
 class SleepStation : public GameEntity
 {
-	Entity* bg, *bButton, *leftButton, *rightButton, *clock, *arrow, *sleepButton;
-	Transform* bg_tr, *bButton_tr, *rightButton_tr, *leftButton_tr, *clock_tr, *arrow_tr;
+	Entity* bg, * bButton, * leftButton, * rightButton, * clock, * arrow, * sleepButton;
+	Transform* bg_tr, * bButton_tr, * rightButton_tr, * leftButton_tr, * clock_tr, * arrow_tr;
+
+	Transform* playerTr;
 
 	bool renderFlag;
 	bool mouseClick;
 
 public:
-	SleepStation(Manager* mngr_);
+	SleepStation(Manager* realMngr_, Manager* mngr_);
 	virtual void init();
 
 	void setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name);
