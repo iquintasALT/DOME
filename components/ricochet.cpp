@@ -31,7 +31,7 @@ void Ricochet::createExplosion()
 
 	explosion->addComponent<Transform>(explosionOrigin, 10, 10, 0);
 
-	auto particles = explosion->addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
+	auto particles = explosion->addComponent<ParticleSystem>(&sdlutils().images().at("explosion"), 1, 1, 0, 0);
 
 	particles->distanceToOrigin = 0;
 	particles->dir = Vector2D(-1, 0);
