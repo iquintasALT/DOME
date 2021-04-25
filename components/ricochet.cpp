@@ -7,8 +7,7 @@
 #include "../components/box_collider.h"
 
 Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon)
-{
-}
+{}
 
 Ricochet::~Ricochet() {}
 

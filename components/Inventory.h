@@ -5,15 +5,20 @@
 #include "../components/Transform.h"
 #include "../game/constant_variables.h"
 #include "../utils/checkML.h"
+#include "../classes/inventoryDropdown.h"
+
 
 #include <list>
+#include <string>
+#include <functional>
 class TextWithBackground;
-class Inventory: public Component
+
+class Inventory : public Component
 {
 	friend class Item;
 public:
 	Inventory(int width, int height);
-	Inventory(int width , int height, Inventory* player);
+	Inventory(int width, int height, Inventory* player);
 	~Inventory();
 
 	void init() override;
@@ -63,11 +68,11 @@ private:
 	bool insideSquare(int mouseX, int mouseY, Transform* rect);
 	bool insideSquare(int mouseX, int mouseY);
 
+	bool dropDownActive;
+
+	inventoryDropdown* dropDown;
 	Entity* toolTips;
 	Transform* toolTipsTr;
 	TextWithBackground* toolTipsText;
 	bool showToolTip;
 };
-
-
-

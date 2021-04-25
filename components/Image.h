@@ -11,13 +11,14 @@
 
 class Image : public Component {
 public:
-	Image(Texture* tex) : tr_(nullptr), tex_(tex), src_({ 0,0,tex->width(),tex->width() }),
-		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(false) {}
+	Image(Texture* tex, bool isUI_ = false) : tr_(nullptr), tex_(tex), src_({ 0,0,tex->width(),tex->width() }),
+		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(isUI_) {}
 
-	Image(Texture* tex, SDL_Rect src) : tr_(nullptr), tex_(tex), src_(src),
-		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(false) {}
+	Image(Texture* tex, SDL_Rect src, bool isUI_ = false) : tr_(nullptr), tex_(tex), src_(src),
+		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(isUI_) {}
 
-	Image(Texture* tex, int rows, int cols, int r, int c, bool isUI = false) : tr_(nullptr), tex_(tex), flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(isUI)
+	Image(Texture* tex, int rows, int cols, int r, int c, bool isUI_ = false) : tr_(nullptr), tex_(tex), flip_(SDL_FLIP_NONE),
+		rotationOrigin({ -1, -1 }), isUI(isUI_)
 	{
 		int w = tex->width() / cols;
 		int h = tex->height() / rows;

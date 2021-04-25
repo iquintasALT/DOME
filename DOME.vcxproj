@@ -31,6 +31,7 @@
     <ClInclude Include="classes\game_scene.h" />
     <ClInclude Include="classes\game_state_machine.h" />
     <ClInclude Include="classes\hud.h" />
+    <ClInclude Include="classes\inventoryDropdown.h" />
     <ClInclude Include="classes\Item.h" />
     <ClInclude Include="classes\locations_scene.h" />
     <ClInclude Include="classes\navigation_station.h" />
@@ -50,7 +51,6 @@
     <ClInclude Include="components\animation_component.h" />
     <ClInclude Include="components\back_to_shelter.h" />
     <ClInclude Include="components\bleedout_component.h" />
-    <ClInclude Include="components\CameraMovement.h" />
     <ClInclude Include="components\charge.h" />
     <ClInclude Include="components\box_collider.h" />
     <ClInclude Include="components\classic_bullet.h" />
@@ -163,6 +163,7 @@
     <ClCompile Include="classes\game_scene.cpp" />
     <ClCompile Include="classes\game_state_machine.cpp" />
     <ClCompile Include="classes\hud.cpp" />
+    <ClCompile Include="classes\inventoryDropdown.cpp" />
     <ClCompile Include="classes\Item.cpp" />
     <ClCompile Include="classes\locations_scene.cpp" />
     <ClCompile Include="classes\navigation_station.cpp" />
@@ -183,7 +184,6 @@
     <ClCompile Include="components\back_to_shelter.cpp" />
     <ClCompile Include="components\bleedout_component.cpp" />
     <ClCompile Include="components\box_collider.cpp" />
-    <ClCompile Include="components\CameraMovement.cpp" />
     <ClCompile Include="components\charge.cpp" />
     <ClCompile Include="components\classic_bullet.cpp" />
     <ClCompile Include="components\concussion_component.cpp" />

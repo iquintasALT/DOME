@@ -18,8 +18,8 @@ private:
 	vector<Entity*> locations;
 
 public:
-	LocationsScene(Game* g);
-	void init() override {};
+	LocationsScene(Game* g) : GameScene(g) {};
+	void init() override;
 	void update() override;
 
 	void changeToRaid(Game* g, int index);
