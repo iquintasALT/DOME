@@ -2,19 +2,22 @@
 
 Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : GameEntity(mngr_) {
 	craftSys = cs;
-	mngr_->addEntity(this);
+	realMngr_->addEntity(this);
+	realMngr_->addRenderLayer<Interface>(this);
+
 	renderFlag = false;
 	listIndex = 0;
 	mouseClick = false;
 	loot = nullptr;
 
-	realMngr_->addRenderLayer<Background>(this);
+
 
 	playerInv = realMngr_->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
 
 	renderRightWindow = false;
 	rightWindowIndex = 0;
+
 
 	//INICIALIZACION IMAGENES DEL FONDO, FLECHAS Y X PARA SALIR
 	bg = mngr_->addEntity();
@@ -50,6 +53,8 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Gam
 	//BOTON DE CRAFTEO
 	setImg(craftButton, craftButton_pos, Vector2D{ 265,105 }, "craft_slot_box");
 	craftButton_tr = craftButton->getComponent<Transform>();
+
+
 }
 
 void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
@@ -72,6 +77,8 @@ void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
 
 void Workshop::setRenderFlag(bool set) {
 	renderFlag = set;
+	if (set)
+		playerTr->getEntity()->setActive(false);
 }
 
 void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
@@ -84,15 +91,8 @@ void Workshop::update() {
 	Entity::update();
 	getMngr()->refresh();
 
-	if (ih().isKeyDown(SDL_SCANCODE_E) && !renderFlag) {
-		myTr = getComponent<Transform>();
-		if (Collisions::collides(myTr->getPos(), myTr->getW(), myTr->getH(), playerTr->getPos(), playerTr->getW(), playerTr->getW())) {
-			renderFlag = true;
-		}
-	}
 
 	if (renderFlag) {
-		playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
 
@@ -101,7 +101,7 @@ void Workshop::update() {
 
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
 				renderFlag = false;
-				playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = true;
+				playerTr->getEntity()->setActive(true);
 				renderRightWindow = false;
 			}
 			else if (Collisions::collides(mousePos, 1, 1, arrowUp_tr->getPos(), arrowUp_tr->getW(), arrowUp_tr->getH())) {
@@ -126,7 +126,7 @@ void Workshop::update() {
 					if (isCraftable) {
 						renderRightWindow = false;
 						renderFlag = false;
-						playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = true;
+						playerTr->getEntity()->setActive(true);
 					}
 				}
 			}
