@@ -118,9 +118,9 @@ void GameScene::loadMap(string& const path) {
 					collider->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					collider->addComponent<BoxCollider>(false, 0);
 				}
-				else if (obj.getName() == "stairs") {
+				else if (obj.getName() == "ladder") {
 					auto stair = mngr_->addEntity();
-					stair->setGroup<Stairs_grp>(true);
+					stair->setGroup<Ladders_grp>(true);
 					auto aabb = obj.getAABB();
 					stair->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					stair->addComponent<BoxCollider>(true, 0);

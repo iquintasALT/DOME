@@ -96,11 +96,11 @@ class TextWithBackground;
 
 struct Wall_grp;
 struct Enemy_grp;
-struct Stairs_grp;
+struct Ladders_grp;
 #define _GRPS_LIST_  \
 	Wall_grp, \
 	Enemy_grp, \
-	Stairs_grp
+	Ladders_grp
 	
 
 // handlers
