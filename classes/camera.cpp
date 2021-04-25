@@ -67,6 +67,6 @@ Vector2D Camera::renderRect(Vector2D& imagePos, int w, int h, bool& shouldRender
 }
 
 
-Point2D Camera::PointToWorldSpace(Point2D& point) {
+Point2D Camera::PointToWorldSpace(Point2D point) {
 	return point + pos;
 }
