@@ -5,6 +5,7 @@
 #include "../components/particleSystem.h"
 #include "../utils/ray_cast.h"
 #include "../components/box_collider.h"
+#include "../classes/enemy.h"
 
 Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon)
 {}
@@ -84,6 +85,16 @@ void Ricochet::createExplosion()
 			{
 				cout << "Explosion en player";
 				//IAGO AQUI LE METES EL DAO� AL Enemigo Y EL 1000 HAY Q AJUSTARLO A LA EXPLOSION
+				bool found = false;
+				for (Entity* hitEnemy : hitEnemies) {
+					if (hitEnemy == e) {
+						found = true;
+					}
+				}
+				if (!found) {
+					static_cast<Enemy*>(e)->receiveDamage();
+					hitEnemies.push_back(e);
+				}
 			}
 		}
 	}
