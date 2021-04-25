@@ -45,3 +45,10 @@ FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos, false)
 	addComponent<flying_enemy_animation>();
 	addComponent<FlyingChasePlayer>(consts::MELEE_ENEMY_SPEED / 2, consts::MELEE_ENEMY_STOPDISTANCE, consts::FLYING_ENEMY_HOVERHEIGHT, consts::FLYING_ENEMY_APPROACHDISTANCE);
 }
+
+RangedEnemy::RangedEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos) {
+	mngr_->addRenderLayer<Enemy>(this);
+	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
+	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
+	addComponent<KeepDistance>(consts::RANGED_ENEMY_SPEED, consts::RANGED_ENEMY_MARGINDISTANCE, consts::RANGED_ENEMY_SHOOTDISTANCE);
+}

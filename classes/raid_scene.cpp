@@ -12,7 +12,6 @@ void RaidScene::init() {
 	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 
 	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player);
-	//RangedEnemy* rangedEnemy = new RangedEnemy(mngr_, Point2D(800, 50));
 }
 
 void RaidScene::update() {
