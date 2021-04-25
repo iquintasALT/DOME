@@ -7,7 +7,6 @@ class Enemy : public GameCharacter
 public:
 	Enemy(Manager* mngr_, Point2D pos, bool hasGravity);
 	void receiveDamage();
-	void receiveLaserDamage();
 	int lives = 3;
 };
 
