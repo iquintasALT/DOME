@@ -20,12 +20,12 @@ private:
 public:
 	Transform();
 
-	Transform(Vector2D pos,float width, float height,
+	Transform(Vector2D pos, float width = 0, float height = 0,
 		float rotation = 0);
 
 	virtual ~Transform();
 
-	virtual void init() override;
+	virtual void init() override {};
 
 	inline Vector2D& getPos() { return pos_; }
 
@@ -40,6 +40,8 @@ public:
 	inline float getRot() const {return rotation_;}
 
 	inline Point2D getSize() const { return Point2D(width_, height_); }
+
+	inline void setSize(float width, float height) { width_ = width; height_ = height; }
 
 	inline void setRot(float rot) { rotation_ = rot; }
 

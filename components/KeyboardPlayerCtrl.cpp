@@ -1,6 +1,5 @@
 #include "KeyboardPlayerCtrl.h"
 #include "../classes/player.h"
-#include "../classes/camera.h"
 #include "../game/constant_variables.h"
 #include "../components/box_collider.h"
 #include "../classes/weapon_behaviour.h"
@@ -19,9 +18,6 @@ void KeyboardPlayerCtrl::init() {
 	rb_ = entity_->getComponent<RigidBody>();
 	tr_ = entity_->getComponent<Transform>();
 	assert(rb_ != nullptr && tr_ != nullptr);
-
-
-	Camera::mainCamera->setBounds(-100, 0, 800, 300);
 }
 
 void KeyboardPlayerCtrl::OnCollision(Entity* bc) {

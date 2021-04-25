@@ -305,9 +305,6 @@
     <ClCompile Include="components\player_damage.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\CameraMovement.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="classes\cover.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -318,6 +315,9 @@
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="classes\pause_scene.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\inventoryDropdown.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
   </ItemGroup>
@@ -697,9 +697,6 @@
     <ClInclude Include="sdlutils\SoundManager.h">
       <Filter>Header Files\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="components\CameraMovement.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="classes\cover.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
@@ -710,6 +707,9 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="classes\pause_scene.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\inventoryDropdown.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>

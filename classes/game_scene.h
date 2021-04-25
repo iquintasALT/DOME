@@ -4,11 +4,13 @@
 #include "../components/Image.h"
 #include "../components/KeyboardPlayerCtrl.h"
 #include "../components/player_animation.h"
-#include "../classes/weapon_behaviour.h"
-#include "../classes/tile.h"
 #include "../components/box_collider.h"
 #include "../components/InventoryController.h"
 #include "../components/particleSystem.h"
+#include "../classes/weapon_behaviour.h"
+#include "../classes/tile.h"
+#include "../classes/player.h"
+#include "../classes/camera.h"
 
 #include "../ecs/ecs.h"
 #include "../ecs/Manager.h"
@@ -17,11 +19,11 @@
 #include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
 
-#include "tmxlite/Map.hpp"
-#include "tmxlite/Layer.hpp"
-#include "tmxlite/TileLayer.hpp"
-#include "tmxlite/ObjectGroup.hpp"
-#include "tmxlite/Tileset.hpp"
+#include "./tmxlite/Map.hpp"
+#include "./tmxlite/Layer.hpp"
+#include "./tmxlite/TileLayer.hpp"
+#include "./tmxlite/ObjectGroup.hpp"
+#include "./tmxlite/Tileset.hpp"
 
 #include <memory>
 

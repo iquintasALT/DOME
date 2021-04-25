@@ -11,7 +11,7 @@
 void RaidScene::init() {
 	loadMap(path_);
 
-	Player* player = new Player(mngr_, Point2D(200, 50));
+	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 
 	Enemy* enemy = new FlyingEnemy(mngr_, Point2D(750, 50));
 	Enemy* enemy2 = new FlyingEnemy(mngr_, Point2D(700, 50));
@@ -21,8 +21,8 @@ void RaidScene::init() {
 	//RangedEnemy* rangedEnemy = new RangedEnemy(mngr_, Point2D(800, 50));
 
 	Entity* interactableElement = mngr_->addEntity();
-	interactableElement->addComponent<Transform>(Vector2D(20, 600), 64, 64, 0);
-	interactableElement->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
+	interactableElement->addComponent<Transform>(Vector2D(20, 575), 64, 64, 0);
+	interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
 	mngr_->addRenderLayer<Loot>(interactableElement);
 	interactableElement->addComponent<TextWithBackground>("E.",
 		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), 
@@ -39,8 +39,7 @@ void RaidScene::init() {
 void RaidScene::update() {
 	GameScene::update();
 	
-	return;
-	if (ih().keyUpEvent() && ih().isKeyUp(SDL_SCANCODE_ESCAPE)) {
+	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		g_->getStateMachine()->pushState(new PauseScene(g_));
 		g_->getStateMachine()->currentState()->init();
 	}

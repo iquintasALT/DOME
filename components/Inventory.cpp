@@ -1,7 +1,10 @@
 #include "Inventory.h"
 #include "../sdlutils/InputHandler.h"
-#include <iostream>
 #include "../components/TextWithBackGround.h"
+
+#include "../sdlutils/SDLUtils.h"
+
+#include <iostream>
 
 Inventory::Inventory(int width, int height) : width(width), height(height), other(nullptr) {
 	transform = nullptr;
@@ -18,9 +21,11 @@ Inventory::Inventory(int width, int height) : width(width), height(height), othe
 	toolTipsTr = nullptr;
 	toolTipsText = nullptr;
 	showToolTip = false;
+
+	dropDown = nullptr;
+	dropDownActive = false;
 }
 Inventory::Inventory(int width, int height, Inventory* player) : Inventory(width, height) {
-
 	this->other = player;
 	originalPos = Vector2D();
 }
@@ -48,14 +53,23 @@ void Inventory::init() {
 		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("dust"));
 	entity_->getMngr()->addRenderLayer<Interface>(toolTips);
 	toolTips->setActive(false);
+
+	dropDownActive = false;
+	std::vector<inventoryDropdown::slot*> slots;
+	slots.push_back(new inventoryDropdown::slot("Use", []() { std::cout << std::endl << "Elemento usado"; }));
+	slots.push_back(new inventoryDropdown::slot("Rotate", []() {std::cout << std::endl << "Elemento girado" << std::endl; }));
+	dropDown = new inventoryDropdown(&sdlutils().images().at("dust"), slots, 200);
 }
 void Inventory::render() {
 	for (auto a : storedItems) {
 		a->render();
 	}
 
-	if(showToolTip)
-	toolTipsText->render();
+	if (dropDownActive) {
+		dropDown->render();
+	}
+	else if (showToolTip)
+		toolTipsText->render();
 }
 
 Inventory::~Inventory() {
@@ -63,6 +77,7 @@ Inventory::~Inventory() {
 		delete a;
 	}
 	storedItems.clear();
+	delete dropDown;
 }
 
 void Inventory::update() {
@@ -76,16 +91,28 @@ void Inventory::update() {
 
 		auto hoverItem = findItemInSlot(xCell, yCell);
 		showToolTip = hoverItem != nullptr;
+
 		if (showToolTip) {
 			toolTipsText->changeText(hoverItem->getItemInfo()->description());
 			toolTipsTr->setPos(mousePos);
 		}
 
-		if (ih().getMouseButtonState(InputHandler::RIGHT)) {
-			hoverItem->getItemInfo()->execute(entity_);
+		if (ih().getMouseButtonState(InputHandler::RIGHT) && selectedItem == nullptr && hoverItem != nullptr) {
+			if (!dropDownActive) {
+				dropDownActive = true;
+				dropDown->setPos(mousePos);
+			}
 		}
 
-		else if (ih().getMouseButtonState(InputHandler::LEFT)) {
+		if (dropDownActive && !justPressed && ih().getMouseButtonState(InputHandler::LEFT)) {
+			dropDown->onClick(mousePos);
+			dropDownActive = false;
+		}
+
+		if (dropDownActive)
+			return;
+
+		if (ih().getMouseButtonState(InputHandler::LEFT)) {
 			if (!justPressed && (other == nullptr || (other != nullptr && other->selectedItem == nullptr))) {
 
 				justPressed = true;

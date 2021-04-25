@@ -133,8 +133,16 @@
       "file": "resources/sprites/clock.png"
     },
     {
-      "id": "dclock",
-      "file": "resources/sprites/digital_clock.png"
+        "id": "dclock",
+        "file": "resources/sprites/digital_clock.png"
+    },
+    {
+        "id": "storage",
+        "file": "resources/sprites/storage_backgrounds.png"
+    },
+    {
+        "id": "wardrobe",
+        "file": "resources/sprites/wardrobe_tileset.png"
     }
   ],
 
