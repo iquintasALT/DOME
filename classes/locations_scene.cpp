@@ -14,15 +14,34 @@ void LocationsScene::init()
 	mngr_->addRenderLayer<Background>(background);
 
 	// this here is so we are aware that this is not roght but I need to wait till we have all locations srry
+	loadLocationButtons();
+}
 
-	int numLoc = 2;
-	locations.reserve(numLoc);
-	for (int i = 0; i < numLoc; ++i) {
-		auto button = mngr_->addEntity();
-		button->addComponent<Transform>(Vector2D(250 + 300 * i, 300), 75, 75);
-		button->addComponent<Image>(&sdlutils().images().at("location_icons"), 2, 3, 0 + 1 * i, 0);
-		mngr_->addRenderLayer<Background>(button);
-		locations.push_back(button);
+void LocationsScene::loadLocationButtons() {
+	string path = "./resources/tilemap/location_placements.tmx";
+	tmx::Map positions;
+	positions.load(path);
+
+	auto& map_layers = positions.getLayers();
+	for (auto& layer : map_layers) {
+		if (layer->getType() != tmx::Layer::Type::Object)
+			continue;
+
+		tmx::ObjectGroup* object_layer = dynamic_cast<tmx::ObjectGroup*>(layer.get());
+
+		auto& objs = object_layer->getObjects();
+
+		for (auto obj : objs) {
+			auto aabb = obj.getAABB();
+			auto col = obj.getProperties()[0].getIntValue();
+			auto row = obj.getProperties()[1].getIntValue();
+
+			auto button = mngr_->addEntity();
+			button->addComponent<Transform>(Vector2D(aabb.left, aabb.top), 75, 75);
+			button->addComponent<Image>(&sdlutils().images().at("location_icons"), 2, 3, row, col);
+			mngr_->addRenderLayer<Background>(button);
+			locations.push_back(button);
+		}
 	}
 }
 
