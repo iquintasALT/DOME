@@ -15,6 +15,7 @@ Ricochet::~Ricochet() {}
 void Ricochet::init() {
 	tr_ = entity_->getComponent<Transform>();
 	rb = entity_->getComponent<RigidBody>();
+	rb->addCollisionLayer(1);
 	assert(tr_ != nullptr && rb != nullptr);
 
 	rb->bounciness = 1;
@@ -100,8 +101,8 @@ void Ricochet::createExplosion()
 	}
 }
 
-void Ricochet::OnCollision(Entity* collider) {
-	if (n-- == 0) {
+void Ricochet::OnCollision(Entity* other) {
+	if (n-- == 0 || other->hasGroup<Enemy_grp>()) {
 		createExplosion();
 		entity_->setDead(true);
 	}
