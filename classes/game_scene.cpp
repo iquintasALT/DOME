@@ -147,7 +147,7 @@ void GameScene::loadMap(string& const path) {
 					else if (enemyType == 1) // volador
 						new FlyingEnemy(mngr_, Point2D(aabb.left, aabb.top));
 					else // rango
-						new DefaultEnemy(mngr_, Point2D(aabb.left, aabb.top));
+						new RangedEnemy(mngr_, Point2D(aabb.left, aabb.top));
 				}
 				else if (obj.getName() == "returnShelter") {
 					Entity* returnToShelter = mngr_->addEntity();
