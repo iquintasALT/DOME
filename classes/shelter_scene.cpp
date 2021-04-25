@@ -46,16 +46,12 @@ void ShelterScene::init() {
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
 
-
 	Player* player = dynamic_cast<Player*>(mngr_->getHandler<Player_hdlr>());
-
-	mngr_->setHandler<Player_hdlr>(player);
-
 	craftSys = new CraftingSystem(mngr_);
 
 	uselessMngr = new Manager();
-	mechanical_Workshop = new Workshop(mngr_, uselessMngr, craftSys);
 
+	mechanical_Workshop = new Workshop(mngr_, uselessMngr, craftSys);
 	Vector2D auxPos = player->getComponent<Transform>()->getPos();
 	mechanical_Workshop->addComponent<Transform>(auxPos, 50, 50, 0);
 	mechanical_Workshop->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 5, 1);
@@ -65,7 +61,6 @@ void ShelterScene::init() {
 	medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT});
 	medical_Workshop->addComponent<Transform>(Vector2D{ auxPos.getX() - 100,auxPos.getY() }, 50, 50, 0);
 	medical_Workshop->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 5, 0);
-
 	sleep_Station = new SleepStation(uselessMngr);
 
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui

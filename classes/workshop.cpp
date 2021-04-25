@@ -8,6 +8,7 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Gam
 	mouseClick = false;
 	loot = nullptr;
 
+	realMngr_->addRenderLayer<Background>(this);
 
 	playerInv = realMngr_->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
