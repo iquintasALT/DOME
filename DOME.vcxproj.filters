@@ -92,9 +92,6 @@
     <ClCompile Include="classes\camera.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="classes\ranged_enemy.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="utils\ray_cast.cpp">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
@@ -449,9 +446,6 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\camera.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\ranged_enemy.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="utils\ray_cast.h">
