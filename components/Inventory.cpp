@@ -126,7 +126,7 @@ void Inventory::update() {
 
 					if (timer > timeToHold) {
 						selectedItem = selectedItem_;
-						//selectedItem_ = findItemInSlot(xCell, yCell);
+						selectedItem_ = findItemInSlot(xCell, yCell);
 
 						if (selectedItem != selectedItem_)
 							selectedItem = nullptr;
