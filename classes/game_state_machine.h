@@ -5,6 +5,8 @@
 #include "../utils/checkML.h"
 #include "../classes/shelter_scene.h"
 #include <stack>
+#include <vector>
+#include <map>
 
 using namespace std;
 
@@ -20,6 +22,6 @@ public:
 	inline GameScene* currentState() { return states.top(); };
 	void popState();
 	//metodo para agregar nuevo estado a la cola
-	inline void pushState(GameScene* gs) { states.push(gs); };
+	inline void pushState(GameScene* gs) { states.push(gs); }
 };
 #endif

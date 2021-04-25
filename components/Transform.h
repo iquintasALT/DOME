@@ -25,7 +25,7 @@ public:
 
 	virtual ~Transform();
 
-	virtual void init() override;
+	virtual void init() override {};
 
 	inline Vector2D& getPos() { return pos_; }
 

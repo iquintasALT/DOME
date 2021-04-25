@@ -1,10 +1,12 @@
 #include "game_scene.h"
 
+#include "../components/back_to_shelter.h"
+
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
 	mapInfo.tile_map.load(path);
 
-	// obtenemos el tamaño del mapa (en tiles)
+	// obtenemos el tamaï¿½o del mapa (en tiles)
 	auto map_dimensions = mapInfo.tile_map.getTileCount();
 	mapInfo.rows = map_dimensions.y;
 	mapInfo.cols = map_dimensions.x;
@@ -17,7 +19,7 @@ void GameScene::loadMap(string& const path) {
 	Camera::mainCamera->setBounds(0, 0, mapInfo.cols * mapInfo.tile_width, mapInfo.rows * mapInfo.tile_height);
 
 	// cargamos y almacenamos los tilesets utilizados por el tilemap
-	// (el mapa utiliza el índice [gid] del primer tile cargado del tileset como clave)
+	// (el mapa utiliza el ï¿½ndice [gid] del primer tile cargado del tileset como clave)
 	// (para poder cargar los tilesets del archivo .tmx, les ponemos de nombre 
 	// el nombre del archivo sin extension en el .json) 
 	auto& map_tilesets = mapInfo.tile_map.getTilesets();
@@ -64,11 +66,11 @@ void GameScene::loadMap(string& const path) {
 							break;
 					}
 
-					// si no hay tileset válido, continuamos a la siguiente iteracion
+					// si no hay tileset vï¿½lido, continuamos a la siguiente iteracion
 					if (tset_gid == -1)
 						continue;
 
-					// normalizamos el índice
+					// normalizamos el ï¿½ndice
 					cur_gid -= tset_gid;
 
 					// calculamos dimensiones del tileset
@@ -90,7 +92,7 @@ void GameScene::loadMap(string& const path) {
 					//// Acceso a las propiedades de una tile dentro de un tileset (.tsx)
 					//vector<tmx::Property> tile_props = mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties;
 					//if (tile_props.size() > 0) {
-					//	// Lo separo aqui por si en algun futuro creamos más propiedades, realmente habria que hacer una busqueda
+					//	// Lo separo aqui por si en algun futuro creamos mï¿½s propiedades, realmente habria que hacer una busqueda
 					//	// de la propiedad y si esta en el vector usarla acorde
 					//	if (tile_props[0].getName() == "wall")
 					//		is_wall = tile_props[0].getBoolValue();
@@ -111,25 +113,48 @@ void GameScene::loadMap(string& const path) {
 			auto& objs = object_layer->getObjects();
 
 			for (auto obj : objs) {
+				auto aabb = obj.getAABB();
+				
 				if (obj.getName() == "collision") {
 					auto collider = mngr_->addEntity();
 					collider->setGroup<Wall_grp>(true);
-					auto aabb = obj.getAABB();
 					collider->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					collider->addComponent<BoxCollider>(false, 0);
 				}
 				else if (obj.getName() == "ladder") {
 					auto stair = mngr_->addEntity();
-					stair->setGroup<Ladders_grp>(true);
-					auto aabb = obj.getAABB();
+					stair->setGroup<Stairs_grp>(true);
 					stair->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					stair->addComponent<BoxCollider>(true, 0);
 				}
 				else if (obj.getName() == "playerSpawn") {
-					auto aabb = obj.getAABB();
 					new Player(mngr_, Point2D(aabb.left, aabb.top));
 					auto camPos = Vector2D(aabb.left - sdlutils().width() / 2, aabb.top - sdlutils().height() / 2);
 					Camera::mainCamera->Move(camPos);
+				}
+				else if (obj.getName() == "loot") {
+					Entity* interactableElement = mngr_->addEntity();
+					interactableElement->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
+					mngr_->addRenderLayer<Loot>(interactableElement);
+					interactableElement->addComponent<Loot>("Hola nena", 5, 5);
+				}
+				else if (obj.getName() == "enemy") {
+					// int en objeto para identificar el tipo de enemigo
+					int enemyType = obj.getProperties()[0].getIntValue();
+					if (enemyType == 0)  // basico
+						new DefaultEnemy(mngr_, Point2D(aabb.left, aabb.top));
+					else if (enemyType == 1) // volador
+						new FlyingEnemy(mngr_, Point2D(aabb.left, aabb.top));
+					else // rango
+						new DefaultEnemy(mngr_, Point2D(aabb.left, aabb.top));
+				}
+				else if (obj.getName() == "returnShelter") {
+					Entity* returnToShelter = mngr_->addEntity();
+					returnToShelter->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					returnToShelter->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
+					returnToShelter->addComponent<BackToShelter>(g_);
+					mngr_->addRenderLayer<Loot>(returnToShelter);
 				}
 			}
 		}
