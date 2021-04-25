@@ -44,7 +44,6 @@
     <ClInclude Include="classes\physiognomy.h" />
     <ClInclude Include="classes\player.h" />
     <ClInclude Include="classes\raid_scene.h" />
-    <ClInclude Include="classes\ranged_enemy.h" />
     <ClInclude Include="classes\ricochet_weapon.h" />
     <ClInclude Include="classes\shelter_scene.h" />
     <ClInclude Include="classes\workshop.h" />
@@ -176,7 +175,6 @@
     <ClCompile Include="classes\physiognomy.cpp" />
     <ClCompile Include="classes\player.cpp" />
     <ClCompile Include="classes\raid_scene.cpp" />
-    <ClCompile Include="classes\ranged_enemy.cpp" />
     <ClCompile Include="classes\ricochet_weapon.cpp" />
     <ClCompile Include="classes\shelter_scene.cpp" />
     <ClCompile Include="classes\workshop.cpp" />

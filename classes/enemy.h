@@ -19,3 +19,9 @@ class FlyingEnemy : public Enemy
 public:
 	FlyingEnemy(Manager* mngr_, Point2D pos);
 };
+
+class RangedEnemy : public Enemy
+{
+public:
+	RangedEnemy(Manager* mngr_, Point2D pos);
+};
