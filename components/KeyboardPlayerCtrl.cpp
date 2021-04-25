@@ -26,7 +26,7 @@ void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
 }
 
 void KeyboardPlayerCtrl::OnTrigger(Entity* bc) {
-	if (bc->hasGroup<Stairs_grp>()) {
+	if (bc->hasGroup<Ladders_grp>()) {
 		auto stairTr = bc->getComponent<Transform>();
 		stairPosition = stairTr->getPos();
 		stairSize = stairTr->getSize();
