@@ -5,6 +5,7 @@
 #include "../components/particleSystem.h"
 #include "../utils/ray_cast.h"
 #include "../components/box_collider.h"
+#include "../classes/enemy.h"
 
 Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon)
 {}
@@ -31,7 +32,7 @@ void Ricochet::createExplosion()
 
 	explosion->addComponent<Transform>(explosionOrigin, 10, 10, 0);
 
-	auto particles = explosion->addComponent<ParticleSystem>(&sdlutils().images().at("dust"), 1, 1, 0, 0);
+	auto particles = explosion->addComponent<ParticleSystem>(&sdlutils().images().at("explosion"), 1, 1, 0, 0);
 
 	particles->distanceToOrigin = 0;
 	particles->dir = Vector2D(-1, 0);
@@ -66,11 +67,37 @@ void Ricochet::createExplosion()
 	//Colision enemigos
 	range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
 
-	//Colision enemigos (Cuando esten hechos xd)
-	/*for (auto& e : entity_->getMngr()->getEnteties())
+	if (range.hasCollision(1000))
 	{
+		cout << "Explosion en player";
+	}
+	//Colision enemigos (Cuando esten hechos xd)
+	for (auto& e : entity_->getMngr()->getEntities())
+	{
+		if (e->hasGroup<Enemy_grp>())
+		{
+			x2 = e->getComponent<Transform>()->getPos().getX() + e->getComponent<Transform>()->getW() / 2;
+			y2 = e->getComponent<Transform>()->getPos().getY() + e->getComponent<Transform>()->getH() / 2;
+			direction = Vector2D(x2, y2);
+			range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
 
-	}*/
+			if (range.hasCollision(1000))
+			{
+				cout << "Explosion en player";
+				//IAGO AQUI LE METES EL DAO� AL Enemigo Y EL 1000 HAY Q AJUSTARLO A LA EXPLOSION
+				bool found = false;
+				for (Entity* hitEnemy : hitEnemies) {
+					if (hitEnemy == e) {
+						found = true;
+					}
+				}
+				if (!found) {
+					static_cast<Enemy*>(e)->receiveDamage();
+					hitEnemies.push_back(e);
+				}
+			}
+		}
+	}
 }
 
 void Ricochet::OnCollision(Entity* collider) {

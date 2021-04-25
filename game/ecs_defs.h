@@ -48,6 +48,7 @@ class EnemyContactDamage;
 class HypothermiaComponent;
 class ClassicBullet;
 class TextWithBackground;
+class Open_station;
 
 #define _CMPS_LIST_  \
 	Transform,\
@@ -90,7 +91,8 @@ class TextWithBackground;
 	EnemyContactDamage,\
 	HypothermiaComponent,\
 	ClassicBullet, \
-	TextWithBackground
+	TextWithBackground,\
+	Open_station
 
 // groups
 
