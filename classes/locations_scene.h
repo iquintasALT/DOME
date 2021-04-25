@@ -17,6 +17,8 @@ private:
 	bool mouseClick = false;
 	vector<Entity*> locations;
 
+	void loadLocationButtons();
+
 public:
 	LocationsScene(Game* g) : GameScene(g) {};
 	void init() override;
