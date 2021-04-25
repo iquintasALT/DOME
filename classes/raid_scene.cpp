@@ -14,7 +14,7 @@ void RaidScene::init() {
 	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 
 	Enemy* enemy = new FlyingEnemy(mngr_, Point2D(750, 50));
-	Enemy* enemy2 = new FlyingEnemy(mngr_, Point2D(700, 50));
+	Enemy* enemy2 = new RangedEnemy(mngr_, Point2D(700, 350));
 	Enemy* enemy3 = new DefaultEnemy(mngr_, Point2D(300, 50));
 
 	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player);
