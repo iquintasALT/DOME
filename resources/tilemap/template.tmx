@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="34" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="25">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="34" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="5" nextobjectid="34">
  <editorsettings>
   <export target="template.json" format="json"/>
  </editorsettings>
@@ -79,11 +79,25 @@
   <object id="19" name="stairs" x="672" y="512" width="32" height="128"/>
   <object id="20" name="stairs" x="800" y="384" width="32" height="128"/>
   <object id="22" name="stairs" x="960" y="384" width="32" height="128"/>
-  <object id="24" name="loot" x="224" y="600">
+  <object id="25" name="loot" x="224" y="576" width="32" height="64"/>
+  <object id="26" name="enemy" x="448" y="568">
    <properties>
-    <property name="numLoot" type="int" value="0"/>
+    <property name="type" type="int" value="0"/>
    </properties>
    <point/>
   </object>
+  <object id="30" name="enemy" x="608" y="192">
+   <properties>
+    <property name="type" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="31" name="enemy" x="672" y="192">
+   <properties>
+    <property name="type" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="32" name="returnShelter" x="992" y="576" width="32" height="64"/>
  </objectgroup>
 </map>

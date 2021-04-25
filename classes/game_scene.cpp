@@ -1,5 +1,7 @@
 #include "game_scene.h"
 
+#include "../components/back_to_shelter.h"
+
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
 	mapInfo.tile_map.load(path);
@@ -111,25 +113,48 @@ void GameScene::loadMap(string& const path) {
 			auto& objs = object_layer->getObjects();
 
 			for (auto obj : objs) {
+				auto aabb = obj.getAABB();
+				
 				if (obj.getName() == "collision") {
 					auto collider = mngr_->addEntity();
 					collider->setGroup<Wall_grp>(true);
-					auto aabb = obj.getAABB();
 					collider->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					collider->addComponent<BoxCollider>(false, 0);
 				}
 				else if (obj.getName() == "stairs") {
 					auto stair = mngr_->addEntity();
 					stair->setGroup<Stairs_grp>(true);
-					auto aabb = obj.getAABB();
 					stair->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					stair->addComponent<BoxCollider>(true, 0);
 				}
 				else if (obj.getName() == "playerSpawn") {
-					auto aabb = obj.getAABB();
 					new Player(mngr_, Point2D(aabb.left, aabb.top));
 					auto camPos = Vector2D(aabb.left - sdlutils().width() / 2, aabb.top - sdlutils().height() / 2);
 					Camera::mainCamera->Move(camPos);
+				}
+				else if (obj.getName() == "loot") {
+					Entity* interactableElement = mngr_->addEntity();
+					interactableElement->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
+					mngr_->addRenderLayer<Loot>(interactableElement);
+					interactableElement->addComponent<Loot>("Hola nena", 5, 5);
+				}
+				else if (obj.getName() == "enemy") {
+					// int en objeto para identificar el tipo de enemigo
+					int enemyType = obj.getProperties()[0].getIntValue();
+					if (enemyType == 0)  // basico
+						new DefaultEnemy(mngr_, Point2D(aabb.left, aabb.top));
+					else if (enemyType == 1) // volador
+						new FlyingEnemy(mngr_, Point2D(aabb.left, aabb.top));
+					else // rango
+						new DefaultEnemy(mngr_, Point2D(aabb.left, aabb.top));
+				}
+				else if (obj.getName() == "returnShelter") {
+					Entity* returnToShelter = mngr_->addEntity();
+					returnToShelter->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					returnToShelter->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
+					returnToShelter->addComponent<BackToShelter>(g_);
+					mngr_->addRenderLayer<Loot>(returnToShelter);
 				}
 			}
 		}
