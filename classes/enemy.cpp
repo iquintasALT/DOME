@@ -22,6 +22,20 @@ Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacte
 	addComponent<EnemyContactDamage>();
 }
 
+void Enemy::receiveDamage()
+{
+	lives--;
+	if (lives <= 0) {
+		setDead(true);
+	}
+}
+
+void Enemy::receiveLaserDamage()
+{
+}
+
+
+
 DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 {
 	this->getComponent<Transform>()->setSize(32, 64);
