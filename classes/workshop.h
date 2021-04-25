@@ -41,8 +41,6 @@ private:
 	bool renderRightWindow;
 	int	 rightWindowIndex;
 
-	Transform* myTr;
-
 	bool mouseClick;
 	CraftingSystem* craftSys;
 	std::vector<ITEMS> workshopItems;

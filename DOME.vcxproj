@@ -71,6 +71,7 @@
     <ClInclude Include="components\InventoryController.h" />
     <ClInclude Include="components\KeyboardPlayerCtrl.h" />
     <ClInclude Include="components\loot.h" />
+    <ClInclude Include="components\open_station.h" />
     <ClInclude Include="components\pain_component.h" />
     <ClInclude Include="components\particleSystem.h" />
     <ClInclude Include="components\player_collisions.h" />
@@ -201,6 +202,7 @@
     <ClCompile Include="components\InventoryController.cpp" />
     <ClCompile Include="components\KeyboardPlayerCtrl.cpp" />
     <ClCompile Include="components\loot.cpp" />
+    <ClCompile Include="components\open_station.cpp" />
     <ClCompile Include="components\pain_component.cpp" />
     <ClCompile Include="components\particleSystem.cpp" />
     <ClCompile Include="components\player_collisions.cpp" />
