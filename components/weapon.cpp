@@ -79,7 +79,7 @@ void Weapon::update() {
 
 		entity_->getMngr()->addRenderLayer<Bullets>(bullet);
 		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
-		bullet->addComponent<ClassicBullet>(playerTr, 0);
+		bullet->addComponent<ClassicBullet>();
 		actcharger--;
 		if (actcharger == 0 && nbullets>0)
 		{
