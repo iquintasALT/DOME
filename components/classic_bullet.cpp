@@ -24,10 +24,8 @@ void ClassicBullet::init() {
 }
 
 void ClassicBullet::OnCollision(Entity* other) {
-	EnemyComponent* a = other->getComponent<EnemyComponent>();
 	if (other->hasGroup<Enemy_grp>() ) {
-		other->setDead(true);
+		static_cast<Enemy*>(other)->receiveDamage();
 	}
-	std::cout << "hola";
 	entity_->setDead(true);
 }
