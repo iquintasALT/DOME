@@ -10,6 +10,8 @@
 #include "../classes/weapon_behaviour.h"
 #include "../classes/tile.h"
 #include "../classes/player.h"
+#include "../classes/enemy.h"
+#include "../components/loot.h"
 #include "../classes/camera.h"
 
 #include "../ecs/ecs.h"

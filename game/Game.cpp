@@ -38,6 +38,8 @@ void Game::init() {
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "resources/config/resources.json");
 	sdlutils().showCursor();
 
+	initLoot();
+
 	states->pushState(new LocationsScene(this));
 	states->currentState()->init();
 }
@@ -78,6 +80,11 @@ void Game::start() {
 		if (frameTime < 1000 / consts::FRAME_RATE)
 			SDL_Delay((1000 / consts::FRAME_RATE) - frameTime);
 	}
+
+}
+
+void Game::initLoot() {
+	SCENES_LOOT.emplace(HOSPTITAL, vector<I>{ {WATER, 3}, { FOOD,5 }});
 }
 
 
