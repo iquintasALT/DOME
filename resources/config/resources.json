@@ -77,8 +77,12 @@
       "file": "resources/sprites/projectile.png"
     },
     {
-      "id": "panel",
-      "file": "resources/sprites/panel.png"
+        "id": "panel",
+        "file": "resources/sprites/panel.png"
+    },
+    {
+        "id": "tooltipBox",
+        "file": "resources/sprites/tooltipbox.png"
     },
     {
       "id": "shelterButton",
