@@ -107,3 +107,7 @@ void TextWithBackground::update() {
 			appearingText_ = false;
 	}
 }
+
+void TextWithBackground::setAlpha(int value) {
+	texture_->setAlpha(value);
+}
