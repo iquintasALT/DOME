@@ -50,5 +50,5 @@ void MenuScene::exit(Game* g) {
 
 MenuScene::~MenuScene()
 {
-	delete back;
+	//delete back;
 }
