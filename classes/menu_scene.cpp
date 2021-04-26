@@ -23,7 +23,7 @@ MenuScene::MenuScene(Game* game) :GameScene(game, "Menu") {
 	mngr_->addEntity();
 	mngr_->addRenderLayer<Enemy>(aux);
 
-	back = &sdlutils().images().at("main_menu");
+	back = &sdlutils().images().at("dclock");
 }
 
 void MenuScene::init() {}
