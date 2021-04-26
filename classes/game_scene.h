@@ -51,6 +51,8 @@ protected:
 	MapInfo mapInfo;
 	Game* g_;
 
+
+	void createTransition();
 	//funcion de cargado de mapa usable por todas las escenas de juego
 	void loadMap(string& const path);
 
