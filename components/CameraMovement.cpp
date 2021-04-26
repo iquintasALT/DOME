@@ -13,6 +13,6 @@ void CameraMovement::init() {
 }
 
 void CameraMovement::update() {
-	cam->LerpWithBounds(tr->getPos(), velocity);
+	cam->Lerp(tr->getPos(), velocity);
 }
 

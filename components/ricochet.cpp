@@ -25,6 +25,9 @@ void Ricochet::createExplosion()
 {
 	auto transf = entity_->getComponent<Transform>();
 	auto explosion = entity_->getMngr()->addEntity();
+
+	entity_->getMngr()->addRenderLayer<Player>(explosion);
+
 	Vector2D explosionOrigin = tr_->getPos() + Vector2D(tr_->getW() / 2, tr_->getH() / 2);
 
 	Point2D arribaizq = playerTr->getPos();

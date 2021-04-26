@@ -35,7 +35,6 @@ void KeyboardPlayerCtrl::OnTrigger(Entity* bc) {
 }
 
 void KeyboardPlayerCtrl::update() {
-
 	rb_->setGravity(consts::GRAVITY);
 	if (!inStair) {
 		if (!crouched) {
