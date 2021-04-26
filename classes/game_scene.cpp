@@ -1,5 +1,5 @@
 #include "game_scene.h"
-
+#include "../game/Game.h"
 #include "../components/back_to_shelter.h"
 
 void GameScene::loadMap(string& const path) {
@@ -153,10 +153,16 @@ void GameScene::loadMap(string& const path) {
 					Entity* returnToShelter = mngr_->addEntity();
 					returnToShelter->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
 					returnToShelter->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
-					returnToShelter->addComponent<BackToShelter>(g_);
+					returnToShelter->addComponent<BackToShelter>(this);
 					mngr_->addRenderLayer<Loot>(returnToShelter);
 				}
 			}
 		}
 	}
+}
+
+void GameScene::changeState(GameScene* gs)
+{
+	mngr_->onNewScene();
+	g_->getStateMachine()->changeState(gs);
 }

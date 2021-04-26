@@ -1,4 +1,5 @@
 #include "../classes/game_state_machine.h"
+#include "../ecs/Manager.h"
 
 //destructora de la maquina de estados
 GameStateMachine::~GameStateMachine() {
@@ -9,6 +10,7 @@ GameStateMachine::~GameStateMachine() {
 void GameStateMachine::changeState(GameScene* gs) {
 	popState(); //quitamos el estado actual
 	pushState(gs); //agregamos el nuevo estado
+	gs->init();
 }
 
 //metodo para quitar un estado de la cima de la pila

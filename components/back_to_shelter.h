@@ -1,18 +1,16 @@
 #pragma once
 #include "interactableElement.h"
-#include "../classes/game_state_machine.h"
 
-class Game;
-
+class GameScene;
 class BackToShelter :
     public InteractableElement
 {
 private:
-	GameStateMachine* states;
-	Entity* player;
+	Entity* player_;
+	GameScene* scene_;
 
 public: 
-	BackToShelter(Game* g);
+	BackToShelter(GameScene* scene);
 	void init() override;
 	void Interact() override;
 	void update() override;

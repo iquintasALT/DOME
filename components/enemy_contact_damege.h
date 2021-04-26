@@ -1,5 +1,3 @@
-#include "../components/interactableElement.h"
-
 #include "../ecs/Component.h"
 #include "../Components/Transform.h"
 #include "../utils/checkML.h"
