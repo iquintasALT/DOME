@@ -22,12 +22,12 @@ void Camera::Move(Vector2D& newPos) {
 	pos = newPos;
 }
 
-void Camera::Lerp(const Vector2D& newPos) {
+void Camera::Lerp(const Vector2D& newPos, float i) {
 	if ((pos - newPos).magnitude() > 2)
-		pos = Vector2D::Lerp(pos, newPos - Vector2D(width / 2, height / 2), 0.7f * consts::DELTA_TIME);
+		pos = Vector2D::Lerp(pos, newPos - Vector2D(width / 2, height / 2), i * consts::DELTA_TIME);
 }
-void Camera::LerpWithBounds(const Vector2D& newPos) {
-	Lerp(newPos);
+void Camera::LerpWithBounds(const Vector2D& newPos, float i) {
+	Lerp(newPos, i);
 
 	Vector2D& p = pos;
 	if (p.getX() < xmin) p.setX(xmin);

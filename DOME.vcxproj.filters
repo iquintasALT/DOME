@@ -320,7 +320,10 @@
     <ClCompile Include="components\open_station.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\TransitionComponent.cpp" />
+    <ClCompile Include="components\TransitionComponent.cpp">
+      <Filter>Header Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\CameraMovement.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -713,7 +716,10 @@
     <ClInclude Include="components\open_station.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\TransitionComponent.h" />
+    <ClInclude Include="components\TransitionComponent.h">
+      <Filter>Source Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\CameraMovement.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
