@@ -18,7 +18,7 @@ private:
 	int n; //numero rebotes
 	int tier;
 	int explosion = 100; // Daño de la explosion
-
+	vector<Entity*> hitEnemies = {};
 	void OnCollision(Entity* collider) override;
 
 public:

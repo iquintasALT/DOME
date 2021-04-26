@@ -34,6 +34,9 @@ const vector<ITEMS_SPRITESHEET_INFO>ITEMS_INFO = {
 struct CraftableItem {
 	ITEMS name;
 	int cantidad;
+
+	int x, y;
+	CraftableItem(ITEMS n, int c, int x = 0, int y = 0) : name(n), cantidad(c), x(x), y(y) {};
 	//AÑADIR MÁS INFO SI ES NECESARIA, 
 };
 using I = CraftableItem;

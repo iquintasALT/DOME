@@ -6,7 +6,7 @@ class MenuButton;
 class PauseScene : public GameScene
 {
 public:
-	PauseScene(Game* g) : GameScene(g) {};
+	PauseScene(Game* g) : GameScene(g, "Pause") {};
 	~PauseScene() {};
 	void init() override;
 

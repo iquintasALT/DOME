@@ -6,6 +6,8 @@
 #include <algorithm>
 
 Manager::Manager() {
+	for (auto elem : hdlrs_)
+		elem = nullptr;
 }
 
 Manager::~Manager() {

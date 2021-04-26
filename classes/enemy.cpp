@@ -30,12 +30,6 @@ void Enemy::receiveDamage()
 	}
 }
 
-void Enemy::receiveLaserDamage()
-{
-}
-
-
-
 DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 {
 	this->getComponent<Transform>()->setSize(32, 64);

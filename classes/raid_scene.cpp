@@ -4,6 +4,7 @@
 #include "../classes/pause_scene.h"
 #include "../classes/camera.h"
 #include "../sdlutils/InputHandler.h"
+#include "../components/transitionComponent.h";
 #include "../components/TextWithBackGround.h"
 
 void RaidScene::init() {
@@ -12,6 +13,8 @@ void RaidScene::init() {
 	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 
 	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player);
+
+	createTransition();
 }
 
 void RaidScene::update() {

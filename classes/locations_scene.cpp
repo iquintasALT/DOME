@@ -46,7 +46,7 @@ void LocationsScene::loadLocationButtons() {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-	g->getStateMachine()->changeState(new RaidScene(paths[index], g));
+	g->getStateMachine()->changeState(new RaidScene(paths[index], names[index], g));
 	g->getStateMachine()->currentState()->init();
 }
 
@@ -64,7 +64,7 @@ void LocationsScene::update() {
 			if (!mouseClick) {
 				if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
 					// THIS IS SO BAD IT'S BURNING MY SOUL
-					if (i == 0) changeToRaid(g_, i);
+					if (i == 0 || i == 1) changeToRaid(g_, i);
 					else anActualGoodName(g_);
 					mouseClick = true;
 					return;

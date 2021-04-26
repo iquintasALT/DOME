@@ -26,7 +26,7 @@ void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
 }
 
 void KeyboardPlayerCtrl::OnTrigger(Entity* bc) {
-	if (bc->hasGroup<Stairs_grp>()) {
+	if (bc->hasGroup<Ladders_grp>()) {
 		auto stairTr = bc->getComponent<Transform>();
 		stairPosition = stairTr->getPos();
 		stairSize = stairTr->getSize();
@@ -94,30 +94,34 @@ void KeyboardPlayerCtrl::update() {
 		}
 	}
 	else {
-		if (keystates[SDL_SCANCODE_W]) {
-			rb_->setVel(Vector2D(0, -stairsSpeed));
-			up = true;
-			tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
-			if (tr_->getPos().getY() + tr_->getH() < stairPosition.getY()) {
-				inStairTrigger = false;
-				inStair = false;
-			}
-		}
-		else if (keystates[SDL_SCANCODE_S]) {
-			rb_->setVel(Vector2D(0, stairsSpeed));
-			down = true;
-			tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
-			if (tr_->getPos().getY() > stairPosition.getY()+stairSize.getY()) {
-				inStairTrigger = false;
-				inStair = false;
-			}
-		}
+		if (keystates[SDL_SCANCODE_SPACE]) inStair = false;
 		else {
-			if (rb_->onFloor()) inStair = false;
-			rb_->setGravity(0);
-			rb_->setVel(Vector2D(0, 0));
-			up = down = false;
+			if (keystates[SDL_SCANCODE_W]) {
+				rb_->setVel(Vector2D(0, -stairsSpeed));
+				up = true;
+				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
+				if (tr_->getPos().getY() + tr_->getH() < stairPosition.getY()) {
+					inStairTrigger = false;
+					inStair = false;
+				}
+			}
+			else if (keystates[SDL_SCANCODE_S]) {
+				rb_->setVel(Vector2D(0, stairsSpeed));
+				down = true;
+				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
+				if (tr_->getPos().getY() > stairPosition.getY() + stairSize.getY()) {
+					inStairTrigger = false;
+					inStair = false;
+				}
+			}
+			else {
+				if (rb_->onFloor()) inStair = false;
+				rb_->setGravity(0);
+				rb_->setVel(Vector2D(0, 0));
+				up = down = false;
+			}
 		}
+		
 	}
 
 	//Camera::mainCamera->FollowPlayer(tr_->getPos());
