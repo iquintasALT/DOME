@@ -48,8 +48,15 @@ void Manager::refresh() {
 
 void Manager::update() {
 	for (auto i = 0u; i < entities_.size(); i++)
+	{
 		if (entities_[i]->active)
 			entities_[i]->update();
+		if (changeScene)
+		{
+			changeScene = false;
+			break;
+		}
+	}
 }
 
 void Manager::render() {
