@@ -46,16 +46,19 @@ struct MapInfo {
 class GameScene
 {
 protected:
+	string name;
 	Manager* mngr_;
 	MapInfo mapInfo;
 	Game* g_;
 
+
+	void createTransition();
 	//funcion de cargado de mapa usable por todas las escenas de juego
 	void loadMap(string& const path);
 
 public:
 	//constructora que crea el manager de gObjects de la clase
-	inline GameScene(Game* game) { mngr_ = new Manager(); g_ = game; }
+	inline GameScene(Game* game, string sceneName) { mngr_ = new Manager(); g_ = game; name = sceneName; }
 	inline virtual ~GameScene() { delete mngr_; }
 	//creacion de objetos, que sera diferente en cada escena
 	inline virtual void init() = 0;

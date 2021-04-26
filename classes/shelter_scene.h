@@ -19,7 +19,7 @@ private:
 	Manager* uselessMngr;
 
 public:
-	ShelterScene(Game* game) :GameScene(game) {};
+	ShelterScene(Game* game) :GameScene(game, "Shelter") {};
 	virtual ~ShelterScene() { delete craftSys, delete uselessMngr; };
 	void init() override;
 	virtual void update();

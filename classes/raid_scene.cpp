@@ -5,6 +5,7 @@
 #include "../classes/camera.h"
 #include "../sdlutils/InputHandler.h"
 #include "../components/transitionComponent.h";
+#include "../components/TextWithBackGround.h"
 
 void RaidScene::init() {
 	loadMap(path_);
@@ -13,12 +14,7 @@ void RaidScene::init() {
 
 	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player);
 
-
-	Entity* e = mngr_->addEntity();
-	e->addComponent<Transform>(Vector2D(), 300, 300);
-	e->addComponent<Image>(&sdlutils().images().at("dust"));
-	e->addComponent<TransitionComponent>(2);
-	mngr_->addRenderLayer<Interface>(e);
+	createTransition();
 }
 
 void RaidScene::update() {
