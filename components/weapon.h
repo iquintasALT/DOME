@@ -12,6 +12,7 @@ class Weapon : public Component
 {
 protected:
 	Entity* player;
+	RigidBody* playerRb;
 	Transform* playerTr;
 	Transform* entityTr;
 	Image* entityImg;
@@ -28,8 +29,10 @@ protected:
 	float recharge;
 	bool recharging;
 
+	float dispersion;
+
 public:
-	Weapon(float fR, int dam);
+	Weapon(float fR, int dam, float dispersion = 0);
 
 	~Weapon();
 

@@ -13,17 +13,17 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 	//3 TIERS PARA 3 ARMAS (REFACTORIZAR DE TAL FORMA QUE CADA ARMA SEPA CAMBIAR DE TIER)
 	if (typeOfWeapon == 1) {
 		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, 0);
-		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
+		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 20);
 		type = 1;
 	}
 	else if(typeOfWeapon == 2) {
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, 1);
-		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER2_FIRERATE, consts::WEAPON_TIER2_DAMAGE);
+		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER2_FIRERATE, consts::WEAPON_TIER2_DAMAGE, 10);
 		type = 1;
 	}
 	else if (typeOfWeapon == 3) {
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, 2);
-		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER3_FIRERATE, consts::WEAPON_TIER3_DAMAGE);
+		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER3_FIRERATE, consts::WEAPON_TIER3_DAMAGE, 5);
 		type = 1;
 	}
 	else if (typeOfWeapon == 4) {
