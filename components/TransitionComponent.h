@@ -8,7 +8,7 @@
 class TransitionComponent: public Component
 {
 public:
-	TransitionComponent(float t, bool fadeOut = true, std::function<void()> f = []() {std::cout << "Transicion destruida"; });
+	TransitionComponent(float t, bool fadeOut = true, std::function<void()> f = []() {});
 	
 	void init() override;
 	void update() override;
