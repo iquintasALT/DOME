@@ -484,6 +484,16 @@
    <property name="wall" type="bool" value="false"/>
   </properties>
  </tile>
+ <tile id="139">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="140">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
  <tile id="144">
   <properties>
    <property name="wall" type="bool" value="false"/>
