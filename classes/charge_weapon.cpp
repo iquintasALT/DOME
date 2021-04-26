@@ -11,6 +11,7 @@
 #include "../components/charge.h"
 #include "../utils/ray_cast.h"
 #include "../game/constant_variables.h"
+#include "../components/rigid_body.h"
 
 ChargeWeapon::ChargeWeapon(float fR, int dam) : Weapon(fR, dam) {};
 
@@ -50,6 +51,7 @@ void ChargeWeapon::update() {
 
 			Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 64, 64, 0);
 			bulletTr->setH(1);
+			
 
 			float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
 			float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
@@ -86,6 +88,7 @@ void ChargeWeapon::update() {
 			bullet->addComponent<Image>(&sdlutils().images().at("charge"));
 			bullet->getComponent<Image>()->setRotationOrigin(0, bulletTr->getH() / 2);
 
+			bullet->addComponent<RigidBody>(Vector2D(0, 0), false);
 			bullet->addComponent<Charge>(radianAngle);
 
 			//COMPROBAR COLISIONES CON ENEMIGOS

@@ -6,6 +6,8 @@ class Enemy : public GameCharacter
 {
 public:
 	Enemy(Manager* mngr_, Point2D pos, bool hasGravity);
+	void receiveDamage();
+	int lives = 3;
 };
 
 class DefaultEnemy : public Enemy

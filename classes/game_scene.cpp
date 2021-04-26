@@ -6,7 +6,7 @@ void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
 	mapInfo.tile_map.load(path);
 
-	// obtenemos el tamaño del mapa (en tiles)
+	// obtenemos el tamaï¿½o del mapa (en tiles)
 	auto map_dimensions = mapInfo.tile_map.getTileCount();
 	mapInfo.rows = map_dimensions.y;
 	mapInfo.cols = map_dimensions.x;
@@ -19,7 +19,7 @@ void GameScene::loadMap(string& const path) {
 	Camera::mainCamera->setBounds(0, 0, mapInfo.cols * mapInfo.tile_width, mapInfo.rows * mapInfo.tile_height);
 
 	// cargamos y almacenamos los tilesets utilizados por el tilemap
-	// (el mapa utiliza el índice [gid] del primer tile cargado del tileset como clave)
+	// (el mapa utiliza el ï¿½ndice [gid] del primer tile cargado del tileset como clave)
 	// (para poder cargar los tilesets del archivo .tmx, les ponemos de nombre 
 	// el nombre del archivo sin extension en el .json) 
 	auto& map_tilesets = mapInfo.tile_map.getTilesets();
@@ -66,11 +66,11 @@ void GameScene::loadMap(string& const path) {
 							break;
 					}
 
-					// si no hay tileset válido, continuamos a la siguiente iteracion
+					// si no hay tileset vï¿½lido, continuamos a la siguiente iteracion
 					if (tset_gid == -1)
 						continue;
 
-					// normalizamos el índice
+					// normalizamos el ï¿½ndice
 					cur_gid -= tset_gid;
 
 					// calculamos dimensiones del tileset
@@ -92,7 +92,7 @@ void GameScene::loadMap(string& const path) {
 					//// Acceso a las propiedades de una tile dentro de un tileset (.tsx)
 					//vector<tmx::Property> tile_props = mapInfo.tile_map.getTilesets()[tsx_file - 1].getTiles()[cur_gid].properties;
 					//if (tile_props.size() > 0) {
-					//	// Lo separo aqui por si en algun futuro creamos más propiedades, realmente habria que hacer una busqueda
+					//	// Lo separo aqui por si en algun futuro creamos mï¿½s propiedades, realmente habria que hacer una busqueda
 					//	// de la propiedad y si esta en el vector usarla acorde
 					//	if (tile_props[0].getName() == "wall")
 					//		is_wall = tile_props[0].getBoolValue();
@@ -121,9 +121,9 @@ void GameScene::loadMap(string& const path) {
 					collider->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					collider->addComponent<BoxCollider>(false, 0);
 				}
-				else if (obj.getName() == "stairs") {
+				else if (obj.getName() == "ladder") {
 					auto stair = mngr_->addEntity();
-					stair->setGroup<Stairs_grp>(true);
+					stair->setGroup<Ladders_grp>(true);
 					stair->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					stair->addComponent<BoxCollider>(true, 0);
 				}
