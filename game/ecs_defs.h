@@ -49,7 +49,7 @@ class HypothermiaComponent;
 class ClassicBullet;
 class TextWithBackground;
 class Open_station;
-
+class TransitionComponent;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -92,6 +92,7 @@ class Open_station;
 	HypothermiaComponent,\
 	ClassicBullet, \
 	TextWithBackground,\
+	TransitionComponent, \
 	Open_station
 
 // groups
