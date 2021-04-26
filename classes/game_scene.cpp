@@ -1,5 +1,6 @@
 #include "game_scene.h"
 
+#include "../game/Game.h"
 #include "../components/back_to_shelter.h"
 #include "../components/TextWithBackGround.h"
 #include "../components/Transform.h"
@@ -132,7 +133,12 @@ void GameScene::loadMap(string& const path) {
 					stair->addComponent<BoxCollider>(true, 0);
 				}
 				else if (obj.getName() == "playerSpawn") {
-					new Player(mngr_, Point2D(aabb.left, aabb.top));
+					if (g_->playerCreated)
+						mngr_->getHandler<Player_hdlr>()->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
+					else {
+						new Player(mngr_, Point2D(aabb.left, aabb.top));
+						g_->playerCreated = true;
+					}
 					auto camPos = Vector2D(aabb.left - sdlutils().width() / 2, aabb.top - sdlutils().height() / 2);
 					Camera::mainCamera->Move(camPos);
 				}
