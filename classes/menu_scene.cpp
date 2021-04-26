@@ -4,7 +4,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/Game.h"
 
-MenuScene::MenuScene(Game* game) :GameScene(game) {
+MenuScene::MenuScene(Game* game) :GameScene(game, "Menu") {
 	mngr_->addEntity(new MenuButton(Vector2D(1 * sdlutils().width() / 5, 2 * sdlutils().height() / 5), Vector2D(100, 100),
 		&sdlutils().images().at("shelterButton"), playShelter, g_, mngr_));
 	mngr_->addEntity(new MenuButton(Vector2D(3 * sdlutils().width() / 5, 2 * sdlutils().height() / 5), Vector2D(100, 100),
@@ -19,6 +19,6 @@ void MenuScene::playShelter(Game* g) {
 }
 
 void MenuScene::playRaid(Game* g) {
-	g->getStateMachine()->pushState(new RaidScene("./resources/tilemap/template.tmx", g));
+	g->getStateMachine()->pushState(new RaidScene("./resources/tilemap/template.tmx", "template", g));
 	g->getStateMachine()->currentState()->init();
 }

@@ -26,14 +26,17 @@ private:
 
 	// Indicates whether the text is currently being unfurled
 	bool appearingText_;
+	float textSpeed;
 	// In the case of an unfurling message, this is the complete text. Otherwise, this is not used
 	std::string finalMessage_;
 	// The index of the next letter to be rendered
 	int currentIndex;
 
+	bool centerAlign;
+
 	void changeTextTextures();
 public:
-	TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture* texture, bool appearingText = false);
+	TextWithBackground(std::string str, Font& font, SDL_Color  color, Texture* texture, bool appearingText = false, float appeatingTextSpeed = 1, bool alignInCenter = false);
 	~TextWithBackground();
 	void changeText(std::string txt);
 	void init() override;

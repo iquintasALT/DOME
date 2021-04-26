@@ -6,6 +6,7 @@
 #include <algorithm>
 
 Manager::Manager() {
+
 }
 
 Manager::~Manager() {

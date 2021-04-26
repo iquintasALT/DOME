@@ -8,6 +8,8 @@ class Game;
 
 const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/template.tmx", "./resources/tilemap/zona_supermarket.tmx",
 												"C", "D", "E" };
+const array<string, consts::NUM_LOCATIONS> names = {"template", "supermarket", "C", "D", "E"};
+
 enum BUTTONID { Farmacia, Hospital, Nose2, Nose3 };
 
 class LocationsScene : public GameScene
@@ -20,7 +22,7 @@ private:
 	void loadLocationButtons();
 
 public:
-	LocationsScene(Game* g) : GameScene(g) {};
+	LocationsScene(Game* g) : GameScene(g, "Locations") {};
 	void init() override;
 	void update() override;
 
