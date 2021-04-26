@@ -24,15 +24,14 @@ void Ricochet::init() {
 void Ricochet::createExplosion()
 {
 	auto transf = entity_->getComponent<Transform>();
+
+
 	auto explosion = entity_->getMngr()->addEntity();
 
 	entity_->getMngr()->addRenderLayer<Player>(explosion);
 
 	Vector2D explosionOrigin = tr_->getPos() + Vector2D(tr_->getW() / 2, tr_->getH() / 2);
 
-	Point2D arribaizq = playerTr->getPos();
-	Point2D arribader = Point2D(playerTr->getPos().getX() + playerTr->getW(), arribaizq.getY());
-	Point2D rayCastOrigin = Point2D(transf->getPos().getX() + (transf->getW() / 2), transf->getPos().getY() + (transf->getH() / 2));
 
 	explosion->addComponent<Transform>(explosionOrigin, 10, 10, 0);
 
@@ -61,6 +60,11 @@ void Ricochet::createExplosion()
 	particles->burst = true;
 	particles->destroyAfterBurst = false;
 	particles->burstRepeat = 1;*/
+
+	Point2D arribaizq = playerTr->getPos();
+	Point2D arribader = Point2D(playerTr->getPos().getX() + playerTr->getW(), arribaizq.getY());
+	Point2D rayCastOrigin = Point2D(transf->getPos().getX() + (transf->getW() / 2), transf->getPos().getY() + (transf->getH() / 2));
+
 
 	float x2 = playerTr->getPos().getX() + (playerTr->getW() / 2);
 	float y2 = playerTr->getPos().getY() + (playerTr->getH() / 2);

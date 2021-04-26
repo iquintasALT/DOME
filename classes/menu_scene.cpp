@@ -11,17 +11,17 @@ MenuScene::MenuScene(Game* game) :GameScene(game, "Menu") {
 	auto* aux = new MenuButton(Vector2D(sdlutils().height()/2 + 100, sdlutils().width() / 2  -200) , Vector2D(100, 100),
 		&sdlutils().images().at("shelterButton"), playGame, g_, mngr_);
 	mngr_->addEntity(aux);
-	mngr_->addRenderLayer<Enemy>(aux);
+	//mngr_->addRenderLayer<Enemy>(aux);
 
 	aux = new MenuButton(Vector2D(sdlutils().height() / 2 + +300, sdlutils().width() / 2 - 200), Vector2D(100, 100),
 		&sdlutils().images().at("raidButton"), setting, g_, mngr_);
 	mngr_->addEntity(aux);
-	mngr_->addRenderLayer<Enemy>(aux);
+	//mngr_->addRenderLayer<Enemy>(aux);
 
 	aux = new MenuButton(Vector2D(sdlutils().height() / 2  - 100, sdlutils().width() / 2 - 200), Vector2D(100, 100),
 		&sdlutils().images().at("raidButton"), exit, g_, mngr_);
 	mngr_->addEntity();
-	mngr_->addRenderLayer<Enemy>(aux);
+	//mngr_->addRenderLayer<Enemy>(aux);
 
 	back = &sdlutils().images().at("dclock");
 }

@@ -56,8 +56,10 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 		weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER3_FIRERATE, consts::RICOCHET_TIER3_DAMAGE, playerTr, 7, 3);
 		type = 3;
 	}
-
-	type = 1;
+	else
+	{
+		type = 1;
+	}
 }
 
 Weapon* WeaponBehaviour::getWeaponMovement() {
