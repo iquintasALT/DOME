@@ -39,5 +39,6 @@ public:
 	void init() override;
 	void render() override;
 	void update() override;
+	void setAlpha(int value);
 };
 
