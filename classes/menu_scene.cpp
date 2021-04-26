@@ -3,22 +3,52 @@
 #include "raid_scene.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/Game.h"
+#include "locations_scene.h"
+#include "../ecs/Manager.h"
 
 MenuScene::MenuScene(Game* game) :GameScene(game, "Menu") {
-	mngr_->addEntity(new MenuButton(Vector2D(1 * sdlutils().width() / 5, 2 * sdlutils().height() / 5), Vector2D(100, 100),
-		&sdlutils().images().at("shelterButton"), playShelter, g_, mngr_));
-	mngr_->addEntity(new MenuButton(Vector2D(3 * sdlutils().width() / 5, 2 * sdlutils().height() / 5), Vector2D(100, 100),
-		&sdlutils().images().at("raidButton"), playRaid, g_, mngr_));
+
+	auto* aux = new MenuButton(Vector2D(sdlutils().height()/2 + 100, sdlutils().width() / 2  -200) , Vector2D(100, 100),
+		&sdlutils().images().at("shelterButton"), playGame, g_, mngr_);
+	mngr_->addEntity(aux);
+	mngr_->addRenderLayer<Enemy>(aux);
+
+	aux = new MenuButton(Vector2D(sdlutils().height() / 2 + +300, sdlutils().width() / 2 - 200), Vector2D(100, 100),
+		&sdlutils().images().at("raidButton"), setting, g_, mngr_);
+	mngr_->addEntity(aux);
+	mngr_->addRenderLayer<Enemy>(aux);
+
+	aux = new MenuButton(Vector2D(sdlutils().height() / 2  - 100, sdlutils().width() / 2 - 200), Vector2D(100, 100),
+		&sdlutils().images().at("raidButton"), exit, g_, mngr_);
+	mngr_->addEntity();
+	mngr_->addRenderLayer<Enemy>(aux);
+
+	back = &sdlutils().images().at("main_menu");
 }
 
 void MenuScene::init() {}
 
-void MenuScene::playShelter(Game* g) {
-	g->getStateMachine()->pushState(new ShelterScene(g));
+void MenuScene::render()
+{
+	back->render(0,0);
+	GameScene::render();
+}
+
+void MenuScene::playGame(Game* g) {
+	g->getStateMachine()->pushState(new LocationsScene(g));
 	g->getStateMachine()->currentState()->init();
 }
 
-void MenuScene::playRaid(Game* g) {
+void MenuScene::setting(Game* g) {/*
 	g->getStateMachine()->pushState(new RaidScene("./resources/tilemap/template.tmx", "template", g));
-	g->getStateMachine()->currentState()->init();
+	g->getStateMachine()->currentState()->init();*/
+}
+
+void MenuScene::exit(Game* g) {
+	g->quitGame();
+}
+
+MenuScene::~MenuScene()
+{
+	delete back;
 }
