@@ -1,8 +1,11 @@
 #include "enemy_attack_component.h"
 #include "Transform.h"
+#include "classic_bullet.h"
+#include "Image.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../utils/ray_cast.h"
+#include "../../sdlutils/SDLUtils.h"
 
 Vector2D EnemyAttackComponent::getTarget()
 {
@@ -65,6 +68,15 @@ bool RangedAttack::attack()
 	{
 		/// TO DO
 		/// fire a bullet
+		Entity* bullet = entity_->getMngr()->addEntity();
+		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(tr_->getPos()), 4, 6, 0);
+		RigidBody* rb = bullet->addComponent<RigidBody>((playerTr_->getPos() - tr_->getPos()) * 10.0, false);
+
+
+		entity_->getMngr()->addRenderLayer<Bullets>(bullet);
+		entity_->setGroup<Enemy_grp>(true);
+		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
+		bullet->addComponent<ClassicBullet>();
 
 		return true;
 	}

@@ -22,6 +22,14 @@ Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacte
 	addComponent<EnemyContactDamage>();
 }
 
+void Enemy::receiveDamage()
+{
+	lives--;
+	if (lives <= 0) {
+		setDead(true);
+	}
+}
+
 DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 {
 	this->getComponent<Transform>()->setSize(32, 64);
@@ -47,8 +55,10 @@ FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos, false)
 }
 
 RangedEnemy::RangedEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos) {
+	this->getComponent<Transform>()->setSize(32, 64);
 	mngr_->addRenderLayer<Enemy>(this);
 	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
+	addComponent2<EnemyAttackComponent, RangedAttack>();
 	addComponent<KeepDistance>(consts::RANGED_ENEMY_SPEED, consts::RANGED_ENEMY_MARGINDISTANCE, consts::RANGED_ENEMY_SHOOTDISTANCE);
 }

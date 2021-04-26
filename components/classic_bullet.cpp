@@ -10,24 +10,20 @@
 #include "../components/enemy_component.h"
 
 
-ClassicBullet::ClassicBullet(Transform* player, int typeOfWeapon) : tr_(nullptr), playerTr(player), tier(typeOfWeapon)
-{
-}
+ClassicBullet::ClassicBullet() : tr_(nullptr), rb_(nullptr) { }
 
 ClassicBullet::~ClassicBullet() {}
 
 void ClassicBullet::init() {
 	tr_ = entity_->getComponent<Transform>();
-	rb = entity_->getComponent<RigidBody>();
-	rb->addCollisionLayer(1);
-	assert(tr_ != nullptr && rb != nullptr);
+	rb_ = entity_->getComponent<RigidBody>();
+	rb_->addCollisionLayer(1);
+	assert(tr_ != nullptr && rb_ != nullptr);
 }
 
 void ClassicBullet::OnCollision(Entity* other) {
-	EnemyComponent* a = other->getComponent<EnemyComponent>();
 	if (other->hasGroup<Enemy_grp>() ) {
-		other->setDead(true);
+		static_cast<Enemy*>(other)->receiveDamage();
 	}
-	std::cout << "hola";
 	entity_->setDead(true);
 }
