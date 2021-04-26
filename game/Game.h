@@ -18,7 +18,7 @@ const enum SCENES { SHELTER, HOSPTITAL, RESTAURANT };
 class Game {
 private:
 	SCENES currentScene;
-	map<SCENES, vector<I>> SCENES_LOOT;
+	map<SCENES, vector<vector<I>>> SCENES_LOOT;
 
 	GameStateMachine* states;
 
@@ -32,5 +32,6 @@ public:
 	void quitGame() { exit = true; }
 	
 	void initLoot();
-};
 
+	bool playerCreated = false;
+};

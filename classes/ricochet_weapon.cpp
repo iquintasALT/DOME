@@ -15,7 +15,8 @@ void RicochetWeapon::update() {
 	counter++;
 
 	Vector2D playerPos = playerTr->getPos();
-	entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
+	if(flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 1.5, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
+	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 3.25, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
 	adjustToCrouching();
 
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
