@@ -1,6 +1,10 @@
 #include "game_scene.h"
 
 #include "../components/back_to_shelter.h"
+#include "../components/TextWithBackGround.h"
+#include "../components/Transform.h"
+#include "../components/Image.h"
+#include "../components/TransitionComponent.h"
 
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
@@ -159,4 +163,23 @@ void GameScene::loadMap(string& const path) {
 			}
 		}
 	}
+}
+
+
+void GameScene::createTransition() {
+	int winWidth = consts::WINDOW_WIDTH;
+	int winheight = consts::WINDOW_HEIGHT;
+	float timeToFade = 2;
+	Entity* e = mngr_->addEntity();
+	e->addComponent<Transform>(Vector2D(), winWidth, winheight);
+	e->addComponent<Image>(&sdlutils().images().at("black"), true);
+	e->addComponent<TransitionComponent>(timeToFade);
+	mngr_->addRenderLayer<Interface>(e);
+
+	e = mngr_->addEntity();
+	e->addComponent<Transform>(Vector2D(winWidth / 2, winheight / 2), winWidth, winheight);
+	e->addComponent<TextWithBackground>(name,
+		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
+	e->addComponent<TransitionComponent>(timeToFade);
+	mngr_->addRenderLayer<Interface>(e);
 }
