@@ -65,8 +65,12 @@
       "file": "resources/sprites/floor_tileset.png"
     },
     {
-      "id": "weapons",
-      "file": "resources/sprites/weapons_sheet.png"
+        "id": "weapons",
+        "file": "resources/sprites/weapons_sheet.png"
+    },
+    {
+        "id": "weapons_arms",
+        "file": "resources/sprites/weapons_arms_sheet.png"
     },
     {
       "id": "projectile",
