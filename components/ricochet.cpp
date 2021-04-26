@@ -5,6 +5,7 @@
 #include "../components/particleSystem.h"
 #include "../utils/ray_cast.h"
 #include "../components/box_collider.h"
+#include "../classes/enemy.h"
 
 Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon)
 {}
@@ -14,6 +15,7 @@ Ricochet::~Ricochet() {}
 void Ricochet::init() {
 	tr_ = entity_->getComponent<Transform>();
 	rb = entity_->getComponent<RigidBody>();
+	rb->addCollisionLayer(1);
 	assert(tr_ != nullptr && rb != nullptr);
 
 	rb->bounciness = 1;
@@ -35,7 +37,7 @@ void Ricochet::createExplosion()
 
 	particles->distanceToOrigin = 0;
 	particles->dir = Vector2D(-1, 0);
-	particles->angleDispersion = 180;
+	particles->angleDispersion = 360;
 	particles->burst = true;
 	particles->rateOverTime = 0;
 	particles->burstCount = 100;
@@ -82,15 +84,25 @@ void Ricochet::createExplosion()
 
 			if (range.hasCollision(1000))
 			{
-				cout << "Explosion en player";
+				cout << "Explosion en enemigo";
 				//IAGO AQUI LE METES EL DAO� AL Enemigo Y EL 1000 HAY Q AJUSTARLO A LA EXPLOSION
+				bool found = false;
+				for (Entity* hitEnemy : hitEnemies) {
+					if (hitEnemy == e) {
+						found = true;
+					}
+				}
+				if (!found) {
+					static_cast<Enemy*>(e)->receiveDamage();
+					hitEnemies.push_back(e);
+				}
 			}
 		}
 	}
 }
 
-void Ricochet::OnCollision(Entity* collider) {
-	if (n-- == 0) {
+void Ricochet::OnCollision(Entity* other) {
+	if (n-- == 0 || other->hasGroup<Enemy_grp>()) {
 		createExplosion();
 		entity_->setDead(true);
 	}

@@ -3,7 +3,8 @@
 #include "../game/constant_variables.h"
 #include "../utils/checkML.h"
 
-TextWithBackground::TextWithBackground(std::string msg, Font& font, SDL_Color col, Texture* tex, bool appearingText) {
+TextWithBackground::TextWithBackground(std::string msg, Font& font, SDL_Color col,
+	Texture* tex, bool appearingText, float appearingTextSpeed, bool alignInCenter) {
 	tr_ = nullptr;
 	texture_ = tex;
 	message_ = msg;
@@ -11,6 +12,8 @@ TextWithBackground::TextWithBackground(std::string msg, Font& font, SDL_Color co
 	col_ = col;
 	appearingText_ = appearingText;
 	currentIndex = 0;
+	centerAlign = alignInCenter;
+	textSpeed = 1 / appearingTextSpeed;
 }
 
 void TextWithBackground::init() {
@@ -32,11 +35,16 @@ void TextWithBackground::render() {
 
 	if (texture_ != nullptr) {
 		SDL_Rect pos{ tr_->getPos().getX(), tr_->getPos().getY(), tr_->getW(), y };
+		if (centerAlign)
+			pos.x -= texture_->width() / 2;
 		texture_->render(pos);
 	}
 
 	SDL_Rect textPos{ tr_->getPos().getX(), tr_->getPos().getY(), tr_->getW(), 10 };
 	for (int i = 0; i < text_.size(); i++) {
+		if (centerAlign) {
+			textPos.x = tr_->getPos().getX() - text_[i]->width() / 2;
+		}
 		textPos.h = text_[i]->height();
 		textPos.w = text_[i]->width();
 		text_[i]->render(textPos);
@@ -98,12 +106,20 @@ void TextWithBackground::update() {
 	if (!appearingText_) return;
 
 	t += consts::DELTA_TIME;
-	if (t > .1f) {
+	if (t > textSpeed) {
 		t = 0;
 		message_ += finalMessage_[currentIndex++];
 		changeTextTextures();
 
 		if (currentIndex >= finalMessage_.size())
 			appearingText_ = false;
+	}
+}
+
+void TextWithBackground::setAlpha(int value) {
+	if(texture_ != nullptr)
+	texture_->setAlpha(value);
+	for (auto t : text_) {
+		t->setAlpha(value);
 	}
 }

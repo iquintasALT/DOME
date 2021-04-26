@@ -12,10 +12,11 @@
 #include "../components/classic_bullet.h"
 #include "../components/rigid_body.h"
 #include "../game/constant_variables.h"
-
+#include "../sdlutils/SDLUtils.h"
+#include "../components/rigid_body.h"
 #include <iostream>
 
-Weapon::Weapon(float fR, int dam) : fireRate(fR), flipped(false), counter(0), entityImg(nullptr), damage(dam), player(nullptr),
+Weapon::Weapon(float fR, int dam, float dispersion) : dispersion(dispersion), fireRate(fR), flipped(false), counter(0), entityImg(nullptr), damage(dam), player(nullptr),
 playerTr(nullptr), entityTr(nullptr)
 {
 	charger = 30; //Pasar por referencia cuando este
@@ -31,7 +32,8 @@ void Weapon::update() {
 	counter++;
 
 	Vector2D playerPos = playerTr->getPos();
-	entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
+	if(flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 1.5, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
+	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 3.25, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
 	adjustToCrouching();
 
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
@@ -40,6 +42,7 @@ void Weapon::update() {
 
 	Vector2D yCenteredPos(entityTr->getPos().getX(), entityTr->getPos().getY() + entityTr->getH() * 0.37f); //Punto {0, Altura del ca��n}  
 	Vector2D  dir = (mousePos - yCenteredPos).normalize();
+
 
 	float radianAngle = atan2(dir.getY(), dir.getX());
 	float degreeAngle = (radianAngle * 180.0) / M_PI;
@@ -57,6 +60,20 @@ void Weapon::update() {
 
 	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate && actcharger > 0 && !recharging) {
 		counter = 0;
+
+		float maxDispersion = dispersion; //Add here the dispersions
+		if (!playerRb->onFloor()) {
+			maxDispersion += 60;
+		}
+		float x = dir.getX();
+		float y = dir.getY();
+		float rotation = 0;
+		if(maxDispersion != 0)
+			rotation = sdlutils().rand().nextInt(-maxDispersion, maxDispersion) * M_PI / 180.0;
+
+		dir.setX(x * cos(rotation) - y * sin(rotation));
+		dir.setY(x * sin(rotation) + y * cos(rotation));
+
 		Entity* bullet = entity_->getMngr()->addEntity();
 
 		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
@@ -143,4 +160,7 @@ void Weapon::init()
 	entityImg = entity_->getComponent<Image>();
 	assert(entityImg != nullptr);
 	entityImg->setRotationOrigin(0, entityTr->getH() / 2);
+
+	playerRb = player->getComponent<RigidBody>();
+	assert(playerRb != nullptr);
 }

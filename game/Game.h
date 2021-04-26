@@ -18,18 +18,20 @@ const enum SCENES { SHELTER, HOSPTITAL, RESTAURANT };
 class Game {
 private:
 	SCENES currentScene;
-	map<SCENES, vector<I>> SCENES_LOOT;
+	map<SCENES, vector<vector<I>>> SCENES_LOOT;
 
 	GameStateMachine* states;
 
+	bool exit;
 public:
 	Game(int totaltime); 
 	virtual ~Game();
 	void init();
 	void start();
 	inline GameStateMachine* getStateMachine() { return states; }
-
+	void quitGame() { exit = true; }
 	
 	void initLoot();
-};
 
+	bool playerCreated = false;
+};

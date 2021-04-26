@@ -9,53 +9,55 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 	mngr->addEntity(this);
 	mngr->addRenderLayer<Bullets>(this);
 
-	addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), 32, 32, 0);
+	addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), 38, 24, 0);
 	//3 TIERS PARA 3 ARMAS (REFACTORIZAR DE TAL FORMA QUE CADA ARMA SEPA CAMBIAR DE TIER)
 	if (typeOfWeapon == 1) {
-		addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, 0);
-		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
+		addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
+		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 20);
 		type = 1;
 	}
 	else if(typeOfWeapon == 2) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, 1);
-		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER2_FIRERATE, consts::WEAPON_TIER2_DAMAGE);
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 1);
+		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER2_FIRERATE, consts::WEAPON_TIER2_DAMAGE, 10);
 		type = 1;
 	}
 	else if (typeOfWeapon == 3) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, 2);
-		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER3_FIRERATE, consts::WEAPON_TIER3_DAMAGE);
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 2);
+		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER3_FIRERATE, consts::WEAPON_TIER3_DAMAGE, 5);
 		type = 1;
 	}
 	else if (typeOfWeapon == 4) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 1, 0);
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 0);
 		weaponMovement = addComponent<ChargeWeapon>(consts::CHARGE_TIER1_FIRERATE, consts::CHARGE_TIER1_DAMAGE);
 		type = 2;
 	}
 	else if (typeOfWeapon == 5) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 1, 1);
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 1);
 		weaponMovement = addComponent<ChargeWeapon>(consts::CHARGE_TIER2_FIRERATE, consts::CHARGE_TIER2_DAMAGE);
 		type = 2;
 	}
 	else if (typeOfWeapon == 6) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 1, 2);
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 2);
 		weaponMovement = addComponent<ChargeWeapon>(consts::CHARGE_TIER3_FIRERATE, consts::CHARGE_TIER3_DAMAGE);
 		type = 2;
 	}
 	else if (typeOfWeapon == 7) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 0);
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 0);
 		weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, playerTr, 3, 1);
 		type = 3;
 	}
 	else if (typeOfWeapon == 8) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 1);
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 1);
 		weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER2_FIRERATE, consts::RICOCHET_TIER2_DAMAGE, playerTr, 5, 2);
 		type = 3;
 	}
 	else if (typeOfWeapon == 9) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 2);
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 2);
 		weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER3_FIRERATE, consts::RICOCHET_TIER3_DAMAGE, playerTr, 7, 3);
 		type = 3;
 	}
+
+	type = 1;
 }
 
 Weapon* WeaponBehaviour::getWeaponMovement() {
@@ -70,28 +72,28 @@ void WeaponBehaviour::changeWeapon()
 	this->removeComponent<RicochetWeapon>();
 	if (type == 1)
 	{
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 1, type2);
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, type2);
 		weaponMovement = addComponent<ChargeWeapon>(consts::CHARGE_TIER3_FIRERATE, consts::CHARGE_TIER3_DAMAGE);
 	}
 	else if( type == 3) 
 	{
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, type1);
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, type1);
 		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER3_FIRERATE, consts::WEAPON_TIER3_DAMAGE);
 		
 	}
 	else
 	{
 		if (type3 == 1) {
-			Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 0);
+			Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 0);
 			weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, pl, 3, 1);
 		}
 		else if (type3 == 2) {
-			Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 1);
+			Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 1);
 			weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER2_FIRERATE, consts::RICOCHET_TIER2_DAMAGE, pl, 5, 2);
 		}
 		else
 		{
-			Component* img = addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 2, 2);
+			Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 2);
 			weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER3_FIRERATE, consts::RICOCHET_TIER3_DAMAGE, pl, 7, 3);
 		}
 	}

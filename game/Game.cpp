@@ -40,14 +40,14 @@ void Game::init() {
 
 	initLoot();
 
-	states->pushState(new LocationsScene(this));
+	states->pushState(new MenuScene(this));
 	states->currentState()->init();
 }
 
 void Game::start() {
 
 	// a boolean to exit the loop
-	bool exit = false;
+	exit = false;
 	SDL_Event event;
 
 	while (!exit) {
@@ -64,7 +64,7 @@ void Game::start() {
 			exit = true;
 			continue;
 		}
-		
+
 		//std::cout << std::endl << states->currentState()->getSize() << std::endl;
 		states->currentState()->update();
 		states->currentState()->refresh();
@@ -84,7 +84,7 @@ void Game::start() {
 }
 
 void Game::initLoot() {
-	SCENES_LOOT.emplace(HOSPTITAL, vector<I>{ {WATER, 3}, { FOOD,5 }});
+	SCENES_LOOT.emplace(HOSPTITAL, vector<vector<I>>{ {I(WATER, 3), I(FOOD, 5)} });
 }
 
 

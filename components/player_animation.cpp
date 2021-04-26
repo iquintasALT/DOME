@@ -34,6 +34,15 @@ void player_animation::init() {
 bool debug = false;
 
 bool player_animation::changeAnimations() {
+	auto mouse = ih().getMousePos();
+	float mouseX = Camera::mainCamera->PointToWorldSpace(Vector2D(mouse.first, mouse.second)).getX();
+	float playerX = tr_->getPos().getX() + tr_->getW() / 2;
+
+	float xdir = mouseX - playerX;
+	if (xdir < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
+	else  im_->setFlip(SDL_FLIP_NONE);
+
+
 	if (ctrl->isCrouching()) {
 		if (currentAnimation == animations[crouch])
 			return false;
@@ -43,14 +52,7 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
-	float mouseX = ih().getMousePos().first;
-	float playerX = tr_->getPos().getX() + tr_->getW() / 2;
-
 	float x = rb->getVel().getX();
-	float xdir = mouseX - playerX;
-
-	if (xdir < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
-	else  im_->setFlip(SDL_FLIP_NONE);
 
 	if (x == 0) {
 		if (currentAnimation == animations[iddle])
