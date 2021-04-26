@@ -71,7 +71,10 @@ public:
 	void AddInteractableElement(InteractableElement* ie);
 	std::vector<BoxCollider*>::iterator AddCollider(BoxCollider* bc);
 
+	inline void onNewScene() { changeScene = true; };
+
 private:
+	bool changeScene = false;
 	std::vector<Entity*> entities_;
 	std::array<Entity*, ecs::maxHdlr> hdlrs_;
 

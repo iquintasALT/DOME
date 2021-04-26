@@ -10,6 +10,7 @@
 
 using namespace std;
 
+class Manager;
 class GameStateMachine
 {
 private:
