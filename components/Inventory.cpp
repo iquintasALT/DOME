@@ -50,7 +50,7 @@ void Inventory::init() {
 	toolTips = entity_->getMngr()->addEntity();
 	toolTipsTr = toolTips->addComponent<Transform>(Vector2D(100, 100), 500, 10, 0);
 	toolTipsText = toolTips->addComponent<TextWithBackground>("Inventario",
-		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("dust"));
+		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 	entity_->getMngr()->addRenderLayer<Interface>(toolTips);
 	toolTips->setActive(false);
 
@@ -58,7 +58,7 @@ void Inventory::init() {
 	std::vector<inventoryDropdown::slot*> slots;
 	slots.push_back(new inventoryDropdown::slot("Use", []() { std::cout << std::endl << "Elemento usado"; }));
 	slots.push_back(new inventoryDropdown::slot("Rotate", []() {std::cout << std::endl << "Elemento girado" << std::endl; }));
-	dropDown = new inventoryDropdown(&sdlutils().images().at("dust"), slots, 200);
+	dropDown = new inventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
 }
 void Inventory::render() {
 	for (auto a : storedItems) {
