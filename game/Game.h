@@ -29,7 +29,8 @@ public:
 	void start();
 	inline GameStateMachine* getStateMachine() { return states; }
 
-	
 	void initLoot();
+
+	bool playerCreated = false;
 };
 
