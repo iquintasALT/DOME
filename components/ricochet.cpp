@@ -37,7 +37,7 @@ void Ricochet::createExplosion()
 
 	particles->distanceToOrigin = 0;
 	particles->dir = Vector2D(-1, 0);
-	particles->angleDispersion = 180;
+	particles->angleDispersion = 360;
 	particles->burst = true;
 	particles->rateOverTime = 0;
 	particles->burstCount = 100;
@@ -84,7 +84,7 @@ void Ricochet::createExplosion()
 
 			if (range.hasCollision(1000))
 			{
-				cout << "Explosion en player";
+				cout << "Explosion en enemigo";
 				//IAGO AQUI LE METES EL DAO� AL Enemigo Y EL 1000 HAY Q AJUSTARLO A LA EXPLOSION
 				bool found = false;
 				for (Entity* hitEnemy : hitEnemies) {
