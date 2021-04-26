@@ -46,6 +46,7 @@ struct MapInfo {
 class GameScene
 {
 protected:
+	string name;
 	Manager* mngr_;
 	MapInfo mapInfo;
 	Game* g_;
@@ -55,7 +56,7 @@ protected:
 
 public:
 	//constructora que crea el manager de gObjects de la clase
-	inline GameScene(Game* game) { mngr_ = new Manager(); g_ = game; }
+	inline GameScene(Game* game, string sceneName) { mngr_ = new Manager(); g_ = game; name = sceneName; }
 	inline virtual ~GameScene() { delete mngr_; }
 	//creacion de objetos, que sera diferente en cada escena
 	inline virtual void init() = 0;

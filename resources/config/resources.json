@@ -147,6 +147,10 @@
     {
         "id": "wardrobe",
         "file": "resources/sprites/wardrobe_tileset.png"
+    },
+    {
+        "id": "black",
+        "file": "resources/sprites/black.png"
     }
   ],
 
