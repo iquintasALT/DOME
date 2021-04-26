@@ -23,8 +23,10 @@ void Camera::Move(Vector2D& newPos) {
 }
 
 void Camera::Lerp(const Vector2D& newPos, float i) {
-	if ((pos - newPos).magnitude() > 2)
-		pos = Vector2D::Lerp(pos, newPos - Vector2D(width / 2, height / 2), i * consts::DELTA_TIME);
+	Vector2D newcamerapos = newPos - Vector2D(width / 2, height / 2);
+
+	if ((pos - newcamerapos).magnitude() > 2)
+		pos = Vector2D::Lerp(pos, newcamerapos, i * consts::DELTA_TIME);
 }
 void Camera::LerpWithBounds(const Vector2D& newPos, float i) {
 	Lerp(newPos, i);
@@ -69,4 +71,16 @@ Vector2D Camera::renderRect(Vector2D& imagePos, int w, int h, bool& shouldRender
 
 Point2D Camera::PointToWorldSpace(Point2D point) {
 	return point + pos;
+}
+
+Point2D Camera::WorldToPointSpace(Point2D point) {
+	return point - pos;
+}
+
+bool Camera::isVisible(Point2D point) {
+	return
+		point.getX() >= pos.getX() &&
+		point.getX() < pos.getX() + width &&
+		point.getY() >= pos.getY() &&
+		point.getY() < pos.getY() + height;
 }

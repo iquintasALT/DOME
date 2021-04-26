@@ -195,7 +195,7 @@ public:
 	inline static float Lerp(float a, float b, float i) {
 		if (i < 0) return a;
 		if (i > 1) return b;
-		if (b < a) return Lerp(b, a, i);
+		if (b < a) return Lerp(b, a, 1 - i);
 		return a + (b - a) * i;
 	}
 
