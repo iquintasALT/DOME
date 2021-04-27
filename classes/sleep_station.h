@@ -18,6 +18,8 @@ class SleepStation : public GameEntity
 
 	Transform* playerTr;
 
+Manager* falseMngr;
+
 	bool renderFlag;
 	bool mouseClick;
 
