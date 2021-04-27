@@ -4,7 +4,7 @@
   <export target="template.json" format="json"/>
  </editorsettings>
  <tileset firstgid="1" source="template_tileset.tsx"/>
- <tileset firstgid="181" source="second_template_tileset.tsx"/>
+ <tileset firstgid="433" source="second_template_tileset.tsx"/>
  <layer id="1" name="Fondo" width="75" height="50">
   <properties>
    <property name="renderLayer" value="Background"/>
