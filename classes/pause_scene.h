@@ -1,7 +1,6 @@
 #pragma once
 #include "../classes/game_scene.h"
 #include <list>
-class MenuButton;
 
 class PauseScene : public GameScene
 {
