@@ -18,9 +18,17 @@ Como veis, vuestra salud física y mental es nuestra prioridad. Para ello facili
 Por muy precisos y fiables que sean nuestros sistemas, el riesgo de algún fracaso nunca se puede eliminar del todo. Para ello rogamos que presten atención a las siguientes advertencias de salud:
 Aurora es un planeta sin atmósfera natural. Por ello, nustras cúpulas están diseñadas para reflejar la radiación solar durante el día, y mantener aislada la temperatura durante la noche. En el caso de alguna emergencia que comprometiese este aislamiento, sería de importancia crítica que los colonos eviten estar fuera de su alojamiento durante las horas oscuras, pues las temperaturas gélidas podrían ocasionar una muerte inmediata.
 
+// crafting //
+
+Para estar preparados frente a todo imprevisto, en cada refugio y hogar habrá sintetizadores de última gama para crear nuevos materiales y herramientas en meros momentos. Como siempre hemos dicho en Aurora Corp.: "¡Adaptados a cualquier futuro!"
+
 // change to enemies //
 
 En tiempos recientes se ha descubierto que el planeta presenta fauna local. Estas criaturas han mostrado un temperamento hostil, pero su tecnología primitiva hace que no supongan ningún peligro mientras el aislamiento perdure. No obstante, su continuada presencia en el exterior hace que sea extremadamente peligroso salir de la cúpula aparte de expediciones preparadas. No seguir estas recomendaciones podría ocasionar una muerte inmediata.
+
+// weapons //
+
+En el extremadamente improbable caso de que estas criaturas se conviertan en una mayor amenaza, la cúpula dispone de una limitada gama de armamento personal. La empresa no se hace responsable del incorrecto uso de cualquier otra herramienta industrial como arma. 
 
 // change to development issues and cut features //
 
