@@ -47,6 +47,7 @@ private:
 	Inventory* playerInv;
 	Transform* playerTr;
 
+	Manager* falseMngr;
 
 	Loot* loot;
 

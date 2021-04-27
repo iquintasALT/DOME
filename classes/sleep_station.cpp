@@ -7,6 +7,8 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_) : GameEntity(mngr
 	renderFlag = false;
 	mouseClick = false;
 
+	falseMngr = mngr_;
+
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
 
 	//INICIALIZACION IMAGENES DEL FONDO, FLECHAS Y X PARA SALIR
@@ -69,7 +71,7 @@ void SleepStation::setImg(Entity* entity, Vector2D pos, Vector2D size, std::stri
 
 void SleepStation::update() {
 	Entity::update();
-	getMngr()->refresh();
+	falseMngr->refresh();
 
 	if (isRendering() && playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled) {
 		playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
@@ -106,7 +108,7 @@ void SleepStation::update() {
 
 void SleepStation::render() {
 	Entity::render();
-	getMngr()->refresh();
+	falseMngr->refresh();
 	if (renderFlag) {
 		bg->render();
 		bButton->render();
