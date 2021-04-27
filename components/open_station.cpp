@@ -17,5 +17,5 @@ void Open_station::update() {
 			}
 		}
 	}
-	else if (!ih().isKeyUp(SDL_SCANCODE_E) && eClicked) eClicked = false;
+	else if (eClicked && ih().isKeyUp(SDL_SCANCODE_E)) { eClicked = false;}
 }

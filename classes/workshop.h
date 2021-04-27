@@ -31,6 +31,7 @@ private:
 	Entity* craftButton;
 	Transform* craftButton_tr;
 
+Manager* falseMngr;
 
 	std::vector<Slot>craftList;
 	std::vector<Transform*>craftList_tr;
