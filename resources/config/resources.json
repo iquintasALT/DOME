@@ -69,6 +69,10 @@
       "file": "resources/sprites/weapons_sheet.png"
     },
     {
+      "id": "weapons_arms",
+      "file": "resources/sprites/weapons_arms_sheet.png"
+    },
+    {
       "id": "projectile",
       "file": "resources/sprites/projectile.png"
     },
@@ -77,24 +81,36 @@
       "file": "resources/sprites/panel.png"
     },
     {
-      "id": "shelterButton",
-      "file": "resources/sprites/buttons/shelter_button.png"
+      "id": "tooltipBox",
+      "file": "resources/sprites/tooltipbox.png"
     },
     {
-      "id": "resumeButton",
-      "file": "resources/sprites/buttons/resume_button.png"
+      "id": "shelterButton",
+      "file": "resources/sprites/buttons/shelter_button.png"
     },
     {
       "id": "raidButton",
       "file": "resources/sprites/buttons/raid_button.png"
     },
     {
-        "id": "dust",
-        "file": "resources/sprites/dustParticle.png"
+      "id": "resumeButton",
+      "file": "resources/sprites/buttons/resume_button.png"
     },
     {
-        "id": "explosion",
-        "file": "resources/sprites/explosionParticle.png"
+      "id": "settingsButton",
+      "file": "resources/sprites/buttons/settings_button.png"
+    },
+    {
+      "id": "mainmenuButton",
+      "file": "resources/sprites/buttons/mainmenu_button.png"
+    },
+    {
+      "id": "dust",
+      "file": "resources/sprites/dustParticle.png"
+    },
+    {
+      "id": "explosion",
+      "file": "resources/sprites/explosionParticle.png"
     },
     {
       "id": "charge",
@@ -137,20 +153,20 @@
       "file": "resources/sprites/clock.png"
     },
     {
-        "id": "dclock",
-        "file": "resources/sprites/digital_clock.png"
+      "id": "dclock",
+      "file": "resources/sprites/digital_clock.png"
     },
     {
-        "id": "storage",
-        "file": "resources/sprites/storage_backgrounds.png"
+      "id": "storage",
+      "file": "resources/sprites/storage_backgrounds.png"
     },
     {
-        "id": "wardrobe",
-        "file": "resources/sprites/wardrobe_tileset.png"
+      "id": "wardrobe",
+      "file": "resources/sprites/wardrobe_tileset.png"
     },
     {
-        "id": "black",
-        "file": "resources/sprites/black.png"
+      "id": "black",
+      "file": "resources/sprites/black.png"
     }
   ],
 

@@ -22,15 +22,16 @@ private:
 
 	GameStateMachine* states;
 
+	bool exit;
 public:
 	Game(int totaltime); 
 	virtual ~Game();
 	void init();
 	void start();
 	inline GameStateMachine* getStateMachine() { return states; }
-
+	void quitGame() { exit = true; }
+	
 	void initLoot();
 
 	bool playerCreated = false;
 };
-

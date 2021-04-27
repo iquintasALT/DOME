@@ -1,20 +1,19 @@
 #include "back_to_shelter.h"
 #include "..//sdlutils/InputHandler.h"
-#include "..//game/Game.h"
+#include "../classes/game_scene.h"
+#include "../classes/shelter_scene.h"
 
-BackToShelter::BackToShelter(Game* g) : InteractableElement("Vuelta a refugio") {
-	states = g->getStateMachine();
-}
+BackToShelter::BackToShelter(GameScene* scene) : InteractableElement("Vuelta a refugio"), scene_(scene) {}
 
 void BackToShelter::init() {
 	InteractableElement::init();
-	player = entity_->getMngr()->getHandler<Player_hdlr>();
+	player_ = entity_->getMngr()->getHandler<Player_hdlr>();
 }
 
 void BackToShelter::Interact() {
-	states->popState();
+	scene_->changeState(new ShelterScene(scene_->getGame()));
 }
 
 void BackToShelter::update() {
-	if (ih().isKeyDown(SDLK_e) && CheckCollision(player->getComponent<Transform>())) Interact();
+	if (ih().isKeyDown(SDLK_e) && CheckCollision(player_->getComponent<Transform>())) Interact();
 }
