@@ -22,5 +22,7 @@ public:
 	Vector2D renderRect(Vector2D& imagePos,int w, int h, bool& shouldRender);
 	void MoveDir(Vector2D dir);
 	Point2D PointToWorldSpace(Point2D point);
+	Point2D WorldToPointSpace(Point2D point);
+	bool isVisible(Point2D point);
 };
 

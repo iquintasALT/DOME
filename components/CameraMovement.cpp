@@ -10,6 +10,8 @@ void CameraMovement::init() {
 	tr = entity_->getComponent<Transform>();
 	cam = Camera::mainCamera;
 	assert(tr != nullptr && cam != nullptr);
+
+	cam->Move(tr->getPos());
 }
 
 void CameraMovement::update() {
