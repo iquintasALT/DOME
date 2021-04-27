@@ -36,10 +36,10 @@ DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 	mngr_->addRenderLayer<Enemy>(this);
 	addComponent<PlayerCollisions>();
 	addComponent<Image>(&sdlutils().images().at("enemy"), 2, 9, 0, 0);
-	addComponent<enemy_animation>();
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
 	addComponent2<EnemyAttackComponent, GroundedMeleeAttack>();
 	addComponent<ChasePlayer>(consts::MELEE_ENEMY_SPEED, consts::MELEE_ENEMY_STOPDISTANCE);
+	addComponent<enemy_animation>();
 }
 
 FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos, false)
