@@ -6,13 +6,13 @@
 
 void PauseScene::init() {
 	ih().clearState();
-	auto resumeButton = new MenuButton(Vector2D(350, 300), Vector2D(400, 50) ,&sdlutils().images().at("resumeButton"), resume, g_, mngr_);
+	auto resumeButton = new MenuButton(Vector2D(consts::WINDOW_WIDTH/2-128, 370), Vector2D(265, 64) ,&sdlutils().images().at("resumeButton"), resume, g_, mngr_);
 	mngr_->addEntity(resumeButton);
 
-	auto menuButton = new MenuButton(Vector2D(350, 400), Vector2D(400, 50), &sdlutils().images().at("resumeButton"), menu, g_, mngr_);
+	auto menuButton = new MenuButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 450), Vector2D(265, 64), &sdlutils().images().at("mainmenuButton"), menu, g_, mngr_);
 	mngr_->addEntity(menuButton);
 
-	auto settingsButton = new MenuButton(Vector2D(350, 500), Vector2D(400, 50), &sdlutils().images().at("resumeButton"), settings, g_, mngr_);
+	auto settingsButton = new MenuButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 530), Vector2D(265, 64), &sdlutils().images().at("settingsButton"), settings, g_, mngr_);
 	mngr_->addEntity(settingsButton);
 }
 void PauseScene::resume(Game* g) {

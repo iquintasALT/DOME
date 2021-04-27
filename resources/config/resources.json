@@ -65,44 +65,77 @@
       "file": "resources/sprites/floor_tileset.png"
     },
     {
-        "id": "weapons",
-        "file": "resources/sprites/weapons_sheet.png"
+      "id": "weapons",
+      "file": "resources/sprites/weapons_sheet.png"
     },
     {
-        "id": "weapons_arms",
-        "file": "resources/sprites/weapons_arms_sheet.png"
+      "id": "weapons_arms",
+      "file": "resources/sprites/weapons_arms_sheet.png"
     },
     {
       "id": "projectile",
       "file": "resources/sprites/projectile.png"
     },
     {
-        "id": "panel",
-        "file": "resources/sprites/panel.png"
+      "id": "panel",
+      "file": "resources/sprites/panel.png"
     },
     {
-        "id": "tooltipBox",
-        "file": "resources/sprites/tooltipbox.png"
+      "id": "tooltipBox",
+      "file": "resources/sprites/tooltipbox.png"
     },
     {
       "id": "shelterButton",
       "file": "resources/sprites/buttons/shelter_button.png"
     },
     {
-      "id": "resumeButton",
-      "file": "resources/sprites/buttons/resume_button.png"
-    },
-    {
       "id": "raidButton",
       "file": "resources/sprites/buttons/raid_button.png"
     },
     {
-        "id": "dust",
-        "file": "resources/sprites/dustParticle.png"
+      "id": "resumeButton",
+      "file": "resources/sprites/buttons/resume_button.png"
     },
     {
-        "id": "explosion",
-        "file": "resources/sprites/explosionParticle.png"
+      "id": "resumeButtonHighlighted",
+      "file": "resources/sprites/buttons/resume_button_highlighted.png"
+    },
+    {
+      "id": "resumeButtonPressed",
+      "file": "resources/sprites/buttons/resume_button_pressed.png"
+    },
+    {
+      "id": "settingsButton",
+      "file": "resources/sprites/buttons/settings_button.png"
+    },
+    {
+      "id": "settingsButtonHighlighted",
+      "file": "resources/sprites/buttons/settings_button_highlighted.png"
+    },
+    {
+      "id": "settingsButtonPressed",
+      "file": "resources/sprites/buttons/settings_button_pressed.png"
+    },
+    {
+      "id": "mainmenuButton",
+      "file": "resources/sprites/buttons/mainmenu_button.png"
+    },
+    {
+      "id": "mainmenuButtonHighlighted",
+      "file": "resources/sprites/buttons/mainmenu_button_highlighted.png"
+    },
+    {
+      "id": "mainmenuButtonPressed",
+      "file": "resources/sprites/buttons/mainmenu_button_pressed.png"
+    },
+
+    {
+      "id": "dust",
+      "file": "resources/sprites/dustParticle.png"
+    },
+    {
+      "id": "explosion",
+      "file": "resources/sprites/explosionParticle.png"
     },
     {
       "id": "charge",
@@ -145,20 +178,20 @@
       "file": "resources/sprites/clock.png"
     },
     {
-        "id": "dclock",
-        "file": "resources/sprites/digital_clock.png"
+      "id": "dclock",
+      "file": "resources/sprites/digital_clock.png"
     },
     {
-        "id": "storage",
-        "file": "resources/sprites/storage_backgrounds.png"
+      "id": "storage",
+      "file": "resources/sprites/storage_backgrounds.png"
     },
     {
-        "id": "wardrobe",
-        "file": "resources/sprites/wardrobe_tileset.png"
+      "id": "wardrobe",
+      "file": "resources/sprites/wardrobe_tileset.png"
     },
     {
-        "id": "black",
-        "file": "resources/sprites/black.png"
+      "id": "black",
+      "file": "resources/sprites/black.png"
     }
   ],
 
