@@ -46,7 +46,6 @@ using namespace sdlgui;
 void ShelterScene::init() {
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
-
 	Player* player = dynamic_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 	craftSys = new CraftingSystem(mngr_);
 
@@ -77,6 +76,8 @@ void ShelterScene::init() {
 	sleepImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
 	sleepImg->addComponent<Open_station>(sleep_Station);
 	mngr_->addRenderLayer<Background>(sleepImg);
+
+	std::cout << "hey" << std::endl;
 
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui
 	sc_ = new Screen(sdlutils().window(), Vector2i(sdlutils().width(), sdlutils().height()), "Refugio");

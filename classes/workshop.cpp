@@ -10,7 +10,7 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Gam
 	mouseClick = false;
 	loot = nullptr;
 
-
+falseMngr = mngr_;
 
 	playerInv = realMngr_->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
@@ -88,9 +88,7 @@ void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string n
 }
 
 void Workshop::update() {
-	Entity::update();
-	getMngr()->refresh();
-
+	falseMngr->refresh();
 
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
@@ -126,7 +124,6 @@ void Workshop::update() {
 					if (isCraftable) {
 						renderRightWindow = false;
 						renderFlag = false;
-						playerTr->getEntity()->setActive(true);
 					}
 				}
 			}
@@ -157,8 +154,7 @@ void Workshop::update() {
 }
 
 void Workshop::render() {
-	Entity::render();
-	getMngr()->refresh();
+	falseMngr->refresh();
 	if (renderFlag) {
 		bg->render();
 		bButton->render();

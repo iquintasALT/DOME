@@ -46,8 +46,7 @@ void LocationsScene::loadLocationButtons() {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-	g->getStateMachine()->changeState(new RaidScene(paths[index], names[index], g));
-	g->getStateMachine()->currentState()->init();
+	g->getStateMachine()->changeState(new ShelterScene(g));
 }
 
 void LocationsScene::anActualGoodName(Game* g) {

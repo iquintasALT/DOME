@@ -9,6 +9,8 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_) : GameEntity(mngr
 
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
 
+falseMngr =mngr_;
+
 	//INICIALIZACION IMAGENES DEL FONDO, FLECHAS Y X PARA SALIR
 	bg = mngr_->addEntity();
 	bButton = mngr_->addEntity();
@@ -70,8 +72,7 @@ void SleepStation::setImg(Entity* entity, Vector2D pos, Vector2D size, std::stri
 }
 
 void SleepStation::update() {
-	Entity::update();
-	getMngr()->refresh();
+	falseMngr->refresh();
 
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
@@ -100,8 +101,7 @@ void SleepStation::update() {
 }
 
 void SleepStation::render() {
-	Entity::render();
-	getMngr()->refresh();
+		falseMngr->refresh();
 	if (renderFlag) {
 		bg->render();
 		bButton->render();
