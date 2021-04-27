@@ -97,38 +97,13 @@
       "file": "resources/sprites/buttons/resume_button.png"
     },
     {
-      "id": "resumeButtonHighlighted",
-      "file": "resources/sprites/buttons/resume_button_highlighted.png"
-    },
-    {
-      "id": "resumeButtonPressed",
-      "file": "resources/sprites/buttons/resume_button_pressed.png"
-    },
-    {
       "id": "settingsButton",
       "file": "resources/sprites/buttons/settings_button.png"
-    },
-    {
-      "id": "settingsButtonHighlighted",
-      "file": "resources/sprites/buttons/settings_button_highlighted.png"
-    },
-    {
-      "id": "settingsButtonPressed",
-      "file": "resources/sprites/buttons/settings_button_pressed.png"
     },
     {
       "id": "mainmenuButton",
       "file": "resources/sprites/buttons/mainmenu_button.png"
     },
-    {
-      "id": "mainmenuButtonHighlighted",
-      "file": "resources/sprites/buttons/mainmenu_button_highlighted.png"
-    },
-    {
-      "id": "mainmenuButtonPressed",
-      "file": "resources/sprites/buttons/mainmenu_button_pressed.png"
-    },
-
     {
       "id": "dust",
       "file": "resources/sprites/dustParticle.png"
