@@ -7,7 +7,6 @@
 class Game;
 
 using CallBackOnClick = void(Game* g);
-
 class MenuButton : public GameObject {
 protected:
 	CallBackOnClick* cbOnClick;

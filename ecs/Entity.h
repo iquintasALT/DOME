@@ -23,7 +23,7 @@ public:
 		active(true),
 		mngr_(mngr), //
 		cmpArray_(), //
-		groups_() //
+		groups_()
 	{
 		//mngr->addRenderLayer<Default>(this);
 	}
@@ -176,7 +176,7 @@ public:
 private:
 	bool active = true;
 	bool dead;
-
+	bool isRendering = false;
 	Manager* mngr_;
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;

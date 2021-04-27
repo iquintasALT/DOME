@@ -12,10 +12,14 @@ class MenuScene : public GameScene
 private:
 	std::list<MenuButton*> buttons;
 
+	Texture* back;
 public: 
 	MenuScene(Game* game);
 	void init() override;
-	static void playShelter(Game* g);
-	static void playRaid(Game* g);
+	static void playGame(Game* g);
+	static void setting(Game* g);
+	static void exit(Game* g);
+	void render();
+	~MenuScene();
 };
 

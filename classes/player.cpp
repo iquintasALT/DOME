@@ -21,6 +21,7 @@
 #include "../components/tiredness_component.h"
 #include "../components/hypothermia_component.h"
 #include "../components/box_collider.h"
+#include "../components/CameraMovement.h"
 
 Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 {
@@ -37,7 +38,9 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<Interactions>();
 	addComponent<HungerComponent>();
 	addComponent<TirednessComponent>();
-	
+	addComponent<CameraMovement>(.7);
+
+
 	weapon = new WeaponBehaviour(mngr_, t->getPos(), t, 7);
 	addComponent<InventoryController>();
 

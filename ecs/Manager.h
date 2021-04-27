@@ -10,6 +10,8 @@
 #include "ecs.h"
 #include "Entity.h"
 
+#include "SDL_error.h"
+
 class BoxCollider;
 class InteractableElement;
 
@@ -61,6 +63,10 @@ public:
 
 	template<typename T>
 	inline void addRenderLayer(Entity* renderObj) {
+		if (renderObj->isRendering) {
+			throw std::exception("Se ha intentado renderizar dos veces la misma entidad");
+		}
+		renderObj->isRendering = true;
 		renders_[ecs::rndIdx<T>].emplace_back(renderObj);
 	}
 
@@ -71,7 +77,10 @@ public:
 	void AddInteractableElement(InteractableElement* ie);
 	std::vector<BoxCollider*>::iterator AddCollider(BoxCollider* bc);
 
+	inline void onNewScene() { changeScene = true; };
+
 private:
+	bool changeScene = false;
 	std::vector<Entity*> entities_;
 	std::array<Entity*, ecs::maxHdlr> hdlrs_;
 

@@ -132,7 +132,6 @@ void ParticleSystem::update() {
 		}
 	}
 }
-
 void ParticleSystem::render() {
 	for (auto a : particles) {
 		auto transform_ = a->tr;
@@ -186,5 +185,6 @@ void ParticleSystem::Burst() {
 	for (int i = 0; i < burstCount; i++) {
 		spawnParticle();
 	}
+
 }
 
