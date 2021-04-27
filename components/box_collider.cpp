@@ -20,7 +20,7 @@ bool BoxCollider::collision(Transform* trEnt_, RigidBody* rb_) {
 		pos.setY(tr_->getPos().getY() - h);
 		below = true;
 	}
-	if (tr_->getPos().getX() + tr_->getW() < pos.getX() || tr_->getPos().getX() > pos.getX() + w) {
+	if (tr_->getPos().getX() + tr_->getW() > pos.getX() || tr_->getPos().getX() < pos.getX() + w) {
 		rb_->getVel().setX(0);
 	}
 
