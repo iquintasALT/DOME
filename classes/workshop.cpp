@@ -77,8 +77,6 @@ void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
 
 void Workshop::setRenderFlag(bool set) {
 	renderFlag = set;
-	if (set)
-		playerTr->getEntity()->setActive(false);
 }
 
 void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
@@ -91,6 +89,13 @@ void Workshop::update() {
 	Entity::update();
 	getMngr()->refresh();
 
+	if (isRendering() && playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled) {
+		playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+		playerTr->getEntity()->getComponent<RigidBody>()->setVel(Vector2D{ 0,0 });
+	}
+	else if (!playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled) {
+		playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = true;
+	}
 
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
@@ -101,7 +106,6 @@ void Workshop::update() {
 
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
 				renderFlag = false;
-				playerTr->getEntity()->setActive(true);
 				renderRightWindow = false;
 			}
 			else if (Collisions::collides(mousePos, 1, 1, arrowUp_tr->getPos(), arrowUp_tr->getW(), arrowUp_tr->getH())) {
@@ -126,7 +130,6 @@ void Workshop::update() {
 					if (isCraftable) {
 						renderRightWindow = false;
 						renderFlag = false;
-						playerTr->getEntity()->setActive(true);
 					}
 				}
 			}
@@ -134,6 +137,7 @@ void Workshop::update() {
 		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
 	}
 
+	
 	if (loot != nullptr) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
@@ -152,7 +156,7 @@ void Workshop::update() {
 				renderRightWindow = true;
 			}
 		}
-		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
+		else if (!ih().getMouseButtonState(InputHandler::LEFT) && mouseClick) { mouseClick = false; }
 	}
 }
 
@@ -245,7 +249,7 @@ void Workshop::rightWindowRender() {
 
 			offsetY += 48 + 20;
 
-			craftButton->render();
+			if (craftButton != nullptr)craftButton->render();
 			text = new Texture(sdlutils().renderer(), "CRAFT", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
 			dest = { (int)(craftButton_tr->getPos().getX() + craftButton_tr->getW() / 2 - text->width() / 2),
 				(int)(craftButton_tr->getPos().getY() + craftButton_tr->getH() / 2 - text->height() / 2),text->width(),text->height() };

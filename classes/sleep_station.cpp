@@ -60,8 +60,6 @@ void SleepStation::init() {
 
 void SleepStation::setRenderFlag(bool set) {
 	renderFlag = set;
-	if (set)
-		playerTr->getEntity()->setActive(false);
 }
 
 void SleepStation::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
@@ -73,6 +71,14 @@ void SleepStation::update() {
 	Entity::update();
 	getMngr()->refresh();
 
+	if (isRendering() && playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled) {
+		playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+		playerTr->getEntity()->getComponent<RigidBody>()->setVel(Vector2D{ 0,0 });
+	}
+	else if (!playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled) {
+		playerTr->getEntity()->getComponent<KeyboardPlayerCtrl>()->enabled = true;
+	}
+
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
@@ -80,7 +86,6 @@ void SleepStation::update() {
 
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
 				renderFlag = false;
-				playerTr->getEntity()->setActive(true);
 			}
 			else if (Collisions::collides(mousePos, 1, 1, leftButton_tr->getPos(), leftButton_tr->getW(),
 				leftButton_tr->getH())) {

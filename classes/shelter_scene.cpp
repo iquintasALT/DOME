@@ -69,14 +69,14 @@ void ShelterScene::init() {
 	medImg->addComponent<Transform>(Vector2D{ auxPos.getX() - 100,auxPos.getY() }, 50, 50, 0);
 	medImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 6, 0);
  	medImg->addComponent<Open_station>(medical_Workshop);
-	mngr_->addRenderLayer<Background>(medImg);
+	mngr_->addRenderLayer<Walls>(medImg);
 
 	sleep_Station = new SleepStation(mngr_, uselessMngr);
 	Entity* sleepImg = mngr_->addEntity();
 	sleepImg->addComponent<Transform>(Vector2D{ auxPos.getX() - 200 ,auxPos.getY() }, 50, 50, 0);
 	sleepImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
 	sleepImg->addComponent<Open_station>(sleep_Station);
-	mngr_->addRenderLayer<Background>(sleepImg);
+	mngr_->addRenderLayer<Walls>(sleepImg);
 
 	//se inicializa la "pantalla" sobre la cual se crean botones de nanogui
 	sc_ = new Screen(sdlutils().window(), Vector2i(sdlutils().width(), sdlutils().height()), "Refugio");
@@ -89,9 +89,9 @@ void ShelterScene::init() {
 	auto& ventana1 = createSimpleWidget(); //se crea ya escondida
 
 	//createSimpleButton(Vector2i(500, 100), "INVENTARIO", "Abre el Inventario", ventana1);
-	std::function<void()> openRaidMap = [&]() {g_->getStateMachine()->pushState(new LocationsScene(g_)); };
+	//std::function<void()> openRaidMap = [&]() {g_->getStateMachine()->pushState(new LocationsScene(g_)); };
 
-	sdlgui::Widget& raidMapStation = createSimpleButton(Vector2i(500, 500), "MAP OF DOME 42", "Abre el mapa de la cúpula", openRaidMap);
+	//sdlgui::Widget& raidMapStation = createSimpleButton(Vector2i(500, 500), "MAP OF DOME 42", "Abre el mapa de la cúpula", openRaidMap);
 
 	//createSimpleButton(Vector2i(500, 300), "DESCANSO", "Permite dormir y recuperar fuerzas", ventana1);
 

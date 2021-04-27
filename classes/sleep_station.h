@@ -25,6 +25,7 @@ public:
 	SleepStation(Manager* realMngr_, Manager* mngr_);
 	virtual void init();
 
+	bool isRendering() { return renderFlag; };
 	void setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name);
 	void renderImg(float posX, float posY, int row, int col, int sizeX = 64, int sizeY = 64);
 	virtual void render();
