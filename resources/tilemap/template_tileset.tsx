@@ -3,7 +3,7 @@
  <properties>
   <property name="wall" type="bool" value="false"/>
  </properties>
- <image source="../sprites/floor_tileset.png" width="384" height="514"/>
+ <image source="../sprites/floor_tileset.png" width="384" height="512"/>
  <tile id="0">
   <properties>
    <property name="wall" type="bool" value="true"/>
@@ -755,6 +755,36 @@
   </properties>
  </tile>
  <tile id="177">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="180">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="181">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="182">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="183">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="184">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="185">
   <properties>
    <property name="wall" type="bool" value="false"/>
   </properties>
