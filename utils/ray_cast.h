@@ -59,6 +59,7 @@ public:
 
 	void rayCastToSquare(Entity* entity);
 
+	void rayCastCollideWalls(Transform* transform);
 
 	/// Detects and returns all entities with transforms belonging to a specified group that
 	/// the ray collides with
@@ -71,7 +72,7 @@ public:
 		{
 			if (e->hasGroup<Group>() && e->hasComponent<Transform>())
 			{
-				rayCastToSquare(e->getComponent<Transform>());
+				rayCastCollideWalls(e->getComponent<Transform>());
 				if (distance_ >= 0.0)
 					collided.push_back(e);
 			}
@@ -92,7 +93,7 @@ public:
 			{
 				// Cast a new ray from the origin to the entity
 				RayCast aux = RayCast(origin, e->getComponent<Transform>()->getPos() - origin);
-				aux.rayCastToSquare(e->getComponent<Transform>());
+				aux.rayCastCollideWalls(e->getComponent<Transform>());
 
 				// Check that the ray collided and was within specified radius
 				if (aux.distance_ >= 0.0 && aux.distance_ < radius)
