@@ -82,7 +82,7 @@ public:
 	/// Detects and returns all entities with transforms belonging to a specified group that
 	/// are within a certain radius of a point with a clear line of sight
 	template <typename Group>
-	static std::list<Entity*> allCollisionsInLine(Manager* entityManager, Point2D origin, float radius)
+	static std::list<Entity*> allCollisionsInRadius(Manager* entityManager, Point2D origin, float radius)
 	{
 		std::list<Entity*> collided = std::list<Entity*>();
 		auto entities = entityManager->getEntities();
