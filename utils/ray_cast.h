@@ -91,7 +91,7 @@ public:
 			if (e->hasGroup<Group>() && e->hasComponent<Transform>())
 			{
 				// Cast a new ray from the origin to the entity
-				RayCast aux = RayCast(origin, e->getComponent<Transform>().getPos() - origin);
+				RayCast aux = RayCast(origin, e->getComponent<Transform>()->getPos() - origin);
 				aux.rayCastToSquare(e->getComponent<Transform>());
 
 				// Check that the ray collided and was within specified radius

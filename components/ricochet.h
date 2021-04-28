@@ -10,6 +10,7 @@
 #include "../utils/checkML.h"
 #include "../components/rigid_body.h"
 
+
 class Ricochet : public Component {
 private:
 	Transform* tr_;
@@ -18,8 +19,8 @@ private:
 	int n; //numero rebotes
 	int tier;
 	int explosion = 100; // Daño de la explosion
-	vector<Entity*> hitEnemies = {};
 	void OnCollision(Entity* collider) override;
+	void hitEnemies(Point2D raycastOrigin);
 
 public:
 	Ricochet(Transform* player, int nrebotes, int typeOfWeapon);
@@ -29,5 +30,7 @@ public:
 	void init() override;
 
 	void createExplosion();
+
+
 
 };

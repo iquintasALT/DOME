@@ -1,4 +1,6 @@
 #include "ricochet.h"
+
+#include <list>
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../components/Transform.h"
@@ -6,9 +8,10 @@
 #include "../utils/ray_cast.h"
 #include "../components/box_collider.h"
 #include "../classes/enemy.h"
+#include "../utils/ray_cast.h"
 
-Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player), n(nrebotes), tier(typeOfWeapon)
-{}
+Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player),
+n(nrebotes), tier(typeOfWeapon) {}
 
 Ricochet::~Ricochet() {}
 
@@ -61,8 +64,8 @@ void Ricochet::createExplosion()
 	particles->destroyAfterBurst = false;
 	particles->burstRepeat = 1;*/
 
-	Point2D arribaizq = playerTr->getPos();
-	Point2D arribader = Point2D(playerTr->getPos().getX() + playerTr->getW(), arribaizq.getY());
+	/*Point2D arribaizq = playerTr->getPos();
+	Point2D arribader = Point2D(playerTr->getPos().getX() + playerTr->getW(), arribaizq.getY());*/
 	Point2D rayCastOrigin = Point2D(transf->getPos().getX() + (transf->getW() / 2), transf->getPos().getY() + (transf->getH() / 2));
 
 
@@ -70,42 +73,52 @@ void Ricochet::createExplosion()
 	float y2 = playerTr->getPos().getY() + (playerTr->getH() / 2);
 	Vector2D direction = Vector2D(x2, y2);
 
-	RayCast range = RayCast(rayCastOrigin, direction - explosionOrigin);
+	/*RayCast range = RayCast(rayCastOrigin, direction - explosionOrigin);*/
 
-	//Colision enemigos
-	range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
-
-	if (range.hasCollision(1000))
 	{
-		cout << "Explosion en player";
-	}
-	//Colision enemigos (Cuando esten hechos xd)
-	for (auto& e : entity_->getMngr()->getEntities())
-	{
-		if (e->hasGroup<Enemy_grp>())
-		{
-			x2 = e->getComponent<Transform>()->getPos().getX() + e->getComponent<Transform>()->getW() / 2;
-			y2 = e->getComponent<Transform>()->getPos().getY() + e->getComponent<Transform>()->getH() / 2;
-			direction = Vector2D(x2, y2);
-			range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
+		////Colision enemigos
+		//range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
 
-			if (range.hasCollision(1000))
-			{
-				cout << "Explosion en enemigo";
-				//IAGO AQUI LE METES EL DAO� AL Enemigo Y EL 1000 HAY Q AJUSTARLO A LA EXPLOSION
-				bool found = false;
-				for (Entity* hitEnemy : hitEnemies) {
-					if (hitEnemy == e) {
-						found = true;
-					}
-				}
-				if (!found) {
-					static_cast<Enemy*>(e)->receiveDamage();
-					hitEnemies.push_back(e);
-				}
-			}
-		}
+		//if (range.hasCollision(1000))
+		//{
+		//	cout << "Explosion en player";
+		//}
+		////Colision enemigos (Cuando esten hechos xd)
+		//for (auto& e : entity_->getMngr()->getEntities())
+		//{
+		//	if (e->hasGroup<Enemy_grp>())
+		//	{
+		//		x2 = e->getComponent<Transform>()->getPos().getX() + e->getComponent<Transform>()->getW() / 2;
+		//		y2 = e->getComponent<Transform>()->getPos().getY() + e->getComponent<Transform>()->getH() / 2;
+		//		direction = Vector2D(x2, y2);
+		//		range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
+
+		//		if (range.hasCollision(1000))
+		//		{
+		//			cout << "Explosion en enemigo";
+		//			//IAGO AQUI LE METES EL DAO� AL Enemigo Y EL 1000 HAY Q AJUSTARLO A LA EXPLOSION
+		//			bool found = false;
+		//			for (Entity* hitEnemy : hitEnemies) {
+		//				if (hitEnemy == e) {
+		//					found = true;
+		//				}
+		//			}
+		//			if (!found) {
+		//				static_cast<Enemy*>(e)->receiveDamage();
+		//				hitEnemies.push_back(e);
+		//			}
+		//		}
+		//	}
+		//}
 	}
+
+	hitEnemies(rayCastOrigin);
+}
+
+void Ricochet::hitEnemies(Point2D raycastOrigin)
+{
+	std::list<Entity*> collided = RayCast::allCollisionsInRadius<Enemy_grp>(entity_->getMngr(), raycastOrigin, 300);
+	for (Entity* hit_entity : collided) hit_entity->setDead(true);
 }
 
 void Ricochet::OnCollision(Entity* other) {
