@@ -58,8 +58,8 @@ void ChargeWeapon::update() {
 			float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
 
 			Transform auxMousePos = Transform(mousePos, 1, 1, 0);
-			RayCast raycast = RayCast(yCenteredPos, dir);
-			float width = raycast.distanceToGroup<Wall_grp>(entity_->getMngr()) - aux1;
+			RayCast* raycast = new RayCast(yCenteredPos, dir);
+			float width = raycast->distanceToGroup<Wall_grp>(entity_->getMngr()) - aux1;
 
 			//	std::cout << actcharger << std::endl;
 			//	std::cout << nbullets << std::endl;
@@ -89,8 +89,7 @@ void ChargeWeapon::update() {
 			bullet->addComponent<Image>(&sdlutils().images().at("charge"));
 			bullet->getComponent<Image>()->setRotationOrigin(0, bulletTr->getH() / 2);
 
-			bullet->addComponent<RigidBody>(Vector2D(0, 0), false);
-			bullet->addComponent<Charge>(radianAngle);
+			bullet->addComponent<Charge>(radianAngle, raycast);
 
 			//COMPROBAR COLISIONES CON ENEMIGOS
 			actcharger--;
@@ -109,6 +108,7 @@ void ChargeWeapon::update() {
 				}
 				tcharger = actcharger;
 			}
+			delete raycast;
 		}
 		counter = 0;
 	}

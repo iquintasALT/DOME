@@ -1,5 +1,6 @@
 #pragma once
 #include <cassert>
+#include <list>
 
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
@@ -8,15 +9,15 @@
 #include "Transform.h"
 #include "../utils/checkML.h"
 #include "../components/rigid_body.h"
+#include "../utils/ray_cast.h"
 
 class Charge : public Component {
 private:
 	Transform* tr_;
 	float angle;
-	RigidBody* rb;
-	vector<Entity*> hitEnemies = {};
+	RayCast* raycast;
 public:
-	inline Charge(float angle) : tr_(nullptr), angle(angle) {}
+	inline Charge(float angle, RayCast* rc) : tr_(nullptr), angle(angle), raycast(rc) {}
 
 	inline virtual ~Charge() {}
 
@@ -24,6 +25,6 @@ public:
 
 	virtual void update() override;
 
-	void OnCollision(Entity* collider) override;
+	void hitEnemies();
 };
 

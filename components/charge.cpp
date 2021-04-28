@@ -1,11 +1,10 @@
 #include "charge.h"
-#include "../classes/enemy.h"
+
 
 void Charge::init() {
 	tr_ = entity_->getComponent<Transform>();
-	rb = entity_->getComponent<RigidBody>();
-	rb->addCollisionLayer(1);
 	assert(tr_ != nullptr);
+	hitEnemies();
 }
 
 void Charge::update() {
@@ -17,19 +16,8 @@ void Charge::update() {
 	else entity_->setDead(true);
 }
 
-void Charge::OnCollision(Entity* other)
+void Charge::hitEnemies()
 {
-	if (other->hasGroup<Enemy_grp>()) {
-		bool found = false;
-		for (Entity* e : hitEnemies) {
-			if (e == other) {
-				found = true;
-			}
-		}
-		if (!found) {
-			static_cast<Enemy*>(other)->receiveDamage();
-			hitEnemies.push_back(other);
-		}
-	}
-
+	std::list<Entity*> collided = raycast->allCollisionsInLine<Enemy_grp>(entity_->getMngr());
+	for (Entity* hit_entity : collided) hit_entity->setDead(true);
 }
