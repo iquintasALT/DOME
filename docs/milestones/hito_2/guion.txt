@@ -1,36 +1,55 @@
+[Los cambios de diapositiva se representan con //nombreDeSiguienteDiapositiva//. Los gifs de Iván están programados para pasarse solos cuando se reproduzcan una vez.]
+
+[Si tenéis un momento, cambiad el texto que pone "advertistment" por "advertisement"]
+[Otro fallo de ortografía que pongo aquí porque no sé dónde ponerlo si no es el item "mecanical components" que debería ser "mechanical components". Está en el gif de crafteo.]
+
+
+[Lector 1]
+¡Buenos días trabajador! Te acabamos de despertar del crio-sueño para ofrecerte las siguientes recomendaciones de seguridad para tu llegada al planeta Aurora. 
+
+//tituloEquipo//
+
+[Lector 2]
 ¡Enhorabuena! ¡Tú, de entre tantos trabajadores de Aurora Corp., has sido seleccionado para ser uno de los primeros colonos del planeta Aurora! Tu nueva vida interestelar está a punto de empezar en cuanto firmes tu nombre en el documento de exención.
 
-Entendemos que no has tenido una formación profesional que te equipe con las habilidades necesarias para sobrevivir en un ámbito extraterrestre pero, ¡no se preocupe! Hemos preparado solo para ti una serie de cortos educativos cubriendo todas las bases para que puedas ser un trabajador productivo en la cúpula 42.
+[A partir de aquí recomendaría cambiar de lector 1 a lector 2 más o menos cada párrafo]
+Entendemos que no has tenido una formación profesional que te equipe con las habilidades necesarias para sobrevivir en un ámbito extraterrestre pero, ¡no se preocupe! Hemos preparado solo para ti una serie de cortos educativos cubriendo todas las bases para que puedas ser un trabajador productivo en la cúpula 42. 
 
-// change to health systems //
+//cicloJuego//
 
-Donde no se ha ahorrado ningún gasto es en los innovadores sistemas de sanidad presentes en la colonia. Tu cuerpo es una herramienta frágil, ¡y en Aurora estará bajo amenaza constante! Para que puedas dormir tranquilo, tenemos una solución para todos y cada uno de los problemas que te puedan surgir:
+Por muy precisos y fiables que sean nuestros sistemas, el riesgo de algún fracaso nunca se puede eliminar del todo. Para ello rogamos que prestes atención a las siguientes advertencias de salud:
+Aurora es un planeta sin atmósfera natural. Por ello, nuestras cúpulas están diseñadas para reflejar la radiación solar durante el día, y mantener aislada la temperatura durante la noche. En el caso de alguna emergencia que comprometiese este aislamiento, sería de importancia crítica que los colonos eviten estar fuera de su alojamiento durante las horas oscuras, pues las temperaturas gélidas podrían ocasionar una muerte inmediata.
+
+//sistemaSalud//
+
+No se ha ahorrado ningún gasto en los innovadores sistemas de sanidad presentes en la colonia. Tu cuerpo es una herramienta frágil, ¡y en Aurora estará bajo amenaza constante! Para que puedas dormir tranquilo, tenemos una solución para todos y cada uno de los problemas que te puedan surgir: 
 La exposición a la atmósfera tóxica de Aurora puede producir problemas digestivos, pero disponemos de medicamentos para curar este problema.
 El error humano con la maquinaria industrial puede causar lesiones musculares. Un arreglo fácil con las teravendas que proporcionamos a nuestros colonos.
+
+//amenazas//
+
 Como veis, vuestra salud física y mental es nuestra prioridad. Para ello facilitaremos que podáis comer saludable y descansar lo suficiente. ¡No cumplir con estas recomendaciones podría reducir tu productividad!
 
-// change to locations and maps //
+//fauna local//
 
-¡Es costoso mover materiales y herramientas hasta el planeta Aurora! Por eso es de importancia vital asegurar que todo el espacio se ocupe de la forma más eficiente posible. No hay una sola edificación superflua en la colonia, y todas cumplen funciones diferentes. De convenientes supermercados a hospitales de vanguardia, no habrá comodidad que os pueda faltar en vuestro nuevo y acogedor hogar.
+En tiempos recientes se ha descubierto que el planeta presenta fauna local. Estas criaturas han mostrado un temperamento hostil, pero su tecnología primitiva hace que no supongan ningún peligro mientras el aislamiento perdure. //// No obstante, su continuada presencia en el exterior hace que sea extremadamente peligroso salir de la cúpula exceptuando expediciones preparadas. No seguir estas recomendaciones podría ocasionar una muerte inmediata.
 
-// change to game cycle //
-
-Por muy precisos y fiables que sean nuestros sistemas, el riesgo de algún fracaso nunca se puede eliminar del todo. Para ello rogamos que presten atención a las siguientes advertencias de salud:
-Aurora es un planeta sin atmósfera natural. Por ello, nustras cúpulas están diseñadas para reflejar la radiación solar durante el día, y mantener aislada la temperatura durante la noche. En el caso de alguna emergencia que comprometiese este aislamiento, sería de importancia crítica que los colonos eviten estar fuera de su alojamiento durante las horas oscuras, pues las temperaturas gélidas podrían ocasionar una muerte inmediata.
-
-// crafting //
+//crafteo//
 
 Para estar preparados frente a todo imprevisto, en cada refugio y hogar habrá sintetizadores de última gama para crear nuevos materiales y herramientas en meros momentos. Como siempre hemos dicho en Aurora Corp.: "¡Adaptados a cualquier futuro!"
 
-// change to enemies //
-
-En tiempos recientes se ha descubierto que el planeta presenta fauna local. Estas criaturas han mostrado un temperamento hostil, pero su tecnología primitiva hace que no supongan ningún peligro mientras el aislamiento perdure. No obstante, su continuada presencia en el exterior hace que sea extremadamente peligroso salir de la cúpula aparte de expediciones preparadas. No seguir estas recomendaciones podría ocasionar una muerte inmediata.
-
-// weapons //
+//armas// [si pudieseis meter algún gif más de las armas en funcionamiento estaría guay]
 
 En el extremadamente improbable caso de que estas criaturas se conviertan en una mayor amenaza, la cúpula dispone de una limitada gama de armamento personal. La empresa no se hace responsable del incorrecto uso de cualquier otra herramienta industrial como arma. 
 
+//mapaLocalizaciones//
+
+¡Es costoso mover materiales y herramientas hasta el planeta Aurora! Por eso es de importancia vital asegurar que todo el espacio se ocupe de la forma más eficiente posible. No hay una sola edificación superflua en la colonia, y todas cumplen funciones diferentes. De convenientes supermercados a hospitales de vanguardia, no habrá comodidad que os pueda faltar en vuestro nuevo y acogedor hogar.
+
 // change to development issues and cut features //
 
-Somos conscientes del preocupante rumor de un trágico accidente ocurrido en la colonia, causando la muerte repentina e inesperada de dos trabajadores. Nos alegra informaros que este rumor es solo eso, un rumor. Los trabajadores en cuestión, quienes han preferido no ser nombrados, están sanos y salvos. 
-No obstante, por motivos para nada relacionados, nos hemos visto forzados a reducir el ámbito de nuestras ambiciosas metas. Esta reducción en presupuesto de trabajo se ha reflejado principalmente en las defensas de la cúpula.
+[leído en voz más seria e inexpresiva] En respuesta a eventos recientes, la empresa ha visto necesario añadir el siguiente mensaje: 
+[a ser posible que este último párrafo lo lea alguien que no haya hablado aún pero con la misma entonación teletienda, para vender la idea de que es un añadido posterior] Somos conscientes del preocupante rumor de un trágico accidente ocurrido en la colonia, causando la muerte repentina e inesperada de dos trabajadores. Nos alegra informaros que este rumor es solo eso, un rumor. Los trabajadores en cuestión, quienes han preferido no ser nombrados, están sanos y salvos. 
+No obstante, por motivos para nada relacionados, nos hemos visto forzados a reducir el ámbito de nuestras ambiciosas metas. Esta reducción en presupuesto de trabajo se ha reflejado principalmente en las defensas de la cúpula. Nada de lo que preocuparse. 
+
+[vuelta al lector/lectores originales] Y con eso, no volveremos a molestarte el sueño [risa empresarial]. Ahora, ponte cómodo y disfruta del resto del viaje. ¡Aurora espera, pero el futuro no!
