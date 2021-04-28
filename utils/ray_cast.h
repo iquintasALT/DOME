@@ -59,6 +59,9 @@ public:
 
 	void rayCastToSquare(Entity* entity);
 
+
+	/// Detects and returns all entities with transforms belonging to a specified group that
+	/// the ray collides with
 	template <typename Group>
 	std::list<Entity*> allCollisionsInLine(Manager* entityManager)
 	{
@@ -70,6 +73,29 @@ public:
 			{
 				rayCastToSquare(e->getComponent<Transform>());
 				if (distance_ >= 0.0)
+					collided.push_back(e);
+			}
+		}
+		return collided;
+	}
+
+	/// Detects and returns all entities with transforms belonging to a specified group that
+	/// are within a certain radius of a point with a clear line of sight
+	template <typename Group>
+	static std::list<Entity*> allCollisionsInLine(Manager* entityManager, Point2D origin, float radius)
+	{
+		std::list<Entity*> collided = std::list<Entity*>();
+		auto entities = entityManager->getEntities();
+		for (Entity* e : entities)
+		{
+			if (e->hasGroup<Group>() && e->hasComponent<Transform>())
+			{
+				// Cast a new ray from the origin to the entity
+				RayCast aux = RayCast(origin, e->getComponent<Transform>().getPos() - origin);
+				aux.rayCastToSquare(e->getComponent<Transform>());
+
+				// Check that the ray collided and was within specified radius
+				if (aux.distance_ >= 0.0 && aux.distance_ < radius)
 					collided.push_back(e);
 			}
 		}
