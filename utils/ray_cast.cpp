@@ -94,6 +94,17 @@ short int RayCast::getClosestVertex(const Point2D& p, const Square& s)
 	return closest;
 }
 
+void RayCast::rayCastCollideWalls(Transform* transform)
+{
+	rayCastToSquare(transform);
+	RayCast aux = RayCast(*this);
+
+	float nearestWall = aux.distanceToGroup<Wall_grp>(transform->getEntity()->getMngr());
+	// If there was a wall in front of the object, we reset it to wipe the pointOfImpact and distance
+	if (nearestWall != -1.0 && nearestWall < distance_)
+		*this = RayCast(origin_, direction_);
+}
+
 bool RayCast::isGrounded(Transform* tr)
 {
 	RayCast rC = RayCast(tr->getPos() + Vector2D(tr->getW() / 2, tr->getH()), Vector2D(0.0, -1.0));
