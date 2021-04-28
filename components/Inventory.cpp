@@ -58,6 +58,7 @@ void Inventory::init() {
 	std::vector<inventoryDropdown::slot*> slots;
 	slots.push_back(new inventoryDropdown::slot("Use", []() { std::cout << std::endl << "Elemento usado"; }));
 	slots.push_back(new inventoryDropdown::slot("Rotate", []() {std::cout << std::endl << "Elemento girado" << std::endl; }));
+	slots.push_back(new inventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown); }));
 	dropDown = new inventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
 }
 void Inventory::render() {
@@ -101,6 +102,7 @@ void Inventory::update() {
 			if (!dropDownActive) {
 				dropDownActive = true;
 				dropDown->setPos(mousePos);
+				itemClickedInDropdown = hoverItem;
 			}
 		}
 
@@ -108,6 +110,7 @@ void Inventory::update() {
 			dropDown->onClick(mousePos);
 			dropDownActive = false;
 			justPressed = true;
+			itemClickedInDropdown = nullptr;
 		}
 
 		if (dropDownActive)
