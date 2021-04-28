@@ -4,6 +4,7 @@
 #include "Collisions.h"
 #include <array>
 #include <limits>
+#include <list>
 #include "../utils/checkML.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
@@ -58,6 +59,23 @@ public:
 
 	void rayCastToSquare(Entity* entity);
 
+	template <typename Group>
+	std::list<Entity*> allCollisionsInLine(Manager* entityManager)
+	{
+		std::list<Entity*> collided = std::list<Entity*>();
+		auto entities = entityManager->getEntities();
+		for (Entity* e : entities)
+		{
+			if (e->hasGroup<Group>() && e->hasComponent<Transform>())
+			{
+				rayCastToSquare(e->getComponent<Transform>());
+				if (distance_ >= 0.0)
+					collided.push_back(e);
+			}
+		}
+		return collided;
+	}
+
 	/// Calculates minimum distance in a specified direction to any and all entities with transforms that belong to a certain group.
 	/// Makes modifications to RayCast to display point of nearest collision and distance, which it returns
 	/// If no collision is detected, distance will be -1.0
@@ -66,16 +84,13 @@ public:
 	{
 		auto entities = entityManager->getEntities();
 		RayCast aux = RayCast(*this);
-		Entity* lepepe;
 		for (Entity* e : entities)
 		{
 			if (e->hasGroup<Group>() && e->hasComponent<Transform>())
 			{
 				aux.rayCastToSquare(e->getComponent<Transform>());
-				if (aux.distance_ != -1.0 && (aux.distance_ < distance_ || distance_ == -1.0)) {
+				if (aux.distance_ != -1.0 && (aux.distance_ < distance_ || distance_ == -1.0))
 					*this = RayCast(aux);
-					lepepe = e;
-				}
 			}
 		}
 		return distance_;
