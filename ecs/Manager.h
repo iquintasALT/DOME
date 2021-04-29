@@ -91,6 +91,7 @@ public:
 	/// </param>
 	void ChangeScene(GameScene* scene, SceneManager::SceneMode mode);
 
+	inline Game* getGame() { return game; }
 private:
 	bool changeScene = false;
 	std::vector<Entity*> entities_;

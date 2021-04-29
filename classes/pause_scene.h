@@ -9,8 +9,8 @@ public:
 	~PauseScene() {};
 	void init() override;
 
-	static void resume(Game* g);
-	static void menu(Game* g);
-	static void settings(Game* g);
+	static void resume(Manager* mng);
+	static void menu(Manager* mng);
+	static void settings(Manager* mng);
 };
 

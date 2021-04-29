@@ -4,6 +4,7 @@
 #include "../game/Game.h"
 #include "../classes/locations_scene.h"
 #include "../classes/menu_scene.h"
+//#include "../ecs/Manager.h";
 
 void PauseScene::init() {
 	ih().clearState();
@@ -16,18 +17,17 @@ void PauseScene::init() {
 	auto menuButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 530), Vector2D(256, 64), &sdlutils().images().at("mainmenuButton"), menu, g_, mngr_);
 	mngr_->addEntity(menuButton);
 }
-void PauseScene::resume(Game* g) {
+void PauseScene::resume(Manager* mng) {
 	ih().clearState();
-	g->getStateMachine()->popState();
+	mng->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE);
 }
 
-void PauseScene::settings(Game* g) {
+void PauseScene::settings(Manager* mng) {
 	cout << "GO TO SETTINGS";
 }
 
-void PauseScene::menu(Game* g) {
+void PauseScene::menu(Manager* mng) {
 	ih().clearState();
-	g->getStateMachine()->~GameStateMachine();
-	g->getStateMachine()->pushState(new MenuScene(g));
+	mng->ChangeScene(new MenuScene(mng->getGame()), SceneManager::SceneMode::SINGLE);
 }
 

@@ -1,30 +1,39 @@
 #include "SceneManager.h"
 #include "../game/Game.h"
 
-void SceneManager::ChangeScene(GameScene* scene, SceneMode mode){
+void SceneManager::ChangeScene(GameScene* scene, SceneMode mode) {
 	shouldSwap = true;
 
 	sceneToSwap = scene;
 	sceneChangeMode = mode;
 }
 
-SceneManager::operator bool() const{
+SceneManager::operator bool() const {
 	return shouldSwap;
 }
 
 void SceneManager::LoadScene() {
 	auto states = game->getStateMachine();
-	if (sceneChangeMode == SceneMode::OVERRIDE) {
-		states->popState();
-	}
-	else if(sceneChangeMode == SceneMode::SINGLE) {
-		while (!states->empty()) {
+	auto newScene = sceneToSwap;
+
+	if (sceneChangeMode != SceneMode::REMOVE) {
+
+		if (sceneChangeMode == SceneMode::OVERRIDE) {
 			states->popState();
 		}
+		else if (sceneChangeMode == SceneMode::SINGLE) {
+			while (!states->empty()) {
+				states->popState();
+			}
+		}
+
+		states->pushState(newScene);
+		newScene->init();
 	}
-
-	states->pushState(sceneToSwap);
-
+	else {
+		states->popState();
+		states->currentState()->init();
+	}
 	shouldSwap = false;
 	sceneToSwap = nullptr;
 }

@@ -11,7 +11,7 @@ void BackToShelter::init() {
 }
 
 void BackToShelter::Interact() {
-	scene_->changeState(new ShelterScene(scene_->getGame()));
+	entity_->getMngr()->ChangeScene(new ShelterScene(scene_->getGame()), SceneManager::SceneMode::OVERRIDE);
 }
 
 void BackToShelter::update() {
