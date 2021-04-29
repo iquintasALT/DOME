@@ -21,3 +21,7 @@ void GameStateMachine::popState() {
 		states.pop();
 	}
 }
+
+bool GameStateMachine::empty() {
+	return states.empty();
+}

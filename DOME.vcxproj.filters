@@ -327,6 +327,7 @@
     <ClCompile Include="classes\pause_button.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
+    <ClCompile Include="classes\SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -726,6 +727,7 @@
     <ClInclude Include="classes\pause_button.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
+    <ClInclude Include="classes\SceneManager.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

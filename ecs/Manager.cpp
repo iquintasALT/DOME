@@ -5,7 +5,7 @@
 
 #include <algorithm>
 
-Manager::Manager() {
+Manager::Manager(Game* game): game(game), sceneManager(nullptr) {
 	for (auto elem : hdlrs_)
 		elem = nullptr;
 }
@@ -53,11 +53,6 @@ void Manager::update() {
 	{
 		if (entities_[i]->active)
 			entities_[i]->update();
-		if (changeScene)
-		{
-			changeScene = false;
-			break;
-		}
 	}
 }
 
@@ -77,4 +72,17 @@ std::vector<BoxCollider*>::iterator Manager::AddCollider(BoxCollider* bc) {
 	std::vector<BoxCollider*>::iterator it = colliders.end();
 	it = colliders.insert(it, bc);
 	return it;
+}
+
+void Manager::cycle() {
+	update();
+	refresh();
+	render();
+
+	if (sceneManager)
+		sceneManager.LoadScene();
+}
+
+void Manager::ChangeScene(GameScene* scene, SceneManager::SceneMode mode) {
+	sceneManager.ChangeScene(scene, mode);
 }
