@@ -23,7 +23,8 @@ void PauseScene::resume(Manager* mng) {
 }
 
 void PauseScene::settings(Manager* mng) {
-	cout << "GO TO SETTINGS";
+	ih().clearState();
+
 }
 
 void PauseScene::menu(Manager* mng) {
