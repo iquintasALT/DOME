@@ -65,14 +65,12 @@ void Game::start() {
 			continue;
 		}
 
-		//std::cout << std::endl << states->currentState()->getSize() << std::endl;
-		states->currentState()->update();
-		states->currentState()->refresh();
-
-		//Camera::mainCamera->MoveDir(Vector2D(1, 0));
+		//states->currentState()->update();
+		//states->currentState()->refresh();
+		//states->currentState()->render();
 
 		sdlutils().clearRenderer();
-		states->currentState()->render();
+		states->currentState()->cycle();
 		sdlutils().presentRenderer();
 
 		Uint32 frameTime = sdlutils().currRealTime() - startTime;

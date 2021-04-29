@@ -49,7 +49,7 @@ void ShelterScene::init() {
 	Player* player = dynamic_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 	craftSys = new CraftingSystem(mngr_);
 
-	uselessMngr = new Manager();
+	uselessMngr = new Manager(g_);
 
 	Vector2D auxPos = player->getComponent<Transform>()->getPos();
 
