@@ -1,13 +1,16 @@
 #include "CameraMovement.h"
-
+#include "../components/rigid_body.h"
+#include "../game/constant_variables.h"
 CameraMovement::CameraMovement(float _vel) {
 	velocity = _vel;
 	tr = nullptr;
 	cam = nullptr;
+	rb = nullptr;
 }
 
 void CameraMovement::init() {
 	tr = entity_->getComponent<Transform>();
+	rb = entity_->getComponent<RigidBody>();
 	cam = Camera::mainCamera;
 	assert(tr != nullptr && cam != nullptr);
 
@@ -15,6 +18,11 @@ void CameraMovement::init() {
 }
 
 void CameraMovement::update() {
-	cam->Lerp(tr->getPos(), velocity);
+
+	Vector2D pos = tr->getPos();
+	if (rb != nullptr && rb->onFloor()) {
+		pos = pos + Vector2D(0,consts::CAMERA_MARGIN_FROM_PLAYER);
+	}
+	cam->Lerp(pos, velocity);
 }
 
