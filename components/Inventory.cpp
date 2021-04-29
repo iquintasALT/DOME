@@ -8,7 +8,6 @@
 
 Inventory::Inventory(int width, int height) : width(width), height(height), other(nullptr) {
 	transform = nullptr;
-	//itemWidth = itemHeight = 1;
 	selectedItem = nullptr;
 	selectedItem_ = nullptr;
 	justPressed = false;
@@ -46,7 +45,6 @@ void Inventory::init() {
 	assert(transform != nullptr);
 	originalPos = transform->getPos();
 
-
 	toolTips = entity_->getMngr()->addEntity();
 	toolTipsTr = toolTips->addComponent<Transform>(Vector2D(100, 100), 500, 10, 0);
 	toolTipsText = toolTips->addComponent<TextWithBackground>("Inventario",
@@ -69,6 +67,7 @@ void Inventory::render() {
 	if (dropDownActive) {
 		dropDown->render();
 	}
+
 	else if (showToolTip)
 		toolTipsText->render();
 }
@@ -152,7 +151,7 @@ void Inventory::update() {
 		}
 	}
 	else {
-
+		showToolTip = false;
 	}
 
 	if (selectedItem != nullptr) {
