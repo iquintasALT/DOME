@@ -8,15 +8,17 @@
 
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
-	mapInfo.tile_map.load(path);
+
+	mapInfo.tile_map = new tmx::Map();
+	mapInfo.tile_map->load(path);
 
 	// obtenemos el tama�o del mapa (en tiles)
-	auto map_dimensions = mapInfo.tile_map.getTileCount();
+	auto map_dimensions = mapInfo.tile_map->getTileCount();
 	mapInfo.rows = map_dimensions.y;
 	mapInfo.cols = map_dimensions.x;
 
 	// calculamos las dimensiones de los tiles
-	auto tilesize = mapInfo.tile_map.getTileSize();
+	auto tilesize = mapInfo.tile_map->getTileSize();
 	mapInfo.tile_width = tilesize.x;
 	mapInfo.tile_height = tilesize.y;
 
@@ -26,7 +28,7 @@ void GameScene::loadMap(string& const path) {
 	// (el mapa utiliza el �ndice [gid] del primer tile cargado del tileset como clave)
 	// (para poder cargar los tilesets del archivo .tmx, les ponemos de nombre 
 	// el nombre del archivo sin extension en el .json) 
-	auto& map_tilesets = mapInfo.tile_map.getTilesets();
+	auto& map_tilesets = mapInfo.tile_map->getTilesets();
 	for (auto& tset : map_tilesets) {
 		string name = tset.getName();
 		Texture* tex = &sdlutils().tilesets().find(name)->second;
@@ -35,7 +37,7 @@ void GameScene::loadMap(string& const path) {
 
 
 	// recorremos cada una de las capas (de momento solo las de tiles) del mapa
-	auto& map_layers = mapInfo.tile_map.getLayers();
+	auto& map_layers = mapInfo.tile_map->getLayers();
 	for (auto& layer : map_layers) {
 		// aqui comprobamos que sea la capa de tiles
 		if (layer->getType() == tmx::Layer::Type::Tile) {
