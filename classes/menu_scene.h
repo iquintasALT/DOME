@@ -5,7 +5,7 @@
 
 using namespace std;
 
-class Game;
+class Manager;
 
 class MenuScene : public GameScene
 {
@@ -16,9 +16,9 @@ private:
 public: 
 	MenuScene(Game* game);
 	void init() override;
-	static void playGame(Game* g);
-	static void setting(Game* g);
-	static void exit(Game* g);
+	static void playGame(Manager* mngr);
+	static void setting(Manager* mngr);
+	static void exit(Manager* mngr);
 	void render();
 	~MenuScene();
 };

@@ -9,7 +9,7 @@ public:
 	
 	enum class SceneMode
 	{
-		ADDITIVE, SINGLE, OVERRIDE
+		ADDITIVE, SINGLE, OVERRIDE, REMOVE
 	};
 
 	inline SceneManager(Game* game) : game(game), sceneToSwap(nullptr), shouldSwap(false), sceneChangeMode(SceneMode::ADDITIVE){};

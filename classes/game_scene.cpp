@@ -138,7 +138,7 @@ void GameScene::loadMap(string& const path) {
 						mngr_->getHandler<Player_hdlr>()->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
 					else {
 						new Player(mngr_, Point2D(aabb.left, aabb.top));
-						g_->playerCreated = true;
+						g_->playerCreated = false;
 					}
 					auto camPos = Vector2D(aabb.left - sdlutils().width() / 2, aabb.top - sdlutils().height() / 2);
 					Camera::mainCamera->Move(camPos);

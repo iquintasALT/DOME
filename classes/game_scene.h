@@ -75,7 +75,7 @@ public:
 	inline virtual void update() { mngr_->update(); }
 	inline virtual void refresh() { mngr_->refresh(); }
 	inline virtual void render() { mngr_->render(); }
-	inline virtual void cycle() { mngr_->cycle(); }
+	inline virtual void cycle() { update(); refresh(); render(); mngr_->cycle(); }
 	inline Game* getGame() { return g_; };
 	void changeState(GameScene* gs);
 };

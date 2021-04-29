@@ -46,12 +46,11 @@ void LocationsScene::loadLocationButtons() {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-	g->getStateMachine()->changeState(new RaidScene(paths[index],names[index],g));
+	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::OVERRIDE);
 }
 
 void LocationsScene::anActualGoodName(Game* g) {
-	g->getStateMachine()->pushState(new ShelterScene(g));
-	g->getStateMachine()->currentState()->init();
+	mngr_->ChangeScene(new ShelterScene(g), SceneManager::SceneMode::ADDITIVE);
 }
 
 void LocationsScene::update() {

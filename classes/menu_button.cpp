@@ -21,7 +21,7 @@ void MenuButton::update() {
 		 
 		if (mousePos.getX() >= position.getX() && mousePos.getY() >= position.getY() &&
 		mousePos.getX() <= position.getX() + size.getX() && mousePos.getY() <= position.getY() + size.getY()) {
-			cbOnClick(game);
+			cbOnClick(getMngr());
 		}
 	}
 }
