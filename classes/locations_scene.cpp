@@ -10,7 +10,7 @@ void LocationsScene::init()
 	auto background = mngr_->addEntity();
 	background->addComponent<Transform>(Vector2D(sdlutils().width() / 2 - sdlutils().height() / 2, 0),
 		sdlutils().height(), sdlutils().height());
-	background->addComponent<Image>(&sdlutils().images().at("location_image"), 1, 3, 0, 0);
+	background->addComponent<Image>(&sdlutils().images().at("location_image"), 1, 3, 0, 0, true);
 	mngr_->addRenderLayer<Background>(background);
 
 	// this here is so we are aware that this is not roght but I need to wait till we have all locations srry
@@ -38,7 +38,7 @@ void LocationsScene::loadLocationButtons() {
 
 			auto button = mngr_->addEntity();
 			button->addComponent<Transform>(Vector2D(aabb.left, aabb.top), 75, 75);
-			button->addComponent<Image>(&sdlutils().images().at("location_icons"), 2, 3, row, col);
+			button->addComponent<Image>(&sdlutils().images().at("location_icons"), 2, 3, row, col, true);
 			mngr_->addRenderLayer<Background>(button);
 			locations.push_back(button);
 		}
