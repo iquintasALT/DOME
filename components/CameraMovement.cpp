@@ -23,6 +23,6 @@ void CameraMovement::update() {
 	if (rb != nullptr && rb->onFloor()) {
 		pos = pos + Vector2D(0,consts::CAMERA_MARGIN_FROM_PLAYER);
 	}
-	cam->Lerp(pos, velocity);
+	cam->LerpWithBounds(pos, velocity);
 }
 
