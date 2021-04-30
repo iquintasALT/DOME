@@ -8,6 +8,7 @@
 
 void PainComponent::init() {
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
+	frameIndex = 2;
 	time = sdlutils().currRealTime();
 	weapon = static_cast<Player*>(entity_)->getCurrentWeapon()->getWeaponMovement();
 	originalDmg = weapon->getDamage();

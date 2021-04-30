@@ -6,6 +6,7 @@
 void HypothermiaComponent::init() {
 	time = sdlutils().currRealTime();
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
+	frameIndex = 3;
 	frost = &sdlutils().images().at("frost");
 }
 

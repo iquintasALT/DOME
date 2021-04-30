@@ -3,6 +3,7 @@
 #include "../game/constant_variables.h"
 #include "../components/box_collider.h"
 #include "../classes/weapon_behaviour.h"
+#include "../classes/physiognomy.h"
 
 KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	speed = consts::PLAYER_SPEED;
@@ -23,6 +24,8 @@ void KeyboardPlayerCtrl::init() {
 void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
 	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED)
 		std::cout << "OUCH, QUE DOLOR, TENGA USTED MÁS CUIDADO JUGADOR";
+		static_cast<Player*>(entity_)->getPhysiognomy()->addConcussionState();
+	}
 }
 
 void KeyboardPlayerCtrl::OnTrigger(Entity* bc) {

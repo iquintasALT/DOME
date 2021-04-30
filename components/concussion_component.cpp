@@ -2,6 +2,7 @@
 #include "../classes/player.h"
 #include "KeyboardPlayerCtrl.h"
 #include "../classes/physiognomy.h"
+#include "../sdlutils/SDLUtils.h"
 
 ConcussionComponent::~ConcussionComponent() {
 	activateJump();
@@ -12,6 +13,8 @@ void ConcussionComponent::init() {
 	assert(kb != nullptr);
 
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
+
+	frameIndex = 1;
 
 	time = sdlutils().currRealTime();
 	cancelJump();

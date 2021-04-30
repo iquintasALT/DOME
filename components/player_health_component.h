@@ -3,14 +3,17 @@
 #include "../ecs/Entity.h"
 #include "../utils/checkML.h"
 #include "../sdlutils/Texture.h"
+#include "../sdlutils/SDLUtils.h"
 
 class PlayerHealthComponent : public Component
 {
 protected:
 	Texture* t;
+	int frameIndex;
 public:
-	PlayerHealthComponent() : t(nullptr){};
+	PlayerHealthComponent() : t(&sdlutils().images().at("status_effects")){};
 	virtual ~PlayerHealthComponent() {};
+	inline int getFrameIndex() { return frameIndex; };
 	Texture* getTexture() { return t; }
 };
 

@@ -56,6 +56,7 @@ public:
 	//Borra todos los estados (cuando se abandona la raid)
 	void removeAllStates();
 	int getNumStates() { return numStates; }
+	int getNumBleedStates() { return numBleedStates; }
 
 	void die();
 	inline bool alive();

@@ -24,6 +24,8 @@ private:
 	Texture* totalBullets;
 	Texture* timer;
 
+	void drawStatus(int stateNum, int pos, int frameIndex);
+
 public:
 	hud(Manager* m, Transform* initialPos, Player* p);
 

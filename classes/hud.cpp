@@ -6,6 +6,7 @@
 #include "ricochet_weapon.h"
 #include "../ecs/Manager.h"
 #include "../components/player_health_component.h"
+#include "../components/bleedout_component.h"
 
 #include <iostream>
 hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
@@ -59,11 +60,29 @@ void hud::render()
 	nbullets = nullptr;
 	//Renderizar los estados
 
-	for (int i = 0; i < player->getPhysiognomy()->getNumStates(); i++)
+	/// i es el indice interno del estado. Como el dessangrado es un estado que puede ocupar
+	/// varios espacios, necesitamos j para contar el número de espacios
+	for (int i = 0, j = 0; 
+		i < (player->getPhysiognomy()->getNumStates() + 1 - player->getPhysiognomy()->getNumBleedStates()); 
+		i++, j++)
 	{
-		Vector2D aux = Vector2D(16 + i * 33, 20);
-		SDL_Rect dest = build_sdlrect(aux, 33, 33);
-
-		states->operator[](i)->getTexture()->render(dest);
+		if (dynamic_cast<BleedoutComponent*>(states->operator[](i)))
+		{
+			for (; j < player->getPhysiognomy()->getNumBleedStates() - 1; j++)
+			{
+				drawStatus(i, j, 13);
+			}
+		}
+		drawStatus(i, j, states->operator[](i)->getFrameIndex());
 	}
+}
+
+void hud::drawStatus(int stateNum, int pos, int frameIndex)
+{
+	Vector2D aux = Vector2D(16 + pos * 33, 20);
+	SDL_Rect dest = build_sdlrect(aux, 33, 33);
+	int width = states->operator[](stateNum)->getTexture()->width() / 4;
+	int height = states->operator[](stateNum)->getTexture()->height() / 4;
+	SDL_Rect src = build_sdlrect((frameIndex % 4) * width, (frameIndex / 4) * height, width, height);
+	states->operator[](stateNum)->getTexture()->render(src, dest);
 }
