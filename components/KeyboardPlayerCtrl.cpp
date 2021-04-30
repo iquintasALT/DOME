@@ -22,7 +22,7 @@ void KeyboardPlayerCtrl::init() {
 }
 
 void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
-	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED)
+	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED) {
 		std::cout << "OUCH, QUE DOLOR, TENGA USTED MÁS CUIDADO JUGADOR";
 		static_cast<Player*>(entity_)->getPhysiognomy()->addConcussionState();
 	}
