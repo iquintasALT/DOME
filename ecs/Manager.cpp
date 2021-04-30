@@ -4,15 +4,17 @@
 #include "../components/box_collider.h"
 
 #include <algorithm>
+#include <iostream>
 
-Manager::Manager() {
+Manager::Manager(Game* game) : game(game), sceneManager(game) {
 	for (auto elem : hdlrs_)
 		elem = nullptr;
 }
 
 Manager::~Manager() {
 	for (auto e : entities_) {
-		delete e;
+		if (e != getHandler<Player_hdlr>())
+			delete e;
 	}
 
 	entities_.clear();
@@ -24,7 +26,7 @@ void Manager::refresh() {
 		std::remove_if( //
 			entities_.begin(), //
 			entities_.end(), //
-			[&]( Entity* e) { //
+			[&](Entity* e) { //
 				if (!e->isDead()) {
 					return false;
 				}
@@ -53,11 +55,6 @@ void Manager::update() {
 	{
 		if (entities_[i]->active)
 			entities_[i]->update();
-		if (changeScene)
-		{
-			changeScene = false;
-			break;
-		}
 	}
 }
 
@@ -77,4 +74,17 @@ std::vector<BoxCollider*>::iterator Manager::AddCollider(BoxCollider* bc) {
 	std::vector<BoxCollider*>::iterator it = colliders.end();
 	it = colliders.insert(it, bc);
 	return it;
+}
+
+void Manager::cycle() {
+	//update();
+	//refresh();
+	//render();
+
+	if (sceneManager)
+		sceneManager.LoadScene();
+}
+
+void Manager::ChangeScene(GameScene* scene, SceneManager::SceneMode mode) {
+	sceneManager.ChangeScene(scene, mode);
 }

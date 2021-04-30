@@ -24,5 +24,6 @@ public:
 	void popState();
 	//metodo para agregar nuevo estado a la cola
 	inline void pushState(GameScene* gs) { states.push(gs); }
+	bool empty();
 };
 #endif

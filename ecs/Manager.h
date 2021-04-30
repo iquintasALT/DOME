@@ -11,13 +11,17 @@
 #include "Entity.h"
 
 #include "SDL_error.h"
+#include "../classes/SceneManager.h"
 
 class BoxCollider;
 class InteractableElement;
 
+
+class Game;
 class Manager {
 public:
-	Manager();
+	Manager() = delete;
+	Manager(Game* game);
 	virtual ~Manager();
 
 	// entities
@@ -73,12 +77,21 @@ public:
 	void update();
 	void render();
 	void refresh();
+	void cycle();
 
 	void AddInteractableElement(InteractableElement* ie);
 	std::vector<BoxCollider*>::iterator AddCollider(BoxCollider* bc);
 
 	inline void onNewScene() { changeScene = true; };
 
+	/// <param name="mode">
+	/// ADDITIVE: A new Scene is added to the pile
+	/// SINGLE: The whole pile is removed and then this scene is pushed
+	/// OVERRIDE: The last scene is overwritten and changed by the new one
+	/// </param>
+	void ChangeScene(GameScene* scene, SceneManager::SceneMode mode);
+
+	inline Game* getGame() { return game; }
 private:
 	bool changeScene = false;
 	std::vector<Entity*> entities_;
@@ -87,5 +100,8 @@ private:
 	std::vector<InteractableElement*> interactableElements;
 	std::vector<BoxCollider*> colliders;
 	std::array<std::vector<Entity*>, ecs::maxRender> renders_;
+
+	SceneManager sceneManager;
+	Game* game;
 };
 

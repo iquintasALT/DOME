@@ -4,9 +4,10 @@
 #include "../sdlutils/Texture.h"
 #include "../utils/checkML.h"
 
+class Manager;
 class Game;
 
-using CallBackOnClick = void(Game* g);
+using CallBackOnClick = void(Manager* g);
 class MenuButton : public GameObject {
 protected:
 	CallBackOnClick* cbOnClick;

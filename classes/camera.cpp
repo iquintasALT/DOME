@@ -42,8 +42,8 @@ void Camera::LerpWithBounds(const Vector2D& newPos, float i) {
 void Camera::setBounds(float a, float b, float c, float d) {
 	xmin = a;
 	ymin = b;
-	xmax = c;
-	ymax = d;
+	xmax = c - width;
+	ymax = d - height;
 }
 
 void Camera::MoveDir(Vector2D dir) {
