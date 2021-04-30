@@ -1,6 +1,5 @@
 #pragma once
-#include <vector>
-#include <vector>
+#include <list>
 #include "../utils/checkML.h"
 #include "player.h"
 #include "../game/constant_variables.h"
@@ -23,9 +22,9 @@ using namespace std;
 class Physiognomy {
 private:
 	Player* player;
-	vector<PlayerHealthComponent*> healthComponents;
+	list<PlayerHealthComponent*> healthComponents;
 	HypothermiaComponent* hypothermia;
-	int numStates;
+	//int numStates;
 	bool playerAlive;
 
 	int numBleedStates;
@@ -34,10 +33,10 @@ private:
 	bool concussionAdded;
 
 	void checkAlive();
-	void moveElems(int i);
+	//void moveElems(int i);
 public:
-	inline Physiognomy(Player* player_) : player(player_), healthComponents(consts::MAX_MULTIPLE_STATES), hypothermia(nullptr) {
-		numStates = 0; numBleedStates = 0; painAdded = false; intoxicationAdded = false; concussionAdded = false; playerAlive = true; }
+	inline Physiognomy(Player* player_) : player(player_), healthComponents(list<PlayerHealthComponent*>()), hypothermia(nullptr) {
+		/*numStates = 0*/; numBleedStates = 0; painAdded = false; intoxicationAdded = false; concussionAdded = false; playerAlive = true; }
 
 	//Añadir estados al sistema
 	void addBleedState();
@@ -55,10 +54,11 @@ public:
 
 	//Borra todos los estados (cuando se abandona la raid)
 	void removeAllStates();
-	int getNumStates() { return numStates; }
+	int getNumStates() { return healthComponents.size(); }
 	int getNumBleedStates() { return numBleedStates; }
+	int getNumUniqueStates() { return healthComponents.size() - numBleedStates + (numBleedStates > 0); };
 
 	void die();
 	inline bool alive();
-	inline vector<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
+	inline list<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
 };
