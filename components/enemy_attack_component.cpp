@@ -66,8 +66,6 @@ bool RangedAttack::attack()
 	RayCast rC = RayCast(tr_->getPos(), playerTr_);
 	if (rC.getDistance() < range_)
 	{
-		/// TO DO
-		/// fire a bullet
 		Entity* bullet = entity_->getMngr()->addEntity();
 		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(tr_->getPos()), 4, 6, 0);
 		RigidBody* rb = bullet->addComponent<RigidBody>((playerTr_->getPos() - tr_->getPos()) * 10.0, false);

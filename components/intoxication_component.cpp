@@ -7,6 +7,9 @@
 void IntoxicationComponent::init() {
 	time = sdlutils().currRealTime();
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
+
+	frameIndex = 0;
+
 	hunger = entity_->getComponent<HungerComponent>();
 
 	assert(entity_ != nullptr);

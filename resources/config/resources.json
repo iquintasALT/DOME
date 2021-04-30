@@ -167,6 +167,10 @@
     {
       "id": "black",
       "file": "resources/sprites/black.png"
+    },
+    {
+      "id": "status_effects",
+      "file": "resources/sprites/status_effects.png"
     }
   ],
 
