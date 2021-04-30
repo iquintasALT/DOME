@@ -5,6 +5,7 @@
 #include "../ecs/Manager.h"
 #include "../components/weapon.h"
 #include "../classes/weapon_behaviour.h"
+#include <list>
 
 void PainComponent::init() {
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
@@ -20,13 +21,15 @@ PainComponent::~PainComponent() {
 }
 
 void PainComponent::increaseTime() {
-	for (int i = 0; i < phys->getNumStates(); i++) {
-		auto component = phys->getHealthComponents()->operator[](i);
-		if (dynamic_cast<ConcussionComponent*>(component) != nullptr) {
-			static_cast<ConcussionComponent*>(component)->increaseTime(consts::CONTUSION_INCREASE_TIME);
+
+	list<PlayerHealthComponent*>::iterator i = phys->getHealthComponents()->begin();
+	while (i != phys->getHealthComponents()->end())
+	{
+		if (dynamic_cast<ConcussionComponent*>(*i) != nullptr) {
+			static_cast<ConcussionComponent*>(*i)->increaseTime(consts::CONTUSION_INCREASE_TIME);
 		}
-		else if (dynamic_cast<IntoxicationComponent*>(component) != nullptr) {
-			static_cast<IntoxicationComponent*>(component)->increaseTime(consts::INTOXICATION_INCREASE_TIME);
+		else if (dynamic_cast<IntoxicationComponent*>(*i) != nullptr) {
+			static_cast<IntoxicationComponent*>(*i)->increaseTime(consts::INTOXICATION_INCREASE_TIME);
 		}
 	}
 }

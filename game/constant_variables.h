@@ -40,7 +40,7 @@ namespace consts {
 	const int TIME_PER_NEWSUMOFTIME = 8000; //Tiempo que tarda PainComponent en añadir tiempo a Contusion e Intoxication
 	const int TIME_TO_DECREASE_HUNGER = 10000;
 	const float HUNGER_TO_DECREASE = 0.15f; //En %
-	const int MAX_NEWDAMAGE_TIME = 10000;
+	const int MAX_NEWDAMAGE_TIME = 5000;
 	const int HYPOTHERMIA_TIME = 30000;
 
 	//WEAPONS
