@@ -12,6 +12,7 @@ public:
 private:
 	float velocity; //0 - 1
 	Transform* tr;
+	RigidBody* rb;
 	Camera* cam;
 };
 

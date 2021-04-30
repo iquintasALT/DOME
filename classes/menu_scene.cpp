@@ -34,18 +34,17 @@ void MenuScene::render()
 	GameScene::render();
 }
 
-void MenuScene::playGame(Game* g) {
-	g->getStateMachine()->pushState(new LocationsScene(g));
-	g->getStateMachine()->currentState()->init();
+void MenuScene::playGame(Manager* mngr) {
+	mngr->ChangeScene(new LocationsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
 }
 
-void MenuScene::setting(Game* g) {/*
+void MenuScene::setting(Manager* mngr) {/*
 	g->getStateMachine()->pushState(new RaidScene("./resources/tilemap/template.tmx", "template", g));
 	g->getStateMachine()->currentState()->init();*/
 }
 
-void MenuScene::exit(Game* g) {
-	g->quitGame();
+void MenuScene::exit(Manager* mngr) {
+	mngr->getGame()->quitGame();
 }
 
 MenuScene::~MenuScene()
