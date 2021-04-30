@@ -1,9 +1,8 @@
 #pragma once
-
+#include <list>
 #include "../components/Transform.h"
 #include "player.h"
 #include "countdown.h"
-
 #include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
 
@@ -17,14 +16,14 @@ private:
 	int bullets = 0;
 	int charger = 0;
 	int totalBullet = 0;
-	vector<PlayerHealthComponent*>* states;
+	list<PlayerHealthComponent*>* states;
 
 	Texture* nbullets;
 	Texture* ncharger;
 	Texture* totalBullets;
 	Texture* timer;
 
-	void drawStatus(int stateNum, int pos, int frameIndex);
+	void drawStatus(int pos, int frameIndex);
 
 public:
 	hud(Manager* m, Transform* initialPos, Player* p);

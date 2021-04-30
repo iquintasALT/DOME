@@ -58,31 +58,53 @@ void hud::render()
 	nbullets->render(posCam->getPos().getX(), posCam->getPos().getY() + 570);
 	delete nbullets;
 	nbullets = nullptr;
+	
+	
 	//Renderizar los estados
-
-	/// i es el indice interno del estado. Como el dessangrado es un estado que puede ocupar
-	/// varios espacios, necesitamos j para contar el número de espacios
-	for (int i = 0, j = 0; 
-		i < (player->getPhysiognomy()->getNumStates() + 1 - player->getPhysiognomy()->getNumBleedStates()); 
-		i++, j++)
+	if (states->size() > 0)
 	{
-		if (dynamic_cast<BleedoutComponent*>(states->operator[](i)))
+		/// Empezamos desde el final de la lista, sabiendo que los desangrados estarán al final
+		/// Además, si hay algún desangrado, el primero que dibujaremos será el incompleto
+
+		list<PlayerHealthComponent*>::iterator i = states->end();
+		--i;
+
+		int n = player->getPhysiognomy()->getNumStates() - 1; // el indice de recorrido como entero
+
+		// Dibujamos el desangrado incompleto, si hay
+		if (player->getPhysiognomy()->getNumBleedStates() > 0)
 		{
-			for (; j < player->getPhysiognomy()->getNumBleedStates() - 1; j++)
-			{
-				drawStatus(i, j, 13);
-			}
+			drawStatus(n, (*i)->getFrameIndex());
+			--i; --n;
 		}
-		drawStatus(i, j, states->operator[](i)->getFrameIndex());
+
+		// Dibujamos los desangrados completos, si hay
+		while (n >= player->getPhysiognomy()->getNumStates() - player->getPhysiognomy()->getNumBleedStates())
+		{
+			drawStatus(n, 13);
+			if (i!= states->begin()) --i; --n;
+		}
+
+		// Dibujamos el resto de estados
+		if (n >= 0)
+		do
+		{
+			drawStatus(n, (*i)->getFrameIndex());
+			if (i != states->begin()) --i; --n;
+		} 
+		while (i != states->begin());
 	}
 }
 
-void hud::drawStatus(int stateNum, int pos, int frameIndex)
+void hud::drawStatus(int pos, int frameIndex)
 {
+	// Si no hay estados que dibujar, no deberíamos estar en este método
+	assert(states->size() > 0);
+
 	Vector2D aux = Vector2D(16 + pos * 33, 20);
 	SDL_Rect dest = build_sdlrect(aux, 33, 33);
-	int width = states->operator[](stateNum)->getTexture()->width() / 4;
-	int height = states->operator[](stateNum)->getTexture()->height() / 4;
+	int width = 32;
+	int height = 32;
 	SDL_Rect src = build_sdlrect((frameIndex % 4) * width, (frameIndex / 4) * height, width, height);
-	states->operator[](stateNum)->getTexture()->render(src, dest);
+	states->front()->getTexture()->render(src, dest);
 }
