@@ -320,15 +320,21 @@
     <ClCompile Include="components\open_station.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\CameraMovement.cpp" />
     <ClCompile Include="components\TransitionComponent.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="classes\pause_button.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="classes\SceneManager.cpp" />
-    <ClCompile Include="ecs\Entity.cpp" />
+    <ClCompile Include="ecs\Entity.cpp">
+      <Filter>Source Files\ecs</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\SceneManager.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="components\CameraMovement.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -721,14 +727,18 @@
     <ClInclude Include="components\open_station.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\CameraMovement.h" />
     <ClInclude Include="components\TransitionComponent.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="classes\pause_button.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="classes\SceneManager.h" />
+    <ClInclude Include="classes\SceneManager.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\CameraMovement.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
