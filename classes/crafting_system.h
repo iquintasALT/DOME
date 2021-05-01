@@ -9,6 +9,7 @@
 #include "../ecs/Manager.h"
 #include "../utils/checkML.h"
 #include <vector>
+#include <iostream>
 
 class Workshop;
 #include <utility>
@@ -35,8 +36,9 @@ struct CraftableItem {
 	ITEMS name;
 	int cantidad;
 
-	int x, y, w, h;
-	CraftableItem(ITEMS n, int c, int w = 0, int h = 0, int x = 0, int y = 0) : name(n), cantidad(c), x(x), y(y), w(w), h(h) {};
+	int x, y, w, h, row, col;
+	std::string desc;
+	CraftableItem(ITEMS n, int c, int w = 0, int h = 0, int x = 0, int y = 0,int row = 0, int col = 0,string desc = "desc") : name(n), cantidad(c), x(x), y(y), w(w), h(h),col(col),row(row),desc(desc) {};
 	//AÑADIR MÁS INFO SI ES NECESARIA, 
 };
 using I = CraftableItem;

@@ -36,7 +36,7 @@ void GameScene::loadMap(string& const path) {
 		mapInfo.tilesets.insert(std::pair<gid, Texture*>(tset.getFirstGID(), tex));
 	}
 
-
+	int sceneLoots = 0;
 	// recorremos cada una de las capas (de momento solo las de tiles) del mapa
 	auto& map_layers = mapInfo.tile_map->getLayers();
 	for (auto& layer : map_layers) {
@@ -152,10 +152,11 @@ void GameScene::loadMap(string& const path) {
 					interactableElement->addComponent<Loot>("Hola nena", 5, 5);
 					Loot* loot = interactableElement->getComponent<Loot>();
 
-					vector<I> chestLoot = getGame()->SCENES_LOOT.find(getGame()->currentScene)->second[0];
+					vector<I> chestLoot = getGame()->SCENES_LOOT.find(getGame()->currentScene)->second[sceneLoots];
 					for (int i = 0; i < chestLoot.size(); i++) {
-						loot->getInventory()->storeItem(new Item{ new ItemInfo(chestLoot[i].name, "desc", chestLoot[i].w,chestLoot[i].h,chestLoot[i].y,chestLoot[i].x),mngr_,loot->getInventory(),chestLoot[i].x,chestLoot[i].y });
+						loot->getInventory()->storeItem(new Item{ new ItemInfo(chestLoot[i].name, chestLoot[i].desc, chestLoot[i].w,chestLoot[i].h,chestLoot[i].row,chestLoot[i].col),mngr_,loot->getInventory(),chestLoot[i].x,chestLoot[i].y });
 					}
+					sceneLoots++;
 				}
 				else if (obj.getName() == "enemy") {
 					// int en objeto para identificar el tipo de enemigo
