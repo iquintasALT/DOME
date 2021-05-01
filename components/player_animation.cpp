@@ -52,6 +52,24 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
+	if (ctrl->isStairs()) {
+		if (ih().getMouseButtonState(InputHandler::LEFT)) {
+			if (currentAnimation == animations[climb_shoot])
+				return false;
+			currentAnimation = animations[climb_shoot];
+			currentAnimation.render();
+			return true;
+		}
+		else {
+			if (currentAnimation == animations[climbing])
+				return false;
+
+			currentAnimation = animations[climbing];
+			currentAnimation.render();
+			return true;
+		}
+	}
+
 	float x = rb->getVel().getX();
 
 	if (x == 0) {
