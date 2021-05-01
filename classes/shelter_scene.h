@@ -4,13 +4,11 @@
 #include "../classes/crafting_system.h"
 #include "../classes/workshop.h"
 #include "../classes/sleep_station.h"
-#include <sdlgui/screen.h>
 #include <functional>
 
 
 class ShelterScene : public GameScene {
 private:
-	sdlgui::ListImages craftIcons;
 	CraftingSystem* craftSys;
 	Workshop* mechanical_Workshop;
 	Workshop* medical_Workshop;
