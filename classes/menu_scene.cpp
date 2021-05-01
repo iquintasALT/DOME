@@ -24,6 +24,8 @@ MenuScene::MenuScene(Game* game) :GameScene(game, "Menu") {
 	//mngr_->addRenderLayer<Enemy>(aux);
 
 	back = &sdlutils().images().at("dclock");
+
+	soundManager().playMusic("imperial");
 }
 
 void MenuScene::init() {}

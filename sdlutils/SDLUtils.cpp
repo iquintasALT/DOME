@@ -199,6 +199,9 @@ void SDLUtils::loadReasources(std::string filename) {
 		}
 	}
 
+	soundManager().setMusicVolume(soundManager().getMusicVolume());
+	soundManager().setSFXVolume(soundManager().getSFXVolume());
+
 	// load tilesets
 	jValue = root["tilesets"];
 	if (jValue != nullptr) {

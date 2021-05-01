@@ -11,7 +11,6 @@ protected:
 	protected:
 		Image* image;
 		int width, height;
-
 		int frameRow;
 		int frameCount;
 		int currentFrame;

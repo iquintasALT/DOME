@@ -207,6 +207,13 @@
     }
   ],
 
+  "musics": [
+    {
+      "id": "imperial",
+      "file": "resources/sound/imperial_march.wav"
+    }
+  ],
+
   "tilesets": [
     {
       "id": "template_tileset",

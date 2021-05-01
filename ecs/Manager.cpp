@@ -14,8 +14,8 @@ Manager::Manager(Game* game) : game(game), sceneManager(game) {
 
 Manager::~Manager() {
 	for (auto e : entities_) {
-		if (e != getHandler<Player_hdlr>())
-			delete e;
+		//if (e != getHandler<Player_hdlr>())
+		delete e;
 	}
 
 	entities_.clear();
@@ -67,7 +67,8 @@ void Manager::render() {
 }
 
 void Manager::removeRender(Entity* ent) {
-	renders_[ent->renderGroup][ent->renderIndex] = nullptr;
+	if (renders_.size() > ent->renderGroup && renders_[ent->renderGroup].size() > ent->renderIndex)
+		renders_[ent->renderGroup][ent->renderIndex] = nullptr;
 }
 
 void Manager::AddInteractableElement(InteractableElement* ie) {
