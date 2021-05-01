@@ -79,4 +79,3 @@ public:
 	inline Game* getGame() { return g_; };
 	void changeState(GameScene* gs);
 };
-

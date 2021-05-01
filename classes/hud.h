@@ -6,6 +6,7 @@
 #include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
 
+class TextWithBackground;
 class hud : public Entity
 {
 private:
@@ -23,6 +24,9 @@ private:
 	Texture* totalBullets;
 	Texture* timer;
 
+
+	Entity* tooltip;
+	TextWithBackground* tooltipText;
 	void drawStatus(int pos, int frameIndex);
 
 public:

@@ -225,6 +225,7 @@
     <ClCompile Include="components\Transform.cpp" />
     <ClCompile Include="components\TransitionComponent.cpp" />
     <ClCompile Include="components\weapon.cpp" />
+    <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
     <ClCompile Include="game\Game.cpp" />
     <ClCompile Include="json\JSON.cpp" />
