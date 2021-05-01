@@ -9,6 +9,7 @@ private:
 public:
 	SettingsScene(Game* g) : GameScene(g, "Settings") {};
 	void init() override;
-	void update() override;
+
+	static void back(Manager* mng);
 };
 

@@ -105,6 +105,10 @@
       "file": "resources/sprites/buttons/mainmenu_button.png"
     },
     {
+      "id": "backButton",
+      "file": "resources/sprites/buttons/back_button.png"
+    },
+    {
       "id": "dust",
       "file": "resources/sprites/dustParticle.png"
     },
