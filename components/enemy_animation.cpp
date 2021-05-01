@@ -32,16 +32,25 @@ void enemy_animation::init() {
 bool enemy_animation::changeAnimations() {
 
 	float x = rb->getVel().getX();
-	if (x == 0) {
-		if (currentAnimation == animations[idle])
+	
+	if (x < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
+	else  im_->setFlip(SDL_FLIP_NONE);
+	
+	if (dmgReceived) {
+		dmgReceived = false;
+		if (currentAnimation == animations[dmg])
 			return false;
-		currentAnimation = animations[idle];
+		currentAnimation = animations[dmg];
 		currentAnimation.render();
 		return true;
 	}
 
-	if (x < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
-	else  im_->setFlip(SDL_FLIP_NONE);
+	if (x == 0) {
+		if (currentAnimation == animations[idle])
+			return false;
+		currentAnimation = animations[idle];
+		return true;
+	}
 
 	if (currentAnimation != animations[walking]) {
 		currentAnimation = animations[walking];
@@ -86,6 +95,21 @@ bool flying_enemy_animation::changeAnimations() {
 
 	if (x < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
 	else  im_->setFlip(SDL_FLIP_NONE);
+
+	if (dmgReceived) {
+		dmgReceived = false;
+		if (currentAnimation == animations[dmg])
+			return false;
+		currentAnimation = animations[dmg];
+		currentAnimation.render();
+		return true;
+	}
+	else
+	{
+	if (currentAnimation == animations[idle]) return false;
+		currentAnimation = animations[idle];
+		return true;
+	}
 
 	return false;
 }

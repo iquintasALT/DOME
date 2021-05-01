@@ -18,7 +18,6 @@ enum ITEMS {
 class Inventory;
 class ItemInfo {
 private:
-	ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity*)> function = [](Entity*){});
 	ITEMS _name;
 	string _description;
 	int _width;
@@ -28,6 +27,7 @@ private:
 
 	std::function<void(Entity*)> function;
 public:
+	ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity*)> function = [](Entity*) {});
 	inline ITEMS name() { return _name; };
 	inline string description() { return _description; };
 	inline int width() { return _width; };

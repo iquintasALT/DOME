@@ -5,6 +5,7 @@
 
 #include <algorithm>
 #include <iostream>
+#include "../ecs/Entity.h"
 
 Manager::Manager(Game* game) : game(game), sceneManager(game) {
 	for (auto elem : hdlrs_)
@@ -13,8 +14,8 @@ Manager::Manager(Game* game) : game(game), sceneManager(game) {
 
 Manager::~Manager() {
 	for (auto e : entities_) {
-		if (e != getHandler<Player_hdlr>())
-			delete e;
+		//if (e != getHandler<Player_hdlr>())
+		delete e;
 	}
 
 	entities_.clear();
@@ -61,8 +62,13 @@ void Manager::update() {
 void Manager::render() {
 	for (auto i = 0u; i < renders_.size(); i++)
 		for (auto j = 0u; j < renders_[i].size(); j++)
-			if (!renders_[i][j]->dead && renders_[i][j]->active)
+			if (renders_[i][j] != nullptr && !renders_[i][j]->dead && renders_[i][j]->active)
 				renders_[i][j]->render();
+}
+
+void Manager::removeRender(Entity* ent) {
+	if (renders_.size() > ent->renderGroup && renders_[ent->renderGroup].size() > ent->renderIndex)
+		renders_[ent->renderGroup][ent->renderIndex] = nullptr;
 }
 
 void Manager::AddInteractableElement(InteractableElement* ie) {
@@ -87,4 +93,9 @@ void Manager::cycle() {
 
 void Manager::ChangeScene(GameScene* scene, SceneManager::SceneMode mode) {
 	sceneManager.ChangeScene(scene, mode);
+}
+
+void Manager::addRenderNumbers(Entity* renderObj, int group) {
+	renderObj->renderGroup = group;
+	renderObj->renderIndex = renders_[group].size() - 1;
 }

@@ -25,6 +25,13 @@ Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacte
 void Enemy::receiveDamage()
 {
 	lives--;
+	if (getComponent<enemy_animation>() != nullptr && !getComponent<enemy_animation>()->isDamaged()) {
+		getComponent<enemy_animation>()->setDamaged(true);
+	}
+	else if (getComponent<flying_enemy_animation>() != nullptr && !getComponent<flying_enemy_animation>()->isDamaged()) {
+		getComponent<flying_enemy_animation>()->setDamaged(true);
+	}
+
 	if (lives <= 0) {
 		setDead(true);
 	}
@@ -35,7 +42,7 @@ DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 	this->getComponent<Transform>()->setSize(32, 64);
 	mngr_->addRenderLayer<Enemy>(this);
 	addComponent<PlayerCollisions>();
-	addComponent<Image>(&sdlutils().images().at("enemy"), 2, 9, 0, 0);
+	addComponent<Image>(&sdlutils().images().at("enemy"), 3, 9, 0, 0);
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
 	addComponent2<EnemyAttackComponent, GroundedMeleeAttack>();
 	addComponent<ChasePlayer>(consts::MELEE_ENEMY_SPEED, consts::MELEE_ENEMY_STOPDISTANCE);
@@ -46,7 +53,7 @@ FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos, false)
 {
 	this->getComponent<Transform>()->setSize(32, 32);
 	mngr_->addRenderLayer<Enemy>(this);
-	addComponent<Image>(&sdlutils().images().at("flying_enemy"), 2, 4, 0, 0);
+	addComponent<Image>(&sdlutils().images().at("flying_enemy"), 3, 4, 0, 0);
 	addComponent<RigidBody>(Vector2D(), false);
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
 	addComponent2<EnemyAttackComponent, MeleeAttack>();

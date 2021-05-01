@@ -7,8 +7,12 @@
 #include "../ecs/Manager.h"
 #include "../components/player_health_component.h"
 #include "../components/bleedout_component.h"
+#include "../components/TextWithBackGround.h"
+
+#include "../sdlutils/InputHandler.h"
 
 #include <iostream>
+#include <string>
 hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 {
 	posCam = initialPos;
@@ -23,6 +27,14 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 	states = player->getPhysiognomy()->getHealthComponents();
 
 	charger = player->getCurrentWeapon()->getWeaponMovement()->getTamCharger();
+
+	//TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture * texture, bool appearingText = false, float appeatingTextSpeed = 1, bool alignInCenter = false);
+	
+	Entity* tooltip = m->addEntity();
+	tooltipTr = tooltip->addComponent<Transform>(Vector2D(), 400, 10);
+	tooltipText = tooltip->addComponent<TextWithBackground>("Inventario",
+		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+	tooltip->setActive(false);
 }
 
 void hud::update()
@@ -36,6 +48,8 @@ void hud::update()
 
 void hud::render()
 {
+	Vector2D mouse = Vector2D(ih().getMousePos().first, ih().getMousePos().second);
+
 	//Arriba derecha
 	Vector2D aux = Vector2D(995, 9);
 	SDL_Rect dest = build_sdlrect(aux, 75, 35);
@@ -74,14 +88,14 @@ void hud::render()
 		// Dibujamos el desangrado incompleto, si hay
 		if (player->getPhysiognomy()->getNumBleedStates() > 0)
 		{
-			drawStatus(n, (*i)->getFrameIndex());
+			drawStatus(n, (*i)->getFrameIndex(), mouse);
 			--i; --n;
 		}
 
 		// Dibujamos los desangrados completos, si hay
 		while (n >= player->getPhysiognomy()->getNumStates() - player->getPhysiognomy()->getNumBleedStates())
 		{
-			drawStatus(n, 13);
+			drawStatus(n, 13, mouse);
 			if (i != states->begin()) --i; --n;
 		}
 
@@ -89,14 +103,14 @@ void hud::render()
 		if (n >= 0)
 			do
 			{
-				drawStatus(n, (*i)->getFrameIndex());
+				drawStatus(n, (*i)->getFrameIndex(), mouse);
 				if (i != states->begin()) --i;
 				--n;
 			} while (i != states->begin());
 	}
 }
 
-void hud::drawStatus(int pos, int frameIndex)
+void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
 {
 	// Si no hay estados que dibujar, no deberíamos estar en este método
 	assert(states->size() > 0);
@@ -107,4 +121,12 @@ void hud::drawStatus(int pos, int frameIndex)
 	int height = 32;
 	SDL_Rect src = build_sdlrect((frameIndex % 4) * width, (frameIndex / 4) * height, width, height);
 	states->front()->getTexture()->render(src, dest);
+
+	if (mouse.getX() > dest.x && mouse.getX() < dest.x + dest.w &&
+		mouse.getY() > dest.y && mouse.getY() < dest.y + dest.h) {
+		
+		tooltipTr->setPos(mouse);
+		tooltipText->changeText("Habria que cambiar la descripcion del estado con un if o algo no se");
+		tooltipText->render();
+	}
 }
