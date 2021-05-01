@@ -25,9 +25,9 @@ private:
 	Texture* timer;
 
 
-	Entity* tooltip;
+	Transform* tooltipTr;
 	TextWithBackground* tooltipText;
-	void drawStatus(int pos, int frameIndex);
+	void drawStatus(int pos, int frameIndex, Vector2D mouse);
 
 public:
 	hud(Manager* m, Transform* initialPos, Player* p);
