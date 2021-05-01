@@ -5,6 +5,7 @@
 #include "../components/Transform.h"
 #include "../components/Image.h"
 #include "../components/TransitionComponent.h"
+#include "../game/Game.h"
 
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
@@ -120,7 +121,7 @@ void GameScene::loadMap(string& const path) {
 
 			for (auto obj : objs) {
 				auto aabb = obj.getAABB();
-				
+
 				if (obj.getName() == "collision") {
 					auto collider = mngr_->addEntity();
 					collider->setGroup<Wall_grp>(true);
@@ -149,6 +150,12 @@ void GameScene::loadMap(string& const path) {
 					interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
 					mngr_->addRenderLayer<Loot>(interactableElement);
 					interactableElement->addComponent<Loot>("Hola nena", 5, 5);
+					Loot* loot = interactableElement->getComponent<Loot>();
+
+					vector<I> chestLoot = getGame()->SCENES_LOOT.find(getGame()->currentScene)->second[0];
+					for (int i = 0; i < chestLoot.size(); i++) {
+						loot->getInventory()->storeItem(new Item{ new ItemInfo(chestLoot[i].name, "desc", chestLoot[i].w,chestLoot[i].h,chestLoot[i].y,chestLoot[i].x),mngr_,loot->getInventory(),chestLoot[i].x,chestLoot[i].y });
+					}
 				}
 				else if (obj.getName() == "enemy") {
 					// int en objeto para identificar el tipo de enemigo
