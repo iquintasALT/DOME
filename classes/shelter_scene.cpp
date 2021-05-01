@@ -65,8 +65,7 @@ void ShelterScene::update() {
 	sleep_Station->update();*/
 
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
-		g_->getStateMachine()->pushState(new PauseScene(g_));
-		g_->getStateMachine()->currentState()->init();
+		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
 	}
 }
 
