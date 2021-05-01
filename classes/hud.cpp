@@ -58,8 +58,8 @@ void hud::render()
 	nbullets->render(posCam->getPos().getX(), posCam->getPos().getY() + 570);
 	delete nbullets;
 	nbullets = nullptr;
-	
-	
+
+
 	//Renderizar los estados
 	if (states->size() > 0)
 	{
@@ -82,17 +82,17 @@ void hud::render()
 		while (n >= player->getPhysiognomy()->getNumStates() - player->getPhysiognomy()->getNumBleedStates())
 		{
 			drawStatus(n, 13);
-			if (i!= states->begin()) --i; --n;
+			if (i != states->begin()) --i; --n;
 		}
 
 		// Dibujamos el resto de estados
 		if (n >= 0)
-		do
-		{
-			drawStatus(n, (*i)->getFrameIndex());
-			if (i != states->begin()) --i; --n;
-		} 
-		while (i != states->begin());
+			do
+			{
+				drawStatus(n, (*i)->getFrameIndex());
+				if (i != states->begin()) --i;
+				--n;
+			} while (i != states->begin());
 	}
 }
 
