@@ -56,8 +56,6 @@ void Game::start() {
 		//ih().clearState();
 		while (SDL_PollEvent(&event)) {
 			ih().update(event);
-			auto s = dynamic_cast<ShelterScene*>(states->currentState());
-			if (s != nullptr) s->updateScreen(&event);
 		}
 
 		if (event.type == SDL_QUIT) {
