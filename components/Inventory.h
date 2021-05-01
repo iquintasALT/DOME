@@ -12,6 +12,7 @@
 #include <string>
 #include <functional>
 class TextWithBackground;
+class Game;
 
 class Inventory : public Component
 {
