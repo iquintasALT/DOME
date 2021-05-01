@@ -105,6 +105,10 @@
       "file": "resources/sprites/buttons/mainmenu_button.png"
     },
     {
+      "id": "backButton",
+      "file": "resources/sprites/buttons/back_button.png"
+    },
+    {
       "id": "dust",
       "file": "resources/sprites/dustParticle.png"
     },
@@ -204,6 +208,13 @@
     {
       "id": "wall_hit",
       "file": "resources/sound/wall_hit.wav"
+    }
+  ],
+
+  "musics": [
+    {
+      "id": "imperial",
+      "file": "resources/sound/imperial_march.wav"
     }
   ],
 
