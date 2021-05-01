@@ -328,6 +328,7 @@
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\SceneManager.cpp" />
+    <ClCompile Include="classes\settings_scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -728,6 +729,7 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\SceneManager.h" />
+    <ClInclude Include="classes\settings_scene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
