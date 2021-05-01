@@ -19,7 +19,6 @@ using std::endl;
 
 #undef main
 
-using namespace sdlgui;
 
 void ShelterScene::init() {
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
