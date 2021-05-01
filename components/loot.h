@@ -26,6 +26,7 @@ private:
 	int invenWidth, invenHeight;
 public:
 	Loot(string mssg, int width, int height);
+	~Loot();
 	void init() override;
 	void Interact() override;
 	inline Inventory* getInventory() { return inventory; }

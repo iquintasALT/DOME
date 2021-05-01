@@ -46,6 +46,7 @@ void LocationsScene::loadLocationButtons() {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
+	g->currentScene = RAID;
 	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::OVERRIDE);
 }
 
@@ -54,7 +55,7 @@ void LocationsScene::anActualGoodName(Game* g) {
 }
 
 void LocationsScene::update() {
-	for (int i = 0;  i < locations.size(); i++) {
+	for (int i = 0; i < locations.size(); i++) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 		auto buttonTr = locations[i]->getComponent<Transform>();
 

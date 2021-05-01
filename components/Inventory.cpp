@@ -1,7 +1,8 @@
 #include "Inventory.h"
 #include "../sdlutils/InputHandler.h"
 #include "../components/TextWithBackGround.h"
-
+#include "../game/Game.h"
+#include "../classes/crafting_system.h"
 #include "../sdlutils/SDLUtils.h"
 
 #include <iostream>
