@@ -22,13 +22,11 @@ Loot::~Loot() {
 	g->SCENES_LOOT.find(g->currentScene)->second.clear();
 
 
-	//	CraftableItem(ITEMS n, int c, int w = 0, int h = 0, int x = 0, int y = 0) : name(n), cantidad(c), x(x), y(y), w(w), h(h) {};
-
 	vector<I> itemsInLoot;
 
 	for (Item* i : inventory->getItems()) {
 		ItemInfo* info = i->getItemInfo();
-		I aux = I{ info->name(),0,info->width(),info->height(),info->col(),info->row() };
+		I aux = I{ info->name(),0,info->width(),info->height(),i->getX(),i->getY(),info->row(),info->col(), info->description() };
 		itemsInLoot.push_back(aux);
 	}
 
