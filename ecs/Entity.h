@@ -9,6 +9,7 @@
 #include "Component.h"
 #include "ecs.h"
 #include "../utils/checkML.h"
+//#include "../ecs/Manager.cpp"
 
 class Manager;
 
@@ -23,7 +24,9 @@ public:
 		active(true),
 		mngr_(mngr), //
 		cmpArray_(), //
-		groups_()
+		groups_(),
+		renderGroup(0),
+		renderIndex(0)
 	{
 		//mngr->addRenderLayer<Default>(this);
 	}
@@ -34,7 +37,9 @@ public:
 		}
 
 		components_.clear();
+		removeEntityRender(this, mngr_);
 	}
+
 
 	template<typename T, typename ...Ts>
 	T* addComponent(Ts &&... args) {
@@ -67,7 +72,7 @@ public:
 		/// This will disguise the child as its parent, so that the child is returned when the parent is asked for
 		/// or removed when we attempt to remove the parent
 		constexpr auto id = ecs::cmpIdx<T>;
-		
+
 		// Assure that we do not have two components with the same id on the same entity
 		if (cmpArray_[id] != nullptr) {
 			removeComponent<T>();
@@ -100,6 +105,7 @@ public:
 	template<typename T>
 	inline T* getComponent() {
 		auto id = ecs::cmpIdx<T>;
+
 		return static_cast<T*>(cmpArray_[id]);
 	}
 
@@ -174,6 +180,8 @@ public:
 	};
 
 private:
+	int renderGroup;
+	int renderIndex;
 	bool active = true;
 	bool dead;
 	bool isRendering = false;
@@ -181,5 +189,10 @@ private:
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;
 	std::bitset<ecs::maxGroup> groups_;
+
+
+	void removeEntityRender(Entity* e, Manager* m);
 };
+
+
 

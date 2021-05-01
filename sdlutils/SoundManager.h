@@ -47,7 +47,7 @@ public:
 
 	void playMusic(std::string key) {
 		if (&musics_.at(key) != currentMusic) {
-			currentMusic->pauseMusic();
+			if (currentMusic != nullptr) currentMusic->pauseMusic();
 			currentMusic = &musics_.at(key);
 			currentMusic->play();
 		}
@@ -55,17 +55,19 @@ public:
 
 	void playSFX(std::string key) {
 		if (&sfx_.at(key) != currentSFX) {
-			currentSFX->pauseChannel();
+			if (currentMusic != nullptr) currentSFX->pauseChannel();
 			currentSFX = &sfx_.at(key);
 			currentSFX->play();
 		}
 	}
 
-	void stopCurrentMusic() {
+	//ESTO LO PARA Y LO QUITA
+	void stopCurrentMusic() { 
 		if (currentMusic != nullptr)
 			currentMusic->haltMusic();
 	}
 
+	//ESTO LO PAUSA Y SE PUEDE REANUDAR
 	void pauseCurrentMusic() {
 		if (currentMusic != nullptr)
 			currentMusic->pauseMusic();
@@ -105,7 +107,7 @@ private:
 	Music* currentMusic = nullptr;
 	SoundEffect* currentSFX = nullptr;
 
-	float musicVolume = 0, sfxVolume = 0;
+	float musicVolume = 40, sfxVolume = 0;
 };
 
 // SoundManager::instance()->method() --> soundManager().method()

@@ -23,6 +23,8 @@
 #include "../classes/locations_scene.h"
 
 Game::Game(int totaltime) {
+	initLoot();
+
 	states = new GameStateMachine();
 
 	Camera::setMain(new Camera(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
@@ -80,7 +82,7 @@ void Game::start() {
 }
 
 void Game::initLoot() {
-	SCENES_LOOT.emplace(HOSPTITAL, vector<vector<I>>{ {I(WATER, 3), I(FOOD, 5)} });
+	SCENES_LOOT.emplace(RAID, vector<vector<I>>{ {I(WATER, 3, 1, 2, 0, 0), I(MEDICAL_COMPONENTS, 5, 2, 2, 1, 0)} });
 }
 
 

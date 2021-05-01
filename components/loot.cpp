@@ -1,4 +1,6 @@
 #include "loot.h"
+#include "../game/Game.h"
+#include "../classes/crafting_system.h"
 
 const float Loot::margin = 50;
 
@@ -12,6 +14,25 @@ Loot::Loot(std::string mssg, int inventoryWidth, int inventoryHeight) :
 
 	invenWidth = inventoryWidth;
 	invenHeight = inventoryHeight;
+}
+
+Loot::~Loot() {
+
+	Game* g = entity_->getMngr()->getGame();
+	g->SCENES_LOOT.find(g->currentScene)->second.clear();
+
+
+	//	CraftableItem(ITEMS n, int c, int w = 0, int h = 0, int x = 0, int y = 0) : name(n), cantidad(c), x(x), y(y), w(w), h(h) {};
+
+	vector<I> itemsInLoot;
+
+	for (Item* i : inventory->getItems()) {
+		ItemInfo* info = i->getItemInfo();
+		I aux = I{ info->name(),0,info->width(),info->height(),info->col(),info->row() };
+		itemsInLoot.push_back(aux);
+	}
+
+	g->SCENES_LOOT.find(g->currentScene)->second.push_back(itemsInLoot);
 }
 
 void Loot::Interact() {
@@ -51,7 +72,7 @@ void Loot::init() {
 	entity_->getMngr()->addRenderLayer<Interface>(inventoryEntity);
 
 	inventory = inventoryEntity->addComponent<Inventory>(invenWidth, invenHeight);
-	
+
 	inventory->adjustPanelSize();
 	//inventory->storeDefaultItems();
 	inventory->setOther(playerInventory);
@@ -64,7 +85,7 @@ void Loot::init() {
 	//inventoryTransform->setPos(Vector2D(x, playerTransform->getPos().getY()));
 	inventory->moveInventory(Vector2D(x, playerTransform->getPos().getY()));
 
-	
+
 
 	inventoryEntity->setActive(false);
 }

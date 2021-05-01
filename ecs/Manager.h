@@ -71,8 +71,15 @@ public:
 			throw std::exception("Se ha intentado renderizar dos veces la misma entidad");
 		}
 		renderObj->isRendering = true;
-		renders_[ecs::rndIdx<T>].emplace_back(renderObj);
+		int group = ecs::rndIdx<T>;
+		renders_[group].emplace_back(renderObj);
+
+		addRenderNumbers(renderObj, group);
 	}
+
+	void addRenderNumbers(Entity* renderObj, int group);
+
+	void removeRender(Entity* ent);
 
 	void update();
 	void render();
@@ -104,4 +111,5 @@ private:
 	SceneManager sceneManager;
 	Game* game;
 };
+
 

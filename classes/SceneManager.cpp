@@ -16,6 +16,8 @@ void SceneManager::LoadScene() {
 	auto states = game->getStateMachine();
 	auto newScene = sceneToSwap;
 
+	shouldSwap = false;
+
 	if (sceneChangeMode != SceneMode::REMOVE) {
 
 		if (sceneChangeMode == SceneMode::OVERRIDE) {
@@ -34,6 +36,5 @@ void SceneManager::LoadScene() {
 		states->popState();
 		states->currentState()->init();
 	}
-	shouldSwap = false;
-	sceneToSwap = nullptr;
+
 }
