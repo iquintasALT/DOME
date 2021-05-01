@@ -11,10 +11,11 @@
 
 class enemy_animation : public animation_component {
 private:
-	const enum animations_name { idle = 0, walking };
-	Animation animations[2]{
+	const enum animations_name { idle = 0, walking, dmg };
+	Animation animations[3]{
 	Animation(idle, 4),
-	Animation(walking, 9) };
+	Animation(walking, 9),
+	Animation(dmg, 3)};
 
 	Animation currentAnimation = animations[idle];
 	float timer = 0;
@@ -24,6 +25,7 @@ private:
 	Image* im_;
 	Transform* tr_;
 	RigidBody* rb;
+	bool dmgReceived;
 
 public:
 	enemy_animation();
@@ -33,14 +35,18 @@ public:
 	virtual ~enemy_animation();
 
 	virtual void update();
+	
+	inline bool isDamaged() { return dmgReceived; };
+	inline void setDamaged(bool dmg) { dmgReceived = dmg; };
 };
 
 class flying_enemy_animation : public animation_component {
 private:
-	const enum animations_name { idle = 0, attack};
-	Animation animations[2]{
+	const enum animations_name { idle = 0, attack, dmg};
+	Animation animations[3]{
 	Animation(idle, 4),
-	Animation(attack, 4)};
+	Animation(attack, 4),
+	Animation(dmg, 3)};
 
 	Animation currentAnimation = animations[idle];
 	float timer = 0;
@@ -50,6 +56,7 @@ private:
 	Image* im_;
 	Transform* tr_;
 	RigidBody* rb;
+	bool dmgReceived;
 
 public:
 	flying_enemy_animation();
@@ -59,4 +66,7 @@ public:
 	virtual ~flying_enemy_animation();
 
 	virtual void update();
+
+	inline bool isDamaged() { return dmgReceived; };
+	inline void setDamaged(bool dmg) { dmgReceived = dmg; };
 };
