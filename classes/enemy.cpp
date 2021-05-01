@@ -46,7 +46,7 @@ FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos, false)
 {
 	this->getComponent<Transform>()->setSize(32, 32);
 	mngr_->addRenderLayer<Enemy>(this);
-	addComponent<Image>(&sdlutils().images().at("flying_enemy"), 1, 4, 0, 0);
+	addComponent<Image>(&sdlutils().images().at("flying_enemy"), 2, 4, 0, 0);
 	addComponent<RigidBody>(Vector2D(), false);
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
 	addComponent2<EnemyAttackComponent, MeleeAttack>();
