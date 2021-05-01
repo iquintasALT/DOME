@@ -7,8 +7,10 @@
 #include "../ecs/Manager.h"
 #include "../components/player_health_component.h"
 #include "../components/bleedout_component.h"
+#include "../components/TextWithBackGround.h"
 
 #include <iostream>
+#include <string>
 hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 {
 	posCam = initialPos;
@@ -23,6 +25,12 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 	states = player->getPhysiognomy()->getHealthComponents();
 
 	charger = player->getCurrentWeapon()->getWeaponMovement()->getTamCharger();
+
+	//TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture * texture, bool appearingText = false, float appeatingTextSpeed = 1, bool alignInCenter = false);
+	
+	tooltip = m->addEntity();
+	tooltip->addComponent<Transform>(Vector2D(), 200, 10);
+	//tooltipText = tooltip->addComponent<TextWithBackground>();
 }
 
 void hud::update()

@@ -328,6 +328,7 @@
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\SceneManager.cpp" />
+    <ClCompile Include="ecs\Entity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">

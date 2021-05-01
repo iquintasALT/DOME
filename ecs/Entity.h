@@ -9,6 +9,7 @@
 #include "Component.h"
 #include "ecs.h"
 #include "../utils/checkML.h"
+//#include "../ecs/Manager.cpp"
 
 class Manager;
 
@@ -23,7 +24,9 @@ public:
 		active(true),
 		mngr_(mngr), //
 		cmpArray_(), //
-		groups_()
+		groups_(),
+		renderGroup(0),
+		renderIndex(0)
 	{
 		//mngr->addRenderLayer<Default>(this);
 	}
@@ -34,7 +37,9 @@ public:
 		}
 
 		components_.clear();
+		removeEntityRender(this, mngr_);
 	}
+
 
 	template<typename T, typename ...Ts>
 	T* addComponent(Ts &&... args) {
@@ -174,6 +179,8 @@ public:
 	};
 
 private:
+	int renderGroup;
+	int renderIndex;
 	bool active = true;
 	bool dead;
 	bool isRendering = false;
@@ -181,5 +188,10 @@ private:
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;
 	std::bitset<ecs::maxGroup> groups_;
+
+
+	void removeEntityRender(Entity* e, Manager* m);
 };
+
+
 
