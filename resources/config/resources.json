@@ -109,6 +109,22 @@
       "file": "resources/sprites/buttons/back_button.png"
     },
     {
+      "id": "volumeBar",
+      "file": "resources/sprites/buttons/volume_bar.png"
+    },
+    {
+      "id": "raiseVolume",
+      "file": "resources/sprites/buttons/raise_volume_button.png"
+    },
+    {
+      "id": "decreaseVolume",
+      "file": "resources/sprites/buttons/decrease_volume_button.png"
+    },
+    {
+      "id": "volumeAdjuster",
+      "file": "resources/sprites/buttons/volume_adjuster.png"
+    },
+    {
       "id": "dust",
       "file": "resources/sprites/dustParticle.png"
     },
