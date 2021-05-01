@@ -73,45 +73,6 @@ void Ricochet::createExplosion()
 	float y2 = playerTr->getPos().getY() + (playerTr->getH() / 2);
 	Vector2D direction = Vector2D(x2, y2);
 
-	/*RayCast range = RayCast(rayCastOrigin, direction - explosionOrigin);*/
-
-	{
-		////Colision enemigos
-		//range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
-
-		//if (range.hasCollision(1000))
-		//{
-		//	cout << "Explosion en player";
-		//}
-		////Colision enemigos (Cuando esten hechos xd)
-		//for (auto& e : entity_->getMngr()->getEntities())
-		//{
-		//	if (e->hasGroup<Enemy_grp>())
-		//	{
-		//		x2 = e->getComponent<Transform>()->getPos().getX() + e->getComponent<Transform>()->getW() / 2;
-		//		y2 = e->getComponent<Transform>()->getPos().getY() + e->getComponent<Transform>()->getH() / 2;
-		//		direction = Vector2D(x2, y2);
-		//		range.rayCastToSquare(Point2D(x2, y2), arribader, arribaizq);
-
-		//		if (range.hasCollision(1000))
-		//		{
-		//			cout << "Explosion en enemigo";
-		//			//IAGO AQUI LE METES EL DAO� AL Enemigo Y EL 1000 HAY Q AJUSTARLO A LA EXPLOSION
-		//			bool found = false;
-		//			for (Entity* hitEnemy : hitEnemies) {
-		//				if (hitEnemy == e) {
-		//					found = true;
-		//				}
-		//			}
-		//			if (!found) {
-		//				static_cast<Enemy*>(e)->receiveDamage();
-		//				hitEnemies.push_back(e);
-		//			}
-		//		}
-		//	}
-		//}
-	}
-
 	hitEnemies(rayCastOrigin);
 }
 
