@@ -72,7 +72,7 @@ public:
 		/// This will disguise the child as its parent, so that the child is returned when the parent is asked for
 		/// or removed when we attempt to remove the parent
 		constexpr auto id = ecs::cmpIdx<T>;
-		
+
 		// Assure that we do not have two components with the same id on the same entity
 		if (cmpArray_[id] != nullptr) {
 			removeComponent<T>();
@@ -105,6 +105,7 @@ public:
 	template<typename T>
 	inline T* getComponent() {
 		auto id = ecs::cmpIdx<T>;
+
 		return static_cast<T*>(cmpArray_[id]);
 	}
 

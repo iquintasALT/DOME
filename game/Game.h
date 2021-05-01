@@ -13,17 +13,18 @@
 class Manager;
 class Entity;
 
-const enum SCENES { SHELTER, HOSPTITAL, RESTAURANT };
+const enum SCENES { SHELTER, HOSPITAL, RESTAURANT,RAID,NONE };
 
 class Game {
 private:
-	SCENES currentScene;
-	map<SCENES, vector<vector<I>>> SCENES_LOOT;
-
 	GameStateMachine* states;
 
 	bool exit;
 public:
+	SCENES currentScene;
+	map<SCENES, vector<vector<I>>> SCENES_LOOT;
+
+
 	Game(int totaltime); 
 	virtual ~Game();
 	void init();

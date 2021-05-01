@@ -35,8 +35,8 @@ struct CraftableItem {
 	ITEMS name;
 	int cantidad;
 
-	int x, y;
-	CraftableItem(ITEMS n, int c, int x = 0, int y = 0) : name(n), cantidad(c), x(x), y(y) {};
+	int x, y, w, h;
+	CraftableItem(ITEMS n, int c, int w = 0, int h = 0, int x = 0, int y = 0) : name(n), cantidad(c), x(x), y(y), w(w), h(h) {};
 	//AÑADIR MÁS INFO SI ES NECESARIA, 
 };
 using I = CraftableItem;

@@ -23,6 +23,7 @@ protected:
 	virtual void Collision();
 public:
 	InteractableElement(string msg);
+	virtual ~InteractableElement() {};
 	void init() override; 
 	virtual void Interact();
 	bool CheckCollision(Point2D playerPos, float width, float height);
