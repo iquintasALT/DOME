@@ -14,6 +14,7 @@ class Manager;
 class Entity;
 
 const enum SCENES { SHELTER, HOSPITAL, RESTAURANT,RAID,NONE };
+const vector<int> SCENES_CHESTS = { 0,0,2,1,0 };
 
 class Game {
 private:

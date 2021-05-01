@@ -82,7 +82,8 @@ void Game::start() {
 }
 
 void Game::initLoot() {
-	SCENES_LOOT.emplace(RAID, vector<vector<I>>{ {I(WATER, 3, 1, 2, 0, 0), I(MEDICAL_COMPONENTS, 5, 2, 2, 1, 0)} });
+	// ITEMS n, int cantidad (INUTIL PARA ESTE METODO), int w , int h , int x, int y,int row, int col,string desc
+	SCENES_LOOT.emplace(RAID, vector<vector<I>>{ {I(WATER, 3, 1, 2, 0, 0,4,0,"pues eso, agua. Se bebe"), I(MEDICAL_COMPONENTS, 5, 2, 2, 1, 0,3,2,"componentes medicos para ponerte hasta el culo")} });
 }
 
 
