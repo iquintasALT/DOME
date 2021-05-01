@@ -37,9 +37,10 @@ public:
 
 class flying_enemy_animation : public animation_component {
 private:
-	const enum animations_name { idle };
-	Animation animations[1]{
-	Animation(idle, 4) };
+	const enum animations_name { idle = 0, attack};
+	Animation animations[2]{
+	Animation(idle, 4),
+	Animation(attack, 4)};
 
 	Animation currentAnimation = animations[idle];
 	float timer = 0;
