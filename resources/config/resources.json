@@ -213,6 +213,16 @@
       "file": "resources/sprites/floor_tileset.png"
     },
     {
+      "id": "floor_tileset",
+      "file": "resources/sprites/floor_tileset.png"
+    },
+
+    {
+      "id": "sprite_bg_tiles_32x32",
+      "file": "resources/sprites/sprite_bg_tiles_32x32.png"
+    },
+
+    {
       "id": "second_template_tileset",
       "file": "resources/sprites/wardrobe_tileset.png"
     }

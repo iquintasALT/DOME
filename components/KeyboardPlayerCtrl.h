@@ -34,7 +34,8 @@ public:
 	virtual void update();
 
 	inline bool isCrouching() { return crouched; }
-
+    inline bool isStairs() { return inStair; };
+	
 	void resetSpeed();
 	float getSpeed();
 	void setSpeed(float speed);
