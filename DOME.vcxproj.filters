@@ -335,6 +335,7 @@
     <ClCompile Include="components\CameraMovement.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="classes\settings_scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -739,6 +740,7 @@
     <ClInclude Include="components\CameraMovement.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="classes\settings_scene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

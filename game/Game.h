@@ -13,7 +13,7 @@
 class Manager;
 class Entity;
 
-const enum SCENES { SHELTER, HOSPITAL, RESTAURANT,RAID,NONE };
+const enum SCENES { SHELTER, HOSPITAL, RESTAURANT, RAID, SETTINGS, MAINMENU, NONE };
 
 class Game {
 private:

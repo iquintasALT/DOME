@@ -22,17 +22,18 @@ void PauseScene::init() {
 void PauseScene::resume(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE);
-	//mng->getGame()->setCurrentScene(SCENES::)
+	mng->getGame()->currentScene = SCENES::RAID;
 }
 
 void PauseScene::settings(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(new SettingsScene(mng->getGame()), SceneManager::SceneMode::ADDITIVE);
+	mng->getGame()->currentScene = SCENES::SETTINGS;
 }
 
 void PauseScene::menu(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(new MenuScene(mng->getGame()), SceneManager::SceneMode::SINGLE);
-
+	mng->getGame()->currentScene = SCENES::MAINMENU;
 }
 

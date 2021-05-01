@@ -82,6 +82,8 @@ public:
 
 	float getSFXVolume() { return sfxVolume; }
 
+	float getMaxVolume() { return maxVolume; }
+
 	void setMusicVolume(float musV) {
 		musicVolume = musV;
 		for (sdl_resource_table<Music>::iterator it = musics_.begin();
@@ -107,7 +109,7 @@ private:
 	Music* currentMusic = nullptr;
 	SoundEffect* currentSFX = nullptr;
 
-	float musicVolume = 40, sfxVolume = 0;
+	float musicVolume = 40, sfxVolume = 0, maxVolume = 80;
 };
 
 // SoundManager::instance()->method() --> soundManager().method()
