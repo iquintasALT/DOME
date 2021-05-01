@@ -4,6 +4,8 @@
 #include "../game/Game.h"
 #include "../classes/locations_scene.h"
 #include "../classes/menu_scene.h"
+#include "../game/Game.h"
+#include "../classes/settings_scene.h"
 //#include "../ecs/Manager.h";
 
 void PauseScene::init() {
@@ -20,15 +22,17 @@ void PauseScene::init() {
 void PauseScene::resume(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE);
+	//mng->getGame()->setCurrentScene(SCENES::)
 }
 
 void PauseScene::settings(Manager* mng) {
 	ih().clearState();
-
+	mng->ChangeScene(new SettingsScene(mng->getGame()), SceneManager::SceneMode::ADDITIVE);
 }
 
 void PauseScene::menu(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(new MenuScene(mng->getGame()), SceneManager::SceneMode::SINGLE);
+
 }
 
