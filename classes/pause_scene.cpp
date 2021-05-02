@@ -10,6 +10,12 @@
 
 void PauseScene::init() {
 	ih().clearState();
+
+	auto pixel = mngr_->addEntity();
+	pixel->addComponent<Transform>(Vector2D(0, 0), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
+	pixel->addComponent<Image>(&sdlutils().images().at("pixel"), true);
+	mngr_->addRenderLayer<Interface>(pixel);
+
 	auto resumeButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH/2-128, 370), Vector2D(256, 64) ,&sdlutils().images().at("resumeButton"), resume, g_, mngr_);
 	mngr_->addEntity(resumeButton);
 
