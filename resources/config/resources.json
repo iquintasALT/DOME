@@ -125,6 +125,18 @@
       "file": "resources/sprites/buttons/volume_adjuster.png"
     },
     {
+      "id": "pixel",
+      "file": "resources/sprites/buttons/pixel.png"
+    },
+    {
+      "id": "mainVolumeText",
+      "file": "resources/sprites/buttons/main_volume_text.png"
+    },
+    {
+      "id": "effectsVolume",
+      "file": "resources/sprites/buttons/sfx_volume_text.png"
+    },
+    {
       "id": "dust",
       "file": "resources/sprites/dustParticle.png"
     },

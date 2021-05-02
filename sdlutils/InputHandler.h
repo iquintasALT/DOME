@@ -117,7 +117,7 @@ private:
 		isKeyUpEvent_ = true;
 	}
 
-	inline void onMouseMotion(const SDL_Event& event) {
+	inline void onMouseMotion(const SDL_Event& event) {	
 		isMouseMotionEvent_ = true;
 		mousePos_.first = event.motion.x;
 		mousePos_.second = event.motion.y;
