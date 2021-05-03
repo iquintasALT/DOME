@@ -25,7 +25,7 @@ MenuScene::MenuScene(Game* game) :GameScene(game, "Menu") {
 
 	back = &sdlutils().images().at("dclock");
 
-	soundManager().playMusic("imperial");
+	//soundManager().playMusic("imperial");
 }
 
 void MenuScene::init() {}
