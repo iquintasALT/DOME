@@ -1089,6 +1089,11 @@
    <property name="wall" type="bool" value="false"/>
   </properties>
  </tile>
+ <tile id="288">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
  <tile id="298">
   <properties>
    <property name="wall" type="bool" value="false"/>

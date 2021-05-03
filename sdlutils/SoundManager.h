@@ -111,7 +111,7 @@ private:
 	Music* currentMusic = nullptr;
 	SoundEffect* currentSFX = nullptr;
 
-	float musicVolume = 40, sfxVolume = 0, maxVolume = 80, maxSfxVolume = 80;
+	float musicVolume = 40, sfxVolume = 40, maxVolume = 80, maxSfxVolume = 80;
 };
 
 // SoundManager::instance()->method() --> soundManager().method()
