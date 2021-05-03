@@ -18,6 +18,7 @@ private:
 	int buttonNumber = 0;
 	bool mouseClick = false;
 	vector<Entity*> locations;
+	vector<Entity*> infos;
 
 	void loadLocationButtons();
 
