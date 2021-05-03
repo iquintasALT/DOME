@@ -2,12 +2,16 @@
 #include "../sdlutils/InputHandler.h"
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../game/Game.h"
+#include "../classes/settings_scene.h"
 
-PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_) : MenuButton(pos, size, t, function, g, mngr_) {
+PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type)
+	: MenuButton(pos, size, t, function, g, mngr_) {
 	img = getComponent<Image>();
 	over = false;
 	SDL_Rect rect = { 0, 0, size.getX(),size.getY() };
 	img->setSrc(rect);
+	type_ = type;
 }
 
 void PauseButton::update() {
@@ -29,6 +33,9 @@ void PauseButton::update() {
 		if (over) {
 			img->changeFrame(2, 0);
 			cbOnClick(getMngr());
+			if (getMngr()->getGame()->currentScene == SETTINGS && type_ == VOLUME) {
+				static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->moveAdjuster(mousePos);
+			}
 		}
 	}
 }
