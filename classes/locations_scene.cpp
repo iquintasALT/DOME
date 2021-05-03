@@ -8,10 +8,17 @@
 void LocationsScene::init()
 {
 	auto background = mngr_->addEntity();
-	background->addComponent<Transform>(Vector2D(sdlutils().width() / 2 - sdlutils().height() / 2, 0),
+	background->addComponent<Transform>(Vector2D(sdlutils().width() * 0.33 , 0),
 		sdlutils().height(), sdlutils().height());
 	background->addComponent<Image>(&sdlutils().images().at("location_image"), 1, 3, 0, 0, true);
 	mngr_->addRenderLayer<Background>(background);
+
+	auto infohosp = mngr_->addEntity();
+	infohosp->addComponent<Transform>(Vector2D(0, 0), 280, 630);
+	infohosp->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true);
+	infohosp->setActive(false);
+	mngr_->addRenderLayer<Item>(infohosp);
+	infos.push_back(infohosp);
 
 	// this here is so we are aware that this is not roght but I need to wait till we have all locations srry
 	loadLocationButtons();
@@ -71,6 +78,21 @@ void LocationsScene::update() {
 			}
 		}
 		else if (mouseClick) mouseClick = false;
+
+		if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
+			if (!ih().getMouseButtonState(InputHandler::LEFT)) {
+				if (!mouseClick) {
+					infos[0]->setActive(true);
+				}
+			}
+			return;
+		}
+		else
+		{
+			infos[0]->setActive(false);
+		}
+
+
 	}
 }
 
