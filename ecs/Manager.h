@@ -61,7 +61,7 @@ public:
 		return interactableElements;
 	}
 
-	inline const std::vector<BoxCollider*>& getColliders() {
+	inline const std::list<BoxCollider*>& getColliders() {
 		return colliders;
 	}
 
@@ -87,7 +87,7 @@ public:
 	void cycle();
 
 	void AddInteractableElement(InteractableElement* ie);
-	std::vector<BoxCollider*>::iterator AddCollider(BoxCollider* bc);
+	std::list<BoxCollider*>::iterator AddCollider(BoxCollider* bc);
 
 	inline void onNewScene() { changeScene = true; };
 
@@ -105,7 +105,7 @@ private:
 	std::array<Entity*, ecs::maxHdlr> hdlrs_;
 
 	std::vector<InteractableElement*> interactableElements;
-	std::vector<BoxCollider*> colliders;
+	std::list<BoxCollider*> colliders;
 	std::array<std::vector<Entity*>, ecs::maxRender> renders_;
 
 	SceneManager sceneManager;
