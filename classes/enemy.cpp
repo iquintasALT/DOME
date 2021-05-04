@@ -39,10 +39,10 @@ void Enemy::receiveDamage(int damage_)
 
 DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 {
-	this->getComponent<Transform>()->setSize(32, 64);
+	this->getComponent<Transform>()->setSize(38, 64);
 	mngr_->addRenderLayer<Enemy>(this);
 	addComponent<PlayerCollisions>();
-	addComponent<Image>(&sdlutils().images().at("enemy"), 3, 9, 0, 0);
+	addComponent<Image>(&sdlutils().images().at("enemy"), 4, 9, 0, 0);
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
 	addComponent2<EnemyAttackComponent, GroundedMeleeAttack>();
 	addComponent<ChasePlayer>(consts::MELEE_ENEMY_SPEED, consts::MELEE_ENEMY_STOPDISTANCE);

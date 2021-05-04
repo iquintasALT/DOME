@@ -1,7 +1,10 @@
 #include "enemy_animation.h"
 
 
-enemy_animation::enemy_animation() : tr_(nullptr), im_(nullptr), rb(nullptr) {};
+enemy_animation::enemy_animation() : tr_(nullptr), im_(nullptr), rb(nullptr) {
+	isAttacking = false;
+	dmgReceived = false;
+};
 
 enemy_animation::~enemy_animation() {}
 
@@ -36,6 +39,14 @@ bool enemy_animation::changeAnimations() {
 	if (x < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
 	else  im_->setFlip(SDL_FLIP_NONE);
 	
+	if (isAttacking) {
+		if (currentAnimation == animations[attack])
+			return false;
+		currentAnimation = animations[attack];
+		currentAnimation.render();
+		return true;
+	}
+
 	if (dmgReceived) {
 		dmgReceived = false;
 		if (currentAnimation == animations[dmg])
@@ -61,7 +72,10 @@ bool enemy_animation::changeAnimations() {
 
 //-----------------------------------------------------------------------------------------------------------
 
-flying_enemy_animation::flying_enemy_animation() : tr_(nullptr), im_(nullptr), rb(nullptr) {};
+flying_enemy_animation::flying_enemy_animation() : tr_(nullptr), im_(nullptr), rb(nullptr) {
+	isAttacking = false;
+	dmgReceived = false;
+};
 
 flying_enemy_animation::~flying_enemy_animation() {}
 
@@ -95,6 +109,14 @@ bool flying_enemy_animation::changeAnimations() {
 
 	if (x < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
 	else  im_->setFlip(SDL_FLIP_NONE);
+
+	if (isAttacking) {
+		if (currentAnimation == animations[attack])
+			return false;
+		currentAnimation = animations[attack];
+		currentAnimation.render();
+		return true;
+	}
 
 	if (dmgReceived) {
 		dmgReceived = false;
