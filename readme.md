@@ -59,7 +59,7 @@ Para poder volver al refugio, el jugador tendrá que salir por la zona por la qu
 
 El refugio es una zona pequeña donde el jugador podrá construir y mejorar diferentes estaciones de crafteo, crear objetos o descansar. En él, el jugador podrá interactuar con distintas estructuras del refugio para realizar acciones que gastarán parte del tiempo (discreto) disponible. Cuando gaste todo el tiempo, o bien cuando se vea sin acciones, podrá dormir y avanzar al siguiente día.
 
-Las estructuras estarán ya situadas en distintas zonas del refugio (cohete, base de datos, terminal, mesa de crafteo??), pudiendo el jugador interactuar con ellas para mejorarlas, repararlas, o realizar acciones. Además, habrá alguna forma de almacenamiento del loot obtenido en la raid (nevera, armario, despensa {podrá ser limitado o no dependiendo de feeling del gameplay}).
+Las estructuras estarán ya situadas en distintas zonas del refugio (cohete, base de datos, terminal, mesa de crafteo??), pudiendo el jugador interactuar con ellas para mejorarlas, repararlas, o realizar acciones.
 
 En un principio, el jugador podrá seleccionar las distintas localizaciones para poder acceder a las acciones disponibles.
 *MEDIA PRIORIDAD: El jugador se moverá en el propio refugio.*
@@ -84,7 +84,7 @@ Existen tres categorías de armas que facilitan el combate contra ciertos enemig
 
 *BAJA PRIORIDAD: Alguna de las armas de arriba implementa algun tipo de daño AOE.*
 
-Además, durante la raid, podremos cambiar entre arma principal y la que haya en el inventario durante la raid.
+Se puede cambiar de arma pulsando el botón X, ciclando por las tres armas en orden.
 
 ## Armaduras
 
@@ -115,9 +115,9 @@ su velocidad de movimiento mejorará.
 
 # Enemigos <a name="enem"></a>
 
-Pepega a melee: comportamiento más agresivo, rushea al jugador cuando se da cuenta de su presencia y ataca en "horda", el jugador deberá ser rápido eliminando a estos enemigos ya que el combate a melee es peligroso.
+Pepega a pie: persigue al jugador por el suelo, con más vida que el enemigo volador.
 
-Pepega a rango: comportamiento más cauteloso, se comportan como guardias usando coberturas para frenar el avance del jugador siguen patrones de disparo que el jugador deberá usar para eliminarlos.
+Enemigo a distancia: 
 
 # Salud <a name="medi"></a>
 
@@ -209,16 +209,19 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 ## Crafteos
 | Objeto | Elementos necesarios | Uso |
 |--------|----------------------|-----|
-| Vendas | x componentes médicos + x agua + x elementos orgánicos | Curan sangrado |
-| Antídoto | x comida + x agua + x componenetes médicos | Cura infecciones |
-| Férula | x partes mecánicas + x agua | Cura contusiones |
-| Cohetes de la nave | x restos clave de la nave + x materiales de construcción + restos electrónicos + x placas de metal | Primera parte de la nave |
-| Arma mejorada | x partes mecánicas + x restos electrónicos + kit de mejora | Aumenta el tier del arma |
-| Munición arma clásica | x partes mecánicas + x componentes médicos + x placas de metal | Munición para el arma clásica |
-| Mochila mejorada | kit de mejora + x elementos orgánicos + x vendas |
-Mejora la mochila |
-| Placas de metal | x materiales de construcción + x partes mecánicas | Para reaizar otros crafteos |
-| Armadura mejorada | kit de mejora + x placas de metal + x elementos orgánicos | Mejora la armadura |
+| Vendas | 2 componentes médicos + 1 agua + 1 elementos orgánicos | Curan sangrado |
+| Antídoto | 1 comida + 2 agua + 2 componenetes médicos | Cura infecciones |
+| Férula | 2 partes mecánicas + 1 agua | Cura contusiones |
+| Painkiller | 2 comida + 1 agua + 2 componenetes médicos | Cura Dolor |
+| Comida | 1 agua + 1 elementos orgánicos | Para comer |
+| Cohetes de la nave | 2 restos clave de la nave + x materiales de construcción + restos electrónicos + x placas de metal | Primera parte de la nave |
+| Radar de la nave | 1 restos clave de la nave + 1 restos electrónicos | Segunda nave parte de la nave |
+| Cabina de la nave | 3 restos clave de la nave + 2 materiales de construcción + 1 placas de metal | Segunda nave parte de la nave |
+| Arma mejorada | 2 partes mecánicas + 1 restos electrónicos + 1 kit de mejora | Aumenta el tier del arma |
+| Munición arma clásica |No se craftea | Munición para el arma clásica |
+| Munición arma laser |No se craftea | Munición para el arma clásica |
+| Munición arma ricochet | 1 Munición arma clásica + 2 partes mecánicas | Munición para el arma ricochet |
+| Placas de metal | 1 materiales de construcción + 1 partes mecánicas | Para reaizar otros crafteos |
 
 
 # Refúgio
