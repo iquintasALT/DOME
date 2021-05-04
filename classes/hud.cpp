@@ -37,6 +37,11 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 	tooltip->setActive(false);
 }
 
+void hud::chooseWeapon(int type, int tier)
+{
+	actweapon = &sdlutils().images().at("weapons_arms"), 3, 3, type, tier;
+}
+
 void hud::update()
 {
 	time->update();
@@ -44,6 +49,12 @@ void hud::update()
 	bullets = player->getCurrentWeapon()->getWeaponMovement()->getChargerBullets();
 	totalBullet = player->getCurrentWeapon()->getWeaponMovement()->getTotalBullets();
 	if (totalBullet < 0) totalBullet = 0;
+
+	int type = player->getCurrentWeapon()->typeOfWeapon();
+	int tier = player->getCurrentWeapon()->tierOfWeapon();
+
+	chooseWeapon(type-1, tier-1);
+
 }
 
 void hud::render()
@@ -56,6 +67,10 @@ void hud::render()
 	timer->render(dest);
 
 	time->render();
+
+	aux = Vector2D(100, 100);
+	dest = build_sdlrect(aux, 75, 35);
+	actweapon->render(dest);
 
 	//Renderizar las balas cargador
 	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(charger), sdlutils().fonts().at("OrbitronRegular"),
