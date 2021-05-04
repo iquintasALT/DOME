@@ -16,6 +16,9 @@
 ChargeWeapon::ChargeWeapon(float fR, int dam) : Weapon(fR, dam) {};
 
 void ChargeWeapon::update() {
+	if (ctrl->isStairs()) entityImg->enabled = false;
+	else entityImg->enabled = true;
+
 	Vector2D playerPos = playerTr->getPos();
 	if(flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 1.25, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
 	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 4, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
@@ -42,7 +45,7 @@ void ChargeWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && !recharging) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && !recharging && !ctrl->isStairs()) {
 		counter++;
 	}
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) {

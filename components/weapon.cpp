@@ -16,7 +16,7 @@
 #include "../components/rigid_body.h"
 #include <iostream>
 
-Weapon::Weapon(float fR, int dam, float dispersion) : dispersion(dispersion), fireRate(fR), flipped(false), counter(0), entityImg(nullptr), damage(dam), player(nullptr),
+Weapon::Weapon(float fR, int dam, float dispersion) : dispersion(dispersion), fireRate(fR), flipped(false), ctrl(nullptr), counter(0), entityImg(nullptr), damage(dam), player(nullptr),
 playerTr(nullptr), entityTr(nullptr)
 {
 	charger = 30; //Pasar por referencia cuando este
@@ -30,6 +30,9 @@ Weapon::~Weapon() {}
 
 void Weapon::update() {
 	counter++;
+
+	if (ctrl->isStairs()) entityImg->enabled = false;
+	else entityImg->enabled = true;
 
 	Vector2D playerPos = playerTr->getPos();
 	if(flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 1.25, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
@@ -58,7 +61,8 @@ void Weapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate && actcharger > 0 && !recharging) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate 
+		&& actcharger > 0 && !recharging && !ctrl->isStairs()) {
 		counter = 0;
 
 		float maxDispersion = dispersion; //Add here the dispersions
@@ -155,7 +159,8 @@ void Weapon::init()
 	player = entity_->getMngr()->getHandler<Player_hdlr>();
 	playerTr = player->getComponent<Transform>();
 	entityTr = entity_->getComponent <Transform>();
-	assert(entityTr != nullptr && playerTr != nullptr);
+	ctrl = player->getComponent<KeyboardPlayerCtrl>();
+	assert(entityTr != nullptr && playerTr != nullptr && ctrl != nullptr);
 
 	entityImg = entity_->getComponent<Image>();
 	assert(entityImg != nullptr);
