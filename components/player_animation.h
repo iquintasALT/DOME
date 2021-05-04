@@ -33,6 +33,7 @@ private:
 	Transform* tr_;
 	RigidBody* rb;
 	KeyboardPlayerCtrl* ctrl;
+	bool animStop;
 
 	ParticleSystem* walkDust;
 

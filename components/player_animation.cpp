@@ -1,7 +1,9 @@
 #include "player_animation.h"
 
 
-player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){};
+player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
+	animStop = false;
+};
 
 player_animation::~player_animation() {}
 
@@ -11,7 +13,7 @@ void player_animation::update() {
 	}
 	timer += currentAnimation.animationSpeed();
 
-	if (timer > 1) {
+	if (timer > 1 && !animStop) {
 		currentAnimation.advanceFrame();
 		timer = 0;
 	}
@@ -49,10 +51,12 @@ bool player_animation::changeAnimations() {
 
 		currentAnimation = animations[crouch];
 		currentAnimation.render();
+		walkDust->Stop();
 		return true;
 	}
 
 	if (ctrl->isStairs()) {
+		walkDust->Stop();
 		if (ih().getMouseButtonState(InputHandler::LEFT)) {
 			if (currentAnimation == animations[climb_shoot])
 				return false;
@@ -61,12 +65,19 @@ bool player_animation::changeAnimations() {
 			return true;
 		}
 		else {
-			if (currentAnimation == animations[climbing])
-				return false;
+			if (rb->getVel().getY() != 0) {
+				animStop = false;
+				if (currentAnimation == animations[climbing])
+					return false;
 
-			currentAnimation = animations[climbing];
-			currentAnimation.render();
-			return true;
+				currentAnimation = animations[climbing];
+				currentAnimation.render();
+				return true;
+			}
+			else {
+				animStop = true;
+				return false;
+			}
 		}
 	}
 
