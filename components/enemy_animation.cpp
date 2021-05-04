@@ -107,7 +107,7 @@ bool flying_enemy_animation::changeAnimations() {
 
 	float x = rb->getVel().getX();
 
-	if (x < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
+	if (x >= 1) im_->setFlip(SDL_FLIP_HORIZONTAL);
 	else  im_->setFlip(SDL_FLIP_NONE);
 
 	if (isAttacking) {
