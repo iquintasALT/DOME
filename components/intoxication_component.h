@@ -22,7 +22,7 @@ private:
 	Physiognomy* phys;
 	HungerComponent* hunger;
 public:
-	IntoxicationComponent() : time(0), timeToApplyHunger(0), phys(nullptr), hunger(nullptr){ t = &sdlutils().images().at("enemy"); };
+	IntoxicationComponent() : time(0), timeToApplyHunger(0), phys(nullptr), hunger(nullptr){};
 	~IntoxicationComponent() {};
 	void init() override;
 	void update() override;
