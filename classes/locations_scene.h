@@ -6,7 +6,7 @@
 
 class Game;
 
-const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/template.tmx", "./resources/tilemap/zona_comunications.tmx",
+const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/template.tmx", "./resources/tilemap/zona_supermarket.tmx",
 												"C", "D", "E" };
 const array<string, consts::NUM_LOCATIONS> names = {"template", "hospital", "C", "D", "E"};
 

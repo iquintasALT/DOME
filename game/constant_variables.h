@@ -74,6 +74,11 @@ namespace consts {
 	const int CHARGE_TIER2_FIRERATE = 1;
 	const int CHARGE_TIER3_FIRERATE = 1;
 
+	//Enemy Lives
+	const int ENEMY_HP_DEFAULT = 100;
+	const int ENEMY_HP_FLYING = 100;
+	const int ENEMY_HP_RANGED = 100;
+
 	//LOCALIZACIONES
 	const int NUM_LOCATIONS = 5;
 

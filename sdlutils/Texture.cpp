@@ -39,8 +39,13 @@ Texture::Texture(SDL_Renderer *renderer, const std::string &fileName) {
 	width_ = surface->w;
 	height_ = surface->h;
 	renderer_ = renderer;
-
 }
+
+void Texture::setColorMod(Uint8 r, Uint8 g, Uint8 b)
+{
+	SDL_SetTextureColorMod(texture_, r, g, b);
+}
+
 void Texture::setAlpha(Uint8 alpha) {
 	SDL_SetTextureAlphaMod(texture_, alpha);
 }

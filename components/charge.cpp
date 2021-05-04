@@ -1,4 +1,5 @@
 #include "charge.h"
+#include "../classes/enemy.h"
 
 
 void Charge::init() {
@@ -19,5 +20,7 @@ void Charge::update() {
 void Charge::hitEnemies()
 {
 	std::list<Entity*> collided = raycast->allCollisionsInLine<Enemy_grp>(entity_->getMngr());
-	for (Entity* hit_entity : collided) hit_entity->setDead(true);
+	for (Entity* hit_entity : collided) {
+		static_cast<Enemy*>(hit_entity)->receiveDamage(3);
+	}
 }

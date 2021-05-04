@@ -48,6 +48,8 @@ public:
 
 	inline SDL_Texture* getSDLTexture() { return texture_; };
 
+	void setColorMod(Uint8 r, Uint8 g, Uint8 b);
+
 	void setAlpha(Uint8 alpha); //0-255
 
 	// This rendering method corresponds to method SDL_RenderCopyEx.
