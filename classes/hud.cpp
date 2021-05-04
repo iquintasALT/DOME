@@ -89,7 +89,8 @@ void hud::render()
 		if (player->getPhysiognomy()->getNumBleedStates() > 0)
 		{
 			drawStatus(n, (*i)->getFrameIndex(), mouse);
-			--i; --n;
+			if(i != states->begin()) --i; 
+			--n;
 		}
 
 		// Dibujamos los desangrados completos, si hay
