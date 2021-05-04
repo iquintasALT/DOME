@@ -84,6 +84,7 @@ void Inventory::onDisable() {
 	for (auto a : storedItems) {
 		a->image->setActive(false);
 	}
+	toolTips->setActive(false);
 }
 
 

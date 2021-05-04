@@ -34,7 +34,6 @@ void SceneManager::LoadScene() {
 	}
 	else {
 		states->popState();
-		states->currentState()->init();
 	}
 
 }
