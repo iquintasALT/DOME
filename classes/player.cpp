@@ -22,6 +22,7 @@
 #include "../components/hypothermia_component.h"
 #include "../components/box_collider.h"
 #include "../components/CameraMovement.h"
+#include "../components/enemy_contact_damege.h"
 
 Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 {
@@ -40,11 +41,14 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<TirednessComponent>();
 	addComponent<CameraMovement>(.7);
 
+;
 
 	weapon = new WeaponBehaviour(mngr_, t->getPos(), t, 1);
 	addComponent<InventoryController>();
 
 	physiognomy = new Physiognomy(this);
+	addComponent<EnemyContactDamage>(physiognomy);
+	setGroup<Player_grp>(true);
 }
 
 Player::~Player() {

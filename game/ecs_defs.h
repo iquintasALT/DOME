@@ -102,10 +102,18 @@ class CameraMovement;
 struct Wall_grp;
 struct Enemy_grp;
 struct Ladders_grp;
+struct Player_grp;
+struct DefaultEnemy_grp;
+struct FlyingEnemy_grp;
+struct RangedEnemy_grp;
 #define _GRPS_LIST_  \
 	Wall_grp, \
 	Enemy_grp, \
-	Ladders_grp
+	Ladders_grp, \
+	Player_grp, \
+	DefaultEnemy_grp, \
+	FlyingEnemy_grp, \
+	RangedEnemy_grp
 	
 
 // handlers
