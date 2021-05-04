@@ -40,6 +40,9 @@ public:
 	void defaultPosition();
 
 	void moveInventory(Point2D pos);
+
+	void onEnable() override;
+	void onDisable() override;
 private:
 	Point2D originalPos;
 	const float timeToHold = 0.08f; //seconds

@@ -31,6 +31,12 @@ public:
 	virtual void render() {
 	}
 
+	virtual void onEnable() {
+
+	}
+	virtual void onDisable(){
+
+	}
 	bool enabled = true;
 protected:
 	Entity *entity_;

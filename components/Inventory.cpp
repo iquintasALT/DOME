@@ -61,9 +61,10 @@ void Inventory::init() {
 	dropDown = new inventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
 }
 void Inventory::render() {
-	for (auto a : storedItems) {
+	/*for (auto a : storedItems) {
 		a->render();
-	}
+		a->image->setActive(true);
+	}*/
 
 	if (dropDownActive) {
 		dropDown->render();
@@ -72,6 +73,19 @@ void Inventory::render() {
 	//else if (showToolTip)
 	toolTips->setActive(showToolTip);
 }
+
+void Inventory::onEnable() {
+	for (auto a : storedItems) {
+		a->image->setActive(true);
+	}
+}
+
+void Inventory::onDisable() {
+	for (auto a : storedItems) {
+		a->image->setActive(false);
+	}
+}
+
 
 Inventory::~Inventory() {
 	for (auto a : storedItems) {

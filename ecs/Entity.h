@@ -136,6 +136,9 @@ public:
 	}
 	inline void setActive(bool _active) {
 		active = _active;
+
+		if (active) onEnable();
+		else onDisable();
 	}
 
 	template<typename T>
@@ -165,6 +168,18 @@ public:
 		for (auto i = 0u; i < components_.size(); i++) {
 			if (components_[i]->enabled)
 				components_[i]->render();
+		}
+	}
+
+	virtual void onEnable() {
+		for (auto i = 0u; i < components_.size(); i++) {
+			components_[i]->onEnable();
+		}
+	}
+
+	virtual void onDisable() {
+		for (auto i = 0u; i < components_.size(); i++) {
+			components_[i]->onDisable();
 		}
 	}
 
