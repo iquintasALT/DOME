@@ -17,6 +17,7 @@ class Game;
 class Inventory : public Component
 {
 	friend class Item;
+	friend class InventoryStorage;
 public:
 	Inventory(int width, int height);
 	Inventory(int width, int height, Inventory* player);
@@ -80,4 +81,13 @@ private:
 	Transform* toolTipsTr;
 	TextWithBackground* toolTipsText;
 	bool showToolTip;
+};
+
+
+class InventoryStorage {
+public:
+	std::list<Item*> storedItems;
+	~InventoryStorage();
+	void safe(Inventory* inv);
+	void load(Inventory* inv);
 };

@@ -3,6 +3,16 @@
 ItemInfo::ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity* p)> f) :
 	_name(name), _description(description), _width(width), _height(height), _row(row), _col(col), function(f) {};
 
+ItemInfo::ItemInfo(ItemInfo* item) {
+	_name = item->_name;
+	_description = item->_description;
+	_width = item->_width;
+	_height = item->_height;
+	_row = item->_row;
+	_col = item->_col;
+	function = item->function;
+}
+
 ItemInfo* ItemInfo::bottleOfWater()
 {
 	auto f = [](Entity* player) {
@@ -35,9 +45,31 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 	image->setActive(false);
 }
 
+Item::Item(Item* item, Inventory* inventory) {
+	info = item->info;
+	width = item->width;
+	height = item->height;
+	x = item->x;
+	y = item->y;
+	if (inventory != nullptr) {
+		Manager* mngr = inventory->entity_->getMngr();
+		image = mngr->addEntity();
+		mngr->addRenderLayer<Item>(image);
+		transform = image->addComponent<Transform>(inventory->itemPosition(x, y),
+			Inventory::itemWidth * width, Inventory::itemHeight * height, 0);
+		image->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, info->row(), info->col(), true);
+		image->setActive(false);
+	}
+	else {
+		image = nullptr;
+		transform = nullptr;
+	}
+}
+
 Item::~Item() {
 	delete info;
-	image->setDead(true);
+	if (image != nullptr)
+		image->setDead(true);
 }
 
 void Item::render() {
