@@ -10,16 +10,21 @@
 void MenuScene::init() {
 	auto pixel = mngr_->addEntity();
 	pixel->addComponent<Transform>(Vector2D(0, 0), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	pixel->addComponent<Image>(&sdlutils().images().at("pixel"), true);
+	pixel->addComponent<Image>(&sdlutils().images().at("bgImage"), true);
 	mngr_->addRenderLayer<Interface>(pixel);
 
-	auto playButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 370), Vector2D(256, 64), &sdlutils().images().at("playButton"), playGame, g_, mngr_);
+	auto title = mngr_->addEntity();
+	title->addComponent<Transform>(Vector2D(consts::WINDOW_WIDTH / 2 - 256, 150), 512, 128);
+	title->addComponent<Image>(&sdlutils().images().at("titleText"), true);
+	mngr_->addRenderLayer<Interface>(title);
+
+	auto playButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 420), Vector2D(256, 64), &sdlutils().images().at("playButton"), playGame, g_, mngr_);
 	mngr_->addEntity(playButton);
 
-	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 450), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), settings, g_, mngr_);
+	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 500), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), settings, g_, mngr_);
 	mngr_->addEntity(settingsButton);
 
-	auto exitButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 530), Vector2D(256, 64), &sdlutils().images().at("exitButton"), exit, g_, mngr_);
+	auto exitButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 580), Vector2D(256, 64), &sdlutils().images().at("exitButton"), exit, g_, mngr_);
 	mngr_->addEntity(exitButton);
 }
 
