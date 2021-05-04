@@ -15,6 +15,7 @@ protected:
 	RigidBody* playerRb;
 	Transform* playerTr;
 	Transform* entityTr;
+	KeyboardPlayerCtrl* ctrl;
 	Image* entityImg;
 
 	int damage;
