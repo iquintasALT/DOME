@@ -199,7 +199,7 @@ void GameScene::createTransition() {
 	e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(winWidth / 2, winheight / 2), winWidth, winheight);
 	e->addComponent<TextWithBackground>(name,
-		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
+		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
 	e->addComponent<TransitionComponent>(timeToFade);
 	mngr_->addRenderLayer<Interface>(e);
 }
