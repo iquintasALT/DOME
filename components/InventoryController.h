@@ -34,7 +34,7 @@ public :
 	void init() override;
 	void Use();
 
-	void OpenLoot();
+	void OpenLoot(bool state);
 
 
 	Inventory* inventory;

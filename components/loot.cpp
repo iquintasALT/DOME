@@ -48,7 +48,7 @@ void Loot::Interact() {
 		playerInventory->defaultPosition();
 	}
 
-	inventoryController->OpenLoot();
+	inventoryController->OpenLoot(isOpen);
 	inventoryEntity->setActive(isOpen);
 }
 
