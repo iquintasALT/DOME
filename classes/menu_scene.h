@@ -9,17 +9,11 @@ class Manager;
 
 class MenuScene : public GameScene
 {
-private:
-	std::list<MenuButton*> buttons;
-
-	Texture* back;
 public: 
-	MenuScene(Game* game);
+	MenuScene(Game* game) :GameScene(game, "Menu") {};
 	void init() override;
 	static void playGame(Manager* mngr);
-	static void setting(Manager* mngr);
+	static void settings(Manager* mngr);
 	static void exit(Manager* mngr);
-	void render();
-	~MenuScene();
 };
 

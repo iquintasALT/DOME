@@ -149,6 +149,14 @@
             "file": "resources/sprites/buttons/pixel.png"
         },
         {
+          "id": "exitButton",
+          "file": "resources/sprites/buttons/exit_button.png"
+        },
+        {
+          "id": "playButton",
+          "file": "resources/sprites/buttons/play_button.png"
+        },
+        {
             "id": "mainVolumeText",
             "file": "resources/sprites/buttons/main_volume_text.png"
         },

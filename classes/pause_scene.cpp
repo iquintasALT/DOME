@@ -22,8 +22,10 @@ void PauseScene::init() {
 	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 450), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), settings, g_, mngr_);
 	mngr_->addEntity(settingsButton);
 
+
 	auto menuButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 530), Vector2D(256, 64), &sdlutils().images().at("mainmenuButton"), menu, g_, mngr_);
 	mngr_->addEntity(menuButton);
+
 }
 void PauseScene::resume(Manager* mng) {
 	ih().clearState();
