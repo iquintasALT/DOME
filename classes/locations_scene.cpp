@@ -28,7 +28,7 @@ void LocationsScene::init()
 	infos.push_back(info2);
 
 	auto info3 = mngr_->addEntity();
-	info1->addComponent<Transform>(Vector2D(0, 0), 280, 630);
+	info3->addComponent<Transform>(Vector2D(0, 0), 280, 630);
 	info3->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true);
 	info3->setActive(false);
 	mngr_->addRenderLayer<Item>(info3);
