@@ -14,28 +14,28 @@ void LocationsScene::init()
 	mngr_->addRenderLayer<Background>(background);
 
 	auto info1 = mngr_->addEntity();
-	info1->addComponent<Transform>(Vector2D(0, 0), 280, 630);
+	info1->addComponent<Transform>(Vector2D(50, 0), 280, 630);
 	info1->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true);
 	info1->setActive(false);
 	mngr_->addRenderLayer<Item>(info1);
 	infos.push_back(info1);
 
 	auto info2 = mngr_->addEntity();
-	info2->addComponent<Transform>(Vector2D(0, 0), 280, 630);
+	info2->addComponent<Transform>(Vector2D(50, 0), 280, 630);
 	info2->addComponent<Image>(&sdlutils().images().at("info_comunicaciones"), 1, 1, 0, 0, true); //CAMBIAR ESTA IMAGEN AL TEXTO BIEN
 	info2->setActive(false);
 	mngr_->addRenderLayer<Item>(info2);
 	infos.push_back(info2);
 
 	auto info3 = mngr_->addEntity();
-	info3->addComponent<Transform>(Vector2D(0, 0), 280, 630);
+	info3->addComponent<Transform>(Vector2D(50, 0), 280, 630);
 	info3->addComponent<Image>(&sdlutils().images().at("info_supermercado"), 1, 1, 0, 0, true);
 	info3->setActive(false);
 	mngr_->addRenderLayer<Item>(info3);
 	infos.push_back(info3);
 
 	auto info4 = mngr_->addEntity();
-	info4->addComponent<Transform>(Vector2D(0, 0), 280, 630);
+	info4->addComponent<Transform>(Vector2D(50, 0), 280, 630);
 	info4->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true);
 	info4->setActive(false);
 	mngr_->addRenderLayer<Item>(info4);
