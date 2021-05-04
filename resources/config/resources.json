@@ -53,8 +53,16 @@
             "file": "resources/sprites/character_sheet.png"
         },
         {
+            "id": "info_comunicaciones",
+            "file": "resources/sprites/info_comunicaciones.png"
+        },
+        {
             "id": "info_hospital",
             "file": "resources/sprites/info_hospital.png"
+        },
+        {
+            "id": "info_supermercado",
+            "file": "resources/sprites/info_supermercado.png"
         },
         {
             "id": "enemy",

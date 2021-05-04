@@ -22,14 +22,14 @@ void LocationsScene::init()
 
 	auto info2 = mngr_->addEntity();
 	info2->addComponent<Transform>(Vector2D(0, 0), 280, 630);
-	info2->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true); //CAMBIAR ESTA IMAGEN AL TEXTO BIEN
+	info2->addComponent<Image>(&sdlutils().images().at("info_comunicaciones"), 1, 1, 0, 0, true); //CAMBIAR ESTA IMAGEN AL TEXTO BIEN
 	info2->setActive(false);
 	mngr_->addRenderLayer<Item>(info2);
 	infos.push_back(info2);
 
 	auto info3 = mngr_->addEntity();
 	info3->addComponent<Transform>(Vector2D(0, 0), 280, 630);
-	info3->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true);
+	info3->addComponent<Image>(&sdlutils().images().at("info_supermercado"), 1, 1, 0, 0, true);
 	info3->setActive(false);
 	mngr_->addRenderLayer<Item>(info3);
 	infos.push_back(info3);
