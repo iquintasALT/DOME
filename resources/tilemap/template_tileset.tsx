@@ -364,6 +364,21 @@
    <property name="wall" type="bool" value="false"/>
   </properties>
  </tile>
+ <tile id="85">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="86">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="87">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
  <tile id="88">
   <properties>
    <property name="wall" type="bool" value="false"/>
@@ -435,6 +450,21 @@
   </properties>
  </tile>
  <tile id="102">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="103">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="104">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="105">
   <properties>
    <property name="wall" type="bool" value="false"/>
   </properties>
@@ -514,6 +544,21 @@
    <property name="wall" type="bool" value="false"/>
   </properties>
  </tile>
+ <tile id="121">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="122">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="123">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
  <tile id="124">
   <properties>
    <property name="wall" type="bool" value="false"/>
@@ -585,6 +630,21 @@
   </properties>
  </tile>
  <tile id="138">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="139">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="140">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="141">
   <properties>
    <property name="wall" type="bool" value="false"/>
   </properties>
@@ -669,6 +729,21 @@
    <property name="wall" type="bool" value="false"/>
   </properties>
  </tile>
+ <tile id="158">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="159">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="160">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
  <tile id="162">
   <properties>
    <property name="wall" type="bool" value="false"/>
@@ -740,6 +815,16 @@
   </properties>
  </tile>
  <tile id="176">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="177">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="178">
   <properties>
    <property name="wall" type="bool" value="false"/>
   </properties>
@@ -819,6 +904,16 @@
    <property name="wall" type="bool" value="false"/>
   </properties>
  </tile>
+ <tile id="195">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="196">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
  <tile id="198">
   <properties>
    <property name="wall" type="bool" value="false"/>
@@ -890,6 +985,16 @@
   </properties>
  </tile>
  <tile id="212">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="213">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="214">
   <properties>
    <property name="wall" type="bool" value="false"/>
   </properties>
@@ -1235,6 +1340,26 @@
   </properties>
  </tile>
  <tile id="293">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="294">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="295">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="296">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="297">
   <properties>
    <property name="wall" type="bool" value="false"/>
   </properties>
