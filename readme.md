@@ -59,7 +59,7 @@ Para poder volver al refugio, el jugador tendrá que salir por la zona por la qu
 
 El refugio es una zona pequeña donde el jugador podrá construir y mejorar diferentes estaciones de crafteo, crear objetos o descansar. En él, el jugador podrá interactuar con distintas estructuras del refugio para realizar acciones que gastarán parte del tiempo (discreto) disponible. Cuando gaste todo el tiempo, o bien cuando se vea sin acciones, podrá dormir y avanzar al siguiente día.
 
-Las estructuras estarán ya situadas en distintas zonas del refugio (cohete, base de datos, terminal, mesa de crafteo??), pudiendo el jugador interactuar con ellas para mejorarlas, repararlas, o realizar acciones. Además, habrá alguna forma de almacenamiento del loot obtenido en la raid (nevera, armario, despensa {podrá ser limitado o no dependiendo de feeling del gameplay}).
+Las estructuras estarán ya situadas en distintas zonas del refugio (cohete, base de datos, terminal, mesa de crafteo??), pudiendo el jugador interactuar con ellas para mejorarlas, repararlas, o realizar acciones.
 
 En un principio, el jugador podrá seleccionar las distintas localizaciones para poder acceder a las acciones disponibles.
 *MEDIA PRIORIDAD: El jugador se moverá en el propio refugio.*
@@ -84,7 +84,7 @@ Existen tres categorías de armas que facilitan el combate contra ciertos enemig
 
 *BAJA PRIORIDAD: Alguna de las armas de arriba implementa algun tipo de daño AOE.*
 
-Además, durante la raid, podremos cambiar entre arma principal y la que haya en el inventario durante la raid.
+Se puede cambiar de arma pulsando el botón X, ciclando por las tres armas en orden.
 
 ## Armaduras
 
@@ -115,9 +115,9 @@ su velocidad de movimiento mejorará.
 
 # Enemigos <a name="enem"></a>
 
-Pepega a melee: comportamiento más agresivo, rushea al jugador cuando se da cuenta de su presencia y ataca en "horda", el jugador deberá ser rápido eliminando a estos enemigos ya que el combate a melee es peligroso.
+Pepega a pie: persigue al jugador por el suelo, con más vida que el enemigo volador.
 
-Pepega a rango: comportamiento más cauteloso, se comportan como guardias usando coberturas para frenar el avance del jugador siguen patrones de disparo que el jugador deberá usar para eliminarlos.
+Enemigo a distancia: 
 
 # Salud <a name="medi"></a>
 
