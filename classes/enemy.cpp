@@ -20,17 +20,19 @@ Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacte
 	addComponent<RigidBody>();
 	addComponent<BoxCollider>(false, 1);
 	addComponent<EnemyContactDamage>();
-}
+}	
 
-void Enemy::receiveDamage()
+void Enemy::receiveDamage(int damage_)
 {
-	lives--;
+	lives -= damage_;
 	if (getComponent<enemy_animation>() != nullptr && !getComponent<enemy_animation>()->isDamaged()) {
 		getComponent<enemy_animation>()->setDamaged(true);
 	}
 	else if (getComponent<flying_enemy_animation>() != nullptr && !getComponent<flying_enemy_animation>()->isDamaged()) {
 		getComponent<flying_enemy_animation>()->setDamaged(true);
 	}
+
+	//usar constantes! 5 siendo max vida
 
 	if (lives <= 0) {
 		setDead(true);

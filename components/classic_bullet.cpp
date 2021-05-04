@@ -23,7 +23,7 @@ void ClassicBullet::init() {
 
 void ClassicBullet::OnCollision(Entity* other) {
 	if (other->hasGroup<Enemy_grp>() ) {
-		static_cast<Enemy*>(other)->receiveDamage();
+		static_cast<Enemy*>(other)->receiveDamage(1);
 	}
 	entity_->setDead(true);
 }
