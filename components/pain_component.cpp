@@ -31,6 +31,7 @@ void PainComponent::increaseTime() {
 		else if (dynamic_cast<IntoxicationComponent*>(*i) != nullptr) {
 			static_cast<IntoxicationComponent*>(*i)->increaseTime(consts::INTOXICATION_INCREASE_TIME);
 		}
+		i++;
 	}
 }
 void PainComponent::update() {
