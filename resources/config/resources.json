@@ -47,184 +47,192 @@
     }
   ],
 
-  "images": [
-    {
-      "id": "player",
-      "file": "resources/sprites/character_sheet.png"
-    },
-    {
-      "id": "info_comunicaciones",
-      "file": "resources/sprites/info_comunicaciones.png"
-    },
-    {
-      "id": "info_hospital",
-      "file": "resources/sprites/info_hospital.png"
-    },
-    {
-      "id": "info_supermercado",
-      "file": "resources/sprites/info_supermercado.png"
-    },
-    {
-      "id": "enemy",
-      "file": "resources/sprites/enemy_sheet.png"
-    },
-    {
-      "id": "flying_enemy",
-      "file": "resources/sprites/flying_enemy_sheet.png"
-    },
-    {
-      "id": "floor",
-      "file": "resources/sprites/floor_tileset.png"
-    },
-    {
-      "id": "weapons",
-      "file": "resources/sprites/weapons_sheet.png"
-    },
-    {
-      "id": "weapons_arms",
-      "file": "resources/sprites/weapons_arms_sheet.png"
-    },
-    {
-      "id": "projectile",
-      "file": "resources/sprites/projectile.png"
-    },
-    {
-      "id": "panel",
-      "file": "resources/sprites/panel.png"
-    },
-    {
-      "id": "tooltipBox",
-      "file": "resources/sprites/tooltipbox.png"
-    },
-    {
-      "id": "shelterButton",
-      "file": "resources/sprites/buttons/shelter_button.png"
-    },
-    {
-      "id": "raidButton",
-      "file": "resources/sprites/buttons/raid_button.png"
-    },
-    {
-      "id": "resumeButton",
-      "file": "resources/sprites/buttons/resume_button.png"
-    },
-    {
-      "id": "settingsButton",
-      "file": "resources/sprites/buttons/settings_button.png"
-    },
-    {
-      "id": "mainmenuButton",
-      "file": "resources/sprites/buttons/mainmenu_button.png"
-    },
-    {
-      "id": "backButton",
-      "file": "resources/sprites/buttons/back_button.png"
-    },
-    {
-      "id": "volumeBar",
-      "file": "resources/sprites/buttons/volume_bar.png"
-    },
-    {
-      "id": "raiseVolume",
-      "file": "resources/sprites/buttons/raise_volume_button.png"
-    },
-    {
-      "id": "decreaseVolume",
-      "file": "resources/sprites/buttons/decrease_volume_button.png"
-    },
-    {
-      "id": "volumeAdjuster",
-      "file": "resources/sprites/buttons/volume_adjuster.png"
-    },
-    {
-      "id": "exitButton",
-      "file": "resources/sprites/buttons/exit_button.png"
-    },
-    {
-      "id": "playButton",
-      "file": "resources/sprites/buttons/play_button.png"
-    },
-    {
-      "id": "pixel",
-      "file": "resources/sprites/buttons/pixel.png"
-    },
-    {
-      "id": "mainVolumeText",
-      "file": "resources/sprites/buttons/main_volume_text.png"
-    },
-    {
-      "id": "effectsVolume",
-      "file": "resources/sprites/buttons/sfx_volume_text.png"
-    },
-    {
-      "id": "dust",
-      "file": "resources/sprites/dustParticle.png"
-    },
-    {
-      "id": "explosion",
-      "file": "resources/sprites/explosionParticle.png"
-    },
-    {
-      "id": "charge",
-      "file": "resources/sprites/charge_projectile.png"
-    },
-    {
-      "id": "craft_bg",
-      "file": "resources/sprites/craft_ui/bg.png"
-    },
-    {
-      "id": "craft_back_button",
-      "file": "resources/sprites/craft_ui/back_button.png"
-    },
-    {
-      "id": "craft_slot_box",
-      "file": "resources/sprites/craft_ui/slot.png"
-    },
-    {
-      "id": "craft_arrow",
-      "file": "resources/sprites/craft_ui/arrow.png"
-    },
-    {
-      "id": "items",
-      "file": "resources/sprites/items_sheet.png"
-    },
-    {
-      "id": "frost",
-      "file": "resources/sprites/frost.png"
-    },
-    {
-      "id": "location_image",
-      "file": "resources/sprites/location_map.png"
-    },
-    {
-      "id": "location_icons",
-      "file": "resources/sprites/location_icons.png"
-    },
-    {
-      "id": "clock",
-      "file": "resources/sprites/clock.png"
-    },
-    {
-      "id": "dclock",
-      "file": "resources/sprites/digital_clock.png"
-    },
-    {
-      "id": "storage",
-      "file": "resources/sprites/storage_backgrounds.png"
-    },
-    {
-      "id": "wardrobe",
-      "file": "resources/sprites/wardrobe_tileset.png"
-    },
-    {
-      "id": "black",
-      "file": "resources/sprites/black.png"
-    },
-    {
-      "id": "status_effects",
-      "file": "resources/sprites/status_effects.png"
-    }
-  ],
+    "images": [
+        {
+            "id": "player",
+            "file": "resources/sprites/character_sheet.png"
+        },
+        {
+            "id": "weaponHUD",
+            "file": "resources/sprites/weapons_sheet_HUD.png"
+        },
+        {
+            "id": "marco",
+            "file": "resources/sprites/marco.png"
+        },
+        {
+            "id": "info_comunicaciones",
+            "file": "resources/sprites/info_comunicaciones.png"
+        },
+        {
+            "id": "info_hospital",
+            "file": "resources/sprites/info_hospital.png"
+        },
+        {
+            "id": "info_supermercado",
+            "file": "resources/sprites/info_supermercado.png"
+        },
+        {
+            "id": "enemy",
+            "file": "resources/sprites/enemy_sheet.png"
+        },
+        {
+            "id": "flying_enemy",
+            "file": "resources/sprites/flying_enemy_sheet.png"
+        },
+        {
+            "id": "floor",
+            "file": "resources/sprites/floor_tileset.png"
+        },
+        {
+            "id": "weapons",
+            "file": "resources/sprites/weapons_sheet.png"
+        },
+        {
+            "id": "weapons_arms",
+            "file": "resources/sprites/weapons_arms_sheet.png"
+        },
+        {
+            "id": "projectile",
+            "file": "resources/sprites/projectile.png"
+        },
+        {
+            "id": "panel",
+            "file": "resources/sprites/panel.png"
+        },
+        {
+            "id": "tooltipBox",
+            "file": "resources/sprites/tooltipbox.png"
+        },
+        {
+            "id": "shelterButton",
+            "file": "resources/sprites/buttons/shelter_button.png"
+        },
+        {
+            "id": "raidButton",
+            "file": "resources/sprites/buttons/raid_button.png"
+        },
+        {
+            "id": "resumeButton",
+            "file": "resources/sprites/buttons/resume_button.png"
+        },
+        {
+            "id": "settingsButton",
+            "file": "resources/sprites/buttons/settings_button.png"
+        },
+        {
+            "id": "mainmenuButton",
+            "file": "resources/sprites/buttons/mainmenu_button.png"
+        },
+        {
+            "id": "backButton",
+            "file": "resources/sprites/buttons/back_button.png"
+        },
+        {
+            "id": "volumeBar",
+            "file": "resources/sprites/buttons/volume_bar.png"
+        },
+        {
+            "id": "raiseVolume",
+            "file": "resources/sprites/buttons/raise_volume_button.png"
+        },
+        {
+            "id": "decreaseVolume",
+            "file": "resources/sprites/buttons/decrease_volume_button.png"
+        },
+        {
+            "id": "volumeAdjuster",
+            "file": "resources/sprites/buttons/volume_adjuster.png"
+        },
+        {
+            "id": "pixel",
+            "file": "resources/sprites/buttons/pixel.png"
+        },
+        {
+          "id": "exitButton",
+          "file": "resources/sprites/buttons/exit_button.png"
+        },
+        {
+          "id": "playButton",
+          "file": "resources/sprites/buttons/play_button.png"
+        },
+        {
+            "id": "mainVolumeText",
+            "file": "resources/sprites/buttons/main_volume_text.png"
+        },
+        {
+            "id": "effectsVolume",
+            "file": "resources/sprites/buttons/sfx_volume_text.png"
+        },
+        {
+            "id": "dust",
+            "file": "resources/sprites/dustParticle.png"
+        },
+        {
+            "id": "explosion",
+            "file": "resources/sprites/explosionParticle.png"
+        },
+        {
+            "id": "charge",
+            "file": "resources/sprites/charge_projectile.png"
+        },
+        {
+            "id": "craft_bg",
+            "file": "resources/sprites/craft_ui/bg.png"
+        },
+        {
+            "id": "craft_back_button",
+            "file": "resources/sprites/craft_ui/back_button.png"
+        },
+        {
+            "id": "craft_slot_box",
+            "file": "resources/sprites/craft_ui/slot.png"
+        },
+        {
+            "id": "craft_arrow",
+            "file": "resources/sprites/craft_ui/arrow.png"
+        },
+        {
+            "id": "items",
+            "file": "resources/sprites/items_sheet.png"
+        },
+        {
+            "id": "frost",
+            "file": "resources/sprites/frost.png"
+        },
+        {
+            "id": "location_image",
+            "file": "resources/sprites/location_map.png"
+        },
+        {
+            "id": "location_icons",
+            "file": "resources/sprites/location_icons.png"
+        },
+        {
+            "id": "clock",
+            "file": "resources/sprites/clock.png"
+        },
+        {
+            "id": "dclock",
+            "file": "resources/sprites/digital_clock.png"
+        },
+        {
+            "id": "storage",
+            "file": "resources/sprites/storage_backgrounds.png"
+        },
+        {
+            "id": "wardrobe",
+            "file": "resources/sprites/wardrobe_tileset.png"
+        },
+        {
+            "id": "black",
+            "file": "resources/sprites/black.png"
+        },
+        {
+            "id": "status_effects",
+            "file": "resources/sprites/status_effects.png"
+        }
+    ],
 
   "messages": [
     {

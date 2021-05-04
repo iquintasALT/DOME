@@ -102,3 +102,19 @@ void WeaponBehaviour::changeWeapon()
 	type++;
 	if (type > 3) type = 1;
 }
+
+int WeaponBehaviour::tierOfWeapon()
+{
+	if (type == 1)
+	{
+		return type1;
+	}
+	if (type == 2)
+	{
+		return type2;
+	}
+	else
+	{
+		return type2;
+	}
+}

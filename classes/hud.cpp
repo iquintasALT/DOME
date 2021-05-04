@@ -8,11 +8,12 @@
 #include "../components/player_health_component.h"
 #include "../components/bleedout_component.h"
 #include "../components/TextWithBackGround.h"
-
+#include "../components/Image.h"
 #include "../sdlutils/InputHandler.h"
 
 #include <iostream>
 #include <string>
+
 hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 {
 	posCam = initialPos;
@@ -20,7 +21,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 
 	time = new Countdown(10000); //Hay que pasarle el pos Cam para que se mueva
 	timer = &sdlutils().images().at("dclock");
-
+	marco = &sdlutils().images().at("marco");
 	m->addEntity(this);
 	m->addRenderLayer<Interface>(this);
 
@@ -35,6 +36,16 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 	tooltipText = tooltip->addComponent<TextWithBackground>("Inventario",
 		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 	tooltip->setActive(false);
+
+	Entity* arma = m->addEntity();
+	arma->addComponent<Transform>(Vector2D(7,650), 75, 75);
+	actweapon = arma->addComponent<Image>(&sdlutils().images().at("weaponHUD"), 3, 3, 0, 0, true);
+	m->addRenderLayer<Interface>(arma);
+}
+
+void hud::chooseWeapon(int type, int tier)
+{
+	actweapon->changeFrame(tier, type);
 }
 
 void hud::update()
@@ -44,6 +55,12 @@ void hud::update()
 	bullets = player->getCurrentWeapon()->getWeaponMovement()->getChargerBullets();
 	totalBullet = player->getCurrentWeapon()->getWeaponMovement()->getTotalBullets();
 	if (totalBullet < 0) totalBullet = 0;
+
+	int type = player->getCurrentWeapon()->typeOfWeapon();
+	int tier = player->getCurrentWeapon()->tierOfWeapon();
+
+	chooseWeapon(type-1, tier-1);
+
 }
 
 void hud::render()
@@ -57,19 +74,23 @@ void hud::render()
 
 	time->render();
 
+	aux = Vector2D(-1, 650);
+	dest = build_sdlrect(aux, 155, 70);
+	marco->render(dest);
+
 	//Renderizar las balas cargador
-	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(charger), sdlutils().fonts().at("OrbitronRegular"),
+	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(charger), sdlutils().fonts().at("Orbitron12"),
 		build_sdlcolor(0xffffffff));
 
-	nbullets->render(posCam->getPos().getX() - 50, posCam->getPos().getY() + 550);
+	nbullets->render(posCam->getPos().getX(), posCam->getPos().getY() + 550);
 	delete nbullets;
 	nbullets = nullptr;
 
 	//Numero pequeñito
-	nbullets = new Texture(sdlutils().renderer(), to_string(totalBullet), sdlutils().fonts().at("Orbitron12"),
+	nbullets = new Texture(sdlutils().renderer(), to_string(totalBullet), sdlutils().fonts().at("OrbitronRegular"),
 		build_sdlcolor(0xffffffff));
 
-	nbullets->render(posCam->getPos().getX(), posCam->getPos().getY() + 570);
+	nbullets->render(posCam->getPos().getX() + 3, posCam->getPos().getY() + 580);
 	delete nbullets;
 	nbullets = nullptr;
 
@@ -89,7 +110,8 @@ void hud::render()
 		if (player->getPhysiognomy()->getNumBleedStates() > 0)
 		{
 			drawStatus(n, (*i)->getFrameIndex(), mouse);
-			--i; --n;
+			if(i != states->begin()) --i; 
+			--n;
 		}
 
 		// Dibujamos los desangrados completos, si hay
