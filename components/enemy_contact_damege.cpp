@@ -13,9 +13,7 @@ void EnemyContactDamage::update()
 	if (!canCollide && sdlutils().currRealTime() - 2000 > cooldown) {
 		canCollide = true;
 		cooldown = sdlutils().currRealTime();
-	}//sdlutils().currRealTime() > time + consts::TIME_PER_NEWSUMOFTIME
-	if (canCollide) cout << "TRUE" << endl;
-	else cout << "FALSE" << endl;
+	}
 }
 
 void EnemyContactDamage::OnCollision(Entity* other)
@@ -26,8 +24,12 @@ void EnemyContactDamage::OnCollision(Entity* other)
 			if (other->hasGroup<DefaultEnemy_grp>()) {
 				physiognomy->addBleedState();
 			}
-			else if (other->hasGroup<FlyingEnemy_grp>()) physiognomy->addPainState();
-			else if (other->hasGroup<RangedEnemy_grp>()) physiognomy->addIntoxicationState();
+			else if (other->hasGroup<FlyingEnemy_grp>()) {
+				//aleatorio entre Pain y Intoxication
+				int rand = sdlutils().rand().nextInt(0, 101);
+				if(rand < 50) physiognomy->addPainState();
+				else physiognomy->addIntoxicationState();
+			}
 			canCollide = false;
 			cooldown = sdlutils().currRealTime();
 		}
