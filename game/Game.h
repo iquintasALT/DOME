@@ -25,7 +25,6 @@ public:
 	SCENES currentScene;
 	map<SCENES, vector<vector<I>>> SCENES_LOOT;
 
-
 	Game(int totaltime); 
 	virtual ~Game();
 	void init();
