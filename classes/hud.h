@@ -7,6 +7,8 @@
 #include "../utils/checkML.h"
 
 class TextWithBackground;
+class Image;
+
 class hud : public Entity
 {
 private:
@@ -23,7 +25,8 @@ private:
 	Texture* ncharger;
 	Texture* totalBullets;
 	Texture* timer;
-	Texture* actweapon;
+	Texture* marco;
+	Image* actweapon;
 
 	Transform* tooltipTr;
 	TextWithBackground* tooltipText;
