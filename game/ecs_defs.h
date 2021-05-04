@@ -134,6 +134,7 @@ struct Bullets;
 struct Loot;
 struct Interface;
 struct Item;
+struct ULTIMATE;
 #define _RENDER_LIST_ \
 	Background, \
 	Default, \
@@ -143,4 +144,5 @@ struct Item;
 	Bullets, \
 	Loot, \
 	Interface, \
-	Item
+	Item, \
+	ULTIMATE

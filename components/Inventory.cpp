@@ -50,7 +50,7 @@ void Inventory::init() {
 	toolTipsTr = toolTips->addComponent<Transform>(Vector2D(100, 100), 500, 10, 0);
 	toolTipsText = toolTips->addComponent<TextWithBackground>("Inventario",
 		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
-	entity_->getMngr()->addRenderLayer<Item>(toolTips);
+	entity_->getMngr()->addRenderLayer<ULTIMATE>(toolTips);
 	toolTips->setActive(false);
 
 	dropDownActive = false;
