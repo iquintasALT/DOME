@@ -209,16 +209,19 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 ## Crafteos
 | Objeto | Elementos necesarios | Uso |
 |--------|----------------------|-----|
-| Vendas | x componentes médicos + x agua + x elementos orgánicos | Curan sangrado |
-| Antídoto | x comida + x agua + x componenetes médicos | Cura infecciones |
-| Férula | x partes mecánicas + x agua | Cura contusiones |
-| Cohetes de la nave | x restos clave de la nave + x materiales de construcción + restos electrónicos + x placas de metal | Primera parte de la nave |
-| Arma mejorada | x partes mecánicas + x restos electrónicos + kit de mejora | Aumenta el tier del arma |
-| Munición arma clásica | x partes mecánicas + x componentes médicos + x placas de metal | Munición para el arma clásica |
-| Mochila mejorada | kit de mejora + x elementos orgánicos + x vendas |
-Mejora la mochila |
-| Placas de metal | x materiales de construcción + x partes mecánicas | Para reaizar otros crafteos |
-| Armadura mejorada | kit de mejora + x placas de metal + x elementos orgánicos | Mejora la armadura |
+| Vendas | 2 componentes médicos + 1 agua + 1 elementos orgánicos | Curan sangrado |
+| Antídoto | 1 comida + 2 agua + 2 componenetes médicos | Cura infecciones |
+| Férula | 2 partes mecánicas + 1 agua | Cura contusiones |
+| Painkiller | 2 comida + 1 agua + 2 componenetes médicos | Cura Dolor |
+| Comida | 1 agua + 1 elementos orgánicos | Para comer |
+| Cohetes de la nave | 2 restos clave de la nave + x materiales de construcción + restos electrónicos + x placas de metal | Primera parte de la nave |
+| Radar de la nave | 1 restos clave de la nave + 1 restos electrónicos | Segunda nave parte de la nave |
+| Cabina de la nave | 3 restos clave de la nave + 2 materiales de construcción + 1 placas de metal | Segunda nave parte de la nave |
+| Arma mejorada | 2 partes mecánicas + 1 restos electrónicos + 1 kit de mejora | Aumenta el tier del arma |
+| Munición arma clásica |No se craftea | Munición para el arma clásica |
+| Munición arma laser |No se craftea | Munición para el arma clásica |
+| Munición arma ricochet | 1 Munición arma clásica + 2 partes mecánicas | Munición para el arma ricochet |
+| Placas de metal | 1 materiales de construcción + 1 partes mecánicas | Para reaizar otros crafteos |
 
 
 # Refúgio
