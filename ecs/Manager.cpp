@@ -35,14 +35,15 @@ void Manager::refresh() {
 					if (e->hasComponent<BoxCollider>()) {
 						//colliders.erase(e->getComponent<BoxCollider>()->getCollisionIterator()); NO SE PUEDE ACCEDER A getCollisionIterator porque tras borrar puede tener un iterador no valido
 						//solucion fea temporal, buscarlo
-						vector<BoxCollider*>::iterator it = colliders.begin();
+						/*list<BoxCollider*>::iterator it = colliders.begin();
 						while (it != colliders.end()) {
 							if ((*it)->getEntity() == e) {
 								it = colliders.erase(it);
 								break;
 							}
 							else it++;
-						}
+						}*/
+						colliders.erase(e->getComponent<BoxCollider>()->getCollisionIterator());
 					}
 					delete e;
 					return true;
@@ -75,10 +76,9 @@ void Manager::AddInteractableElement(InteractableElement* ie) {
 	interactableElements.push_back(ie);
 }
 
-std::vector<BoxCollider*>::iterator Manager::AddCollider(BoxCollider* bc) {
+std::list<BoxCollider*>::iterator Manager::AddCollider(BoxCollider* bc) {
 	//colliders.push_back(bc);
-	std::vector<BoxCollider*>::iterator it = colliders.end();
-	it = colliders.insert(it, bc);
+	std::list<BoxCollider*>::iterator it = colliders.insert(colliders.end(), bc);
 	return it;
 }
 

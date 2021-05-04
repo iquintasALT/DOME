@@ -10,6 +10,8 @@
 #include "Transform.h"
 #include "../game/constant_variables.h"
 
+#include <list>
+
 class RigidBody;
 
 class BoxCollider : public Component
@@ -20,7 +22,7 @@ private:
 
 	bool trigger;
 	int collisionLayer;
-	std::vector<BoxCollider*>::iterator itCollisions;
+	std::list<BoxCollider*>::iterator itCollisions;
 public:
 	inline BoxCollider(bool isTrigger = false, int collisionLayer = 0) : tr_(nullptr),
 		trigger(isTrigger), collisionLayer(collisionLayer) {
@@ -35,7 +37,7 @@ public:
 
 	inline bool isTrigger() { return trigger; };
 
-	inline std::vector<BoxCollider*>::iterator getCollisionIterator() { return itCollisions; };
+	inline std::list<BoxCollider*>::iterator getCollisionIterator() { return itCollisions; };
 
 	bool collision(Transform* ent, RigidBody* rb_);
 
