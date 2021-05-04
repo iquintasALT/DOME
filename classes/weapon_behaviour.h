@@ -29,4 +29,7 @@ public:
 	Weapon* getWeaponMovement();
 
 	void changeWeapon();
+
+	int typeOfWeapon() { return type; }
+	int tierOfWeapon();
 };

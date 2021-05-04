@@ -14,6 +14,9 @@
 void RicochetWeapon::update() {
 	counter++;
 
+	if (ctrl->isStairs()) entityImg->enabled = false;
+	else entityImg->enabled = true;
+
 	Vector2D playerPos = playerTr->getPos();
 	if(flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 1.25, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
 	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 4, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
@@ -40,7 +43,8 @@ void RicochetWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate && actcharger > 0 && !recharging) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate
+		&& actcharger > 0 && !recharging && !ctrl->isStairs()) {
 		counter = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 

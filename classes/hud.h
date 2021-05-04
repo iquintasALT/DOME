@@ -23,7 +23,7 @@ private:
 	Texture* ncharger;
 	Texture* totalBullets;
 	Texture* timer;
-
+	Texture* actweapon;
 
 	Transform* tooltipTr;
 	TextWithBackground* tooltipText;
@@ -35,6 +35,8 @@ public:
 	void update() override;
 
 	void render() override;
+
+	void chooseWeapon(int type, int tier);
 
 	~hud() { delete time; delete posCam; }
 };
