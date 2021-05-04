@@ -71,8 +71,8 @@ void InventoryController::update() {
 		Use();
 }
 
-void InventoryController::OpenLoot(){
-
-	Use();
+void InventoryController::OpenLoot(bool state) {
+	if (isOpen != state)
+		Use();
 }
 
