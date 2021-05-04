@@ -39,7 +39,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 
 void hud::chooseWeapon(int type, int tier)
 {
-	actweapon = &sdlutils().images().at("weapons_arms"), 3, 3, type, tier;
+	actweapon = &sdlutils().images().at("weaponsHUD"), 3, 3, type, tier;
 }
 
 void hud::update()

@@ -53,6 +53,14 @@
             "file": "resources/sprites/character_sheet.png"
         },
         {
+            "id": "weaponHUD",
+            "file": "resources/sprites/weapons_sheet_HUD.png"
+        },
+        {
+            "id": "marco",
+            "file": "resources/sprites/marco.png"
+        },
+        {
             "id": "info_comunicaciones",
             "file": "resources/sprites/info_comunicaciones.png"
         },
