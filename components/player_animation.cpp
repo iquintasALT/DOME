@@ -57,27 +57,18 @@ bool player_animation::changeAnimations() {
 
 	if (ctrl->isStairs()) {
 		walkDust->Stop();
-		if (ih().getMouseButtonState(InputHandler::LEFT)) {
-			if (currentAnimation == animations[climb_shoot])
+		if (rb->getVel().getY() != 0) {
+			animStop = false;
+			if (currentAnimation == animations[climbing])
 				return false;
-			currentAnimation = animations[climb_shoot];
+
+			currentAnimation = animations[climbing];
 			currentAnimation.render();
 			return true;
 		}
 		else {
-			if (rb->getVel().getY() != 0) {
-				animStop = false;
-				if (currentAnimation == animations[climbing])
-					return false;
-
-				currentAnimation = animations[climbing];
-				currentAnimation.render();
-				return true;
-			}
-			else {
-				animStop = true;
-				return false;
-			}
+			animStop = true;
+			return false;
 		}
 	}
 
