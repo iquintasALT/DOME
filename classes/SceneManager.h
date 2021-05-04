@@ -19,7 +19,7 @@ public:
 	void ChangeScene(GameScene* scene, SceneMode mode);
 
 	/// <summary>
-	/// ¡THIS METHOD SHOULD ONLY BE CALLED BY THE MANAGER!
+	/// THIS METHOD SHOULD ONLY BE CALLED BY THE MANAGER!
 	/// </summary>
 	void LoadScene(); 
 	operator bool() const;
