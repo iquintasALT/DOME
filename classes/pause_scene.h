@@ -8,6 +8,7 @@ public:
 	PauseScene(Game* g) : GameScene(g, "Pause"){};
 	~PauseScene() {};
 	void init() override;
+	void update() override;
 
 	static void resume(Manager* mng);
 	static void menu(Manager* mng);
