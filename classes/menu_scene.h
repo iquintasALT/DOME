@@ -23,7 +23,6 @@ public:
 class ScrollingBackGround: public Component {
 public:
 	ScrollingBackGround(int width, int height, std::vector<Texture*> textures, float speed = 1, bool random = false);
-
 	void update() override;
 	void render() override;
 private:
