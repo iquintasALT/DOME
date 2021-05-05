@@ -35,5 +35,6 @@ void SceneManager::LoadScene() {
 	else {
 		states->popState();
 	}
-
+	Vector2D a;
+	Camera::mainCamera->Move(a);
 }
