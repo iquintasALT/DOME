@@ -81,6 +81,10 @@
       "file": "resources/sprites/bg_image.png"
     },
     {
+      "id": "bgImageDark",
+      "file": "resources/sprites/bg_image_dark.png"
+    },
+    {
       "id": "titleText",
       "file": "resources/sprites/title_text.png"
     },

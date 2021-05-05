@@ -82,4 +82,28 @@ namespace consts {
 	//LOCALIZACIONES
 	const int NUM_LOCATIONS = 5;
 
+	//ESCENA DE AJUSTES
+	const int VOLUME_LEVELS = 6;
+
+	const int BACK_BUTTON_POSITION_X = WINDOW_WIDTH / 8 - 120;
+	const int BACK_BUTTON_POSITION_Y = WINDOW_HEIGHT - WINDOW_HEIGHT / 8;
+
+	const int VOLUME_BAR_POSITION_X = 600;
+	const int VOLUME_BAR_POSITION_Y = 100;
+
+	const int VOLUME_BARS_SIZE_X = 300;
+	const int VOLUME_BARS_SIZE_Y = 40;
+
+	const int SFX_VOLUME_BAR_POSITION_X = 600;
+	const int SFX_VOLUME_BAR_POSITION_Y = 200;
+
+	const int CHANGE_VOLUME_BUTTON_SIZE_X = 32;
+
+	const int ADJUSTER_SIZE_X = 16;
+	const int ADJUSTER_SIZE_Y = 64;
+
+	const int BAR_TEXT_POSITION_X = 100;
+	const int BAR_TEXT_SIZE_X = 320;
+	const int BAR_TEXT_SIZE_Y = 40;
+
 }
