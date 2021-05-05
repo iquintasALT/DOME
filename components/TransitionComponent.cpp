@@ -3,6 +3,7 @@
 #include "../components/Image.h"
 #include "../game/constant_variables.h"
 
+
 TransitionComponent::TransitionComponent(float t, bool fadeOut,  std::function<void()> f) {
 	fadeIn = !fadeOut;
 	currentTime = 0;
