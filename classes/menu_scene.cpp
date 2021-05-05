@@ -8,6 +8,7 @@
 #include "../classes/settings_scene.h"
 #include "../classes/camera.h"
 #include "../game/constant_variables.h"
+#include "../components/TransitionComponent.h"
 #include <string>
 #include <iostream>
 
@@ -19,16 +20,15 @@ void MenuScene::init() {
 		std::string str = "bgImage" + std::to_string(i);
 		textures[i] = &sdlutils().images().at(str);
 	}
-	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .2, true);
+	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .3, true);
 	mngr_->addRenderLayer<Interface>(a);
 
 	int ypos = 400;
 
 	auto title = mngr_->addEntity();
-	title->addComponent<Transform>(Vector2D(10, ypos - 90), 512, 128);
-	title->addComponent<Image>(&sdlutils().images().at("titleText"), true);
+	title->addComponent<Transform>(Vector2D(10, ypos - 200), 500, 250);
+	title->addComponent<Image>(&sdlutils().images().at("logo"), true);
 	mngr_->addRenderLayer<Interface>(title);
-
 
 	auto yojhanButton = &sdlutils().images().at("yojhanButton");
 	yojhanButton->setAlpha(50);
@@ -47,6 +47,19 @@ void MenuScene::init() {
 
 	auto exitButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, exit, g_, mngr_, 0, "Exit");
 	mngr_->addEntity(exitButton);
+
+
+	for (auto a : mngr_->getEntities())
+		a->setActive(false);
+
+	auto logo = mngr_->addEntity();
+	logo->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
+	logo->addComponent<Image>(&sdlutils().images().at("sureffect"));
+	logo->addComponent<TransitionComponent>(5, true, [&]() {
+		for (auto a : mngr_->getEntities())
+			a->setActive(true);
+		});
+	mngr_->addRenderLayer<Interface>(logo);
 }
 
 void MenuScene::playGame(Manager* mngr) {
@@ -93,7 +106,7 @@ void ScrollingBackGround::update() {
 
 	const float fade = 0.2f;
 
-	if (t > 1) {
+	if (t >= 1) {
 		if (++index >= backgrounds.size()) {
 			index = 0;
 			changeOrder();
@@ -106,6 +119,7 @@ void ScrollingBackGround::update() {
 		f = (fade - 1 + t) / fade * 255;
 	}else if(t < fade)
 		f = (fade - t) / fade * 255;
+
 	currentPos = Vector2D::Lerp(initialPos, finalPos, t);
 }
 
@@ -139,7 +153,7 @@ void ScrollingBackGround::randomPositions() {
 	float distance_x = width - consts::WINDOW_WIDTH;
 	float distance_y = height - consts::WINDOW_HEIGHT;
 
-	float size = 2;
+	float size = 2.5;
 
 	float x = sdlutils().rand().nextInt(distance_x / size, distance_x);
 	float y = sdlutils().rand().nextInt(distance_y / size, distance_y);
