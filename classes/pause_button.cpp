@@ -33,7 +33,7 @@ void PauseButton::update() {
 		if (over) {
 			img->changeFrame(2, 0);
 			cbOnClick(getMngr());
-			if (getMngr()->getGame()->currentScene == SETTINGS && type_ == VOLUME) {
+			if (getMngr()->getGame()->currentScene == SCENES::SETTINGS && type_ == VOLUME) {
 				static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->setAdjusterPosition();
 			}
 		}

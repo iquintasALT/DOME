@@ -9,21 +9,17 @@
 #include "../classes/camera.h"
 #include "../game/constant_variables.h"
 #include <string>
+#include <iostream>
 
 void MenuScene::init() {
-	/*auto pixel = mngr_->addEntity();
-	pixel->addComponent<Transform>(Vector2D(0, 0), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	pixel->addComponent<Image>(&sdlutils().images().at("bgImage"), false);
-	mngr_->addRenderLayer<Interface>(pixel);*/
-
 	float size = 1.2f;
 	auto a = mngr_->addEntity();
-	std::vector<Texture*> textures(3);
-	for (int i = 0; i < 3; i++) {
+	std::vector<Texture*> textures(5);
+	for (int i = 0; i < 5; i++) {
 		std::string str = "bgImage" + std::to_string(i);
 		textures[i] = &sdlutils().images().at(str);
 	}
-	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .5);
+	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .2, true);
 	mngr_->addRenderLayer<Interface>(a);
 
 	auto title = mngr_->addEntity();
@@ -31,13 +27,16 @@ void MenuScene::init() {
 	title->addComponent<Image>(&sdlutils().images().at("titleText"), true);
 	mngr_->addRenderLayer<Interface>(title);
 
-	auto playButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 420), Vector2D(256, 64), &sdlutils().images().at("playButton"), playGame, g_, mngr_);
+	auto playButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 400), Vector2D(256, 64), &sdlutils().images().at("playButton"), playGame, g_, mngr_);
 	mngr_->addEntity(playButton);
 
-	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 500), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), settings, g_, mngr_);
+	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 480), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), settings, g_, mngr_);
 	mngr_->addEntity(settingsButton);
 
-	auto exitButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 580), Vector2D(256, 64), &sdlutils().images().at("exitButton"), exit, g_, mngr_);
+	auto creditsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 560), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), credits, g_, mngr_);
+	mngr_->addEntity(creditsButton);
+
+	auto exitButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 640), Vector2D(256, 64), &sdlutils().images().at("exitButton"), exit, g_, mngr_);
 	mngr_->addEntity(exitButton);
 }
 
@@ -52,34 +51,57 @@ void MenuScene::settings(Manager* mngr) {
 	mngr->getGame()->currentScene = SCENES::SETTINGS;
 }
 
+void MenuScene::credits(Manager* mngr)
+{
+	ih().clearState();
+	mngr->ChangeScene(new CreditsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+	mngr->getGame()->currentScene = SCENES::CREDITS;
+}
+
 void MenuScene::exit(Manager* mngr) {
 	mngr->getGame()->quitGame();
 }
 
 
-ScrollingBackGround::ScrollingBackGround(int w, int h, std::vector<Texture*> textures, float sp) {
+ScrollingBackGround::ScrollingBackGround(int w, int h, std::vector<Texture*> textures, float sp, bool rnd) {
 	index = 0;
 	t = 0;
+	f = 255;
 	speed = sp;
 	width = w;
 	height = h;
+	random = rnd;
 	backgrounds = textures;
+	black = &sdlutils().images().at("black");
+	//black = backgrounds[0];
+	changeOrder();
 	randomPositions();
 }
 
 void ScrollingBackGround::update() {
 	t += consts::DELTA_TIME * speed;
 
+
+	const float fade = 0.2f;
+
 	if (t > 1) {
-		if (++index >= backgrounds.size()) index = 0;
+		if (++index >= backgrounds.size()) {
+			index = 0;
+			changeOrder();
+		}
 		randomPositions();
 		t = 0;
+		f = 255;
 	}
+	else if (t > 1 - fade) {
+		f = (fade - 1 + t) / fade * 255;
+	}else if(t < fade)
+		f = (fade - t) / fade * 255;
 	currentPos = Vector2D::Lerp(initialPos, finalPos, t);
-
 }
 
 void ScrollingBackGround::render() {
+
 	bool shouldRender = true;
 	Vector2D pos = Camera::mainCamera->renderRect(currentPos, width, height, shouldRender);
 
@@ -87,6 +109,21 @@ void ScrollingBackGround::render() {
 
 	SDL_Rect dest = build_sdlrect(pos, width, height);
 	backgrounds[index]->render(dest);
+
+	black->setAlpha(f);
+	black->render({ 0,0, consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT });
+}
+
+void ScrollingBackGround::changeOrder() {
+	if (random) {
+		int n = backgrounds.size();
+		for (int i = 0; i < n; i++) {
+			int random = sdlutils().rand().nextInt(0, n);
+			auto aux = backgrounds[random];
+			backgrounds[random] = backgrounds[i];
+			backgrounds[i] = aux;
+		}
+	}
 }
 
 void ScrollingBackGround::randomPositions() {
