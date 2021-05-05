@@ -63,6 +63,12 @@ void hud::update()
 	int tier = player->getCurrentWeapon()->tierOfWeapon();
 
 	chooseWeapon(type-1, tier-1);
+
+	if (!time->keepPlaying() && !frozen)
+	{
+		player->getPhysiognomy()->addHypothermiaState();
+		frozen = true;
+	}
 }
 
 void hud::render()
@@ -88,7 +94,7 @@ void hud::render()
 	delete nbullets;
 	nbullets = nullptr;
 
-	//Numero pequeñito
+	//Numero pequeï¿½ito
 	nbullets = new Texture(sdlutils().renderer(), to_string(totalBullet), sdlutils().fonts().at("OrbitronRegular"),
 		build_sdlcolor(0xffffffff));
 
@@ -118,8 +124,8 @@ void hud::render()
 			}
 		}
 
-		/// Empezamos desde el final de la lista, sabiendo que los desangrados estarán al final
-		/// Además, si hay algún desangrado, el primero que dibujaremos será el incompleto
+		/// Empezamos desde el final de la lista, sabiendo que los desangrados estarï¿½n al final
+		/// Ademï¿½s, si hay algï¿½n desangrado, el primero que dibujaremos serï¿½ el incompleto
 
 		list<PlayerHealthComponent*>::iterator i = states->end();
 		--i;
@@ -154,7 +160,7 @@ void hud::render()
 
 void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
 {
-	// Si no hay estados que dibujar, no deberíamos estar en este método
+	// Si no hay estados que dibujar, no deberï¿½amos estar en este mï¿½todo
 	assert(states->size() > 0);
 
 	Vector2D aux = Vector2D(16 + pos * 33, 20);

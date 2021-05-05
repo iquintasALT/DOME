@@ -34,6 +34,7 @@
     <ClInclude Include="classes\inventoryDropdown.h" />
     <ClInclude Include="classes\Item.h" />
     <ClInclude Include="classes\locations_scene.h" />
+    <ClInclude Include="classes\lose_scene.h" />
     <ClInclude Include="classes\navigation_station.h" />
     <ClInclude Include="classes\pause_button.h" />
     <ClInclude Include="classes\pause_scene.h" />
@@ -101,44 +102,6 @@
     <ClInclude Include="game\constant_variables.h" />
     <ClInclude Include="json\JSON.h" />
     <ClInclude Include="json\JSONValue.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\button.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\checkbox.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\colorpicker.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\colorwheel.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\combobox.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\common.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\dropdownbox.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\entypo.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\fontstash.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\formhelper.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\graph.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\imagepanel.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\imageview.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\label.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\layout.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\messagedialog.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\nanort.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\nanovg.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\nanovg_rt.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\popup.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\popupbutton.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\progressbar.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\resources.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\screen.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\sdlguii.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\slider.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\stackedwidget.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\stb_image.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\stb_truetype.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\switchbox.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\tabheader.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\tabwidget.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\textbox.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\theme.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\toolbutton.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\vscrollpanel.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\widget.h" />
-    <ClInclude Include="libraries\sdlgui\sdlgui\window.h" />
     <ClInclude Include="sdlutils\Font.h" />
     <ClInclude Include="sdlutils\InputHandler.h" />
     <ClInclude Include="sdlutils\macros.h" />
@@ -171,6 +134,7 @@
     <ClCompile Include="classes\inventoryDropdown.cpp" />
     <ClCompile Include="classes\Item.cpp" />
     <ClCompile Include="classes\locations_scene.cpp" />
+    <ClCompile Include="classes\lose_scene.cpp" />
     <ClCompile Include="classes\navigation_station.cpp" />
     <ClCompile Include="classes\pause_button.cpp" />
     <ClCompile Include="classes\pause_scene.cpp" />
@@ -232,36 +196,6 @@
     <ClCompile Include="game\Game.cpp" />
     <ClCompile Include="json\JSON.cpp" />
     <ClCompile Include="json\JSONValue.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\button.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\checkbox.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\colorpicker.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\colorwheel.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\combobox.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\common.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\dropdownbox.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\graph.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\imagepanel.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\imageview.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\label.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\layout.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\loadimages.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\messagedialog.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\nanovg.c" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\popup.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\popupbutton.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\progressbar.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\resources.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\screen.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\slider.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\stackedwidget.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\switchbox.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\tabheader.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\tabwidget.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\textbox.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\theme.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\vscrollpanel.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\widget.cpp" />
-    <ClCompile Include="libraries\sdlgui\sdlgui\window.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="sdlutils\SDLUtils.cpp" />
     <ClCompile Include="sdlutils\SoundEffect.cpp" />
@@ -372,13 +306,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\libraries\box2d-2.4.1\include;.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2_net-2.0.1\include;.\libraries\SDL2-2.0.14\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\tmxlite-1.2.1\include;.\libraries\sdlgui;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2-2.0.14\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\tmxlite-1.2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>.\libraries\box2d-2.4.1\lib\x64;.\libraries\SDL2_image-2.0.1\lib\x64;.\libraries\SDL2_mixer-2.0.2\lib\x64;.\libraries\SDL2_net-2.0.1\lib\x64;.\libraries\SDL2_ttf-2.0.15\lib\x64;.\libraries\SDL2-2.0.14\lib\x64;.\libraries\tmxlite-1.2.1\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_ttf.lib;box2d.lib;glad.lib;glfw.lib;imgui.lib;sajson.lib;SDL2_image.lib;SDL2_net.lib;SDL2_mixer.lib;tmxlite-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>.\libraries\SDL2_image-2.0.1\lib\x64;.\libraries\SDL2_mixer-2.0.2\lib\x64;.\libraries\SDL2_ttf-2.0.15\lib\x64;.\libraries\SDL2-2.0.14\lib\x64;.\libraries\tmxlite-1.2.1\lib\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>kernel32.lib;user32.lib;gdi32.lib;winspool.lib;comdlg32.lib;advapi32.lib;shell32.lib;ole32.lib;oleaut32.lib;uuid.lib;odbc32.lib;odbccp32.lib;SDL2.lib;SDL2main.lib;SDL2test.lib;SDL2_ttf.lib;SDL2_image.lib;SDL2_mixer.lib;tmxlite-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
