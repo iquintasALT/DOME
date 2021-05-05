@@ -13,7 +13,6 @@ protected:
 	CallBackOnClick* cbOnClick;
 	Texture* tex;
 	Game* game;
-
 public:
 	MenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_);
 	virtual void update() override;

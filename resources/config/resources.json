@@ -145,6 +145,10 @@
             "file": "resources/sprites/buttons/raid_button.png"
         },
         {
+            "id": "yojhanButton",
+            "file": "resources/sprites/buttons/buttonYojhan.png"
+        },
+        {
             "id": "resumeButton",
             "file": "resources/sprites/buttons/resume_button.png"
         },

@@ -9,9 +9,12 @@ PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClic
 	: MenuButton(pos, size, t, function, g, mngr_) {
 	img = getComponent<Image>();
 	over = false;
-	SDL_Rect rect = { 0, 0, size.getX(),size.getY() };
+	SDL_Rect rect = { 0, 0, t->width() / 3, t->height() };
 	img->setSrc(rect);
 	type_ = type;
+	clicked = false;
+
+	img->enabled = false;
 }
 
 void PauseButton::update() {
@@ -32,10 +35,18 @@ void PauseButton::update() {
 	if (ih().getMouseButtonState(InputHandler::LEFT)) {
 		if (over) {
 			img->changeFrame(2, 0);
-			cbOnClick(getMngr());
-			if (getMngr()->getGame()->currentScene == SCENES::SETTINGS && type_ == VOLUME) {
-				static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->setAdjusterPosition();
+		}
+		clicked = true;
+	}
+	else {
+		if (clicked) {
+			if (over) {
+				cbOnClick(getMngr());
+				if (getMngr()->getGame()->currentScene == SCENES::SETTINGS && type_ == VOLUME) {
+					static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->setAdjusterPosition();
+				}
 			}
+			clicked = false;
 		}
 	}
 }
