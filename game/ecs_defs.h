@@ -51,6 +51,7 @@ class TextWithBackground;
 class Open_station;
 class TransitionComponent;
 class CameraMovement;
+class ScrollingBackGround;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -95,7 +96,8 @@ class CameraMovement;
 	TextWithBackground,\
 	TransitionComponent, \
 	Open_station, \
-	CameraMovement
+	CameraMovement, \
+	ScrollingBackGround
 
 // groups
 
@@ -114,7 +116,7 @@ struct RangedEnemy_grp;
 	DefaultEnemy_grp, \
 	FlyingEnemy_grp, \
 	RangedEnemy_grp
-	
+
 
 // handlers
 struct Player_hdlr;

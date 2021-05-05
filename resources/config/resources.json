@@ -78,11 +78,23 @@
         },
         {
             "id": "bgImage",
-            "file": "resources/sprites/bg_image.png"
+            "file": "resources/sprites/background/bg_image.png"
+        },
+        {
+            "id": "bgImage0",
+            "file": "resources/sprites/background/bg_image.png"
+        },
+        {
+            "id": "bgImage1",
+            "file": "resources/sprites/background/bg_image1.jpg"
+        },
+        {
+            "id": "bgImage2",
+            "file": "resources/sprites/background/bg_image2.jpg"
         },
         {
             "id": "bgImageDark",
-            "file": "resources/sprites/bg_image_dark.png"
+            "file": "resources/sprites/background/bg_image_dark.png"
         },
         {
             "id": "titleText",
