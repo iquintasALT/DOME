@@ -8,7 +8,9 @@ protected:
 	Image* img;
 	bool over;
 	int type_;
+	bool clicked;
 public:
 	PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type = 0);
 	void update() override;
+	void render() override;
 };

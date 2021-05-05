@@ -27,16 +27,18 @@ void MenuScene::init() {
 	title->addComponent<Image>(&sdlutils().images().at("titleText"), true);
 	mngr_->addRenderLayer<Interface>(title);
 
-	auto playButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 400), Vector2D(256, 64), &sdlutils().images().at("playButton"), playGame, g_, mngr_);
+	auto yojhanButton = &sdlutils().images().at("yojhanButton");
+	yojhanButton->setAlpha(100);
+	auto playButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 400), Vector2D(256, 64), yojhanButton, playGame, g_, mngr_);
 	mngr_->addEntity(playButton);
 
-	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 480), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), settings, g_, mngr_);
+	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 480), Vector2D(256, 64), yojhanButton, settings, g_, mngr_);
 	mngr_->addEntity(settingsButton);
 
-	auto creditsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 560), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), credits, g_, mngr_);
+	auto creditsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 560), Vector2D(256, 64), yojhanButton, credits, g_, mngr_);
 	mngr_->addEntity(creditsButton);
 
-	auto exitButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 640), Vector2D(256, 64), &sdlutils().images().at("exitButton"), exit, g_, mngr_);
+	auto exitButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 640), Vector2D(256, 64), yojhanButton, exit, g_, mngr_);
 	mngr_->addEntity(exitButton);
 }
 
