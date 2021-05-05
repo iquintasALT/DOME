@@ -20,6 +20,7 @@ private:
 	Player* player;
 	Countdown* time;
 
+	bool frozen = false;
 	int bullets = 0;
 	int charger = 0;
 	int totalBullet = 0;
