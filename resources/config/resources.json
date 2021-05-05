@@ -57,6 +57,10 @@
             "file": "resources/sprites/weapons_sheet_HUD.png"
         },
         {
+            "id": "lose",
+            "file": "resources/sprites/lose_background.png"
+        },
+        {
             "id": "marco",
             "file": "resources/sprites/marco.png"
         },

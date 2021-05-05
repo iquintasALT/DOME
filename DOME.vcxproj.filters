@@ -336,6 +336,9 @@
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="classes\settings_scene.cpp" />
+    <ClCompile Include="classes\lose_scene.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -741,6 +744,9 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="classes\settings_scene.h" />
+    <ClInclude Include="classes\lose_scene.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

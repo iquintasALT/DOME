@@ -61,6 +61,11 @@ void hud::update()
 
 	chooseWeapon(type-1, tier-1);
 
+	if (!time->keepPlaying() && !frozen)
+	{
+		player->getPhysiognomy()->addHypothermiaState();
+		frozen = true;
+	}
 }
 
 void hud::render()
