@@ -15,12 +15,11 @@ protected:
 	string message_;
 	Transform* tr_;
 	// Tooltip text if required
-	TextWithBackground* toolTip_;
+	Entity* toolTip;
 	bool isColliding = false;
-
+	
 	virtual void CollisionEnter();
 	virtual void CollisionExit();
-	virtual void Collision();
 public:
 	InteractableElement(string msg);
 	virtual ~InteractableElement() {};
@@ -29,4 +28,7 @@ public:
 	bool CheckCollision(Point2D playerPos, float width, float height);
 	bool CheckCollision(Transform* tr) { return CheckCollision(tr->getPos(), tr->getW(), tr->getH()); };
 };
+
+//interactableElement->addComponent<TextWithBackground>("Press E to open the loot",
+//sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
 

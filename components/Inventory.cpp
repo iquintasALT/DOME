@@ -297,3 +297,27 @@ bool Inventory::insideSquare(int mouseX, int mouseY) {
 }
 
 list<Item*>& Inventory::getItems() { return storedItems; };
+
+InventoryStorage::~InventoryStorage() {
+	for (auto a : storedItems) {
+		delete a;
+	}
+	storedItems.clear();
+}
+
+void InventoryStorage::load(Inventory* inv){
+	for (auto a : storedItems) {
+		inv->storeItem(new Item(a, inv));
+	}
+}
+
+void InventoryStorage::safe(Inventory* inv) {
+	for (auto a : storedItems) {
+		delete a;
+	}
+	storedItems.clear();
+
+	for (auto a : inv->storedItems) {
+		storedItems.push_back(new Item(a, nullptr));
+	}
+}

@@ -123,3 +123,13 @@ void TextWithBackground::setAlpha(int value) {
 		t->setAlpha(value);
 	}
 }
+
+void TextWithBackground::reset() {
+	appearingText_ = true;
+	message_ = "";
+	currentIndex = 0;
+
+	for (int i = 0; i < text_.size(); i++)
+		delete text_[i];
+	text_.clear();
+}

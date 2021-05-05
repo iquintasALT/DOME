@@ -2,7 +2,7 @@
 #include "Transform.h"
 #include "rigid_body.h"
 #include "enemy_attack_component.h"
-#include "../../sdlutils/SDLUtils.h"
+#include "../sdlutils/SDLUtils.h"
 
 void EnemyBehaviourComponent::update()
 {

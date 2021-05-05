@@ -16,12 +16,11 @@ void DistanceDetection::setDistance(float dist) {
 }
 
 void DistanceDetection::update() {
-	float distanceToPlayer = std::abs(std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()));
+	float distanceToPlayerX = std::abs(std::abs(playerTr->getPos().getX() - entityTr->getPos().getX()));
+	float distanceToPlayerY = std::abs(std::abs(playerTr->getPos().getY() - entityTr->getPos().getY()));
 
 	if (activeEnemy) {
-		if (distanceToPlayer > distance * 2) {
-			activeEnemy = false;
-		}
+		if (distanceToPlayerX > distance * 2 && distanceToPlayerY > distance * 2) activeEnemy = false;
 	}
-	else if (distanceToPlayer < distance) activeEnemy = true;
+	else if (distanceToPlayerX < distance || distanceToPlayerY < distance) activeEnemy = true;
 }

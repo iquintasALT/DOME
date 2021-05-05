@@ -43,5 +43,6 @@ public:
 	void render() override;
 	void update() override;
 	void setAlpha(int value);
+	void reset();
 };
 

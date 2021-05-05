@@ -17,7 +17,6 @@ Loot::Loot(std::string mssg, int inventoryWidth, int inventoryHeight) :
 }
 
 Loot::~Loot() {
-
 	Game* g = entity_->getMngr()->getGame();
 	g->SCENES_LOOT.find(g->currentScene)->second.clear();
 

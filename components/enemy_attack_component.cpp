@@ -5,7 +5,7 @@
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../utils/ray_cast.h"
-#include "../../sdlutils/SDLUtils.h"
+#include "../sdlutils/SDLUtils.h"
 
 Vector2D EnemyAttackComponent::getTarget()
 {

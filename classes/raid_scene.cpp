@@ -6,6 +6,7 @@
 #include "../sdlutils/InputHandler.h"
 #include "../components/transitionComponent.h";
 #include "../components/TextWithBackGround.h"
+#include "../components/loot.h"
 
 void RaidScene::init() {
 	loadMap(path_);
@@ -13,6 +14,12 @@ void RaidScene::init() {
 	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 
 	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player);
+
+	/*Entity* l = mngr_->addEntity();
+	l->addComponent<Transform>(Vector2D(150, 556), 100, 100);
+	l->addComponent<Image>(&sdlutils().images().at("dust"));
+	l->addComponent<Loot>("Press E to open the loot", 5, 5);
+	mngr_->addRenderLayer<Player>(l);*/
 
 	createTransition();
 }

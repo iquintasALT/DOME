@@ -16,7 +16,7 @@ namespace consts {
 	const float RANGED_ENEMY_SHOOTDISTANCE = 350.0f;
 	const float FLYING_ENEMY_HOVERHEIGHT = 160.0f;
 	const float FLYING_ENEMY_APPROACHDISTANCE = 180.0f;
-	const float ACTIVATE_ENEMY_DISTANCE = 400.0f;
+	const float ACTIVATE_ENEMY_DISTANCE = 20.0f;
 	const short int ENEMY_ATTACK_COOLDOWN = 1000;
 	const int WINDOW_WIDTH = 1088;
 	const int WINDOW_HEIGHT = 736;
@@ -81,5 +81,29 @@ namespace consts {
 
 	//LOCALIZACIONES
 	const int NUM_LOCATIONS = 5;
+
+	//ESCENA DE AJUSTES
+	const int VOLUME_LEVELS = 6;
+
+	const int BACK_BUTTON_POSITION_X = WINDOW_WIDTH / 8 - 120;
+	const int BACK_BUTTON_POSITION_Y = WINDOW_HEIGHT - WINDOW_HEIGHT / 8;
+
+	const int VOLUME_BAR_POSITION_X = 600;
+	const int VOLUME_BAR_POSITION_Y = 100;
+
+	const int VOLUME_BARS_SIZE_X = 300;
+	const int VOLUME_BARS_SIZE_Y = 40;
+
+	const int SFX_VOLUME_BAR_POSITION_X = 600;
+	const int SFX_VOLUME_BAR_POSITION_Y = 200;
+
+	const int CHANGE_VOLUME_BUTTON_SIZE_X = 32;
+
+	const int ADJUSTER_SIZE_X = 16;
+	const int ADJUSTER_SIZE_Y = 64;
+
+	const int BAR_TEXT_POSITION_X = 100;
+	const int BAR_TEXT_SIZE_X = 400;
+	const int BAR_TEXT_SIZE_Y = 50;
 
 }
