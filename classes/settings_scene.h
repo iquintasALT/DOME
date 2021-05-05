@@ -2,8 +2,6 @@
 #include "game_scene.h"
 #include "pause_button.h"
 
-const int VOLUME_LEVELS = 6;
-
 class Game;
 class SettingsScene : public GameScene
 {
@@ -18,13 +16,11 @@ public:
 		adjusterVolume = nullptr; adjusterSFXVolume = nullptr;
 	};
 	void init() override;
-	void moveAdjuster(Vector2D mousePos);
+	void setAdjusterPosition();
 
 	static void back(Manager* mng);
 	static void raiseVolume(Manager* mng);
 	static void decreaseVolume(Manager* mng);
-
-
 	static void raiseEffectsVolume(Manager* mng);
 	static void decreaseEffectsVolume(Manager* mng);
 };

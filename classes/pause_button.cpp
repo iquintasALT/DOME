@@ -34,7 +34,7 @@ void PauseButton::update() {
 			img->changeFrame(2, 0);
 			cbOnClick(getMngr());
 			if (getMngr()->getGame()->currentScene == SETTINGS && type_ == VOLUME) {
-				static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->moveAdjuster(mousePos);
+				static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->setAdjusterPosition();
 			}
 		}
 	}
