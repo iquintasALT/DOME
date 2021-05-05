@@ -86,11 +86,19 @@
         },
         {
             "id": "bgImage1",
-            "file": "resources/sprites/background/bg_image1.jpg"
+            "file": "resources/sprites/background/background1.jpg"
         },
         {
             "id": "bgImage2",
-            "file": "resources/sprites/background/bg_image2.jpg"
+            "file": "resources/sprites/background/background2.jpg"
+        },
+        {
+            "id": "bgImage3",
+            "file": "resources/sprites/background/blueprints.jpg"
+        },
+        {
+            "id": "bgImage4",
+            "file": "resources/sprites/background/background3.png"
         },
         {
             "id": "bgImageDark",
