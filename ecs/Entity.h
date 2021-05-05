@@ -193,14 +193,14 @@ public:
 			components_[i]->OnTrigger(collider);
 		}
 	};
-
+protected:
+	Manager* mngr_;
 private:
 	int renderGroup;
 	int renderIndex;
 	bool active = true;
 	bool dead;
 	bool isRendering = false;
-	Manager* mngr_;
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;
 	std::bitset<ecs::maxGroup> groups_;

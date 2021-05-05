@@ -12,6 +12,10 @@ class Image;
 class hud : public Entity
 {
 private:
+	struct _tooltip_{
+		Transform* t;
+		TextWithBackground* text;
+	};
 	Transform* posCam;
 	Player* player;
 	Countdown* time;
@@ -31,8 +35,9 @@ private:
 
 	Transform* tooltipTr;
 	TextWithBackground* tooltipText;
+	int numberOfStates;
 	void drawStatus(int pos, int frameIndex, Vector2D mouse);
-
+	std::vector<_tooltip_> tooltipTextures;
 public:
 	hud(Manager* m, Transform* initialPos, Player* p);
 
