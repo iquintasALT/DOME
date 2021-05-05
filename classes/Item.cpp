@@ -41,7 +41,7 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 	mngr->addRenderLayer<Item>(image);
 	transform = image->addComponent<Transform>(inventory->itemPosition(x, y),
 		Inventory::itemWidth * width, Inventory::itemHeight * height, 0);
-	image->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, info->row(), info->col(), true);
+	image->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, info->row(), info->col(), true);
 	image->setActive(false);
 }
 
