@@ -22,23 +22,30 @@ void MenuScene::init() {
 	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .2, true);
 	mngr_->addRenderLayer<Interface>(a);
 
+	int ypos = 400;
+
 	auto title = mngr_->addEntity();
-	title->addComponent<Transform>(Vector2D(consts::WINDOW_WIDTH / 2 - 256, 150), 512, 128);
+	title->addComponent<Transform>(Vector2D(10, ypos - 90), 512, 128);
 	title->addComponent<Image>(&sdlutils().images().at("titleText"), true);
 	mngr_->addRenderLayer<Interface>(title);
 
+
 	auto yojhanButton = &sdlutils().images().at("yojhanButton");
-	yojhanButton->setAlpha(100);
-	auto playButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 400), Vector2D(256, 64), yojhanButton, playGame, g_, mngr_);
+	yojhanButton->setAlpha(50);
+	int buttonHeight = 50;
+	int width = consts::WINDOW_WIDTH;
+	auto playButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight * 2), yojhanButton, playGame, g_, mngr_, 0, "Play");
 	mngr_->addEntity(playButton);
 
-	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 480), Vector2D(256, 64), yojhanButton, settings, g_, mngr_);
+	ypos += buttonHeight;
+
+	auto settingsButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, settings, g_, mngr_, 0, "Options");
 	mngr_->addEntity(settingsButton);
 
-	auto creditsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 560), Vector2D(256, 64), yojhanButton, credits, g_, mngr_);
+	auto creditsButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, credits, g_, mngr_, 0, "Credits");
 	mngr_->addEntity(creditsButton);
 
-	auto exitButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 640), Vector2D(256, 64), yojhanButton, exit, g_, mngr_);
+	auto exitButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, exit, g_, mngr_, 0, "Exit");
 	mngr_->addEntity(exitButton);
 }
 
