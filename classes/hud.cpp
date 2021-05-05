@@ -9,6 +9,7 @@
 #include "../components/bleedout_component.h"
 #include "../components/TextWithBackGround.h"
 #include "../components/Image.h"
+#include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 
 #include <iostream>
@@ -26,6 +27,8 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 	m->addRenderLayer<Interface>(this);
 
 	states = player->getPhysiognomy()->getHealthComponents();
+
+	numberOfStates = states->size();
 
 	charger = player->getCurrentWeapon()->getWeaponMovement()->getTamCharger();
 
@@ -60,7 +63,6 @@ void hud::update()
 	int tier = player->getCurrentWeapon()->tierOfWeapon();
 
 	chooseWeapon(type-1, tier-1);
-
 }
 
 void hud::render()
@@ -98,6 +100,24 @@ void hud::render()
 	//Renderizar los estados
 	if (states->size() > 0)
 	{
+		if (states->size() != numberOfStates) {
+			numberOfStates = states->size();
+			for (int i = 0; i < tooltipTextures.size(); i++) {
+				tooltipTextures[i].t->getEntity()->setDead(true);
+			}
+			tooltipTextures.clear();
+
+			tooltipTextures.reserve(numberOfStates);
+			for (int i = 0; i < numberOfStates; i++) {
+				Entity* ent = mngr_->addEntity();
+				Transform* t = ent->addComponent<Transform>(Vector2D(), 400, 10);
+				TextWithBackground* text = ent->addComponent<TextWithBackground>(" ",
+					sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+				tooltipTextures.push_back({t, text});
+				ent->setActive(false);
+			}
+		}
+
 		/// Empezamos desde el final de la lista, sabiendo que los desangrados estarán al final
 		/// Además, si hay algún desangrado, el primero que dibujaremos será el incompleto
 
@@ -147,8 +167,11 @@ void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
 	if (mouse.getX() > dest.x && mouse.getX() < dest.x + dest.w &&
 		mouse.getY() > dest.y && mouse.getY() < dest.y + dest.h) {
 		
-		tooltipTr->setPos(mouse);
-		tooltipText->changeText("Habria que cambiar la descripcion del estado con un if o algo no se");
-		tooltipText->render();
+		int n = pos;
+		tooltipTextures[n].t->setPos(mouse);
+		tooltipTextures[n].text->render();
+		//tooltipTr->setPos(mouse);
+		//tooltipText->changeText("Habria que cambiar la descripcion del estado con un if o algo no se");
+		//tooltipText->render();
 	}
 }
