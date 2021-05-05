@@ -20,7 +20,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
 	posCam = initialPos;
 	player = p;
 
-	time = new Countdown(10000); //Hay que pasarle el pos Cam para que se mueva
+	time = new Countdown(300000); //Hay que pasarle el pos Cam para que se mueva
 	timer = &sdlutils().images().at("dclock");
 	marco = &sdlutils().images().at("marco");
 	m->addEntity(this);
