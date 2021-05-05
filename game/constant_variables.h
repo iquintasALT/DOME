@@ -103,7 +103,7 @@ namespace consts {
 	const int ADJUSTER_SIZE_Y = 64;
 
 	const int BAR_TEXT_POSITION_X = 100;
-	const int BAR_TEXT_SIZE_X = 320;
-	const int BAR_TEXT_SIZE_Y = 40;
+	const int BAR_TEXT_SIZE_X = 400;
+	const int BAR_TEXT_SIZE_Y = 50;
 
 }
