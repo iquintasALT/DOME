@@ -28,6 +28,7 @@ private:
 	std::function<void(Entity*)> function;
 public:
 	ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity*)> function = [](Entity*) {});
+	ItemInfo(ItemInfo* itemInfo);
 	inline ITEMS name() { return _name; };
 	inline string description() { return _description; };
 	inline int width() { return _width; };
@@ -46,6 +47,7 @@ class Item
 	friend class Inventory;
 public:
 	Item(ItemInfo* info, Manager* mnger, Inventory* inventory, int xPos = 0, int yPos = 0);
+	Item(Item* item,  Inventory* inventory);
 	~Item();
 	void render();
 	void update();

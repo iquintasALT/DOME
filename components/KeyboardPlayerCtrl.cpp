@@ -12,7 +12,7 @@ KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	tr_ = nullptr;
 	rb_ = nullptr;
 	
-	left = xClicked = inStair = inStairTrigger = right = crouched = up = down =  false;
+	left = xClicked = inStair = inStairTrigger = right = crouched = up = down = spaceDown =  false;
 };
 
 void KeyboardPlayerCtrl::init() {
@@ -23,7 +23,6 @@ void KeyboardPlayerCtrl::init() {
 
 void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
 	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED) {
-		std::cout << "OUCH, QUE DOLOR, TENGA USTED MÁS CUIDADO JUGADOR";
 		static_cast<Player*>(entity_)->getPhysiognomy()->addConcussionState();
 	}
 }
@@ -96,7 +95,8 @@ void KeyboardPlayerCtrl::update() {
 		}
 	}
 	else {
-		if (keystates[SDL_SCANCODE_SPACE]) inStair = false;
+		if (keystates[SDL_SCANCODE_SPACE] && !spaceDown) { inStair = false; spaceDown = true; }
+		else if (!keystates[SDL_SCANCODE_SPACE] && spaceDown) spaceDown = false;
 		else {
 			if (keystates[SDL_SCANCODE_W]) {
 				rb_->setVel(Vector2D(0, -stairsSpeed));
