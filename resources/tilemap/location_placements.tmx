@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="34" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="4">
+<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="34" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="9">
  <objectgroup id="2" name="LocationPoints">
-  <object id="1" x="564" y="310.667">
+  <object id="1" x="728" y="544">
    <properties>
-    <property name="col" type="int" value="0"/>
-    <property name="row" type="int" value="0"/>
+    <property name="col" type="int" value="1"/>
+    <property name="row" type="int" value="1"/>
    </properties>
    <point/>
   </object>
@@ -12,6 +12,27 @@
    <properties>
     <property name="col" type="int" value="0"/>
     <property name="row" type="int" value="1"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="4" x="600" y="328">
+   <properties>
+    <property name="col" type="int" value="0"/>
+    <property name="row" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="5" x="800" y="208">
+   <properties>
+    <property name="col" type="int" value="1"/>
+    <property name="row" type="int" value="0"/>
+   </properties>
+   <point/>
+  </object>
+  <object id="8" x="800" y="392">
+   <properties>
+    <property name="col" type="int" value="2"/>
+    <property name="row" type="int" value="0"/>
    </properties>
    <point/>
   </object>

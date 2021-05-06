@@ -144,7 +144,7 @@ void GameScene::loadMap(string& const path) {
 					auto camPos = Vector2D(aabb.left - sdlutils().width() / 2, aabb.top - sdlutils().height() / 2);
 					Camera::mainCamera->Move(camPos);
 				}
-				else if (obj.getName() == "loot") {
+				/*else if (obj.getName() == "loot") {
 					Entity* interactableElement = mngr_->addEntity();
 					interactableElement->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
 					interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
@@ -157,7 +157,7 @@ void GameScene::loadMap(string& const path) {
 						loot->getInventory()->storeItem(new Item{ new ItemInfo(chestLoot[i].name, chestLoot[i].desc, chestLoot[i].w,chestLoot[i].h,chestLoot[i].row,chestLoot[i].col),mngr_,loot->getInventory(),chestLoot[i].x,chestLoot[i].y });
 					}
 					sceneLoots++;
-				}
+				}*/
 				else if (obj.getName() == "enemy") {
 					// int en objeto para identificar el tipo de enemigo
 					int enemyType = obj.getProperties()[0].getIntValue();

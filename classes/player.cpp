@@ -41,8 +41,6 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<TirednessComponent>();
 	addComponent<CameraMovement>(.7);
 
-;
-
 	weapon = new WeaponBehaviour(mngr_, t->getPos(), t, 1);
 	addComponent<InventoryController>();
 
