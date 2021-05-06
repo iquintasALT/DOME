@@ -25,9 +25,15 @@ ItemInfo* ItemInfo::medicine()
 {
 	return new ItemInfo(ANTIDOTE, "Mmmmmm", 2, 2, 0, 1);
 }
+
 ItemInfo* ItemInfo::food()
 {
 	return new ItemInfo(FOOD, "I dont know what im doing", 1, 1, 1, 2);
+}
+
+ItemInfo* ItemInfo::defaultAmmo()
+{
+	return new ItemInfo(CLASSIC_AMMO, "This is the classic ammo item", 1, 1, 1, 2);
 }
 
 //&sdlutils().images().at("items")
@@ -41,7 +47,7 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 	mngr->addRenderLayer<Item>(image);
 	transform = image->addComponent<Transform>(inventory->itemPosition(x, y),
 		Inventory::itemWidth * width, Inventory::itemHeight * height, 0);
-	image->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, info->row(), info->col(), true);
+	image->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, info->row(), info->col(), true);
 	image->setActive(false);
 }
 

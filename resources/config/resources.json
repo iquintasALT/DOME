@@ -69,6 +69,10 @@
             "file": "resources/sprites/info_hospital.png"
         },
         {
+            "id": "sureffect",
+            "file": "resources/sprites/initial_logo.png"
+        },
+        {
             "id": "info_supermercado",
             "file": "resources/sprites/info_supermercado.png"
         },
@@ -78,11 +82,31 @@
         },
         {
             "id": "bgImage",
-            "file": "resources/sprites/bg_image.png"
+            "file": "resources/sprites/background/bg_image.png"
+        },
+        {
+            "id": "bgImage0",
+            "file": "resources/sprites/background/bg_image.png"
+        },
+        {
+            "id": "bgImage1",
+            "file": "resources/sprites/background/background1.jpg"
+        },
+        {
+            "id": "bgImage2",
+            "file": "resources/sprites/background/background2.jpg"
+        },
+        {
+            "id": "bgImage3",
+            "file": "resources/sprites/background/blueprints.jpg"
+        },
+        {
+            "id": "bgImage4",
+            "file": "resources/sprites/background/background3.png"
         },
         {
             "id": "bgImageDark",
-            "file": "resources/sprites/bg_image_dark.png"
+            "file": "resources/sprites/background/bg_image_dark.png"
         },
         {
             "id": "titleText",
@@ -123,6 +147,10 @@
         {
             "id": "raidButton",
             "file": "resources/sprites/buttons/raid_button.png"
+        },
+        {
+            "id": "yojhanButton",
+            "file": "resources/sprites/buttons/buttonYojhan.png"
         },
         {
             "id": "resumeButton",
@@ -171,6 +199,10 @@
         {
             "id": "mainVolumeText",
             "file": "resources/sprites/buttons/main_volume_text.png"
+        },
+        {
+            "id": "logo",
+            "file": "resources/sprites/logo.png"
         },
         {
             "id": "effectsVolume",

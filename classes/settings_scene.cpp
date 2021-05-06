@@ -121,3 +121,11 @@ void SettingsScene::decreaseEffectsVolume(Manager* mng)
 	}
 }
 
+
+CreditsScene::CreditsScene(Game* g): GameScene(g, std::string("credits")){
+
+}
+
+void CreditsScene::init() {
+
+}

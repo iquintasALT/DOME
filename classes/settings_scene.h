@@ -25,3 +25,8 @@ public:
 	static void decreaseEffectsVolume(Manager* mng);
 };
 
+class CreditsScene :public GameScene {
+public:
+	CreditsScene(Game* g);
+	void init() override;
+};
