@@ -62,14 +62,16 @@ void Manager::update() {
 
 void Manager::render() {
 	for (auto i = 0u; i < renders_.size(); i++)
-		for (auto j = 0u; j < renders_[i].size(); j++)
-			if (renders_[i][j] != nullptr && !renders_[i][j]->dead && renders_[i][j]->active)
-				renders_[i][j]->render();
+		for (auto renderIt : renders_[i])
+			if (renderIt != nullptr && !renderIt->dead && renderIt->active)
+				renderIt->render();
 }
 
-void Manager::removeRender(Entity* ent) {
-	if (renders_.size() > ent->renderGroup && renders_[ent->renderGroup].size() > ent->renderIndex)
-		renders_[ent->renderGroup][ent->renderIndex] = nullptr;
+void Manager::removeRenderFromLayer(Entity* ent) {
+	if (ent->renderGroup != -1) {
+		renders_[ent->renderGroup].erase(ent->renderIterator);
+		ent->renderGroup = -1; ent->renderIterator = nullptr;
+	}
 }
 
 void Manager::AddInteractableElement(InteractableElement* ie) {
@@ -95,7 +97,7 @@ void Manager::ChangeScene(GameScene* scene, SceneManager::SceneMode mode) {
 	sceneManager.ChangeScene(scene, mode);
 }
 
-void Manager::addRenderNumbers(Entity* renderObj, int group) {
+void Manager::saveRenderPosition(Entity* renderObj, int group, list<Entity*>::iterator it) {
 	renderObj->renderGroup = group;
-	renderObj->renderIndex = renders_[group].size() - 1;
+	renderObj->renderIterator =  it;
 }

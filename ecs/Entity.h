@@ -5,6 +5,7 @@
 #include <array>
 #include <bitset>
 #include <vector>
+#include <list>
 #include <iostream>
 #include "Component.h"
 #include "ecs.h"
@@ -20,24 +21,22 @@ public:
 	Entity() {};
 
 	Entity(Manager* mngr) :
-		dead(false), //
+		dead(false), 
 		active(true),
-		mngr_(mngr), //
-		cmpArray_(), //
+		mngr_(mngr), 
+		cmpArray_(), 
 		groups_(),
-		renderGroup(0),
-		renderIndex(0)
-	{
-		//mngr->addRenderLayer<Default>(this);
-	}
+		renderGroup(-1),
+		renderIterator()
+	{}
 
 	virtual ~Entity() {
 		for (auto c : components_) {
 			delete c;
 		}
-
 		components_.clear();
-		removeEntityRender(this, mngr_);
+
+		mngr_->removeRenderFromLayer(this);
 	}
 
 
@@ -194,19 +193,18 @@ public:
 		}
 	};
 
+protected:
+	Manager* mngr_;
+
 private:
 	int renderGroup;
-	int renderIndex;
-	bool active = true;
-	bool dead;
-	bool isRendering = false;
-	Manager* mngr_;
+	list<Entity*>::iterator renderIterator;
+
+	bool active = true, dead, isRendering = false;
+
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;
 	std::bitset<ecs::maxGroup> groups_;
-
-
-	void removeEntityRender(Entity* e, Manager* m);
 };
 
 

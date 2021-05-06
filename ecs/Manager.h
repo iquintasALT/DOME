@@ -72,14 +72,14 @@ public:
 		}
 		renderObj->isRendering = true;
 		int group = ecs::rndIdx<T>;
-		renders_[group].emplace_back(renderObj);
+		auto it = renders_[group].insert(renders_[group].end(), renderObj);
 
-		addRenderNumbers(renderObj, group);
+		saveRenderPosition(renderObj, group, it);
 	}
 
-	void addRenderNumbers(Entity* renderObj, int group);
+	void saveRenderPosition(Entity* renderObj, int group, list<Entity*>::iterator it);
 
-	void removeRender(Entity* ent);
+	void removeRenderFromLayer(Entity* ent);
 
 	void update();
 	void render();
@@ -106,7 +106,7 @@ private:
 
 	std::vector<InteractableElement*> interactableElements;
 	std::list<BoxCollider*> colliders;
-	std::array<std::vector<Entity*>, ecs::maxRender> renders_;
+	std::array<std::list<Entity*>, ecs::maxRender> renders_;
 
 	SceneManager sceneManager;
 	Game* game;
