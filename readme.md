@@ -29,40 +29,39 @@
 
 ![Descripción](./docs/headers/h_descripcion.png) <a name="desc"></a>
 
-DOME es un survival shooter scroller 2D donde el jugador controlará a uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora. Cada día, deberá aprovechar las horas de luz para buscar los objetos que necesita para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el frío es mortal por lo que deberá volver al refugio a descansar y gestionar sus recursos. ¿Serás capaz de escapar?.
+DOME es un survival shooter scroller 2D donde el jugador controlará a uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora. Cada día, deberá aprovechar las horas de luz para buscar los objetos que necesita para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el frío es tal que deberás volver al refugio a descansar y gestionar tu tiempo y recursos. ¿Serás capaz de escapar?.
 
 ![Mecánicas](./docs/headers/h_mecanicas.png) <a name="mec"></a>
 
 # Ciclo diario <a name="day"></a>
 
-El jugador tendrá que escapar del planeta antes de que pasen unos dias determinados (31 dias, que podrán disminuir con respecto a la dificultad) antes de que el refugio se congele y el jugador quede encerrado en Aurora.
+El jugador tendrá que escapar del planeta antes de que pasen unos días determinados ([SPECIFICS_REQUIRED]) antes de que el refugio se congele y el jugador quede encerrado en Aurora.
 
-Así, cada día de juego el jugador dispondrá de 12 horas (que se jugarán como 12 minutos cronometrados) para saquear puntos de interés, seguidas por otras 12 (que se gestionan como recurso de forma discreta) para descansar y gestionar sus recursos en el refugio, ya que será de noche y el frío le impedirá salir.
+Así, cada día de juego el jugador dispondrá de 12 horas (que se jugarán como 8 minutos cronometrados) para saquear puntos de interés, seguidas por otras 12 horas (que se gestionan como recurso de forma discreta [CONFIRMATION_REQUIRED]) para descansar y gestionar sus recursos en el refugio, ya que será de noche y el frío le impedirá salir.
 
 ![alt text](./docs/images/infogfx_daycycle.png)
 
 # Raid <a name="rai"></a>
 
-Los lugares de saqueo serán pequeños, rápidos de recorrer y contendrán botín escaso dependiendo del lugar (farmacia--> medicinas , supermercado--> comida, etc) en los que el jugador gastará tiempo del día. Solo podrá saquear lo que su equipamiento y su estado (herido, hambriento, cansado) le permita llevar de vuelta al refugio.
+Los lugares de saqueo serán pequeños, rápidos de recorrer y contendrán botín escaso dependiendo del lugar (farmacia--> ingredientes de medicina, supermercado--> comida, etc) en los que el jugador gastará tiempo del día. Solo podrá saquear lo que su equipamiento y su estado (herido, hambriento, cansado) le permita llevar de vuelta al refugio.
 
 La dificultad de cada lugar de saqueo será definido por el peligro que presentan los enemigos (apartado "Combate") que haya. Además, la distancia sobre el mapa entre el lugar de saqueo y el refugio reducirá el tiempo del cual dispone el jugador para saquear.
 
 Estos lugares pueden presentar obstáculos como puertas bloqueadas, necesidad de contraseñas o herramientas para saquearlo completamente.
 
-Existe la posibilidad de volver a la misma localización por si en el anterior ciclo no terminaste de saquearlo por completo.
+Existe la posibilidad de volver a la misma localización por si en un anterior ciclo no se terminó de saquear por completo.
 
-Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber que esperar. Por ejemplo en una casa abandonada la descripción  podría indicar peligro de esta forma: gran número hostiles en la zona, posiblemente haya medicinas. No obstante, al principio del juego solo estarán descritas un poequeño número de zonas. Una zona no descrita aún se puede saquear, pero el jugador no sabrá a qué se enfrenta ni qué recompensas esperar. Cuando se complete un saqueo, independientemente del resultado, se desbloquearán la descripciones de las dos zonas más cercanas sobre el mapa a la zona saqueada.
+Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber qué esperar. Por ejemplo, la descripción del hospital delata que habrá recursos médicos, con un nivel medio de mostruos, y que el jugador dispondrá de 6 minutos. 
 
-Para poder volver al refugio, el jugador tendrá que salir por la zona por la que entró. En caso de que tarde más del tiempo del dia, empezará a implantarse en él un estado de hipotermia o congelacion, que dependiendo de la tardanza puede conllevar desde un pequeño debufo hasta la muerte del jugador.
+Para poder volver al refugio, el jugador tendrá que salir por la zona por la que entró. En caso de que se tarde demasiado tiempo en volver, empezará a sufrir un estado de hipotermia, que se ve como un efecto de hielo en la interfaz que adquiere opacidad progresivamente. Si el efecto llega a la opacidad máxima, el jugador muere.
 
 # Refugio <a name="refu"></a>
 
-El refugio es una zona pequeña donde el jugador podrá construir y mejorar diferentes estaciones de crafteo, crear objetos o descansar. En él, el jugador podrá interactuar con distintas estructuras del refugio para realizar acciones que gastarán parte del tiempo (discreto) disponible. Cuando gaste todo el tiempo, o bien cuando se vea sin acciones, podrá dormir y avanzar al siguiente día.
+El refugio es una zona pequeña donde el jugador tendrá acceso a diferentes estaciones de crafteo para crear objetos. Además, dispone de una cama para descansar y comenzar el siguiente ciclo de día. Cada acción que el jugador realice en el refugio contará contra el tiempo que tiene aquí. A diferencia del saqueo, el tiempo aquí se cuenta de forma discreta, como un recurso, y no baja solo. [CONFIRMATION_REQUIRED]
 
-Las estructuras estarán ya situadas en distintas zonas del refugio (cohete, base de datos, terminal, mesa de crafteo??), pudiendo el jugador interactuar con ellas para mejorarlas, repararlas, o realizar acciones.
+Además, hay un área designada para la reparación del cohete, el objetivo final del juego. Al interactuar con el cohete, se abrirá un menú similar a las estaciones de crafteo, el cual ofrecerá una serie de posibles reparaciones al cohete, cada uno de los ciales requiere una serie de materiales concretos. Si se llegan a efectuar todas las reparaciones, habrá una nueva opción para despegar, completando el juego.
 
-En un principio, el jugador podrá seleccionar las distintas localizaciones para poder acceder a las acciones disponibles.
-*MEDIA PRIORIDAD: El jugador se moverá en el propio refugio.*
+Las estructuras estarán ya situadas en distintas zonas del refugio, pudiendo el jugador interactuar con ellas para mejorarlas, repararlas, o realizar acciones.
 
 ![alt text](./docs/images/hideout_concept.png)
 
