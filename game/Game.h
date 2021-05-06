@@ -13,7 +13,7 @@
 class Manager;
 class Entity;
 
-const enum SCENES {  SHELTER, HOSPITAL, RESTAURANT, RAID, SETTINGS, MAINMENU, NONE };
+const enum class SCENES {  SHELTER, HOSPITAL, RESTAURANT, RAID, SETTINGS, MAINMENU, NONE, CREDITS};
 const vector<int> SCENES_CHESTS = { 0,0,2,1,0 };
 
 class Game {
