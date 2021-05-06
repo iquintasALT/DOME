@@ -71,15 +71,13 @@ public:
 			throw std::exception("Se ha intentado renderizar dos veces la misma entidad");
 		}
 		renderObj->isRendering = true;
-		int group = ecs::rndIdx<T>;
-		auto it = renders_[group].insert(renders_[group].end(), renderObj);
-
-		saveRenderPosition(renderObj, group, it);
+		renderObj->renderGroup = ecs::rndIdx<T>;
+		renderObj->renderIterator = renders_[renderObj->renderGroup].insert(renders_[renderObj->renderGroup].end(), renderObj);
+		//saveRenderPosition(renderObj, group, it);
 	}
 
-	void saveRenderPosition(Entity* renderObj, int group, list<Entity*>::iterator it);
-
 	void removeRenderFromLayer(Entity* ent);
+	//void saveRenderPosition(Entity* renderObj, int group, list<Entity*>::iterator it);
 
 	void update();
 	void render();

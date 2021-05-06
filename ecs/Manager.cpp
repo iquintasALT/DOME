@@ -70,9 +70,14 @@ void Manager::render() {
 void Manager::removeRenderFromLayer(Entity* ent) {
 	if (ent->renderGroup != -1) {
 		renders_[ent->renderGroup].erase(ent->renderIterator);
-		ent->renderGroup = -1; ent->renderIterator = nullptr;
+		ent->renderIterator = renders_[ent->renderGroup].end(); ent->renderGroup = -1;
 	}
 }
+
+//void Manager::saveRenderPosition(Entity* renderObj, int group, list<Entity*>::iterator it) {
+//	renderObj->renderGroup = group;
+//	renderObj->renderIterator = it;
+//}
 
 void Manager::AddInteractableElement(InteractableElement* ie) {
 	interactableElements.push_back(ie);
@@ -95,9 +100,4 @@ void Manager::cycle() {
 
 void Manager::ChangeScene(GameScene* scene, SceneManager::SceneMode mode) {
 	sceneManager.ChangeScene(scene, mode);
-}
-
-void Manager::saveRenderPosition(Entity* renderObj, int group, list<Entity*>::iterator it) {
-	renderObj->renderGroup = group;
-	renderObj->renderIterator =  it;
 }

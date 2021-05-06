@@ -26,8 +26,7 @@ public:
 		mngr_(mngr), 
 		cmpArray_(), 
 		groups_(),
-		renderGroup(-1),
-		renderIterator()
+		renderGroup(-1)
 	{}
 
 	virtual ~Entity() {
@@ -36,7 +35,7 @@ public:
 		}
 		components_.clear();
 
-		mngr_->removeRenderFromLayer(this);
+		removeEntityRender(this);
 	}
 
 
@@ -205,7 +204,6 @@ private:
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;
 	std::bitset<ecs::maxGroup> groups_;
+
+	void removeEntityRender(Entity* e);
 };
-
-
-
