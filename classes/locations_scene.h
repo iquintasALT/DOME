@@ -6,11 +6,10 @@
 
 class Game;
 
-const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/template.tmx", "./resources/tilemap/zona_shop.tmx",
-												"C", "D", "E" };
-const array<string, consts::NUM_LOCATIONS> names = {"template", "hospital", "C", "D", "E"};
-
-enum BUTTONID { Farmacia, Hospital, Nose2, Nose3 };
+const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/zona_supermarket.tmx", "./resources/tilemap/zona_shop.tmx",
+												"./resources/tilemap/zona_hospital.tmx", "./resources/tilemap/zona_comunications.tmx", 
+																					"./resources/tilemap/zona_nuclear_power_station.tmx" };
+const array<string, consts::NUM_LOCATIONS> names = {"SUPERMARKET", "SHOP", "HOSPITAL", "COMNUNICATIONS", "NUCLEAR POWER STATION"};
 
 class LocationsScene : public GameScene
 {

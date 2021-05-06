@@ -41,6 +41,13 @@ void LocationsScene::init()
 	mngr_->addRenderLayer<Item>(info4);
 	infos.push_back(info4);
 
+	auto info5 = mngr_->addEntity();
+	info5->addComponent<Transform>(Vector2D(50, 0), 280, 630);
+	info5->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true);
+	info5->setActive(false);
+	mngr_->addRenderLayer<Item>(info5);
+	infos.push_back(info5);
+
 	// this here is so we are aware that this is not roght but I need to wait till we have all locations srry
 	loadLocationButtons();
 }
@@ -75,7 +82,7 @@ void LocationsScene::loadLocationButtons() {
 
 void LocationsScene::changeToRaid(Game* g, int index) {
 	g->currentScene = SCENES::RAID;
-	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::OVERRIDE);
+	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::ADDITIVE);
 }
 
 void LocationsScene::anActualGoodName(Game* g) {
@@ -91,8 +98,8 @@ void LocationsScene::update() {
 			if (!mouseClick) {
 				if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
 					// THIS IS SO BAD IT'S BURNING MY SOUL
-					if (i == 0 || i == 1) changeToRaid(g_, i);
-					else anActualGoodName(g_);
+					changeToRaid(g_, i);
+					
 					mouseClick = true;
 					return;
 				}
@@ -108,12 +115,7 @@ void LocationsScene::update() {
 			}
 			return;
 		}
-		else
-		{
-			infos[i]->setActive(false);
-		}
-
-
+		else infos[i]->setActive(false);
 	}
 }
 
