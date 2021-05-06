@@ -40,6 +40,7 @@ public:
 	static ItemInfo* bottleOfWater();
 	static ItemInfo* medicine();
 	static ItemInfo* food();
+	static ItemInfo* defaultAmmo();
 };
 
 class Item
