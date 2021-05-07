@@ -255,7 +255,7 @@ void Workshop::rightWindowRender() {
 void Workshop::renderImg(float posX, float posY, int row, int col, int sizeX, int sizeY) {
 	Entity* aux = getMngr()->addEntity();
 	aux->addComponent<Transform>(Vector2D{ posX,posY }, sizeX, sizeY, 0);
-	Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, row, col, true);
+	Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, row, col, true);
 	img->render();
 
 	aux->setActive(false);
