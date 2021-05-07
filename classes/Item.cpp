@@ -25,9 +25,15 @@ ItemInfo* ItemInfo::medicine()
 {
 	return new ItemInfo(ANTIDOTE, "Mmmmmm", 2, 2, 0, 1);
 }
+
 ItemInfo* ItemInfo::food()
 {
 	return new ItemInfo(FOOD, "I dont know what im doing", 1, 1, 1, 2);
+}
+
+ItemInfo* ItemInfo::defaultAmmo()
+{
+	return new ItemInfo(CLASSIC_AMMO, "This is the classic ammo item", 1, 1, 1, 2);
 }
 
 //&sdlutils().images().at("items")

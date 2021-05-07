@@ -13,33 +13,12 @@ void LocationsScene::init()
 	background->addComponent<Image>(&sdlutils().images().at("location_image"), 1, 3, 0, 0, true);
 	mngr_->addRenderLayer<Background>(background);
 
-	auto info1 = mngr_->addEntity();
-	info1->addComponent<Transform>(Vector2D(50, 0), 280, 630);
-	info1->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true);
-	info1->setActive(false);
-	mngr_->addRenderLayer<Item>(info1);
-	infos.push_back(info1);
+	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); //
+	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); //
+	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); //
+	addInfoText(&sdlutils().images().at("info_comunicaciones"), Vector2D(50, 0), 280, 630); //
+	addInfoText(&sdlutils().images().at("info_supermercado"), Vector2D(50, 0), 280, 630); //
 
-	auto info2 = mngr_->addEntity();
-	info2->addComponent<Transform>(Vector2D(50, 0), 280, 630);
-	info2->addComponent<Image>(&sdlutils().images().at("info_comunicaciones"), 1, 1, 0, 0, true); //CAMBIAR ESTA IMAGEN AL TEXTO BIEN
-	info2->setActive(false);
-	mngr_->addRenderLayer<Item>(info2);
-	infos.push_back(info2);
-
-	auto info3 = mngr_->addEntity();
-	info3->addComponent<Transform>(Vector2D(50, 0), 280, 630);
-	info3->addComponent<Image>(&sdlutils().images().at("info_supermercado"), 1, 1, 0, 0, true);
-	info3->setActive(false);
-	mngr_->addRenderLayer<Item>(info3);
-	infos.push_back(info3);
-
-	auto info4 = mngr_->addEntity();
-	info4->addComponent<Transform>(Vector2D(50, 0), 280, 630);
-	info4->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true);
-	info4->setActive(false);
-	mngr_->addRenderLayer<Item>(info4);
-	infos.push_back(info4);
 
 	// this here is so we are aware that this is not roght but I need to wait till we have all locations srry
 	loadLocationButtons();
@@ -74,12 +53,8 @@ void LocationsScene::loadLocationButtons() {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-
-	/*g->currentScene = RAID;
-	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::OVERRIDE);*/
-	g->currentScene = SCENES::SHELTER;
-	mngr_->ChangeScene(new ShelterScene(g), SceneManager::SceneMode::OVERRIDE);
-
+	g->currentScene = SCENES::RAID;
+	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::ADDITIVE);
 }
 
 void LocationsScene::anActualGoodName(Game* g) {
@@ -95,8 +70,8 @@ void LocationsScene::update() {
 			if (!mouseClick) {
 				if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
 					// THIS IS SO BAD IT'S BURNING MY SOUL
-					if (i == 0 || i == 1) changeToRaid(g_, i);
-					else anActualGoodName(g_);
+					changeToRaid(g_, i);
+					
 					mouseClick = true;
 					return;
 				}
@@ -112,12 +87,15 @@ void LocationsScene::update() {
 			}
 			return;
 		}
-		else
-		{
-			infos[i]->setActive(false);
-		}
-
-
+		else infos[i]->setActive(false);
 	}
 }
 
+void LocationsScene::addInfoText(Texture* t, Vector2D pos, int xSize, int ySize) {
+	auto info = mngr_->addEntity();
+	info->addComponent<Transform>(pos, xSize, ySize);
+	info->addComponent<Image>(t, 1, 1, 0, 0, true);
+	info->setActive(false);
+	mngr_->addRenderLayer<Item>(info);
+	infos.push_back(info);
+}
