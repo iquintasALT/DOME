@@ -23,7 +23,7 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 
 }
 
-bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws) {
+bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool openLoot) {
 	itemsToDelete.clear();
 
 	vector<I> itemsNeeded = (*crafts.find(item)).second;
@@ -43,15 +43,16 @@ bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws) {
 	}
 
 	if (itemsNeeded.size() == 0) {
-		Entity* auxEntity = playerInventory->getEntity()->getMngr()->addEntity();
-		ItemInfo* info = ItemInfo::bottleOfWater();
-		auxEntity->addComponent<Transform>(Vector2D(x, y), info->width(), info->height(), 0);
-		Loot* invAux = auxEntity->addComponent<Loot>("hola nena", info->width(), info->height());
-		invAux->getInventory()->storeItem(new Item{ info,auxEntity->getMngr(),invAux->getInventory(),0,0 });
-		invAux->Interact();
+		if (openLoot) {
+			Entity* auxEntity = playerInventory->getEntity()->getMngr()->addEntity();
+			ItemInfo* info = ItemInfo::bottleOfWater();
+			auxEntity->addComponent<Transform>(Vector2D(x, y), info->width(), info->height(), 0);
+			Loot* invAux = auxEntity->addComponent<Loot>("hola nena", info->width(), info->height());
+			invAux->getInventory()->storeItem(new Item{ info,auxEntity->getMngr(),invAux->getInventory(),0,0 });
+			invAux->Interact();
 
-		ws->setLoot(invAux);
-
+			ws->setLoot(invAux);
+		}
 		return true;
 	}
 	else return false;

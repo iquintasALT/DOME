@@ -54,7 +54,7 @@ private:
 	list<Item*>  itemsToDelete;
 public:
 	CraftingSystem(Manager* mngr);
-	bool CraftItem(ITEMS item, int x, int y, Workshop* ws);
+	bool CraftItem(ITEMS item, int x, int y, Workshop* ws, bool openLoot = true);
 	void FinishCraft();
 	Crafts* getCrafts();
 };

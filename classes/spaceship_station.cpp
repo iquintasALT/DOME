@@ -1,4 +1,5 @@
 #include "spaceship_station.h"
+#include "../game/Game.h"
 
 SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Workshop(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
@@ -45,13 +46,13 @@ SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingS
 	setWorkshopItems({ SPACESHIP_CABIN,SPACESHIP_RADAR,SPACESHIP_ROCKETS });
 
 	rocketTop = mngr_->addEntity();
-	rocketTop->addComponent<Transform>(Vector2D{ 50,50 }, 320, 213);
-	rocketTopImg = rocketTop->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 0, 0,true); rocketTopImg->setAlpha(125);
+	rocketTop->addComponent<Transform>(Vector2D{ 145,50 }, 320, 213);
+	rocketTopImg = rocketTop->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 0, 0, true); rocketTopImg->setAlpha(125);
 	rocketMid = mngr_->addEntity();
-	rocketMid->addComponent<Transform>(Vector2D{ 50,263 }, 320, 213);
+	rocketMid->addComponent<Transform>(Vector2D{ 145,263 }, 320, 213);
 	rocketMidImg = rocketMid->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 1, 0, true); rocketMidImg->setAlpha(125);
 	rocketBot = mngr_->addEntity();
-	rocketBot->addComponent<Transform>(Vector2D{ 50,476 }, 320, 213);
+	rocketBot->addComponent<Transform>(Vector2D{ 145,476 }, 320, 213);
 	rocketBotImg = rocketBot->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 2, 0, true); rocketBotImg->setAlpha(125);
 
 	falseMngr->addRenderLayer<Interface>(rocketTop);
@@ -69,7 +70,7 @@ void SpaceshipStation::setWorkshopItems(vector<ITEMS>&& items) {
 		std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[i])->first].itemName;
 		Slot aux = { 0,getMngr()->addEntity() };
 		aux.slot->addComponent<Transform>(Vector2D(), 64, 64, 0);
-		aux.slot->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, imgRow, imgCol, true);
+		aux.slot->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, imgRow, imgCol, true);
 		craftList.push_back(aux);
 		falseMngr->addRenderLayer<Interface>(aux.slot);
 	}
@@ -100,19 +101,33 @@ void SpaceshipStation::update() {
 			}
 
 			for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
-				if (Collisions::collides(mousePos, 1, 1, craftList_tr[i]->getPos(), craftList_tr[i]->getW(), craftList_tr[i]->getH())) {
-					renderRightWindow = true;
-					rightWindowIndex = craftList[i].index;
-				}
+				if ((workshopItems[i] == SPACESHIP_CABIN && !mngr_->getGame()->cabin) ||
+					(workshopItems[i] == SPACESHIP_ROCKETS && !mngr_->getGame()->rockets)
+					|| (workshopItems[i] == SPACESHIP_RADAR && !mngr_->getGame()->radar))
+					if (Collisions::collides(mousePos, 1, 1, craftList_tr[i]->getPos(), craftList_tr[i]->getW(), craftList_tr[i]->getH())) {
+						renderRightWindow = true;
+						rightWindowIndex = craftList[i].index;
+					}
 			}
 
 			if (renderRightWindow) {
 				if (Collisions::collides(mousePos, 1, 1, craftButton_tr->getPos(), craftButton_tr->getW(), craftButton_tr->getH())) {
-					bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this);
+					bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this, false);
 
 					if (isCraftable) {
+						if (workshopItems[rightWindowIndex] == SPACESHIP_CABIN) {
+							mngr_->getGame()->cabin = true;		
+							rocketTopImg->setAlpha(255);
+						}
+						else if (workshopItems[rightWindowIndex] == SPACESHIP_RADAR) {
+							mngr_->getGame()->radar = true;
+							rocketMidImg->setAlpha(255);
+						}
+						else if (workshopItems[rightWindowIndex] == SPACESHIP_ROCKETS) {
+							mngr_->getGame()->rockets = true;
+							rocketBotImg->setAlpha(255);
+						}
 						renderRightWindow = false;
-						renderFlag = false;
 					}
 				}
 			}
@@ -153,10 +168,15 @@ void SpaceshipStation::render() {
 		rocketBot->render();
 
 		for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
-			craftList[i].index = listIndex + i;
-			craftList[i].slot->render();
+			if ((workshopItems[i] == SPACESHIP_CABIN && !mngr_->getGame()->cabin) ||
+				(workshopItems[i] == SPACESHIP_ROCKETS && !mngr_->getGame()->rockets)
+				|| (workshopItems[i] == SPACESHIP_RADAR && !mngr_->getGame()->radar)) {
 
-			rightWindowRender();
+				craftList[i].index = listIndex + i;
+				craftList[i].slot->render();
+
+				rightWindowRender();
+			}
 		}
 	}
 	else if (loot != nullptr) {
