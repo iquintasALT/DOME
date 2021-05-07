@@ -99,4 +99,3 @@ void LocationsScene::addInfoText(Texture* t, Vector2D pos, int xSize, int ySize)
 	mngr_->addRenderLayer<Item>(info);
 	infos.push_back(info);
 }
-
