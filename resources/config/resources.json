@@ -125,12 +125,20 @@
       "file": "resources/sprites/weapons_sheet.png"
     },
     {
+      "id": "laser_charge",
+      "file": "resources/sprites/laser_charge.png"
+    },
+    {
       "id": "weapons_arms",
       "file": "resources/sprites/weapons_arms_sheet.png"
     },
     {
       "id": "projectile",
       "file": "resources/sprites/projectile.png"
+    },
+    {
+      "id": "ricochet_projectile",
+      "file": "resources/sprites/ricochet_projectile.png"
     },
     {
       "id": "panel",
