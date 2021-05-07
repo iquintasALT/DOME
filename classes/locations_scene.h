@@ -5,12 +5,12 @@
 #include "../game/constant_variables.h"
 
 class Game;
+class Texture;
 
-const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/template.tmx", "./resources/tilemap/zona_shop.tmx",
-												"C", "D", "E" };
-const array<string, consts::NUM_LOCATIONS> names = {"template", "hospital", "C", "D", "E"};
-
-enum BUTTONID { Farmacia, Hospital, Nose2, Nose3 };
+const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/zona_supermarket.tmx", "./resources/tilemap/zona_nuclear_power_station.tmx", 
+												"./resources/tilemap/zona_hospital.tmx", "./resources/tilemap/zona_comunications.tmx", 
+																					"./resources/tilemap/zona_shop.tmx" };
+const array<string, consts::NUM_LOCATIONS> names = {"SUPERMARKET", " NUCLEAR POWER STATION", "HOSPITAL", "COMNUNICATIONS", "SHOP"};
 
 class LocationsScene : public GameScene
 {
@@ -26,6 +26,7 @@ public:
 	LocationsScene(Game* g) : GameScene(g, "Locations") {};
 	void init() override;
 	void update() override;
+	void addInfoText(Texture* t, Vector2D pos, int xSize, int ySize);
 
 	void changeToRaid(Game* g, int index);
 	void anActualGoodName(Game* g);

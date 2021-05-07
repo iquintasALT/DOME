@@ -69,6 +69,10 @@
             "file": "resources/sprites/info_hospital.png"
         },
         {
+            "id": "sureffect",
+            "file": "resources/sprites/initial_logo.png"
+        },
+        {
             "id": "info_supermercado",
             "file": "resources/sprites/info_supermercado.png"
         },
@@ -145,6 +149,10 @@
             "file": "resources/sprites/buttons/raid_button.png"
         },
         {
+            "id": "yojhanButton",
+            "file": "resources/sprites/buttons/buttonYojhan.png"
+        },
+        {
             "id": "resumeButton",
             "file": "resources/sprites/buttons/resume_button.png"
         },
@@ -191,6 +199,10 @@
         {
             "id": "mainVolumeText",
             "file": "resources/sprites/buttons/main_volume_text.png"
+        },
+        {
+            "id": "logo",
+            "file": "resources/sprites/logo.png"
         },
         {
             "id": "effectsVolume",
