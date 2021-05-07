@@ -133,6 +133,10 @@
             "file": "resources/sprites/projectile.png"
         },
         {
+            "id": "ricochet_projectile",
+            "file": "resources/sprites/ricochet_projectile.png"
+        },
+        {
             "id": "panel",
             "file": "resources/sprites/panel.png"
         },
