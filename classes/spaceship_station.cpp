@@ -1,6 +1,6 @@
-#include "workshop.h"
+#include "spaceship_station.h"
 
-Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : GameEntity(mngr_) {
+SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Workshop(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
 	craftSys = cs;
 	realMngr_->addEntity(this);
@@ -11,7 +11,7 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Gam
 	mouseClick = false;
 	loot = nullptr;
 
-falseMngr = mngr_;
+	falseMngr = mngr_;
 
 	playerInv = realMngr_->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
@@ -23,8 +23,7 @@ falseMngr = mngr_;
 	//INICIALIZACION IMAGENES DEL FONDO, FLECHAS Y X PARA SALIR
 	bg = mngr_->addEntity();
 	bButton = mngr_->addEntity();
-	arrowUp = mngr_->addEntity();
-	arrowDown = mngr_->addEntity();
+
 	craftButton = mngr_->addEntity();
 
 	Vector2D bg_size = { 930, 630 };
@@ -37,58 +36,54 @@ falseMngr = mngr_;
 	bg_tr = bg->getComponent<Transform>();
 	bButton_tr = bButton->getComponent<Transform>();
 
-	Vector2D arrows_size = { 170,70 };
-	Vector2D arrowUp_pos = { bg_pos.getX() + bg_tr->getW() / 4 - arrows_size.getX() / 2,bg_pos.getY() - arrows_size.getY() / 2 };
-	Vector2D arrowDown_pos = { bg_pos.getX() + bg_tr->getW() / 4 - arrows_size.getX() / 2,bg_pos.getY() + bg_tr->getH() - arrows_size.getY() / 2 };
-
-	setImg(arrowUp, arrowUp_pos, arrows_size, "craft_arrow");
-	setImg(arrowDown, arrowDown_pos, arrows_size, "craft_arrow");
-	arrowUp_tr = arrowUp->getComponent<Transform>();
-	arrowDown_tr = arrowDown->getComponent<Transform>();
-	arrowDown->getComponent<Image>()->setFlip(SDL_FLIP_VERTICAL);
-
-
-
 	Vector2D craftButton_pos = { bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f) - 132.5f, bg_tr->getPos().getY() + bg_tr->getH() - 105.0f / 1.5f };
 
 	//BOTON DE CRAFTEO
 	setImg(craftButton, craftButton_pos, Vector2D{ 265,105 }, "craft_slot_box");
 	craftButton_tr = craftButton->getComponent<Transform>();
 
+	setWorkshopItems({ SPACESHIP_CABIN,SPACESHIP_RADAR,SPACESHIP_ROCKETS });
 
+	rocketTop = mngr_->addEntity();
+	rocketTop->addComponent<Transform>(Vector2D{ 50,50 }, 320, 213);
+	rocketTopImg = rocketTop->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 0, 0,true); rocketTopImg->setAlpha(125);
+	rocketMid = mngr_->addEntity();
+	rocketMid->addComponent<Transform>(Vector2D{ 50,263 }, 320, 213);
+	rocketMidImg = rocketMid->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 1, 0, true); rocketMidImg->setAlpha(125);
+	rocketBot = mngr_->addEntity();
+	rocketBot->addComponent<Transform>(Vector2D{ 50,476 }, 320, 213);
+	rocketBotImg = rocketBot->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 2, 0, true); rocketBotImg->setAlpha(125);
+
+	falseMngr->addRenderLayer<Interface>(rocketTop);
+	falseMngr->addRenderLayer<Interface>(rocketMid);
+	falseMngr->addRenderLayer<Interface>(rocketBot);
 }
 
-void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
+void SpaceshipStation::setWorkshopItems(vector<ITEMS>&& items) {
 	workshopItems = move(items);
 
 	//INICIALIZACION SLOTS DE LA LISTA 
 	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
+		int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[i])->first].row;
+		int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[i])->first].col;
+		std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[i])->first].itemName;
 		Slot aux = { 0,getMngr()->addEntity() };
-		setImg(aux.slot, Vector2D(), Vector2D{ 365,105 }, "craft_slot_box");
+		aux.slot->addComponent<Transform>(Vector2D(), 64, 64, 0);
+		aux.slot->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, imgRow, imgCol, true);
 		craftList.push_back(aux);
+		falseMngr->addRenderLayer<Interface>(aux.slot);
 	}
-	float offsetX = bg_tr->getPos().getX() + 45;
-	float offsetY = bg_tr->getPos().getY() + 50;
+
+	float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * 0.25f - 32;
+	float offsetY = bg_tr->getPos().getY() + bg_tr->getH() * 0.2f - 32;
 	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 		craftList[i].slot->getComponent<Transform>()->setPos(Vector2D{ offsetX,offsetY });
 		craftList_tr.push_back(craftList[i].slot->getComponent<Transform>());
-		offsetY += craftList[i].slot->getComponent<Transform>()->getH() + 35;
+		offsetY += 180;
 	}
 }
 
-void Workshop::setRenderFlag(bool set) {
-	renderFlag = set;
-	if (set)
-		playerTr->getEntity()->setActive(false);
-}
-
-void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
-	entity->addComponent<Transform>(pos, size.getX(), size.getY(), 0);
-	entity->addComponent<Image>(&sdlutils().images().at(name), 1, 1, 0, 0, true);
-	getMngr()->addRenderLayer<Interface>(entity);
-}
-
-void Workshop::update() {
+void SpaceshipStation::update() {
 	falseMngr->refresh();
 
 	if (renderFlag) {
@@ -102,13 +97,6 @@ void Workshop::update() {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
 				renderRightWindow = false;
-			}
-			else if (Collisions::collides(mousePos, 1, 1, arrowUp_tr->getPos(), arrowUp_tr->getW(), arrowUp_tr->getH())) {
-				if (listIndex > 0)listIndex--;
-			}
-			else if (Collisions::collides(mousePos, 1, 1, arrowDown_tr->getPos(), arrowDown_tr->getW(), arrowDown_tr->getH())) {
-				int aux = workshopItems.size();
-				if (listIndex < aux - 4) listIndex++;
 			}
 
 			for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
@@ -154,31 +142,19 @@ void Workshop::update() {
 	}
 }
 
-void Workshop::render() {
+void SpaceshipStation::render() {
 	falseMngr->refresh();
 	if (renderFlag) {
 		bg->render();
 		bButton->render();
 
-		arrowUp->render();
-		arrowDown->render();
+		rocketTop->render();
+		rocketMid->render();
+		rocketBot->render();
 
 		for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 			craftList[i].index = listIndex + i;
 			craftList[i].slot->render();
-
-			int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[craftList[i].index])->first].row;
-			int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[craftList[i].index])->first].col;
-			std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[craftList[i].index])->first].itemName;
-			float offsetX = craftList_tr[i]->getPos().getX() + 35;
-			float offsetY = craftList_tr[i]->getPos().getY() + 17.5f;
-
-			renderImg(offsetX, offsetY, imgRow, imgCol);
-
-			Texture* text = new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
-			SDL_Rect dest{ offsetX + 80 ,craftList_tr[i]->getPos().getY() + craftList_tr[i]->getH() / 2 - text->height() / 2  ,text->width(),text->height() };
-			text->render(dest, 0);
-			delete text;
 
 			rightWindowRender();
 		}
@@ -188,7 +164,7 @@ void Workshop::render() {
 	}
 }
 
-void Workshop::rightWindowRender() {
+void SpaceshipStation::rightWindowRender() {
 	if (renderRightWindow) {
 
 		float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
@@ -250,13 +226,4 @@ void Workshop::rightWindowRender() {
 			delete text;
 		}
 	}
-}
-
-void Workshop::renderImg(float posX, float posY, int row, int col, int sizeX, int sizeY) {
-	Entity* aux = getMngr()->addEntity();
-	aux->addComponent<Transform>(Vector2D{ posX,posY }, sizeX, sizeY, 0);
-	Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, row, col, true);
-	img->render();
-
-	aux->setActive(false);
 }

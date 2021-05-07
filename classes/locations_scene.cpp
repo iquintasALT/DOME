@@ -74,8 +74,12 @@ void LocationsScene::loadLocationButtons() {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-	g->currentScene = SCENES::RAID;
-	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::OVERRIDE);
+
+	/*g->currentScene = RAID;
+	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::OVERRIDE);*/
+	g->currentScene = SCENES::SHELTER;
+	mngr_->ChangeScene(new ShelterScene(g), SceneManager::SceneMode::OVERRIDE);
+
 }
 
 void LocationsScene::anActualGoodName(Game* g) {

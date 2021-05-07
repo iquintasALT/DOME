@@ -5,6 +5,7 @@
 #include "locations_scene.h"
 #include "../classes/pause_scene.h"
 #include "../components/open_station.h"
+#include "../classes/spaceship_station.h"
 
 #include <memory>
 
@@ -31,7 +32,7 @@ void ShelterScene::init() {
 	Vector2D auxPos = player->getComponent<Transform>()->getPos();
 
 	mechanical_Workshop = new Workshop(mngr_, uselessMngr, craftSys);
-	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO, BACKPACK_UPGRADE, ARMOUR_UPGRADE });
+	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO });
 	Entity* mechImg = mngr_->addEntity();
 	mechImg->addComponent<Transform>(Vector2D{ auxPos.getX() ,auxPos.getY() }, 50, 50, 0);
 	mechImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 3, 0);
@@ -53,6 +54,13 @@ void ShelterScene::init() {
 	sleepImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
 	sleepImg->addComponent<Open_station>(sleep_Station);
 	mngr_->addRenderLayer<Background>(sleepImg);
+
+	SpaceshipStation* spaceshipStation = new SpaceshipStation(mngr_, uselessMngr, craftSys);
+	Entity* spaceshipImg = mngr_->addEntity();
+	spaceshipImg->addComponent<Transform>(Vector2D{ auxPos.getX() - 300 ,auxPos.getY() }, 50, 50, 0);
+	spaceshipImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
+	spaceshipImg->addComponent<Open_station>(spaceshipStation);
+	mngr_->addRenderLayer<Background>(spaceshipImg);
 }
 
 
