@@ -73,8 +73,12 @@
     "file": "resources/sprites/initial_logo.png"
   },
   {
-    "id": "info_supermercado",
-    "file": "resources/sprites/info_supermercado.png"
+      "id": "info_supermercado",
+      "file": "resources/sprites/info_supermercado.png"
+  },
+  {
+      "id": "info_nuclear",
+      "file": "resources/sprites/info_nuclear.png"
   },
   {
     "id": "enemy",
@@ -103,6 +107,13 @@
   {
     "id": "bgImage4",
     "file": "resources/sprites/background/background3.png"
+  },{
+    "id": "bgImage5",
+    "file": "resources/sprites/background/background4.jpg"
+  },
+  {
+    "id": "bgImage6",
+    "file": "resources/sprites/background/background5.jpg"
   },
   {
     "id": "bgImageDark",

@@ -4,9 +4,16 @@
 #include "../sdlutils/Texture.h"
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../ecs/Component.h"
 
 void LocationsScene::init()
 {
+	addBackground(&sdlutils().images().at("bgImage1"));
+	addBackground(&sdlutils().images().at("bgImage5"));
+	addBackground(&sdlutils().images().at("bgImage2"));
+	addBackground(&sdlutils().images().at("bgImage6"));
+	addBackground(&sdlutils().images().at("bgImage4"));
+
 	auto background = mngr_->addEntity();
 	background->addComponent<Transform>(Vector2D(sdlutils().width() * 0.33 , 0),
 		sdlutils().height(), sdlutils().height());
@@ -14,7 +21,7 @@ void LocationsScene::init()
 	mngr_->addRenderLayer<Background>(background);
 
 	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); //
-	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); //
+	addInfoText(&sdlutils().images().at("info_nuclear"), Vector2D(50, 0), 280, 630); //
 	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); //
 	addInfoText(&sdlutils().images().at("info_comunicaciones"), Vector2D(50, 0), 280, 630); //
 	addInfoText(&sdlutils().images().at("info_supermercado"), Vector2D(50, 0), 280, 630); //
@@ -83,11 +90,17 @@ void LocationsScene::update() {
 			if (!ih().getMouseButtonState(InputHandler::LEFT)) {
 				if (!mouseClick) {
 					infos[i]->setActive(true);
+					backgrounds[i]->setActive(true);
+					backgrounds[i]->getComponent<Fade>()->update();
 				}
 			}
 			return;
 		}
-		else infos[i]->setActive(false);
+		else {
+			infos[i]->setActive(false);
+			backgrounds[i]->getComponent<Fade>()->setDone(false);
+			backgrounds[i]->setActive(false);
+		}
 	}
 }
 
@@ -98,4 +111,45 @@ void LocationsScene::addInfoText(Texture* t, Vector2D pos, int xSize, int ySize)
 	info->setActive(false);
 	mngr_->addRenderLayer<Item>(info);
 	infos.push_back(info);
+}
+
+void LocationsScene::addBackground(Texture* t) {
+	auto background = mngr_->addEntity();
+	background->addComponent<Transform>(Vector2D(0, 0), sdlutils().width(), sdlutils().height());
+	background->addComponent<Image>(t, 1, 1, 0, 0, true);
+	background->addComponent<Fade>(0.3);
+	background->setActive(false);
+	mngr_->addRenderLayer<Background>(background);
+	backgrounds.push_back(background);
+}
+
+Fade::Fade(float speed) : tr_(nullptr) {
+	t = 0;
+	f = 255;
+	done = false;
+	speed_ = speed;
+	black_ = &sdlutils().images().at("black");
+}
+
+void Fade::init() {
+	tr_ = entity_->getComponent<Transform>();
+	assert(tr_ != nullptr);
+}
+
+void Fade::update() {
+	if (!done) {
+		t += consts::DELTA_TIME * speed_;
+
+		const float fade = 0.2f;
+
+		if (t < fade)
+		f = (fade - t) / fade * 255;
+
+		if (f < 10) done = true;
+	}
+}
+
+void Fade::render(){
+	black_->setAlpha(f);
+	black_->render({ 0,0, sdlutils().width(), sdlutils().height() });
 }
