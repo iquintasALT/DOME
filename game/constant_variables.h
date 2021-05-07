@@ -16,7 +16,7 @@ namespace consts {
 	const float RANGED_ENEMY_SHOOTDISTANCE = 350.0f;
 	const float FLYING_ENEMY_HOVERHEIGHT = 160.0f;
 	const float FLYING_ENEMY_APPROACHDISTANCE = 180.0f;
-	const float ACTIVATE_ENEMY_DISTANCE = 20.0f;
+	const float ACTIVATE_ENEMY_DISTANCE = 40.0f;
 	const short int ENEMY_ATTACK_COOLDOWN = 1000;
 	const int WINDOW_WIDTH = 1088;
 	const int WINDOW_HEIGHT = 736;
