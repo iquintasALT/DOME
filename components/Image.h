@@ -7,6 +7,8 @@
 #include "../sdlutils/Texture.h"
 #include "../utils/checkML.h"
 #include "../classes/camera.h";
+#include "../sdlutils/SDLUtils.h"
+#include "../game/constant_variables.h"
 #include "Transform.h"
 
 class Image : public Component {
@@ -90,4 +92,5 @@ private:
 	SDL_RendererFlip flip_;
 	SDL_Point rotationOrigin;
 };
+
 

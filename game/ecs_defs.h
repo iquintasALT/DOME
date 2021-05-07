@@ -6,6 +6,7 @@
 // components -- forward declaration, i.e., assume they are defined somewhere
 class Transform;
 class Image;
+class Fade;
 class KeyboardPlayerCtrl;
 class player_animation;
 class enemy_animation;
@@ -55,6 +56,7 @@ class ScrollingBackGround;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
+	Fade,\
 	KeyboardPlayerCtrl, \
 	player_animation, \
 	enemy_animation, \

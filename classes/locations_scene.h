@@ -3,6 +3,7 @@
 #include <vector>
 #include "game_scene.h"
 #include "../game/constant_variables.h"
+#include "../ecs/Component.h"
 
 class Game;
 class Texture;
@@ -19,6 +20,7 @@ private:
 	bool mouseClick = false;
 	vector<Entity*> locations;
 	vector<Entity*> infos;
+	vector<Entity*> backgrounds;
 
 	void loadLocationButtons();
 
@@ -27,8 +29,30 @@ public:
 	void init() override;
 	void update() override;
 	void addInfoText(Texture* t, Vector2D pos, int xSize, int ySize);
+	void addBackground(Texture* t);
 
 	void changeToRaid(Game* g, int index);
 	void anActualGoodName(Game* g);
 };
+
+class Fade : public Component {
+public:
+	Fade(float speed);
+
+	virtual void init() override;
+
+	virtual ~Fade() {};
+
+	virtual void update() override;
+
+	void render() override;
+
+	inline void setDone(bool d) { done = d; f = 255; t = 0; };
+private:
+	float t, speed_, f;
+	bool done;
+	Texture* black_;
+	Transform* tr_;
+};
+
 
