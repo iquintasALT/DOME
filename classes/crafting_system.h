@@ -27,10 +27,10 @@ struct ITEMS_SPRITESHEET_INFO {
 };
 
 const vector<ITEMS_SPRITESHEET_INFO>ITEMS_INFO = {
-	{0,0,"bandage"},{0,1,"medical components"},{0,2,"water"},{1,0,"organic material"},{1,1,"mecanical components"},
-	{1,2,"antidote"},{2,0,"food"},{0,0,"splint"},{0,1,"spaceship rockets"},{0,2,"spaceship key items"},{1,0,"building parts"},
-	{1,1,"electronic remains"},{1,2,"metal plates"},{2,0,"weapon upgrade"},{0,0,"upgrade kit"},{0,1,"clasic ammo"},
-	{2,2,"spaceship radar"}, {2,1,"spaceship cabin"}
+	{0,2,"bandage"},{0,1,"medical components"},{4,0,"water"},{1,2,"organic material"},{4,1,"mecanical components"},
+	{1,0,"antidote"},{2,0,"food"},{5,1,"splint"},{6,0,"spaceship rockets"},{4,2,"spaceship key items"},{7,0,"building parts"},
+	{5,0,"electronic remains"},{7,1,"metal plates"},{2,0,"weapon upgrade"},{6,2,"upgrade kit"},{2,1,"clasic ammo"},
+	{5,2,"spaceship radar"}, {6,1,"spaceship cabin"}
 };
 
 struct CraftableItem {
