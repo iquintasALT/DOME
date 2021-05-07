@@ -5,24 +5,22 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 	playerInventory = mngr->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 
 	//CAMBIAR A ENUM
-	crafts.emplace(BANDAGE, std::vector<I>{I(MEDICAL_COMPONENTS,1 ), I(WATER,1 ), I( ORGANIC_MATERIAL ,1 )});
+	crafts.emplace(BANDAGE, std::vector<I>{I(MEDICAL_COMPONENTS, 1), I(WATER, 1), I(ORGANIC_MATERIAL, 1)});
 
-	crafts.emplace(ANTIDOTE, std::vector<I>{I(FOOD,1), I(WATER,1 ), I( MEDICAL_COMPONENTS,1 )});
+	crafts.emplace(ANTIDOTE, std::vector<I>{I(FOOD, 1), I(WATER, 1), I(MEDICAL_COMPONENTS, 1)});
 
-	crafts.emplace(SPLINT, std::vector<I>{I( MECANICAL_COMPONENTS,1 ), I( WATER ,1 )});
+	crafts.emplace(SPLINT, std::vector<I>{I(MECANICAL_COMPONENTS, 1), I(WATER, 1)});
 
-	crafts.emplace(SPACESHIP_ROCKETS, std::vector<I>{I( SPACESHIP_KEY_ITEMS ,1 ),
-		I( BUILDING_PARTS ,1 ), I( ELECTRONIC_REMAINS,1 ), I( METAL_PLATES ,1 )});
+	crafts.emplace(WEAPON_UPGRADE, std::vector<I>{I(MECANICAL_COMPONENTS, 1), I(ELECTRONIC_REMAINS, 1), I(UPGRADE_KIT, 1)});
 
-	crafts.emplace(WEAPON_UPGRADE, std::vector<I>{I( MECANICAL_COMPONENTS,1 ), I( ELECTRONIC_REMAINS,1 ), I( UPGRADE_KIT,1 )});
+	crafts.emplace(CLASSIC_AMMO, std::vector<I>{I(MECANICAL_COMPONENTS, 1), I(MEDICAL_COMPONENTS, 1), I(METAL_PLATES, 1)});
 
-	crafts.emplace(CLASSIC_AMMO, std::vector<I>{I( MECANICAL_COMPONENTS ,1 ), I( MEDICAL_COMPONENTS,1 ), I( METAL_PLATES,1 )});
+	crafts.emplace(METAL_PLATES, std::vector<I>{I(BUILDING_PARTS, 1), I(MECANICAL_COMPONENTS, 1) });
 
-	crafts.emplace(BACKPACK_UPGRADE, std::vector<I>{I(ORGANIC_MATERIAL,1), I(BANDAGE ,1), I(UPGRADE_KIT,1)});
+	crafts.emplace(SPACESHIP_CABIN, std::vector<I>{I(SPACESHIP_KEY_ITEMS, 3), I(METAL_PLATES, 2)});
+	crafts.emplace(SPACESHIP_RADAR, std::vector<I>{I(SPACESHIP_KEY_ITEMS, 1), I(METAL_PLATES, 1)});
+	crafts.emplace(SPACESHIP_ROCKETS, std::vector<I>{I(SPACESHIP_KEY_ITEMS, 2)});
 
-	crafts.emplace(METAL_PLATES, std::vector<I>{I(BUILDING_PARTS,1), I( MECANICAL_COMPONENTS ,1) });
-
-	crafts.emplace(ARMOUR_UPGRADE, std::vector<I>{I(METAL_PLATES ,1), I(ORGANIC_MATERIAL ,1), I(UPGRADE_KIT,1)});
 }
 
 bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws) {
