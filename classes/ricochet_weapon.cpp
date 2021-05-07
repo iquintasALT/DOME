@@ -48,7 +48,7 @@ void RicochetWeapon::update() {
 		counter = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 
-		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
+		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 12, 6, 0);
 		RigidBody* rb = bullet->addComponent<RigidBody>(dir * 10.0, false);
 
 		float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
