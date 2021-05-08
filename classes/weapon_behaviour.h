@@ -16,21 +16,25 @@
 #include "../classes/charge_weapon.h"
 #include <math.h>
 
+enum class WeaponType { CLASSIC, LASER, RICOCHET };
+
 class WeaponBehaviour : public GameEntity {
 private:
 	Weapon* weaponMovement;
 	Transform* pl;
-	int type;
-	int type1 = 1;
-	int type2 = 1; //Pasar por referencia el level de cada arma
-	int type3 = 1;
+	WeaponType weaponType;
+
+	int tierWeapon1 = 1;
+	int tierWeapon2 = 1; //Pasar por referencia el level de cada arma
+	int tierWeapon3 = 1;
+
 public:
-	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr, int typeOfWeapon);
+	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr);
 	Weapon* getWeaponMovement();
 
 	void changeWeapon();
 
-	int typeOfWeapon() { return type; }
+	WeaponType typeOfWeapon() { return weaponType; }
 	int tierOfWeapon();
 	void upgradeTier();
 };
