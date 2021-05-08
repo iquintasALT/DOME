@@ -67,7 +67,7 @@ void RicochetWeapon::update() {
 		bulletTr->setRot(degreeAngle);
 
 		entity_->getMngr()->addRenderLayer<Bullets>(bullet);
-		bullet->addComponent<Image>(tex_);
+		bullet->addComponent<Image>(tex_)->setRotationOrigin(8, 4);
 		bullet->addComponent<Ricochet>(playerTr, nbounce, ntier);
 
 		actcharger--;
