@@ -42,7 +42,7 @@ bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool open
 		}
 	}
 
-	if (itemsNeeded.size() == 0) {
+//	if (itemsNeeded.size() == 0) {
 		if (openLoot) {
 			Entity* auxEntity = playerInventory->getEntity()->getMngr()->addEntity();
 			ItemInfo* info = ItemInfo::bottleOfWater();
@@ -54,8 +54,8 @@ bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool open
 			ws->setLoot(invAux);
 		}
 		return true;
-	}
-	else return false;
+	//}
+	//else return false;
 }
 
 void CraftingSystem::FinishCraft() {
