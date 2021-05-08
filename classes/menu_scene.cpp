@@ -60,6 +60,9 @@ void MenuScene::init() {
 			a->setActive(true);
 		});
 	mngr_->addRenderLayer<Interface>(logo);
+
+	// hacemos que comienze en 1 (ciclo --> numDays <= MAX_DAYS)
+	getGame()->numDays++;
 }
 
 void MenuScene::playGame(Manager* mngr) {

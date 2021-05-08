@@ -28,10 +28,12 @@ void LocationsScene::init()
 
 	addFocus();
 
-	// this here is so we are aware that this is not roght but I need to wait till we have all locations srry
 	loadLocationButtons();
 
 	initFocus();
+
+	name = "Day " + std::to_string(getGame()->numDays) + " out of " + std::to_string(consts::MAX_DAYS);
+	//createTransition();
 }
 
 void LocationsScene::loadLocationButtons() {

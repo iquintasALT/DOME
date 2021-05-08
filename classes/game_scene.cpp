@@ -23,6 +23,7 @@ void GameScene::loadMap(string& const path) {
 	mapInfo.tile_width = tilesize.x;
 	mapInfo.tile_height = tilesize.y;
 
+	// establecemos los bordes de la camara con respecto al numero de tiles en el mapa
 	Camera::mainCamera->setBounds(0, 0, mapInfo.cols * mapInfo.tile_width, mapInfo.rows * mapInfo.tile_height);
 
 	// cargamos y almacenamos los tilesets utilizados por el tilemap
@@ -187,9 +188,11 @@ void GameScene::changeState(GameScene* gs)
 }
 
 void GameScene::createTransition() {
+
 	int winWidth = consts::WINDOW_WIDTH;
 	int winheight = consts::WINDOW_HEIGHT;
 	float timeToFade = 2;
+
 	Entity* e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(), winWidth, winheight);
 	e->addComponent<Image>(&sdlutils().images().at("black"), true);
