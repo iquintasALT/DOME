@@ -5,61 +5,15 @@
 #include "../components/Transform.h"
 #include "../game/constant_variables.h"
 
-WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr, int typeOfWeapon) : GameEntity(mngr), pl(playerTr), weaponMovement(nullptr) {
+WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr) : GameEntity(mngr), pl(playerTr), weaponMovement(nullptr) {
 	mngr->addEntity(this);
 	mngr->addRenderLayer<Bullets>(this);
 
 	addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), 38, 24, 0);
-	//3 TIERS PARA 3 ARMAS (REFACTORIZAR DE TAL FORMA QUE CADA ARMA SEPA CAMBIAR DE TIER)
-	if (typeOfWeapon == 1) {
-		addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
-		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 20);
-		type = 1;
-	}
-	else if (typeOfWeapon == 2) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 1);
-		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER2_FIRERATE, consts::WEAPON_TIER2_DAMAGE, 10);
-		type = 1;
-	}
-	else if (typeOfWeapon == 3) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 2);
-		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER3_FIRERATE, consts::WEAPON_TIER3_DAMAGE, 5);
-		type = 1;
-	}
-	else if (typeOfWeapon == 4) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 0);
-		weaponMovement = addComponent<ChargeWeapon>(consts::CHARGE_TIER1_FIRERATE, consts::CHARGE_TIER1_DAMAGE);
-		type = 2;
-	}
-	else if (typeOfWeapon == 5) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 1);
-		weaponMovement = addComponent<ChargeWeapon>(consts::CHARGE_TIER2_FIRERATE, consts::CHARGE_TIER2_DAMAGE);
-		type = 2;
-	}
-	else if (typeOfWeapon == 6) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 2);
-		weaponMovement = addComponent<ChargeWeapon>(consts::CHARGE_TIER3_FIRERATE, consts::CHARGE_TIER3_DAMAGE);
-		type = 2;
-	}
-	else if (typeOfWeapon == 7) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 0);
-		weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, playerTr, 2, 1);
-		type = 3;
-	}
-	else if (typeOfWeapon == 8) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 1);
-		weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER2_FIRERATE, consts::RICOCHET_TIER2_DAMAGE, playerTr, 5, 2);
-		type = 3;
-	}
-	else if (typeOfWeapon == 9) {
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 2);
-		weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER3_FIRERATE, consts::RICOCHET_TIER3_DAMAGE, playerTr, 7, 3);
-		type = 3;
-	}
-	else
-	{
-		type = 1;
-	}
+
+	addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
+	weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 20);
+	weaponType = WeaponType::CLASSIC;
 }
 
 Weapon* WeaponBehaviour::getWeaponMovement() {
@@ -72,56 +26,57 @@ void WeaponBehaviour::changeWeapon()
 	this->removeComponent<Weapon>();
 	this->removeComponent<ChargeWeapon>();
 	this->removeComponent<RicochetWeapon>();
-	if (type == 1)
+
+	if (weaponType == WeaponType::CLASSIC)
 	{
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 0);
 		weaponMovement = addComponent<ChargeWeapon>(consts::CHARGE_TIER1_FIRERATE, consts::CHARGE_TIER1_DAMAGE);
-		if (type2 != 1)weaponMovement->upgradeTier(type2);
+		if (tierWeapon2 != 1) weaponMovement->upgradeTier(tierWeapon2);
+		weaponType = WeaponType::LASER;
 	}
-	else if (type == 3)
-	{
-		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
-		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
-		if (type1 != 1)weaponMovement->upgradeTier(type1);
-	}
-	else
+	else if (weaponType == WeaponType::LASER)
 	{
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 0);
 		weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, pl, 3, 1);
-		if (type3 != 1)weaponMovement->upgradeTier(type3);
+		if (tierWeapon3 != 1) weaponMovement->upgradeTier(tierWeapon3);
+		weaponType = WeaponType::RICOCHET;
 	}
-
-	type++;
-	if (type > 3) type = 1;
+	else
+	{
+		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
+		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
+		if (tierWeapon1 != 1) weaponMovement->upgradeTier(tierWeapon1);
+		weaponType = WeaponType::CLASSIC;
+	}
 }
 
 int WeaponBehaviour::tierOfWeapon()
 {
-	if (type == 1)
+	if (weaponType == WeaponType::CLASSIC)
 	{
-		return type1;
+		return tierWeapon1;
 	}
-	if (type == 2)
+	if (weaponType == WeaponType::LASER)
 	{
-		return type2;
+		return tierWeapon2;
 	}
 	else
 	{
-		return type3;
+		return tierWeapon3;
 	}
 }
 
 void WeaponBehaviour::upgradeTier() {
-	if (type == 1) {
-		type1++;
-		weaponMovement->upgradeTier(type1);
+	if (weaponType == WeaponType::CLASSIC) {
+		tierWeapon1++;
+		weaponMovement->upgradeTier(tierWeapon1);
 	}
-	else if (type == 2) {
-		type2++;
-		weaponMovement->upgradeTier(type2);
+	if (weaponType == WeaponType::LASER) {
+		tierWeapon2++;
+		weaponMovement->upgradeTier(tierWeapon2);
 	}
-	else if (type == 3) {
-		type3++;
-		weaponMovement->upgradeTier(type3);
+	else {
+		tierWeapon3++;
+		weaponMovement->upgradeTier(tierWeapon3);
 	}
 }
