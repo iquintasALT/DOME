@@ -16,7 +16,7 @@ struct Slot {
 	int index;
 	Entity* slot;
 };
-
+class ShelterScene;
 class Workshop : public GameEntity
 {
 protected:
@@ -48,12 +48,12 @@ protected:
 	Inventory* playerInv;
 	Transform* playerTr;
 
-
 	Loot* loot;
+	ShelterScene* shelterScene;
 
 public:
-	Workshop(Manager* mngr_) : GameEntity(mngr_) {  };
-	Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs);
+	Workshop(Manager* mngr_) : GameEntity(mngr_) { };
+	Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_);
 
 	virtual void setWorkshopItems(vector<ITEMS>&& items);
 	void setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name);

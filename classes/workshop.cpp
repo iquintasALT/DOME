@@ -1,6 +1,7 @@
 #include "workshop.h"
+#include "../classes/shelter_scene.h"
 
-Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : GameEntity(mngr_) {
+Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_ ) : GameEntity(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
 	craftSys = cs;
 	realMngr_->addEntity(this);
@@ -55,7 +56,8 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Gam
 	setImg(craftButton, craftButton_pos, Vector2D{ 265,105 }, "craft_slot_box");
 	craftButton_tr = craftButton->getComponent<Transform>();
 
-
+	//referencia para usar acciones
+	shelterScene = shelterScene_;
 }
 
 void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
@@ -120,20 +122,25 @@ void Workshop::update() {
 
 			if (renderRightWindow) {
 				if (Collisions::collides(mousePos, 1, 1, craftButton_tr->getPos(), craftButton_tr->getW(), craftButton_tr->getH())) {
-					if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
-						bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this, false);
-						WeaponBehaviour* weapon = static_cast<Player*>(playerTr->getEntity())->getCurrentWeapon();
-						if (isCraftable && weapon->tierOfWeapon() < 3) {
-							renderRightWindow = false;
-							weapon->upgradeTier();
-						}
+					//si tengo acciones
+					if (shelterScene->getActions() > 0) {
+						if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
+							bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this, false);
+							WeaponBehaviour* weapon = static_cast<Player*>(playerTr->getEntity())->getCurrentWeapon();
+							if (isCraftable && weapon->tierOfWeapon() < 3) {
+								renderRightWindow = false;
+								weapon->upgradeTier();
+								//gastar accion
+								shelterScene->useAction();
+							}
 
-					}
-					else {
-						bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this);
-						if (isCraftable) {
-							renderRightWindow = false;
-							renderFlag = false;
+						}
+						else {
+							bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this);
+							if (isCraftable) {
+								renderRightWindow = false;
+								renderFlag = false;
+							}
 						}
 					}
 				}
@@ -151,6 +158,8 @@ void Workshop::update() {
 
 				if (loot->getInventory()->getItems().empty()) {
 					craftSys->FinishCraft();
+					//gastar accion
+					shelterScene->useAction();
 				}
 
 				loot->Interact();
