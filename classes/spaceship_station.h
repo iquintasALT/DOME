@@ -1,6 +1,8 @@
 #pragma once
 #include "../classes/workshop.h"
 
+class ShelterScene;
+
 class SpaceshipStation :public Workshop
 {
 protected:
@@ -10,9 +12,10 @@ protected:
 	Image* rocketMidImg;
 	Entity* rocketBot;
 	Image* rocketBotImg;
+	ShelterScene* shelterScene;
 	
 public:
-	SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs);
+	SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_);
 	virtual void render();
 	virtual void update();
 	virtual void rightWindowRender();
