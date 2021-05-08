@@ -24,7 +24,14 @@ using std::endl;
 void ShelterScene::init() {
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
+
 	Player* player = dynamic_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+
+	auto weapon = player->getCurrentWeapon();
+
+	if (weapon->isActive())
+		weapon->setActive(false);
+
 	craftSys = new CraftingSystem(mngr_);
 
 	uselessMngr = new Manager(g_);
