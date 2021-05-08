@@ -2,6 +2,7 @@
 #include "../components/weapon.h"
 #include "../utils/checkML.h"
 #include "../components/Transform.h"
+#include "../sdlutils/Texture.h"
 
 class RicochetWeapon: public Weapon
 {
@@ -15,6 +16,7 @@ public:
 	virtual int getTotalBullets() { return nbullets - tcharger; }
 private:
 	Transform* playerTr;
+	Texture* tex_ = &sdlutils().images().at("ricochet_projectile");
 	int ntier;
 	int damage;
 	int nbounce;
