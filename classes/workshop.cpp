@@ -11,7 +11,7 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Gam
 	mouseClick = false;
 	loot = nullptr;
 
-falseMngr = mngr_;
+	falseMngr = mngr_;
 
 	playerInv = realMngr_->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
@@ -112,7 +112,7 @@ void Workshop::update() {
 			}
 
 			for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
-				if (Collisions::collides(mousePos, 1, 1, craftList_tr[i]->getPos(), craftList_tr[i]->getW(), craftList_tr[i]->getH())) {
+				if (Collisions::collides(mousePos, 1, 1, craftList_tr[i]->getPos(), craftList_tr[i]->getW(), craftList_tr[i]->getH())) {					
 					renderRightWindow = true;
 					rightWindowIndex = craftList[i].index;
 				}
@@ -120,11 +120,21 @@ void Workshop::update() {
 
 			if (renderRightWindow) {
 				if (Collisions::collides(mousePos, 1, 1, craftButton_tr->getPos(), craftButton_tr->getW(), craftButton_tr->getH())) {
-					bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this);
+					if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
+						bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this, false);
+						WeaponBehaviour* weapon = static_cast<Player*>(playerTr->getEntity())->getCurrentWeapon();
+						if (isCraftable && weapon->tierOfWeapon() < 3) {
+							renderRightWindow = false;
+							weapon->upgradeTier();
+						}
 
-					if (isCraftable) {
-						renderRightWindow = false;
-						renderFlag = false;
+					}
+					else {
+						bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this);
+						if (isCraftable) {
+							renderRightWindow = false;
+							renderFlag = false;
+						}
 					}
 				}
 			}
@@ -190,64 +200,81 @@ void Workshop::render() {
 
 void Workshop::rightWindowRender() {
 	if (renderRightWindow) {
-
 		float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
 		float offsetY = bg_tr->getPos().getY() + 35;
+		if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getCurrentWeapon()->tierOfWeapon() < 3) {
 
-		std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].itemName;
+			std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].itemName;
 
-		Texture* text = new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
-		SDL_Rect dest{ offsetX - text->width() / 2  , offsetY ,text->width(),text->height() };
-		text->render(dest, 0);
+			Texture* text = new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+			SDL_Rect dest{ offsetX - text->width() / 2  , offsetY ,text->width(),text->height() };
+			text->render(dest, 0);
 
-		offsetY += text->height() + 25;
-		delete text;
+			offsetY += text->height() + 25;
+			delete text;
 
-		int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].row;
-		int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].col;
-		renderImg(offsetX - 32, offsetY, imgRow, imgCol);
+			int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].row;
+			int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].col;
+			renderImg(offsetX - 32, offsetY, imgRow, imgCol);
 
-		offsetY += 90;
+			offsetY += 90;
 
-		text = new Texture(sdlutils().renderer(), "Needed items: ", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
-		dest = { (int)(offsetX - text->width() / 2)  , (int)offsetY ,text->width(),text->height() };
-		text->render(dest, 0);
+			text = new Texture(sdlutils().renderer(), "Needed items: ", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+			dest = { (int)(offsetX - text->width() / 2)  , (int)offsetY ,text->width(),text->height() };
+			text->render(dest, 0);
 
-		offsetY += text->height() + 35;
-		delete text;
-		offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
+			offsetY += text->height() + 35;
+			delete text;
+			offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
 
-		vector<I> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
-		for (int i = 0; i < itemsNeeded.size(); ++i) {
-			renderImg(offsetX, offsetY, ITEMS_INFO[itemsNeeded[i].name].row, ITEMS_INFO[itemsNeeded[i].name].col, 48, 48);
+			vector<I> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
+			for (int i = 0; i < itemsNeeded.size(); ++i) {
+				renderImg(offsetX, offsetY, ITEMS_INFO[itemsNeeded[i].name].row, ITEMS_INFO[itemsNeeded[i].name].col, 48, 48);
 
-			int aux = 0;
-			list<Item*> items = playerInv->getItems();
-			for (auto it = items.begin(); it != items.end(); ++it)
-			{
-				if ((*it)->getItemInfo()->name() == itemsNeeded[i].name)
-					aux++;
+				int aux = 0;
+				list<Item*> items = playerInv->getItems();
+				for (auto it = items.begin(); it != items.end(); ++it)
+				{
+					if ((*it)->getItemInfo()->name() == itemsNeeded[i].name)
+						aux++;
+				}
+
+
+				text = new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i].cantidad), sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
+				dest = { (int)(offsetX + 30) , (int)offsetY + 48 - text->height() / 2 ,text->width(),text->height() };
+				text->render(dest, 0);
+				delete text;
+
+				text = new Texture(sdlutils().renderer(), ITEMS_INFO[itemsNeeded[i].name].itemName, sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+				dest = { (int)(offsetX + 80) , (int)offsetY + 24 - text->height() / 2 ,text->width(),text->height() };
+				text->render(dest, 0);
+				delete text;
+
+				offsetY += 48 + 20;
+
+				craftButton->render();
+				text = new Texture(sdlutils().renderer(), "CRAFT", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+				dest = { (int)(craftButton_tr->getPos().getX() + craftButton_tr->getW() / 2 - text->width() / 2),
+					(int)(craftButton_tr->getPos().getY() + craftButton_tr->getH() / 2 - text->height() / 2),text->width(),text->height() };
+				text->render(dest, 0);
+				delete text;
 			}
-
-
-			text = new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i].cantidad), sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
-			dest = { (int)(offsetX + 30) , (int)offsetY + 48 - text->height() / 2 ,text->width(),text->height() };
+		}
+		else {
+			//at its maximun tier and cant be upgraded
+			Texture* text = new Texture(sdlutils().renderer(), "The equiped weapon is " , sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+			SDL_Rect dest{ offsetX - text->width() / 2  , offsetY ,text->width(),text->height() };
 			text->render(dest, 0);
-			delete text;
+			offsetY += text->height() + 25;  delete text;
 
-			text = new Texture(sdlutils().renderer(), ITEMS_INFO[itemsNeeded[i].name].itemName, sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
-			dest = { (int)(offsetX + 80) , (int)offsetY + 24 - text->height() / 2 ,text->width(),text->height() };
+			text = new Texture(sdlutils().renderer(), "at its maximun tier", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+			dest = { (int)offsetX - text->width() / 2  ,(int) offsetY ,text->width(),text->height() };
+			text->render(dest, 0); 
+			offsetY += text->height() + 25;  delete text;
+
+			text = new Texture(sdlutils().renderer(), "and cant be upgraded", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+			dest = { (int)offsetX - text->width() / 2  ,(int)offsetY ,text->width(),text->height() };
 			text->render(dest, 0);
-			delete text;
-
-			offsetY += 48 + 20;
-
-			craftButton->render();
-			text = new Texture(sdlutils().renderer(), "CRAFT", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
-			dest = { (int)(craftButton_tr->getPos().getX() + craftButton_tr->getW() / 2 - text->width() / 2),
-				(int)(craftButton_tr->getPos().getY() + craftButton_tr->getH() / 2 - text->height() / 2),text->width(),text->height() };
-			text->render(dest, 0);
-			delete text;
 		}
 	}
 }

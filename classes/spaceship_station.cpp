@@ -47,13 +47,16 @@ SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingS
 
 	rocketTop = mngr_->addEntity();
 	rocketTop->addComponent<Transform>(Vector2D{ 145,50 }, 320, 213);
-	rocketTopImg = rocketTop->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 0, 0, true); rocketTopImg->setAlpha(125);
+	rocketTopImg = rocketTop->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 0, 0, true);
+	if (!realMngr_->getGame()->radar)rocketTopImg->setAlpha(125);
 	rocketMid = mngr_->addEntity();
 	rocketMid->addComponent<Transform>(Vector2D{ 145,263 }, 320, 213);
-	rocketMidImg = rocketMid->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 1, 0, true); rocketMidImg->setAlpha(125);
+	rocketMidImg = rocketMid->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 1, 0, true);
+	if (!realMngr_->getGame()->cabin) rocketMidImg->setAlpha(125);
 	rocketBot = mngr_->addEntity();
 	rocketBot->addComponent<Transform>(Vector2D{ 145,476 }, 320, 213);
-	rocketBotImg = rocketBot->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 2, 0, true); rocketBotImg->setAlpha(125);
+	rocketBotImg = rocketBot->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 2, 0, true);
+	if (!realMngr_->getGame()->rockets)rocketBotImg->setAlpha(125);
 
 	falseMngr->addRenderLayer<Interface>(rocketTop);
 	falseMngr->addRenderLayer<Interface>(rocketMid);
@@ -116,7 +119,7 @@ void SpaceshipStation::update() {
 
 					if (isCraftable) {
 						if (workshopItems[rightWindowIndex] == SPACESHIP_CABIN) {
-							mngr_->getGame()->cabin = true;		
+							mngr_->getGame()->cabin = true;
 							rocketTopImg->setAlpha(255);
 						}
 						else if (workshopItems[rightWindowIndex] == SPACESHIP_RADAR) {
