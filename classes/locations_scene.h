@@ -17,19 +17,26 @@ class LocationsScene : public GameScene
 {
 private:
 	int buttonNumber = 0;
-	bool mouseClick = false;
+	bool mouseClick = false, mouseOver = false;
 	vector<Entity*> locations;
 	vector<Entity*> infos;
 	vector<Entity*> backgrounds;
+	vector<Transform*> buttonPositions;
+	Entity* focus;
 
 	void loadLocationButtons();
 
 public:
-	LocationsScene(Game* g) : GameScene(g, "Locations") {};
+	LocationsScene(Game* g) : GameScene(g, "Locations"), focus(nullptr) {};
 	void init() override;
 	void update() override;
 	void addInfoText(Texture* t, Vector2D pos, int xSize, int ySize);
 	void addBackground(Texture* t);
+
+	//Focus
+	void addFocus();
+	void setFocus(Vector2D position);
+	void initFocus();
 
 	void changeToRaid(Game* g, int index);
 	void anActualGoodName(Game* g);
@@ -46,6 +53,8 @@ public:
 	virtual void update() override;
 
 	void render() override;
+
+	void setAlpha(float alpha);
 
 	inline void setDone(bool d) { done = d; f = 255; t = 0; };
 private:
