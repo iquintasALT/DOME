@@ -8,7 +8,7 @@
 
 void LocationsScene::init()
 {
-	addBackground(&sdlutils().images().at("bgImage1"));
+	addBackground(&sdlutils().images().at("bgImage7"));
 	addBackground(&sdlutils().images().at("bgImage5"));
 	addBackground(&sdlutils().images().at("bgImage2"));
 	addBackground(&sdlutils().images().at("bgImage6"));
@@ -20,7 +20,7 @@ void LocationsScene::init()
 	background->addComponent<Image>(&sdlutils().images().at("location_image"), 1, 3, 0, 0, true);
 	mngr_->addRenderLayer<Background>(background);
 
-	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_shop"), Vector2D(50, 0), 280, 630); 
 	addInfoText(&sdlutils().images().at("info_nuclear"), Vector2D(50, 0), 280, 630); 
 	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); 
 	addInfoText(&sdlutils().images().at("info_comunicaciones"), Vector2D(50, 0), 280, 630); 
@@ -97,8 +97,7 @@ void LocationsScene::update() {
 				if (!mouseClick) {
 					//Foco
 					setFocus(buttonPositions[i]->getPos());
-					if (i == 0) focus->getComponent<Image>()->changeFrame(1, 0);
-					else focus->getComponent<Image>()->changeFrame(0, 0);
+					focus->getComponent<Image>()->changeFrame(0, 0);
 
 					infos[i]->setActive(true);
 					backgrounds[i]->setActive(true);

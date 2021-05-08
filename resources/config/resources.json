@@ -77,8 +77,12 @@
     "file": "resources/sprites/info_supermercado.png"
   },
   {
-    "id": "info_nuclear",
-    "file": "resources/sprites/info_nuclear.png"
+      "id": "info_nuclear",
+      "file": "resources/sprites/info_nuclear.png"
+  },
+  {
+      "id": "info_shop",
+      "file":  "resources/sprites/info_shop.png"
   },
   {
     "id": "enemy",
@@ -113,8 +117,12 @@
     "file": "resources/sprites/background/background4.jpg"
   },
   {
-    "id": "bgImage6",
-    "file": "resources/sprites/background/background5.jpg"
+      "id": "bgImage6",
+      "file": "resources/sprites/background/background5.jpg"
+  },
+  {
+      "id": "bgImage7",
+      "file": "resources/sprites/background/background6.jpg"
   },
   {
     "id": "bgImageDark",
