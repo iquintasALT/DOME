@@ -138,11 +138,11 @@
   },
   {
     "id": "laser_windup",
-    "file": "resources/sprites/laser_windup.png"
+    "file": "resources/sprites/laser_windup_tier_3.png"
   },
   {
     "id": "laser_held_charge",
-    "file": "resources/sprites/laser_held_charge.png"
+    "file": "resources/sprites/laser_held_charge_tier_3.png"
   },
   {
     "id": "weapons_arms",
