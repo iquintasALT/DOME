@@ -59,10 +59,10 @@ void hud::update()
 	totalBullet = player->getCurrentWeapon()->getWeaponMovement()->getTotalBullets();
 	if (totalBullet < 0) totalBullet = 0;
 
-	int type = player->getCurrentWeapon()->typeOfWeapon();
+	int type = (int)player->getCurrentWeapon()->typeOfWeapon();
 	int tier = player->getCurrentWeapon()->tierOfWeapon();
 
-	chooseWeapon(type-1, tier-1);
+	chooseWeapon(type, tier-1);
 
 	if (!time->keepPlaying() && !frozen)
 	{
