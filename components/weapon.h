@@ -50,4 +50,5 @@ public:
 	void setDamage(int damage_) { damage = damage_; }
 
 	void adjustToCrouching();
+	virtual void upgradeTier(int tier);
 };
