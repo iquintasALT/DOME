@@ -14,6 +14,8 @@ public:
 	virtual int getChargerBullets() { return actcharger; }
 	virtual int getTamCharger() { return charger; }
 	virtual int getTotalBullets() { return nbullets - tcharger; }
+	virtual void upgradeTier(int tier);
+
 private:
 	Transform* playerTr;
 	Texture* tex_ = &sdlutils().images().at("ricochet_projectile");

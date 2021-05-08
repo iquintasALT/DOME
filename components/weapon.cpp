@@ -35,7 +35,7 @@ void Weapon::update() {
 	else entityImg->enabled = true;
 
 	Vector2D playerPos = playerTr->getPos();
-	if(flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 1.25, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
+	if (flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 1.25, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
 	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 4, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
 	adjustToCrouching();
 
@@ -61,7 +61,7 @@ void Weapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate 
+	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate
 		&& actcharger > 0 && !recharging && !ctrl->isStairs()) {
 		counter = 0;
 
@@ -72,7 +72,7 @@ void Weapon::update() {
 		float x = dir.getX();
 		float y = dir.getY();
 		float rotation = 0;
-		if(maxDispersion != 0)
+		if (maxDispersion != 0)
 			rotation = sdlutils().rand().nextInt(-maxDispersion, maxDispersion) * M_PI / 180.0;
 
 		dir.setX(x * cos(rotation) - y * sin(rotation));
@@ -102,7 +102,7 @@ void Weapon::update() {
 		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
 		bullet->addComponent<ClassicBullet>();
 		actcharger--;
-		if (actcharger == 0 && nbullets>0)
+		if (actcharger == 0 && nbullets > 0)
 		{
 			recharging = true;
 			nbullets -= tcharger;
@@ -136,7 +136,7 @@ void Weapon::recharger()
 	{
 		recharging = true;
 		nbullets -= tcharger - actcharger;
-		if (nbullets >= charger-actcharger)
+		if (nbullets >= charger - actcharger)
 		{
 			actcharger = charger;
 		}
@@ -168,4 +168,19 @@ void Weapon::init()
 
 	playerRb = player->getComponent<RigidBody>();
 	assert(playerRb != nullptr);
+}
+
+void Weapon::upgradeTier(int tier) {
+	if (tier == 2) {
+		entity_->removeComponent<Image>();
+		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 1);
+		damage = consts::WEAPON_TIER2_DAMAGE;
+		fireRate = consts::WEAPON_TIER2_FIRERATE;
+	}
+	else if (tier == 3) {
+		entity_->removeComponent<Image>();
+		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 2);
+		damage = consts::WEAPON_TIER3_DAMAGE;
+		fireRate = consts::WEAPON_TIER3_FIRERATE;
+	}
 }
