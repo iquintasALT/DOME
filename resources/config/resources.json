@@ -73,12 +73,12 @@
     "file": "resources/sprites/initial_logo.png"
   },
   {
-      "id": "info_supermercado",
-      "file": "resources/sprites/info_supermercado.png"
+    "id": "info_supermercado",
+    "file": "resources/sprites/info_supermercado.png"
   },
   {
-      "id": "info_nuclear",
-      "file": "resources/sprites/info_nuclear.png"
+    "id": "info_nuclear",
+    "file": "resources/sprites/info_nuclear.png"
   },
   {
     "id": "enemy",
@@ -107,7 +107,8 @@
   {
     "id": "bgImage4",
     "file": "resources/sprites/background/background3.png"
-  },{
+  },
+  {
     "id": "bgImage5",
     "file": "resources/sprites/background/background4.jpg"
   },
@@ -238,6 +239,10 @@
   {
     "id": "charge",
     "file": "resources/sprites/charge_projectile.png"
+  },
+  {
+    "id": "locationButtonFocus",
+    "file": "resources/sprites/location_button_focus.png"
   },
   {
     "id": "craft_bg",

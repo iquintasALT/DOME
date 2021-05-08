@@ -20,15 +20,18 @@ void LocationsScene::init()
 	background->addComponent<Image>(&sdlutils().images().at("location_image"), 1, 3, 0, 0, true);
 	mngr_->addRenderLayer<Background>(background);
 
-	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); //
-	addInfoText(&sdlutils().images().at("info_nuclear"), Vector2D(50, 0), 280, 630); //
-	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); //
-	addInfoText(&sdlutils().images().at("info_comunicaciones"), Vector2D(50, 0), 280, 630); //
-	addInfoText(&sdlutils().images().at("info_supermercado"), Vector2D(50, 0), 280, 630); //
+	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_nuclear"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_comunicaciones"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_supermercado"), Vector2D(50, 0), 280, 630); 
 
+	addFocus();
 
 	// this here is so we are aware that this is not roght but I need to wait till we have all locations srry
 	loadLocationButtons();
+
+	initFocus();
 }
 
 void LocationsScene::loadLocationButtons() {
@@ -51,7 +54,8 @@ void LocationsScene::loadLocationButtons() {
 			auto row = obj.getProperties()[1].getIntValue();
 
 			auto button = mngr_->addEntity();
-			button->addComponent<Transform>(Vector2D(aabb.left, aabb.top), 75, 75);
+			auto tr = button->addComponent<Transform>(Vector2D(aabb.left, aabb.top), 75, 75);
+			buttonPositions.push_back(tr);
 			button->addComponent<Image>(&sdlutils().images().at("location_icons"), 2, 3, row, col, true);
 			mngr_->addRenderLayer<Background>(button);
 			locations.push_back(button);
@@ -89,17 +93,25 @@ void LocationsScene::update() {
 		if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
 			if (!ih().getMouseButtonState(InputHandler::LEFT)) {
 				if (!mouseClick) {
+					//Foco
+					setFocus(buttonPositions[i]->getPos());
+					if (i == 0) focus->getComponent<Image>()->changeFrame(1, 0);
+					else focus->getComponent<Image>()->changeFrame(0, 0);
+
 					infos[i]->setActive(true);
 					backgrounds[i]->setActive(true);
 					backgrounds[i]->getComponent<Fade>()->update();
+					mouseOver = true;
 				}
 			}
 			return;
 		}
 		else {
-			infos[i]->setActive(false);
-			backgrounds[i]->getComponent<Fade>()->setDone(false);
-			backgrounds[i]->setActive(false);
+			if (mouseOver) {
+				infos[i]->setActive(false);
+				backgrounds[i]->getComponent<Fade>()->setDone(false);
+				backgrounds[i]->setActive(false);
+			}
 		}
 	}
 }
@@ -122,6 +134,27 @@ void LocationsScene::addBackground(Texture* t) {
 	mngr_->addRenderLayer<Background>(background);
 	backgrounds.push_back(background);
 }
+void LocationsScene::addFocus() {
+	focus = mngr_->addEntity();
+	focus->addComponent<Transform>(Vector2D(100, 100), 75, 75);
+	focus->addComponent<Image>(&sdlutils().images().at("locationButtonFocus"), 1, 2, 32, 32, true);
+	mngr_->addRenderLayer<Interface>(focus);
+}
+
+void LocationsScene::setFocus(Vector2D position) {
+	focus->getComponent<Transform>()->setPos(position);
+}
+
+void LocationsScene::initFocus() {
+	setFocus(buttonPositions[1]->getPos()); //Se establece el foco al principio en uno cualquiera
+	infos[1]->setActive(true);
+	backgrounds[1]->setActive(true); //Se activa el fondo correspondiente al boton con el foco
+	backgrounds[1]->getComponent<Fade>()->setAlpha(1);
+	focus->getComponent<Image>()->changeFrame(0, 0);
+}
+
+
+//FADE
 
 Fade::Fade(float speed) : tr_(nullptr) {
 	t = 0;
@@ -152,4 +185,8 @@ void Fade::update() {
 void Fade::render(){
 	black_->setAlpha(f);
 	black_->render({ 0,0, sdlutils().width(), sdlutils().height() });
+}
+
+void Fade::setAlpha(float alpha) {
+	f = alpha;
 }
