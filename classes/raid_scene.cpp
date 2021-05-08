@@ -13,6 +13,11 @@ void RaidScene::init() {
 
 	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 
+	auto weapon = player->getCurrentWeapon();
+
+	if (!weapon->isActive())
+		weapon->setActive(true);
+
 	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player);
 
 	Entity* l = mngr_->addEntity();
