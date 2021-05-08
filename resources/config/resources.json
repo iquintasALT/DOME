@@ -137,8 +137,12 @@
     "file": "resources/sprites/weapons_sheet.png"
   },
   {
-    "id": "laser_charge",
-    "file": "resources/sprites/laser_charge.png"
+    "id": "laser_windup",
+    "file": "resources/sprites/laser_windup.png"
+  },
+  {
+    "id": "laser_held_charge",
+    "file": "resources/sprites/laser_held_charge.png"
   },
   {
     "id": "weapons_arms",
