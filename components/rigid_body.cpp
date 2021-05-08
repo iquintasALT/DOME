@@ -119,10 +119,18 @@ void RigidBody::update() {
 	}
 	else {
 		if (!verticalCollision)
+		{
 			pos.setY(pos.getY() + vel_.getY());
+			if (bounciness > 0)
+				tr_->setRot(180 - tr_->getRot());
+		}
 
 		if (!horizontalCollision)
+		{
 			pos.setX(pos.getX() + vel_.getX());
+			if (bounciness > 0)
+				tr_->setRot(-tr_->getRot());
+		}
 	}
 	if (grActive_) applyGravity();
 }
