@@ -23,6 +23,7 @@ PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClic
 
 void PauseButton::update() {
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
+
 	if (mousePos.getX() >= position.getX() && mousePos.getY() >= position.getY() &&
 		mousePos.getX() <= position.getX() + size.getX() && mousePos.getY() <= position.getY() + size.getY()) {
 		if (!over) {

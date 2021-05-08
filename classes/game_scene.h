@@ -41,6 +41,7 @@ struct MapInfo {
 	int rows, cols;
 	int tile_width, tile_height;
 	map<gid, Texture*> tilesets;
+
 	MapInfo() {
 		tile_map = nullptr;
 		path_ = "";
@@ -60,9 +61,9 @@ protected:
 	MapInfo mapInfo;
 	Game* g_;
 
-
 	void createTransition();
-	//funcion de cargado de mapa usable por todas las escenas de juego
+
+	// funcion de cargado de mapa usable por todas las escenas de juego
 	void loadMap(string& const path);
 
 public:

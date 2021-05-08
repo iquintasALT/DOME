@@ -34,6 +34,13 @@ public:
 	void quitGame() { exit = true; }
 	
 	void initLoot();
-	//Entity* player;
+
+	// booleano para comprabar si el jugador ha sido creado, para mantener la informaci�n
+	// entre escenas. Ponerlo a falso cuando se salga de juego (menu, endScreen, etc.)
 	bool playerCreated = false;
+
+	// contador de dias de juego. Partimos de 0 para dejar claro que no 
+	// se ha comenzado la partida, hacer que se haga + 1 para cada transicion a 
+	// LocationScene, comparandolo con consts::MAX_DAYS, y haciendo lo necesario cuando se llegue al ultimo dia 
+	int numDays = 0;
 };
