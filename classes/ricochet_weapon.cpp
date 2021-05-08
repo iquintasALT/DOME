@@ -105,11 +105,13 @@ void RicochetWeapon::upgradeTier(int tier) {
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 1);
 		damage = consts::RICOCHET_TIER2_DAMAGE;
 		fireRate = consts::RICOCHET_TIER2_FIRERATE;
+		nbounce++;
 	}
 	else if (tier == 3) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 2);
 		damage = consts::RICOCHET_TIER3_DAMAGE;
 		fireRate = consts::RICOCHET_TIER3_FIRERATE;
+		nbounce++;
 	}
 }
