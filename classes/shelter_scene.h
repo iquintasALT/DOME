@@ -14,11 +14,15 @@ private:
 	Workshop* medical_Workshop;
 	SleepStation* sleep_Station;
 	Manager* uselessMngr;
+	const int MAX_ACTIONS = 6;
+	int actions;
 
 public:
-	ShelterScene(Game* game) :GameScene(game, "Shelter") {};
+	ShelterScene(Game* game) :GameScene(game, "Shelter") { actions = MAX_ACTIONS; };
 	virtual ~ShelterScene() { delete craftSys, delete uselessMngr; };
 	void init() override;
 	virtual void update();
 	virtual void render() override;
+	inline int getActions() { return actions; };
+	void useAction();
 };

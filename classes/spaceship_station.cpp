@@ -1,7 +1,8 @@
 #include "spaceship_station.h"
 #include "../game/Game.h"
+#include "../classes/shelter_scene.h"
 
-SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs) : Workshop(mngr_) {
+SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_) : Workshop(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
 	craftSys = cs;
 	realMngr_->addEntity(this);
@@ -61,6 +62,9 @@ SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingS
 	falseMngr->addRenderLayer<Interface>(rocketTop);
 	falseMngr->addRenderLayer<Interface>(rocketMid);
 	falseMngr->addRenderLayer<Interface>(rocketBot);
+
+	//referencia a ShelterScene para usar acciones
+	shelterScene = shelterScene_;
 }
 
 void SpaceshipStation::setWorkshopItems(vector<ITEMS>&& items) {
@@ -115,22 +119,27 @@ void SpaceshipStation::update() {
 
 			if (renderRightWindow) {
 				if (Collisions::collides(mousePos, 1, 1, craftButton_tr->getPos(), craftButton_tr->getW(), craftButton_tr->getH())) {
-					bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this, false);
+					//si hay acciones
+					if (shelterScene->getActions() > 0) {
+						bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this, false);
 
-					if (isCraftable) {
-						if (workshopItems[rightWindowIndex] == SPACESHIP_CABIN) {
-							mngr_->getGame()->cabin = true;
-							rocketTopImg->setAlpha(255);
+						if (isCraftable) {
+							if (workshopItems[rightWindowIndex] == SPACESHIP_CABIN) {
+								mngr_->getGame()->cabin = true;
+								rocketTopImg->setAlpha(255);
+							}
+							else if (workshopItems[rightWindowIndex] == SPACESHIP_RADAR) {
+								mngr_->getGame()->radar = true;
+								rocketMidImg->setAlpha(255);
+							}
+							else if (workshopItems[rightWindowIndex] == SPACESHIP_ROCKETS) {
+								mngr_->getGame()->rockets = true;
+								rocketBotImg->setAlpha(255);
+							}
+							renderRightWindow = false;
+							//gastar accion
+							shelterScene->useAction();
 						}
-						else if (workshopItems[rightWindowIndex] == SPACESHIP_RADAR) {
-							mngr_->getGame()->radar = true;
-							rocketMidImg->setAlpha(255);
-						}
-						else if (workshopItems[rightWindowIndex] == SPACESHIP_ROCKETS) {
-							mngr_->getGame()->rockets = true;
-							rocketBotImg->setAlpha(255);
-						}
-						renderRightWindow = false;
 					}
 				}
 			}
