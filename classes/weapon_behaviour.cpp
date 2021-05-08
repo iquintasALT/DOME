@@ -23,12 +23,10 @@ Weapon* WeaponBehaviour::getWeaponMovement() {
 void WeaponBehaviour::changeWeapon()
 {
 	this->removeComponent<Image>();
-	this->removeComponent<Weapon>();
-	this->removeComponent<ChargeWeapon>();
-	this->removeComponent<RicochetWeapon>();
 
 	if (weaponType == WeaponType::CLASSIC)
 	{
+		this->removeComponent<Weapon>();
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 0);
 		weaponMovement = addComponent<ChargeWeapon>(consts::CHARGE_TIER1_FIRERATE, consts::CHARGE_TIER1_DAMAGE);
 		if (tierWeapon2 != 1) weaponMovement->upgradeTier(tierWeapon2);
@@ -36,6 +34,7 @@ void WeaponBehaviour::changeWeapon()
 	}
 	else if (weaponType == WeaponType::LASER)
 	{
+		this->removeComponent<ChargeWeapon>();
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 0);
 		weaponMovement = addComponent<RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, pl, 3, 1);
 		if (tierWeapon3 != 1) weaponMovement->upgradeTier(tierWeapon3);
@@ -43,6 +42,7 @@ void WeaponBehaviour::changeWeapon()
 	}
 	else
 	{
+		this->removeComponent<RicochetWeapon>();
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
 		weaponMovement = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
 		if (tierWeapon1 != 1) weaponMovement->upgradeTier(tierWeapon1);
