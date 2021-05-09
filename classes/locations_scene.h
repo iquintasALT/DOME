@@ -17,17 +17,20 @@ class LocationsScene : public GameScene
 {
 private:
 	int buttonNumber = 0;
-	bool mouseClick = false, mouseOver = false;
+	int lastBackGroundActive = 0;
+	bool mouseClick = false;
 	vector<Entity*> locations;
 	vector<Entity*> infos;
 	vector<Entity*> backgrounds;
 	vector<Transform*> buttonPositions;
+	vector<bool> mouseOverInfo;
 	Entity* focus;
 
 	void loadLocationButtons();
 
 public:
 	LocationsScene(Game* g) : GameScene(g, "Locations"), focus(nullptr) {};
+	~LocationsScene() {};
 	void init() override;
 	void update() override;
 	void addInfoText(Texture* t, Vector2D pos, int xSize, int ySize);
