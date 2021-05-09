@@ -11,16 +11,17 @@
 #include "../components/Image.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
+#include "../game/Game.h"
 
 #include <iostream>
 #include <string>
 
-hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
+hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entity(m)
 {
 	posCam = initialPos;
 	player = p;
 
-	time = new Countdown(300000); //Hay que pasarle el pos Cam para que se mueva
+	time = time_;//Hay que pasarle el pos Cam para que se mueva
 	timer = &sdlutils().images().at("dclock");
 	marco = &sdlutils().images().at("marco");
 	m->addEntity(this);

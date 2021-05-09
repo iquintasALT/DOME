@@ -25,6 +25,15 @@ LoseScene::LoseScene(Game* game, WAYSTODIE opcion) : GameScene(game, "Menu")
 	case BLEED:
 		text = "YOU SHOULD TRY TO FIND ITEMS TO STOP BLEEDING";
 		break;
+	case INTOXICATION:
+		text = "PRINGAO";
+		break;
+	case PAIN:
+		text = "PRINGAO";
+		break;
+	case CONTUSION:
+		text = "PRINGAO";
+		break;
 	default:
 		text = "THIS SHOULD NOT APPEAR";
 		break;

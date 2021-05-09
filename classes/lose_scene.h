@@ -5,7 +5,7 @@
 
 using namespace std;
 
-enum WAYSTODIE {DAYS, COLD, HUNGER, BLEED};
+enum WAYSTODIE {DAYS, COLD, HUNGER, BLEED, PAIN, INTOXICATION, CONTUSION, NONE};
 
 class Manager;
 
@@ -17,7 +17,7 @@ private:
 	Texture* back;
 	Texture* advice;
 public:
-	LoseScene(Game* game, WAYSTODIE opcion);
+	LoseScene(Game* game, WAYSTODIE opcion = WAYSTODIE::NONE);
 	void init() override {};
 	static void backToMenu(Manager* mngr);
 	void render();
