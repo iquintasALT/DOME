@@ -71,8 +71,7 @@ void hud::update()
 	}
 }
 
-void hud::render()
-{
+void hud::render() {
 	Vector2D mouse = Vector2D(ih().getMousePos().first, ih().getMousePos().second);
 
 	//Arriba derecha

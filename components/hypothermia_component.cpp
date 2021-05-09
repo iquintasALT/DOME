@@ -11,10 +11,10 @@ void HypothermiaComponent::init() {
 }
 
 void HypothermiaComponent::update() {
+	hypothermia = (float)(100 * sdlutils().currRealTime() / (consts::HYPOTHERMIA_TIME)) / 100;
 	if (sdlutils().currRealTime() > time + consts::HYPOTHERMIA_TIME) {
 		phys->die();
 	}
-	hypothermia = (float)(100 * sdlutils().currRealTime() / (consts::HYPOTHERMIA_TIME))/100;
 }
 
 void HypothermiaComponent::render() {

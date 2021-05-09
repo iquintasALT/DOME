@@ -5,11 +5,11 @@
 
 using namespace std;
 
-enum muertes{dias, frio, comida, desangrado};
+enum WAYSTODIE {DAYS, COLD, HUNGER, BLEED};
 
 class Manager;
 
-class Lose_scene : public GameScene
+class LoseScene : public GameScene
 {
 private:
 	std::list<MenuButton*> buttons;
@@ -17,9 +17,9 @@ private:
 	Texture* back;
 	Texture* advice;
 public:
-	Lose_scene(Game* game, muertes opcion);
+	LoseScene(Game* game, WAYSTODIE opcion);
 	void init() override {};
-	static void GoBackMenu(Manager* mngr);
+	static void backToMenu(Manager* mngr);
 	void render();
-	~Lose_scene();
+	~LoseScene();
 };
