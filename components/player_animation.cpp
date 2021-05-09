@@ -1,5 +1,6 @@
 #include "player_animation.h"
-
+#include "../classes/player.h"
+#include "../classes/weapon_behaviour.h"
 
 player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
 	animStop = false;
@@ -39,17 +40,30 @@ bool player_animation::changeAnimations() {
 	auto mouse = ih().getMousePos();
 	float mouseX = Camera::mainCamera->PointToWorldSpace(Vector2D(mouse.first, mouse.second)).getX();
 	float playerX = tr_->getPos().getX() + tr_->getW() / 2;
+	WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
+	float x = rb->getVel().getX();
 
 	float xdir = mouseX - playerX;
-	if (xdir < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
-	else  im_->setFlip(SDL_FLIP_NONE);
-
+	if (aux->isActive()) {
+		if (xdir < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
+		else  im_->setFlip(SDL_FLIP_NONE);
+	}
+	else if (x != 0) {
+			if (x < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
+			else  im_->setFlip(SDL_FLIP_NONE);
+	}
 
 	if (ctrl->isCrouching()) {
-		if (currentAnimation == animations[crouch])
-			return false;
-
-		currentAnimation = animations[crouch];
+		if (aux->isActive()) {
+			if (currentAnimation == animations[crouch])
+				return false;
+			currentAnimation = animations[crouch];
+		}
+		else {
+			if (currentAnimation == animations[crouch_arms])
+				return false;
+			currentAnimation = animations[crouch_arms];
+		}
 		currentAnimation.render();
 		walkDust->Stop();
 		return true;
@@ -72,21 +86,39 @@ bool player_animation::changeAnimations() {
 		}
 	}
 
-	float x = rb->getVel().getX();
-
 	if (x == 0) {
-		if (currentAnimation == animations[iddle])
-			return false;
-		currentAnimation = animations[iddle];
+		if (aux->isActive()) {
+			if (currentAnimation == animations[iddle])
+				return false;
+			currentAnimation = animations[iddle];
+		}
+		else {
+			if (currentAnimation == animations[idle_arms])
+				return false;
+			currentAnimation = animations[idle_arms];
+		}
 		currentAnimation.render();
 		walkDust->Stop();
 		return true;
 	}
 	
-	if (currentAnimation != animations[walking]) {
-		currentAnimation = animations[walking];
-		walkDust->Play();
-		return true;
+	if (aux->isActive()) {
+		if (currentAnimation != animations[walking]) {
+			currentAnimation = animations[walking];
+			currentAnimation.render();
+			walkDust->Play();
+			return true;
+		}
+		return false;
+	}
+	else {
+		if (currentAnimation != animations[walking_arms]) {
+			currentAnimation = animations[walking_arms];
+			currentAnimation.render();
+			walkDust->Play();
+			return true;
+		}
+		return false;
 	}
 	return false;
 }
