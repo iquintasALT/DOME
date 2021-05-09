@@ -121,6 +121,6 @@ void Physiognomy::die() {
 	playerAlive = false;
 	removeAllStates();
 
-	player->getMngr()->ChangeScene(new LoseScene(player->getMngr()->getGame(), WAYSTODIE::BLEED), SceneManager::SceneMode::ADDITIVE);
+	player->getMngr()->ChangeScene(new LoseScene(player->getMngr()->getGame()), SceneManager::SceneMode::ADDITIVE);
 }
 

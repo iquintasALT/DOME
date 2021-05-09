@@ -9,6 +9,7 @@ class PainComponent;
 class ContussionComponent;
 class IntoxicationComponent;
 class HypothermiaComponent;
+class LoseScene;
 using namespace std;
 
 /*

@@ -2,19 +2,18 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
 #include "../classes/physiognomy.h"
+#include "../classes/lose_scene.h"
 
 void HypothermiaComponent::init() {
-	time = sdlutils().currRealTime();
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
 	frameIndex = 3;
 	frost = &sdlutils().images().at("frost");
+	time = sdlutils().currRealTime();
 }
 
 void HypothermiaComponent::update() {
-	hypothermia = (float)(100 * sdlutils().currRealTime() / (consts::HYPOTHERMIA_TIME)) / 100;
-	if (sdlutils().currRealTime() > time + consts::HYPOTHERMIA_TIME) {
-		phys->die();
-	}
+	hypothermia = (float)(100 * (sdlutils().currRealTime()-time) / (consts::HYPOTHERMIA_TIME)) / 100;
+	if (hypothermia >= 1) phys->die();
 }
 
 void HypothermiaComponent::render() {

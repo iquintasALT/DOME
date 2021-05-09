@@ -8,18 +8,22 @@
 #include "../components/TextWithBackGround.h"
 #include "../components/loot.h"
 #include "../classes/physiognomy.h"
+#include "../classes/countdown.h"
 
 void RaidScene::init() {
 	loadMap(path_);
 
-	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+	timer = new Countdown(consts::RAID_TIME);
+
+	player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+	raidTimeEnded = false;
 
 	auto weapon = player->getCurrentWeapon();
 
 	if (!weapon->isActive())
 		weapon->setActive(true);
 
-	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player);
+	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player, timer);
 
 	Entity* l = mngr_->addEntity();
 	l->addComponent<Transform>(Vector2D(150, 556), 100, 100);
@@ -32,6 +36,13 @@ void RaidScene::init() {
 
 void RaidScene::update() {
 	GameScene::update();
+
+	if (!raidTimeEnded) {
+		if (!timer->keepPlaying()) {
+			player->getPhysiognomy()->addHypothermiaState();
+			raidTimeEnded = true;
+		}
+	}
 	
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);

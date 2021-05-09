@@ -12,11 +12,11 @@ std::string getHourString(int lefttime) {
 	return aux;
 }
 
-Countdown::Countdown(int totaltime)
-{
+Countdown::Countdown(int totaltime) {
 	lefttime = totaltime; //Recibe los milisegundos de tiempo en raid
 	starttime = SDL_GetTicks();
 	updatetime = SDL_GetTicks();
+	counter = nullptr;
 
 	std::string aux = getHourString(lefttime / 1000);
 }
@@ -43,9 +43,7 @@ void Countdown::render() {
 	counter = nullptr;
 }
 
-void Countdown::update()
-{
+void Countdown::update() {
 	lefttime -= SDL_GetTicks() - starttime; //Restamos el tiempoque ha pasado
 	starttime = SDL_GetTicks();
-
 }
