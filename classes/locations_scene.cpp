@@ -67,7 +67,7 @@ void LocationsScene::loadLocationButtons() {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-	g->currentScene = SCENES::RAID;
+	g->currentScene = scenes[index];
 	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::ADDITIVE);
 }
 

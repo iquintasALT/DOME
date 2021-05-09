@@ -13,7 +13,8 @@
 class Manager;
 class Entity;
 
-const enum class SCENES {  SHELTER, HOSPITAL, RESTAURANT, RAID, SETTINGS, MAINMENU, NONE, CREDITS};
+const enum class SCENES { SHOP, NUCLEAR_STATION, HOSPITAL, COMMUNICATIONS, SUPERMARKET, SHELTER, RESTAURANT, RAID, SETTINGS, MAINMENU, NONE, CREDITS };
+const vector<SCENES> scenes = { SCENES::SHOP,  SCENES::NUCLEAR_STATION,  SCENES::HOSPITAL, SCENES::COMMUNICATIONS,  SCENES::SUPERMARKET };
 const vector<int> SCENES_CHESTS = { 0,0,2,1,0 };
 
 class Game {
@@ -26,13 +27,13 @@ public:
 	map<SCENES, vector<vector<I>>> SCENES_LOOT;
 	bool cabin = false, rockets = false, radar = false;
 
-	Game(int totaltime); 
+	Game(int totaltime);
 	virtual ~Game();
 	void init();
 	void start();
 	inline GameStateMachine* getStateMachine() { return states; }
 	void quitGame() { exit = true; }
-	
+
 	void initLoot();
 
 	// booleano para comprabar si el jugador ha sido creado, para mantener la informaci�n
