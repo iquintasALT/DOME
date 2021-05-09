@@ -42,7 +42,6 @@ public:
 	void initFocus();
 
 	void changeToRaid(Game* g, int index);
-	void anActualGoodName(Game* g);
 };
 
 class Fade : public Component {

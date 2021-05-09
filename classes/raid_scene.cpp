@@ -7,6 +7,7 @@
 #include "../components/transitionComponent.h";
 #include "../components/TextWithBackGround.h"
 #include "../components/loot.h"
+#include "../classes/physiognomy.h"
 
 void RaidScene::init() {
 	loadMap(path_);

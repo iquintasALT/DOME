@@ -71,10 +71,6 @@ void LocationsScene::changeToRaid(Game* g, int index) {
 	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::ADDITIVE);
 }
 
-void LocationsScene::anActualGoodName(Game* g) {
-	mngr_->ChangeScene(new ShelterScene(g), SceneManager::SceneMode::ADDITIVE);
-}
-
 void LocationsScene::update() {
 	for (int i = 0; i < locations.size(); i++) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
