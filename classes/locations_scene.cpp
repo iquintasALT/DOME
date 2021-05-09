@@ -29,6 +29,7 @@ void LocationsScene::init()
 	addFocus();
 
 	loadLocationButtons();
+	mouseOverInfo = vector<bool>(locations.size(), false);
 
 	initFocus();
 
@@ -82,7 +83,6 @@ void LocationsScene::update() {
 		if (ih().getMouseButtonState(InputHandler::LEFT)) {
 			if (!mouseClick) {
 				if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
-					// THIS IS SO BAD IT'S BURNING MY SOUL
 					changeToRaid(g_, i);
 					
 					mouseClick = true;
@@ -92,26 +92,30 @@ void LocationsScene::update() {
 		}
 		else if (mouseClick) mouseClick = false;
 
+		
 		if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
 			if (!ih().getMouseButtonState(InputHandler::LEFT)) {
 				if (!mouseClick) {
-					//Foco
-					setFocus(buttonPositions[i]->getPos());
-					focus->getComponent<Image>()->changeFrame(0, 0);
+					if (!mouseOverInfo[i]) {
+						mouseOverInfo[i] = true;
+						//Foco
+						setFocus(buttonPositions[i]->getPos());
+						focus->getComponent<Image>()->changeFrame(0, 0);
+						if (i != lastBackGroundActive) {
+							infos[lastBackGroundActive]->setActive(false);
+							backgrounds[lastBackGroundActive]->setActive(false);
 
-					infos[i]->setActive(true);
-					backgrounds[i]->setActive(true);
-					backgrounds[i]->getComponent<Fade>()->update();
-					mouseOver = true;
+							infos[i]->setActive(true);
+							backgrounds[i]->setActive(true);
+						}
+					}
 				}
 			}
-			return;
 		}
 		else {
-			if (mouseOver) {
-				infos[i]->setActive(false);
-				backgrounds[i]->getComponent<Fade>()->setDone(false);
-				backgrounds[i]->setActive(false);
+			if (mouseOverInfo[i]) {
+				lastBackGroundActive = i;
+				mouseOverInfo[i] = false;
 			}
 		}
 	}
@@ -130,7 +134,6 @@ void LocationsScene::addBackground(Texture* t) {
 	auto background = mngr_->addEntity();
 	background->addComponent<Transform>(Vector2D(0, 0), sdlutils().width(), sdlutils().height());
 	background->addComponent<Image>(t, 1, 1, 0, 0, true);
-	background->addComponent<Fade>(0.3);
 	background->setActive(false);
 	mngr_->addRenderLayer<Background>(background);
 	backgrounds.push_back(background);
@@ -147,11 +150,11 @@ void LocationsScene::setFocus(Vector2D position) {
 }
 
 void LocationsScene::initFocus() {
-	setFocus(buttonPositions[1]->getPos()); //Se establece el foco al principio en uno cualquiera
-	infos[1]->setActive(true);
-	backgrounds[1]->setActive(true); //Se activa el fondo correspondiente al boton con el foco
-	backgrounds[1]->getComponent<Fade>()->setAlpha(1);
+	setFocus(buttonPositions[0]->getPos()); //Se establece el foco al principio en uno cualquiera
+	infos[0]->setActive(true);
+	backgrounds[0]->setActive(true); //Se activa el fondo correspondiente al boton con el foco
 	focus->getComponent<Image>()->changeFrame(0, 0);
+	lastBackGroundActive = 0;
 }
 
 
