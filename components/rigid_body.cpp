@@ -45,8 +45,6 @@ void RigidBody::update() {
 	collisionVelocity = vel_;
 	onFloor_ = false;
 
-	
-
 	if (collide) {
 		for (auto collider : entity_->getMngr()->getColliders()) {
 			if (collider == nullptr) return;

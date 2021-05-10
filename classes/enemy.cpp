@@ -23,11 +23,11 @@ Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacte
 void Enemy::receiveDamage(int damage_)
 {
 	lives -= damage_;
-	if (getComponent<enemy_animation>() != nullptr && !getComponent<enemy_animation>()->isDamaged()) {
-		getComponent<enemy_animation>()->setDamaged(true);
+	if (getComponent<EnemyAnimation>() != nullptr && !getComponent<EnemyAnimation>()->isDamaged()) {
+		getComponent<EnemyAnimation>()->setDamaged(true);
 	}
-	else if (getComponent<flying_enemy_animation>() != nullptr && !getComponent<flying_enemy_animation>()->isDamaged()) {
-		getComponent<flying_enemy_animation>()->setDamaged(true);
+	else if (getComponent<FlyingEnemyAnimation>() != nullptr && !getComponent<FlyingEnemyAnimation>()->isDamaged()) {
+		getComponent<FlyingEnemyAnimation>()->setDamaged(true);
 	}
 
 	//usar constantes! 5 siendo max vida
@@ -43,10 +43,11 @@ DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)
 	mngr_->addRenderLayer<Enemy>(this);
 	addComponent<PlayerCollisions>();
 	addComponent<Image>(&sdlutils().images().at("enemy"), 4, 9, 0, 0);
+	addComponent<EnemyAnimation>();
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
 	addComponent2<EnemyAttackComponent, GroundedMeleeAttack>();
 	addComponent<ChasePlayer>(consts::MELEE_ENEMY_SPEED, consts::MELEE_ENEMY_STOPDISTANCE);
-	addComponent<enemy_animation>();
+
 	setGroup<DefaultEnemy_grp>(true);
 }
 
@@ -58,7 +59,7 @@ FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos, false)
 	addComponent<RigidBody>(Vector2D(), false);
 	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
 	addComponent2<EnemyAttackComponent, MeleeAttack>();
-	addComponent<flying_enemy_animation>();
+	addComponent<FlyingEnemyAnimation>();
 	addComponent<FlyingChasePlayer>(consts::MELEE_ENEMY_SPEED / 2, consts::MELEE_ENEMY_STOPDISTANCE, consts::FLYING_ENEMY_HOVERHEIGHT, consts::FLYING_ENEMY_APPROACHDISTANCE);
 	setGroup<FlyingEnemy_grp>(true);
 }

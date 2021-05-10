@@ -2,6 +2,7 @@
 #include "Transform.h"
 #include "classic_bullet.h"
 #include "Image.h"
+#include "enemy_animation.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../utils/ray_cast.h"
@@ -40,6 +41,12 @@ bool MeleeAttack::attack()
 
 //--------------------------------------------------------------------------------------------------------------
 
+void GroundedMeleeAttack::init()
+{
+	MeleeAttack::init();
+	animator = entity_->getComponent<EnemyAnimation>();
+}
+
 bool GroundedMeleeAttack::attack()
 {
 	// Only attacks if grounded
@@ -47,12 +54,17 @@ bool GroundedMeleeAttack::attack()
 	{
 		/// Set length of jump to maximum length at most, or less, if closer to player than leap permits
 		/// For y component, the max function is used to ensure that downward jumps don't occur
-		Vector2D jump = Vector2D(std::min(lunge.getX(), std::abs(playerTr_->getPos().getX() - tr_->getPos().getX())),
-			-std::min(lunge.getY(), std::max(tr_->getPos().getY() - playerTr_->getPos().getY(), 0.0f)));
+		Vector2D jump = Vector2D();
+		jump.setX(std::min(lunge.getX(), std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) + lunge.getX() / 2));
+
+		jump.setY(-std::min(lunge.getY(), std::max(tr_->getPos().getY() - playerTr_->getPos().getY() + lunge.getY() / 2, 0.0f)));
 
 		// Ensure that jump is in correct direction
 		if (tr_->getPos().getX() > playerTr_->getPos().getX())
 			jump.setX(-jump.getX());
+
+		// Apply jump boost
+		rb_->setVel(rb_->getVel() + jump);
 
 		return true;
 	}

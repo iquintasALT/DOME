@@ -28,7 +28,7 @@ void ShelterScene::init() {
 
 	Player* player = dynamic_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 
-	auto shelterHud = new ShelterHud(mngr_);
+	auto shelterHud = new ShelterHud(mngr_, this);
 
 	auto weapon = player->getCurrentWeapon();
 

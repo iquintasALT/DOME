@@ -46,7 +46,7 @@ public:
 
 class Fade : public Component {
 public:
-	Fade(float speed);
+	Fade(float speed, Texture* t = &sdlutils().images().at("black"));
 
 	virtual void init() override;
 

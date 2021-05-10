@@ -257,6 +257,12 @@
     <ClCompile Include="classes\shelter_hud.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
+    <ClCompile Include="classes\controls_scene.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\lore_scene.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -557,6 +563,12 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\shelter_hud.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\controls_scene.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\lore_scene.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>

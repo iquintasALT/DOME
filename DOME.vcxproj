@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="classes\camera.h" />
     <ClInclude Include="classes\charge_weapon.h" />
+    <ClInclude Include="classes\controls_scene.h" />
     <ClInclude Include="classes\countdown.h" />
     <ClInclude Include="classes\cover.h" />
     <ClInclude Include="classes\crafting_system.h" />
@@ -34,6 +35,7 @@
     <ClInclude Include="classes\inventoryDropdown.h" />
     <ClInclude Include="classes\Item.h" />
     <ClInclude Include="classes\locations_scene.h" />
+    <ClInclude Include="classes\lore_scene.h" />
     <ClInclude Include="classes\lose_scene.h" />
     <ClInclude Include="classes\navigation_station.h" />
     <ClInclude Include="classes\pause_button.h" />
@@ -123,6 +125,7 @@
   <ItemGroup>
     <ClCompile Include="classes\camera.cpp" />
     <ClCompile Include="classes\charge_weapon.cpp" />
+    <ClCompile Include="classes\controls_scene.cpp" />
     <ClCompile Include="classes\countdown.cpp" />
     <ClCompile Include="classes\cover.cpp" />
     <ClCompile Include="classes\crafting_system.cpp" />
@@ -136,6 +139,7 @@
     <ClCompile Include="classes\inventoryDropdown.cpp" />
     <ClCompile Include="classes\Item.cpp" />
     <ClCompile Include="classes\locations_scene.cpp" />
+    <ClCompile Include="classes\lore_scene.cpp" />
     <ClCompile Include="classes\lose_scene.cpp" />
     <ClCompile Include="classes\navigation_station.cpp" />
     <ClCompile Include="classes\pause_button.cpp" />

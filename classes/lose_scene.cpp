@@ -20,7 +20,7 @@ LoseScene::LoseScene(Game* game, WAYSTODIE opcion) : GameScene(game, "Menu")
 		text = "YOU SHOULD EXIT THE RAID BEFORE THE TIME'S GONE";
 		break;
 	case HUNGER:
-		text = "YOU SHOULD EAT, IS'T IMPORTANT :)";
+		text = "YOU SHOULD EAT, IT'S IMPORTANT :)";
 		break;
 	case BLEED:
 		text = "YOU SHOULD TRY TO FIND ITEMS TO STOP BLEEDING";
@@ -50,7 +50,7 @@ void LoseScene::backToMenu(Manager* mngr) {
 
 void LoseScene::render() {
 	back->render(0, 0);
-	advice->render(100,200);
+	advice->render(100,300);
 	GameScene::render();
 }
 
