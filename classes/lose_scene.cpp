@@ -46,7 +46,6 @@ LoseScene::LoseScene(Game* game, WAYSTODIE opcion) : GameScene(game, "Menu")
 void LoseScene::backToMenu(Manager* mngr) {
 	ih().clearState();
 	mngr->ChangeScene(new MenuScene(mngr->getGame()), SceneManager::SceneMode::SINGLE);
-	mngr->getGame()->currentScene = SCENES::MAINMENU;
 }
 
 void LoseScene::render() {

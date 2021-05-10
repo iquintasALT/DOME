@@ -132,7 +132,7 @@ void Game::initLoot() {
 	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<I>>{
 		{I{ ELECTRONIC_REMAINS,0,1,1,0,0,5,0,"electronic remains" }, I{ BUILDING_PARTS,0,2,2,1,1,7,0,"building parts" },
 			I{ SPACESHIP_KEY_ITEMS,0,2,2,0,3,4,2,"spaceship key item" }, I{ UPGRADE_KIT,0,2,2,3,3,6,2,"upgrade kit" },
-			I{ FOOD,0,1,1,4,0,2,0,"food" }},
+			I{ FOOD,0,1,1,4,0,7,0,"building parts" }},
 
 		{ I{ WATER,0,1,2,0,0,4,0,"water" }, I{CLASSIC_AMMO,0,1,1,2,2,2,1,"classic ammo" },
 			I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" }, I{ ORGANIC_MATERIAL,0,2,2,3,3,1,2,"organic material" }
