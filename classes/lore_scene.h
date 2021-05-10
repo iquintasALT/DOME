@@ -1,18 +1,20 @@
 #pragma once
-#include "../components/weapon.h"
-#include "../utils/checkML.h"
+#include <vector>
+#include "game_scene.h"
+#include "../game/constant_variables.h"
+#include "../ecs/Component.h"
 
 
-class ChargeWeapon : public Weapon
+class LoreScene : public GameScene
 {
 private:
 public:
+	LoreScene(Game* g) : GameScene(g, "Lore") {};
 
-	ChargeWeapon(float fR, int dam);
-	virtual void update();
-	virtual int getChargerBullets() { return actcharger; }
-	virtual int getTamCharger() { return charger; }
-	virtual int getTotalBullets() { return nbullets - tcharger; }
-	virtual void upgradeTier(int tier);
+	void init() override;
+
+	void update();
+
+	void StartGame(Manager* mngr);
 };
 

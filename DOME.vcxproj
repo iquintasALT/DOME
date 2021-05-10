@@ -35,6 +35,7 @@
     <ClInclude Include="classes\inventoryDropdown.h" />
     <ClInclude Include="classes\Item.h" />
     <ClInclude Include="classes\locations_scene.h" />
+    <ClInclude Include="classes\lore_scene.h" />
     <ClInclude Include="classes\lose_scene.h" />
     <ClInclude Include="classes\navigation_station.h" />
     <ClInclude Include="classes\pause_button.h" />
@@ -138,6 +139,7 @@
     <ClCompile Include="classes\inventoryDropdown.cpp" />
     <ClCompile Include="classes\Item.cpp" />
     <ClCompile Include="classes\locations_scene.cpp" />
+    <ClCompile Include="classes\lore_scene.cpp" />
     <ClCompile Include="classes\lose_scene.cpp" />
     <ClCompile Include="classes\navigation_station.cpp" />
     <ClCompile Include="classes\pause_button.cpp" />
