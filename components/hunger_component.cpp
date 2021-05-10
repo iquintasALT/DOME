@@ -1,7 +1,7 @@
 #include "hunger_component.h"
 #include "../sdlutils/InputHandler.h"
 
-HungerComponent::HungerComponent() : hunger(1.0f), hungerLevel(hungerLevel::NONE) {}
+HungerComponent::HungerComponent() : hunger(1.0f), hungerLev(hungerLevel::NONE) {}
 
 void HungerComponent::eat(float hunger_) {
 	hunger += hunger_;
@@ -9,9 +9,9 @@ void HungerComponent::eat(float hunger_) {
 }
 
 void HungerComponent::updateLevel() {
-	if (hunger >= consts::NONEHUNGER_LEVEL) hungerLevel = hungerLevel::NONE;
-	else if (hunger >= consts::HUNGER_LEVEL) hungerLevel = hungerLevel::HUNGRY;
-	else hungerLevel = hungerLevel::STARVING;
+	if (hunger >= consts::NONEHUNGER_LEVEL) hungerLev = hungerLevel::NONE;
+	else if (hunger >= consts::HUNGER_LEVEL) hungerLev = hungerLevel::HUNGRY;
+	else hungerLev = hungerLevel::STARVING;
 }
 int HungerComponent::calculateBleedingSpeed() {
 	return (hunger * consts::MAX_NEWDAMAGE_TIME);
