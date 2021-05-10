@@ -20,7 +20,7 @@ class HungerComponent : public PlayerHealthComponent
 {
 private:
 	float hunger;
-	hungerLevel hungerLevel;
+	hungerLevel hungerLev;
 public:
 	HungerComponent();
 
@@ -30,5 +30,6 @@ public:
 	void decreaseHunger(float hunger);
 	float getHunger();
 	void eat(float hunger_);
+	hungerLevel getHungerLevel() { return hungerLev; }
 };
 

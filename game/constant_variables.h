@@ -51,6 +51,10 @@ namespace consts {
 	const int MAX_NEWDAMAGE_TIME = 5000;
 	const int HYPOTHERMIA_TIME = 30000;
 
+	//UI
+	const int STATUS_EFFECTS_SIZEX = 48;
+	const int STATUS_EFFECTS_SIZEY = 48;
+
 	// WEAPONS
 
 	// Basic Weapon

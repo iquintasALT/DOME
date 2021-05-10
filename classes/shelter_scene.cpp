@@ -6,6 +6,7 @@
 #include "../classes/pause_scene.h"
 #include "../components/open_station.h"
 #include "../classes/spaceship_station.h"
+#include "../classes/shelter_hud.h"
 
 #include <memory>
 
@@ -26,6 +27,8 @@ void ShelterScene::init() {
 	loadMap(path_);
 
 	Player* player = dynamic_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+
+	auto shelterHud = new ShelterHud(mngr_);
 
 	auto weapon = player->getCurrentWeapon();
 
