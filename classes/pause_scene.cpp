@@ -50,6 +50,6 @@ void PauseScene::settings(Manager* mng) {
 void PauseScene::menu(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(new MenuScene(mng->getGame()), SceneManager::SceneMode::SINGLE);
-	mng->getGame()->currentScene = SCENES::MAINMENU;
+	//mng->getGame()->currentScene = SCENES::MAINMENU;
 }
 
