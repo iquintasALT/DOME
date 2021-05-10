@@ -36,4 +36,5 @@ public:
 	ShelterHud(Manager* mngr, ShelterScene* shelter);
 	void render() override;
 	void drawTooltip(int indice, SDL_Rect dest);
+	void manageToolTips();
 };

@@ -50,7 +50,24 @@ void ShelterHud::render() {
 		clock->render(accSrc, accDest);
 		accDest.x += accSrc.w;
 	}
+	//Tooltips
+	manageToolTips();
+	drawTooltip(0, dest);
+	drawTooltip(1, dest2);
+}
 
+void ShelterHud::drawTooltip(int indice, SDL_Rect dest) {
+	Vector2D mouse(ih().getMousePos().first, ih().getMousePos().second);
+	if (mouse.getX() > dest.x && mouse.getX() < dest.x + dest.w &&
+		mouse.getY() > dest.y && mouse.getY() < dest.y + dest.h) {
+
+		tooltipTextures[indice].t->setPos(mouse);
+		tooltipTextures[indice].text->render();
+	}
+}
+
+void ShelterHud::manageToolTips()
+{
 	//Tooltips
 	for (int i = 0; i < tooltipTextures.size(); i++) {
 		tooltipTextures[i].t->getEntity()->setDead(true);
@@ -65,17 +82,5 @@ void ShelterHud::render() {
 			sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 		tooltipTextures.push_back({ t, text });
 		ent->setActive(false);
-	}
-	drawTooltip(0, dest);
-	drawTooltip(1, dest2);
-}
-
-void ShelterHud::drawTooltip(int indice, SDL_Rect dest) {
-	Vector2D mouse(ih().getMousePos().first, ih().getMousePos().second);
-	if (mouse.getX() > dest.x && mouse.getX() < dest.x + dest.w &&
-		mouse.getY() > dest.y && mouse.getY() < dest.y + dest.h) {
-
-		tooltipTextures[indice].t->setPos(mouse);
-		tooltipTextures[indice].text->render();
 	}
 }
