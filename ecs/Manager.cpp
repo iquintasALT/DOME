@@ -63,7 +63,7 @@ void Manager::update() {
 void Manager::render() {
 	for (auto i = 0u; i < renders_.size(); i++)
 		for (auto renderIt : renders_[i])
-			if (renderIt != nullptr && !renderIt->dead && renderIt->active)
+			if (!renderIt->dead && renderIt->active)
 				renderIt->render();
 }
 
