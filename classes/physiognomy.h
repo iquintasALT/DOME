@@ -3,6 +3,7 @@
 #include "../utils/checkML.h"
 #include "player.h"
 #include "../game/constant_variables.h"
+#include "../classes/lose_scene.h"
 class PlayerHealthComponent;
 class BleedoutComponent;
 class PainComponent;
@@ -33,7 +34,7 @@ private:
 	bool intoxicationAdded;
 	bool concussionAdded;
 
-	void checkAlive();
+	void checkAlive(WAYSTODIE way = WAYSTODIE::NONE);
 	//void moveElems(int i);
 public:
 	inline Physiognomy(Player* player_) : player(player_), healthComponents(list<PlayerHealthComponent*>()), hypothermia(nullptr) {
@@ -59,7 +60,7 @@ public:
 	int getNumBleedStates() { return numBleedStates; }
 	int getNumUniqueStates() { return healthComponents.size() - numBleedStates + (numBleedStates > 0); };
 
-	void die();
+	void die(WAYSTODIE way = WAYSTODIE::NONE);
 	inline bool alive();
 	inline list<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
 };
