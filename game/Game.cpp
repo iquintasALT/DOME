@@ -86,11 +86,14 @@ void Game::initLoot() {
 	//, HOSPITAL, RESTAURANT, RAID, COMMUNICATIONS,NUCLEAR_STATION,SUPERMARKET,SHOP
 // ITEMS n, int cantidad (INUTIL PARA ESTE METODO), int w , int h , int x, int y,int row, int col,string desc
 	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<I>>{ {I(WATER, 3, 1, 2, 0, 0, 4, 0, "pues eso, agua. Se bebe"), I(MEDICAL_COMPONENTS, 5, 2, 2, 1, 0, 3, 2, "componentes medicos para ponerte hasta el culo")} });
-	SCENES_LOOT.emplace(SCENES::RESTAURANT, vector<vector<I>>{});
+	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<I>>{
+		{I{ SPACESHIP_KEY_ITEMS,0,2,2,0,0,4,2,"piezas clave para reconstruir la nave" }, I{ WATER,0,3,1,0,3,4,0,"agua" }, I{ WATER,0,3,1,1,3,4,0,"agua" },
+	I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials, could be useful to craft medicines or food" }, I{ CLASSIC_AMMO,0,1,1,4,1,2,1,"classic ammo" }, I{ CLASSIC_AMMO,0,1,1,3,1,2,1,"classic ammo" }, I{ CLASSIC_AMMO,0,1,1,3,2,2,1,"classic ammo" }}
+	
+	});
 	SCENES_LOOT.emplace(SCENES::HOSPITAL, vector<vector<I>>{});
 	SCENES_LOOT.emplace(SCENES::COMMUNICATIONS, vector<vector<I>>{});
 	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<I>>{});
-	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<I>>{});
 	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<I>>{});
 }
 

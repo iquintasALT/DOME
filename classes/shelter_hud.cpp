@@ -5,8 +5,10 @@
 #include "../components/tiredness_component.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
+#include "../classes/shelter_scene.h"
 
-ShelterHud::ShelterHud(Manager* mngr) : Entity(mngr) {
+ShelterHud::ShelterHud(Manager* mngr, ShelterScene* shelter_) : Entity(mngr) {
+	shelter = shelter_;
 	mngr->addEntity(this);
 	mngr->addRenderLayer<Interface>(this);
 
@@ -31,7 +33,7 @@ void ShelterHud::render() {
 	tirednessState->render(src, dest);
 
 	//Acciones
-	int acciones = 4; //Numero de acciones para probar
+	int acciones = shelter->getActions(); //Numero de acciones para probar
 	SDL_Rect accDest = { consts::WINDOW_WIDTH - clock->width() / 2 * acciones, dest.y, dest.w, dest.h };
 	SDL_Rect accSrc = { 0,0, 64, 64 };
 

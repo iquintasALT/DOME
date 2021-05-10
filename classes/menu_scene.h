@@ -2,6 +2,7 @@
 #include "game_scene.h"
 #include "menu_button.h"
 #include "../utils/checkML.h"
+#include "../game/Game.h"
 #include <vector>
 using namespace std;
 
@@ -9,7 +10,7 @@ class Manager;
 
 class MenuScene : public GameScene
 {
-public: 
+public:
 	MenuScene(Game* game) :GameScene(game, "Menu") {};
 	void init() override;
 	static void playGame(Manager* mngr);
@@ -20,7 +21,7 @@ public:
 
 
 
-class ScrollingBackGround: public Component {
+class ScrollingBackGround : public Component {
 public:
 	ScrollingBackGround(int width, int height, std::vector<Texture*> textures, float speed = 1, bool random = false);
 	void update() override;
