@@ -1,14 +1,14 @@
 #include "enemy_animation.h"
 
 
-enemy_animation::enemy_animation() : tr_(nullptr), im_(nullptr), rb(nullptr) {
+EnemyAnimation::EnemyAnimation() : tr_(nullptr), im_(nullptr), rb(nullptr) {
 	isAttacking = false;
 	dmgReceived = false;
 };
 
-enemy_animation::~enemy_animation() {}
+EnemyAnimation::~EnemyAnimation() {}
 
-void enemy_animation::update() {
+void EnemyAnimation::update() {
 	if (changeAnimations()) {
 		timer = 0; return;
 	}
@@ -25,7 +25,7 @@ void enemy_animation::update() {
 	}
 }
 
-void enemy_animation::init() {
+void EnemyAnimation::init() {
 	currentAnimation.setImage(im_ = entity_->getComponent<Image>());
 
 	for (Animation& anim : animations) {
@@ -37,7 +37,7 @@ void enemy_animation::init() {
 	assert(tr_ != nullptr && im_ != nullptr && rb != nullptr);
 }
 
-bool enemy_animation::changeAnimations() {
+bool EnemyAnimation::changeAnimations() {
 
 	float x = rb->getVel().getX();
 	
@@ -78,14 +78,14 @@ bool enemy_animation::changeAnimations() {
 
 //-----------------------------------------------------------------------------------------------------------
 
-flying_enemy_animation::flying_enemy_animation() : tr_(nullptr), im_(nullptr), rb(nullptr) {
+FlyingEnemyAnimation::FlyingEnemyAnimation() : tr_(nullptr), im_(nullptr), rb(nullptr) {
 	isAttacking = false;
 	dmgReceived = false;
 };
 
-flying_enemy_animation::~flying_enemy_animation() {}
+FlyingEnemyAnimation::~FlyingEnemyAnimation() {}
 
-void flying_enemy_animation::init() {
+void FlyingEnemyAnimation::init() {
 	currentAnimation.setImage(im_ = entity_->getComponent<Image>());
 
 	for (Animation& anim : animations) {
@@ -97,7 +97,7 @@ void flying_enemy_animation::init() {
 	assert(tr_ != nullptr && im_ != nullptr && rb != nullptr);
 }
 
-void flying_enemy_animation::update() {
+void FlyingEnemyAnimation::update() {
 	if (changeAnimations()) {
 		timer = 0; return;
 	}
@@ -114,7 +114,7 @@ void flying_enemy_animation::update() {
 	}
 }
 
-bool flying_enemy_animation::changeAnimations() {
+bool FlyingEnemyAnimation::changeAnimations() {
 
 	float x = rb->getVel().getX();
 
