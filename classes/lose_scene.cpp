@@ -13,26 +13,26 @@ LoseScene::LoseScene(Game* game, WAYSTODIE opcion) : GameScene(game, "Menu")
 	string text;
 	switch (opcion)
 	{
-	case DAYS:
+	case WAYSTODIE::DAYS:
 		text = "YOU SHOULD END THE GAME SOONER";
 		break;
-	case COLD:
+	case WAYSTODIE::COLD:
 		text = "YOU SHOULD EXIT THE RAID BEFORE THE TIME'S GONE";
 		break;
-	case HUNGER:
+	case WAYSTODIE::HUNGER:
 		text = "YOU SHOULD EAT, IT'S IMPORTANT :)";
 		break;
-	case BLEED:
+	case WAYSTODIE::BLEED:
 		text = "YOU SHOULD TRY TO FIND ITEMS TO STOP BLEEDING";
 		break;
-	case INTOXICATION:
-		text = "PRINGAO";
+	case WAYSTODIE::INTOXICATION:
+		text = "YOU SHOULD TRY TO FIND SOMETHING TO DETOXIFY";
 		break;
-	case PAIN:
-		text = "PRINGAO";
+	case WAYSTODIE::PAIN:
+		text = "YOU SHOULD TRY TO FIND SOMETHING SOME PAINKILLER";
 		break;
-	case CONTUSION:
-		text = "PRINGAO";
+	case WAYSTODIE::CONTUSION:
+		text = "CAREFUL WITH THE HEIGHTS";
 		break;
 	default:
 		text = "THIS SHOULD NOT APPEAR";
@@ -45,13 +45,12 @@ LoseScene::LoseScene(Game* game, WAYSTODIE opcion) : GameScene(game, "Menu")
 
 void LoseScene::backToMenu(Manager* mngr) {
 	ih().clearState();
-	mngr->ChangeScene(new MenuScene(mngr->getGame()), SceneManager::SceneMode::SINGLE);
-	mngr->getGame()->currentScene = SCENES::MAINMENU;
+	mngr->ChangeScene(new MenuScene(mngr->getGame(), false), SceneManager::SceneMode::SINGLE);
 }
 
 void LoseScene::render() {
 	back->render(0, 0);
-	advice->render(100,300);
+	advice->render(consts::WINDOW_WIDTH/2-advice->width()/2,consts::WINDOW_HEIGHT-consts::WINDOW_HEIGHT/2);
 	GameScene::render();
 }
 
