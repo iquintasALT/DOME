@@ -254,6 +254,9 @@
     <ClCompile Include="classes\spaceship_station.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
+    <ClCompile Include="classes\shelter_hud.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -551,6 +554,9 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\spaceship_station.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\shelter_hud.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
