@@ -24,14 +24,14 @@ void EnemyContactDamage::OnCollision(Entity* other)
 			//aplicar efecto x metiendo el componente necesario
 			if (other->hasGroup<DefaultEnemy_grp>()) {
 				physiognomy->addBleedState();
-				other->getComponent<enemy_animation>()->setAttack(true);
+				other->getComponent<EnemyAnimation>()->setAttack(true);
 			}
 			else if (other->hasGroup<FlyingEnemy_grp>()) {
 				//aleatorio entre Pain y Intoxication
 				int rand = sdlutils().rand().nextInt(0, 101);
 				if(rand < 50) physiognomy->addPainState();
 				else physiognomy->addIntoxicationState();
-				other->getComponent<flying_enemy_animation>()->setAttack(true);
+				other->getComponent<FlyingEnemyAnimation>()->setAttack(true);
 			}
 			canCollide = false;
 			cooldown = sdlutils().currRealTime();

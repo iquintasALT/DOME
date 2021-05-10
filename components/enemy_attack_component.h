@@ -2,6 +2,7 @@
 #include "enemy_component.h"
 #include "../utils/Vector2D.h"
 class Transform;
+class EnemyAnimation;
 class EnemyAttackComponent :
     public EnemyComponent
 {
@@ -44,8 +45,10 @@ class GroundedMeleeAttack :
 {
 protected:
     virtual bool attack() override;
+    EnemyAnimation* animator;
 public:
-    GroundedMeleeAttack(Vector2D lungeThrust = Vector2D(3.0, 2.0)) : MeleeAttack(lungeThrust) {};
+    GroundedMeleeAttack(Vector2D lungeThrust = Vector2D(4.0, 2.0)) : MeleeAttack(lungeThrust) {};
+    virtual void init() override;
 };
 
 //--------------------------------------------------------------------------------------------------------------

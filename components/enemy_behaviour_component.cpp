@@ -24,26 +24,26 @@ void EnemyBehaviourComponent::init()
 
 //--------------------------------------------------------------------------------------------------------------
 
-ChasePlayer::ChasePlayer(float speed, float attackDistance) :EnemyBehaviourComponent(speed, attackDistance){};
+ChasePlayer::ChasePlayer(float speed, float attackDistance) :EnemyBehaviourComponent(speed, attackDistance, consts::ENEMY_ATTACK_COOLDOWN * 2){};
 
 void ChasePlayer::update() {
-//If enemy can see player
-	if (enemyDetection_->isActive()) {
-		//If it is further from player than it wants to be and is moving slower than its speed
-		if (std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > attackDistance_ &&
-			rb_->getVel().magnitude() < speed_) {
+	//If enemy can see player
+	Vector2D target = tr_->getPos();
+	// Grounded enemies can only adjust their velocity if they are grounded
+	if (RayCast::isGrounded(tr_))
+	{
+		// If the enemy is further from the player than it wants to be but also close enough to detect player
+		if (enemyDetection_->isActive() && std::abs(playerTr_->getPos().getX() - tr_->getPos().getX()) > attackDistance_)
+			target = playerTr_->getPos();
 
-			//If it is on player's left
-			if (playerTr_->getPos().getX() - tr_->getPos().getX() > 0.0f)
-				rb_->setVelX(speed_);
-			//If it is on player's right
-			else if (playerTr_->getPos().getX() - tr_->getPos().getX() < 0.0f)
-				rb_->setVelX(-speed_);
-		}
-		else if (rb_->getVel().magnitude() < speed_)
-			rb_->setVel(rb_->getVel() * 0.95);
-		else rb_->setVelX(0.0);
+		// If chasing player, move towards them
+		if (target != tr_->getPos())
+			rb_->setVel((target - tr_->getPos()).normalize() * speed_);
+		// Otherwise, slow down
+		else
+			rb_->setVel(rb_->getVel() * 0.98);
 	}
+	this->EnemyBehaviourComponent::update();
 }
 
 //--------------------------------------------------------------------------------------------------------------

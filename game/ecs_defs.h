@@ -9,8 +9,8 @@ class Image;
 class Fade;
 class KeyboardPlayerCtrl;
 class player_animation;
-class enemy_animation;
-class flying_enemy_animation;
+class EnemyAnimation;
+class FlyingEnemyAnimation;
 class Weapon;
 class InventoryController;
 class Inventory;
@@ -59,8 +59,8 @@ class ScrollingBackGround;
 	Fade,\
 	KeyboardPlayerCtrl, \
 	player_animation, \
-	enemy_animation, \
-	flying_enemy_animation, \
+	EnemyAnimation, \
+	FlyingEnemyAnimation, \
     Weapon, \
 	InventoryController, \
 	Inventory, \

@@ -5,7 +5,7 @@
 #include "../utils/checkML.h"
 #include "../game/constant_variables.h"
 
-class animation_component : public Component {
+class AnimationComponent : public Component {
 protected:
 	struct Animation {
 	protected:
@@ -33,7 +33,7 @@ protected:
 	};
 
 public:
-	inline animation_component() {};
+	inline AnimationComponent() {};
 
-	inline virtual ~animation_component() {};
+	inline virtual ~AnimationComponent() {};
 };
