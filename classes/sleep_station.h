@@ -14,7 +14,7 @@
 class SleepStation : public GameEntity
 {
 	Entity* bg, * bButton, * leftButton, * rightButton, * clock, * arrow, * sleepButton;
-	Transform* bg_tr, * bButton_tr, * rightButton_tr, * leftButton_tr, * clock_tr, * arrow_tr;
+	Transform* bg_tr, * bButton_tr, * rightButton_tr, * leftButton_tr, * clock_tr, * arrow_tr, * sleepButton_tr;
 
 	Transform* playerTr;
 
