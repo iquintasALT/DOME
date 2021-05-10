@@ -51,19 +51,19 @@ void MenuScene::init() {
 	auto exitButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, exit, g_, mngr_, 0, "Exit");
 	mngr_->addEntity(exitButton);
 
-
-	for (auto a : mngr_->getEntities())
-		a->setActive(false);
-
-	auto logo = mngr_->addEntity();
-	logo->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	logo->addComponent<Image>(&sdlutils().images().at("sureffect"));
-	logo->addComponent<TransitionComponent>(3, true, [&]() {
+	if (firstTime) {
 		for (auto a : mngr_->getEntities())
-			a->setActive(true);
-		});
-	mngr_->addRenderLayer<Interface>(logo);
+			a->setActive(false);
 
+		auto logo = mngr_->addEntity();
+		logo->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
+		logo->addComponent<Image>(&sdlutils().images().at("sureffect"));
+		logo->addComponent<TransitionComponent>(3, true, [&]() {
+			for (auto a : mngr_->getEntities())
+				a->setActive(true);
+			});
+		mngr_->addRenderLayer<Interface>(logo);
+	}
 	// hacemos que comienze en 1 (ciclo --> numDays <= MAX_DAYS)
 	getGame()->numDays++;
 }
