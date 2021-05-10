@@ -69,15 +69,9 @@ void Manager::render() {
 
 void Manager::removeRenderFromLayer(Entity* ent) {
 	if (ent->renderGroup != -1) {
-		renders_[ent->renderGroup].erase(ent->renderIterator);
-		ent->renderIterator = renders_[ent->renderGroup].end(); ent->renderGroup = -1;
+		renders_[ent->renderGroup].remove(ent);
 	}
 }
-
-//void Manager::saveRenderPosition(Entity* renderObj, int group, list<Entity*>::iterator it) {
-//	renderObj->renderGroup = group;
-//	renderObj->renderIterator = it;
-//}
 
 void Manager::AddInteractableElement(InteractableElement* ie) {
 	interactableElements.push_back(ie);

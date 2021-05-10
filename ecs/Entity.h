@@ -5,7 +5,6 @@
 #include <array>
 #include <bitset>
 #include <vector>
-#include <list>
 #include <iostream>
 #include "Component.h"
 #include "ecs.h"
@@ -25,8 +24,7 @@ public:
 		active(true),
 		mngr_(mngr), 
 		cmpArray_(), 
-		groups_(),
-		renderGroup(-1)
+		groups_(-1)
 	{}
 
 	virtual ~Entity() {
@@ -197,7 +195,6 @@ protected:
 
 private:
 	int renderGroup;
-	list<Entity*>::iterator renderIterator;
 
 	bool active = true, dead, isRendering = false;
 
