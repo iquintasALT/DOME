@@ -16,7 +16,7 @@ private:
 	Animation(idle, 4),
 	Animation(walking, 9),
 	Animation(dmg, 3),
-	Animation(attack, 3)};
+	Animation(attack, 3, true, 2)};
 
 	Animation currentAnimation = animations[idle];
 	float timer = 0;
@@ -28,6 +28,7 @@ private:
 	RigidBody* rb;
 	bool dmgReceived;
 	bool isAttacking;
+	float cooldown;
 public:
 	enemy_animation();
 
@@ -48,7 +49,7 @@ private:
 	const enum animations_name { idle = 0, attack, dmg};
 	Animation animations[3]{
 	Animation(idle, 4),
-	Animation(attack, 4),
+	Animation(attack, 4, true, 2),
 	Animation(dmg, 3)};
 
 	Animation currentAnimation = animations[idle];
@@ -61,6 +62,7 @@ private:
 	RigidBody* rb;
 	bool dmgReceived;
 	bool isAttacking;
+	float cooldown;
 
 public:
 	flying_enemy_animation();
