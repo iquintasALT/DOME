@@ -1,7 +1,7 @@
 #include "tiredness_component.h"
 #include "../sdlutils/InputHandler.h"
 
-TirednessComponent::TirednessComponent() : tiredness(1.0f), tirednessLevel(tirednessLevel::NONE), kb(nullptr) {};
+TirednessComponent::TirednessComponent() : tiredness(1.0f), tirednessLev(tirednessLevel::NONE), kb(nullptr) {};
 
 void TirednessComponent::init() {
 	kb = entity_->getComponent<KeyboardPlayerCtrl>();
@@ -33,9 +33,9 @@ void TirednessComponent::calculateTravelSpeed() const{
 }
 
 void TirednessComponent::updateLevel() {
-	if (tiredness >= consts::NONETIRED_LEVEL) tirednessLevel = tirednessLevel::NONE;
-	else if (tiredness >= consts::TIRED_LEVEL) tirednessLevel = tirednessLevel::TIRED;
-	else tirednessLevel = tirednessLevel::EXHAUSTED;
+	if (tiredness >= consts::NONETIRED_LEVEL) tirednessLev = tirednessLevel::NONE;
+	else if (tiredness >= consts::TIRED_LEVEL) tirednessLev = tirednessLevel::TIRED;
+	else tirednessLev = tirednessLevel::EXHAUSTED;
 }
 void TirednessComponent::setTiredness(float tiredness_) {
 	tiredness = tiredness_;
