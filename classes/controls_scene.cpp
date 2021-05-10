@@ -7,7 +7,7 @@
 
 void ControlsScene::init()
 {
-	auto playButton = new PauseButton(Vector2D(0, 0), Vector2D(400,400), &sdlutils().images().at("controls"), goGame, g_, mngr_, 0, " ");
+	auto playButton = new PauseButton(Vector2D(0, 0), Vector2D(consts::WINDOW_WIDTH,consts::WINDOW_HEIGHT), &sdlutils().images().at("controls"), goGame, g_, mngr_, 0, " ");
 	mngr_->addEntity(playButton);
 }
 
