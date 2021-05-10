@@ -176,6 +176,38 @@ void GameScene::loadMap(string& const path) {
 					returnToShelter->addComponent<BackToShelter>(this);
 					mngr_->addRenderLayer<Loot>(returnToShelter);
 				}
+				else if (obj.getName() == "sleepStation") {
+					/*Entity* sleep_Station = new SleepStation(mngr_, uselessMngr);
+					Entity* sleepImg = mngr_->addEntity();
+					sleepImg->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					sleepImg->addComponent<Open_station>(sleep_Station);
+					mngr_->addRenderLayer<Background>(sleepImg);*/
+				}
+				else if (obj.getName() == "workStation") {
+					/*Entity* mechanical_Workshop = new Workshop(mngr_, uselessMngr, craftSys, this);
+					mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO });
+					Entity* mechImg = mngr_->addEntity();
+					mechImg->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					mechImg->addComponent<Open_station>(mechanical_Workshop);
+					mngr_->addRenderLayer<Background>(mechImg);*/
+				}
+				else if (obj.getName() == "medicalStation") {
+					/*medical_Workshop = new Workshop(mngr_, uselessMngr, craftSys, this);
+					medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT});
+					Entity* medImg = mngr_->addEntity();
+					medImg->addComponent<Transform>(Vector2D{ auxPos.getX() - 100,auxPos.getY() }, 50, 50, 0);
+					medImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 6, 0);
+					medImg->addComponent<Open_station>(medical_Workshop);
+					mngr_->addRenderLayer<Background>(medImg);*/
+				}
+				else if (obj.getName() == "spaceShip") {
+					/*SpaceshipStation* spaceshipStation = new SpaceshipStation(mngr_, uselessMngr, craftSys, this);
+					Entity* spaceshipImg = mngr_->addEntity();
+					spaceshipImg->addComponent<Transform>(Vector2D{ auxPos.getX() - 300 ,auxPos.getY() }, 50, 50, 0);
+					spaceshipImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
+					spaceshipImg->addComponent<Open_station>(spaceshipStation);
+					mngr_->addRenderLayer<Background>(spaceshipImg);*/
+				}
 			}
 		}
 	}

@@ -4,6 +4,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/Game.h"
 #include "locations_scene.h"
+#include "controls_scene.h"
 #include "../ecs/Manager.h"
 #include "../classes/settings_scene.h"
 #include "../classes/camera.h"
@@ -13,6 +14,8 @@
 #include <iostream>
 
 void MenuScene::init() {
+	mngr_->getGame()->currentScene = SCENES::MAINMENU;
+
 	float size = 1.2f;
 	auto a = mngr_->addEntity();
 	std::vector<Texture*> textures(5);
@@ -67,7 +70,7 @@ void MenuScene::init() {
 
 void MenuScene::playGame(Manager* mngr) {
 	ih().clearState();
-	mngr->ChangeScene(new LocationsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+	mngr->ChangeScene(new ControlsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
 }
 
 void MenuScene::settings(Manager* mngr) {
@@ -120,7 +123,8 @@ void ScrollingBackGround::update() {
 	}
 	else if (t > 1 - fade) {
 		f = (fade - 1 + t) / fade * 255;
-	}else if(t < fade)
+	}
+	else if (t < fade)
 		f = (fade - t) / fade * 255;
 
 	currentPos = Vector2D::Lerp(initialPos, finalPos, t);

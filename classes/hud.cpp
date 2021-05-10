@@ -160,14 +160,12 @@ void hud::render() {
 
 void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
 {
-	// Si no hay estados que dibujar, no deber�amos estar en este m�todo
+	// Si no hay estados que dibujar, no deberiamos estar en este metodo
 	assert(states->size() > 0);
 
-	Vector2D aux = Vector2D(16 + pos * 33, 20);
-	SDL_Rect dest = build_sdlrect(aux, 33, 33);
-	int width = 32;
-	int height = 32;
-	SDL_Rect src = build_sdlrect((frameIndex % 4) * width, (frameIndex / 4) * height, width, height);
+	Vector2D aux = Vector2D(consts::STATUS_EFFECTS_SIZEX/2 + pos * consts::STATUS_EFFECTS_SIZEX, 20);
+	SDL_Rect dest = build_sdlrect(aux, consts::STATUS_EFFECTS_SIZEX, consts::STATUS_EFFECTS_SIZEY);
+	SDL_Rect src = build_sdlrect((frameIndex % 4) * 32, (frameIndex / 4) * 32, 32, 32);
 	states->front()->getTexture()->render(src, dest);
 
 	if (mouse.getX() > dest.x && mouse.getX() < dest.x + dest.w &&

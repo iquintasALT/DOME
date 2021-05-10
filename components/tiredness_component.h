@@ -24,7 +24,7 @@ class TirednessComponent : public PlayerHealthComponent
 private:
 	float tiredness;
 	KeyboardPlayerCtrl* kb;
-	tirednessLevel tirednessLevel;
+	tirednessLevel tirednessLev;
 
 public:
 	TirednessComponent();
@@ -38,5 +38,6 @@ public:
 	void increaseTiredness(float tiredness);
 
 	void setTiredness(float tiredness);
+	tirednessLevel getTirednessLevel() { return tirednessLev; }
 };
 
