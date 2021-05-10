@@ -18,7 +18,6 @@ Loot::Loot(std::string mssg, int inventoryWidth, int inventoryHeight) :
 
 Loot::~Loot() {
 	Game* g = entity_->getMngr()->getGame();
-	g->SCENES_LOOT.find(g->currentScene)->second.clear();
 
 
 	vector<I> itemsInLoot;
@@ -28,8 +27,10 @@ Loot::~Loot() {
 		I aux = I{ info->name(),0,info->width(),info->height(),i->getX(),i->getY(),info->row(),info->col(), info->description() };
 		itemsInLoot.push_back(aux);
 	}
-
-	g->SCENES_LOOT.find(g->currentScene)->second.push_back(itemsInLoot);
+	
+	auto* aux = &g->SCENES_LOOT.find(g->currentScene)->second;
+	aux->push_back(itemsInLoot);
+	aux->erase(aux->begin());
 }
 
 void Loot::Interact() {
