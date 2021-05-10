@@ -4,6 +4,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/Game.h"
 #include "locations_scene.h"
+#include "controls_scene.h"
 #include "../ecs/Manager.h"
 #include "../classes/settings_scene.h"
 #include "../classes/camera.h"
@@ -67,7 +68,7 @@ void MenuScene::init() {
 
 void MenuScene::playGame(Manager* mngr) {
 	ih().clearState();
-	mngr->ChangeScene(new LocationsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+	mngr->ChangeScene(new ControlsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
 }
 
 void MenuScene::settings(Manager* mngr) {
