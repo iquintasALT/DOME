@@ -1,51 +1,51 @@
 {
-  "fonts": [
-    {
-      "id": "ARIAL16",
-      "file": "resources/fonts/ARIAL.ttf",
-      "size": 16
-    },
-    {
-      "id": "ARIAL24",
-      "file": "resources/fonts/ARIAL.ttf",
-      "size": 24
-    },
-    {
-      "id": "ARIAL32",
-      "file": "resources/fonts/ARIAL.ttf",
-      "size": 32
-    },
-    {
-      "id": "OrbitronRegular",
-      "file": "resources/fonts/Orbitron-Regular.ttf",
-      "size": 24
-    },
-    {
-      "id": "OrbitronBold",
-      "file": "resources/fonts/Orbitron-Bold.ttf",
-      "size": 24
-    },
-    {
-      "id": "Orbitron32",
-      "file": "resources/fonts/Orbitron-Bold.ttf",
-      "size": 32
-    },
-    {
-      "id": "Orbitron14",
-      "file": "resources/fonts/Orbitron-Bold.ttf",
-      "size": 14
-    },
-    {
-      "id": "Orbitron16",
-      "file": "resources/fonts/Orbitron-Bold.ttf",
-      "size": 16
-    },
-    {
-      "id": "Orbitron12",
-      "file": "resources/fonts/Orbitron-Bold.ttf",
-      "size": 12
-    }
-  ],
+    "fonts": [
+        {
+            "id": "ARIAL16",
+            "file": "resources/fonts/ARIAL.ttf",
+            "size": 16
+        },
+        {
+            "id": "ARIAL24",
+            "file": "resources/fonts/ARIAL.ttf",
+            "size": 24
+        },
+        {
+            "id": "ARIAL32",
+            "file": "resources/fonts/ARIAL.ttf",
+            "size": 32
+        },
+        {
+            "id": "OrbitronRegular",
+            "file": "resources/fonts/Orbitron-Regular.ttf",
+            "size": 24
+        },
+        {
+            "id": "OrbitronBold",
+            "file": "resources/fonts/Orbitron-Bold.ttf",
+            "size": 24
+        },
+        {
+            "id": "Orbitron32",
+            "file": "resources/fonts/Orbitron-Bold.ttf",
+            "size": 32
+        },
+        {
+            "id": "Orbitron14",
+            "file": "resources/fonts/Orbitron-Bold.ttf",
+            "size": 14
+        },
+        {
+            "id": "Orbitron16",
+            "file": "resources/fonts/Orbitron-Bold.ttf",
+            "size": 16
+        },
+        {
+            "id": "Orbitron12",
+            "file": "resources/fonts/Orbitron-Bold.ttf",
+            "size": 12
+        }
+    ],
 
     "images": [
         {
@@ -55,10 +55,6 @@
         {
             "id": "weaponHUD",
             "file": "resources/sprites/weapons_sheet_HUD.png"
-        },
-        {
-            "id": "lose",
-            "file": "resources/sprites/lose_background.png"
         },
         {
             "id": "marco",
@@ -73,12 +69,72 @@
             "file": "resources/sprites/info_hospital.png"
         },
         {
+            "id": "sureffect",
+            "file": "resources/sprites/initial_logo.png"
+        },
+        {
             "id": "info_supermercado",
             "file": "resources/sprites/info_supermercado.png"
         },
         {
+            "id": "info_nuclear",
+            "file": "resources/sprites/info_nuclear.png"
+        },
+        {
+            "id": "info_shop",
+            "file": "resources/sprites/info_shop.png"
+        },
+        {
             "id": "enemy",
             "file": "resources/sprites/enemy_sheet.png"
+        },
+        {
+            "id": "controls",
+            "file": "resources/sprites/controls.png"
+        },
+        {
+            "id": "bgImage",
+            "file": "resources/sprites/background/bg_image.png"
+        },
+        {
+            "id": "bgImage0",
+            "file": "resources/sprites/background/bg_image.png"
+        },
+        {
+            "id": "bgImage1",
+            "file": "resources/sprites/background/background1.jpg"
+        },
+        {
+            "id": "bgImage2",
+            "file": "resources/sprites/background/background2.jpg"
+        },
+        {
+            "id": "bgImage3",
+            "file": "resources/sprites/background/blueprints.jpg"
+        },
+        {
+            "id": "bgImage4",
+            "file": "resources/sprites/background/background3.png"
+        },
+        {
+            "id": "bgImage5",
+            "file": "resources/sprites/background/background4.jpg"
+        },
+        {
+            "id": "bgImage6",
+            "file": "resources/sprites/background/background5.jpg"
+        },
+        {
+            "id": "bgImage7",
+            "file": "resources/sprites/background/background6.jpg"
+        },
+        {
+            "id": "bgImageDark",
+            "file": "resources/sprites/background/bg_image_dark.png"
+        },
+        {
+            "id": "titleText",
+            "file": "resources/sprites/title_text.png"
         },
         {
             "id": "flying_enemy",
@@ -93,12 +149,24 @@
             "file": "resources/sprites/weapons_sheet.png"
         },
         {
+            "id": "laser_windup",
+            "file": "resources/sprites/laser_windup_tier_3.png"
+        },
+        {
+            "id": "laser_held_charge",
+            "file": "resources/sprites/laser_held_charge_tier_3.png"
+        },
+        {
             "id": "weapons_arms",
             "file": "resources/sprites/weapons_arms_sheet.png"
         },
         {
             "id": "projectile",
             "file": "resources/sprites/projectile.png"
+        },
+        {
+            "id": "ricochet_projectile",
+            "file": "resources/sprites/ricochet_projectile.png"
         },
         {
             "id": "panel",
@@ -115,6 +183,10 @@
         {
             "id": "raidButton",
             "file": "resources/sprites/buttons/raid_button.png"
+        },
+        {
+            "id": "yojhanButton",
+            "file": "resources/sprites/buttons/buttonYojhan.png"
         },
         {
             "id": "resumeButton",
@@ -153,8 +225,20 @@
             "file": "resources/sprites/buttons/pixel.png"
         },
         {
+            "id": "exitButton",
+            "file": "resources/sprites/buttons/exit_button.png"
+        },
+        {
+            "id": "playButton",
+            "file": "resources/sprites/buttons/play_button.png"
+        },
+        {
             "id": "mainVolumeText",
             "file": "resources/sprites/buttons/main_volume_text.png"
+        },
+        {
+            "id": "logo",
+            "file": "resources/sprites/logo.png"
         },
         {
             "id": "effectsVolume",
@@ -173,8 +257,20 @@
             "file": "resources/sprites/charge_projectile.png"
         },
         {
+            "id": "locationButtonFocus",
+            "file": "resources/sprites/location_button_focus.png"
+        },
+        {
             "id": "craft_bg",
             "file": "resources/sprites/craft_ui/bg.png"
+        },
+        {
+            "id": "lose",
+            "file": "resources/sprites/lose_background.png"
+        },
+        {
+            "id": "rocket",
+            "file": "resources/sprites/rocket.png"
         },
         {
             "id": "craft_back_button",
@@ -225,70 +321,73 @@
             "file": "resources/sprites/black.png"
         },
         {
+            "id": "shelterStatusEffects",
+            "file": "resources/sprites/shelter_status_effects.png"
+        },
+        {
             "id": "status_effects",
             "file": "resources/sprites/status_effects.png"
         }
     ],
-  
 
-  "messages": [
-    {
-      "id": "start",
-      "text": "Press space to start",
-      "font": "ARIAL24",
-      "color": "0x441155ff"
-    },
-    {
-      "id": "continue",
-      "text": "Press space to continue",
-      "font": "ARIAL24",
-      "color": "0x112233ff",
-      "bg": "0xffffffff"
-    },
-    {
-      "id": "gameover",
-      "text": "Game Over",
-      "font": "ARIAL24",
-      "color": "0x0000ffff"
-    }
-  ],
+    "messages": [
+        {
+            "id": "start",
+            "text": "Press space to start",
+            "font": "ARIAL24",
+            "color": "0x441155ff"
+        },
+        {
+            "id": "continue",
+            "text": "Press space to continue",
+            "font": "ARIAL24",
+            "color": "0x112233ff",
+            "bg": "0xffffffff"
+        },
+        {
+            "id": "gameover",
+            "text": "Game Over",
+            "font": "ARIAL24",
+            "color": "0x0000ffff"
+        }
+    ],
 
-  "sounds": [
-    {
-      "id": "paddle_hit",
-      "file": "resources/sound/paddle_hit.wav"
-    },
-    {
-      "id": "wall_hit",
-      "file": "resources/sound/wall_hit.wav"
-    }
-  ],
+    "sounds": [
+        {
+            "id": "paddle_hit",
+            "file": "resources/sound/paddle_hit.wav"
+        },
+        {
+            "id": "wall_hit",
+            "file": "resources/sound/wall_hit.wav"
+        }
+    ],
 
-  "musics": [
-    {
-      "id": "imperial",
-      "file": "resources/sound/imperial_march.wav"
-    }
-  ],
+    "musics": [
+        {
+            "id": "imperial",
+            "file": "resources/sound/imperial_march.wav"
+        }
+    ],
 
-  "tilesets": [
-    {
-      "id": "template_tileset",
-      "file": "resources/sprites/floor_tileset.png"
-    },
-    {
-      "id": "floor_tileset",
-      "file": "resources/sprites/floor_tileset.png"
-    },
+    "tilesets": [
+        {
+            "id": "template_tileset",
+            "file": "resources/sprites/floor_tileset.png"
+        },
+        {
+            "id": "floor_tileset",
+            "file": "resources/sprites/floor_tileset.png"
+        },
 
-    {
-      "id": "sprite_bg_tiles_32x32",
-      "file": "resources/sprites/sprite_bg_tiles_32x32.png"
-    },
+        {
+            "id": "sprite_bg_tiles_32x32",
+            "file": "resources/sprites/sprite_bg_tiles_32x32.png"
+        },
 
-    {
-      "id": "second_template_tileset",
-      "file": "resources/sprites/wardrobe_tileset.png"
-    }
-  ]
+        {
+            "id": "second_template_tileset",
+            "file": "resources/sprites/wardrobe_tileset.png"
+        }
+    ]
 }

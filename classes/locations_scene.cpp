@@ -4,45 +4,37 @@
 #include "../sdlutils/Texture.h"
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../ecs/Component.h"
 
 void LocationsScene::init()
 {
+	addBackground(&sdlutils().images().at("bgImage7"));
+	addBackground(&sdlutils().images().at("bgImage5"));
+	addBackground(&sdlutils().images().at("bgImage2"));
+	addBackground(&sdlutils().images().at("bgImage6"));
+	addBackground(&sdlutils().images().at("bgImage4"));
+
 	auto background = mngr_->addEntity();
 	background->addComponent<Transform>(Vector2D(sdlutils().width() * 0.33 , 0),
 		sdlutils().height(), sdlutils().height());
 	background->addComponent<Image>(&sdlutils().images().at("location_image"), 1, 3, 0, 0, true);
 	mngr_->addRenderLayer<Background>(background);
 
-	auto info1 = mngr_->addEntity();
-	info1->addComponent<Transform>(Vector2D(50, 0), 280, 630);
-	info1->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true);
-	info1->setActive(false);
-	mngr_->addRenderLayer<Item>(info1);
-	infos.push_back(info1);
+	addInfoText(&sdlutils().images().at("info_shop"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_nuclear"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_comunicaciones"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_supermercado"), Vector2D(50, 0), 280, 630); 
 
-	auto info2 = mngr_->addEntity();
-	info2->addComponent<Transform>(Vector2D(50, 0), 280, 630);
-	info2->addComponent<Image>(&sdlutils().images().at("info_comunicaciones"), 1, 1, 0, 0, true); //CAMBIAR ESTA IMAGEN AL TEXTO BIEN
-	info2->setActive(false);
-	mngr_->addRenderLayer<Item>(info2);
-	infos.push_back(info2);
+	addFocus();
 
-	auto info3 = mngr_->addEntity();
-	info3->addComponent<Transform>(Vector2D(50, 0), 280, 630);
-	info3->addComponent<Image>(&sdlutils().images().at("info_supermercado"), 1, 1, 0, 0, true);
-	info3->setActive(false);
-	mngr_->addRenderLayer<Item>(info3);
-	infos.push_back(info3);
-
-	auto info4 = mngr_->addEntity();
-	info4->addComponent<Transform>(Vector2D(50, 0), 280, 630);
-	info4->addComponent<Image>(&sdlutils().images().at("info_hospital"), 1, 1, 0, 0, true);
-	info4->setActive(false);
-	mngr_->addRenderLayer<Item>(info4);
-	infos.push_back(info4);
-
-	// this here is so we are aware that this is not roght but I need to wait till we have all locations srry
 	loadLocationButtons();
+	mouseOverInfo = vector<bool>(locations.size(), false);
+
+	initFocus();
+
+	name = "Day " + std::to_string(getGame()->numDays) + " out of " + std::to_string(consts::MAX_DAYS);
+	//createTransition();
 }
 
 void LocationsScene::loadLocationButtons() {
@@ -65,7 +57,8 @@ void LocationsScene::loadLocationButtons() {
 			auto row = obj.getProperties()[1].getIntValue();
 
 			auto button = mngr_->addEntity();
-			button->addComponent<Transform>(Vector2D(aabb.left, aabb.top), 75, 75);
+			auto tr = button->addComponent<Transform>(Vector2D(aabb.left, aabb.top), 75, 75);
+			buttonPositions.push_back(tr);
 			button->addComponent<Image>(&sdlutils().images().at("location_icons"), 2, 3, row, col, true);
 			mngr_->addRenderLayer<Background>(button);
 			locations.push_back(button);
@@ -74,12 +67,8 @@ void LocationsScene::loadLocationButtons() {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-	g->currentScene = RAID;
-	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::OVERRIDE);
-}
-
-void LocationsScene::anActualGoodName(Game* g) {
-	mngr_->ChangeScene(new ShelterScene(g), SceneManager::SceneMode::ADDITIVE);
+	g->currentScene = scenes[index];
+	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::ADDITIVE);
 }
 
 void LocationsScene::update() {
@@ -90,9 +79,8 @@ void LocationsScene::update() {
 		if (ih().getMouseButtonState(InputHandler::LEFT)) {
 			if (!mouseClick) {
 				if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
-					// THIS IS SO BAD IT'S BURNING MY SOUL
-					if (i == 0 || i == 1) changeToRaid(g_, i);
-					else anActualGoodName(g_);
+					changeToRaid(g_, i);
+					
 					mouseClick = true;
 					return;
 				}
@@ -100,20 +88,107 @@ void LocationsScene::update() {
 		}
 		else if (mouseClick) mouseClick = false;
 
+		
 		if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
 			if (!ih().getMouseButtonState(InputHandler::LEFT)) {
 				if (!mouseClick) {
-					infos[i]->setActive(true);
+					if (!mouseOverInfo[i]) {
+						mouseOverInfo[i] = true;
+						//Foco
+						setFocus(buttonPositions[i]->getPos());
+						focus->getComponent<Image>()->changeFrame(0, 0);
+						if (i != lastBackGroundActive) {
+							infos[lastBackGroundActive]->setActive(false);
+							backgrounds[lastBackGroundActive]->setActive(false);
+
+							infos[i]->setActive(true);
+							backgrounds[i]->setActive(true);
+						}
+					}
 				}
 			}
-			return;
 		}
-		else
-		{
-			infos[i]->setActive(false);
+		else {
+			if (mouseOverInfo[i]) {
+				lastBackGroundActive = i;
+				mouseOverInfo[i] = false;
+			}
 		}
-
-
 	}
 }
+
+void LocationsScene::addInfoText(Texture* t, Vector2D pos, int xSize, int ySize) {
+	auto info = mngr_->addEntity();
+	info->addComponent<Transform>(pos, xSize, ySize);
+	info->addComponent<Image>(t, 1, 1, 0, 0, true);
+	info->setActive(false);
+	mngr_->addRenderLayer<Item>(info);
+	infos.push_back(info);
+}
+
+void LocationsScene::addBackground(Texture* t) {
+	auto background = mngr_->addEntity();
+	background->addComponent<Transform>(Vector2D(0, 0), sdlutils().width(), sdlutils().height());
+	background->addComponent<Image>(t, 1, 1, 0, 0, true);
+	background->setActive(false);
+	mngr_->addRenderLayer<Background>(background);
+	backgrounds.push_back(background);
+}
+void LocationsScene::addFocus() {
+	focus = mngr_->addEntity();
+	focus->addComponent<Transform>(Vector2D(100, 100), 75, 75);
+	focus->addComponent<Image>(&sdlutils().images().at("locationButtonFocus"), 1, 2, 32, 32, true);
+	mngr_->addRenderLayer<Interface>(focus);
+}
+
+void LocationsScene::setFocus(Vector2D position) {
+	focus->getComponent<Transform>()->setPos(position);
+}
+
+void LocationsScene::initFocus() {
+	setFocus(buttonPositions[0]->getPos()); //Se establece el foco al principio en uno cualquiera
+	infos[0]->setActive(true);
+	backgrounds[0]->setActive(true); //Se activa el fondo correspondiente al boton con el foco
+	focus->getComponent<Image>()->changeFrame(0, 0);
+	lastBackGroundActive = 0;
+}
+
+
+//FADE
+
+Fade::Fade(float speed, Texture* t) : tr_(nullptr) {
+	t = 0;
+	f = 255;
+	done = false;
+	speed_ = speed;
+	black_ = t;
+}
+
+void Fade::init() {
+	tr_ = entity_->getComponent<Transform>();
+	assert(tr_ != nullptr);
+}
+
+void Fade::update() {
+	if (!done) {
+		t += consts::DELTA_TIME * speed_;
+
+		const float fade = 0.2f;
+
+		if (t < fade)
+		f = (fade - t) / fade * 255;
+
+		if (f < 10) done = true;
+	}
+}
+
+void Fade::render(){
+	black_->setAlpha(f);
+	black_->render({ 0,0, sdlutils().width(), sdlutils().height() });
+}
+
+void Fade::setAlpha(float alpha) {
+	f = alpha;
+}
+
 

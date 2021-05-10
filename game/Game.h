@@ -13,7 +13,8 @@
 class Manager;
 class Entity;
 
-const enum SCENES {  SHELTER, HOSPITAL, RESTAURANT, RAID, SETTINGS, MAINMENU, NONE };
+const enum class SCENES { SHOP, NUCLEAR_STATION, HOSPITAL, COMMUNICATIONS, SUPERMARKET, SHELTER, RAID, SETTINGS, MAINMENU, NONE, CREDITS };
+const vector<SCENES> scenes = { SCENES::SHOP,  SCENES::NUCLEAR_STATION,  SCENES::HOSPITAL, SCENES::COMMUNICATIONS,  SCENES::SUPERMARKET };
 const vector<int> SCENES_CHESTS = { 0,0,2,1,0 };
 
 class Game {
@@ -24,16 +25,24 @@ private:
 public:
 	SCENES currentScene;
 	map<SCENES, vector<vector<I>>> SCENES_LOOT;
+	bool cabin = false, rockets = false, radar = false;
 
-	Game(int totaltime); 
+	Game(int totaltime);
 	virtual ~Game();
 	void init();
 	void start();
 	inline GameStateMachine* getStateMachine() { return states; }
 	void quitGame() { exit = true; }
-	
+
 	void initLoot();
-	//Entity* player;
+
+	// booleano para comprabar si el jugador ha sido creado, para mantener la información
+	// entre escenas. Ponerlo a falso cuando se salga de juego (menu, endScreen, etc.)
 	bool playerCreated = false;
+
+	// contador de dias de juego. Partimos de 0 para dejar claro que no 
+	// se ha comenzado la partida, hacer que se haga + 1 para cada transicion a 
+	// LocationScene, comparandolo con consts::MAX_DAYS, y haciendo lo necesario cuando se llegue al ultimo dia 
+	int numDays = 0;
 };
 

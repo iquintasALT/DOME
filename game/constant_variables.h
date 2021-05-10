@@ -1,14 +1,22 @@
 #pragma once
 
 namespace consts {
-	const float GRAVITY = 8.0f;
+
 	const float FRAME_RATE = 60.0f;
 	const float DELTA_TIME = 1 / FRAME_RATE;
+	const int WINDOW_WIDTH = 1088;
+	const int WINDOW_HEIGHT = 736;
+
+	// PLAYER
+	const float GRAVITY = 8.0f;
 	const float PLAYER_SPEED = 3.0f;
 	const float PLAYER_BACKWARDS_SPEED = 1.5f;
 	const float CAMERA_MARGIN_FROM_PLAYER = -250;
 	const float JUMP_SPEED = 3.0f;
 	const float STAIRS_SPEED = 1.5f;
+	const float FALLING_DMG_SPEED = 8;
+
+	// ENEMIES
 	const float MELEE_ENEMY_SPEED = 2.5f;
 	const float MELEE_ENEMY_STOPDISTANCE = 80.0f;
 	const float RANGED_ENEMY_SPEED = PLAYER_SPEED / 2;
@@ -16,16 +24,14 @@ namespace consts {
 	const float RANGED_ENEMY_SHOOTDISTANCE = 350.0f;
 	const float FLYING_ENEMY_HOVERHEIGHT = 160.0f;
 	const float FLYING_ENEMY_APPROACHDISTANCE = 180.0f;
-	const float ACTIVATE_ENEMY_DISTANCE = 20.0f;
+	const float ACTIVATE_ENEMY_DISTANCE = 40.0f;
 	const short int ENEMY_ATTACK_COOLDOWN = 1000;
-	const int WINDOW_WIDTH = 1088;
-	const int WINDOW_HEIGHT = 736;
-	const float FALLING_DMG_SPEED = 8;
-	const float CHARGEWEAPON_HEIGHT = 15;
+
+	// COLLISIONS
 	const int COLLISION_LAYERS = 16;
 
-	//PHYSIOGNOMY
-	//Hunger y Tiredness
+	// PHYSIOGNOMY
+	// Hunger y Tiredness
 	const int MAX_MULTIPLE_STATES = 6; //Numero de estados de daño que el jugador puede tener
 	const float NONEHUNGER_LEVEL = 0.75f; //Por encinma del 75% estará en NONE y por debajo en HUNGER
 	const float HUNGER_LEVEL = 0.35f; //Por encima del 35% estará en HUNGER y por debajo en STARVING
@@ -33,7 +39,7 @@ namespace consts {
 	const float NONETIRED_LEVEL = 0.75f; //Por encinma del 75% estará en NONE y por debajo en TIRED
 	const float TIRED_LEVEL = 0.35f; //Por encima del 35% estará en TIRED y por debajo en EXHASUTED
 
-	//Pain, Bleed, Concussion, Intoxication y Hypothermia
+	// Pain, Bleed, Concussion, Intoxication y Hypothermia
 	const float REDUCE_WEAPON_DAMAGE = 0.2f; //En %
 	const int CONTUSION_INCREASE_TIME = 5000; //Cantidad de tiempo que PainComponent añade a ContusionComponent
 	const int INTOXICATION_INCREASE_TIME = 5000; //Cantidad de tiempo que PainComponent añade a IntoxicationComponent
@@ -45,9 +51,13 @@ namespace consts {
 	const int MAX_NEWDAMAGE_TIME = 5000;
 	const int HYPOTHERMIA_TIME = 30000;
 
-	//WEAPONS
+	//UI
+	const int STATUS_EFFECTS_SIZEX = 48;
+	const int STATUS_EFFECTS_SIZEY = 48;
 
-	//Basic Weapon
+	// WEAPONS
+
+	// Basic Weapon
 	const int WEAPON_TIER1_DAMAGE = 100;
 	const int WEAPON_TIER2_DAMAGE = 100;
 	const int WEAPON_TIER3_DAMAGE = 100;
@@ -56,7 +66,7 @@ namespace consts {
 	const int WEAPON_TIER2_FIRERATE = 1.75f;
 	const int WEAPON_TIER3_FIRERATE = 1.75f;
 
-	//Ricochet Weapon
+	// Ricochet Weapon
 	const int RICOCHET_TIER1_DAMAGE = 100;
 	const int RICOCHET_TIER2_DAMAGE = 100;
 	const int RICOCHET_TIER3_DAMAGE = 100;
@@ -65,7 +75,7 @@ namespace consts {
 	const int RICOCHET_TIER2_FIRERATE = 1.75f;
 	const int RICOCHET_TIER3_FIRERATE = 1.75f;
 
-	//Charge Weapon
+	// Charge Weapon
 	const int CHARGE_TIER1_DAMAGE = 100;
 	const int CHARGE_TIER2_DAMAGE = 100;
 	const int CHARGE_TIER3_DAMAGE = 100;
@@ -74,15 +84,17 @@ namespace consts {
 	const int CHARGE_TIER2_FIRERATE = 1;
 	const int CHARGE_TIER3_FIRERATE = 1;
 
-	//Enemy Lives
+	const float CHARGEWEAPON_HEIGHT = 15;
+
+	// Enemy Lives
 	const int ENEMY_HP_DEFAULT = 100;
 	const int ENEMY_HP_FLYING = 100;
 	const int ENEMY_HP_RANGED = 100;
 
-	//LOCALIZACIONES
+	// LOCALIZACIONES
 	const int NUM_LOCATIONS = 5;
 
-	//ESCENA DE AJUSTES
+	// ESCENA DE AJUSTES
 	const int VOLUME_LEVELS = 6;
 
 	const int BACK_BUTTON_POSITION_X = WINDOW_WIDTH / 8 - 120;
@@ -106,4 +118,7 @@ namespace consts {
 	const int BAR_TEXT_SIZE_X = 400;
 	const int BAR_TEXT_SIZE_Y = 50;
 
+	// GAMECYCLE
+	const int MAX_DAYS = 10;
+	const int RAID_TIME = 30000;
 }

@@ -6,6 +6,7 @@
 // components -- forward declaration, i.e., assume they are defined somewhere
 class Transform;
 class Image;
+class Fade;
 class KeyboardPlayerCtrl;
 class player_animation;
 class enemy_animation;
@@ -51,9 +52,11 @@ class TextWithBackground;
 class Open_station;
 class TransitionComponent;
 class CameraMovement;
+class ScrollingBackGround;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
+	Fade,\
 	KeyboardPlayerCtrl, \
 	player_animation, \
 	enemy_animation, \
@@ -95,7 +98,8 @@ class CameraMovement;
 	TextWithBackground,\
 	TransitionComponent, \
 	Open_station, \
-	CameraMovement
+	CameraMovement, \
+	ScrollingBackGround
 
 // groups
 
@@ -114,7 +118,7 @@ struct RangedEnemy_grp;
 	DefaultEnemy_grp, \
 	FlyingEnemy_grp, \
 	RangedEnemy_grp
-	
+
 
 // handlers
 struct Player_hdlr;

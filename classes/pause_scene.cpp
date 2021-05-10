@@ -22,11 +22,19 @@ void PauseScene::init() {
 	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 450), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), settings, g_, mngr_);
 	mngr_->addEntity(settingsButton);
 
-
 	auto menuButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 530), Vector2D(256, 64), &sdlutils().images().at("mainmenuButton"), menu, g_, mngr_);
 	mngr_->addEntity(menuButton);
 
 }
+void PauseScene::update() {
+	GameScene::update();
+	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
+		mngr_->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE);
+		mngr_->getGame()->currentScene = SCENES::RAID;
+		ih().clearState();
+	}
+}
+
 void PauseScene::resume(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE);
@@ -42,6 +50,6 @@ void PauseScene::settings(Manager* mng) {
 void PauseScene::menu(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(new MenuScene(mng->getGame()), SceneManager::SceneMode::SINGLE);
-	mng->getGame()->currentScene = SCENES::MAINMENU;
+	//mng->getGame()->currentScene = SCENES::MAINMENU;
 }
 

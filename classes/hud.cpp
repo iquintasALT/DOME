@@ -9,23 +9,27 @@
 #include "../components/bleedout_component.h"
 #include "../components/TextWithBackGround.h"
 #include "../components/Image.h"
+#include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
+#include "../game/Game.h"
 
 #include <iostream>
 #include <string>
 
-hud::hud(Manager* m, Transform* initialPos, Player* p) : Entity(m)
+hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entity(m)
 {
 	posCam = initialPos;
 	player = p;
 
-	time = new Countdown(10000); //Hay que pasarle el pos Cam para que se mueva
+	time = time_;//Hay que pasarle el pos Cam para que se mueva
 	timer = &sdlutils().images().at("dclock");
 	marco = &sdlutils().images().at("marco");
 	m->addEntity(this);
 	m->addRenderLayer<Interface>(this);
 
 	states = player->getPhysiognomy()->getHealthComponents();
+
+	numberOfStates = states->size();
 
 	charger = player->getCurrentWeapon()->getWeaponMovement()->getTamCharger();
 
@@ -56,10 +60,10 @@ void hud::update()
 	totalBullet = player->getCurrentWeapon()->getWeaponMovement()->getTotalBullets();
 	if (totalBullet < 0) totalBullet = 0;
 
-	int type = player->getCurrentWeapon()->typeOfWeapon();
+	int type = (int)player->getCurrentWeapon()->typeOfWeapon();
 	int tier = player->getCurrentWeapon()->tierOfWeapon();
 
-	chooseWeapon(type-1, tier-1);
+	chooseWeapon(type, tier-1);
 
 	if (!time->keepPlaying() && !frozen)
 	{
@@ -68,8 +72,7 @@ void hud::update()
 	}
 }
 
-void hud::render()
-{
+void hud::render() {
 	Vector2D mouse = Vector2D(ih().getMousePos().first, ih().getMousePos().second);
 
 	//Arriba derecha
@@ -91,7 +94,7 @@ void hud::render()
 	delete nbullets;
 	nbullets = nullptr;
 
-	//Numero pequeñito
+	//Numero pequeï¿½ito
 	nbullets = new Texture(sdlutils().renderer(), to_string(totalBullet), sdlutils().fonts().at("OrbitronRegular"),
 		build_sdlcolor(0xffffffff));
 
@@ -103,8 +106,26 @@ void hud::render()
 	//Renderizar los estados
 	if (states->size() > 0)
 	{
-		/// Empezamos desde el final de la lista, sabiendo que los desangrados estarán al final
-		/// Además, si hay algún desangrado, el primero que dibujaremos será el incompleto
+		if (states->size() != numberOfStates) {
+			numberOfStates = states->size();
+			for (int i = 0; i < tooltipTextures.size(); i++) {
+				tooltipTextures[i].t->getEntity()->setDead(true);
+			}
+			tooltipTextures.clear();
+
+			tooltipTextures.reserve(numberOfStates);
+			for (int i = 0; i < numberOfStates; i++) {
+				Entity* ent = mngr_->addEntity();
+				Transform* t = ent->addComponent<Transform>(Vector2D(), 400, 10);
+				TextWithBackground* text = ent->addComponent<TextWithBackground>(" ",
+					sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+				tooltipTextures.push_back({t, text});
+				ent->setActive(false);
+			}
+		}
+
+		/// Empezamos desde el final de la lista, sabiendo que los desangrados estarï¿½n al final
+		/// Ademï¿½s, si hay algï¿½n desangrado, el primero que dibujaremos serï¿½ el incompleto
 
 		list<PlayerHealthComponent*>::iterator i = states->end();
 		--i;
@@ -139,21 +160,22 @@ void hud::render()
 
 void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
 {
-	// Si no hay estados que dibujar, no deberíamos estar en este método
+	// Si no hay estados que dibujar, no deberiamos estar en este metodo
 	assert(states->size() > 0);
 
-	Vector2D aux = Vector2D(16 + pos * 33, 20);
-	SDL_Rect dest = build_sdlrect(aux, 33, 33);
-	int width = 32;
-	int height = 32;
-	SDL_Rect src = build_sdlrect((frameIndex % 4) * width, (frameIndex / 4) * height, width, height);
+	Vector2D aux = Vector2D(consts::STATUS_EFFECTS_SIZEX/2 + pos * consts::STATUS_EFFECTS_SIZEX, 20);
+	SDL_Rect dest = build_sdlrect(aux, consts::STATUS_EFFECTS_SIZEX, consts::STATUS_EFFECTS_SIZEY);
+	SDL_Rect src = build_sdlrect((frameIndex % 4) * 32, (frameIndex / 4) * 32, 32, 32);
 	states->front()->getTexture()->render(src, dest);
 
 	if (mouse.getX() > dest.x && mouse.getX() < dest.x + dest.w &&
 		mouse.getY() > dest.y && mouse.getY() < dest.y + dest.h) {
 		
-		tooltipTr->setPos(mouse);
-		tooltipText->changeText("Habria que cambiar la descripcion del estado con un if o algo no se");
-		tooltipText->render();
+		int n = pos;
+		tooltipTextures[n].t->setPos(mouse);
+		tooltipTextures[n].text->render();
+		//tooltipTr->setPos(mouse);
+		//tooltipText->changeText("Habria que cambiar la descripcion del estado con un if o algo no se");
+		//tooltipText->render();
 	}
 }

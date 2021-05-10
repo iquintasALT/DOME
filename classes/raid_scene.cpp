@@ -7,25 +7,42 @@
 #include "../components/transitionComponent.h";
 #include "../components/TextWithBackGround.h"
 #include "../components/loot.h"
+#include "../classes/physiognomy.h"
+#include "../classes/countdown.h"
 
 void RaidScene::init() {
 	loadMap(path_);
 
-	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+	timer = new Countdown(consts::RAID_TIME);
 
-	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player);
+	player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+	raidTimeEnded = false;
 
-	/*Entity* l = mngr_->addEntity();
+	auto weapon = player->getCurrentWeapon();
+
+	if (!weapon->isActive())
+		weapon->setActive(true);
+
+	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player, timer);
+
+	Entity* l = mngr_->addEntity();
 	l->addComponent<Transform>(Vector2D(150, 556), 100, 100);
 	l->addComponent<Image>(&sdlutils().images().at("dust"));
 	l->addComponent<Loot>("Press E to open the loot", 5, 5);
-	mngr_->addRenderLayer<Player>(l);*/
+	mngr_->addRenderLayer<Player>(l);
 
 	createTransition();
 }
 
 void RaidScene::update() {
 	GameScene::update();
+
+	if (!raidTimeEnded) {
+		if (!timer->keepPlaying()) {
+			player->getPhysiognomy()->addHypothermiaState();
+			raidTimeEnded = true;
+		}
+	}
 	
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);

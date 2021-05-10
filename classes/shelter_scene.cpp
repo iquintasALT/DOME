@@ -5,6 +5,8 @@
 #include "locations_scene.h"
 #include "../classes/pause_scene.h"
 #include "../components/open_station.h"
+#include "../classes/spaceship_station.h"
+#include "../classes/shelter_hud.h"
 
 #include <memory>
 
@@ -23,15 +25,24 @@ using std::endl;
 void ShelterScene::init() {
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
+
 	Player* player = dynamic_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+
+	auto shelterHud = new ShelterHud(mngr_, this);
+
+	auto weapon = player->getCurrentWeapon();
+
+	if (weapon->isActive())
+		weapon->setActive(false);
+
 	craftSys = new CraftingSystem(mngr_);
 
 	uselessMngr = new Manager(g_);
 
 	Vector2D auxPos = player->getComponent<Transform>()->getPos();
 
-	mechanical_Workshop = new Workshop(mngr_, uselessMngr, craftSys);
-	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO, BACKPACK_UPGRADE, ARMOUR_UPGRADE });
+	mechanical_Workshop = new Workshop(mngr_, uselessMngr, craftSys, this);
+	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO });
 	Entity* mechImg = mngr_->addEntity();
 	mechImg->addComponent<Transform>(Vector2D{ auxPos.getX() ,auxPos.getY() }, 50, 50, 0);
 	mechImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 3, 0);
@@ -39,7 +50,7 @@ void ShelterScene::init() {
 	mngr_->addRenderLayer<Background>(mechImg);
 
 
-	medical_Workshop = new Workshop(mngr_, uselessMngr, craftSys);
+	medical_Workshop = new Workshop(mngr_, uselessMngr, craftSys, this);
 	medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT});
 	Entity* medImg = mngr_->addEntity();
 	medImg->addComponent<Transform>(Vector2D{ auxPos.getX() - 100,auxPos.getY() }, 50, 50, 0);
@@ -53,6 +64,13 @@ void ShelterScene::init() {
 	sleepImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
 	sleepImg->addComponent<Open_station>(sleep_Station);
 	mngr_->addRenderLayer<Background>(sleepImg);
+
+	SpaceshipStation* spaceshipStation = new SpaceshipStation(mngr_, uselessMngr, craftSys, this);
+	Entity* spaceshipImg = mngr_->addEntity();
+	spaceshipImg->addComponent<Transform>(Vector2D{ auxPos.getX() - 300 ,auxPos.getY() }, 50, 50, 0);
+	spaceshipImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
+	spaceshipImg->addComponent<Open_station>(spaceshipStation);
+	mngr_->addRenderLayer<Background>(spaceshipImg);
 }
 
 
@@ -76,6 +94,12 @@ void ShelterScene::render()
 	/*mechanical_Workshop->render();
 	medical_Workshop->render();
 	sleep_Station->render();*/
+}
+
+void ShelterScene::useAction()
+{
+	if (actions > 0) actions--;
+	std::cout << "actions: " << actions << endl;
 }
 
 

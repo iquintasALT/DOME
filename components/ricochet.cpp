@@ -28,7 +28,6 @@ void Ricochet::createExplosion()
 {
 	auto transf = entity_->getComponent<Transform>();
 
-
 	auto explosion = entity_->getMngr()->addEntity();
 
 	entity_->getMngr()->addRenderLayer<Player>(explosion);

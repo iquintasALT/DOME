@@ -17,7 +17,7 @@ private:
 	Texture* frost;
 	Physiognomy* phys;
 	float hypothermia;
-	int time;
+	float time;
 public:
 	HypothermiaComponent() : hypothermia(0), time(0), phys(nullptr), frost(nullptr){}
 	void init() override;
