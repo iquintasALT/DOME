@@ -143,6 +143,16 @@ public:
 		return d.x_ * x_ + d.y_ * y_;
 	}
 
+	// equality
+	inline bool operator ==(const Vector2D& d) const {
+		return d.x_ == x_ && d.y_ == y_;
+	}
+
+	// inequality
+	inline bool operator !=(const Vector2D& d) const {
+		return d.x_ != x_ || d.y_ != y_;
+	}
+
 	static bool verticalCollision(const Vector2D& pVert, const Vector2D& p2, const Vector2D& v2, Vector2D& intersect) {
 		//Both vectors are vertical and the same
 		if (v2.getX() == 0.0 && p2.getX() == pVert.getX())
