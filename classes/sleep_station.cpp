@@ -1,6 +1,8 @@
 #include "sleep_station.h"
+#include "../classes/locations_scene.h"
+#include "../game/Game.h"
 
-SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_) : GameEntity(mngr_) {
+SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_) : GameEntity(realMngr_) {
 	realMngr_->addEntity(this);
 	realMngr_->addRenderLayer<Interface>(this);
 
@@ -54,6 +56,7 @@ falseMngr =mngr_;
 	Vector2D sleepButton_pos = { bg_pos.getX() + bg_tr->getW() / 2 - sleepButton_size.getX() / 2,
 		bg_pos.getY() + clock_pos.getY() + bg_tr->getH() / 3 - sleepButton_size.getY() / 2 };
 	setImg(sleepButton, sleepButton_pos, sleepButton_size, "craft_slot_box");
+	sleepButton_tr = addComponent<Transform>(sleepButton_pos, sleepButton_size.getX(), sleepButton_size.getY());
 }
 
 void SleepStation::init() {
@@ -94,6 +97,11 @@ void SleepStation::update() {
 				//rotar flecha
 				std::cout << "rotar der" << endl;
 				arrow_tr->setRot(arrow_tr->getRot() + 45);
+			}
+			else if (Collisions::collides(mousePos, 1, 1, sleepButton_tr->getPos(), sleepButton_tr->getW(),
+				sleepButton_tr->getH())) {
+				mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
+				mngr_->getGame()->numDays++;
 			}
 		}
 		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
