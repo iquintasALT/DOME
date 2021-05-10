@@ -18,6 +18,11 @@ void enemy_animation::update() {
 		currentAnimation.advanceFrame();
 		timer = 0;
 	}
+
+	if (isAttacking && sdlutils().currRealTime() - 400 > cooldown) {
+		isAttacking = false;
+		cooldown = sdlutils().currRealTime();
+	}
 }
 
 void enemy_animation::init() {
@@ -44,6 +49,7 @@ bool enemy_animation::changeAnimations() {
 			return false;
 		currentAnimation = animations[attack];
 		currentAnimation.render();
+		cooldown = sdlutils().currRealTime();
 		return true;
 	}
 
@@ -101,6 +107,11 @@ void flying_enemy_animation::update() {
 		currentAnimation.advanceFrame();
 		timer = 0;
 	}
+
+	if (isAttacking && sdlutils().currRealTime() - 400 > cooldown) {
+		isAttacking = false;
+		cooldown = sdlutils().currRealTime();
+	}
 }
 
 bool flying_enemy_animation::changeAnimations() {
@@ -115,6 +126,7 @@ bool flying_enemy_animation::changeAnimations() {
 			return false;
 		currentAnimation = animations[attack];
 		currentAnimation.render();
+		cooldown = sdlutils().currRealTime();
 		return true;
 	}
 

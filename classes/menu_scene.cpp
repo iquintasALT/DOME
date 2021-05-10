@@ -14,6 +14,8 @@
 #include <iostream>
 
 void MenuScene::init() {
+	mngr_->getGame()->currentScene = SCENES::MAINMENU;
+
 	float size = 1.2f;
 	auto a = mngr_->addEntity();
 	std::vector<Texture*> textures(5);
@@ -121,7 +123,8 @@ void ScrollingBackGround::update() {
 	}
 	else if (t > 1 - fade) {
 		f = (fade - 1 + t) / fade * 255;
-	}else if(t < fade)
+	}
+	else if (t < fade)
 		f = (fade - t) / fade * 255;
 
 	currentPos = Vector2D::Lerp(initialPos, finalPos, t);
