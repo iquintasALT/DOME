@@ -53,6 +53,7 @@ class Open_station;
 class TransitionComponent;
 class CameraMovement;
 class ScrollingBackGround;
+class ChangeImage;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -99,7 +100,8 @@ class ScrollingBackGround;
 	TransitionComponent, \
 	Open_station, \
 	CameraMovement, \
-	ScrollingBackGround
+	ScrollingBackGround, \
+	ChangeImage
 
 // groups
 
