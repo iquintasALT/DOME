@@ -1,13 +1,13 @@
 #include "animation_component.h"
 
-void animation_component::Animation::setImage(Image* img) {
+void AnimationComponent::Animation::setImage(Image* img) {
 	image = img;
 	assert(image != nullptr);
 	width = image->getSrc().w;
 	height = image->getSrc().h;
 }
 
-animation_component::Animation::Animation(int frame, int frameCount, bool loop, float animationSpeed) {
+AnimationComponent::Animation::Animation(int frame, int frameCount, bool loop, float animationSpeed) {
 	this->frameCount = frameCount;
 	frameRow = frame;
 	currentFrame = 0;
@@ -16,7 +16,7 @@ animation_component::Animation::Animation(int frame, int frameCount, bool loop, 
 	image = nullptr; width = height = 0;
 }
 
-void animation_component::Animation::advanceFrame() {
+void AnimationComponent::Animation::advanceFrame() {
 	if (++currentFrame >= frameCount) {
 		if (loop)
 			currentFrame = 0;
@@ -26,7 +26,7 @@ void animation_component::Animation::advanceFrame() {
 	render();
 }
 
-void animation_component::Animation::render() {
+void AnimationComponent::Animation::render() {
 	SDL_Rect source{ currentFrame * width, frameRow * height, width, height };
 	image->setSrc(source);
 }

@@ -156,12 +156,12 @@ void LocationsScene::initFocus() {
 
 //FADE
 
-Fade::Fade(float speed) : tr_(nullptr) {
+Fade::Fade(float speed, Texture* t) : tr_(nullptr) {
 	t = 0;
 	f = 255;
 	done = false;
 	speed_ = speed;
-	black_ = &sdlutils().images().at("black");
+	black_ = t;
 }
 
 void Fade::init() {

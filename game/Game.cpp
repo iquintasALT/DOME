@@ -87,14 +87,57 @@ void Game::initLoot() {
 // ITEMS n, int cantidad (INUTIL PARA ESTE METODO), int w , int h , int x, int y,int row, int col,string desc
 	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<I>>{ {I(WATER, 3, 1, 2, 0, 0, 4, 0, "pues eso, agua. Se bebe"), I(MEDICAL_COMPONENTS, 5, 2, 2, 1, 0, 3, 2, "componentes medicos para ponerte hasta el culo")} });
 	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<I>>{
-		{I{ SPACESHIP_KEY_ITEMS,0,2,2,0,0,4,2,"piezas clave para reconstruir la nave" }, I{ WATER,0,3,1,0,3,4,0,"agua" }, I{ WATER,0,3,1,1,3,4,0,"agua" },
-	I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials, could be useful to craft medicines or food" }, I{ CLASSIC_AMMO,0,1,1,4,1,2,1,"classic ammo" }, I{ CLASSIC_AMMO,0,1,1,3,1,2,1,"classic ammo" }, I{ CLASSIC_AMMO,0,1,1,3,2,2,1,"classic ammo" }}
-	
+		{I{ SPACESHIP_KEY_ITEMS,0,2,2,0,0,4,2,"spaceship key item" }, I{ WATER,0,1,2,0,3,4,0,"water" }, I{ WATER,0,1,2,1,3,4,0,"water" },
+			I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" }, I{ CLASSIC_AMMO,0,1,1,4,1,2,1,"classic ammo" },
+			I{ CLASSIC_AMMO,0,1,1,3,1,2,1,"classic ammo" }, I{ CLASSIC_AMMO,0,1,1,3,2,2,1,"classic ammo" }},
+
+		{ I{ UPGRADE_KIT,0,2,2,0,0,6,2,"upgrade kit" }, I{FOOD,0,1,1,2,2,2,0,"food" },  I{FOOD,0,1,1,3,1,2,0,"food" },
+			I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" }, I{ WATER,0,1,2,4,0,4,0,"water" }
+		}
 	});
-	SCENES_LOOT.emplace(SCENES::HOSPITAL, vector<vector<I>>{});
-	SCENES_LOOT.emplace(SCENES::COMMUNICATIONS, vector<vector<I>>{});
-	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<I>>{});
-	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<I>>{});
+
+
+
+	SCENES_LOOT.emplace(SCENES::HOSPITAL, vector<vector<I>>{
+		{I{ MEDICAL_COMPONENTS,0,1,2,0,0,0,1,"medical components" }, I{ MEDICAL_COMPONENTS,0,1,2,3,3,0,1,"medical components" }, I{ MEDICAL_COMPONENTS,0,1,2,4,2,0,1,"medical components" },
+			I{ ORGANIC_MATERIAL,0,2,2,2,0,1,2,"organic materials" }, I{ CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" },
+			I{ UPGRADE_KIT,0,2,2,0,3,6,2,"upgrade kit" }},
+
+		{ I{ MEDICAL_COMPONENTS,0,1,2,4,0,0,1,"medical components" }, I{ANTIDOTE,0,2,2,0,0,1,0,"antidote" },  I{FOOD,0,1,1,3,0,2,0,"food" },
+			I{ SPACESHIP_KEY_ITEMS,0,2,2,3,2,4,2,"spaceship key item" }, I{ WATER,0,1,2,1,2,4,0,"water" }
+		}
+	});
+
+
+	SCENES_LOOT.emplace(SCENES::COMMUNICATIONS, vector<vector<I>>{
+		{I{ ELECTRONIC_REMAINS,0,1,1,0,1,5,0,"electronic remains" }, I{ ELECTRONIC_REMAINS,0,1,1,0,2,5,0,"electronic remains" }, I{ ELECTRONIC_REMAINS,0,1,1,2,4,5,0,"electronic remains" },
+			I{ SPACESHIP_KEY_ITEMS,0,2,2,2,0,4,2,"spaceship key item" }, I{ CLASSIC_AMMO,0,1,1,4,0,2,1,"classic ammo" },
+			I{ BUILDING_PARTS,0,2,2,3,2,7,0,"building parts" }},
+
+		{ I{ BUILDING_PARTS,0,2,2,0,1,7,0,"building parts" }, I{BUILDING_PARTS,0,2,2,3,3,7,0,"building parts" },  I{UPGRADE_KIT,0,2,2,2,0,6,2,"upgrade kit" },
+			I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" }, I{ CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" }
+		}
+	});
+
+	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<I>>{
+		{I{ ELECTRONIC_REMAINS,0,1,1,0,0,5,0,"electronic remains" }, I{ BUILDING_PARTS,0,2,2,3,0,7,0,"building parts" }, I{ ELECTRONIC_REMAINS,0,1,1,2,0,5,0,"electronic remains" },
+			I{ SPACESHIP_KEY_ITEMS,0,2,2,0,1,4,2,"spaceship key item" }, I{ UPGRADE_KIT,0,2,2,0,3,6,2,"upgrade kit" },
+			I{ BUILDING_PARTS,0,2,2,3,3,7,0,"building parts" }},
+		
+		{ I{ MECANICAL_COMPONENTS,0,2,1,0,2,4,1,"mecanical components" }, I{CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" },  I{UPGRADE_KIT,0,2,2,3,0,6,2,"upgrade kit" },
+			I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" }, I{ SPACESHIP_KEY_ITEMS,0,2,2,3,3,4,2,"spaceship key items" }
+		}
+	});
+
+	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<I>>{
+		{I{ ELECTRONIC_REMAINS,0,1,1,0,0,5,0,"electronic remains" }, I{ BUILDING_PARTS,0,2,2,1,1,7,0,"building parts" },
+			I{ SPACESHIP_KEY_ITEMS,0,2,2,0,3,4,2,"spaceship key item" }, I{ UPGRADE_KIT,0,2,2,3,3,6,2,"upgrade kit" },
+			I{ FOOD,0,1,1,4,0,2,0,"food" }},
+
+		{ I{ WATER,0,1,2,0,0,4,0,"water" }, I{CLASSIC_AMMO,0,1,1,2,2,2,1,"classic ammo" },
+			I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" }, I{ ORGANIC_MATERIAL,0,2,2,3,3,1,2,"organic material" }
+		}
+	});
 }
 
 
