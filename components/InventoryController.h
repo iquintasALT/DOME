@@ -24,7 +24,7 @@ protected:
 	bool isOpen = false;
 	Entity* inventoryPanel = nullptr;
 	KeyboardPlayerCtrl* playerMovement = nullptr;
-	Weapon* playerWeapon = nullptr;
+	WeaponBehaviour* playerWeapon = nullptr;
 
 public :
 	InventoryController();

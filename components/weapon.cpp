@@ -37,8 +37,8 @@ Weapon::~Weapon() {}
 
 int Weapon::getChargerBullets()
 {
-	if(currentCharger != nullptr)
-	return currentCharger->count;
+	if (currentCharger != nullptr)
+		return currentCharger->count;
 	return 0;
 }
 
@@ -119,7 +119,7 @@ void Weapon::update() {
 
 		currentCharger->count--;
 
-		if (currentCharger == 0)
+		if (currentCharger->count <= 0)
 		{
 			recharge();
 		}
@@ -135,11 +135,36 @@ void Weapon::update() {
 	}
 }
 
+void Weapon::setMaxAmmo() {
+	int totalBullets = 0;
+	Item* item = nullptr;
+
+	Player* player_ = static_cast<Player*>(player);
+
+	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
+	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
+		if (ItemIsAmmo(items, currentWeapon) && item != currentCharger) {
+			item = items;
+			totalBullets += item->count;
+		}
+	}
+
+	if (item != nullptr) {
+		remainingBullets = totalBullets - item->count;
+	}
+}
+
 void Weapon::setAmmo() {
 	int totalBullets = 0;
 	Item* item = nullptr;
 
 	Player* player_ = static_cast<Player*>(player);
+
+	if (currentCharger != nullptr) {
+		player_->getComponent<InventoryController>()->inventory->removeItem(currentCharger);
+		delete currentCharger;
+		currentCharger = nullptr;
+	}
 
 	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
 	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
@@ -150,6 +175,7 @@ void Weapon::setAmmo() {
 	}
 
 	if (item != nullptr) {
+		currentCharger = item;
 		remainingBullets = totalBullets - item->count;
 	}
 }
@@ -173,7 +199,7 @@ bool Weapon::ItemIsAmmo(Item* item, WeaponType currentWeapon) {
 
 void Weapon::recharge()
 {
-	if (!recharging && remainingBullets > 0 && currentCharger->count < chargerSize)
+	if (!recharging && currentCharger->count < chargerSize)
 	{
 		recharging = true;
 		setAmmo();

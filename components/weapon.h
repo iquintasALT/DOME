@@ -30,7 +30,6 @@ protected:
 	int chargerSize;
 	int remainingBullets;
 
-	Item* currentCharger;
 
 	float rechargeTime;
 	bool recharging;
@@ -42,14 +41,15 @@ public:
 	Weapon(float fR, int dam, float dispersion = 0);
 
 	~Weapon();
+	Item* currentCharger;
 
 	virtual int getChargerBullets();
 	virtual int getChargerSize() { return chargerSize; }
 	virtual int getRemainingBullets() { return remainingBullets; }
-
 	virtual void init();
 
 	void setAmmo();
+	void setMaxAmmo();
 
 	virtual void update();
 
