@@ -107,7 +107,8 @@ void RayCast::rayCastCollideWalls(Transform* transform)
 
 bool RayCast::isGrounded(Transform* tr)
 {
+	// Cast a ray from the center bottom of the transform, pointing downwards
 	RayCast rC = RayCast(tr->getPos() + Vector2D(tr->getW() / 2, tr->getH()), Vector2D(0.0, -1.0));
 	rC.distanceToGroup<Wall_grp>(tr->getEntity()->getMngr());
-	return rC.distance_ != -1.0 && rC.distance_ < 0.2;
+	return rC.distance_ != -1.0 && rC.distance_ < 2;
 }

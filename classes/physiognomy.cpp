@@ -6,14 +6,15 @@
 #include "../components/intoxication_component.h"
 #include "../components/hypothermia_component.h"
 #include "../classes/lose_scene.h"
+#include "../game/Game.h"
 
-void Physiognomy::checkAlive() {
+void Physiognomy::checkAlive(WAYSTODIE way) {
 	if (healthComponents.size() < consts::MAX_MULTIPLE_STATES) playerAlive = true;
-	else die();
+	else die(way);
 }
 
 void Physiognomy::addBleedState() {
-	checkAlive();
+	checkAlive(WAYSTODIE::BLEED);
 	if (healthComponents.size() < consts::MAX_MULTIPLE_STATES) {
 		if (numBleedStates == 0) player->addComponent<BleedoutComponent>();
 		healthComponents.push_back(player->getComponent<BleedoutComponent>());
@@ -23,7 +24,7 @@ void Physiognomy::addBleedState() {
 }
 
 void Physiognomy::addPainState() {
-	checkAlive();
+	checkAlive(WAYSTODIE::PAIN);
 	if (!painAdded) {
 		auto c = player->addComponent<PainComponent>();
 		healthComponents.push_front(c);
@@ -33,7 +34,7 @@ void Physiognomy::addPainState() {
 }
 
 void Physiognomy::addIntoxicationState() {
-	checkAlive();
+	checkAlive(WAYSTODIE::INTOXICATION);
 	if (!intoxicationAdded) {
 		auto c = player->addComponent<IntoxicationComponent>();
 		healthComponents.push_front(c);
@@ -43,7 +44,7 @@ void Physiognomy::addIntoxicationState() {
 }
 
 void Physiognomy::addConcussionState() {
-	checkAlive();
+	checkAlive(WAYSTODIE::CONTUSION);
 	if (!concussionAdded) {
 		auto c = player->addComponent<ConcussionComponent>();
 		healthComponents.push_front(c);
@@ -117,10 +118,10 @@ void Physiognomy::removeAllStates() {
 bool Physiognomy::alive() {
 	return playerAlive;
 }
-void Physiognomy::die() {
+void Physiognomy::die(WAYSTODIE way) {
 	playerAlive = false;
 	removeAllStates();
 
-	player->getMngr()->ChangeScene(new LoseScene(player->getMngr()->getGame()), SceneManager::SceneMode::ADDITIVE);
+	player->getMngr()->ChangeScene(new LoseScene(player->getMngr()->getGame(), way), SceneManager::SceneMode::ADDITIVE);
 }
 

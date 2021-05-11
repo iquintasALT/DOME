@@ -11,7 +11,7 @@
 #include "../components/particleSystem.h"
 #include <iostream>
 
-class player_animation : public animation_component {
+class player_animation : public AnimationComponent {
 private:
 	const enum animations_name { iddle = 0, walking, crouch, walking_arms, idle_arms, crouch_arms, climbing };
 	Animation animations[7]{

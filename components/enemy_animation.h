@@ -9,7 +9,7 @@
 #include "../components/rigid_body.h"
 #include <iostream>
 
-class enemy_animation : public animation_component {
+class EnemyAnimation : public AnimationComponent {
 private:
 	const enum animations_name { idle = 0, walking, dmg, attack };
 	Animation animations[4]{
@@ -30,11 +30,11 @@ private:
 	bool isAttacking;
 	float cooldown;
 public:
-	enemy_animation();
+	EnemyAnimation();
 
 	virtual void init();
 
-	virtual ~enemy_animation();
+	virtual ~EnemyAnimation();
 
 	virtual void update();
 	
@@ -44,7 +44,7 @@ public:
 	inline void setAttack(bool attack) { isAttacking = attack; };
 };
 
-class flying_enemy_animation : public animation_component {
+class FlyingEnemyAnimation : public AnimationComponent {
 private:
 	const enum animations_name { idle = 0, attack, dmg};
 	Animation animations[3]{
@@ -65,11 +65,11 @@ private:
 	float cooldown;
 
 public:
-	flying_enemy_animation();
+	FlyingEnemyAnimation();
 
 	virtual void init();
 
-	virtual ~flying_enemy_animation();
+	virtual ~FlyingEnemyAnimation();
 
 	virtual void update();
 
