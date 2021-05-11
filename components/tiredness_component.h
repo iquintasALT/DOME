@@ -35,9 +35,7 @@ public:
 	void calculateTravelSpeed() const; //Metodo que en base al cansancio, aumente  en un cierto % el tiempo de viaje a las localizaciones (necesita el sistema de localizaciones)
 
 	void sleep(int hours); //Horas descansadas como parametro
-	void increaseTiredness(float tiredness);
-
-	void setTiredness(float tiredness);
+	void decreaseTiredness(float tiredness);
 	tirednessLevel getTirednessLevel() { return tirednessLev; }
 };
 
