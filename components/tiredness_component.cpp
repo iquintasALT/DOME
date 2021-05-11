@@ -15,6 +15,12 @@ void TirednessComponent::sleep(int hours) {
 	updateLevel();
 }
 
+void TirednessComponent::decreaseTiredness(float tiredness_) {
+	tiredness -= tiredness_;
+	if(tiredness < 0.0f) tiredness = 0.0f;
+	updateLevel();
+}
+
 void TirednessComponent::calculatePlayerSpeed() const {
 	float vel = kb->getSpeed();
 
@@ -23,11 +29,7 @@ void TirednessComponent::calculatePlayerSpeed() const {
 
 	kb->setSpeed(vel);
 }
-void TirednessComponent::increaseTiredness(float tiredness_) {
-	tiredness -= tiredness_;
-	if(tiredness < 0.0f) tiredness = 0.0f;
-	updateLevel();
-}
+
 void TirednessComponent::calculateTravelSpeed() const{
 	//Aumentar el tiempo de viaje en base al nivel de cansancio del jugador
 }
@@ -36,8 +38,6 @@ void TirednessComponent::updateLevel() {
 	if (tiredness >= consts::NONETIRED_LEVEL) tirednessLev = tirednessLevel::NONE;
 	else if (tiredness >= consts::TIRED_LEVEL) tirednessLev = tirednessLevel::TIRED;
 	else tirednessLev = tirednessLevel::EXHAUSTED;
-}
-void TirednessComponent::setTiredness(float tiredness_) {
-	tiredness = tiredness_;
+
 	calculatePlayerSpeed();
 }
