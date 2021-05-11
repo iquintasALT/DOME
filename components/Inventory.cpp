@@ -4,14 +4,16 @@
 #include "../game/Game.h"
 #include "../classes/crafting_system.h"
 #include "../sdlutils/SDLUtils.h"
-
+#include "../classes/weapon_behaviour.h"
 #include <iostream>
 
-Inventory::Inventory(int width, int height) : width(width), height(height), other(nullptr) {
+Inventory::Inventory(int width, int height, WeaponBehaviour* weapon) : width(width), height(height), other(nullptr) {
 	transform = nullptr;
 	selectedItem = nullptr;
 	selectedItem_ = nullptr;
 	justPressed = false;
+
+	playerWeapon = weapon;
 
 	originalPos = Vector2D();
 
@@ -29,6 +31,28 @@ Inventory::Inventory(int width, int height, Inventory* player) : Inventory(width
 	this->other = player;
 	originalPos = Vector2D();
 }
+
+Inventory::Inventory(int width, int height) : width(width), height(height), other(nullptr) {
+	transform = nullptr;
+	selectedItem = nullptr;
+	selectedItem_ = nullptr;
+	justPressed = false;
+
+	playerWeapon = nullptr;
+
+	originalPos = Vector2D();
+
+	grid = std::vector<std::vector<Item*>>(width, std::vector<Item*>(height, nullptr));
+
+	toolTips = nullptr;
+	toolTipsTr = nullptr;
+	toolTipsText = nullptr;
+	showToolTip = false;
+
+	dropDown = nullptr;
+	dropDownActive = false;
+}
+
 void Inventory::defaultPosition() {
 	moveInventory(originalPos);
 }
@@ -234,6 +258,12 @@ void Inventory::storeItem(Item* item) {
 			grid[i][c] = item;
 		}
 	}
+
+	if (playerWeapon != nullptr)
+		if (item == playerWeapon->getWeaponMovement()->currentCharger) {
+			playerWeapon->getWeaponMovement()->currentCharger == nullptr;
+			playerWeapon->getWeaponMovement()->setAmmo();
+		}
 }
 void Inventory::removeItem(Item* item) {
 	for (int i = item->x; i < width && i < item->x + item->width; i++) {
@@ -243,6 +273,13 @@ void Inventory::removeItem(Item* item) {
 	}
 
 	storedItems.remove(item);
+
+	return;
+	if (playerWeapon != nullptr)
+		if (item == playerWeapon->getWeaponMovement()->currentCharger) {
+			playerWeapon->getWeaponMovement()->currentCharger == nullptr;
+			playerWeapon->getWeaponMovement()->setAmmo();
+		}
 }
 
 void Inventory::moveItem(Item* item, int x, int y) {
@@ -279,7 +316,7 @@ void Inventory::adjustPanelSize() {
 void Inventory::storeDefaultItems() {
 	storeItem(new Item(ItemInfo::bottleOfWater(), entity_->getMngr(), this, 0, 0));
 	storeItem(new Item(ItemInfo::medicine(), entity_->getMngr(), this, 2, 2));
-	storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 4, 0));
+	storeItem(new Item(ItemInfo::defaultAmmo(), entity_->getMngr(), this, 4, 0, 4));
 }
 
 
@@ -305,7 +342,7 @@ InventoryStorage::~InventoryStorage() {
 	storedItems.clear();
 }
 
-void InventoryStorage::load(Inventory* inv){
+void InventoryStorage::load(Inventory* inv) {
 	for (auto a : storedItems) {
 		inv->storeItem(new Item(a, inv));
 	}

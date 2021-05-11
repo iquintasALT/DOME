@@ -13,12 +13,13 @@
 #include <functional>
 class TextWithBackground;
 class Game;
-
+class WeaponBehaviour;
 class Inventory : public Component
 {
 	friend class Item;
 	friend class InventoryStorage;
 public:
+	Inventory(int width, int height, WeaponBehaviour* playerWeapon);
 	Inventory(int width, int height);
 	Inventory(int width, int height, Inventory* player);
 	~Inventory();
@@ -50,6 +51,8 @@ private:
 	float timer = 0;
 
 	Inventory* other;
+
+	WeaponBehaviour* playerWeapon;
 
 	Vector2D itemPosition(int x, int y);
 	Vector2D itemPosition(int x, int y, Transform* transform);

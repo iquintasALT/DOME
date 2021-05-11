@@ -24,7 +24,10 @@ void InventoryController::init() {
 	inventoryPanel->addComponent<Image>(&sdlutils().images().at("storage"), 2, 2, 0, 0, true);
 	entity_->getMngr()->addRenderLayer<Interface>(inventoryPanel);
 
-	inventory = inventoryPanel->addComponent<Inventory>(width, height);
+
+	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon();
+
+	inventory = inventoryPanel->addComponent<Inventory>(width, height, playerWeapon);
 
 	Inventory::setItemDimensions(t, width, height);
 	inventory->storeDefaultItems();
@@ -32,8 +35,6 @@ void InventoryController::init() {
 
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
 
-
-	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon()->getWeaponMovement();
 
 	assert(playerMovement != nullptr);
 
@@ -50,7 +51,7 @@ void InventoryController::Use() {
 	inventoryPanel->setActive(isOpen);
 	playerMovement->enabled = !isOpen;
 	playerMovement->resetSpeed();
-	playerWeapon->enabled = !isOpen;
+	playerWeapon->getWeaponMovement()->enabled = !isOpen;
 }
 
 void InventoryController::update() {
