@@ -38,8 +38,8 @@ ItemInfo* ItemInfo::defaultAmmo()
 
 //&sdlutils().images().at("items")
 
-Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int xPos, int yPos) :
-	info(itemInformation), x(xPos), y(yPos) {
+Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int xPos, int yPos, int count) :
+	info(itemInformation), x(xPos), y(yPos), count(count) {
 
 	width = info->width();
 	height = info->height();
@@ -57,6 +57,8 @@ Item::Item(Item* item, Inventory* inventory) {
 	height = item->height;
 	x = item->x;
 	y = item->y;
+	count = item->count;
+
 	if (inventory != nullptr) {
 		Manager* mngr = inventory->entity_->getMngr();
 		image = mngr->addEntity();
