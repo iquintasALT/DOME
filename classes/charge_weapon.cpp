@@ -47,7 +47,7 @@ void ChargeWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && !recharging && !ctrl->isStairs()) {
+	if (currentCharger != nullptr && ih().getMouseButtonState(InputHandler::LEFT) && !recharging && !ctrl->isStairs()) {
 		shootTime += consts::DELTA_TIME;
 	}
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) {

@@ -42,7 +42,9 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	addComponent<CameraMovement>(.7);
 
 	weapon = new WeaponBehaviour(mngr_, t->getPos(), t);
-	addComponent<InventoryController>();
+	auto inv = addComponent<InventoryController>();
+	weapon->setInv(inv);
+
 
 	physiognomy = new Physiognomy(this);
 	addComponent<EnemyContactDamage>(physiognomy);
