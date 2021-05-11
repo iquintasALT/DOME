@@ -28,10 +28,15 @@ private:
 	int tierWeapon2 = 1; //Pasar por referencia el level de cada arma
 	int tierWeapon3 = 1;
 
+	InventoryController* inv;
 public:
 	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr);
 	Weapon* getWeaponMovement();
 
+	void setInv(InventoryController* inventory) {
+		inv = inventory;
+		weaponMovement->setAmmo();
+	}
 	void changeWeapon();
 
 	WeaponType typeOfWeapon() { return weaponType; }

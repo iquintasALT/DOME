@@ -19,6 +19,7 @@
 #include "../classes/weapon_behaviour.h"
 #include "../classes/Item.h"
 #include <iostream>
+#include "../classes/player.h"
 
 Weapon::Weapon(float fR, int dam, float dispersion) : dispersion(dispersion), fireRate(fR), flipped(false), ctrl(nullptr), shootTime(0), entityImg(nullptr), damage(dam), player(nullptr),
 playerTr(nullptr), entityTr(nullptr)
@@ -36,7 +37,9 @@ Weapon::~Weapon() {}
 
 int Weapon::getChargerBullets()
 {
+	if(currentCharger != nullptr)
 	return currentCharger->count;
+	return 0;
 }
 
 void Weapon::update() {
@@ -133,7 +136,22 @@ void Weapon::update() {
 }
 
 void Weapon::setAmmo() {
+	int totalBullets = 0;
+	Item* item = nullptr;
 
+	Player* player_ = static_cast<Player*>(player);
+
+	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
+	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
+		if (ItemIsAmmo(items, currentWeapon)) {
+			item = items;
+			totalBullets += item->count;
+		}
+	}
+
+	if (item != nullptr) {
+		remainingBullets = totalBullets - item->count;
+	}
 }
 
 bool Weapon::ItemIsAmmo(Item* item, WeaponType currentWeapon) {
@@ -158,20 +176,7 @@ void Weapon::recharge()
 	if (!recharging && remainingBullets > 0 && currentCharger->count < chargerSize)
 	{
 		recharging = true;
-
-		int totalBullets = 0;
-		Item* item = nullptr;
-		//WeaponType currentWeapon = entity_->getComponent<WeaponBehaviour>()->typeOfWeapon();
-		/*for (auto items : entity_->getComponent<InventoryController>()->inventory->getItems()) {
-			if (ItemIsAmmo(items, currentWeapon)) {
-				item = items;
-				totalBullets += item->count;
-			}
-		}*/
-
-		if (item != nullptr){
-			remainingBullets = totalBullets - item->count;
-		}
+		setAmmo();
 	}
 }
 

@@ -44,7 +44,7 @@ void RicochetWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate
+	if (currentCharger != nullptr && ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate
 		&& currentCharger->count > 0 && !recharging && !ctrl->isStairs()) {
 		shootTime = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
