@@ -29,14 +29,20 @@ Countdown::~Countdown() {
 
 void Countdown::render() {
 	std::string aux = getHourString(lefttime / 1000);
+	SDL_Color s;
 	if (lefttime <= 0)
 	{
 		aux = "0:00";
+		s = build_sdlcolor(0xff000000);
+	}
+	else
+	{
+		s = build_sdlcolor(0xffffffff);
 	}
 
 	//delete counter;
 	counter = new Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("OrbitronRegular"),
-		build_sdlcolor(0xffffffff));
+		s);
 
 	counter->render(1000, 10);
 	delete counter;
