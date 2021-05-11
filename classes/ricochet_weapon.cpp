@@ -11,8 +11,9 @@
 #include "../components/ricochet.h"
 #include "../game/constant_variables.h"
 
+#include "../classes/Item.h"
 void RicochetWeapon::update() {
-	counter++;
+	shootTime += consts::DELTA_TIME;
 
 	if (ctrl->isStairs()) entityImg->enabled = false;
 	else entityImg->enabled = true;
@@ -43,9 +44,9 @@ void RicochetWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate
-		&& actcharger > 0 && !recharging && !ctrl->isStairs()) {
-		counter = 0;
+	if (ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate
+		&& currentCharger->count > 0 && !recharging && !ctrl->isStairs()) {
+		shootTime = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 
 		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 12, 6, 0);
@@ -70,31 +71,20 @@ void RicochetWeapon::update() {
 		bullet->addComponent<Image>(tex_)->setRotationOrigin(8, 4);
 		bullet->addComponent<Ricochet>(playerTr, nbounce, ntier);
 
-		actcharger--;
-		if (actcharger == 0 && nbullets > 0)
+		currentCharger->count--;
+		if (currentCharger == 0)
 		{
-			recharging = true;
-			nbullets -= tcharger;
-			if (nbullets >= charger)
-			{
-				actcharger = charger;
-			}
-			else
-			{
-				actcharger = nbullets;
-				nbullets = 0;
-			}
-			tcharger = actcharger;
+			recharge();
 		}
 	}
 
 	if (recharging)
 	{
-		recharge += consts::DELTA_TIME;
+		rechargeTime += consts::DELTA_TIME;
 	}
-	if (recharge > 2.0) //Tiempo de recarga en segundos
+	if (rechargeTime > 2.0) //Tiempo de recarga en segundos
 	{
-		recharge = 0;
+		rechargeTime = 0;
 		recharging = false;
 	}
 }

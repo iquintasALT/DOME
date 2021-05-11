@@ -13,6 +13,8 @@
 #include "../game/constant_variables.h"
 #include "../components/rigid_body.h"
 
+#include "../classes/Item.h"
+
 ChargeWeapon::ChargeWeapon(float fR, int dam) : Weapon(fR, dam) {};
 
 void ChargeWeapon::update() {
@@ -46,12 +48,11 @@ void ChargeWeapon::update() {
 	entityTr->setRot(degreeAngle);
 
 	if (ih().getMouseButtonState(InputHandler::LEFT) && !recharging && !ctrl->isStairs()) {
-		counter++;
+		shootTime += consts::DELTA_TIME;
 	}
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) {
-		if (counter >= fireRate * consts::FRAME_RATE && actcharger > 0) {
+		if (shootTime >= fireRate && currentCharger->count > 0) {
 			Entity* bullet = entity_->getMngr()->addEntity();
-
 
 			Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 64, 64, 0);
 			bulletTr->setH(1);
@@ -95,34 +96,23 @@ void ChargeWeapon::update() {
 			bullet->addComponent<Charge>(radianAngle, raycast);
 
 			//COMPROBAR COLISIONES CON ENEMIGOS
-			actcharger--;
-			if (actcharger == 0 && nbullets > 0)
+			currentCharger->count--;
+			if (currentCharger->count == 0)
 			{
-				recharging = true;
-				nbullets -= tcharger;
-				if (nbullets >= charger)
-				{
-					actcharger = charger;
-				}
-				else
-				{
-					actcharger = nbullets;
-					nbullets = 0;
-				}
-				tcharger = actcharger;
+				recharge();
 			}
 			delete raycast;
 		}
-		counter = 0;
+		shootTime = 0;
 	}
 
 	if (recharging)
 	{
-		recharge += consts::DELTA_TIME;
+		rechargeTime += consts::DELTA_TIME;
 	}
-	if (recharge > 2.0) //Tiempo de recarga en segundos
+	if (rechargeTime > 2.0) //Tiempo de recarga en segundos
 	{
-		recharge = 0;
+		rechargeTime = 0;
 		recharging = false;
 	}
 }

@@ -14,22 +14,33 @@
 #include "../game/constant_variables.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../components/rigid_body.h"
+#include "../components/Inventory.h"
+#include "../components/InventoryController.h"
+#include "../classes/weapon_behaviour.h"
+#include "../classes/Item.h"
 #include <iostream>
 
-Weapon::Weapon(float fR, int dam, float dispersion) : dispersion(dispersion), fireRate(fR), flipped(false), ctrl(nullptr), counter(0), entityImg(nullptr), damage(dam), player(nullptr),
+Weapon::Weapon(float fR, int dam, float dispersion) : dispersion(dispersion), fireRate(fR), flipped(false), ctrl(nullptr), shootTime(0), entityImg(nullptr), damage(dam), player(nullptr),
 playerTr(nullptr), entityTr(nullptr)
 {
-	charger = 30; //Pasar por referencia cuando este
-	actcharger = 30;
-	nbullets = 50;
-	tcharger = actcharger;
-	recharge = 0;
+	remainingBullets = 0;
+	currentCharger = nullptr;
+	chargerSize = 30;
+
+	shootTime = 0;
+	rechargeTime = 0;
 	recharging = false;
+	playerRb = nullptr;
 }
 Weapon::~Weapon() {}
 
+int Weapon::getChargerBullets()
+{
+	return currentCharger->count;
+}
+
 void Weapon::update() {
-	counter++;
+	shootTime += consts::DELTA_TIME;
 
 	if (ctrl->isStairs()) entityImg->enabled = false;
 	else entityImg->enabled = true;
@@ -61,9 +72,10 @@ void Weapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && counter >= consts::FRAME_RATE / fireRate
-		&& actcharger > 0 && !recharging && !ctrl->isStairs()) {
-		counter = 0;
+	if (ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate &&
+		currentCharger != nullptr && currentCharger->count > 0 && !recharging && !ctrl->isStairs()) {
+
+		shootTime = 0;
 
 		float maxDispersion = dispersion; //Add here the dispersions
 		if (!playerRb->onFloor()) {
@@ -101,51 +113,65 @@ void Weapon::update() {
 		entity_->getMngr()->addRenderLayer<Bullets>(bullet);
 		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
 		bullet->addComponent<ClassicBullet>();
-		actcharger--;
-		if (actcharger == 0 && nbullets > 0)
+
+		currentCharger->count--;
+
+		if (currentCharger == 0)
 		{
-			recharging = true;
-			nbullets -= tcharger;
-			if (nbullets >= charger)
-			{
-				actcharger = charger;
-			}
-			else
-			{
-				actcharger = nbullets;
-				nbullets = 0;
-			}
-			tcharger = actcharger;
+			recharge();
 		}
 	}
 	if (recharging)
 	{
-		recharge += consts::DELTA_TIME;
+		rechargeTime += consts::DELTA_TIME;
 	}
-	if (recharge > 2.0) //Tiempo de recarga en segundos
+	if (rechargeTime > 2.0) //Tiempo de recarga en segundos
 	{
-		recharge = 0;
+		rechargeTime = 0;
 		recharging = false;
 	}
 }
 
-void Weapon::recharger()
+void Weapon::setAmmo() {
+
+}
+
+bool Weapon::ItemIsAmmo(Item* item, WeaponType currentWeapon) {
+	ITEMS itemType = item->getItemInfo()->name();
+	switch (currentWeapon) {
+	case WeaponType::CLASSIC:
+		return itemType == ITEMS::CLASSIC_AMMO;
+	case WeaponType::LASER:
+		return itemType == ITEMS::LASER_AMMO;
+	case WeaponType::RICOCHET:
+		return itemType == ITEMS::RICOCHET_AMMO;
+		break;
+	default:
+		return false;
+		break;
+	}
+}
+
+
+void Weapon::recharge()
 {
-	std::cout << nbullets << " ";
-	if (nbullets > 0 && actcharger < charger && !recharging)
+	if (!recharging && remainingBullets > 0 && currentCharger->count < chargerSize)
 	{
 		recharging = true;
-		nbullets -= tcharger - actcharger;
-		if (nbullets >= charger - actcharger)
-		{
-			actcharger = charger;
+
+		int totalBullets = 0;
+		Item* item = nullptr;
+		//WeaponType currentWeapon = entity_->getComponent<WeaponBehaviour>()->typeOfWeapon();
+		/*for (auto items : entity_->getComponent<InventoryController>()->inventory->getItems()) {
+			if (ItemIsAmmo(items, currentWeapon)) {
+				item = items;
+				totalBullets += item->count;
+			}
+		}*/
+
+		if (item != nullptr){
+			remainingBullets = totalBullets - item->count;
 		}
-		else
-		{
-			actcharger += nbullets;
-			nbullets = 0;
-		}
-		tcharger = actcharger;
 	}
 }
 

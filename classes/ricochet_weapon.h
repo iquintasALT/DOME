@@ -11,9 +11,7 @@ public:
 	inline RicochetWeapon(float fR, int dam, Transform* player, int bounce, int tier) : Weapon(fR, dam), playerTr(player), ntier(tier), nbounce(bounce) {};
 	virtual void update();
 
-	virtual int getChargerBullets() { return actcharger; }
-	virtual int getTamCharger() { return charger; }
-	virtual int getTotalBullets() { return nbullets - tcharger; }
+	
 	virtual void upgradeTier(int tier);
 
 private:
