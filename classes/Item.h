@@ -46,7 +46,7 @@ class Item
 {
 	friend class Inventory;
 public:
-	Item(ItemInfo* info, Manager* mnger, Inventory* inventory, int xPos = 0, int yPos = 0);
+	Item(ItemInfo* info, Manager* mnger, Inventory* inventory, int xPos = 0, int yPos = 0, int count = 0);
 	Item(Item* item,  Inventory* inventory);
 	~Item();
 	void render();
@@ -55,7 +55,8 @@ public:
 	int getX() { return x; }
 	int getY() { return y; }
 	ItemInfo* getItemInfo();
-
+	
+	int count;
 private:
 	ItemInfo* info;
 	int x, y;
