@@ -58,7 +58,7 @@ void ShelterScene::init() {
  	medImg->addComponent<Open_station>(medical_Workshop);
 	mngr_->addRenderLayer<Background>(medImg);
 
-	sleep_Station = new SleepStation(mngr_, uselessMngr);
+	sleep_Station = new SleepStation(mngr_, uselessMngr, this);
 	Entity* sleepImg = mngr_->addEntity();
 	sleepImg->addComponent<Transform>(Vector2D{ auxPos.getX() - 200 ,auxPos.getY() }, 50, 50, 0);
 	sleepImg->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);

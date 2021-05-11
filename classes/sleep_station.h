@@ -11,20 +11,25 @@
 #include "../utils/checkML.h"
 #include "../components/Inventory.h"
 #include <vector>
+class ShelterScene;
 class SleepStation : public GameEntity
 {
-	Entity* bg, * bButton, * leftButton, * rightButton, * clock, * arrow, * sleepButton;
-	Transform* bg_tr, * bButton_tr, * rightButton_tr, * leftButton_tr, * clock_tr, * arrow_tr, * sleepButton_tr;
+private:
+	Entity* bg, * bButton, * leftButton, * rightButton, * clock, * arrow, * sleep0, * sleep1, * sleep2;
+	Transform* bg_tr, * bButton_tr, * rightButton_tr, * leftButton_tr, * clock_tr, * arrow_tr, * sleep2_tr, * sleep1_tr, * sleep0_tr;
 
 	Transform* playerTr;
-
-Manager* falseMngr;
+	ShelterScene* shelterScene;
+	Texture* text;
+	SDL_Rect dest_text;
+	Manager* falseMngr;
 
 	bool renderFlag;
 	bool mouseClick;
 
 public:
-	SleepStation(Manager* realMngr_, Manager* mngr_);
+	SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* shelterScene_);
+	~SleepStation() { delete text; }
 	virtual void init();
 
 	void setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name);

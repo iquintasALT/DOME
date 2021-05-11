@@ -1,26 +1,29 @@
 #include "sleep_station.h"
 #include "../classes/locations_scene.h"
 #include "../game/Game.h"
+#include "../classes/physiognomy.h"
+#include "../classes/player.h"
+#include "../components/tiredness_component.h"
+#include "../classes/shelter_scene.h"
 
-SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_) : GameEntity(realMngr_) {
+SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* shelterScene_) : GameEntity(realMngr_) {
 	realMngr_->addEntity(this);
 	realMngr_->addRenderLayer<Interface>(this);
 
 	renderFlag = false;
 	mouseClick = false;
 
+	shelterScene = shelterScene_;
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
 
-falseMngr =mngr_;
+	falseMngr = mngr_;
 
 	//INICIALIZACION IMAGENES DEL FONDO, FLECHAS Y X PARA SALIR
 	bg = mngr_->addEntity();
 	bButton = mngr_->addEntity();
-	leftButton = mngr_->addEntity();
-	rightButton = mngr_->addEntity();
-	clock = mngr_->addEntity();
-	arrow = mngr_->addEntity();
-	sleepButton = mngr_->addEntity();
+	sleep0 = mngr_->addEntity();
+	sleep1 = mngr_->addEntity();
+	sleep2 = mngr_->addEntity();
 
 	Vector2D bg_size = { 930, 630 };
 	Vector2D bg_pos = Vector2D(sdlutils().width() / 2 - bg_size.getX() / 2, sdlutils().height() / 2 - bg_size.getY() / 2);
@@ -33,30 +36,26 @@ falseMngr =mngr_;
 	bg_tr = bg->getComponent<Transform>();
 	bButton_tr = bButton->getComponent<Transform>();
 
-	Vector2D arrows_size = { 170,70 };
-	Vector2D arrowLeft_pos = { bg_pos.getX() + bg_tr->getW() / 2 - bg_tr->getW() / 4 - arrows_size.getX() / 2,bg_pos.getY() + bg_size.getY() / 2 };
-	Vector2D arrowRight_pos = { bg_pos.getX() + bg_tr->getW() / 2 + bg_tr->getW() / 4 - arrows_size.getX() / 2,bg_pos.getY() + bg_size.getY() / 2 };
-
-	setImg(leftButton, arrowLeft_pos, arrows_size, "craft_arrow");
-	setImg(rightButton, arrowRight_pos, arrows_size, "craft_arrow");
-	leftButton_tr = leftButton->getComponent<Transform>();
-	leftButton_tr->setRot(90.0);
-	rightButton_tr = rightButton->getComponent<Transform>();
-	rightButton_tr->setRot(90.0);
-	leftButton->getComponent<Image>()->setFlip(SDL_FLIP_HORIZONTAL);
-
-	Vector2D clock_size = { 200, 200 };
-	Vector2D clock_pos = { bg_pos.getX() + bg_tr->getW() / 2 - clock_size.getX() / 2, bg_pos.getY() + bg_tr->getH() / 2 - clock_size.getY() / 2 };
-	clock->addComponent<Transform>(clock_pos, clock_size.getX(), clock_size.getY(), 0);
-	clock->addComponent<Image>(&sdlutils().images().at("clock"), 1, 2, 0, 0, true);
-	arrow_tr = arrow->addComponent <Transform>(clock_pos, clock_size.getX(), clock_size.getY(), 0);
-	arrow->addComponent<Image>(&sdlutils().images().at("clock"), 1, 2, 0, 1, true);
+	text = new Texture(sdlutils().renderer(), "DESCANSO", sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
+	dest_text = { (int) (bg_pos.getX() + bg_tr->getW() / 2 - text->width()/2),
+		(int) (bg_pos.getY() + bg_tr->getH() * (0.5f / 4.0f) - text->height() / 2),
+		text->width(),text->height() };
 
 	Vector2D sleepButton_size = { 265,105 };
-	Vector2D sleepButton_pos = { bg_pos.getX() + bg_tr->getW() / 2 - sleepButton_size.getX() / 2,
-		bg_pos.getY() + clock_pos.getY() + bg_tr->getH() / 3 - sleepButton_size.getY() / 2 };
-	setImg(sleepButton, sleepButton_pos, sleepButton_size, "craft_slot_box");
-	sleepButton_tr = addComponent<Transform>(sleepButton_pos, sleepButton_size.getX(), sleepButton_size.getY());
+	Vector2D sleep_pos = { bg_pos.getX() + bg_tr->getW() / 2 - sleepButton_size.getX() / 2,
+		bg_pos.getY() + bg_tr->getH() * (1.5f / 4.0f) - sleepButton_size.getY() / 2 };
+	setImg(sleep0, sleep_pos, sleepButton_size, "0_hour_sleep");
+	sleep0_tr = sleep0->getComponent<Transform>();
+
+	Vector2D sleep_pos1 = { bg_pos.getX() + bg_tr->getW() / 2 - sleepButton_size.getX() / 2,
+		bg_pos.getY() + bg_tr->getH() * (2.5f / 4.0f) - sleepButton_size.getY() / 2 };
+	setImg(sleep1, sleep_pos1, sleepButton_size, "1_hour_sleep");
+	sleep1_tr = sleep1->getComponent<Transform>();
+
+	Vector2D sleep_pos2 = { bg_pos.getX() + bg_tr->getW() / 2 - sleepButton_size.getX() / 2,
+		bg_pos.getY() + bg_tr->getH() * (3.5f / 4.0f) - sleepButton_size.getY() / 2 };
+	setImg(sleep2, sleep_pos2, sleepButton_size, "2_hour_sleep");
+	sleep2_tr = sleep2->getComponent<Transform>();
 }
 
 void SleepStation::init() {
@@ -86,39 +85,49 @@ void SleepStation::update() {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
 			}
-			else if (Collisions::collides(mousePos, 1, 1, leftButton_tr->getPos(), leftButton_tr->getW(),
-				leftButton_tr->getH())) {
-				//rotar flecha
-				std::cout << "rotar izq" << endl;
-				arrow_tr->setRot(arrow_tr->getRot() - 45);
-			}
-			else if (Collisions::collides(mousePos, 1, 1, rightButton_tr->getPos(), rightButton_tr->getW(),
-				rightButton_tr->getH())) {
-				//rotar flecha
-				std::cout << "rotar der" << endl;
-				arrow_tr->setRot(arrow_tr->getRot() + 45);
-			}
-			else if (Collisions::collides(mousePos, 1, 1, sleepButton_tr->getPos(), sleepButton_tr->getW(),
-				sleepButton_tr->getH())) {
+			else if (Collisions::collides(mousePos, 1, 1, sleep0_tr->getPos(), sleep0_tr->getW(), sleep0_tr->getH())) {
+				renderFlag = false;
+				playerTr->getEntity()->setActive(true);
+				mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(0);
 				mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
 				mngr_->getGame()->numDays++;
 			}
+			else if (Collisions::collides(mousePos, 1, 1, sleep2_tr->getPos(), sleep2_tr->getW(), sleep2_tr->getH())) {
+				renderFlag = false;
+				playerTr->getEntity()->setActive(true);
+				if (shelterScene->getActions() >= 2) {
+					mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(8);
+					mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
+					mngr_->getGame()->numDays++;
+					shelterScene->useAction();
+					shelterScene->useAction();
+				}
+			}
+			else if (Collisions::collides(mousePos, 1, 1, sleep1_tr->getPos(), sleep1_tr->getW(), sleep1_tr->getH())) {
+				renderFlag = false;
+				playerTr->getEntity()->setActive(true);
+				if (shelterScene->getActions() >= 1) {
+					mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(3);
+					mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
+					mngr_->getGame()->numDays++;
+					shelterScene->useAction();
+				}
+			}
 		}
-		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
 	}
+	else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
 }
 
 void SleepStation::render() {
-		falseMngr->refresh();
+	falseMngr->refresh();
 	if (renderFlag) {
 		bg->render();
 		bButton->render();
 
-		leftButton->render();
-		rightButton->render();
-		clock->render();
-		arrow->render();
-		sleepButton->render();
+		text->render(dest_text, 0);
+		sleep0->render();
+		sleep1->render();
+		sleep2->render();
 	}
 }
 
