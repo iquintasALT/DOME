@@ -24,6 +24,8 @@
 Weapon::Weapon(float fR, int dam, float dispersion) : dispersion(dispersion), fireRate(fR), flipped(false), ctrl(nullptr), shootTime(0), entityImg(nullptr), damage(dam), player(nullptr),
 playerTr(nullptr), entityTr(nullptr)
 {
+	notCrouchedDispersion = dispersion;
+
 	remainingBullets = 0;
 	currentCharger = 0;
 	chargerSize = 30;
@@ -41,6 +43,17 @@ int Weapon::getChargerBullets()
 }
 
 void Weapon::update() {
+
+	if (player->getComponent<KeyboardPlayerCtrl>() != nullptr && player->getComponent<KeyboardPlayerCtrl>()->isCrouching()) {
+		dispersion = notCrouchedDispersion;
+		if (notCrouchedDispersion - 20 >= 0)
+			dispersion = notCrouchedDispersion - 20;
+		else dispersion = 0;
+	}
+	else {
+		dispersion = notCrouchedDispersion;
+	}
+
 	shootTime += consts::DELTA_TIME;
 
 	if (ctrl->isStairs()) entityImg->enabled = false;
