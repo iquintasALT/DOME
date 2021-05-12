@@ -22,6 +22,12 @@ void KeyboardPlayerCtrl::init() {
 	rb_ = entity_->getComponent<RigidBody>();
 	tr_ = entity_->getComponent<Transform>();
 	assert(rb_ != nullptr && tr_ != nullptr);
+
+	auto ent = entity_->getMngr()->addEntity();
+	darkArea = ent->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH * 2, consts::WINDOW_HEIGHT * 2);
+	auto a = ent->addComponent<Image>(&sdlutils().images().at("dark"));
+	a->setAlpha(240);
+	entity_->getMngr()->addRenderLayer<Dark>(ent);
 }
 
 void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
@@ -41,6 +47,9 @@ void KeyboardPlayerCtrl::OnTrigger(Entity* bc) {
 
 void KeyboardPlayerCtrl::update() {
 	rb_->setGravity(consts::GRAVITY);
+
+	darkArea->setPos(tr_->getPos() - Vector2D(consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
+
 	if (!inStair) {
 		if (!crouched) {
 			if (keystates[SDL_SCANCODE_D]) {
