@@ -17,7 +17,10 @@ private:
 	Transform* tr_;
 	
 	float speed;
+	float maxSpeed;
 	float jumpSpeed;
+	float acceleration;
+	float deceleration;
 	float stairsSpeed;
 	bool left, right, crouched, up, down, inStairTrigger, inStair, xClicked, spaceDown;
 	Vector2D stairPosition, stairSize;
