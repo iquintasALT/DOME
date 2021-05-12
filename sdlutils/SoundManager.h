@@ -22,10 +22,11 @@ public:
 	using sdl_resource_table = std::map<std::string, T>;
 
 	virtual ~SoundManager() {
+		stopCurrentMusic();
 		musics_.clear();
 		sfx_.clear();
 
-		TTF_Quit(); // quit SDL_ttf
+		Mix_Quit(); // quit SDL_mixer
 	}
 
 	void initMixer() {
@@ -63,8 +64,10 @@ public:
 
 	//ESTO LO PARA Y LO QUITA
 	void stopCurrentMusic() { 
-		if (currentMusic != nullptr)
+		if (currentMusic != nullptr) {
 			currentMusic->haltMusic();
+			currentMusic = nullptr;
+		}
 	}
 
 	//ESTO LO PAUSA Y SE PUEDE REANUDAR

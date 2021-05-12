@@ -13,7 +13,7 @@ class MenuScene : public GameScene
 private:
 	bool firstTime = true;
 public:
-	MenuScene(Game* game, bool firstTime = true) :GameScene(game, "Menu"), firstTime(firstTime){};
+	MenuScene(Game* game, bool firstTime = true) : GameScene(game, "Menu"), firstTime(firstTime) {};
 	void init() override;
 	static void playGame(Manager* mngr);
 	static void settings(Manager* mngr);

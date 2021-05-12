@@ -377,8 +377,8 @@
 
     "musics": [
         {
-            "id": "imperial",
-            "file": "resources/sound/imperial_march.wav"
+            "id": "menu_theme",
+            "file": "resources/music/space_ambience.mp3"
         }
     ],
 
