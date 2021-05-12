@@ -75,8 +75,6 @@ public:
 		renders_[renderObj->renderGroup].emplace_back(renderObj);
 	}
 
-	void removeRenderFromLayer(Entity* ent);
-
 	void update();
 	void render();
 	void refresh();

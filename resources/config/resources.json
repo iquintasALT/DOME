@@ -327,7 +327,19 @@
         {
             "id": "status_effects",
             "file": "resources/sprites/status_effects.png"
-        }
+        },
+		{
+			"id": "2_hour_sleep",
+			"file": "resources/sprites/craft_ui/2_hour_sleep.png"
+		},
+		{
+			"id": "1_hour_sleep",
+			"file": "resources/sprites/craft_ui/1_hour_sleep.png"
+		},
+		{
+			"id": "0_hour_sleep",
+			"file": "resources/sprites/craft_ui/0_hour_sleep.png"
+		}
     ],
 
     "messages": [
@@ -365,8 +377,8 @@
 
     "musics": [
         {
-            "id": "imperial",
-            "file": "resources/sound/imperial_march.wav"
+            "id": "menu_theme",
+            "file": "resources/music/space_ambience.mp3"
         }
     ],
 

@@ -66,6 +66,8 @@ void MenuScene::init() {
 	}
 	// hacemos que comienze en 1 (ciclo --> numDays <= MAX_DAYS)
 	getGame()->numDays++;
+
+	soundManager().playMusic("menu_theme");
 }
 
 void MenuScene::playGame(Manager* mngr) {
