@@ -47,8 +47,8 @@ void RicochetWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (currentCharger != nullptr && ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate
-		&& currentCharger->count > 0 && !recharging && !ctrl->isStairs()) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate
+		&& currentCharger > 0 && !recharging && !ctrl->isStairs()) {
 		shootTime = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 
@@ -74,8 +74,8 @@ void RicochetWeapon::update() {
 		bullet->addComponent<Image>(tex_)->setRotationOrigin(8, 4);
 		bullet->addComponent<Ricochet>(playerTr, nbounce, ntier);
 
-		currentCharger->count--;
-		if (currentCharger == 0)
+		currentCharger--;
+		if (currentCharger <= 0)
 		{
 			recharge();
 		}

@@ -36,12 +36,13 @@ protected:
 
 	float dispersion;
 
-	bool ItemIsAmmo(Item* item, WeaponType weaponType);
 public:
 	Weapon(float fR, int dam, float dispersion = 0);
 
 	~Weapon();
-	Item* currentCharger;
+	bool ItemIsAmmo(Item* item, WeaponType weaponType);
+
+	int currentCharger;
 
 	virtual int getChargerBullets();
 	virtual int getChargerSize() { return chargerSize; }

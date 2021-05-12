@@ -13,7 +13,9 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 
 	addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
 	weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 20);
+	weapon->currentCharger = 4;
 	weaponType = WeaponType::CLASSIC;
+
 }
 
 Weapon* WeaponBehaviour::getWeapon() {
@@ -26,27 +28,49 @@ void WeaponBehaviour::changeWeapon()
 
 	if (weaponType == WeaponType::CLASSIC)
 	{
+		weaponBullets[0] = getComponent<Weapon>()->getChargerBullets();
 		this->removeComponent<Weapon>();
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 0);
 		weapon = addComponent<ChargeWeapon>(consts::CHARGE_TIER1_FIRERATE, consts::CHARGE_TIER1_DAMAGE);
 		if (tierWeapon2 != 1) weapon->upgradeTier(tierWeapon2);
 		weaponType = WeaponType::LASER;
+
+		auto weapon = getComponent<ChargeWeapon>();
+		weapon->currentCharger = weaponBullets[1];
+
+		if (weaponBullets <= 0)
+			weapon->setAmmo();
 	}
 	else if (weaponType == WeaponType::LASER)
 	{
+		weaponBullets[1] = getComponent<ChargeWeapon>()->getChargerBullets();
 		this->removeComponent<ChargeWeapon>();
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 0);
 		weapon = addComponent<RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, pl, 3, 1);
 		if (tierWeapon3 != 1) weapon->upgradeTier(tierWeapon3);
 		weaponType = WeaponType::RICOCHET;
+
+		auto weapon = getComponent<RicochetWeapon>();
+		weapon->currentCharger = weaponBullets[2];
+
+		if (weaponBullets <= 0)
+			weapon->setAmmo();
 	}
 	else
 	{
+		weaponBullets[2] = getComponent<RicochetWeapon>()->getChargerBullets();
 		this->removeComponent<RicochetWeapon>();
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
 		weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
 		if (tierWeapon1 != 1) weapon->upgradeTier(tierWeapon1);
 		weaponType = WeaponType::CLASSIC;
+
+
+		auto weapon = getComponent<Weapon>();
+		weapon->currentCharger = weaponBullets[0];
+
+		if (weaponBullets <= 0)
+			weapon->setAmmo();
 	}
 }
 
