@@ -7,6 +7,7 @@
 #include "../components/TransitionComponent.h"
 #include "../game/Game.h"
 
+
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
 
