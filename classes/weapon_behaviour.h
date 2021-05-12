@@ -29,14 +29,18 @@ private:
 	int tierWeapon3 = 1;
 
 	InventoryController* inv;
+
+	int weaponBullets[3] = {0, 0, 0};
+
 public:
 	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr);
 	Weapon* getWeapon();
 
 	void setInv(InventoryController* inventory) {
 		inv = inventory;
-		weapon->setAmmo();
+		//weapon->setAmmo();
 	}
+
 	void changeWeapon();
 
 	WeaponType typeOfWeapon() { return weaponType; }

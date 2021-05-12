@@ -47,11 +47,11 @@ void ChargeWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (currentCharger != nullptr && ih().getMouseButtonState(InputHandler::LEFT) && !recharging && !ctrl->isStairs()) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && !recharging && !ctrl->isStairs()) {
 		shootTime += consts::DELTA_TIME;
 	}
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) {
-		if (shootTime >= fireRate && currentCharger->count > 0) {
+		if (shootTime >= fireRate && currentCharger > 0) {
 			Entity* bullet = entity_->getMngr()->addEntity();
 
 			Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 64, 64, 0);
@@ -96,8 +96,8 @@ void ChargeWeapon::update() {
 			bullet->addComponent<Charge>(radianAngle, raycast);
 
 			//COMPROBAR COLISIONES CON ENEMIGOS
-			currentCharger->count--;
-			if (currentCharger->count == 0)
+			currentCharger--;
+			if (currentCharger <= 0)
 			{
 				recharge();
 			}
