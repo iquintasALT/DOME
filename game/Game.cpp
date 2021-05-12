@@ -38,7 +38,7 @@ Game::~Game() {
 
 void Game::init() {
 
-	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "resources/config/resources.json");
+	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "./resources/config/resources.json");
 	sdlutils().showCursor();
 
 	initLoot();

@@ -12,7 +12,7 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 	addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), 38, 24, 0);
 
 	addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
-	weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 20);
+	weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 0);
 	weapon->currentCharger = 4;
 	weaponType = WeaponType::CLASSIC;
 
@@ -106,4 +106,9 @@ void WeaponBehaviour::upgradeTier() {
 		weapon->upgradeTier(tierWeapon3);
 		break;
 	}
+}
+
+void WeaponBehaviour::addDispersion(int i) {
+	dispersion += i;
+	weapon->setDispersion(dispersion);
 }

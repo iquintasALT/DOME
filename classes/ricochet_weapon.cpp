@@ -13,6 +13,17 @@
 
 #include "../classes/Item.h"
 void RicochetWeapon::update() {
+
+	if (player->getComponent<KeyboardPlayerCtrl>() != nullptr && player->getComponent<KeyboardPlayerCtrl>()->isCrouching()) {
+		dispersion = notCrouchedDispersion;
+		if (notCrouchedDispersion - 20 >= 0)
+			dispersion = notCrouchedDispersion - 20;
+		else dispersion = 0;
+	}
+	else {
+		dispersion = notCrouchedDispersion;
+	}
+
 	shootTime += consts::DELTA_TIME;
 
 	if (ctrl->isStairs()) entityImg->enabled = false;
