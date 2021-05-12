@@ -17,7 +17,7 @@ private:
 	Texture* back;
 	Texture* advice;
 public:
-	LoseScene(Game* game, WAYSTODIE opcion = WAYSTODIE::NONE);
+	LoseScene(Game* game, WAYSTODIE opcion = WAYSTODIE::NONE, bool state = false); //Por determinado es derrota
 	void init() override {};
 	static void backToMenu(Manager* mngr);
 	void render();

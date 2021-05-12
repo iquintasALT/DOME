@@ -1,7 +1,7 @@
 #include "Entity.h"
 #include "Manager.h"
 
-void Entity::removeEntityRender(Entity* ent, Manager* mngr_) {
+void Entity::removeEntityRender() {
 
-	mngr_->removeRender(ent);
+	mngr_->removeRenderFromLayer(this);
 }

@@ -71,15 +71,11 @@ public:
 			throw std::exception("Se ha intentado renderizar dos veces la misma entidad");
 		}
 		renderObj->isRendering = true;
-		int group = ecs::rndIdx<T>;
-		renders_[group].emplace_back(renderObj);
-
-		addRenderNumbers(renderObj, group);
+		renderObj->renderGroup = ecs::rndIdx<T>;
+		renders_[renderObj->renderGroup].emplace_back(renderObj);
 	}
 
-	void addRenderNumbers(Entity* renderObj, int group);
-
-	void removeRender(Entity* ent);
+	void removeRenderFromLayer(Entity* ent);
 
 	void update();
 	void render();
@@ -99,6 +95,7 @@ public:
 	void ChangeScene(GameScene* scene, SceneManager::SceneMode mode);
 
 	inline Game* getGame() { return game; }
+
 private:
 	bool changeScene = false;
 	std::vector<Entity*> entities_;
@@ -106,7 +103,7 @@ private:
 
 	std::vector<InteractableElement*> interactableElements;
 	std::list<BoxCollider*> colliders;
-	std::array<std::vector<Entity*>, ecs::maxRender> renders_;
+	std::array<std::list<Entity*>, ecs::maxRender> renders_;
 
 	SceneManager sceneManager;
 	Game* game;

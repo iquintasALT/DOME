@@ -20,24 +20,20 @@ public:
 	Entity() {};
 
 	Entity(Manager* mngr) :
-		dead(false), //
+		dead(false), 
 		active(true),
-		mngr_(mngr), //
-		cmpArray_(), //
-		groups_(),
-		renderGroup(0),
-		renderIndex(0)
-	{
-		//mngr->addRenderLayer<Default>(this);
-	}
+		mngr_(mngr), 
+		cmpArray_(), 
+		groups_(-1)
+	{}
 
 	virtual ~Entity() {
 		for (auto c : components_) {
 			delete c;
 		}
-
 		components_.clear();
-		removeEntityRender(this, mngr_);
+
+		removeEntityRender();
 	}
 
 
@@ -193,21 +189,18 @@ public:
 			components_[i]->OnTrigger(collider);
 		}
 	};
+
 protected:
 	Manager* mngr_;
+
 private:
 	int renderGroup;
-	int renderIndex;
-	bool active = true;
-	bool dead;
-	bool isRendering = false;
+
+	bool active = true, dead, isRendering = false;
+
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;
 	std::bitset<ecs::maxGroup> groups_;
 
-
-	void removeEntityRender(Entity* e, Manager* m);
+	void removeEntityRender();
 };
-
-
-

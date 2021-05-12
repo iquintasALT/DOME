@@ -36,6 +36,8 @@ void InventoryController::init() {
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
 
 
+	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon();
+
 	assert(playerMovement != nullptr);
 
 	Use();
@@ -51,7 +53,7 @@ void InventoryController::Use() {
 	inventoryPanel->setActive(isOpen);
 	playerMovement->enabled = !isOpen;
 	playerMovement->resetSpeed();
-	playerWeapon->getWeaponMovement()->enabled = !isOpen;
+	playerWeapon->getWeapon()->enabled = !isOpen;
 }
 
 void InventoryController::update() {
@@ -76,4 +78,3 @@ void InventoryController::OpenLoot(bool state) {
 	if (isOpen != state)
 		Use();
 }
-

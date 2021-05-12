@@ -20,7 +20,7 @@ enum class WeaponType { CLASSIC, LASER, RICOCHET };
 
 class WeaponBehaviour : public GameEntity {
 private:
-	Weapon* weaponMovement;
+	Weapon* weapon;
 	Transform* pl;
 	WeaponType weaponType;
 
@@ -31,7 +31,7 @@ private:
 	InventoryController* inv;
 public:
 	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr);
-	Weapon* getWeaponMovement();
+	Weapon* getWeapon();
 
 	void setInv(InventoryController* inventory) {
 		inv = inventory;
