@@ -45,6 +45,8 @@ void Manager::refresh() {
 						}*/
 						colliders.erase(e->getComponent<BoxCollider>()->getCollisionIterator());
 					}
+					if(e->renderGroup > -1) // eliminacion de la capa de renderizado
+						renders_[e->renderGroup].remove(e);
 					delete e;
 					return true;
 				}
@@ -65,12 +67,6 @@ void Manager::render() {
 		for (auto renderIt : renders_[i])
 			if (!renderIt->dead && renderIt->active)
 				renderIt->render();
-}
-
-void Manager::removeRenderFromLayer(Entity* ent) {
-	if (ent->renderGroup != -1) {
-		renders_[ent->renderGroup].remove(ent);
-	}
 }
 
 void Manager::AddInteractableElement(InteractableElement* ie) {
