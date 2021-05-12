@@ -125,10 +125,6 @@ void KeyboardPlayerCtrl::update() {
 		}
 		
 	}
-
-	//Camera::mainCamera->FollowPlayer(tr_->getPos());
-	//Camera::mainCamera->Lerp(tr_->getPos());
-	//Camera::mainCamera->LerpWithBounds(tr_->getPos());
 }
 
 void KeyboardPlayerCtrl::resetSpeed() {

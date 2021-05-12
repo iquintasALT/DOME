@@ -260,9 +260,9 @@ void Inventory::storeItem(Item* item) {
 	}
 
 	if (playerWeapon != nullptr)
-		if (item == playerWeapon->getWeapon()->currentCharger) {
-			playerWeapon->getWeapon()->currentCharger == nullptr;
-			playerWeapon->getWeapon()->setAmmo();
+		if (playerWeapon->getWeapon()->ItemIsAmmo(item, playerWeapon->typeOfWeapon())) {
+			if (playerWeapon->hasComponent<InventoryController>())
+				playerWeapon->getWeapon()->setMaxAmmo();
 		}
 }
 void Inventory::removeItem(Item* item) {
@@ -274,11 +274,10 @@ void Inventory::removeItem(Item* item) {
 
 	storedItems.remove(item);
 
-	return;
 	if (playerWeapon != nullptr)
-		if (item == playerWeapon->getWeapon()->currentCharger) {
-			playerWeapon->getWeapon()->currentCharger == nullptr;
-			playerWeapon->getWeapon()->setAmmo();
+		if (playerWeapon->getWeapon()->ItemIsAmmo(item, playerWeapon->typeOfWeapon())) {
+			if (playerWeapon->hasComponent<InventoryController>())
+				playerWeapon->getWeapon()->setMaxAmmo();
 		}
 }
 
@@ -316,7 +315,7 @@ void Inventory::adjustPanelSize() {
 void Inventory::storeDefaultItems() {
 	storeItem(new Item(ItemInfo::bottleOfWater(), entity_->getMngr(), this, 0, 0));
 	storeItem(new Item(ItemInfo::medicine(), entity_->getMngr(), this, 2, 2));
-	storeItem(new Item(ItemInfo::defaultAmmo(), entity_->getMngr(), this, 4, 0, 4));
+	storeItem(new Item(ItemInfo::defaultAmmo(), entity_->getMngr(), this, 4, 0, 30));
 }
 
 
