@@ -60,28 +60,25 @@ Texture::Texture(SDL_Renderer *renderer, const std::string &text,
 	constructFromText(renderer, text, font, &fgColor, &bgColor);
 }
 
-
-
 void Texture::constructFromText(SDL_Renderer *renderer, const std::string &text,
 		const Font &font, const SDL_Color *fgColor, const SDL_Color *bgColor) {
 	assert(renderer != nullptr);
 
-	SDL_Surface *textSurface =
-			bgColor == nullptr ?
-					font.renderText(text, *fgColor) :
-					font.renderText(text, *fgColor, *bgColor);
+	SDL_Surface* surface_ = bgColor == nullptr ?
+			   font.renderText(text, *fgColor) :
+			   font.renderText(text, *fgColor, *bgColor);
 
-	if (textSurface == nullptr)
+	if (surface_ == nullptr)
 		throw "Couldn't create text: " + text;
 
-	texture_ = SDL_CreateTextureFromSurface(renderer, textSurface);
+	texture_ = SDL_CreateTextureFromSurface(renderer, surface_);
 	if (texture_ == nullptr) {
-		SDL_FreeSurface(textSurface);
+		SDL_FreeSurface(surface_);
 		throw "Couldn't create text: " + text;
 	}
 
-	width_ = textSurface->w;
-	height_ = textSurface->h;
+	width_ = surface_->w;
+	height_ = surface_->h;
 	renderer_ = renderer;
 
 }
