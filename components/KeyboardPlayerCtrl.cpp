@@ -10,7 +10,7 @@ KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	jumpSpeed = consts::JUMP_SPEED;
 	stairsSpeed = consts::STAIRS_SPEED;
 	acceleration = consts::ACCELERATION;
-	deceleration = consts::DELERATION;
+	deceleration = consts::DECELERATION;
 	tr_ = nullptr;
 	rb_ = nullptr;
 
