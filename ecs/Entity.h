@@ -32,8 +32,6 @@ public:
 			delete c;
 		}
 		components_.clear();
-
-		removeEntityRender();
 	}
 
 
@@ -201,6 +199,4 @@ private:
 	std::vector<Component*> components_;
 	std::array<Component*, ecs::maxComponent> cmpArray_;
 	std::bitset<ecs::maxGroup> groups_;
-
-	void removeEntityRender();
 };
