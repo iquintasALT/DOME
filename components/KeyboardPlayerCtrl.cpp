@@ -6,13 +6,16 @@
 #include "../classes/physiognomy.h"
 
 KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
-	speed = consts::PLAYER_SPEED;
+	maxSpeed = consts::PLAYER_SPEED;
 	jumpSpeed = consts::JUMP_SPEED;
 	stairsSpeed = consts::STAIRS_SPEED;
+	acceleration = consts::ACCELERATION;
+	deceleration = consts::DELERATION;
 	tr_ = nullptr;
 	rb_ = nullptr;
-	
-	left = xClicked = inStair = inStairTrigger = right = crouched = up = down = spaceDown =  false;
+
+	speed = 0;
+	left = xClicked = inStair = inStairTrigger = right = crouched = up = down = spaceDown = false;
 };
 
 void KeyboardPlayerCtrl::init() {
@@ -41,18 +44,30 @@ void KeyboardPlayerCtrl::update() {
 	if (!inStair) {
 		if (!crouched) {
 			if (keystates[SDL_SCANCODE_D]) {
-				rb_->setVel(Vector2D(speed, rb_->getVel().getY()));
+				speed += acceleration * consts::DELTA_TIME;
+				if (speed > maxSpeed) speed = maxSpeed;
+				//rb_->setVel(Vector2D(speed, rb_->getVel().getY()));
 				right = true;
 				if (tr_->getPos().getX() > stairPosition.getX() + stairSize.getX()) inStairTrigger = false;
 			}
 			else if (keystates[SDL_SCANCODE_A]) {
-				rb_->setVel(Vector2D(-speed, rb_->getVel().getY()));
+				speed -= acceleration * consts::DELTA_TIME;
+				if (speed < -maxSpeed) speed = -maxSpeed;
+				//rb_->setVel(Vector2D(-speed, rb_->getVel().getY()));
 				left = true;
 				if (tr_->getPos().getX() + tr_->getW() < stairPosition.getX()) inStairTrigger = false;
 			}
 			else {
-				rb_->setVel(Vector2D(0, rb_->getVel().getY()));
+				if (speed < -0.1f)
+					speed += deceleration * consts::DELTA_TIME;
+				else if (speed > 0.1f)
+					speed -= deceleration * consts::DELTA_TIME;
+
+				if (abs(speed) < .1f)
+					speed = 0;
 			}
+			rb_->setVel(Vector2D(speed, rb_->getVel().getY()));
+
 			if (inStairTrigger && (keystates[SDL_SCANCODE_W] || keystates[SDL_SCANCODE_S])) {
 				inStair = true;
 				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
@@ -123,7 +138,7 @@ void KeyboardPlayerCtrl::update() {
 				up = down = false;
 			}
 		}
-		
+
 	}
 }
 
