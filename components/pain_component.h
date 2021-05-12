@@ -10,7 +10,7 @@ class Weapon;
 
 /*
 * PainComponent es un daño en raid que el jugador puede sufrir debido a cortes o mordeduras de los enemigos a melee.
-* Afecta al resto de estados temporales aumentando el tiempo de su duración. Cada x tiempo, añade tiempo a cada daño temporal, siendo y menor que x
+* Afecta al resto de estados temporales aumentando el tiempo de su duración. Cada x tiempo, añade y tiempo a cada daño temporal, siendo y menor que x
 * Es un daño permanente que puede ser curado con algun painkiller (item a pensar).
 */
 
