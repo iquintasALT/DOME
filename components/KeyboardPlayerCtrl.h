@@ -16,6 +16,8 @@ private:
 	RigidBody* rb_;
 	Transform* tr_;
 	
+	Transform* darkArea;
+
 	float speed;
 	float maxSpeed;
 	float jumpSpeed;
