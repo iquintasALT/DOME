@@ -260,9 +260,9 @@ void Inventory::storeItem(Item* item) {
 	}
 
 	if (playerWeapon != nullptr)
-		if (item == playerWeapon->getWeaponMovement()->currentCharger) {
-			playerWeapon->getWeaponMovement()->currentCharger == nullptr;
-			playerWeapon->getWeaponMovement()->setAmmo();
+		if (item == playerWeapon->getWeapon()->currentCharger) {
+			playerWeapon->getWeapon()->currentCharger == nullptr;
+			playerWeapon->getWeapon()->setAmmo();
 		}
 }
 void Inventory::removeItem(Item* item) {
@@ -276,9 +276,9 @@ void Inventory::removeItem(Item* item) {
 
 	return;
 	if (playerWeapon != nullptr)
-		if (item == playerWeapon->getWeaponMovement()->currentCharger) {
-			playerWeapon->getWeaponMovement()->currentCharger == nullptr;
-			playerWeapon->getWeaponMovement()->setAmmo();
+		if (item == playerWeapon->getWeapon()->currentCharger) {
+			playerWeapon->getWeapon()->currentCharger == nullptr;
+			playerWeapon->getWeapon()->setAmmo();
 		}
 }
 

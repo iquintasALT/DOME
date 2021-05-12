@@ -35,7 +35,7 @@ public:
 
 	void setInv(InventoryController* inventory) {
 		inv = inventory;
-		weaponMovement->setAmmo();
+		weapon->setAmmo();
 	}
 	void changeWeapon();
 
