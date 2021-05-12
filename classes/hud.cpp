@@ -154,7 +154,7 @@ void hud::render() {
 				drawStatus(n, (*i)->getFrameIndex(), mouse);
 				if (i != states->begin()) --i;
 				--n;
-			} while (i != states->begin());
+			} while (n >= 0);
 	}
 }
 
