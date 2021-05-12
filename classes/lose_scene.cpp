@@ -4,12 +4,18 @@
 #include "../game/Game.h"
 #include "../classes/settings_scene.h"
 
-LoseScene::LoseScene(Game* game, WAYSTODIE opcion) : GameScene(game, "Menu")
+LoseScene::LoseScene(Game* game, WAYSTODIE opcion, bool state) : GameScene(game, "Menu")
 {
 	auto menuButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 530), Vector2D(256, 64), &sdlutils().images().at("mainmenuButton"), backToMenu, g_, mngr_);
 	mngr_->addEntity(menuButton);
-
-	back = &sdlutils().images().at("lose"); 
+	if (!state)
+	{
+		back = &sdlutils().images().at("lose");
+	}
+	else
+	{
+		back = &sdlutils().images().at("lose");//Si ganas, cambiar el sprite
+	}
 	string text;
 	switch (opcion)
 	{
