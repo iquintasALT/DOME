@@ -1,5 +1,6 @@
 #include "countdown.h"
 
+#include "../game/constant_variables.h"
 std::string getHourString(int lefttime) {
 	int min = lefttime / 60;
 	int sec = lefttime % 60;
@@ -44,7 +45,7 @@ void Countdown::render() {
 	counter = new Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("OrbitronRegular"),
 		s);
 
-	counter->render(1000, 10);
+	counter->render(consts::WINDOW_WIDTH - counter->width() - 10, 10);
 	delete counter;
 	counter = nullptr;
 }

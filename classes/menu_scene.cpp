@@ -26,7 +26,7 @@ void MenuScene::init() {
 	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .3, true);
 	mngr_->addRenderLayer<Interface>(a);
 
-	int ypos = 400;
+	int ypos = consts::WINDOW_HEIGHT / 2;
 
 	auto title = mngr_->addEntity();
 	title->addComponent<Transform>(Vector2D(10, ypos - 200), 500, 250);

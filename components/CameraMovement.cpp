@@ -11,8 +11,6 @@ CameraMovement::CameraMovement(float _vel) {
 	tr = nullptr;
 	cam = nullptr;
 	rb = nullptr;
-
-	
 }
 
 
