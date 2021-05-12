@@ -49,8 +49,8 @@ void Weapon::update() {
 	else entityImg->enabled = true;
 
 	Vector2D playerPos = playerTr->getPos();
-	if (flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 1.25, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
-	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 4, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
+	if (flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() * 0.56f, playerPos.getY() + playerTr->getH() / 2.7f - entityTr->getH() * 0.57));
+	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() * 0.17f, playerPos.getY() + playerTr->getH() / 2.7f - entityTr->getH() * 0.62));
 	adjustToCrouching();
 
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
@@ -64,11 +64,15 @@ void Weapon::update() {
 	float radianAngle = atan2(dir.getY(), dir.getX());
 	float degreeAngle = (radianAngle * 180.0) / M_PI;
 
-	if (!flipped && (degreeAngle > 90 || degreeAngle < -90)) {
+
+	float playerX = playerPos.getX() + playerTr->getW() / 2;
+	float xdir = mousePos.getX() - playerX;
+
+	if (!flipped && xdir < 0) {
 		entityImg->setFlip(SDL_FLIP_VERTICAL);
 		flipped = true;
 	}
-	else if (flipped && degreeAngle < 90 && degreeAngle > -90) {
+	else if (flipped && xdir > 0) {
 		entityImg->setFlip(SDL_FLIP_NONE);
 		flipped = false;
 	}
@@ -221,7 +225,7 @@ void Weapon::init()
 
 	entityImg = entity_->getComponent<Image>();
 	assert(entityImg != nullptr);
-	entityImg->setRotationOrigin(0, entityTr->getH() / 2);
+	entityImg->setRotationOrigin(entityTr->getW() * 0.16f, entityTr->getH() * 0.46f);
 
 	playerRb = player->getComponent<RigidBody>();
 	assert(playerRb != nullptr);
