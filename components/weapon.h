@@ -35,6 +35,7 @@ protected:
 	bool recharging;
 
 	float dispersion;
+	float notCrouchedDispersion;
 
 public:
 	Weapon(float fR, int dam, float dispersion = 0);
@@ -57,6 +58,7 @@ public:
 	void recharge();
 	int getDamage() { return damage; }
 	void setDamage(int damage_) { damage = damage_; }
+	void setDispersion(int i) { dispersion = i; notCrouchedDispersion = i; }
 
 	void adjustToCrouching();
 	virtual void upgradeTier(int tier);
