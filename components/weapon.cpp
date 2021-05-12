@@ -25,7 +25,7 @@ Weapon::Weapon(float fR, int dam, float dispersion) : dispersion(dispersion), fi
 playerTr(nullptr), entityTr(nullptr)
 {
 	remainingBullets = 0;
-	currentCharger = nullptr;
+	currentCharger = 0;
 	chargerSize = 30;
 
 	shootTime = 0;
@@ -37,9 +37,7 @@ Weapon::~Weapon() {}
 
 int Weapon::getChargerBullets()
 {
-	if (currentCharger != nullptr)
-		return currentCharger->count;
-	return 0;
+	return currentCharger;
 }
 
 void Weapon::update() {
@@ -80,7 +78,7 @@ void Weapon::update() {
 	entityTr->setRot(degreeAngle);
 
 	if (ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate &&
-		currentCharger != nullptr && currentCharger->count > 0 && !recharging && !ctrl->isStairs()) {
+		currentCharger > 0 && !recharging && !ctrl->isStairs()) {
 
 		shootTime = 0;
 
@@ -121,9 +119,9 @@ void Weapon::update() {
 		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
 		bullet->addComponent<ClassicBullet>();
 
-		currentCharger->count--;
+		currentCharger--;
 
-		if (currentCharger->count <= 0)
+		if (currentCharger <= 0)
 		{
 			recharge();
 		}
@@ -147,14 +145,14 @@ void Weapon::setMaxAmmo() {
 
 	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
 	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
-		if (ItemIsAmmo(items, currentWeapon) && item != currentCharger) {
+		if (ItemIsAmmo(items, currentWeapon)) {
 			item = items;
 			totalBullets += item->count;
 		}
 	}
 
 	if (item != nullptr) {
-		remainingBullets = totalBullets - item->count;
+		remainingBullets = totalBullets;
 	}
 }
 
@@ -163,14 +161,8 @@ void Weapon::setAmmo() {
 	Item* item = nullptr;
 
 	Player* player_ = static_cast<Player*>(player);
-
-	if (currentCharger != nullptr) {
-		player_->getComponent<InventoryController>()->inventory->removeItem(currentCharger);
-		delete currentCharger;
-		currentCharger = nullptr;
-	}
-
 	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
+
 	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
 		if (ItemIsAmmo(items, currentWeapon)) {
 			item = items;
@@ -179,8 +171,12 @@ void Weapon::setAmmo() {
 	}
 
 	if (item != nullptr) {
-		currentCharger = item;
+		currentCharger = item->count;
 		remainingBullets = totalBullets - item->count;
+
+		player_->getComponent<InventoryController>()->inventory->removeItem(item);
+		delete item;
+		item = nullptr;
 	}
 }
 
@@ -203,7 +199,7 @@ bool Weapon::ItemIsAmmo(Item* item, WeaponType currentWeapon) {
 
 void Weapon::recharge()
 {
-	if (!recharging && currentCharger->count < chargerSize)
+	if (!recharging && currentCharger < chargerSize)
 	{
 		recharging = true;
 		setAmmo();
