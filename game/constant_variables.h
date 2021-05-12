@@ -15,8 +15,8 @@ namespace consts {
 	const float JUMP_SPEED = 3.0f;
 	const float STAIRS_SPEED = 1.5f;
 	const float FALLING_DMG_SPEED = 8;
-	const float ACCELERATION = 1;
-	const float DECELERATION = 1;
+	const float ACCELERATION = 5;
+	const float DECELERATION = 7;
 	// ENEMIES
 	const float MELEE_ENEMY_SPEED = 2.5f;
 	const float MELEE_ENEMY_STOPDISTANCE = 80.0f;
