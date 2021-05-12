@@ -10,18 +10,17 @@ SDLUtils::SDLUtils() :
 }
 
 SDLUtils::SDLUtils(std::string windowTitle, int width, int height) :
-		windowTitle_(windowTitle), //
-		width_(width), //
-		height_(height) {
-
+		windowTitle_(windowTitle), width_(width), height_(height) {
 	initWindow();
 	initSDLExtensions();
 }
 
 SDLUtils::SDLUtils(std::string windowTitle, int width, int height,
-		std::string filename) :
-		SDLUtils(windowTitle, width, height) {
+		std::string filename) : SDLUtils(windowTitle, width, height) {
 	loadReasources(filename);
+
+	SDL_Surface* icon = IMG_Load("./docs/images/w_tier_3.png");
+	SDL_SetWindowIcon(window_, icon);
 }
 
 SDLUtils::~SDLUtils() {
@@ -199,6 +198,7 @@ void SDLUtils::loadReasources(std::string filename) {
 		}
 	}
 
+	// cargamos los volumenes en cada sonido/musica
 	soundManager().setMusicVolume(soundManager().getMusicVolume());
 	soundManager().setSFXVolume(soundManager().getSFXVolume());
 

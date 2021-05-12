@@ -1179,6 +1179,21 @@
    <property name="wall" type="bool" value="false"/>
   </properties>
  </tile>
+ <tile id="269">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="270">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
+ <tile id="271">
+  <properties>
+   <property name="wall" type="bool" value="false"/>
+  </properties>
+ </tile>
  <tile id="273">
   <properties>
    <property name="wall" type="bool" value="false"/>
