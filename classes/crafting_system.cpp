@@ -47,7 +47,7 @@ bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool open
 			Entity* auxEntity = playerInventory->getEntity()->getMngr()->addEntity();
 			ItemInfo* info = ItemInfo::bottleOfWater();
 			auxEntity->addComponent<Transform>(Vector2D(x, y), info->width(), info->height(), 0);
-			Loot* invAux = auxEntity->addComponent<Loot>("hola nena", info->width(), info->height());
+			Loot* invAux = auxEntity->addComponent<Loot>("Press E to open the loot", info->width(), info->height());
 			invAux->getInventory()->storeItem(new Item{ info,auxEntity->getMngr(),invAux->getInventory(),0,0 });
 			invAux->Interact();
 

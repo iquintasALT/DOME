@@ -19,8 +19,8 @@ void RicochetWeapon::update() {
 	else entityImg->enabled = true;
 
 	Vector2D playerPos = playerTr->getPos();
-	if(flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 1.25, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
-	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 4, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
+	if (flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() * 0.56f, playerPos.getY() + playerTr->getH() / 2.7f - entityTr->getH() * 0.57));
+	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() * 0.17f, playerPos.getY() + playerTr->getH() / 2.7f - entityTr->getH() * 0.62));
 	adjustToCrouching();
 
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
@@ -33,19 +33,22 @@ void RicochetWeapon::update() {
 	float radianAngle = atan2(dir.getY(), dir.getX());
 	float degreeAngle = (radianAngle * 180.0) / M_PI;
 
-	if (!flipped && (degreeAngle > 90 || degreeAngle < -90)) {
+	float playerX = playerPos.getX() + playerTr->getW() / 2;
+	float xdir = mousePos.getX() - playerX;
+
+	if (!flipped && xdir < 0) {
 		entityImg->setFlip(SDL_FLIP_VERTICAL);
 		flipped = true;
 	}
-	else if (flipped && degreeAngle < 90 && degreeAngle > -90) {
+	else if (flipped && xdir > 0) {
 		entityImg->setFlip(SDL_FLIP_NONE);
 		flipped = false;
 	}
 
 	entityTr->setRot(degreeAngle);
 
-	if (currentCharger != nullptr && ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate
-		&& currentCharger->count > 0 && !recharging && !ctrl->isStairs()) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate
+		&& currentCharger > 0 && !recharging && !ctrl->isStairs()) {
 		shootTime = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 
@@ -71,8 +74,8 @@ void RicochetWeapon::update() {
 		bullet->addComponent<Image>(tex_)->setRotationOrigin(8, 4);
 		bullet->addComponent<Ricochet>(playerTr, nbounce, ntier);
 
-		currentCharger->count--;
-		if (currentCharger == 0)
+		currentCharger--;
+		if (currentCharger <= 0)
 		{
 			recharge();
 		}

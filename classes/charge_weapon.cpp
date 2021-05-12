@@ -22,8 +22,8 @@ void ChargeWeapon::update() {
 	else entityImg->enabled = true;
 
 	Vector2D playerPos = playerTr->getPos();
-	if(flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 1.25, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
-	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() / 4, playerPos.getY() + playerTr->getH() / 2.75f - entityTr->getH() / 2));
+	if (flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() * 0.56f, playerPos.getY() + playerTr->getH() / 2.7f - entityTr->getH() * 0.57));
+	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() * 0.17f, playerPos.getY() + playerTr->getH() / 2.7f - entityTr->getH() * 0.62));
 	adjustToCrouching();
 
 	Vector2D mousePos = Vector2D(ih().getMousePos().first, ih().getMousePos().second);
@@ -36,22 +36,25 @@ void ChargeWeapon::update() {
 	float radianAngle = atan2(dir.getY(), dir.getX());
 	float degreeAngle = (radianAngle * 180.0) / M_PI;
 
-	if (!flipped && (degreeAngle > 90 || degreeAngle < -90)) {
+	float playerX = playerPos.getX() + playerTr->getW() / 2;
+	float xdir = mousePos.getX() - playerX;
+
+	if (!flipped && xdir < 0) {
 		entityImg->setFlip(SDL_FLIP_VERTICAL);
 		flipped = true;
 	}
-	else if (flipped && degreeAngle < 90 && degreeAngle > -90) {
+	else if (flipped && xdir > 0) {
 		entityImg->setFlip(SDL_FLIP_NONE);
 		flipped = false;
 	}
 
 	entityTr->setRot(degreeAngle);
 
-	if (currentCharger != nullptr && ih().getMouseButtonState(InputHandler::LEFT) && !recharging && !ctrl->isStairs()) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && !recharging && !ctrl->isStairs()) {
 		shootTime += consts::DELTA_TIME;
 	}
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) {
-		if (shootTime >= fireRate && currentCharger->count > 0) {
+		if (shootTime >= fireRate && currentCharger > 0) {
 			Entity* bullet = entity_->getMngr()->addEntity();
 
 			Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 64, 64, 0);
@@ -96,8 +99,8 @@ void ChargeWeapon::update() {
 			bullet->addComponent<Charge>(radianAngle, raycast);
 
 			//COMPROBAR COLISIONES CON ENEMIGOS
-			currentCharger->count--;
-			if (currentCharger->count == 0)
+			currentCharger--;
+			if (currentCharger <= 0)
 			{
 				recharge();
 			}

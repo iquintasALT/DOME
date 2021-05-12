@@ -34,7 +34,7 @@ void LocationsScene::init()
 	initFocus();
 
 	name = "Day " + std::to_string(getGame()->numDays) + " out of " + std::to_string(consts::MAX_DAYS);
-	//createTransition();
+	createTransition();
 }
 
 void LocationsScene::loadLocationButtons() {
@@ -72,6 +72,8 @@ void LocationsScene::changeToRaid(Game* g, int index) {
 }
 
 void LocationsScene::update() {
+	mngr_->update();
+
 	for (int i = 0; i < locations.size(); i++) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 		auto buttonTr = locations[i]->getComponent<Transform>();
