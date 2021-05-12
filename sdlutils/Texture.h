@@ -48,8 +48,6 @@ public:
 
 	inline SDL_Texture* getSDLTexture() { return texture_; };
 
-	inline SDL_Surface* getSDLSurface() { return surface_; };
-
 	void setColorMod(Uint8 r, Uint8 g, Uint8 b);
 
 	void setAlpha(Uint8 alpha); //0-255
@@ -107,7 +105,6 @@ private:
 
 	SDL_Texture* texture_;
 	SDL_Renderer* renderer_;
-	SDL_Surface* surface_;
 	int width_;
 	int height_;
 };

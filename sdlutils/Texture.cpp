@@ -64,7 +64,7 @@ void Texture::constructFromText(SDL_Renderer *renderer, const std::string &text,
 		const Font &font, const SDL_Color *fgColor, const SDL_Color *bgColor) {
 	assert(renderer != nullptr);
 
-	surface_ = bgColor == nullptr ?
+	SDL_Surface* surface_ = bgColor == nullptr ?
 			   font.renderText(text, *fgColor) :
 			   font.renderText(text, *fgColor, *bgColor);
 
