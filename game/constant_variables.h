@@ -33,10 +33,10 @@ namespace consts {
 	// PHYSIOGNOMY
 	// Hunger y Tiredness
 	const int MAX_MULTIPLE_STATES = 6; //Numero de estados de daño que el jugador puede tener
-	const float NONEHUNGER_LEVEL = 0.75f; //Por encinma del 75% estará en NONE y por debajo en HUNGER
+	const float NONEHUNGER_LEVEL = 0.75f; //Por encima del 75% estará en NONE y por debajo en HUNGER
 	const float HUNGER_LEVEL = 0.35f; //Por encima del 35% estará en HUNGER y por debajo en STARVING
 	const int MAX_SLEEP_HOURS = 8; //Horas máximas de sueño en una noche
-	const float NONETIRED_LEVEL = 0.75f; //Por encinma del 75% estará en NONE y por debajo en TIRED
+	const float NONETIRED_LEVEL = 0.75f; //Por encima del 75% estará en NONE y por debajo en TIRED
 	const float TIRED_LEVEL = 0.35f; //Por encima del 35% estará en TIRED y por debajo en EXHASUTED
 
 	// Pain, Bleed, Concussion, Intoxication y Hypothermia
