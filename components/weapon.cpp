@@ -53,7 +53,6 @@ void Weapon::update() {
 	else {
 		dispersion = notCrouchedDispersion;
 	}
-	std::cout << dispersion << std::endl;
 
 	shootTime += consts::DELTA_TIME;
 
