@@ -98,7 +98,7 @@ void KeyboardPlayerCtrl::update() {
 			{
 				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
 
-				aux->getWeapon()->recharge();
+				aux->getWeapon()->reload();
 			}
 
 			if (keystates[SDL_SCANCODE_X] && !xClicked) //Cambiar arma

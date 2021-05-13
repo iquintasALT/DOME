@@ -18,6 +18,6 @@ private:
 	Transform* playerTr;
 	Texture* tex_ = &sdlutils().images().at("ricochet_projectile");
 	int ntier;
-	int damage;
+	int impactDamage;
 	int nbounce;
 };

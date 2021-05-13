@@ -18,51 +18,51 @@
 ChargeWeapon::ChargeWeapon(float fR, int dam) : Weapon(fR, dam) {};
 
 void ChargeWeapon::update() {
-	if (ctrl->isStairs()) entityImg->enabled = false;
-	else entityImg->enabled = true;
+	if (playerCtrl_->isStairs()) image_->enabled = false;
+	else image_->enabled = true;
 
-	Vector2D playerPos = playerTr->getPos();
-	if (flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() * 0.56f, playerPos.getY() + playerTr->getH() / 2.7f - entityTr->getH() * 0.57));
-	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() * 0.17f, playerPos.getY() + playerTr->getH() / 2.7f - entityTr->getH() * 0.62));
+	Vector2D playerPos = playerTr_->getPos();
+	if (flipped) tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.56f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.57));
+	else tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.17f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.62));
 	adjustToCrouching();
 
 	Vector2D mousePos = Vector2D(ih().getMousePos().first, ih().getMousePos().second);
 
 	mousePos = Camera::mainCamera->PointToWorldSpace(mousePos);
 
-	Vector2D yCenteredPos(entityTr->getPos().getX(), entityTr->getPos().getY() + entityTr->getH() * 0.37f); //Punto {0, Altura del cañón}  
+	Vector2D yCenteredPos(tr_->getPos().getX(), tr_->getPos().getY() + tr_->getH() * 0.37f); //Punto {0, Altura del cañón}  
 	Vector2D  dir = (mousePos - yCenteredPos).normalize();
 
 	float radianAngle = atan2(dir.getY(), dir.getX());
 	float degreeAngle = (radianAngle * 180.0) / M_PI;
 
-	float playerX = playerPos.getX() + playerTr->getW() / 2;
+	float playerX = playerPos.getX() + playerTr_->getW() / 2;
 	float xdir = mousePos.getX() - playerX;
 
 	if (!flipped && xdir < 0) {
-		entityImg->setFlip(SDL_FLIP_VERTICAL);
+		image_->setFlip(SDL_FLIP_VERTICAL);
 		flipped = true;
 	}
 	else if (flipped && xdir > 0) {
-		entityImg->setFlip(SDL_FLIP_NONE);
+		image_->setFlip(SDL_FLIP_NONE);
 		flipped = false;
 	}
 
-	entityTr->setRot(degreeAngle);
+	tr_->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && !recharging && !ctrl->isStairs()) {
-		shootTime += consts::DELTA_TIME;
+	if (ih().getMouseButtonState(InputHandler::LEFT) && !reloading && !playerCtrl_->isStairs()) {
+		timeSinceLastShot += consts::DELTA_TIME;
 	}
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) {
-		if (shootTime >= fireRate && currentCharger > 0) {
+		if (timeSinceLastShot >= fireRate && bulletsInMagazine > 0) {
 			Entity* bullet = entity_->getMngr()->addEntity();
 
 			Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 64, 64, 0);
 			bulletTr->setH(1);
 			
 
-			float aux1 = entityTr->getW() - 8; //Distancia del cañón del arma para spawnear la bala
-			float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
+			float aux1 = tr_->getW() - 8; //Distancia del cañón del arma para spawnear la bala
+			float aux2 = tr_->getPos().getY() + tr_->getH() / 2 - yCenteredPos.getY();
 
 			Transform auxMousePos = Transform(mousePos, 1, 1, 0);
 			RayCast* raycast = new RayCast(yCenteredPos, dir);
@@ -86,7 +86,7 @@ void ChargeWeapon::update() {
 			}
 
 
-			Vector2D centeredPos = { yCenteredPos.getX() - offsetX  ,entityTr->getPos().getY() + entityTr->getH() / 2 - bulletTr->getH() / 2 - offsetY }; //Punto para spawnear la bala centrada
+			Vector2D centeredPos = { yCenteredPos.getX() - offsetX  ,tr_->getPos().getY() + tr_->getH() / 2 - bulletTr->getH() / 2 - offsetY }; //Punto para spawnear la bala centrada
 
 
 			bulletTr->setPos(centeredPos + dir * aux1);
@@ -99,24 +99,24 @@ void ChargeWeapon::update() {
 			bullet->addComponent<Charge>(radianAngle, raycast);
 
 			//COMPROBAR COLISIONES CON ENEMIGOS
-			currentCharger--;
-			if (currentCharger <= 0)
+			bulletsInMagazine--;
+			if (bulletsInMagazine <= 0)
 			{
-				recharge();
+				reload();
 			}
 			delete raycast;
 		}
-		shootTime = 0;
+		timeSinceLastShot = 0;
 	}
 
-	if (recharging)
+	if (reloading)
 	{
-		rechargeTime += consts::DELTA_TIME;
+		reloadTime += consts::DELTA_TIME;
 	}
-	if (rechargeTime > 2.0) //Tiempo de recarga en segundos
+	if (reloadTime > 2.0) //Tiempo de recarga en segundos
 	{
-		rechargeTime = 0;
-		recharging = false;
+		reloadTime = 0;
+		reloading = false;
 	}
 }
 
@@ -124,13 +124,13 @@ void ChargeWeapon::upgradeTier(int tier) {
 	if (tier == 2) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 1);
-		damage = consts::CHARGE_TIER2_DAMAGE;
+		impactDamage = consts::CHARGE_TIER2_DAMAGE;
 		fireRate = consts::CHARGE_TIER2_FIRERATE;
 	}
 	else if (tier == 3) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 2);
-		damage = consts::CHARGE_TIER3_DAMAGE;
+		impactDamage = consts::CHARGE_TIER3_DAMAGE;
 		fireRate = consts::CHARGE_TIER3_FIRERATE;
 	}
 }
