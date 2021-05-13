@@ -9,7 +9,7 @@ void TileRenderer::render() {
 		bool shouldRender = true;
 		Vector2D worldPos(x, y);
 		Vector2D pos = Camera::mainCamera->renderRect(worldPos, width, height, shouldRender);
-		
+		float scale = Camera::mainCamera->getScale();
 		if (!shouldRender) return;
 
 		SDL_Rect src;
@@ -17,8 +17,8 @@ void TileRenderer::render() {
 		src.w = width; src.h = height;
 
 		SDL_Rect dest;
-		dest.x = pos.getX(); dest.y = pos.getY();
-		dest.w = src.w; dest.h = src.h;
+		dest.x = round(pos.getX() * scale); dest.y = round(pos.getY() * scale);
+		dest.w = round(src.w * scale); dest.h = round(src.h * scale);
 
 		sheet->render(src, dest);
 	}

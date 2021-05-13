@@ -37,10 +37,17 @@ public:
 	void render() override {
 		bool shouldRender = true;
 		Vector2D pos = !isUI ? Camera::mainCamera->renderRect(tr_->getPos(), tr_->getW(), tr_->getH(), shouldRender) : tr_->getPos();
-
+		float scale = Camera::mainCamera->getScale();
 		if (!shouldRender) return;
 
 		SDL_Rect dest = build_sdlrect(pos, tr_->getW(), tr_->getH());
+		if (!isUI) {
+			dest.x *= scale;
+			dest.y *= scale;
+			dest.w *= scale;
+			dest.h *= scale;
+		}
+
 		if (rotationOrigin.x == -1 && rotationOrigin.y == -1)
 			tex_->render(src_, dest, tr_->getRot(), nullptr, flip_);
 		else

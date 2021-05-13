@@ -55,7 +55,8 @@ void LoseScene::backToMenu(Manager* mngr) {
 }
 
 void LoseScene::render() {
-	back->render(0, 0);
+	SDL_Rect rect = { 0, 0, consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT };
+	back->render(rect);
 	advice->render(consts::WINDOW_WIDTH/2-advice->width()/2,consts::WINDOW_HEIGHT-consts::WINDOW_HEIGHT/2);
 	GameScene::render();
 }
