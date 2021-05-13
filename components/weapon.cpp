@@ -51,7 +51,7 @@ void Weapon::update() {
 
 	timeSinceLastShot += consts::DELTA_TIME;
 
-	if (playerCtrl_->isStairs()) image_->enabled = false;
+	if (playerCtrl_->isClimbingLadder()) image_->enabled = false;
 	else image_->enabled = true;
 
 	Vector2D playerPos = playerTr_->getPos();
@@ -86,7 +86,7 @@ void Weapon::update() {
 	tr_->setRot(degreeAngle);
 
 	if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate &&
-		bulletsInMagazine > 0 && !reloading && !playerCtrl_->isStairs()) {
+		bulletsInMagazine > 0 && !reloading && !playerCtrl_->isClimbingLadder()) {
 
 		timeSinceLastShot = 0;
 
