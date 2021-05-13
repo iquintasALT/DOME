@@ -66,6 +66,7 @@ void Inventory::moveInventory(Point2D pos) {
 }
 
 void Inventory::init() {
+	player = static_cast<Player*>(entity_->getMngr()->getHandler<Player_hdlr>());
 	transform = entity_->getComponent<Transform>();
 	assert(transform != nullptr);
 	originalPos = transform->getPos();
@@ -79,9 +80,9 @@ void Inventory::init() {
 
 	dropDownActive = false;
 	std::vector<inventoryDropdown::slot*> slots;
-	slots.push_back(new inventoryDropdown::slot("Use", [this]() {itemClickedInDropdown->getItemInfo()->execute(entity_->getMngr()->getHandler<Player_hdlr>()); removeItem(itemClickedInDropdown); }));
+	slots.push_back(new inventoryDropdown::slot("Use", [this]() {itemClickedInDropdown->getItemInfo()->execute(player); removeItem(itemClickedInDropdown); delete itemClickedInDropdown; }));
 	slots.push_back(new inventoryDropdown::slot("Rotate", []() {std::cout << std::endl << "Elemento girado" << std::endl; }));
-	slots.push_back(new inventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown); }));
+	slots.push_back(new inventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown); delete itemClickedInDropdown; }));
 	dropDown = new inventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
 }
 void Inventory::render() {
