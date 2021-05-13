@@ -26,7 +26,7 @@ void RicochetWeapon::update() {
 
 	timeSinceLastShot += consts::DELTA_TIME;
 
-	if (playerCtrl_->isStairs()) entityImg->enabled = false;
+	if (playerCtrl_->isClimbingLadder()) entityImg->enabled = false;
 	else entityImg->enabled = true;
 
 	Vector2D playerPos = playerTr->getPos();
@@ -59,7 +59,7 @@ void RicochetWeapon::update() {
 	entityTr->setRot(degreeAngle);
 
 	if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate
-		&& bulletsInMagazine > 0 && !reloading && !playerCtrl_->isStairs()) {
+		&& bulletsInMagazine > 0 && !reloading && !playerCtrl_->isClimbingLadder()) {
 		timeSinceLastShot = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 

@@ -18,7 +18,7 @@
 ChargeWeapon::ChargeWeapon(float fR, int dam) : Weapon(fR, dam) {};
 
 void ChargeWeapon::update() {
-	if (playerCtrl_->isStairs()) image_->enabled = false;
+	if (playerCtrl_->isClimbingLadder()) image_->enabled = false;
 	else image_->enabled = true;
 
 	Vector2D playerPos = playerTr_->getPos();
@@ -50,7 +50,7 @@ void ChargeWeapon::update() {
 
 	tr_->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && !reloading && !playerCtrl_->isStairs()) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && !reloading && !playerCtrl_->isClimbingLadder()) {
 		timeSinceLastShot += consts::DELTA_TIME;
 	}
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) {

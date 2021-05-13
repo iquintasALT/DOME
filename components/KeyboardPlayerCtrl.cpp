@@ -15,7 +15,7 @@ KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	rb_ = nullptr;
 
 	speed = 0;
-	left = xClicked = inStair = inStairTrigger = right = crouched = up = down = spaceDown = false;
+	left = xClicked = onLadder = onLadderTrigger = right = crouched = up = down = spaceDown = false;
 };
 
 void KeyboardPlayerCtrl::init() {
@@ -41,7 +41,7 @@ void KeyboardPlayerCtrl::OnTrigger(Entity* bc) {
 		auto stairTr = bc->getComponent<Transform>();
 		stairPosition = stairTr->getPos();
 		stairSize = stairTr->getSize();
-		inStairTrigger = true;
+		onLadderTrigger = true;
 	}
 }
 
@@ -50,21 +50,21 @@ void KeyboardPlayerCtrl::update() {
 
 	darkArea->setPos(tr_->getPos() - Vector2D(consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
 
-	if (!inStair) {
+	if (!onLadder) {
 		if (!crouched) {
 			if (keystates[SDL_SCANCODE_D]) {
 				speed += acceleration * consts::DELTA_TIME;
 				if (speed > maxSpeed) speed = maxSpeed;
 				//rb_->setVel(Vector2D(speed, rb_->getVel().getY()));
 				right = true;
-				if (tr_->getPos().getX() > stairPosition.getX() + stairSize.getX()) inStairTrigger = false;
+				if (tr_->getPos().getX() > stairPosition.getX() + stairSize.getX()) onLadderTrigger = false;
 			}
 			else if (keystates[SDL_SCANCODE_A]) {
 				speed -= acceleration * consts::DELTA_TIME;
 				if (speed < -maxSpeed) speed = -maxSpeed;
 				//rb_->setVel(Vector2D(-speed, rb_->getVel().getY()));
 				left = true;
-				if (tr_->getPos().getX() + tr_->getW() < stairPosition.getX()) inStairTrigger = false;
+				if (tr_->getPos().getX() + tr_->getW() < stairPosition.getX()) onLadderTrigger = false;
 			}
 			else {
 				if (speed < -0.1f)
@@ -77,8 +77,8 @@ void KeyboardPlayerCtrl::update() {
 			}
 			rb_->setVel(Vector2D(speed, rb_->getVel().getY()));
 
-			if (inStairTrigger && (keystates[SDL_SCANCODE_W] || keystates[SDL_SCANCODE_S])) {
-				inStair = true;
+			if (onLadderTrigger && (keystates[SDL_SCANCODE_W] || keystates[SDL_SCANCODE_S])) {
+				onLadder = true;
 				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
 			}
 
@@ -119,7 +119,7 @@ void KeyboardPlayerCtrl::update() {
 		}
 	}
 	else {
-		if (keystates[SDL_SCANCODE_SPACE] && !spaceDown) { inStair = false; spaceDown = true; }
+		if (keystates[SDL_SCANCODE_SPACE] && !spaceDown) { onLadder = false; spaceDown = true; }
 		else if (!keystates[SDL_SCANCODE_SPACE] && spaceDown) spaceDown = false;
 		else {
 			if (keystates[SDL_SCANCODE_W]) {
@@ -127,8 +127,8 @@ void KeyboardPlayerCtrl::update() {
 				up = true;
 				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
 				if (tr_->getPos().getY() + tr_->getH() < stairPosition.getY()) {
-					inStairTrigger = false;
-					inStair = false;
+					onLadderTrigger = false;
+					onLadder = false;
 				}
 			}
 			else if (keystates[SDL_SCANCODE_S]) {
@@ -136,12 +136,12 @@ void KeyboardPlayerCtrl::update() {
 				down = true;
 				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
 				if (tr_->getPos().getY() > stairPosition.getY() + stairSize.getY()) {
-					inStairTrigger = false;
-					inStair = false;
+					onLadderTrigger = false;
+					onLadder = false;
 				}
 			}
 			else {
-				if (rb_->onFloor()) inStair = false;
+				if (rb_->onFloor()) onLadder = false;
 				rb_->setGravity(0);
 				rb_->setVel(Vector2D(0, 0));
 				up = down = false;

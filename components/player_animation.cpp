@@ -69,7 +69,7 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
-	if (playerCtrl_->isStairs()) {
+	if (playerCtrl_->isClimbingLadder()) {
 		walkDust->Stop();
 		if (rb->getVel().getY() != 0) {
 			animStop = false;
