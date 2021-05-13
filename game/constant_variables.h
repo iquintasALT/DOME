@@ -4,8 +4,8 @@ namespace consts {
 
 	const float FRAME_RATE = 60.0f;
 	const float DELTA_TIME = 1 / FRAME_RATE;
-	const int WINDOW_WIDTH = 1920;
-	const int WINDOW_HEIGHT = 1080;
+	const int WINDOW_WIDTH = 1080;
+	const int WINDOW_HEIGHT = 720;
 
 	// PLAYER
 	const float GRAVITY = 8.0f;
