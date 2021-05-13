@@ -2,7 +2,7 @@
 #include "../classes/player.h"
 #include "../classes/weapon_behaviour.h"
 
-player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
+player_animation::player_animation() : tr_(nullptr), playerCtrl_(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
 	animStop = false;
 };
 
@@ -29,10 +29,10 @@ void player_animation::init() {
 
 	tr_ = entity_->getComponent<Transform>();
 	rb = entity_->getComponent<RigidBody>();
-	ctrl = entity_->getComponent<KeyboardPlayerCtrl>();
+	playerCtrl_ = entity_->getComponent<KeyboardPlayerCtrl>();
 	walkDust = entity_->getComponent<ParticleSystem>();
 	walkDust->Stop();
-	assert(tr_ != nullptr && im_ != nullptr && ctrl != nullptr && rb != nullptr && walkDust != nullptr);
+	assert(tr_ != nullptr && im_ != nullptr && playerCtrl_ != nullptr && rb != nullptr && walkDust != nullptr);
 }
 bool debug = false;
 
@@ -53,7 +53,7 @@ bool player_animation::changeAnimations() {
 			else  im_->setFlip(SDL_FLIP_NONE);
 	}
 
-	if (ctrl->isCrouching()) {
+	if (playerCtrl_->isCrouching()) {
 		if (aux->isActive()) {
 			if (currentAnimation == animations[crouch])
 				return false;
@@ -69,7 +69,7 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
-	if (ctrl->isStairs()) {
+	if (playerCtrl_->isStairs()) {
 		walkDust->Stop();
 		if (rb->getVel().getY() != 0) {
 			animStop = false;

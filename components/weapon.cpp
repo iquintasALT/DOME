@@ -21,54 +21,49 @@
 #include <iostream>
 #include "../classes/player.h"
 
-Weapon::Weapon(float fR, int dam, float dispersion) : dispersion(dispersion), fireRate(fR), flipped(false), ctrl(nullptr), shootTime(0), entityImg(nullptr), damage(dam), player(nullptr),
-playerTr(nullptr), entityTr(nullptr)
+Weapon::Weapon(float fR, int dam, float bulletSpread) : bulletSpread(bulletSpread), fireRate(fR), flipped(false), playerCtrl_(nullptr), timeSinceLastShot(0), image_(nullptr), impactDamage(dam), player_(nullptr),
+playerTr_(nullptr), tr_(nullptr)
 {
-	notCrouchedDispersion = dispersion;
+	baseBulletSpread = bulletSpread;
 
-	remainingBullets = 0;
-	currentCharger = 0;
-	chargerSize = 30;
+	bulletsInReserve = 0;
+	bulletsInMagazine = 0;
+	magazineSize = 30;
 
-	shootTime = 0;
-	rechargeTime = 0;
-	recharging = false;
-	playerRb = nullptr;
+	timeSinceLastShot = 0;
+	reloadTime = 0;
+	reloading = false;
+	playerRb_ = nullptr;
 }
 Weapon::~Weapon() {}
 
-int Weapon::getChargerBullets()
-{
-	return currentCharger;
-}
-
 void Weapon::update() {
 
-	if (player->getComponent<KeyboardPlayerCtrl>() != nullptr && player->getComponent<KeyboardPlayerCtrl>()->isCrouching()) {
-		dispersion = notCrouchedDispersion;
-		if (notCrouchedDispersion - 20 >= 0)
-			dispersion = notCrouchedDispersion - 20;
-		else dispersion = 0;
+	if (player_->getComponent<KeyboardPlayerCtrl>() != nullptr && player_->getComponent<KeyboardPlayerCtrl>()->isCrouching()) {
+		bulletSpread = baseBulletSpread;
+		if (baseBulletSpread - 20 >= 0)
+			bulletSpread = baseBulletSpread - 20;
+		else bulletSpread = 0;
 	}
 	else {
-		dispersion = notCrouchedDispersion;
+		bulletSpread = baseBulletSpread;
 	}
 
-	shootTime += consts::DELTA_TIME;
+	timeSinceLastShot += consts::DELTA_TIME;
 
-	if (ctrl->isStairs()) entityImg->enabled = false;
-	else entityImg->enabled = true;
+	if (playerCtrl_->isStairs()) image_->enabled = false;
+	else image_->enabled = true;
 
-	Vector2D playerPos = playerTr->getPos();
-	if (flipped) entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() * 0.56f, playerPos.getY() + playerTr->getH() / 2.7f - entityTr->getH() * 0.57));
-	else entityTr->setPos(Vector2D(playerPos.getX() + playerTr->getW() * 0.17f, playerPos.getY() + playerTr->getH() / 2.7f - entityTr->getH() * 0.62));
+	Vector2D playerPos = playerTr_->getPos();
+	if (flipped) tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.56f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.57));
+	else tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.17f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.62));
 	adjustToCrouching();
 
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
 	mousePos = Camera::mainCamera->PointToWorldSpace(mousePos);
 
-	Vector2D yCenteredPos(entityTr->getPos().getX(), entityTr->getPos().getY() + entityTr->getH() * 0.37f); //Punto {0, Altura del ca��n}  
+	Vector2D yCenteredPos(tr_->getPos().getX(), tr_->getPos().getY() + tr_->getH() * 0.37f); //Punto {0, Altura del ca��n}  
 	Vector2D  dir = (mousePos - yCenteredPos).normalize();
 
 
@@ -76,34 +71,32 @@ void Weapon::update() {
 	float degreeAngle = (radianAngle * 180.0) / M_PI;
 
 
-	float playerX = playerPos.getX() + playerTr->getW() / 2;
-	float xdir = mousePos.getX() - playerX;
+	float playerX = playerPos.getX() + playerTr_->getW() / 2;
+	float xDir = mousePos.getX() - playerX;
 
-	if (!flipped && xdir < 0) {
-		entityImg->setFlip(SDL_FLIP_VERTICAL);
+	if (!flipped && xDir < 0) {
+		image_->setFlip(SDL_FLIP_VERTICAL);
 		flipped = true;
 	}
-	else if (flipped && xdir > 0) {
-		entityImg->setFlip(SDL_FLIP_NONE);
+	else if (flipped && xDir > 0) {
+		image_->setFlip(SDL_FLIP_NONE);
 		flipped = false;
 	}
 
-	entityTr->setRot(degreeAngle);
+	tr_->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate &&
-		currentCharger > 0 && !recharging && !ctrl->isStairs()) {
+	if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate &&
+		bulletsInMagazine > 0 && !reloading && !playerCtrl_->isStairs()) {
 
-		shootTime = 0;
+		timeSinceLastShot = 0;
 
-		float maxDispersion = dispersion; //Add here the dispersions
-		if (!playerRb->onFloor()) {
-			maxDispersion += 60;
+		float maxSpread = bulletSpread; //Add here the dispersions
+		if (!playerRb_->onFloor()) {
+			maxSpread += 60;
 		}
-		float x = dir.getX();
-		float y = dir.getY();
-		float rotation = 0;
-		if (maxDispersion != 0)
-			rotation = sdlutils().rand().nextInt(-maxDispersion, maxDispersion) * M_PI / 180.0;
+		float x = dir.getX(), y = dir.getY(), rotation = 0;
+		if (maxSpread != 0)
+			rotation = sdlutils().rand().nextInt(-maxSpread, maxSpread) * M_PI / 180.0;
 
 		dir.setX(x * cos(rotation) - y * sin(rotation));
 		dir.setY(x * sin(rotation) + y * cos(rotation));
@@ -113,8 +106,8 @@ void Weapon::update() {
 		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
 		RigidBody* rb = bullet->addComponent<RigidBody>(dir * 10.0, false);
 
-		float aux1 = entityTr->getW() - 8; //Distancia del ca��n del arma para spawnear la bala
-		float aux2 = entityTr->getPos().getY() + entityTr->getH() / 2 - yCenteredPos.getY();
+		float aux1 = tr_->getW() - 8; //Distancia del ca��n del arma para spawnear la bala
+		float aux2 = tr_->getPos().getY() + tr_->getH() / 2 - yCenteredPos.getY();
 
 		float offsetX = sin(-radianAngle) * aux2;
 		float offsetY = cos(-radianAngle) * aux2;
@@ -123,7 +116,7 @@ void Weapon::update() {
 			offsetY = -offsetY;
 		}
 
-		Vector2D centeredPos = { yCenteredPos.getX() - bulletTr->getW() / 2 - offsetX  ,entityTr->getPos().getY() + entityTr->getH() / 2 - bulletTr->getH() / 2 - offsetY }; //Punto para spawnear la bala centrada
+		Vector2D centeredPos = { yCenteredPos.getX() - bulletTr->getW() / 2 - offsetX, tr_->getPos().getY() + tr_->getH() / 2 - bulletTr->getH() / 2 - offsetY }; //Punto para spawnear la bala centrada
 
 		bulletTr->setPos(centeredPos + dir * aux1);
 		bulletTr->setRot(degreeAngle);
@@ -132,21 +125,21 @@ void Weapon::update() {
 		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
 		bullet->addComponent<ClassicBullet>();
 
-		currentCharger--;
+		bulletsInMagazine--;
 
-		if (currentCharger <= 0)
+		if (bulletsInMagazine <= 0)
 		{
-			recharge();
+			reload();
 		}
 	}
-	if (recharging)
+	if (reloading)
 	{
-		rechargeTime += consts::DELTA_TIME;
+		reloadTime += consts::DELTA_TIME;
 	}
-	if (rechargeTime > 2.0) //Tiempo de recarga en segundos
+	if (reloadTime > 2.0) //Tiempo de recarga en segundos
 	{
-		rechargeTime = 0;
-		recharging = false;
+		reloadTime = 0;
+		reloading = false;
 	}
 }
 
@@ -154,8 +147,6 @@ void Weapon::setMaxAmmo() {
 	int totalBullets = 0;
 	Item* item = nullptr;
 
-	Player* player_ = static_cast<Player*>(player);
-
 	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
 	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
 		if (ItemIsAmmo(items, currentWeapon)) {
@@ -165,15 +156,13 @@ void Weapon::setMaxAmmo() {
 	}
 
 	if (item != nullptr) {
-		remainingBullets = totalBullets;
+		bulletsInReserve = totalBullets;
 	}
 }
 
 void Weapon::setAmmo() {
 	int totalBullets = 0;
 	Item* item = nullptr;
-
-	Player* player_ = static_cast<Player*>(player);
 	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
 
 	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
@@ -184,8 +173,8 @@ void Weapon::setAmmo() {
 	}
 
 	if (item != nullptr) {
-		currentCharger = item->count;
-		remainingBullets = totalBullets - item->count;
+		bulletsInMagazine = item->count;
+		bulletsInReserve = totalBullets - item->count;
 
 		player_->getComponent<InventoryController>()->inventory->removeItem(item);
 		delete item;
@@ -210,47 +199,47 @@ bool Weapon::ItemIsAmmo(Item* item, WeaponType currentWeapon) {
 }
 
 
-void Weapon::recharge()
+void Weapon::reload()
 {
-	if (!recharging && currentCharger < chargerSize)
+	if (!reloading && bulletsInMagazine < magazineSize)
 	{
-		recharging = true;
+		reloading = true;
 		setAmmo();
 	}
 }
 
 void Weapon::adjustToCrouching() {
-	if (player->getComponent<KeyboardPlayerCtrl>() != nullptr && player->getComponent<KeyboardPlayerCtrl>()->isCrouching())
-		entityTr->setPos(Vector2D(entityTr->getPos().getX(), entityTr->getPos().getY() + playerTr->getH() * 0.3f));
+	if (player_->getComponent<KeyboardPlayerCtrl>() != nullptr && player_->getComponent<KeyboardPlayerCtrl>()->isCrouching())
+		tr_->setPos(Vector2D(tr_->getPos().getX(), tr_->getPos().getY() + playerTr_->getH() * 0.3f));
 }
 
 void Weapon::init()
 {
-	player = entity_->getMngr()->getHandler<Player_hdlr>();
-	playerTr = player->getComponent<Transform>();
-	entityTr = entity_->getComponent <Transform>();
-	ctrl = player->getComponent<KeyboardPlayerCtrl>();
-	assert(entityTr != nullptr && playerTr != nullptr && ctrl != nullptr);
+	player_ = static_cast<Player*>(entity_->getMngr()->getHandler<Player_hdlr>());
+	playerTr_ = player_->getComponent<Transform>();
+	tr_ = entity_->getComponent <Transform>();
+	playerCtrl_ = player_->getComponent<KeyboardPlayerCtrl>();
+	assert(tr_ != nullptr && playerTr_ != nullptr && playerCtrl_ != nullptr);
 
-	entityImg = entity_->getComponent<Image>();
-	assert(entityImg != nullptr);
-	entityImg->setRotationOrigin(entityTr->getW() * 0.16f, entityTr->getH() * 0.46f);
+	image_ = entity_->getComponent<Image>();
+	assert(image_ != nullptr);
+	image_->setRotationOrigin(tr_->getW() * 0.16f, tr_->getH() * 0.46f);
 
-	playerRb = player->getComponent<RigidBody>();
-	assert(playerRb != nullptr);
+	playerRb_ = player_->getComponent<RigidBody>();
+	assert(playerRb_ != nullptr);
 }
 
 void Weapon::upgradeTier(int tier) {
 	if (tier == 2) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 1);
-		damage = consts::WEAPON_TIER2_DAMAGE;
+		impactDamage = consts::WEAPON_TIER2_DAMAGE;
 		fireRate = consts::WEAPON_TIER2_FIRERATE;
 	}
 	else if (tier == 3) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 2);
-		damage = consts::WEAPON_TIER3_DAMAGE;
+		impactDamage = consts::WEAPON_TIER3_DAMAGE;
 		fireRate = consts::WEAPON_TIER3_FIRERATE;
 	}
 }

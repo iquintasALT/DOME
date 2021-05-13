@@ -8,46 +8,46 @@
 
 class Transform;
 class Image;
+class Player;
+class WeaponAnimation;
 
 enum class WeaponType;
 enum ITEMS;
 class Weapon : public Component
 {
 protected:
-	Entity* player;
-	RigidBody* playerRb;
-	Transform* playerTr;
-	Transform* entityTr;
-	KeyboardPlayerCtrl* ctrl;
-	Image* entityImg;
+	Player* player_;
+	RigidBody* playerRb_;
+	Transform* playerTr_;
+	Transform* tr_;
+	KeyboardPlayerCtrl* playerCtrl_;
+	Image* image_;
+	WeaponAnimation* animator_;
 
-	int damage;
+	int impactDamage;
 	bool flipped;
 
-	float shootTime; //time between bullets
-	float fireRate;
+	float timeSinceLastShot;
+	float fireRate; // minimum milliseconds between shots
 
-	int chargerSize;
-	int remainingBullets;
+	int magazineSize;
+	int bulletsInReserve;
 
+	float reloadTime;
+	bool reloading;
 
-	float rechargeTime;
-	bool recharging;
-
-	float dispersion;
-	float notCrouchedDispersion;
+	float bulletSpread;
+	float baseBulletSpread;
 
 public:
-	Weapon(float fR, int dam, float dispersion = 0);
+	Weapon(float rateOfFire, int damage, float crchBulletSpread = 0);
 
 	~Weapon();
 	bool ItemIsAmmo(Item* item, WeaponType weaponType);
 
-	int currentCharger;
-
-	virtual int getChargerBullets();
-	virtual int getChargerSize() { return chargerSize; }
-	virtual int getRemainingBullets() { return remainingBullets; }
+	int bulletsInMagazine;
+	inline virtual int getMagazineSize() { return magazineSize; }
+	inline virtual int getAmmoReserves() { return bulletsInReserve; }
 	virtual void init();
 
 	void setAmmo();
@@ -55,10 +55,10 @@ public:
 
 	virtual void update();
 
-	void recharge();
-	int getDamage() { return damage; }
-	void setDamage(int damage_) { damage = damage_; }
-	void setDispersion(int i) { dispersion = i; notCrouchedDispersion = i; }
+	void reload();
+	int getDamage() { return impactDamage; }
+	void setDamage(int damage_) { impactDamage = damage_; }
+	void setBulletSpread(int i) { bulletSpread = i; baseBulletSpread = i; }
 
 	void adjustToCrouching();
 	virtual void upgradeTier(int tier);

@@ -13,7 +13,7 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 
 	addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
 	weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 0);
-	weapon->currentCharger = 4;
+	weapon->bulletsInMagazine = 4;
 	weaponType = WeaponType::CLASSIC;
 
 }
@@ -28,7 +28,7 @@ void WeaponBehaviour::changeWeapon()
 
 	if (weaponType == WeaponType::CLASSIC)
 	{
-		weaponBullets[0] = getComponent<Weapon>()->getChargerBullets();
+		weaponBullets[0] = getComponent<Weapon>()->bulletsInMagazine;
 		this->removeComponent<Weapon>();
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 0);
 		weapon = addComponent<ChargeWeapon>(consts::CHARGE_TIER1_FIRERATE, consts::CHARGE_TIER1_DAMAGE);
@@ -36,14 +36,14 @@ void WeaponBehaviour::changeWeapon()
 		weaponType = WeaponType::LASER;
 
 		auto weapon = getComponent<ChargeWeapon>();
-		weapon->currentCharger = weaponBullets[1];
+		weapon->bulletsInMagazine = weaponBullets[1];
 
 		if (weaponBullets <= 0)
 			weapon->setAmmo();
 	}
 	else if (weaponType == WeaponType::LASER)
 	{
-		weaponBullets[1] = getComponent<ChargeWeapon>()->getChargerBullets();
+		weaponBullets[1] = getComponent<ChargeWeapon>()->bulletsInMagazine;
 		this->removeComponent<ChargeWeapon>();
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 0);
 		weapon = addComponent<RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, pl, 3, 1);
@@ -51,14 +51,14 @@ void WeaponBehaviour::changeWeapon()
 		weaponType = WeaponType::RICOCHET;
 
 		auto weapon = getComponent<RicochetWeapon>();
-		weapon->currentCharger = weaponBullets[2];
+		weapon->bulletsInMagazine = weaponBullets[2];
 
 		if (weaponBullets <= 0)
 			weapon->setAmmo();
 	}
 	else
 	{
-		weaponBullets[2] = getComponent<RicochetWeapon>()->getChargerBullets();
+		weaponBullets[2] = getComponent<RicochetWeapon>()->bulletsInMagazine;
 		this->removeComponent<RicochetWeapon>();
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 0);
 		weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
@@ -67,7 +67,7 @@ void WeaponBehaviour::changeWeapon()
 
 
 		auto weapon = getComponent<Weapon>();
-		weapon->currentCharger = weaponBullets[0];
+		weapon->bulletsInMagazine = weaponBullets[0];
 
 		if (weaponBullets <= 0)
 			weapon->setAmmo();
@@ -109,6 +109,6 @@ void WeaponBehaviour::upgradeTier() {
 }
 
 void WeaponBehaviour::addDispersion(int i) {
-	dispersion += i;
-	weapon->setDispersion(dispersion);
+	bulletSpread += i;
+	weapon->setBulletSpread(bulletSpread);
 }

@@ -14,19 +14,19 @@
 #include "../classes/Item.h"
 void RicochetWeapon::update() {
 
-	if (player->getComponent<KeyboardPlayerCtrl>() != nullptr && player->getComponent<KeyboardPlayerCtrl>()->isCrouching()) {
-		dispersion = notCrouchedDispersion;
-		if (notCrouchedDispersion - 20 >= 0)
-			dispersion = notCrouchedDispersion - 20;
-		else dispersion = 0;
+	if (player_->getComponent<KeyboardPlayerCtrl>() != nullptr && player_->getComponent<KeyboardPlayerCtrl>()->isCrouching()) {
+		bulletSpread = baseBulletSpread;
+		if (baseBulletSpread - 20 >= 0)
+			bulletSpread = baseBulletSpread - 20;
+		else bulletSpread = 0;
 	}
 	else {
-		dispersion = notCrouchedDispersion;
+		bulletSpread = baseBulletSpread;
 	}
 
-	shootTime += consts::DELTA_TIME;
+	timeSinceLastShot += consts::DELTA_TIME;
 
-	if (ctrl->isStairs()) entityImg->enabled = false;
+	if (playerCtrl_->isStairs()) entityImg->enabled = false;
 	else entityImg->enabled = true;
 
 	Vector2D playerPos = playerTr->getPos();
@@ -58,9 +58,9 @@ void RicochetWeapon::update() {
 
 	entityTr->setRot(degreeAngle);
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && shootTime >= fireRate
-		&& currentCharger > 0 && !recharging && !ctrl->isStairs()) {
-		shootTime = 0;
+	if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate
+		&& bulletsInMagazine > 0 && !reloading && !playerCtrl_->isStairs()) {
+		timeSinceLastShot = 0;
 		Entity* bullet = entity_->getMngr()->addEntity();
 
 		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 12, 6, 0);
@@ -85,21 +85,21 @@ void RicochetWeapon::update() {
 		bullet->addComponent<Image>(tex_)->setRotationOrigin(8, 4);
 		bullet->addComponent<Ricochet>(playerTr, nbounce, ntier);
 
-		currentCharger--;
-		if (currentCharger <= 0)
+		bulletsInMagazine--;
+		if (bulletsInMagazine <= 0)
 		{
-			recharge();
+			reload();
 		}
 	}
 
-	if (recharging)
+	if (reloading)
 	{
-		rechargeTime += consts::DELTA_TIME;
+		reloadTime += consts::DELTA_TIME;
 	}
-	if (rechargeTime > 2.0) //Tiempo de recarga en segundos
+	if (reloadTime > 2.0) //Tiempo de recarga en segundos
 	{
-		rechargeTime = 0;
-		recharging = false;
+		reloadTime = 0;
+		reloading = false;
 	}
 }
 
@@ -107,14 +107,14 @@ void RicochetWeapon::upgradeTier(int tier) {
 	if (tier == 2) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 1);
-		damage = consts::RICOCHET_TIER2_DAMAGE;
+		impactDamage = consts::RICOCHET_TIER2_DAMAGE;
 		fireRate = consts::RICOCHET_TIER2_FIRERATE;
 		nbounce++;
 	}
 	else if (tier == 3) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 2);
-		damage = consts::RICOCHET_TIER3_DAMAGE;
+		impactDamage = consts::RICOCHET_TIER3_DAMAGE;
 		fireRate = consts::RICOCHET_TIER3_FIRERATE;
 		nbounce++;
 	}

@@ -31,7 +31,7 @@ private:
 	Image* im_;
 	Transform* tr_;
 	RigidBody* rb;
-	KeyboardPlayerCtrl* ctrl;
+	KeyboardPlayerCtrl* playerCtrl_;
 	bool animStop;
 
 	ParticleSystem* walkDust;
