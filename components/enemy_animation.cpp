@@ -1,9 +1,10 @@
 #include "enemy_animation.h"
 
 
-EnemyAnimation::EnemyAnimation() : tr_(nullptr), im_(nullptr), rb(nullptr) {
+EnemyAnimation::EnemyAnimation() : tr_(nullptr), im_(nullptr), rb(nullptr), playerTr_(nullptr) {
 	isAttacking = false;
 	dmgReceived = false;
+	cooldown = 0.0f;
 };
 
 EnemyAnimation::~EnemyAnimation() {}

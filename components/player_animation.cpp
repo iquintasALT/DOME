@@ -4,6 +4,8 @@
 
 player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
 	animStop = false;
+	dmgReceived = false;
+	cooldown = 0.0f;
 };
 
 player_animation::~player_animation() {}
@@ -17,6 +19,11 @@ void player_animation::update() {
 	if (timer > 1 && !animStop) {
 		currentAnimation.advanceFrame();
 		timer = 0;
+	}
+
+	if (dmgReceived && sdlutils().currRealTime() - 200 > cooldown) {
+		dmgReceived = false;
+		cooldown = sdlutils().currRealTime();
 	}
 }
 
@@ -51,6 +58,27 @@ bool player_animation::changeAnimations() {
 	else if (x != 0) {
 			if (x < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
 			else  im_->setFlip(SDL_FLIP_NONE);
+	}
+
+	if (dmgReceived) {
+		if (currentAnimation == animations[dmg_climb]
+			|| currentAnimation == animations[dmg_crouch]
+			|| currentAnimation == animations[dmg_idle])
+			return false;
+
+		if (ctrl->isCrouching()) {
+			currentAnimation = animations[dmg_crouch];
+		}
+		else if (ctrl->isStairs()) {
+			walkDust->Stop();
+			currentAnimation = animations[dmg_climb];
+		}
+		else {
+			currentAnimation = animations[dmg_idle];
+		}
+		cooldown = sdlutils().currRealTime();
+		currentAnimation.render();
+		return true;
 	}
 
 	if (ctrl->isCrouching()) {
