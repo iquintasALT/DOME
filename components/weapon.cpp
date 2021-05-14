@@ -21,20 +21,9 @@
 #include <iostream>
 #include "../classes/player.h"
 
-Weapon::Weapon(float fR, int dam, float bulletSpread) : fireRate(fR), flipped(false), playerCtrl_(nullptr), timeSinceLastShot(0), image_(nullptr), impactDamage(dam), player_(nullptr),
-playerTr_(nullptr), tr_(nullptr)
-{
-	baseBulletSpread = bulletSpread;
+Weapon::Weapon(float rateOfFire, int damage, float bulletSpread) : fireRate(rateOfFire), impactDamage(damage),
+baseBulletSpread(bulletSpread), magazineSize(30) { }
 
-	bulletsInReserve = 0;
-	bulletsInMagazine = 0;
-	magazineSize = 30;
-
-	timeSinceLastShot = 0;
-	reloadTime = 0;
-	reloading = false;
-	playerRb_ = nullptr;
-}
 Weapon::~Weapon() {}
 
 void Weapon::calculatePosition() {
@@ -89,32 +78,33 @@ void Weapon::calculateRotation(Vector2D& direction) {
 		flipped = false;
 	}
 
-
-	
-
-
 	// Apply rotation
 	tr_->setRot(degreeAngle);
 }
 
-void Weapon::shoot(Vector2D& direction) {
+Entity* Weapon::createBullet(const Vector2D& direction)
+{
+	Entity* bullet = entity_->getMngr()->addEntity();
+	bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
+	bullet->addComponent<RigidBody>(direction * 10.0, false);
+	bullet->addComponent<Image>(bulletTexture_);
+	bullet->addComponent<ClassicBullet>();
+	entity_->getMngr()->addRenderLayer<Bullets>(bullet);
+	return bullet;
+}
+
+void Weapon::shoot(const Vector2D& direction) {
 	timeSinceLastShot = 0;
 
-	
+	Entity* bullet = createBullet(direction);
 
-	Entity* bullet = entity_->getMngr()->addEntity();
+	Transform* bulletTr = bullet->getComponent<Transform>();
+	RigidBody* rb = bullet->getComponent<RigidBody>();
 
-	Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
-	RigidBody* rb = bullet->addComponent<RigidBody>(direction * 10.0, false);
-
-	float gunLength = tr_->getW() - 8; //Distancia del ca��n del arma para spawnear la bala
+	float gunLength = tr_->getW() - 8; //Longitud del ca��n del arma para spawnear la bala
 
 	bulletTr->setPos(tr_->getPos() + direction * gunLength);
 	bulletTr->setRot(tr_->getRot());
-
-	entity_->getMngr()->addRenderLayer<Bullets>(bullet);
-	bullet->addComponent<Image>(bulletTexture);
-	bullet->addComponent<ClassicBullet>();
 
 	bulletsInMagazine--;
 
