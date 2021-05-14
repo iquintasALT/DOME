@@ -66,10 +66,10 @@ bool player_animation::changeAnimations() {
 			|| currentAnimation == animations[dmg_idle])
 			return false;
 
-		if (ctrl->isCrouching()) {
+		if (playerCtrl_->isCrouching()) {
 			currentAnimation = animations[dmg_crouch];
 		}
-		else if (ctrl->isStairs()) {
+		else if (playerCtrl_->isClimbingLadder()) {
 			walkDust->Stop();
 			currentAnimation = animations[dmg_climb];
 		}
