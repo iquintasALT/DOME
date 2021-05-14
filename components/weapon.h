@@ -18,42 +18,45 @@ enum ITEMS;
 class Weapon : public Component
 {
 protected:
-	Player* player_;
-	RigidBody* playerRb_;
-	Transform* playerTr_;
-	Transform* tr_;
-	KeyboardPlayerCtrl* playerCtrl_;
-	Image* image_;
-	WeaponAnimation* animator_;
+	Transform* tr_ = nullptr;
+	Image* image_ = nullptr;
+	WeaponAnimation* animator_ = nullptr;
+	Player* player_ = nullptr;
+	RigidBody* playerRb_ = nullptr;
+	Transform* playerTr_ = nullptr;
+	KeyboardPlayerCtrl* playerCtrl_ = nullptr;
 
 	int impactDamage;
-	bool flipped;
+	bool flipped = false;
 
-	float timeSinceLastShot;
+	float timeSinceLastShot = 0;
 	float fireRate; // minimum milliseconds between shots
 
 	int magazineSize;
-	int bulletsInReserve;
+	int bulletsInReserve = 0;
 
-	float reloadTime;
-	bool reloading;
+	float reloadTime = 0;
+	bool reloading = false; 
 
 	float baseBulletSpread;
 
-	Texture* bulletTexture = &sdlutils().images().at("projectile");
+	Texture* bulletTexture_ = &sdlutils().images().at("projectile");
 
 	Vector2D calculateShotTrajectory(Vector2D direction); // Returns direction of the shot after accounting for random spread
 	void calculatePosition();
 	void calculateRotation(Vector2D& direction);
-	virtual void shoot(Vector2D& direction);
+	virtual Entity* createBullet(const Vector2D& direction);
+	virtual void shoot(const Vector2D& direction);
 
 public:
-	Weapon(float rateOfFire, int damage, float crchBulletSpread = 0);
+	int bulletsInMagazine = 0;
 
+	Weapon() {};
+	Weapon(float rateOfFire, int damage, float bulletSpread = 0);
 	~Weapon();
+
 	bool ItemIsAmmo(Item* item, WeaponType weaponType);
 
-	int bulletsInMagazine;
 	inline virtual int getMagazineSize() { return magazineSize; }
 	inline virtual int getAmmoReserves() { return bulletsInReserve; }
 	virtual void init();
