@@ -46,7 +46,7 @@ void WeaponBehaviour::changeWeapon()
 		weaponBullets[1] = getComponent<ChargeWeapon>()->bulletsInMagazine;
 		this->removeComponent<ChargeWeapon>();
 		Component* img = addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 0);
-		weapon = addComponent<RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, pl, 3, 1);
+		weapon = addComponent<RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, 10.0, 3, 1);
 		if (tierWeapon3 != 1) weapon->upgradeTier(tierWeapon3);
 		weaponType = WeaponType::RICOCHET;
 
