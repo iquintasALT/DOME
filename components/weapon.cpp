@@ -21,7 +21,7 @@
 #include <iostream>
 #include "../classes/player.h"
 
-Weapon::Weapon(float fR, int dam, float bulletSpread) : bulletSpread(bulletSpread), fireRate(fR), flipped(false), playerCtrl_(nullptr), timeSinceLastShot(0), image_(nullptr), impactDamage(dam), player_(nullptr),
+Weapon::Weapon(float fR, int dam, float bulletSpread) : fireRate(fR), flipped(false), playerCtrl_(nullptr), timeSinceLastShot(0), image_(nullptr), impactDamage(dam), player_(nullptr),
 playerTr_(nullptr), tr_(nullptr)
 {
 	baseBulletSpread = bulletSpread;
@@ -37,43 +37,49 @@ playerTr_(nullptr), tr_(nullptr)
 }
 Weapon::~Weapon() {}
 
-void Weapon::update() {
-
-	if (player_->getComponent<KeyboardPlayerCtrl>() != nullptr && player_->getComponent<KeyboardPlayerCtrl>()->isCrouching()) {
-		bulletSpread = baseBulletSpread;
-		if (baseBulletSpread - 20 >= 0)
-			bulletSpread = baseBulletSpread - 20;
-		else bulletSpread = 0;
-	}
-	else {
-		bulletSpread = baseBulletSpread;
-	}
-
-	timeSinceLastShot += consts::DELTA_TIME;
-
-	if (playerCtrl_->isClimbingLadder()) image_->enabled = false;
-	else image_->enabled = true;
-
+void Weapon::calculatePosition() {
 	Vector2D playerPos = playerTr_->getPos();
 	if (flipped) tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.56f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.57));
 	else tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.17f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.62));
 	adjustToCrouching();
+}
 
-	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
+Vector2D Weapon::calculateShotTrajectory(Vector2D direction) {
+	// If crouching, reduce spread by 20 but no lower than 0, otherwise use regular spread
+	float bulletSpread = playerCtrl_->isCrouching() ? std::max(baseBulletSpread - 20, 0.0f): baseBulletSpread;
 
-	mousePos = Camera::mainCamera->PointToWorldSpace(mousePos);
+	float maxSpread = bulletSpread; 
+
+	// Increase spread cone if player is airborne
+	if (!playerRb_->onFloor()) maxSpread += 60;
+
+	float offset = 0;
+	// If there is any spread range, generate a random angle within that range
+	if (maxSpread != 0)
+		offset = sdlutils().rand().nextInt(-maxSpread, maxSpread) * M_PI / 180.0;
+
+	// Final direction is equal to aim direction rotated by offset
+	direction.setX(direction.getX() * cos(offset) - direction.getY() * sin(offset));
+	direction.setY(direction.getX() * sin(offset) + direction.getY() * cos(offset));
+
+	return direction;
+}
+
+void Weapon::calculateRotation(Vector2D& direction) {
+
+	// Position of mouse in world coordinates
+	Vector2D mousePos = Camera::mainCamera->PointToWorldSpace(Vector2D(ih().getMousePos().first, ih().getMousePos().second));
 
 	Vector2D yCenteredPos(tr_->getPos().getX(), tr_->getPos().getY() + tr_->getH() * 0.37f); //Punto {0, Altura del ca��n}  
-	Vector2D  dir = (mousePos - yCenteredPos).normalize();
+	direction = (mousePos - yCenteredPos).normalize();
 
-
-	float radianAngle = atan2(dir.getY(), dir.getX());
+	float radianAngle = atan2(direction.getY(), direction.getX());
 	float degreeAngle = (radianAngle * 180.0) / M_PI;
 
-
-	float playerX = playerPos.getX() + playerTr_->getW() / 2;
+	float playerX = playerTr_->getPos().getX() + playerTr_->getW() / 2;
 	float xDir = mousePos.getX() - playerX;
 
+	// Flip image if required
 	if (!flipped && xDir < 0) {
 		image_->setFlip(SDL_FLIP_VERTICAL);
 		flipped = true;
@@ -83,64 +89,64 @@ void Weapon::update() {
 		flipped = false;
 	}
 
+
+	
+
+
+	// Apply rotation
 	tr_->setRot(degreeAngle);
+}
 
-	if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate &&
-		bulletsInMagazine > 0 && !reloading && !playerCtrl_->isClimbingLadder()) {
+void Weapon::shoot(Vector2D& direction) {
+	timeSinceLastShot = 0;
 
-		timeSinceLastShot = 0;
+	
 
-		float maxSpread = bulletSpread; //Add here the dispersions
-		if (!playerRb_->onFloor()) {
-			maxSpread += 60;
-		}
-		float x = dir.getX(), y = dir.getY(), rotation = 0;
-		if (maxSpread != 0)
-			rotation = sdlutils().rand().nextInt(-maxSpread, maxSpread) * M_PI / 180.0;
+	Entity* bullet = entity_->getMngr()->addEntity();
 
-		dir.setX(x * cos(rotation) - y * sin(rotation));
-		dir.setY(x * sin(rotation) + y * cos(rotation));
+	Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
+	RigidBody* rb = bullet->addComponent<RigidBody>(direction * 10.0, false);
 
-		Entity* bullet = entity_->getMngr()->addEntity();
+	float gunLength = tr_->getW() - 8; //Distancia del ca��n del arma para spawnear la bala
 
-		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
-		RigidBody* rb = bullet->addComponent<RigidBody>(dir * 10.0, false);
+	bulletTr->setPos(tr_->getPos() + direction * gunLength);
+	bulletTr->setRot(tr_->getRot());
 
-		float aux1 = tr_->getW() - 8; //Distancia del ca��n del arma para spawnear la bala
-		float aux2 = tr_->getPos().getY() + tr_->getH() / 2 - yCenteredPos.getY();
+	entity_->getMngr()->addRenderLayer<Bullets>(bullet);
+	bullet->addComponent<Image>(bulletTexture);
+	bullet->addComponent<ClassicBullet>();
 
-		float offsetX = sin(-radianAngle) * aux2;
-		float offsetY = cos(-radianAngle) * aux2;
-		if (flipped) {
-			offsetX = -offsetX;
-			offsetY = -offsetY;
-		}
+	bulletsInMagazine--;
 
-		Vector2D centeredPos = { yCenteredPos.getX() - bulletTr->getW() / 2 - offsetX, tr_->getPos().getY() + tr_->getH() / 2 - bulletTr->getH() / 2 - offsetY }; //Punto para spawnear la bala centrada
+	if (bulletsInMagazine <= 0)
+		reload();
+}
 
-		bulletTr->setPos(centeredPos + dir * aux1);
-		bulletTr->setRot(degreeAngle);
+void Weapon::update() {
 
-		entity_->getMngr()->addRenderLayer<Bullets>(bullet);
-		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
-		bullet->addComponent<ClassicBullet>();
+	if (!playerCtrl_->isClimbingLadder())
+	{
+		timeSinceLastShot += consts::DELTA_TIME;
 
-		bulletsInMagazine--;
+		calculatePosition();
 
-		if (bulletsInMagazine <= 0)
+		Vector2D rotation = Vector2D();
+		calculateRotation(rotation);
+		if (reloading)
 		{
-			reload();
+			reloadTime += consts::DELTA_TIME;
+			if (reloadTime > 2.0) //Tiempo de recarga en segundos
+			{
+				reloadTime = 0;
+				reloading = false;
+			}
 		}
+		else if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate &&
+			bulletsInMagazine > 0 && !reloading) 
+			shoot(rotation);
 	}
-	if (reloading)
-	{
-		reloadTime += consts::DELTA_TIME;
-	}
-	if (reloadTime > 2.0) //Tiempo de recarga en segundos
-	{
-		reloadTime = 0;
-		reloading = false;
-	}
+	else
+		image_->enabled = false;
 }
 
 void Weapon::setMaxAmmo() {
