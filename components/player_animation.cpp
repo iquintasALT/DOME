@@ -37,7 +37,7 @@ void player_animation::init() {
 bool debug = false;
 
 bool player_animation::changeAnimations() {
-	auto mouse = ih().getMousePos();
+	auto& mouse = ih().getMousePos();
 	float mouseX = Camera::mainCamera->PointToWorldSpace(Vector2D(mouse.first, mouse.second)).getX();
 	float playerX = tr_->getPos().getX() + tr_->getW() / 2;
 	WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
