@@ -31,7 +31,7 @@ private:
 	InventoryController* inv;
 
 	int weaponBullets[3] = { 0, 0, 0 };
-	int dispersion = 0;
+	int bulletSpread = 0;
 
 public:
 	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr);
