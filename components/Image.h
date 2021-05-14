@@ -13,13 +13,13 @@
 
 class Image : public Component {
 public:
-	Image(Texture* tex, bool isUI_ = false) : tr_(nullptr), tex_(tex), src_({ 0,0,tex->width(),tex->width() }),
+	Image(Texture* tex, bool isUI_ = false) : tr_(nullptr), scrollFactor(1) ,tex_(tex), src_({ 0,0,tex->width(),tex->width() }),
 		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(isUI_) {}
 
-	Image(Texture* tex, SDL_Rect src, bool isUI_ = false) : tr_(nullptr), tex_(tex), src_(src),
+	Image(Texture* tex, SDL_Rect src, bool isUI_ = false) : tr_(nullptr), tex_(tex), scrollFactor(1), src_(src),
 		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(isUI_) {}
 
-	Image(Texture* tex, int rows, int cols, int r, int c, bool isUI_ = false) : tr_(nullptr), tex_(tex), flip_(SDL_FLIP_NONE),
+	Image(Texture* tex, int rows, int cols, int r, int c, bool isUI_ = false) : tr_(nullptr), tex_(tex), scrollFactor(1), flip_(SDL_FLIP_NONE),
 		rotationOrigin({ -1, -1 }), isUI(isUI_)
 	{
 		int w = tex->width() / cols;
@@ -37,6 +37,7 @@ public:
 	void render() override {
 		bool shouldRender = true;
 		Vector2D pos = !isUI ? Camera::mainCamera->renderRect(tr_->getPos(), tr_->getW(), tr_->getH(), shouldRender) : tr_->getPos();
+		pos.setX(pos.getX() * scrollFactor);
 		float scale = Camera::mainCamera->getScale();
 		if (!shouldRender) return;
 
@@ -87,6 +88,13 @@ public:
 		tex_->setAlpha(alpha);
 	}
 
+	//Value between 0-1
+	void setScrollFactor(float value) {
+		if (value < 0) value = 0;
+		else if (value > 1) value = 1;
+		scrollFactor = value;
+	}
+
 	SDL_Point getOrigin() {
 		return rotationOrigin;
 	}
@@ -96,6 +104,7 @@ private:
 	Transform* tr_;
 	Texture* tex_;
 	SDL_Rect src_;
+	float scrollFactor;
 	SDL_RendererFlip flip_;
 	SDL_Point rotationOrigin;
 };
