@@ -3,6 +3,8 @@
 #include "../ecs/Component.h"
 #include "../utils/checkML.h"
 #include "../components/KeyboardPlayerCtrl.h"
+#include "../sdlutils/Texture.h"
+#include "../sdlutils/SDLUtils.h"
 #include <math.h>
 
 
@@ -36,8 +38,14 @@ protected:
 	float reloadTime;
 	bool reloading;
 
-	float bulletSpread;
 	float baseBulletSpread;
+
+	Texture* bulletTexture = &sdlutils().images().at("projectile");
+
+	Vector2D calculateShotTrajectory(Vector2D direction); // Returns direction of the shot after accounting for random spread
+	void calculatePosition();
+	void calculateRotation(Vector2D& direction);
+	virtual void shoot(Vector2D& direction);
 
 public:
 	Weapon(float rateOfFire, int damage, float crchBulletSpread = 0);
@@ -58,7 +66,7 @@ public:
 	void reload();
 	int getDamage() { return impactDamage; }
 	void setDamage(int damage_) { impactDamage = damage_; }
-	void setBulletSpread(int i) { bulletSpread = i; baseBulletSpread = i; }
+	void setBulletSpread(int i) { baseBulletSpread = i; }
 
 	void adjustToCrouching();
 	virtual void upgradeTier(int tier);
