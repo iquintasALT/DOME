@@ -22,8 +22,10 @@
 #include "weapon_animation.h"
 #include <iostream>
 
-Weapon::Weapon(float rateOfFire, int damage, float bulletSpread) : fireRate(rateOfFire), impactDamage(damage),
-baseBulletSpread(bulletSpread), magazineSize(30) { }
+Weapon::Weapon(float rateOfFire, int damage, float bulletSpread, int tier) : fireRate(rateOfFire), impactDamage(damage),
+baseBulletSpread(bulletSpread), magazineSize(30) {
+	upgradeCurrentWeapon(tier);
+}
 
 Weapon::~Weapon() {}
 

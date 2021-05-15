@@ -13,8 +13,8 @@ class Image;
 class Player;
 class WeaponAnimation;
 
-enum class WeaponType;
 enum ITEMS;
+
 class Weapon : public Component
 {
 protected:
@@ -49,16 +49,16 @@ protected:
 	virtual void shoot(const Vector2D& direction);
 
 public:
-	enum WeaponType { regular, ricochet, laser };
-	WeaponType type = regular;
+	enum WeaponType { CLASSIC, RICOCHET, LASER };
+	WeaponType type = CLASSIC;
 
 	int bulletsInMagazine = 0;
 
 	Weapon() {};
-	Weapon(float rateOfFire, int damage, float bulletSpread = 0);
+	Weapon(float rateOfFire, int damage, float bulletSpread = 0, int tier = 0);
 	~Weapon();
 
-	bool ItemIsAmmo(Item* item, WeaponType weaponType_);
+	bool ItemIsAmmo(Item* item, WeaponType weaponType);
 
 	inline virtual int getMagazineSize() { return magazineSize; }
 	inline virtual int getAmmoReserves() { return bulletsInReserve; }
