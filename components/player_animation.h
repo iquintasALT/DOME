@@ -13,9 +13,9 @@
 
 class player_animation : public AnimationComponent {
 private:
-	const enum animations_name { iddle = 0, walking, crouch, walking_arms, idle_arms, crouch_arms, climbing, dmg_idle, dmg_crouch, dmg_climb };
+	const enum animations_name { idle = 0, walking, crouch, walking_arms, idle_arms, crouch_arms, climbing, dmg_idle, dmg_crouch, dmg_climb };
 	Animation animations[10]{
-	Animation(iddle, 4),
+	Animation(idle, 4),
 	Animation(walking, 14),
 	Animation(crouch, 4),
 	Animation(walking_arms, 14),
@@ -26,7 +26,7 @@ private:
 	Animation(dmg_crouch, 1),
 	Animation(dmg_climb, 1)};
 
-	Animation currentAnimation = animations[iddle];
+	Animation currentAnimation = animations[idle];
 	float timer = 0;
 
 	bool changeAnimations();

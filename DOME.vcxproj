@@ -200,6 +200,7 @@
     <ClCompile Include="components\Transform.cpp" />
     <ClCompile Include="components\TransitionComponent.cpp" />
     <ClCompile Include="components\weapon.cpp" />
+    <ClCompile Include="components\weapon_animation.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
     <ClCompile Include="game\Game.cpp" />
@@ -212,7 +213,6 @@
     <ClCompile Include="utils\Collisions.cpp" />
     <ClCompile Include="utils\ray_cast.cpp" />
     <ClCompile Include="utils\Vector2D.cpp" />
-    <ClCompile Include="weapon_animation.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
