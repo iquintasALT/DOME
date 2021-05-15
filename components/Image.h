@@ -37,7 +37,10 @@ public:
 	void render() override {
 		bool shouldRender = true;
 		Vector2D pos = !isUI ? Camera::mainCamera->renderRect(tr_->getPos(), tr_->getW(), tr_->getH(), shouldRender) : tr_->getPos();
-		pos.setX(pos.getX() * scrollFactor);
+		if (scrollFactor < 1) {
+			pos.setY(tr_->getPos().getY());
+			pos.setX(pos.getX() * scrollFactor);
+		}
 		float scale = Camera::mainCamera->getScale();
 		if (!shouldRender) return;
 
