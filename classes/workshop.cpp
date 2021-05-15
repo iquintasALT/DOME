@@ -129,7 +129,7 @@ void Workshop::update() {
 							WeaponBehaviour* weapon = static_cast<Player*>(playerTr->getEntity())->getCurrentWeapon();
 							if (isCraftable && weapon->tierOfWeapon() < 3) {
 								renderRightWindow = false;
-								weapon->upgradeTier();
+								weapon->upgradeCurrentWeapon();
 								//gastar accion
 								shelterScene->useAction();
 							}

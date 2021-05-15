@@ -17,7 +17,7 @@ public:
 	inline RicochetWeapon() {};
 	inline RicochetWeapon(float rateOfFire, int damage, float bulletSpread, int bounce, int tier) : Weapon(rateOfFire, damage, bulletSpread), ntier(tier), nbounce(bounce) {};
 
-	virtual void upgradeTier(int tier);
+	virtual void upgradeCurrentWeapon(int tier) override;
 
 	void init() override;
 };

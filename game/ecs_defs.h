@@ -82,12 +82,10 @@ class ChangeImage;
 	Loot, \
 	BackToShelter, \
 	ParticleSystem, \
-    RicochetWeapon, \
 	PlayerHealthComponent,\
 	HungerComponent, \
 	TirednessComponent, \
 	PlayerCollisions, \
-	ChargeWeapon, \
 	Charge, \
 	BoxCollider,\
 	BleedoutComponent,\

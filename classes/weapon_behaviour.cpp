@@ -16,7 +16,7 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 	addComponent<WeaponAnimation>();
 	weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 0);
 	weapon->bulletsInMagazine = 4;
-	weaponType = WeaponType::CLASSIC;
+	weaponType_ = WeaponType::CLASSIC;
 }
 
 Weapon* WeaponBehaviour::getWeapon() {

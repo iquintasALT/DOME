@@ -7,9 +7,8 @@ class ChargeWeapon : public Weapon
 {
 private:
 public:
-
 	ChargeWeapon(float fR, int dam);
 	virtual void update();
-	virtual void upgradeTier(int tier);
+	virtual void upgradeCurrentWeapon(int tier) override;
 };
 

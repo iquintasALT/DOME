@@ -23,7 +23,7 @@ Entity* RicochetWeapon::createBullet(const Vector2D& direction){
 	return bullet;
 }
 
-void RicochetWeapon::upgradeTier(int tier) {
+void RicochetWeapon::upgradeCurrentWeapon(int tier) {
 	if (tier == 1) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 1);
