@@ -116,9 +116,9 @@ bool player_animation::changeAnimations() {
 
 	if (x == 0) {
 		if (aux->isActive()) {
-			if (currentAnimation == animations[iddle])
+			if (currentAnimation == animations[idle])
 				return false;
-			currentAnimation = animations[iddle];
+			currentAnimation = animations[idle];
 		}
 		else {
 			if (currentAnimation == animations[idle_arms])
