@@ -55,11 +55,7 @@ public:
 	}
 
 	void playSFX(std::string key) {
-		if (&sfx_.at(key) != currentSFX) {
-			if (currentMusic != nullptr) currentSFX->pauseChannel();
-			currentSFX = &sfx_.at(key);
-			currentSFX->play();
-		}
+		sfx_.at(key).play();
 	}
 
 	//ESTO LO PARA Y LO QUITA
@@ -106,10 +102,7 @@ public:
 
 	void setSFXVolume(float sfxV) {
 		sfxVolume = sfxV;
-		for (sdl_resource_table<SoundEffect>::iterator it = sfx_.begin();
-			it != sfx_.end(); ++it) {
-			(*it).second.setChannelVolume(sfxVolume);
-		}
+		SoundEffect::setChannelVolume(sfxVolume);
 	}
 
 private:
@@ -119,8 +112,6 @@ private:
 	sdl_resource_table<Music> musics_; // musics map (string -> music)
 
 	Music* currentMusic = nullptr;
-	SoundEffect* currentSFX = nullptr;
-
 
 	float musicVolume = 40, sfxVolume = 40, maxVolume = 80, maxSfxVolume = 80;
 };

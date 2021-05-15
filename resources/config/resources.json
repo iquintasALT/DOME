@@ -386,11 +386,11 @@
 
     "sounds": [
         {
-            "id": "paddle_hit",
+            "id": "over_button",
             "file": "resources/sound/paddle_hit.wav"
         },
         {
-            "id": "wall_hit",
+            "id": "push_button",
             "file": "resources/sound/wall_hit.wav"
         }
     ],
