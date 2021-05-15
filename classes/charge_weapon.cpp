@@ -120,7 +120,7 @@ void ChargeWeapon::update() {
 	}
 }
 
-void ChargeWeapon::upgradeTier(int tier) {
+void ChargeWeapon::upgradeCurrentWeapon(int tier) {
 	if (tier == 1) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 1);

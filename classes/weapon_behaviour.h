@@ -24,7 +24,7 @@ private:
 	Weapon* weapon;
 	Transform* pl;
 	WeaponAnimation* animator_;
-	WeaponType weaponType;
+	WeaponType weaponType_;
 
 	short int weaponTiers [3] ={0, 0, 0};
 
@@ -32,7 +32,7 @@ private:
 
 	int weaponBullets[3] = { 0, 0, 0 };
 	int bulletSpread = 0;
-	inline short int weaponType() { return (short int)weaponType; }; // Quick conversion from enum to array index
+	inline short int weaponType() { return (short int)weaponType_; }; // Quick conversion from enum to array index
 
 public:
 	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr);
@@ -45,7 +45,7 @@ public:
 
 	void changeWeapon();
 
-	WeaponType typeOfWeapon() { return weaponType; }
+	WeaponType typeOfWeapon() { return weaponType_; }
 	int tierOfWeapon();
 	void upgradeCurrentWeapon();
 

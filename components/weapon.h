@@ -58,7 +58,7 @@ public:
 	Weapon(float rateOfFire, int damage, float bulletSpread = 0);
 	~Weapon();
 
-	bool ItemIsAmmo(Item* item, WeaponType weaponType);
+	bool ItemIsAmmo(Item* item, WeaponType weaponType_);
 
 	inline virtual int getMagazineSize() { return magazineSize; }
 	inline virtual int getAmmoReserves() { return bulletsInReserve; }
@@ -75,7 +75,7 @@ public:
 	void reload();
 
 	void adjustToCrouching();
-	virtual void upgradeTier(int tier);
+	virtual void upgradeCurrentWeapon(int tier);
 
 	virtual void init();
 };

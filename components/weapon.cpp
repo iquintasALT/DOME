@@ -226,7 +226,7 @@ void Weapon::init()
 	assert(playerRb_ != nullptr);
 }
 
-void Weapon::upgradeTier(int tier) {
+void Weapon::upgradeCurrentWeapon(int tier) {
 	if (tier == 1) {
 		impactDamage = consts::WEAPON_TIER2_DAMAGE;
 		fireRate = consts::WEAPON_TIER2_FIRERATE;
