@@ -25,8 +25,8 @@ void MenuScene::init() {
 	}
 	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .3, true);
 	mngr_->addRenderLayer<Interface>(a);
-
-	int ypos = 400;
+	int buttonHeight = 50;
+	int ypos = consts::WINDOW_HEIGHT - 7 * buttonHeight;
 
 	auto title = mngr_->addEntity();
 	title->addComponent<Transform>(Vector2D(10, ypos - 200), 500, 250);
@@ -35,7 +35,7 @@ void MenuScene::init() {
 
 	auto yojhanButton = &sdlutils().images().at("yojhanButton");
 	yojhanButton->setAlpha(50);
-	int buttonHeight = 50;
+
 	int width = consts::WINDOW_WIDTH;
 	auto playButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight * 2), yojhanButton, playGame, g_, mngr_, 0, "Play");
 	mngr_->addEntity(playButton);

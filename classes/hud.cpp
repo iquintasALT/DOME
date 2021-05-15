@@ -12,7 +12,7 @@
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../game/Game.h"
-
+#include "../game/constant_variables.h"
 #include <iostream>
 #include <string>
 
@@ -31,7 +31,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 
 	numberOfStates = states->size();
 
-	charger = player->getCurrentWeapon()->getWeapon()->getChargerSize();
+	charger = player->getCurrentWeapon()->getWeapon()->getMagazineSize();
 
 	//TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture * texture, bool appearingText = false, float appeatingTextSpeed = 1, bool alignInCenter = false);
 	
@@ -42,7 +42,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 	tooltip->setActive(false);
 
 	Entity* arma = m->addEntity();
-	arma->addComponent<Transform>(Vector2D(7,650), 75, 75);
+	arma->addComponent<Transform>(Vector2D(7, consts::WINDOW_HEIGHT - 75 - 7), 75, 75);
 	actweapon = arma->addComponent<Image>(&sdlutils().images().at("weaponHUD"), 3, 3, 0, 0, true);
 	m->addRenderLayer<Interface>(arma);
 }
@@ -56,8 +56,8 @@ void hud::update()
 {
 	time->update();
 
-	bullets = player->getCurrentWeapon()->getWeapon()->getChargerBullets();
-	totalBullet = player->getCurrentWeapon()->getWeapon()->getRemainingBullets();
+	bullets = player->getCurrentWeapon()->getWeapon()->bulletsInMagazine;
+	totalBullet = player->getCurrentWeapon()->getWeapon()->getAmmoReserves();
 	if (totalBullet < 0) totalBullet = 0;
 
 	int type = (int)player->getCurrentWeapon()->typeOfWeapon();
@@ -76,13 +76,13 @@ void hud::render() {
 	Vector2D mouse = Vector2D(ih().getMousePos().first, ih().getMousePos().second);
 
 	//Arriba derecha
-	Vector2D aux = Vector2D(995, 9);
+	Vector2D aux = Vector2D(consts::WINDOW_WIDTH - 80, 10);
 	SDL_Rect dest = build_sdlrect(aux, 75, 35);
 	timer->render(dest);
 
 	time->render();
 
-	aux = Vector2D(-1, 650);
+	aux = Vector2D(-1, consts::WINDOW_HEIGHT - 86);
 	dest = build_sdlrect(aux, 155, 70);
 	marco->render(dest);
 
@@ -90,7 +90,7 @@ void hud::render() {
 	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(charger), sdlutils().fonts().at("Orbitron12"),
 		build_sdlcolor(0xffffffff));
 
-	nbullets->render(posCam->getPos().getX(), posCam->getPos().getY() + 550);
+	nbullets->render(100, consts::WINDOW_HEIGHT - 86);
 	delete nbullets;
 	nbullets = nullptr;
 
@@ -98,10 +98,9 @@ void hud::render() {
 	nbullets = new Texture(sdlutils().renderer(), to_string(totalBullet), sdlutils().fonts().at("OrbitronRegular"),
 		build_sdlcolor(0xffffffff));
 
-	nbullets->render(posCam->getPos().getX() + 3, posCam->getPos().getY() + 580);
+	nbullets->render(103, consts::WINDOW_HEIGHT - 56);
 	delete nbullets;
 	nbullets = nullptr;
-
 
 	//Renderizar los estados
 	if (states->size() > 0)
@@ -154,7 +153,7 @@ void hud::render() {
 				drawStatus(n, (*i)->getFrameIndex(), mouse);
 				if (i != states->begin()) --i;
 				--n;
-			} while (i != states->begin());
+			} while (n >= 0);
 	}
 }
 

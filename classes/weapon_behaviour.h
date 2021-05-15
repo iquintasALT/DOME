@@ -30,7 +30,8 @@ private:
 
 	InventoryController* inv;
 
-	int weaponBullets[3] = {0, 0, 0};
+	int weaponBullets[3] = { 0, 0, 0 };
+	int bulletSpread = 0;
 
 public:
 	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr);
@@ -46,4 +47,6 @@ public:
 	WeaponType typeOfWeapon() { return weaponType; }
 	int tierOfWeapon();
 	void upgradeTier();
+
+	void addDispersion(int i);
 };

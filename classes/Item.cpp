@@ -1,4 +1,6 @@
 #include "Item.h"
+#include "../classes/player.h"
+#include "../classes/physiognomy.h"
 
 ItemInfo::ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity* p)> f) :
 	_name(name), _description(description), _width(width), _height(height), _row(row), _col(col), function(f) {};
@@ -16,7 +18,7 @@ ItemInfo::ItemInfo(ItemInfo* item) {
 ItemInfo* ItemInfo::bottleOfWater()
 {
 	auto f = [](Entity* player) {
-		std::cout << "has usado la botella de agua";
+		static_cast<Player*>(player)->getPhysiognomy()->removePainState();
 	};
 
 	return new ItemInfo(WATER, "Scarse item, use it carefully", 1, 2, 4, 0, f);

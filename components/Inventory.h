@@ -52,6 +52,8 @@ private:
 
 	Inventory* other;
 
+	Player* player;
+
 	WeaponBehaviour* playerWeapon;
 
 	Vector2D itemPosition(int x, int y);

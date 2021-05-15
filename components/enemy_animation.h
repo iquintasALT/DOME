@@ -25,6 +25,7 @@ private:
 	//-----------------------------------------------------------------------------
 	Image* im_;
 	Transform* tr_;
+	Transform* playerTr_;
 	RigidBody* rb;
 	bool dmgReceived;
 	bool isAttacking;

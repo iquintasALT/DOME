@@ -2,8 +2,10 @@
 #include "../classes/player.h"
 #include "../classes/weapon_behaviour.h"
 
-player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
+player_animation::player_animation() : tr_(nullptr), playerCtrl_(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
 	animStop = false;
+	dmgReceived = false;
+	cooldown = 0.0f;
 };
 
 player_animation::~player_animation() {}
@@ -18,6 +20,11 @@ void player_animation::update() {
 		currentAnimation.advanceFrame();
 		timer = 0;
 	}
+
+	if (dmgReceived && sdlutils().currRealTime() - 200 > cooldown) {
+		dmgReceived = false;
+		cooldown = sdlutils().currRealTime();
+	}
 }
 
 void player_animation::init() {
@@ -29,15 +36,15 @@ void player_animation::init() {
 
 	tr_ = entity_->getComponent<Transform>();
 	rb = entity_->getComponent<RigidBody>();
-	ctrl = entity_->getComponent<KeyboardPlayerCtrl>();
+	playerCtrl_ = entity_->getComponent<KeyboardPlayerCtrl>();
 	walkDust = entity_->getComponent<ParticleSystem>();
 	walkDust->Stop();
-	assert(tr_ != nullptr && im_ != nullptr && ctrl != nullptr && rb != nullptr && walkDust != nullptr);
+	assert(tr_ != nullptr && im_ != nullptr && playerCtrl_ != nullptr && rb != nullptr && walkDust != nullptr);
 }
 bool debug = false;
 
 bool player_animation::changeAnimations() {
-	auto mouse = ih().getMousePos();
+	auto& mouse = ih().getMousePos();
 	float mouseX = Camera::mainCamera->PointToWorldSpace(Vector2D(mouse.first, mouse.second)).getX();
 	float playerX = tr_->getPos().getX() + tr_->getW() / 2;
 	WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
@@ -53,7 +60,28 @@ bool player_animation::changeAnimations() {
 			else  im_->setFlip(SDL_FLIP_NONE);
 	}
 
-	if (ctrl->isCrouching()) {
+	if (dmgReceived) {
+		if (currentAnimation == animations[dmg_climb]
+			|| currentAnimation == animations[dmg_crouch]
+			|| currentAnimation == animations[dmg_idle])
+			return false;
+
+		if (playerCtrl_->isCrouching()) {
+			currentAnimation = animations[dmg_crouch];
+		}
+		else if (playerCtrl_->isClimbingLadder()) {
+			walkDust->Stop();
+			currentAnimation = animations[dmg_climb];
+		}
+		else {
+			currentAnimation = animations[dmg_idle];
+		}
+		cooldown = sdlutils().currRealTime();
+		currentAnimation.render();
+		return true;
+	}
+
+	if (playerCtrl_->isCrouching()) {
 		if (aux->isActive()) {
 			if (currentAnimation == animations[crouch])
 				return false;
@@ -69,7 +97,7 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
-	if (ctrl->isStairs()) {
+	if (playerCtrl_->isClimbingLadder()) {
 		walkDust->Stop();
 		if (rb->getVel().getY() != 0) {
 			animStop = false;

@@ -31,6 +31,7 @@ void Physiognomy::addPainState() {
 		painAdded = true;
 	}
 	else player->getComponent<PainComponent>()->reduceWeaponDamage();
+	player->getCurrentWeapon()->addDispersion(25);
 }
 
 void Physiognomy::addIntoxicationState() {
@@ -63,34 +64,32 @@ void Physiognomy::removeBleedState() {
 		healthComponents.pop_back();
 		break;
 	}
-		
+
 }
 
 void Physiognomy::removePainState() {
-	PainComponent* c = player->getComponent<PainComponent>();
-	if (c != nullptr)
+	if (player->hasComponent<PainComponent>())
 	{
-		healthComponents.remove(c);
+		healthComponents.remove(player->getComponent<PainComponent>());
 		player->removeComponent<PainComponent>();
 		painAdded = false;
+		player->getCurrentWeapon()->addDispersion(-25);
 	}
 }
 
 void Physiognomy::removeIntoxicationState() {
-	IntoxicationComponent* c = player->getComponent<IntoxicationComponent>();
-	if (c != nullptr)
+	if (player->hasComponent<IntoxicationComponent>())
 	{
-		healthComponents.remove(c);
+		healthComponents.remove(player->getComponent<IntoxicationComponent>());
 		player->removeComponent<IntoxicationComponent>();
 		intoxicationAdded = false;
 	}
 }
 
 void Physiognomy::removeConcussionState() {
-	ConcussionComponent* c = player->getComponent<ConcussionComponent>();
-	if (c != nullptr)
+	if (player->hasComponent<ConcussionComponent>())
 	{
-		healthComponents.remove(c);
+		healthComponents.remove(player->getComponent<ConcussionComponent>());
 		player->removeComponent<ConcussionComponent>();
 		concussionAdded = false;
 	}
@@ -101,7 +100,7 @@ void Physiognomy::addHypothermiaState() {
 }
 
 void Physiognomy::removeHypothermiaState() {
-	if (player->getComponent<HypothermiaComponent>() != nullptr) {
+	if (player->hasComponent<HypothermiaComponent>()) {
 		player->removeComponent<HypothermiaComponent>();
 		hypothermia = nullptr;
 	}

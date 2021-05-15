@@ -138,6 +138,7 @@ struct Player;
 struct Enemy;
 struct Bullets;
 struct Loot;
+struct Dark;
 struct Interface;
 struct Item;
 struct ULTIMATE;
@@ -149,6 +150,7 @@ struct ULTIMATE;
 	Enemy, \
 	Bullets, \
 	Loot, \
+	Dark,\
 	Interface, \
 	Item, \
 	ULTIMATE
