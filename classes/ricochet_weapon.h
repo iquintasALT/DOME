@@ -6,18 +6,18 @@
 
 class RicochetWeapon: public Weapon
 {
-public:
-	//El fireRate en este arma es el tiempo que tienes que mantener pulsado el raton
-	inline RicochetWeapon(float fR, int dam, Transform* player, int bounce, int tier) : Weapon(fR, dam), playerTr(player), ntier(tier), nbounce(bounce) {};
-	virtual void update();
+private:
+	int ntier = 0;
+	int nbounce = 1;
 
-	
+protected:
+	Entity* createBullet(const Vector2D& direction) override;
+
+public:
+	inline RicochetWeapon() {};
+	inline RicochetWeapon(float rateOfFire, int damage, float bulletSpread, int bounce, int tier) : Weapon(rateOfFire, damage, bulletSpread), ntier(tier), nbounce(bounce) {};
+
 	virtual void upgradeTier(int tier);
 
-private:
-	Transform* playerTr;
-	Texture* tex_ = &sdlutils().images().at("ricochet_projectile");
-	int ntier;
-	int damage;
-	int nbounce;
+	void init() override;
 };

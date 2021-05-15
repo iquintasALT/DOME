@@ -3,51 +3,62 @@
 #include "../ecs/Component.h"
 #include "../utils/checkML.h"
 #include "../components/KeyboardPlayerCtrl.h"
+#include "../sdlutils/Texture.h"
+#include "../sdlutils/SDLUtils.h"
 #include <math.h>
 
 
 class Transform;
 class Image;
+class Player;
+class WeaponAnimation;
 
 enum class WeaponType;
 enum ITEMS;
 class Weapon : public Component
 {
 protected:
-	Entity* player;
-	RigidBody* playerRb;
-	Transform* playerTr;
-	Transform* entityTr;
-	KeyboardPlayerCtrl* ctrl;
-	Image* entityImg;
+	Transform* tr_ = nullptr;
+	Image* image_ = nullptr;
+	WeaponAnimation* animator_ = nullptr;
+	Player* player_ = nullptr;
+	RigidBody* playerRb_ = nullptr;
+	Transform* playerTr_ = nullptr;
+	KeyboardPlayerCtrl* playerCtrl_ = nullptr;
 
-	int damage;
-	bool flipped;
+	int impactDamage;
+	bool flipped = false;
 
-	float shootTime; //time between bullets
-	float fireRate;
+	float timeSinceLastShot = 0;
+	float fireRate; // minimum milliseconds between shots
 
-	int chargerSize;
-	int remainingBullets;
+	int magazineSize;
+	int bulletsInReserve = 0;
 
+	float reloadTime = 0;
+	bool reloading = false; 
 
-	float rechargeTime;
-	bool recharging;
+	float baseBulletSpread;
 
-	float dispersion;
-	float notCrouchedDispersion;
+	Texture* bulletTexture_ = &sdlutils().images().at("projectile");
+
+	Vector2D calculateShotTrajectory(Vector2D direction); // Returns direction of the shot after accounting for random spread
+	void calculatePosition();
+	void calculateRotation(Vector2D& direction);
+	virtual Entity* createBullet(const Vector2D& direction);
+	virtual void shoot(const Vector2D& direction);
 
 public:
-	Weapon(float fR, int dam, float dispersion = 0);
+	int bulletsInMagazine = 0;
 
+	Weapon() {};
+	Weapon(float rateOfFire, int damage, float bulletSpread = 0);
 	~Weapon();
+
 	bool ItemIsAmmo(Item* item, WeaponType weaponType);
 
-	int currentCharger;
-
-	virtual int getChargerBullets();
-	virtual int getChargerSize() { return chargerSize; }
-	virtual int getRemainingBullets() { return remainingBullets; }
+	inline virtual int getMagazineSize() { return magazineSize; }
+	inline virtual int getAmmoReserves() { return bulletsInReserve; }
 	virtual void init();
 
 	void setAmmo();
@@ -55,10 +66,10 @@ public:
 
 	virtual void update();
 
-	void recharge();
-	int getDamage() { return damage; }
-	void setDamage(int damage_) { damage = damage_; }
-	void setDispersion(int i) { dispersion = i; notCrouchedDispersion = i; }
+	void reload();
+	int getDamage() { return impactDamage; }
+	void setDamage(int damage_) { impactDamage = damage_; }
+	void setBulletSpread(int i) { baseBulletSpread = i; }
 
 	void adjustToCrouching();
 	virtual void upgradeTier(int tier);

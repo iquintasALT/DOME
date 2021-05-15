@@ -5,11 +5,11 @@
 class EnemyDetectionComponent : public EnemyComponent {
 protected:
 	Transform* playerTr;
-	Transform* entityTr;
+	Transform* tr_;
 	bool activeEnemy;
 
 public:
-	inline EnemyDetectionComponent() : playerTr(nullptr), entityTr(nullptr), activeEnemy(false) {};
+	inline EnemyDetectionComponent() : playerTr(nullptr), tr_(nullptr), activeEnemy(false) {};
 	virtual void update() override = 0;
 	virtual void init() override;
 	inline void setActive(bool active) { activeEnemy = active; }

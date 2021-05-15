@@ -96,6 +96,7 @@
     <ClInclude Include="components\Transform.h" />
     <ClInclude Include="components\TransitionComponent.h" />
     <ClInclude Include="components\weapon.h" />
+    <ClInclude Include="components\weapon_animation.h" />
     <ClInclude Include="ecs\Component.h" />
     <ClInclude Include="ecs\ecs.h" />
     <ClInclude Include="ecs\Entity.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="components\Transform.cpp" />
     <ClCompile Include="components\TransitionComponent.cpp" />
     <ClCompile Include="components\weapon.cpp" />
+    <ClCompile Include="components\weapon_animation.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
     <ClCompile Include="game\Game.cpp" />

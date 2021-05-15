@@ -2,7 +2,7 @@
 #include "../classes/player.h"
 #include "../classes/weapon_behaviour.h"
 
-player_animation::player_animation() : tr_(nullptr), ctrl(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
+player_animation::player_animation() : tr_(nullptr), playerCtrl_(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
 	animStop = false;
 	dmgReceived = false;
 	cooldown = 0.0f;
@@ -36,10 +36,10 @@ void player_animation::init() {
 
 	tr_ = entity_->getComponent<Transform>();
 	rb = entity_->getComponent<RigidBody>();
-	ctrl = entity_->getComponent<KeyboardPlayerCtrl>();
+	playerCtrl_ = entity_->getComponent<KeyboardPlayerCtrl>();
 	walkDust = entity_->getComponent<ParticleSystem>();
 	walkDust->Stop();
-	assert(tr_ != nullptr && im_ != nullptr && ctrl != nullptr && rb != nullptr && walkDust != nullptr);
+	assert(tr_ != nullptr && im_ != nullptr && playerCtrl_ != nullptr && rb != nullptr && walkDust != nullptr);
 }
 bool debug = false;
 
@@ -66,10 +66,10 @@ bool player_animation::changeAnimations() {
 			|| currentAnimation == animations[dmg_idle])
 			return false;
 
-		if (ctrl->isCrouching()) {
+		if (playerCtrl_->isCrouching()) {
 			currentAnimation = animations[dmg_crouch];
 		}
-		else if (ctrl->isStairs()) {
+		else if (playerCtrl_->isClimbingLadder()) {
 			walkDust->Stop();
 			currentAnimation = animations[dmg_climb];
 		}
@@ -81,7 +81,7 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
-	if (ctrl->isCrouching()) {
+	if (playerCtrl_->isCrouching()) {
 		if (aux->isActive()) {
 			if (currentAnimation == animations[crouch])
 				return false;
@@ -97,7 +97,7 @@ bool player_animation::changeAnimations() {
 		return true;
 	}
 
-	if (ctrl->isStairs()) {
+	if (playerCtrl_->isClimbingLadder()) {
 		walkDust->Stop();
 		if (rb->getVel().getY() != 0) {
 			animStop = false;
@@ -116,9 +116,9 @@ bool player_animation::changeAnimations() {
 
 	if (x == 0) {
 		if (aux->isActive()) {
-			if (currentAnimation == animations[iddle])
+			if (currentAnimation == animations[idle])
 				return false;
-			currentAnimation = animations[iddle];
+			currentAnimation = animations[idle];
 		}
 		else {
 			if (currentAnimation == animations[idle_arms])
