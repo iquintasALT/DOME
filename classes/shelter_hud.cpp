@@ -32,7 +32,7 @@ ShelterHud::ShelterHud(Manager* mngr, ShelterScene* shelter_) : Entity(mngr) {
 
 void ShelterHud::render() {
 	//Hunger
-	SDL_Rect dest = { consts::STATUS_EFFECTS_SIZEX / 2, 20, consts::STATUS_EFFECTS_SIZEX, consts::STATUS_EFFECTS_SIZEY };
+	SDL_Rect dest = { consts::STATUS_EFFECTS_SIZEX / 2, 30, consts::STATUS_EFFECTS_SIZEX, consts::STATUS_EFFECTS_SIZEY };
 	SDL_Rect src = { (32 * (int)hunger->getHungerLevel()), 0, 32, 32 };
 	hungerState->render(src, dest);
 

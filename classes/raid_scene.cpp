@@ -25,6 +25,7 @@ void RaidScene::init() {
 		weapon->setActive(true);
 
 	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player, timer);
+	mngr_->getGame()->setFPSActive(true);
 
 	createParallaxBackground(5);
 
@@ -48,6 +49,7 @@ void RaidScene::update() {
 	}
 	
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
+		mngr_->getGame()->currentScene = SCENES::PAUSE;
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
 	}
 }
