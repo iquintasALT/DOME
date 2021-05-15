@@ -263,6 +263,7 @@
     <ClCompile Include="classes\lore_scene.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
+    <ClCompile Include="weapon_animation.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -571,6 +572,7 @@
     <ClInclude Include="classes\lore_scene.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
+    <ClInclude Include="components\weapon_animation.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
