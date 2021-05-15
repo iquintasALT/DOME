@@ -12,6 +12,7 @@ class player_animation;
 class EnemyAnimation;
 class FlyingEnemyAnimation;
 class Weapon;
+class WeaponAnimation;
 class InventoryController;
 class Inventory;
 class EnemyComponent;
@@ -63,6 +64,7 @@ class ChangeImage;
 	EnemyAnimation, \
 	FlyingEnemyAnimation, \
     Weapon, \
+    WeaponAnimation, \
 	InventoryController, \
 	Inventory, \
 	EnemyComponent, \

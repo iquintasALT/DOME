@@ -49,6 +49,9 @@ protected:
 	virtual void shoot(const Vector2D& direction);
 
 public:
+	enum WeaponType { regular, ricochet, laser };
+	WeaponType type = regular;
+
 	int bulletsInMagazine = 0;
 
 	Weapon() {};
@@ -59,18 +62,20 @@ public:
 
 	inline virtual int getMagazineSize() { return magazineSize; }
 	inline virtual int getAmmoReserves() { return bulletsInReserve; }
-	virtual void init();
-
+	int getDamage() { return impactDamage; }
+	virtual int getAnimationRow() { return type; };
+	 
 	void setAmmo();
 	void setMaxAmmo();
+	void setDamage(int damage_) { impactDamage = damage_; }
+	void setBulletSpread(int i) { baseBulletSpread = i; }
 
 	virtual void update();
 
 	void reload();
-	int getDamage() { return impactDamage; }
-	void setDamage(int damage_) { impactDamage = damage_; }
-	void setBulletSpread(int i) { baseBulletSpread = i; }
 
 	void adjustToCrouching();
 	virtual void upgradeTier(int tier);
+
+	virtual void init();
 };
