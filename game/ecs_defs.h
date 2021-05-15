@@ -54,6 +54,7 @@ class TransitionComponent;
 class CameraMovement;
 class ScrollingBackGround;
 class ChangeImage;
+class ParallaxComponent;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -101,7 +102,8 @@ class ChangeImage;
 	Open_station, \
 	CameraMovement, \
 	ScrollingBackGround, \
-	ChangeImage
+	ChangeImage,\
+	ParallaxComponent
 
 // groups
 
