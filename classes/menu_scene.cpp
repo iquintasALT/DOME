@@ -112,7 +112,6 @@ ScrollingBackGround::ScrollingBackGround(int w, int h, std::vector<Texture*> tex
 void ScrollingBackGround::update() {
 	t += consts::DELTA_TIME * speed;
 
-
 	const float fade = 0.2f;
 
 	if (t >= 1) {
