@@ -9,6 +9,7 @@
 #include "../components/loot.h"
 #include "../classes/physiognomy.h"
 #include "../classes/countdown.h"
+#include "../components/parallax_component.h"
 
 void RaidScene::init() {
 	loadMap(path_);
@@ -25,40 +26,7 @@ void RaidScene::init() {
 
 	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player, timer);
 
-	auto a = mngr_->addEntity();
-	a->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	a->addComponent<Image>(&sdlutils().images().at("sky"))->setScrollFactor(0);
-	mngr_->addRenderLayer<Parallax>(a);
-
-	auto b = mngr_->addEntity();
-	b->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	b->addComponent<Image>(&sdlutils().images().at("houses4"))->setScrollFactor(0.1);
-	mngr_->addRenderLayer<Parallax>(b);
-
-	auto c = mngr_->addEntity();
-	c->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	c->addComponent<Image>(&sdlutils().images().at("houses3"))->setScrollFactor(0.2);
-	mngr_->addRenderLayer<Parallax>(c);
-
-	auto d = mngr_->addEntity();
-	d->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	d->addComponent<Image>(&sdlutils().images().at("houses2"))->setScrollFactor(0.3);
-	mngr_->addRenderLayer<Parallax>(d);
-
-	auto e = mngr_->addEntity();
-	e->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	e->addComponent<Image>(&sdlutils().images().at("houses1"))->setScrollFactor(0.4);
-	mngr_->addRenderLayer<Parallax>(e);
-
-	auto f = mngr_->addEntity();
-	f->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	f->addComponent<Image>(&sdlutils().images().at("wall"))->setScrollFactor(0.5);
-	mngr_->addRenderLayer<Parallax>(f);
-
-	auto g = mngr_->addEntity();
-	g->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	g->addComponent<Image>(&sdlutils().images().at("road"))->setScrollFactor(0.6);
-	mngr_->addRenderLayer<Parallax>(g);
+	createParallaxBackground(5);
 
 	//Entity* l = mngr_->addEntity();
 	//l->addComponent<Transform>(Vector2D(150, 556), 100, 100);
@@ -82,4 +50,21 @@ void RaidScene::update() {
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
 	}
+}
+
+void RaidScene::createParallaxBackground(int numOfRep) {
+	createParallaxLayer(0, &sdlutils().images().at("sky"), numOfRep);
+	createParallaxLayer(0.2, &sdlutils().images().at("houses4"), numOfRep);
+	createParallaxLayer(0.3, &sdlutils().images().at("houses3"), numOfRep);
+	createParallaxLayer(0.4, &sdlutils().images().at("houses2"), numOfRep);
+	createParallaxLayer(0.5, &sdlutils().images().at("houses1"), numOfRep);
+	createParallaxLayer(0.6, &sdlutils().images().at("wall"), numOfRep);
+	createParallaxLayer(0.7, &sdlutils().images().at("road"), numOfRep);
+}
+
+void RaidScene::createParallaxLayer(float scrollFactor, Texture* t, int numOfRep) {
+	auto layer = mngr_->addEntity();
+	layer->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
+	layer->addComponent<ParallaxComponent>(t, numOfRep)->setScrollFactor(scrollFactor);
+	mngr_->addRenderLayer<Parallax>(layer);
 }

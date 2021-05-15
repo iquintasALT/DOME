@@ -82,6 +82,7 @@
     <ClInclude Include="components\loot.h" />
     <ClInclude Include="components\open_station.h" />
     <ClInclude Include="components\pain_component.h" />
+    <ClInclude Include="components\parallax_component.h" />
     <ClInclude Include="components\particleSystem.h" />
     <ClInclude Include="components\player_collisions.h" />
     <ClInclude Include="components\enemy_contact_damege.h" />
@@ -186,6 +187,7 @@
     <ClCompile Include="components\loot.cpp" />
     <ClCompile Include="components\open_station.cpp" />
     <ClCompile Include="components\pain_component.cpp" />
+    <ClCompile Include="components\parallax_component.cpp" />
     <ClCompile Include="components\particleSystem.cpp" />
     <ClCompile Include="components\player_collisions.cpp" />
     <ClCompile Include="components\enemy_contact_damege.cpp" />

@@ -7,6 +7,7 @@
 #include <string>
 class Countdown;
 class Player;
+class Texture;
 
 class RaidScene : public GameScene
 {
@@ -20,5 +21,7 @@ public:
 	~RaidScene() { delete timer; }
 	void init() override;
 	void update() override;
+	void createParallaxBackground(int numOfRep);
+	void createParallaxLayer(float scrollFactor, Texture* t, int numOfRep);
 };
 
