@@ -13,15 +13,25 @@
 class Manager;
 class Entity;
 
-const enum class SCENES { SHOP, NUCLEAR_STATION, HOSPITAL, COMMUNICATIONS, SUPERMARKET, SHELTER, RAID, SETTINGS, MAINMENU, NONE, CREDITS };
+const enum class SCENES { SHOP, NUCLEAR_STATION, HOSPITAL, COMMUNICATIONS, SUPERMARKET, SHELTER, RAID, SETTINGS, MAINMENU, NONE, CREDITS, PAUSE };
 const vector<SCENES> scenes = { SCENES::SHOP,  SCENES::NUCLEAR_STATION,  SCENES::HOSPITAL, SCENES::COMMUNICATIONS,  SCENES::SUPERMARKET };
 const vector<int> SCENES_CHESTS = { 0,0,2,1,0 };
+
+const float FPS_INTERVAL = 1.0f;
 
 class Game {
 private:
 	GameStateMachine* states;
 
 	bool exit;
+
+	int lastTimeFPS; //ultimo registro de fps
+	int currentFPS; //el actual numero de fps
+	int framesFPS; //frames transcurrido desde el ultimo registro de fps
+	void drawFPS(int fps);
+	bool fpsActive;
+	Texture* fpsText;
+
 public:
 	SCENES currentScene;
 	map<SCENES, vector<vector<I>>> SCENES_LOOT;
@@ -35,6 +45,8 @@ public:
 	void quitGame() { exit = true; }
 
 	void initLoot();
+	void setFPSActive(bool value) { fpsActive = value; }
+	
 
 	// booleano para comprabar si el jugador ha sido creado, para mantener la informaci�n
 	// entre escenas. Ponerlo a falso cuando se salga de juego (menu, endScreen, etc.)
