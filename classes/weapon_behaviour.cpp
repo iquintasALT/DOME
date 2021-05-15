@@ -16,7 +16,7 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 	addComponent<WeaponAnimation>();
 	weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 0);
 	weapon->bulletsInMagazine = 4;
-	weaponType_ = WeaponType::CLASSIC;
+	weaponType = Weapon::WeaponType::CLASSIC;
 }
 
 Weapon* WeaponBehaviour::getWeapon() {
@@ -69,16 +69,37 @@ void WeaponBehaviour::changeWeapon()
 		if (weaponBullets <= 0)
 			weapon->setAmmo();
 	}*/
+	weaponBullets[weaponType] = getComponent<Weapon>()->bulletsInMagazine;
+	switch (weaponType)
+	{
+	case Weapon::WeaponType::CLASSIC:
+		weaponType = Weapon::WeaponType::RICOCHET;
+		addComponent2<Weapon, RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, 10.0, 3, weaponTiers[1]);
+		break;
+	case Weapon::WeaponType::RICOCHET:
+		weaponType = Weapon::WeaponType::LASER;
+		addComponent2<Weapon, ChargeWeapon>(consts::CHARGE_TIER1_TIMETOCHARGE, consts::CHARGE_TIER1_DAMAGE);
+		break;
+	case Weapon::WeaponType::LASER:
+		weaponType = Weapon::WeaponType::CLASSIC;
+		addComponent2<Weapon, ChargeWeapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
+		break;
+	}
+	animator_->setAnimation(weaponType * 3); 
+	weapon->bulletsInMagazine = weaponBullets[weaponType];
+
+	if (weaponBullets <= 0)
+		weapon->setAmmo();
 }
 
 int WeaponBehaviour::tierOfWeapon()
 {
-	return weaponTiers[weaponType()];
+	return weaponTiers[weaponType];
 }
 
 void WeaponBehaviour::upgradeCurrentWeapon() {
-	++weaponTiers[weaponType()];
-	weapon->upgradeCurrentWeapon(weaponTiers[weaponType()]);
+	++weaponTiers[weaponType];
+	weapon->upgradeCurrentWeapon(weaponTiers[weaponType]);
 }
 
 void WeaponBehaviour::addDispersion(int i) {
