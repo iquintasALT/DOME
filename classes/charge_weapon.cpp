@@ -125,12 +125,12 @@ void ChargeWeapon::upgradeTier(int tier) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 1);
 		impactDamage = consts::CHARGE_TIER2_DAMAGE;
-		fireRate = consts::CHARGE_TIER2_FIRERATE;
+		fireRate = consts::CHARGE_TIER2_TIMETOCHARGE;
 	}
 	else if (tier == 3) {
 		entity_->removeComponent<Image>();
 		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 2);
 		impactDamage = consts::CHARGE_TIER3_DAMAGE;
-		fireRate = consts::CHARGE_TIER3_FIRERATE;
+		fireRate = consts::CHARGE_TIER3_TIMETOCHARGE;
 	}
 }

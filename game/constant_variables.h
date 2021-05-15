@@ -81,9 +81,9 @@ namespace consts {
 	const int CHARGE_TIER2_DAMAGE = 100;
 	const int CHARGE_TIER3_DAMAGE = 100;
 
-	const int CHARGE_TIER1_FIRERATE = 1;
-	const int CHARGE_TIER2_FIRERATE = 1;
-	const int CHARGE_TIER3_FIRERATE = 1;
+	const int CHARGE_TIER1_TIMETOCHARGE = 1;
+	const int CHARGE_TIER2_TIMETOCHARGE = 1;
+	const int CHARGE_TIER3_TIMETOCHARGE = 1;
 
 	const float CHARGEWEAPON_HEIGHT = 15;
 
