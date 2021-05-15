@@ -57,6 +57,14 @@ public:
 		Mix_ResumeMusic();
 	}
 
+	inline static void fadeOut(int ticks){
+		assert(ticks >= 0);
+		Mix_FadeOutMusic(ticks);
+	}
+
+	inline static void onFinish(void (*cb)()) {
+		Mix_HookMusicFinished(cb);
+	}
 
 private:
 	Mix_Music* music_;
