@@ -227,15 +227,11 @@ void Weapon::init()
 }
 
 void Weapon::upgradeTier(int tier) {
-	if (tier == 2) {
-		entity_->removeComponent<Image>();
-		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 1);
+	if (tier == 1) {
 		impactDamage = consts::WEAPON_TIER2_DAMAGE;
 		fireRate = consts::WEAPON_TIER2_FIRERATE;
 	}
-	else if (tier == 3) {
-		entity_->removeComponent<Image>();
-		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 2);
+	else if (tier == 2) {
 		impactDamage = consts::WEAPON_TIER3_DAMAGE;
 		fireRate = consts::WEAPON_TIER3_FIRERATE;
 	}
