@@ -60,11 +60,12 @@ void Physiognomy::removeBleedState() {
 	{
 	case 1:
 		player->removeComponent<BleedoutComponent>();
+		numBleedStates--;
 	default:
 		healthComponents.pop_back();
+		numBleedStates--;
 		break;
 	}
-
 }
 
 void Physiognomy::removePainState() {
@@ -107,7 +108,8 @@ void Physiognomy::removeHypothermiaState() {
 }
 
 void Physiognomy::removeAllStates() {
-	for (int i = 0; i < numBleedStates; i++) removeBleedState();
+	for (int i = 0; i < numBleedStates; i++)
+		removeBleedState();
 	removeConcussionState();
 	removeIntoxicationState();
 	removePainState();

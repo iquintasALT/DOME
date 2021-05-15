@@ -27,6 +27,7 @@ void PauseButton::update() {
 	if (mousePos.getX() >= position.getX() && mousePos.getY() >= position.getY() &&
 		mousePos.getX() <= position.getX() + size.getX() && mousePos.getY() <= position.getY() + size.getY()) {
 		if (!over) {
+			soundManager().playSFX("over_button");
 			over = true;
 			img->changeFrame(1, 0);
 		}
@@ -37,6 +38,7 @@ void PauseButton::update() {
 			img->changeFrame(0, 0);
 		}
 	}
+
 	if (ih().getMouseButtonState(InputHandler::LEFT)) {
 		if (over) {
 			img->changeFrame(2, 0);
@@ -46,6 +48,7 @@ void PauseButton::update() {
 	else {
 		if (clicked) {
 			if (over) {
+				soundManager().playSFX("push_button");
 				cbOnClick(getMngr());
 				if (getMngr()->getGame()->currentScene == SCENES::SETTINGS && type_ == VOLUME) {
 					static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->setAdjusterPosition();
