@@ -329,20 +329,32 @@
       "file": "resources/sprites/status_effects.png"
     },
     {
-      "id": "parallaxBackground",
-      "file": "resources/sprites/parallax_background/parallax_bg.png"
+      "id": "houses1",
+      "file": "resources/sprites/parallax_background/houses1.png"
     },
     {
-      "id": "parallaxBuildings",
-      "file": "resources/sprites/parallax_background/parallax_buildings.png"
+      "id": "houses2",
+      "file": "resources/sprites/parallax_background/houses2.png"
     },
     {
-      "id": "parallaxFarBuildings",
-      "file": "resources/sprites/parallax_background/parallax_far_buildings.png"
+      "id": "houses3",
+      "file": "resources/sprites/parallax_background/houses3.png"
     },
     {
-      "id": "parallaxFront",
-      "file": "resources/sprites/parallax_background/parallax_front.png"
+      "id": "houses4",
+      "file": "resources/sprites/parallax_background/houses4.png"
+    },
+    {
+      "id": "road",
+      "file": "resources/sprites/parallax_background/road.png"
+    },
+    {
+      "id": "sky",
+      "file": "resources/sprites/parallax_background/sky.png"
+    },
+    {
+      "id": "wall",
+      "file": "resources/sprites/parallax_background/wall.png"
     },
     {
       "id": "2_hour_sleep",
@@ -353,12 +365,12 @@
       "file": "resources/sprites/craft_ui/1_hour_sleep.png"
     },
     {
-        "id": "0_hour_sleep",
-        "file": "resources/sprites/craft_ui/0_hour_sleep.png"
+      "id": "0_hour_sleep",
+      "file": "resources/sprites/craft_ui/0_hour_sleep.png"
     },
     {
-        "id": "dark",
-        "file": "resources/sprites/dark.png"
+      "id": "dark",
+      "file": "resources/sprites/dark.png"
     }
   ],
 

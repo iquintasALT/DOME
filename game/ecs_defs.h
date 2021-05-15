@@ -132,6 +132,7 @@ struct Player_hdlr;
 
 // render layers
 struct Default;
+struct Parallax;
 struct Background;
 struct Walls;
 struct Player;
@@ -143,6 +144,7 @@ struct Interface;
 struct Item;
 struct ULTIMATE;
 #define _RENDER_LIST_ \
+	Parallax,\
 	Background, \
 	Default, \
 	Walls, \
