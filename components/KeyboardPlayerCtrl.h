@@ -16,10 +16,15 @@ private:
 	RigidBody* rb_;
 	Transform* tr_;
 	
+	Transform* darkArea;
+
 	float speed;
+	float maxSpeed;
 	float jumpSpeed;
+	float acceleration;
+	float deceleration;
 	float stairsSpeed;
-	bool left, right, crouched, up, down, inStairTrigger, inStair, xClicked, spaceDown;
+	bool left, right, crouched, up, down, onLadderTrigger, onLadder, xClicked, spaceDown;
 	Vector2D stairPosition, stairSize;
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
@@ -34,7 +39,7 @@ public:
 	virtual void update();
 
 	inline bool isCrouching() { return crouched; }
-    inline bool isStairs() { return inStair; };
+    inline bool isClimbingLadder() { return onLadder; };
 	
 	void resetSpeed();
 	float getSpeed();

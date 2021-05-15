@@ -28,7 +28,7 @@ Game::Game(int totaltime) {
 
 	states = new GameStateMachine();
 
-	Camera::setMain(new Camera(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
+	Camera::setMain(new Camera(Vector2D(), 1080, 720));
 }
 
 Game::~Game() {

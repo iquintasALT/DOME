@@ -1,9 +1,10 @@
 #include "enemy_animation.h"
 
 
-EnemyAnimation::EnemyAnimation() : tr_(nullptr), im_(nullptr), rb(nullptr) {
+EnemyAnimation::EnemyAnimation() : tr_(nullptr), im_(nullptr), rb(nullptr), playerTr_(nullptr) {
 	isAttacking = false;
 	dmgReceived = false;
+	cooldown = 0.0f;
 };
 
 EnemyAnimation::~EnemyAnimation() {}
@@ -34,17 +35,25 @@ void EnemyAnimation::init() {
 
 	tr_ = entity_->getComponent<Transform>();
 	rb = entity_->getComponent<RigidBody>();
-	assert(tr_ != nullptr && im_ != nullptr && rb != nullptr);
+	playerTr_ = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
+	assert(tr_ != nullptr && im_ != nullptr && rb != nullptr && playerTr_ != nullptr);
 }
 
 bool EnemyAnimation::changeAnimations() {
 
 	float x = rb->getVel().getX();
-	
+	float playerX = playerTr_->getPos().getX();
 	if (x < 0) im_->setFlip(SDL_FLIP_HORIZONTAL);
-	else  im_->setFlip(SDL_FLIP_NONE);
+	else if (x > 0)  im_->setFlip(SDL_FLIP_NONE);
+	else {
+		if (playerX < tr_->getPos().getX()) im_->setFlip(SDL_FLIP_HORIZONTAL);
+		else  im_->setFlip(SDL_FLIP_NONE);
+	}
 	
 	if (isAttacking) {
+		if (playerX < tr_->getPos().getX()) im_->setFlip(SDL_FLIP_HORIZONTAL);
+		else  im_->setFlip(SDL_FLIP_NONE);
+
 		if (currentAnimation == animations[attack])
 			return false;
 		currentAnimation = animations[attack];
