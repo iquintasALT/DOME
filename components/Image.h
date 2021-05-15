@@ -13,14 +13,14 @@
 
 class Image : public Component {
 public:
-	Image(Texture* tex, bool isUI_ = false) : tr_(nullptr), scrollFactor(1) ,tex_(tex), src_({ 0,0,tex->width(),tex->width() }),
-		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(isUI_) {}
+	Image(Texture* tex, bool isUI_ = false) : tr_(nullptr), scrollFactor(1), tex_(tex), src_({ 0,0,tex->width(),tex->width() }),
+		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(isUI_), alpha_(255) {}
 
 	Image(Texture* tex, SDL_Rect src, bool isUI_ = false) : tr_(nullptr), tex_(tex), scrollFactor(1), src_(src),
-		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(isUI_) {}
+		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(isUI_), alpha_(255) {}
 
-	Image(Texture* tex, int rows, int cols, int r, int c, bool isUI_ = false) : tr_(nullptr), tex_(tex), scrollFactor(1), flip_(SDL_FLIP_NONE),
-		rotationOrigin({ -1, -1 }), isUI(isUI_)
+	Image(Texture* tex, int rows, int cols, int r, int c, bool isUI_ = false) : tr_(nullptr), tex_(tex), scrollFactor(1),
+		flip_(SDL_FLIP_NONE), rotationOrigin({ -1, -1 }), isUI(isUI_), alpha_(255)
 	{
 		int w = tex->width() / cols;
 		int h = tex->height() / rows;
@@ -37,7 +37,10 @@ public:
 	void render() override {
 		bool shouldRender = true;
 		Vector2D pos = !isUI ? Camera::mainCamera->renderRect(tr_->getPos(), tr_->getW(), tr_->getH(), shouldRender) : tr_->getPos();
-		pos.setX(pos.getX() * scrollFactor);
+		if (scrollFactor < 1) {
+			pos.setY(tr_->getPos().getY());
+			pos.setX(pos.getX() * scrollFactor);
+		}
 		float scale = Camera::mainCamera->getScale();
 		if (!shouldRender) return;
 
@@ -49,10 +52,18 @@ public:
 			dest.h *= scale;
 		}
 
+		// en caso de que esta imagen tenga algun tipo de alpha menor a 255
+		if (alpha_ < 255)
+			tex_->setAlpha(alpha_);
+
 		if (rotationOrigin.x == -1 && rotationOrigin.y == -1)
 			tex_->render(src_, dest, tr_->getRot(), nullptr, flip_);
 		else
 			tex_->render(src_, dest, tr_->getRot(), &rotationOrigin, flip_);
+
+		// en caso de que esta imagen tenga algun tipo de alpha menor a 255
+		if (alpha_ < 255)
+			tex_->setAlpha(255);
 	}
 
 	// util por si queremos hacer algun tipo de pequeña animacion en cosas como tooltips o interfaces
@@ -85,7 +96,7 @@ public:
 	}
 
 	void setAlpha(Uint8 alpha) {
-		tex_->setAlpha(alpha);
+		alpha_ = alpha;
 	}
 
 	//Value between 0-1
@@ -100,13 +111,16 @@ public:
 	}
 
 private:
-	bool isUI;
 	Transform* tr_;
 	Texture* tex_;
-	SDL_Rect src_;
+
+	bool isUI;
 	float scrollFactor;
-	SDL_RendererFlip flip_;
+	std::size_t alpha_ = 255;
+
+	SDL_Rect src_;
 	SDL_Point rotationOrigin;
+	SDL_RendererFlip flip_;
 };
 
 

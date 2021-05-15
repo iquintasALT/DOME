@@ -266,6 +266,9 @@
     <ClCompile Include="components\weapon_animation.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\parallax_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -575,6 +578,9 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\weapon_animation.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\parallax_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>

@@ -9,6 +9,7 @@
 #include "../components/loot.h"
 #include "../classes/physiognomy.h"
 #include "../classes/countdown.h"
+#include "../components/parallax_component.h"
 
 void RaidScene::init() {
 	loadMap(path_);
@@ -24,6 +25,8 @@ void RaidScene::init() {
 		weapon->setActive(true);
 
 	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player, timer);
+
+	createParallaxBackground(5);
 
 	//Entity* l = mngr_->addEntity();
 	//l->addComponent<Transform>(Vector2D(150, 556), 100, 100);
@@ -47,4 +50,21 @@ void RaidScene::update() {
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
 	}
+}
+
+void RaidScene::createParallaxBackground(int numOfRep) {
+	createParallaxLayer(0, &sdlutils().images().at("sky"), numOfRep);
+	createParallaxLayer(0.2, &sdlutils().images().at("houses4"), numOfRep);
+	createParallaxLayer(0.3, &sdlutils().images().at("houses3"), numOfRep);
+	createParallaxLayer(0.4, &sdlutils().images().at("houses2"), numOfRep);
+	createParallaxLayer(0.5, &sdlutils().images().at("houses1"), numOfRep);
+	createParallaxLayer(0.6, &sdlutils().images().at("wall"), numOfRep);
+	createParallaxLayer(0.7, &sdlutils().images().at("road"), numOfRep);
+}
+
+void RaidScene::createParallaxLayer(float scrollFactor, Texture* t, int numOfRep) {
+	auto layer = mngr_->addEntity();
+	layer->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
+	layer->addComponent<ParallaxComponent>(t, numOfRep)->setScrollFactor(scrollFactor);
+	mngr_->addRenderLayer<Parallax>(layer);
 }

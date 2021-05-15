@@ -26,6 +26,7 @@ public:
 	void setBounds(float xmin, float ymin, float xmax, float ymax);
 	void FollowPlayer(Vector2D& pos);
 	Vector2D renderRect(Vector2D& imagePos,int w, int h, bool& shouldRender);
+	Vector2D renderRect(Vector2D& imagePos);
 	void MoveDir(Vector2D dir);
 	void setScale(float value);
 	float getScale();

@@ -131,7 +131,7 @@
   <object id="113" name="playerSpawn" x="448" y="664">
    <point/>
   </object>
-  <object id="116" name="sleepStation" x="1696" y="736" width="96" height="32"/>
+  <object id="116" name="sleepStation" x="1688" y="704" width="112" height="64"/>
   <object id="117" name="workStation" x="960" y="352" width="128" height="128"/>
   <object id="118" name="medicalStation" x="1408" y="416" width="96" height="64"/>
   <object id="120" name="spaceShip" x="320" y="224" width="136" height="96"/>
