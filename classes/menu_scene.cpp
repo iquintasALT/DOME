@@ -72,6 +72,7 @@ void MenuScene::init() {
 
 void MenuScene::playGame(Manager* mngr) {
 	ih().clearState();
+	soundManager().playMusic("game_theme");
 	mngr->ChangeScene(new ControlsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
 }
 
@@ -110,7 +111,6 @@ ScrollingBackGround::ScrollingBackGround(int w, int h, std::vector<Texture*> tex
 
 void ScrollingBackGround::update() {
 	t += consts::DELTA_TIME * speed;
-
 
 	const float fade = 0.2f;
 

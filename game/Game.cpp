@@ -79,7 +79,6 @@ void Game::start() {
 		if (frameTime < 1000 / consts::FRAME_RATE)
 			SDL_Delay((1000 / consts::FRAME_RATE) - frameTime);
 	}
-
 }
 
 void Game::initLoot() {

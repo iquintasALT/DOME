@@ -48,18 +48,14 @@ public:
 
 	void playMusic(std::string key) {
 		if (&musics_.at(key) != currentMusic) {
-			if (currentMusic != nullptr) currentMusic->pauseMusic();
+			stopCurrentMusic();
 			currentMusic = &musics_.at(key);
 			currentMusic->play();
 		}
 	}
 
 	void playSFX(std::string key) {
-		if (&sfx_.at(key) != currentSFX) {
-			if (currentMusic != nullptr) currentSFX->pauseChannel();
-			currentSFX = &sfx_.at(key);
-			currentSFX->play();
-		}
+		sfx_.at(key).play();
 	}
 
 	//ESTO LO PARA Y LO QUITA
@@ -81,6 +77,13 @@ public:
 			currentMusic->resumeMusic();
 	}
 
+	void changeSongWithFade(std::string key, int ticks) {
+		// this works, but weneed a way to get the damn end of the fade out so rn it does not work properly but w.e.
+		// currentMusic->fadeOut(ticks);
+
+		playMusic(key);
+	}
+
 	float getMusicVolume() { return musicVolume; }
 
 	float getSFXVolume() { return sfxVolume; }
@@ -99,10 +102,7 @@ public:
 
 	void setSFXVolume(float sfxV) {
 		sfxVolume = sfxV;
-		for (sdl_resource_table<SoundEffect>::iterator it = sfx_.begin();
-			it != sfx_.end(); ++it) {
-			(*it).second.setChannelVolume(sfxVolume);
-		}
+		SoundEffect::setChannelVolume(sfxVolume);
 	}
 
 private:
@@ -112,7 +112,6 @@ private:
 	sdl_resource_table<Music> musics_; // musics map (string -> music)
 
 	Music* currentMusic = nullptr;
-	SoundEffect* currentSFX = nullptr;
 
 	float musicVolume = 40, sfxVolume = 40, maxVolume = 80, maxSfxVolume = 80;
 };

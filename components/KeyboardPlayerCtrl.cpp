@@ -11,8 +11,7 @@ KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	stairsSpeed = consts::STAIRS_SPEED;
 	acceleration = consts::ACCELERATION;
 	deceleration = consts::DECELERATION;
-	tr_ = nullptr;
-	rb_ = nullptr;
+	tr_ = nullptr; rb_ = nullptr; darkArea = nullptr;
 
 	speed = 0;
 	left = xClicked = onLadder = onLadderTrigger = right = crouched = up = down = spaceDown = false;
@@ -125,6 +124,7 @@ void KeyboardPlayerCtrl::update() {
 			if (keystates[SDL_SCANCODE_W]) {
 				rb_->setVel(Vector2D(0, -stairsSpeed));
 				up = true;
+				speed = 0;
 				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
 				if (tr_->getPos().getY() + tr_->getH() < stairPosition.getY()) {
 					onLadderTrigger = false;
@@ -134,6 +134,7 @@ void KeyboardPlayerCtrl::update() {
 			else if (keystates[SDL_SCANCODE_S]) {
 				rb_->setVel(Vector2D(0, stairsSpeed));
 				down = true;
+				speed = 0;
 				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
 				if (tr_->getPos().getY() > stairPosition.getY() + stairSize.getY()) {
 					onLadderTrigger = false;

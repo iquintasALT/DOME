@@ -45,7 +45,7 @@ void InteractableElement::init() {
 	toolTip = entity_->getMngr()->addEntity();
 	toolTip->addComponent<Transform>(Vector2D(consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT * 0.8f), consts::WINDOW_WIDTH, 10);
 	toolTip->addComponent<TextWithBackground>(message_,
-		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), nullptr, true, 100, true);
+		sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff), nullptr, true, 100, true);
 	entity_->getMngr()->addRenderLayer<Interface>(toolTip);
 	toolTip->setActive(false);
 

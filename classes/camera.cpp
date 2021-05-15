@@ -89,6 +89,10 @@ Vector2D Camera::renderRect(Vector2D& imagePos, int w, int h, bool& shouldRender
 	return Vector2D(imagePos.getX() - pos.getX(), imagePos.getY() - pos.getY());
 }
 
+Vector2D Camera::renderRect(Vector2D& imagePos) {
+	return Vector2D(imagePos.getX() - pos.getX(), imagePos.getY() - pos.getY());
+}
+
 
 Point2D Camera::PointToWorldSpace(Point2D point) {
 	return point + pos;

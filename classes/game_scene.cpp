@@ -181,15 +181,27 @@ void GameScene::loadMap(string& const path) {
 				}
 				else if (obj.getName() == "sleepStation") {
 					static_cast<ShelterScene*>(this)->initSleepStation({ aabb.left, aabb.top }, { aabb.width, aabb.height });
+					auto interactable = mngr_->addEntity();
+					interactable->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					interactable->addComponent<InteractableElement>("Press E to SLEEP");
 				}
 				else if (obj.getName() == "workStation") {
 					static_cast<ShelterScene*>(this)->initMechWs({ aabb.left, aabb.top }, { aabb.width, aabb.height });
+					auto interactable = mngr_->addEntity();
+					interactable->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					interactable->addComponent<InteractableElement>("Press E to craft WAR ITEMS");
 				}
 				else if (obj.getName() == "medicalStation") {
 					static_cast<ShelterScene*>(this)->initMedWs({ aabb.left, aabb.top }, { aabb.width, aabb.height });
+					auto interactable = mngr_->addEntity();
+					interactable->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					interactable->addComponent<InteractableElement>("Press E to craft MEDICAL ITEMS");
 				}
 				else if (obj.getName() == "spaceShip") {
 					static_cast<ShelterScene*>(this)->initSpaceshipStation({ aabb.left, aabb.top }, { aabb.width, aabb.height });
+					auto interactable = mngr_->addEntity();
+					interactable->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					interactable->addComponent<InteractableElement>("Press E to see the SHIP STATE");
 				}
 			}
 		}
