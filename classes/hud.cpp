@@ -82,8 +82,8 @@ void hud::render() {
 
 	time->render();
 
-	aux = Vector2D(-1, consts::WINDOW_HEIGHT - 86);
-	dest = build_sdlrect(aux, 155, 70);
+	aux = Vector2D(-1, consts::WINDOW_HEIGHT - 100);
+	dest = build_sdlrect(aux, 155, 95);
 	marco->render(dest);
 
 	//Renderizar las balas cargador
