@@ -72,7 +72,6 @@ void MenuScene::init() {
 
 void MenuScene::playGame(Manager* mngr) {
 	ih().clearState();
-	soundManager().stopCurrentMusic();
 	soundManager().playMusic("game_theme");
 	mngr->ChangeScene(new ControlsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
 }

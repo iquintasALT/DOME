@@ -48,8 +48,7 @@ public:
 
 	void playMusic(std::string key) {
 		if (&musics_.at(key) != currentMusic) {
-			if (currentMusic != nullptr)
-				currentMusic->pauseMusic();
+			stopCurrentMusic();
 			currentMusic = &musics_.at(key);
 			currentMusic->play();
 		}
