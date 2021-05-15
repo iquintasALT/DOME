@@ -48,7 +48,8 @@ public:
 
 	void playMusic(std::string key) {
 		if (&musics_.at(key) != currentMusic) {
-			if (currentMusic != nullptr) currentMusic->pauseMusic();
+			if (currentMusic != nullptr)
+				currentMusic->pauseMusic();
 			currentMusic = &musics_.at(key);
 			currentMusic->play();
 		}
@@ -79,6 +80,13 @@ public:
 	void resumeCurrentMusic() {
 		if (currentMusic != nullptr)
 			currentMusic->resumeMusic();
+	}
+
+	void changeSongWithFade(std::string key, int ticks) {
+		// this works, but weneed a way to get the damn end of the fade out so rn it does not work properly but w.e.
+		// currentMusic->fadeOut(ticks);
+
+		playMusic(key);
 	}
 
 	float getMusicVolume() { return musicVolume; }
@@ -113,6 +121,7 @@ private:
 
 	Music* currentMusic = nullptr;
 	SoundEffect* currentSFX = nullptr;
+
 
 	float musicVolume = 40, sfxVolume = 40, maxVolume = 80, maxSfxVolume = 80;
 };

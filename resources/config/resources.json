@@ -396,10 +396,14 @@
     ],
 
     "musics": [
-        {
-            "id": "menu_theme",
-            "file": "resources/music/space_ambience.mp3"
-        }
+      {
+        "id": "menu_theme",
+        "file": "resources/music/space_ambience.mp3"
+      },
+      {
+        "id": "game_theme",
+        "file": "resources/music/game_theme.mp3"
+      }
     ],
 
     "tilesets": [
