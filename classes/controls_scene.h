@@ -8,5 +8,6 @@ class ControlsScene : public GameScene
 public:
 	ControlsScene(Game* game) : GameScene(game, "Controles") {};
 	void init() override;
+	void update() override;
 	static void goGame(Manager* mngr);
 };

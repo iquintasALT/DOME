@@ -28,8 +28,15 @@ void ControlsScene::init()
 }	
 
 
-void ControlsScene::goGame(Manager* mngr)
-{
+void ControlsScene::goGame(Manager* mngr) {
 	ih().clearState();
 	mngr->ChangeScene(new LocationsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+}
+
+void ControlsScene::update() {
+	GameScene::update();
+	if (ih().keyDownEvent()) {
+		ih().clearState();
+		mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
+	}
 }
