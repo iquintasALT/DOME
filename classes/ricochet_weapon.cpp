@@ -25,15 +25,11 @@ Entity* RicochetWeapon::createBullet(const Vector2D& direction){
 
 void RicochetWeapon::upgradeCurrentWeapon(int tier) {
 	if (tier == 1) {
-		entity_->removeComponent<Image>();
-		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 1);
 		impactDamage = consts::RICOCHET_TIER2_DAMAGE;
 		fireRate = consts::RICOCHET_TIER2_FIRERATE;
 		nbounce++;
 	}
 	else if (tier == 2) {
-		entity_->removeComponent<Image>();
-		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 2, 2);
 		impactDamage = consts::RICOCHET_TIER3_DAMAGE;
 		fireRate = consts::RICOCHET_TIER3_FIRERATE;
 		nbounce++;

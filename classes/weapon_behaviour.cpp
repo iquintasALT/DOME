@@ -74,15 +74,15 @@ void WeaponBehaviour::changeWeapon()
 	{
 	case Weapon::WeaponType::CLASSIC:
 		weaponType = Weapon::WeaponType::RICOCHET;
-		addComponent2<Weapon, RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, 10.0, 3, weaponTiers[1]);
+		addComponent2<Weapon, RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, 10.0f, 3, weaponTiers[1]);
 		break;
 	case Weapon::WeaponType::RICOCHET:
 		weaponType = Weapon::WeaponType::LASER;
-		addComponent2<Weapon, ChargeWeapon>(consts::CHARGE_TIER1_TIMETOCHARGE, consts::CHARGE_TIER1_DAMAGE);
+		addComponent2<Weapon, ChargeWeapon>(consts::CHARGE_TIER1_TIMETOCHARGE, consts::CHARGE_TIER1_DAMAGE, weaponTiers[2]);
 		break;
 	case Weapon::WeaponType::LASER:
 		weaponType = Weapon::WeaponType::CLASSIC;
-		addComponent2<Weapon, ChargeWeapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
+		addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
 		break;
 	}
 	animator_->setAnimation(weaponType * 3); 
