@@ -30,7 +30,7 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* she
 	Vector2D bButton_size = { 65,64 };
 	Vector2D bButton_pos = Vector2D(bg_pos.getX() - bButton_size.getX() / 2, bg_pos.getY() - bButton_size.getY() / 2);
 
-	setImg(bg, bg_pos, bg_size, "craft_bg");
+	setImg(bg, bg_pos, bg_size, "station_bg");
 	setImg(bButton, bButton_pos, bButton_size, "craft_back_button");
 
 	bg_tr = bg->getComponent<Transform>();
