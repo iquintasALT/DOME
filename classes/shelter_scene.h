@@ -32,6 +32,8 @@ private:
 	const int MAX_ACTIONS = 6;
 	int actions;
 
+	void createParallaxBackground(int numOfRep) override;
+
 public:
 	ShelterScene(Game* game) :GameScene(game, "Shelter") { actions = MAX_ACTIONS; };
 	virtual ~ShelterScene() { delete craftSys, delete uselessMngr; };

@@ -62,6 +62,8 @@ protected:
 	Game* g_;
 
 	void createTransition();
+	void createParallaxLayer(float scrollFactor, Texture* t, int numOfRep);
+	virtual void createParallaxBackground(int numOfRep) {};
 
 	// funcion de cargado de mapa usable por todas las escenas de juego
 	void loadMap(string& const path);

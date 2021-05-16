@@ -6,6 +6,7 @@
 #include "../components/Image.h"
 #include "../components/TransitionComponent.h"
 #include "../game/Game.h"
+#include "../components/parallax_component.h"
 
 
 void GameScene::loadMap(string& const path) {
@@ -232,4 +233,11 @@ void GameScene::createTransition() {
 		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
 	e->addComponent<TransitionComponent>(timeToFade);
 	mngr_->addRenderLayer<Interface>(e);
+}
+
+void GameScene::createParallaxLayer(float scrollFactor, Texture* t, int numOfRep) {
+	auto layer = mngr_->addEntity();
+	layer->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
+	layer->addComponent<ParallaxComponent>(t, numOfRep)->setScrollFactor(scrollFactor);
+	mngr_->addRenderLayer<Parallax>(layer);
 }
