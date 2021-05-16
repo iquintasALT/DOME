@@ -329,8 +329,12 @@
       "file": "resources/sprites/shelter_status_effects.png"
     },
     {
-      "id": "status_effects",
-      "file": "resources/sprites/status_effects.png"
+        "id": "status_effects",
+        "file": "resources/sprites/status_effects.png"
+    },
+    {
+        "id": "back_to_shelter",
+        "file": "resources/sprites/return_shelter.png"
     },
     {
       "id": "houses1",

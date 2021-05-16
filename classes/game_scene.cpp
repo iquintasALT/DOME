@@ -175,9 +175,9 @@ void GameScene::loadMap(string& const path) {
 				else if (obj.getName() == "returnShelter") {
 					Entity* returnToShelter = mngr_->addEntity();
 					returnToShelter->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
-					returnToShelter->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
+					returnToShelter->addComponent<Image>(&sdlutils().images().at("back_to_shelter"), 1, 1, 0, 0);
 					returnToShelter->addComponent<BackToShelter>(this);
-					mngr_->addRenderLayer<Loot>(returnToShelter);
+					mngr_->addRenderLayer<Walls>(returnToShelter);
 				}
 				else if (obj.getName() == "sleepStation") {
 					static_cast<ShelterScene*>(this)->initSleepStation({ aabb.left, aabb.top }, { aabb.width, aabb.height });
