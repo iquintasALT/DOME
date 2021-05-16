@@ -12,12 +12,13 @@
 #include "../utils/ray_cast.h"
 #include "../game/constant_variables.h"
 #include "../components/rigid_body.h"
+#include "../components/weapon_animation.h"
 
 #include "../classes/Item.h"
 
-ChargeWeapon::ChargeWeapon(float fR, int dam) : Weapon(fR, dam) {};
+ChargeWeapon::ChargeWeapon(float fR, int dam, int ntier) : Weapon(fR, dam, 0.0f, ntier), tier(ntier) {};
 
-void ChargeWeapon::update() {
+void ChargeWeapon::update() {/*
 	if (playerCtrl_->isClimbingLadder()) image_->enabled = false;
 	else image_->enabled = true;
 
@@ -117,19 +118,82 @@ void ChargeWeapon::update() {
 	{
 		reloadTime = 0;
 		reloading = false;
+	}*/
+	if (!playerCtrl_->isClimbingLadder())
+	{
+		calculatePosition();
+
+		Vector2D rotation = Vector2D();
+		calculateRotation(rotation);
+		if (reloading)
+		{
+			reloadTime += consts::DELTA_TIME;
+			if (reloadTime > 2.0) //Tiempo de recarga en segundos
+			{
+				reloadTime = 0;
+				reloading = false;
+			}
+		}
+		/*else if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate &&
+			bulletsInMagazine > 0 && !reloading)
+			shoot(rotation);*/
+
+		/*else if (ih().getMouseButtonState(InputHandler::LEFT) && bulletsInMagazine > 0 && chargeState == not_charged) {
+			timeSinceLastShot += consts::DELTA_TIME;
+			animator_->setAnimation(9 + tier);
+			chargeState = winding_up;
+		}
+		else if (timeSinceLastShot >= fireRate){
+			shoot(rotation);
+			animator_->setAnimation(6 + tier);
+			chargeState = winding_up;
+		}
+		// If mouse is released early, reset charge
+		else if (!ih().getMouseButtonState(InputHandler::LEFT) && chargeState == winding_up) {
+			timeSinceLastShot = 0;
+			animator_->setAnimation(6 + tier)
+		}*/
+		else
+		switch (chargeState)
+		{
+		case not_charged:
+			if (ih().getMouseButtonState(InputHandler::LEFT) && bulletsInMagazine > 0) {
+				timeSinceLastShot += consts::DELTA_TIME;
+				animator_->setAnimation(9 + tier);
+				chargeState = winding_up;
+			}
+		case winding_up:
+			if (ih().getMouseButtonState(InputHandler::LEFT))
+			{
+				timeSinceLastShot += consts::DELTA_TIME;
+				if (timeSinceLastShot >= fireRate) {
+					animator_->setAnimation(12 + tier);
+					chargeState = charged;
+				}
+			}
+			else // If mouse is released early, reset charge
+			{
+				timeSinceLastShot = 0;
+				animator_->setAnimation(6 + tier);
+			}
+		case charged:
+			if (!ih().getMouseButtonState(InputHandler::LEFT)) {
+				shoot(rotation);
+				animator_->setAnimation(6 + tier);
+				chargeState = not_charged;
+			}
+		}
 	}
+	else
+	image_->enabled = false;
 }
 
 void ChargeWeapon::upgradeCurrentWeapon(int tier) {
 	if (tier == 1) {
-		entity_->removeComponent<Image>();
-		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 1);
 		impactDamage = consts::CHARGE_TIER2_DAMAGE;
 		fireRate = consts::CHARGE_TIER2_TIMETOCHARGE;
 	}
 	else if (tier == 2) {
-		entity_->removeComponent<Image>();
-		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 1, 2);
 		impactDamage = consts::CHARGE_TIER3_DAMAGE;
 		fireRate = consts::CHARGE_TIER3_TIMETOCHARGE;
 	}

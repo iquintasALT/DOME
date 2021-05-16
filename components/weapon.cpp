@@ -4,8 +4,6 @@
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../sdlutils/SDLUtils.h"
-#include "../game/constant_variables.h"
 #include "../game/constant_variables.h"
 #include "../classes/camera.h"
 #include "../classes/weapon_behaviour.h"
@@ -16,11 +14,11 @@
 #include "ricochet.h"
 #include "classic_bullet.h"
 #include "rigid_body.h"
-#include "rigid_body.h"
 #include "Inventory.h"
 #include "InventoryController.h"
 #include "weapon_animation.h"
 #include <iostream>
+#include <list>
 
 Weapon::Weapon(float rateOfFire, int damage, float bulletSpread, int tier) : fireRate(rateOfFire), impactDamage(damage),
 baseBulletSpread(bulletSpread), magazineSize(30) {
