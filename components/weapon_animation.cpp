@@ -1,7 +1,7 @@
 #include "weapon_animation.h"
 
 
-WeaponAnimation::WeaponAnimation() : tr_(nullptr), im_(nullptr), rb(nullptr), animStop(false) { };
+WeaponAnimation::WeaponAnimation() : tr_(nullptr), im_(nullptr), rb_(nullptr), animStop(false) { };
 
 WeaponAnimation::~WeaponAnimation() {}
 
@@ -22,6 +22,6 @@ void WeaponAnimation::init() {
 	}
 
 	tr_ = entity_->getComponent<Transform>();
-	rb = entity_->getComponent<RigidBody>();
-	assert(tr_ != nullptr && im_ != nullptr && rb != nullptr);
+	//rb_ = entity_->getComponent<RigidBody>();
+	assert(tr_ != nullptr && im_ != nullptr && rb_ != nullptr);
 }
