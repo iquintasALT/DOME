@@ -39,6 +39,11 @@ void Countdown::render() {
 	else
 	{
 		s = build_sdlcolor(0xffffffff);
+		if (lefttime <= 8000 && !soundactive)
+		{
+			soundManager().playSFX("alarm");
+			soundactive = true;
+		}
 	}
 
 	//delete counter;
