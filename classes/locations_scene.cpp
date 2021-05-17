@@ -68,6 +68,7 @@ void LocationsScene::loadLocationButtons() {
 
 void LocationsScene::changeToRaid(Game* g, int index) {
 	g->currentScene = scenes[index];
+	soundManager().playSFX("push_button");
 	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::ADDITIVE);
 }
 
@@ -84,6 +85,7 @@ void LocationsScene::update() {
 					changeToRaid(g_, i);
 					
 					mouseClick = true;
+					soundManager().playSFX("push_button");
 					return;
 				}
 			}
@@ -91,7 +93,7 @@ void LocationsScene::update() {
 		else if (mouseClick) mouseClick = false;
 
 		
-		if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) {
+		if (Collisions::collides(mousePos, 1, 1, buttonTr->getPos(), buttonTr->getW(), buttonTr->getH())) { //Si estas encima
 			if (!ih().getMouseButtonState(InputHandler::LEFT)) {
 				if (!mouseClick) {
 					if (!mouseOverInfo[i]) {
@@ -102,9 +104,11 @@ void LocationsScene::update() {
 						if (i != lastBackGroundActive) {
 							infos[lastBackGroundActive]->setActive(false);
 							backgrounds[lastBackGroundActive]->setActive(false);
-
 							infos[i]->setActive(true);
 							backgrounds[i]->setActive(true);
+							soundManager().playSFX("over_button");
+
+							return;
 						}
 					}
 				}

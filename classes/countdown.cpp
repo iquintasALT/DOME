@@ -1,6 +1,8 @@
 #include "countdown.h"
 
 #include "../game/constant_variables.h"
+#include "../sdlutils/SoundManager.h"
+
 std::string getHourString(int lefttime) {
 	int min = lefttime / 60;
 	int sec = lefttime % 60;
@@ -38,7 +40,12 @@ void Countdown::render() {
 	}
 	else
 	{
-		s = build_sdlcolor(0xffffffff)
+		s = build_sdlcolor(0xffffffff);
+		if (lefttime <= 3000 && !soundactive)
+		{
+			soundManager().playSFX("alarm");
+			soundactive = true;
+		}
 	}
 
 	//delete counter;
