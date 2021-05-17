@@ -14,7 +14,7 @@ void ControlsScene::init() {
 
 	auto controls = mngr_->addEntity();
 	controls->addComponent<Transform>(Vector2D(0.0, 0.0))->setSize(sdlutils().width(), sdlutils().height());
-	controls->addComponent<Image>(&sdlutils().images().at("controls"), 1, 1, 0, 0);
+	controls->addComponent<Image>(&sdlutils().images().at("controls"), 1, 1, 0, 0, true);
 	mngr_->addRenderLayer<ULTIMATE>(controls);
 }	
 
