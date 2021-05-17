@@ -1,7 +1,7 @@
 #include "workshop.h"
 #include "../classes/shelter_scene.h"
 
-Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_ ) : GameEntity(mngr_) {
+Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_) : GameEntity(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
 	craftSys = cs;
 	realMngr_->addEntity(this);
@@ -20,12 +20,19 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, Shelt
 	renderRightWindow = false;
 	rightWindowIndex = 0;
 
+	weapon = static_cast<Player*>(realMngr_->getHandler<Player_hdlr>())->getCurrentWeapon();
+
+	weaponTr = falseMngr->addEntity()->addComponent<Transform>(Vector2D(), 128, 128);
+	weaponImg = weaponTr->getEntity()->addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, 0, true);
+	falseMngr->addRenderLayer<Interface>(weaponTr->getEntity());
 
 	//INICIALIZACION IMAGENES DEL FONDO, FLECHAS Y X PARA SALIR
 	bg = mngr_->addEntity();
 	bButton = mngr_->addEntity();
 	arrowUp = mngr_->addEntity();
 	arrowDown = mngr_->addEntity();
+	arrowLeft = mngr_->addEntity();
+	arrowRight = mngr_->addEntity();
 	craftButton = mngr_->addEntity();
 
 	Vector2D bg_size = { 930, 630 };
@@ -48,7 +55,15 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, Shelt
 	arrowDown_tr = arrowDown->getComponent<Transform>();
 	arrowDown->getComponent<Image>()->setFlip(SDL_FLIP_VERTICAL);
 
+	float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
+	float offsetY = bg_tr->getPos().getY() + 35;
+	arrowLeft_tr = arrowLeft->addComponent<Transform>(Vector2D(offsetX - 128 - 16, offsetY + 64), 64, 64, -90);
+	arrowRight_tr = arrowRight->addComponent<Transform>(Vector2D(offsetX + 128 - 48, offsetY + 64), 64, 64, 90);
 
+	arrowLeft->addComponent<Image>(&sdlutils().images().at("craft_arrow"), 1, 1, 0, 0, true);
+	arrowRight->addComponent<Image>(&sdlutils().images().at("craft_arrow"), 1, 1, 0, 0, true);
+	getMngr()->addRenderLayer<Interface>(arrowLeft);
+	getMngr()->addRenderLayer<Interface>(arrowRight);
 
 	Vector2D craftButton_pos = { bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f) - 132.5f, bg_tr->getPos().getY() + bg_tr->getH() - 105.0f / 1.5f };
 
@@ -114,7 +129,7 @@ void Workshop::update() {
 			}
 
 			for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
-				if (Collisions::collides(mousePos, 1, 1, craftList_tr[i]->getPos(), craftList_tr[i]->getW(), craftList_tr[i]->getH())) {					
+				if (Collisions::collides(mousePos, 1, 1, craftList_tr[i]->getPos(), craftList_tr[i]->getW(), craftList_tr[i]->getH())) {
 					renderRightWindow = true;
 					rightWindowIndex = craftList[i].index;
 				}
@@ -143,6 +158,12 @@ void Workshop::update() {
 							}
 						}
 					}
+				}
+				if (Collisions::collides(mousePos, 1, 1, arrowLeft_tr->getPos(), arrowLeft_tr->getW(), arrowLeft_tr->getH())) {
+					weapon->changeWeapon();
+				}
+				else if (Collisions::collides(mousePos, 1, 1, arrowRight_tr->getPos(), arrowRight_tr->getW(), arrowRight_tr->getH())) {
+					weapon->changeWeapon();
 				}
 			}
 		}
@@ -224,7 +245,15 @@ void Workshop::rightWindowRender() {
 
 			int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].row;
 			int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].col;
-			renderImg(offsetX - 32, offsetY, imgRow, imgCol);
+
+
+			if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
+				weaponTr->setPos(Vector2D(offsetX - 64, offsetY - 16));
+				renderWeaponUpgrade();
+				arrowLeft->render();
+				arrowRight->render();
+			}
+			else renderImg(offsetX - 32, offsetY, imgRow, imgCol);
 
 			offsetY += 90;
 
@@ -268,17 +297,30 @@ void Workshop::rightWindowRender() {
 				text->render(dest, 0);
 				delete text;
 			}
+
 		}
 		else {
-			//at its maximun tier and cant be upgraded
-			Texture* text = new Texture(sdlutils().renderer(), "The equiped weapon is " , sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+
+			offsetY += 61;
+
+			if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
+				weaponTr->setPos(Vector2D(offsetX - 64, offsetY - 16));
+				renderWeaponUpgrade();
+				arrowLeft->render();
+				arrowRight->render();
+			}
+
+			offsetY += 150;
+
+			//weapon is at its maximun tier and cant be upgraded
+			Texture* text = new Texture(sdlutils().renderer(), "The equiped weapon is ", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
 			SDL_Rect dest{ offsetX - text->width() / 2  , offsetY ,text->width(),text->height() };
 			text->render(dest, 0);
 			offsetY += text->height() + 25;  delete text;
 
 			text = new Texture(sdlutils().renderer(), "at its maximun tier", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
-			dest = { (int)offsetX - text->width() / 2  ,(int) offsetY ,text->width(),text->height() };
-			text->render(dest, 0); 
+			dest = { (int)offsetX - text->width() / 2  ,(int)offsetY ,text->width(),text->height() };
+			text->render(dest, 0);
 			offsetY += text->height() + 25;  delete text;
 
 			text = new Texture(sdlutils().renderer(), "and cant be upgraded", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
@@ -286,6 +328,44 @@ void Workshop::rightWindowRender() {
 			text->render(dest, 0);
 		}
 	}
+}
+
+
+void Workshop::renderWeaponUpgrade() {
+	if (weapon->typeOfWeapon() == WeaponType::CLASSIC) {
+		if (weapon->tierOfWeapon() == 1) {
+			weaponImg->changeFrame(0, 0);
+		}
+		else if (weapon->tierOfWeapon() == 2) {
+			weaponImg->changeFrame(1, 0);
+		}
+		else {
+			weaponImg->changeFrame(2, 0);
+		}
+	}
+	else if (weapon->typeOfWeapon() == WeaponType::RICOCHET) {
+		if (weapon->tierOfWeapon() == 1) {
+			weaponImg->changeFrame(0, 1);
+		}
+		else if (weapon->tierOfWeapon() == 2) {
+			weaponImg->changeFrame(1, 1);
+		}
+		else {
+			weaponImg->changeFrame(2, 1);
+		}
+	}
+	else if (weapon->typeOfWeapon() == WeaponType::LASER) {
+		if (weapon->tierOfWeapon() == 1) {
+			weaponImg->changeFrame(0, 2);
+		}
+		else if (weapon->tierOfWeapon() == 2) {
+			weaponImg->changeFrame(1, 2);
+		}
+		else {
+			weaponImg->changeFrame(2, 2);
+		}
+	}
+	weaponImg->render();
 }
 
 void Workshop::renderImg(float posX, float posY, int row, int col, int sizeX, int sizeY) {
