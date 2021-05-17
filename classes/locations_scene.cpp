@@ -34,7 +34,7 @@ void LocationsScene::init()
 	initFocus();
 
 	name = "Day " + std::to_string(getGame()->numDays) + " out of " + std::to_string(consts::MAX_DAYS);
-	createTransition();
+	createTransition(3.5);
 }
 
 void LocationsScene::loadLocationButtons() {
