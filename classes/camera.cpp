@@ -95,11 +95,11 @@ Vector2D Camera::renderRect(Vector2D& imagePos) {
 
 
 Point2D Camera::PointToWorldSpace(Point2D point) {
-	return point + pos;
+	return point / scale + pos;
 }
 
 Point2D Camera::WorldToPointSpace(Point2D point) {
-	return point - pos;
+	return point / scale - pos;
 }
 
 bool Camera::isVisible(Point2D point) {

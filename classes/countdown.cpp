@@ -1,6 +1,8 @@
 #include "countdown.h"
 
 #include "../game/constant_variables.h"
+#include "../sdlutils/SoundManager.h"
+
 std::string getHourString(int lefttime) {
 	int min = lefttime / 60;
 	int sec = lefttime % 60;
@@ -15,10 +17,7 @@ std::string getHourString(int lefttime) {
 
 Countdown::Countdown(int totaltime) {
 	lefttime = totaltime; //Recibe los milisegundos de tiempo en raid
-	starttime = SDL_GetTicks();
-	updatetime = SDL_GetTicks();
 	counter = nullptr;
-
 	std::string aux = getHourString(lefttime / 1000);
 }
 
@@ -29,7 +28,7 @@ Countdown::~Countdown() {
 }
 
 void Countdown::render() {
-	std::string aux = getHourString(lefttime / 1000);
+	std::string aux = getHourString(floor(lefttime));
 	SDL_Color s;
 	if (lefttime <= 0)
 	{
@@ -39,6 +38,11 @@ void Countdown::render() {
 	else
 	{
 		s = build_sdlcolor(0xffffffff);
+		if (lefttime <= 3000 && !soundactive)
+		{
+			soundManager().playSFX("alarm");
+			soundactive = true;
+		}
 	}
 
 	//delete counter;
@@ -51,6 +55,5 @@ void Countdown::render() {
 }
 
 void Countdown::update() {
-	lefttime -= SDL_GetTicks() - starttime; //Restamos el tiempoque ha pasado
-	starttime = SDL_GetTicks();
+	lefttime -= consts::DELTA_TIME; //Restamos el tiempoque ha pasado
 }
