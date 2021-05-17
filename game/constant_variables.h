@@ -121,5 +121,5 @@ namespace consts {
 
 	// GAMECYCLE
 	const int MAX_DAYS = 10;
-	const int RAID_TIME = 30000;
+	const int RAID_TIME = 8 * 60;
 }
