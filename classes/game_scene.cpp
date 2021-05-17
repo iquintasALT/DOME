@@ -215,7 +215,7 @@ void GameScene::changeState(GameScene* gs)
 	g_->getStateMachine()->changeState(gs);
 }
 
-void GameScene::createTransition(float timeToFade) {
+void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<void()> f) {
 
 	int winWidth = consts::WINDOW_WIDTH;
 	int winheight = consts::WINDOW_HEIGHT;
@@ -223,14 +223,14 @@ void GameScene::createTransition(float timeToFade) {
 	Entity* e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(), winWidth, winheight);
 	e->addComponent<Image>(&sdlutils().images().at("black"), true);
-	e->addComponent<TransitionComponent>(timeToFade);
+	e->addComponent<TransitionComponent>(timeToFade, fadeIn, f);
 	mngr_->addRenderLayer<Interface>(e);
 
 	e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(winWidth / 2, winheight / 2), winWidth, winheight);
 	e->addComponent<TextWithBackground>(name,
 		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
-	e->addComponent<TransitionComponent>(timeToFade);
+	e->addComponent<TransitionComponent>(timeToFade, fadeIn, f);
 	mngr_->addRenderLayer<Interface>(e);
 }
 
