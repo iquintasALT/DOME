@@ -333,8 +333,6 @@ bool Inventory::insideSquare(int mouseX, int mouseY) {
 		&& mouseY > pos.getY() && mouseY < pos.getY() + transform->getH();
 }
 
-list<Item*>& Inventory::getItems() { return storedItems; };
-
 InventoryStorage::~InventoryStorage() {
 	for (auto a : storedItems) {
 		delete a;
