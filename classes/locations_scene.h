@@ -11,7 +11,7 @@ class Texture;
 const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/zona_shop.tmx", "./resources/tilemap/zona_nuclear_power_station.tmx",
 												"./resources/tilemap/zona_hospital.tmx", "./resources/tilemap/zona_comunications.tmx", 
 																					"./resources/tilemap/zona_supermarket.tmx" };
-const array<string, consts::NUM_LOCATIONS> names = {"SHOP", " NUCLEAR POWER STATION", "HOSPITAL", "COMNUNICATIONS", "SUPERMARKET"};
+const array<string, consts::NUM_LOCATIONS> names = {"SHOP", "NUCLEAR POWER STATION", "HOSPITAL", "COMMUNICATIONS", "SUPERMARKET"};
 
 class LocationsScene : public GameScene
 {
