@@ -58,7 +58,7 @@ void MenuScene::init() {
 
 		auto logo = mngr_->addEntity();
 		logo->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-		logo->addComponent<Image>(&sdlutils().images().at("sureffect"));
+		logo->addComponent<Image>(&sdlutils().images().at("sureffect"), true);
 		logo->addComponent<TransitionComponent>(3, true, [&]() {
 			for (auto a : mngr_->getEntities())
 				a->setActive(true);
