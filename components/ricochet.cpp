@@ -55,6 +55,7 @@ void Ricochet::createExplosion()
 	particles->burstRepeat = 8;
 
 
+	soundManager().playSFX("explosion");
 	/*particles->gravity = 0;
 	particles->lifeTime = 100;
 	particles->rateOverTime = 0;
@@ -87,5 +88,9 @@ void Ricochet::OnCollision(Entity* other) {
 	if (n-- == 0 || other->hasGroup<Enemy_grp>()) {
 		createExplosion();
 		entity_->setDead(true);
+	}
+	else //Choca con pared
+	{
+		soundManager().playSFX("bounce");
 	}
 }

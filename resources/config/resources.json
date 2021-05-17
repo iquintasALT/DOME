@@ -450,8 +450,44 @@
             "file": "resources/sound/alarm2.wav"
         },
         {
-            "id": "pusfh_button",
-            "file": "resources/sound/wall_fhit.wav"
+            "id": "explosion",
+            "file": "resources/sound/explosion.wav"
+        },
+        {
+            "id": "normalgun",
+            "file": "resources/sound/shoot.wav"
+        },
+        {
+            "id": "monster1attack",
+            "file": "resources/sound/monster_snarl.mp3"
+        },
+        {
+            "id": "bounce",
+            "file": "resources/sound/gun/bounce.wav"
+        },
+        {
+            "id": "walk",
+            "file": "resources/sound/gun/footstep.wav"
+        },
+        {
+            "id": "chestopen1",
+            "file": "resources/sound/gun/chestopen1.wav"
+        },
+        {
+            "id": "chestopen2",
+            "file": "resources/sound/gun/chestopen2.wav"
+        },
+        {
+            "id": "hurt",
+            "file": "resources/sound/hurt.mp3"
+        },
+        {
+            "id": "heal",
+            "file": "resources/sound/heal.mp3"
+        },
+        {
+            "id": "laser",
+            "file": "resources/sound/gun/laser.mp3"
         }
     ],
 
