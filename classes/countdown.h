@@ -8,10 +8,7 @@
 class Countdown
 {
 private:
-	int lefttime;
-	int starttime;
-	int updatetime;
-	bool soundactive = false;
+	float lefttime;
 	Texture* counter;
 
 public:
