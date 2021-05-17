@@ -32,6 +32,7 @@ void KeyboardPlayerCtrl::init() {
 void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
 	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED) {
 		static_cast<Player*>(entity_)->getPhysiognomy()->addConcussionState();
+		soundManager().playSFX("hurt");
 	}
 }
 
@@ -57,6 +58,7 @@ void KeyboardPlayerCtrl::update() {
 				//rb_->setVel(Vector2D(speed, rb_->getVel().getY()));
 				right = true;
 				if (tr_->getPos().getX() > stairPosition.getX() + stairSize.getX()) onLadderTrigger = false;
+				soundManager().playSFX("walk");
 			}
 			else if (keystates[SDL_SCANCODE_A]) {
 				speed -= acceleration * consts::DELTA_TIME;
@@ -64,6 +66,7 @@ void KeyboardPlayerCtrl::update() {
 				//rb_->setVel(Vector2D(-speed, rb_->getVel().getY()));
 				left = true;
 				if (tr_->getPos().getX() + tr_->getW() < stairPosition.getX()) onLadderTrigger = false;
+				soundManager().playSFX("walk");
 			}
 			else {
 				if (speed < -0.1f)

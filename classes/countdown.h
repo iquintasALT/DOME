@@ -8,9 +8,7 @@
 class Countdown
 {
 private:
-	int lefttime;
-	int starttime;
-	int updatetime;
+	float lefttime;
 	Texture* counter;
 
 public:

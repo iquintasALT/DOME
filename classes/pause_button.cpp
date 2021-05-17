@@ -5,7 +5,7 @@
 #include "../game/Game.h"
 #include "../classes/settings_scene.h"
 
-PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName)
+PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName, Uint8 alpha)
 	: MenuButton(pos, size, t, function, g, mngr_) {
 	img = getComponent<Image>();
 	over = false;
@@ -14,7 +14,7 @@ PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClic
 	type_ = type;
 	clicked = false;
 	img->enabled = false;
-	img->setAlpha(50);
+	img->setAlpha(alpha);
 	//t = new Texture(renderer, str, *font_, col_);
 
 	name = new Texture(sdlutils().renderer(), buttonName, 

@@ -17,8 +17,10 @@ void TileRenderer::render() {
 		src.w = width; src.h = height;
 
 		SDL_Rect dest;
-		dest.x = round(pos.getX() * scale); dest.y = round(pos.getY() * scale);
-		dest.w = round(src.w * scale); dest.h = round(src.h * scale);
+		dest.x = floor(pos.getX() * scale); 
+		dest.y = floor(pos.getY() * scale);
+		dest.w = ceil(src.w * scale); 
+		dest.h = ceil(src.h * scale);
 
 		sheet->render(src, dest);
 	}

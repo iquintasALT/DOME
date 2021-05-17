@@ -61,7 +61,8 @@ protected:
 	MapInfo mapInfo;
 	Game* g_;
 
-	void createTransition();
+	void createTransition(float timeToFade = 2, bool fadeIn = true, std::function<void()> f = []() {});
+
 	void createParallaxLayer(float scrollFactor, Texture* t, int numOfRep);
 	virtual void createParallaxBackground(int numOfRep) {};
 
