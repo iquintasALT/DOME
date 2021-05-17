@@ -448,10 +448,6 @@
         {
             "id": "alarm",
             "file": "resources/sound/alarm2.wav"
-        },
-        {
-            "id": "pusfh_button",
-            "file": "resources/sound/wall_fhit.wav"
         }
     ],
 
