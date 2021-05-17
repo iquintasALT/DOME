@@ -110,6 +110,7 @@ void Weapon::shoot(const Vector2D& direction) {
 
 	if (bulletsInMagazine <= 0)
 		reload();
+	soundManager().playSFX("normalgun");
 }
 
 void Weapon::update() {

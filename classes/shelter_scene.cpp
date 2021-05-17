@@ -59,7 +59,7 @@ void ShelterScene::init() {
 	mngr_->addRenderLayer<Background>(sleepImg);
 
 	mechanical_Workshop = new Workshop(mngr_, uselessMngr, craftSys, this);
-	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO });
+	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO, SPLINT});
 	Entity* mechImg = mngr_->addEntity();
 	mechImg->addComponent<Transform>(Vector2D{ mechPos.getX(),mechPos.getY() }, mechSize.getX(), mechSize.getY(), 0);
 	mechImg->addComponent<Open_station>(mechanical_Workshop);
