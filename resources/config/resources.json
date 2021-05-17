@@ -265,6 +265,10 @@
       "file": "resources/sprites/craft_ui/bg.png"
     },
     {
+      "id": "station_bg",
+      "file": "resources/sprites/craft_ui/bg_2.png"
+    },
+    {
       "id": "lose",
       "file": "resources/sprites/lose_background.png"
     },
@@ -329,32 +333,64 @@
       "file": "resources/sprites/status_effects.png"
     },
     {
+      "id": "back_to_shelter",
+      "file": "resources/sprites/return_shelter.png"
+    },
+    {
       "id": "houses1",
-      "file": "resources/sprites/parallax_background/houses1.png"
+      "file": "resources/sprites/parallax_background/raid/houses1.png"
     },
     {
       "id": "houses2",
-      "file": "resources/sprites/parallax_background/houses2.png"
+      "file": "resources/sprites/parallax_background/raid/houses2.png"
     },
     {
       "id": "houses3",
-      "file": "resources/sprites/parallax_background/houses3.png"
+      "file": "resources/sprites/parallax_background/raid/houses3.png"
     },
     {
       "id": "houses4",
-      "file": "resources/sprites/parallax_background/houses4.png"
+      "file": "resources/sprites/parallax_background/raid/houses4.png"
     },
     {
       "id": "road",
-      "file": "resources/sprites/parallax_background/road.png"
+      "file": "resources/sprites/parallax_background/raid/road.png"
     },
     {
       "id": "sky",
-      "file": "resources/sprites/parallax_background/sky.png"
+      "file": "resources/sprites/parallax_background/raid/sky.png"
     },
     {
       "id": "wall",
-      "file": "resources/sprites/parallax_background/wall.png"
+      "file": "resources/sprites/parallax_background/raid/wall.png"
+    },
+    {
+      "id": "fence",
+      "file": "resources/sprites/parallax_background/shelter/fence.png"
+    },
+    {
+      "id": "houses3S",
+      "file": "resources/sprites/parallax_background/shelter/house3.png"
+    },
+    {
+      "id": "houses1S",
+      "file": "resources/sprites/parallax_background/shelter/houses1.png"
+    },
+    {
+      "id": "houses2S",
+      "file": "resources/sprites/parallax_background/shelter/houses2.png"
+    },
+    {
+      "id": "roadS",
+      "file": "resources/sprites/parallax_background/shelter/road.png"
+    },
+    {
+      "id": "ruins",
+      "file": "resources/sprites/parallax_background/shelter/ruins.png"
+    },
+    {
+      "id": "skyS",
+      "file": "resources/sprites/parallax_background/shelter/sky.png"
     },
     {
       "id": "2_hour_sleep",
