@@ -35,20 +35,21 @@ void MenuScene::init() {
 
 	auto yojhanButton = &sdlutils().images().at("yojhanButton");
 	yojhanButton->setAlpha(50);
+	Uint8 alpha = 50;
 
 	int width = consts::WINDOW_WIDTH;
-	auto playButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight * 2), yojhanButton, playGame, g_, mngr_, 0, "Play");
+	auto playButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight * 2), yojhanButton, playGame, g_, mngr_, 0, "Play", alpha);
 	mngr_->addEntity(playButton);
 
 	ypos += buttonHeight;
 
-	auto settingsButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, settings, g_, mngr_, 0, "Options");
+	auto settingsButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, settings, g_, mngr_, 0, "Options", alpha);
 	mngr_->addEntity(settingsButton);
 
-	auto creditsButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, credits, g_, mngr_, 0, "Credits");
+	auto creditsButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, credits, g_, mngr_, 0, "Credits", alpha);
 	mngr_->addEntity(creditsButton);
 
-	auto exitButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, exit, g_, mngr_, 0, "Exit");
+	auto exitButton = new PauseButton(Vector2D(0, (ypos += buttonHeight)), Vector2D(width, buttonHeight), yojhanButton, exit, g_, mngr_, 0, "Exit", alpha);
 	mngr_->addEntity(exitButton);
 
 	if (firstTime) {
