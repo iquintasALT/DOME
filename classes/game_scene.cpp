@@ -118,7 +118,7 @@ void GameScene::loadMap(string& const path) {
 				}
 			}
 		}
-		else if (layer->getType() == tmx::Layer::Type::Object) {
+		if (layer->getType() == tmx::Layer::Type::Object) {
 			tmx::ObjectGroup* object_layer = dynamic_cast<tmx::ObjectGroup*>(layer.get());
 
 			auto& objs = object_layer->getObjects();

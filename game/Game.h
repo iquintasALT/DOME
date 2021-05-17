@@ -13,7 +13,7 @@
 class Manager;
 class Entity;
 
-const enum class SCENES { SHOP, NUCLEAR_STATION, HOSPITAL, COMMUNICATIONS, SUPERMARKET, SHELTER, RAID, SETTINGS, MAINMENU, NONE, CREDITS, PAUSE };
+const enum class SCENES { SHOP, NUCLEAR_STATION, HOSPITAL, COMMUNICATIONS, SUPERMARKET, SHELTER, RAID, SETTINGS, MAINMENU, NONE, CREDITS };
 const vector<SCENES> scenes = { SCENES::SHOP,  SCENES::NUCLEAR_STATION,  SCENES::HOSPITAL, SCENES::COMMUNICATIONS,  SCENES::SUPERMARKET };
 const vector<int> SCENES_CHESTS = { 0,0,2,1,0 };
 
@@ -45,7 +45,7 @@ public:
 	void quitGame() { exit = true; }
 
 	void initLoot();
-	void setFPSActive(bool value) { fpsActive = value; }
+	void changeActiveFPS() { fpsActive = !fpsActive; }
 	
 
 	// booleano para comprabar si el jugador ha sido creado, para mantener la informaci�n

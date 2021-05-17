@@ -1,6 +1,7 @@
 #include "settings_scene.h"
 #include "../components/Image.h"
 #include "../components/Transform.h"
+#include "../game/Game.h"
 
 void SettingsScene::init() {
 	ih().clearState();
@@ -24,6 +25,7 @@ void SettingsScene::init() {
 	adjusterSFXVolume = createVolumeBar(posBarSFX, volumeBarsSize, raiseEffectsVolume, decreaseEffectsVolume, &sdlutils().images().at("effectsVolume"));
 
 	setAdjusterPosition();
+	createShowFPSBar(Vector2D(consts::SHOW_FPS_BAR_POS_X, consts::SHOW_FPS_BAR_POS_Y), Vector2D(consts::SHOW_FPS_BAR_SIZE_X, consts::SHOW_FPS_BAR_SIZE_Y));
 }
 
 Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackOnClick* raise, CallBackOnClick* decrease, Texture* t) {
@@ -59,8 +61,20 @@ Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackO
 
 	return adjusterTr;
 }
-void SettingsScene::setAdjusterPosition()
-{
+void SettingsScene::createShowFPSBar(Vector2D pos, Vector2D size){
+	//Texto
+	auto text = mngr_->addEntity();
+	auto textBarPosition = Vector2D(consts::SHOW_FPS_BAR_POS_X, consts::SHOW_FPS_BAR_POS_Y);
+	text->addComponent<Transform>(textBarPosition, consts::SHOW_FPS_BAR_SIZE_X, consts::SHOW_FPS_BAR_SIZE_Y);
+	text->addComponent<Image>(&sdlutils().images().at("showFPSBar"), build_sdlrect(0, 0, 256, 32), true);
+	mngr_->addRenderLayer<Interface>(text);
+
+	//Boton
+	Vector2D showFPSButtonPos = Vector2D(consts::SHOW_FPS_BUTTON_POS_X, consts::SHOW_FPS_BUTTON_POS_Y);
+	auto fspButton = new PauseButton(showFPSButtonPos, Vector2D(consts::SHOW_FPS_BUTTON_SIZE_X+32, consts::SHOW_FPS_BUTTON_SIZE_X+32), &sdlutils().images().at("fpsButton"), showFPS, g_, mngr_, SHOWFPS);
+	mngr_->addEntity(fspButton);
+}
+void SettingsScene::setAdjusterPosition() {
 	currentVolume = soundManager().getMusicVolume();
 	currentSFXVolume = soundManager().getSFXVolume();
 
@@ -86,7 +100,6 @@ void SettingsScene::raiseVolume(Manager* mng) {
 	if (actVolume + volumeToRaise <= maxVolume) {
 		soundManager().setMusicVolume( actVolume + volumeToRaise);
 	}
-
 }
 
 void SettingsScene::decreaseVolume(Manager* mng) {
@@ -121,8 +134,12 @@ void SettingsScene::decreaseEffectsVolume(Manager* mng)
 	}
 }
 
+void SettingsScene::showFPS(Manager* mng) {
+	mng->getGame()->changeActiveFPS();
+}
 
-CreditsScene::CreditsScene(Game* g): GameScene(g, std::string("credits")){
+
+CreditsScene::CreditsScene(Game* g): GameScene(g, std::string("credits")) {
 
 }
 
