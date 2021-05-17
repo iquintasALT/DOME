@@ -440,6 +440,18 @@
         {
             "id": "push_button",
             "file": "resources/sound/wall_hit.wav"
+        },
+        {
+            "id": "chargingweapon",
+            "file": "resources/sound/charging_weapon.wav"
+        },
+        {
+            "id": "alarm",
+            "file": "resources/sound/alarm2.wav"
+        },
+        {
+            "id": "pusfh_button",
+            "file": "resources/sound/wall_fhit.wav"
         }
     ],
 
@@ -450,7 +462,7 @@
       },
       {
         "id": "game_theme",
-        "file": "resources/music/game_theme.mp3"
+        "file": "resources/music/second_game_theme.mp3"
       }
     ],
 

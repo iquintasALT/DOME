@@ -11,6 +11,7 @@ private:
 	int lefttime;
 	int starttime;
 	int updatetime;
+	bool soundactive = false;
 	Texture* counter;
 
 public:

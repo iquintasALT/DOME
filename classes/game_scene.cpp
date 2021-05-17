@@ -215,11 +215,10 @@ void GameScene::changeState(GameScene* gs)
 	g_->getStateMachine()->changeState(gs);
 }
 
-void GameScene::createTransition() {
+void GameScene::createTransition(float timeToFade) {
 
 	int winWidth = consts::WINDOW_WIDTH;
 	int winheight = consts::WINDOW_HEIGHT;
-	float timeToFade = 2;
 
 	Entity* e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(), winWidth, winheight);

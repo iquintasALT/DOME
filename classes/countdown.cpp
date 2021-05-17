@@ -38,7 +38,7 @@ void Countdown::render() {
 	}
 	else
 	{
-		s = build_sdlcolor(0xffffffff);
+		s = build_sdlcolor(0xffffffff)
 	}
 
 	//delete counter;
