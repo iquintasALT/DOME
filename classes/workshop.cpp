@@ -160,6 +160,8 @@ void Workshop::update() {
 					}
 				}
 				if (Collisions::collides(mousePos, 1, 1, arrowLeft_tr->getPos(), arrowLeft_tr->getW(), arrowLeft_tr->getH())) {
+					//Lo pongo 2 veces aposta (no quitar)
+					weapon->changeWeapon();
 					weapon->changeWeapon();
 				}
 				else if (Collisions::collides(mousePos, 1, 1, arrowRight_tr->getPos(), arrowRight_tr->getW(), arrowRight_tr->getH())) {
