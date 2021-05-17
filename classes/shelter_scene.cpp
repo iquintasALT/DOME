@@ -20,7 +20,6 @@ using std::endl;
 
 #undef main
 
-
 void ShelterScene::init() {
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
@@ -30,6 +29,8 @@ void ShelterScene::init() {
 	auto shelterHud = new ShelterHud(mngr_, this);
 
 	auto weapon = player->getCurrentWeapon();
+
+	createParallaxBackground(5);
 
 	if (weapon->isActive())
 		weapon->setActive(false);
@@ -92,6 +93,17 @@ void ShelterScene::useAction()
 	if (actions > 0) actions--;
 	std::cout << "actions: " << actions << endl;
 }
+
+void ShelterScene::createParallaxBackground(int numOfRep) {
+	createParallaxLayer(0, &sdlutils().images().at("skyS"), numOfRep);
+	createParallaxLayer(0.2, &sdlutils().images().at("ruins"), numOfRep);
+	createParallaxLayer(0.3, &sdlutils().images().at("houses2S"), numOfRep);
+	createParallaxLayer(0.4, &sdlutils().images().at("houses1S"), numOfRep);
+	createParallaxLayer(0.5, &sdlutils().images().at("houses3S"), numOfRep);
+	createParallaxLayer(0.6, &sdlutils().images().at("roadS"), numOfRep);
+	createParallaxLayer(0.7, &sdlutils().images().at("fence"), numOfRep);
+}
+
 
 
 

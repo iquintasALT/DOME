@@ -14,7 +14,7 @@ PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClic
 	type_ = type;
 	clicked = false;
 	img->enabled = false;
-
+	img->setAlpha(50);
 	//t = new Texture(renderer, str, *font_, col_);
 
 	name = new Texture(sdlutils().renderer(), buttonName, 

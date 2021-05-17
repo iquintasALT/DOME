@@ -28,13 +28,6 @@ void RaidScene::init() {
 	mngr_->getGame()->setFPSActive(true);
 
 	createParallaxBackground(5);
-
-	//Entity* l = mngr_->addEntity();
-	//l->addComponent<Transform>(Vector2D(150, 556), 100, 100);
-	//l->addComponent<Image>(&sdlutils().images().at("dust"));
-	//l->addComponent<Loot>("Press E to open the loot", 5, 5);
-	//mngr_->addRenderLayer<Player>(l);
-
 	createTransition();
 }
 
@@ -62,11 +55,4 @@ void RaidScene::createParallaxBackground(int numOfRep) {
 	createParallaxLayer(0.5, &sdlutils().images().at("houses1"), numOfRep);
 	createParallaxLayer(0.6, &sdlutils().images().at("wall"), numOfRep);
 	createParallaxLayer(0.7, &sdlutils().images().at("road"), numOfRep);
-}
-
-void RaidScene::createParallaxLayer(float scrollFactor, Texture* t, int numOfRep) {
-	auto layer = mngr_->addEntity();
-	layer->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-	layer->addComponent<ParallaxComponent>(t, numOfRep)->setScrollFactor(scrollFactor);
-	mngr_->addRenderLayer<Parallax>(layer);
 }
