@@ -4,8 +4,8 @@ namespace consts {
 
 	const float FRAME_RATE = 60.0f;
 	const float DELTA_TIME = 1 / FRAME_RATE;
-	const int WINDOW_WIDTH = 1080;
-	const int WINDOW_HEIGHT = 720;
+	const int WINDOW_WIDTH = 1408;
+	const int WINDOW_HEIGHT = 792;
 
 	// PLAYER
 	const float GRAVITY = 8.0f;
@@ -95,7 +95,7 @@ namespace consts {
 	// LOCALIZACIONES
 	const int NUM_LOCATIONS = 5;
 
-	// ESCENA DE AJUSTES
+	// ESCENA DE AJUSTES Y SETTINGS
 	const int VOLUME_LEVELS = 6;
 
 	const int BACK_BUTTON_POSITION_X = WINDOW_WIDTH / 8 - 120;
@@ -118,6 +118,16 @@ namespace consts {
 	const int BAR_TEXT_POSITION_X = 100;
 	const int BAR_TEXT_SIZE_X = 400;
 	const int BAR_TEXT_SIZE_Y = 50;
+
+	const int SHOW_FPS_BAR_POS_X = 100;
+	const int SHOW_FPS_BAR_POS_Y = 300;
+	const int SHOW_FPS_BAR_SIZE_X = 400;
+	const int SHOW_FPS_BAR_SIZE_Y = 40;
+
+	const int SHOW_FPS_BUTTON_POS_X = 600;
+	const int SHOW_FPS_BUTTON_POS_Y = 300;
+	const int SHOW_FPS_BUTTON_SIZE_X = 32;
+	const int SHOW_FPS_BUTTON_SIZE_Y = 32;
 
 	// GAMECYCLE
 	const int MAX_DAYS = 10;

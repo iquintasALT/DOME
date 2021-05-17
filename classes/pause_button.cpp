@@ -50,8 +50,12 @@ void PauseButton::update() {
 			if (over) {
 				soundManager().playSFX("push_button");
 				cbOnClick(getMngr());
-				if (getMngr()->getGame()->currentScene == SCENES::SETTINGS && type_ == VOLUME) {
-					static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->setAdjusterPosition();
+				if (getMngr()->getGame()->currentScene == SCENES::SETTINGS) {
+					auto settingsScene = static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState());
+					if (type_ == VOLUME) settingsScene->setAdjusterPosition();
+					else if (type_ == SHOWFPS) {
+
+					}
 				}
 			}
 			clicked = false;

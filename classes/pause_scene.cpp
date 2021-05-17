@@ -38,13 +38,13 @@ void PauseScene::update() {
 void PauseScene::resume(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE);
-	mng->getGame()->currentScene = SCENES::RAID;
+	//mng->getGame()->currentScene = SCENES::RAID;
 }
 
 void PauseScene::settings(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(new SettingsScene(mng->getGame()), SceneManager::SceneMode::ADDITIVE);
-	mng->getGame()->currentScene = SCENES::SETTINGS;
+	//mng->getGame()->currentScene = SCENES::SETTINGS;
 }
 
 void PauseScene::menu(Manager* mng) {

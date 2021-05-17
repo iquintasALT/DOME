@@ -1,7 +1,7 @@
 #pragma once
 #include "../classes/menu_button.h"
 class Image;
-enum ButtonType {NONETYPE, VOLUME};
+enum ButtonType {NONETYPE, VOLUME, SHOWFPS};
 class PauseButton : public MenuButton
 {
 protected:

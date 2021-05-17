@@ -261,6 +261,14 @@
       "file": "resources/sprites/location_button_focus.png"
     },
     {
+      "id": "showFPSBar",
+      "file": "resources/sprites/buttons/show_fps.png"
+    },
+    {
+      "id": "fpsButton",
+      "file": "resources/sprites/buttons/fps_button.png"
+    },
+    {
       "id": "craft_bg",
       "file": "resources/sprites/craft_ui/bg.png"
     },
