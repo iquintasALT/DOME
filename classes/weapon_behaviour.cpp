@@ -10,7 +10,7 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 	mngr->addEntity(this);
 	mngr->addRenderLayer<Bullets>(this);
 
-	addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), 38, 24, 0);
+	addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), 55, 48, 0);
 
 	addComponent<Image>(&sdlutils().images().at("weapons_arms"), 15, 8, 0, 0);
 	animator_ = addComponent<WeaponAnimation>();
