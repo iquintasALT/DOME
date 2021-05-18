@@ -21,6 +21,7 @@
   <ItemGroup>
     <ClInclude Include="classes\camera.h" />
     <ClInclude Include="classes\charge_weapon.h" />
+    <ClInclude Include="classes\check_button.h" />
     <ClInclude Include="classes\controls_scene.h" />
     <ClInclude Include="classes\countdown.h" />
     <ClInclude Include="classes\cover.h" />
@@ -127,6 +128,7 @@
   <ItemGroup>
     <ClCompile Include="classes\camera.cpp" />
     <ClCompile Include="classes\charge_weapon.cpp" />
+    <ClCompile Include="classes\check_button.cpp" />
     <ClCompile Include="classes\controls_scene.cpp" />
     <ClCompile Include="classes\countdown.cpp" />
     <ClCompile Include="classes\cover.cpp" />

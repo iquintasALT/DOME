@@ -50,12 +50,8 @@ void PauseButton::update() {
 			if (over) {
 				soundManager().playSFX("push_button");
 				cbOnClick(getMngr());
-				if (getMngr()->getGame()->currentScene == SCENES::SETTINGS) {
-					auto settingsScene = static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState());
-					if (type_ == VOLUME) settingsScene->setAdjusterPosition();
-					else if (type_ == SHOWFPS) {
-
-					}
+				if (type_ == VOLUME){
+					static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->setAdjusterPosition();
 				}
 			}
 			clicked = false;
@@ -72,8 +68,8 @@ void PauseButton::render() {
 	int xPos = (int)position.getX() + 40;
 	int height = (int)size.getY();
 	name->render({xPos, (int)position.getY(), name->width() * height / 50 , height});
-	if (over)
-		img->setAlpha(50);
+	if (!over)
+		img->setAlpha(255);
 }
 
 PauseButton::~PauseButton() {

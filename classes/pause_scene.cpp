@@ -16,13 +16,13 @@ void PauseScene::init() {
 	pixel->addComponent<Image>(&sdlutils().images().at("bgImageDark"), true);
 	mngr_->addRenderLayer<Interface>(pixel);
 
-	auto resumeButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH/2-128, 370), Vector2D(256, 64) ,&sdlutils().images().at("resumeButton"), resume, g_, mngr_);
+	auto resumeButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH * 0.5f - (256/2), consts::WINDOW_HEIGHT * 0.5), Vector2D(256, 64) ,&sdlutils().images().at("resumeButton"), resume, g_, mngr_);
 	mngr_->addEntity(resumeButton);
 
-	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 450), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), settings, g_, mngr_);
+	auto settingsButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH * 0.5f - (256 / 2), consts::WINDOW_HEIGHT * 0.6), Vector2D(256, 64), &sdlutils().images().at("settingsButton"), settings, g_, mngr_);
 	mngr_->addEntity(settingsButton);
 
-	auto menuButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH / 2 - 128, 530), Vector2D(256, 64), &sdlutils().images().at("mainmenuButton"), menu, g_, mngr_);
+	auto menuButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH * 0.5f - (256 / 2), consts::WINDOW_HEIGHT * 0.7), Vector2D(256, 64), &sdlutils().images().at("mainmenuButton"), menu, g_, mngr_);
 	mngr_->addEntity(menuButton);
 
 }
@@ -38,19 +38,16 @@ void PauseScene::update() {
 void PauseScene::resume(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE);
-	//mng->getGame()->currentScene = SCENES::RAID;
 }
 
 void PauseScene::settings(Manager* mng) {
 	ih().clearState();
 	mng->ChangeScene(new SettingsScene(mng->getGame()), SceneManager::SceneMode::ADDITIVE);
-	//mng->getGame()->currentScene = SCENES::SETTINGS;
 }
 
 void PauseScene::menu(Manager* mng) {
 	ih().clearState();
 	mng->getGame()->numDays = 0;
 	mng->ChangeScene(new MenuScene(mng->getGame(), false), SceneManager::SceneMode::SINGLE);
-	//mng->getGame()->currentScene = SCENES::MAINMENU;
 }
 

@@ -24,6 +24,7 @@
 #include "../classes/shelter_scene.h"
 #include "../classes/locations_scene.h"
 #include "../classes/lose_scene.h"
+#include "../classes/pause_scene.h"
 
 Game::Game(int totaltime) {
 	initLoot();
