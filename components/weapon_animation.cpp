@@ -1,14 +1,14 @@
 #include "weapon_animation.h"
 
 
-WeaponAnimation::WeaponAnimation() : tr_(nullptr), im_(nullptr), rb_(nullptr), animStop(false) { };
+WeaponAnimation::WeaponAnimation() : tr_(nullptr), im_(nullptr) { };
 
 WeaponAnimation::~WeaponAnimation() {}
 
 void WeaponAnimation::update() {
 	timer += currentAnimation.animationSpeed();
 
-	if (timer > 1 && !animStop) {
+	if (timer > 1) {
 		currentAnimation.advanceFrame();
 		timer = 0;
 	}
@@ -22,6 +22,5 @@ void WeaponAnimation::init() {
 	}
 
 	tr_ = entity_->getComponent<Transform>();
-	//rb_ = entity_->getComponent<RigidBody>();
-	assert(tr_ != nullptr && im_ != nullptr && rb_ != nullptr);
+	assert(tr_ != nullptr && im_ != nullptr);
 }

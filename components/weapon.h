@@ -11,7 +11,6 @@
 class Transform;
 class Image;
 class Player;
-class WeaponAnimation;
 
 enum ITEMS;
 
@@ -20,7 +19,6 @@ class Weapon : public Component
 protected:
 	Transform* tr_ = nullptr;
 	Image* image_ = nullptr;
-	WeaponAnimation* animator_ = nullptr;
 	Player* player_ = nullptr;
 	RigidBody* playerRb_ = nullptr;
 	Transform* playerTr_ = nullptr;

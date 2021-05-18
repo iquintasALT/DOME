@@ -16,7 +16,7 @@
 
 #include "../classes/Item.h"
 
-ChargeWeapon::ChargeWeapon(float fR, int dam, int ntier) : Weapon(fR, dam, 0.0f, ntier), tier(ntier) {};
+ChargeWeapon::ChargeWeapon(float fR, int dam, int ntier, WeaponAnimation* animator) : Weapon(fR, dam, 0.0f, ntier), tier(ntier), animator_(animator) {};
 
 void ChargeWeapon::update() {/*
 	if (playerCtrl_->isClimbingLadder()) image_->enabled = false;

@@ -63,7 +63,7 @@ void hud::update()
 	int type = (int)player->getCurrentWeapon()->typeOfWeapon();
 	int tier = player->getCurrentWeapon()->tierOfWeapon();
 
-	chooseWeapon(type, tier-1);
+	chooseWeapon(type, tier);
 
 	if (!time->keepPlaying() && !frozen)
 	{
