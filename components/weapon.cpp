@@ -1,28 +1,31 @@
 ﻿#include "weapon.h"
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
-#include "../game/constant_variables.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
-#include "../components/Image.h"
-#include "../components/Transform.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../classes/camera.h"
-#include "../components/ricochet.h"
-#include "../components/classic_bullet.h"
-#include "../components/rigid_body.h"
 #include "../game/constant_variables.h"
-#include "../sdlutils/SDLUtils.h"
-#include "../components/rigid_body.h"
-#include "../components/Inventory.h"
-#include "../components/InventoryController.h"
+#include "../classes/camera.h"
 #include "../classes/weapon_behaviour.h"
 #include "../classes/Item.h"
-#include <iostream>
 #include "../classes/player.h"
+#include "Image.h"
+#include "Transform.h"
+#include "ricochet.h"
+#include "classic_bullet.h"
+#include "rigid_body.h"
+#include "Inventory.h"
+#include "InventoryController.h"
+#include "weapon_animation.h"
+#include <iostream>
+#include <list>
 
-Weapon::Weapon(float rateOfFire, int damage, float bulletSpread) : fireRate(rateOfFire), impactDamage(damage),
-baseBulletSpread(bulletSpread), magazineSize(30) { }
+int Weapon::bulletsInMagazine = -1;
+
+Weapon::Weapon(float rateOfFire, int damage, float bulletSpread, int tier) : fireRate(rateOfFire), impactDamage(damage),
+baseBulletSpread(bulletSpread), magazineSize(30) {
+	upgradeCurrentWeapon(tier);
+}
 
 Weapon::~Weapon() {}
 
@@ -106,7 +109,7 @@ void Weapon::shoot(const Vector2D& direction) {
 	bulletTr->setPos(tr_->getPos() + direction * gunLength);
 	bulletTr->setRot(tr_->getRot());
 
-	bulletsInMagazine--;
+	setBulletsInMagazine(getBulletsInMagazine()-1);
 
 	if (bulletsInMagazine <= 0)
 		reload();
@@ -160,17 +163,16 @@ void Weapon::setMaxAmmo() {
 void Weapon::setAmmo() {
 	int totalBullets = 0;
 	Item* item = nullptr;
-	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
 
 	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
-		if (ItemIsAmmo(items, currentWeapon)) {
+		if (ItemIsAmmo(items, type)) {
 			item = items;
 			totalBullets += item->count;
 		}
 	}
 
 	if (item != nullptr) {
-		bulletsInMagazine = item->count;
+		setBulletsInMagazine(item->count);
 		bulletsInReserve = totalBullets - item->count;
 
 		player_->getComponent<InventoryController>()->inventory->removeItem(item);
@@ -198,7 +200,7 @@ bool Weapon::ItemIsAmmo(Item* item, WeaponType currentWeapon) {
 
 void Weapon::reload()
 {
-	if (!reloading && bulletsInMagazine < magazineSize)
+	if (!reloading && getBulletsInMagazine() < magazineSize)
 	{
 		reloading = true;
 		setAmmo();
@@ -224,18 +226,16 @@ void Weapon::init()
 
 	playerRb_ = player_->getComponent<RigidBody>();
 	assert(playerRb_ != nullptr);
+	/*if (bulletsInMagazine <= 0)
+		reload();*/
 }
 
-void Weapon::upgradeTier(int tier) {
-	if (tier == 2) {
-		entity_->removeComponent<Image>();
-		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 1);
+void Weapon::upgradeCurrentWeapon(int tier) {
+	if (tier == 1) {
 		impactDamage = consts::WEAPON_TIER2_DAMAGE;
 		fireRate = consts::WEAPON_TIER2_FIRERATE;
 	}
-	else if (tier == 3) {
-		entity_->removeComponent<Image>();
-		entity_->addComponent<Image>(&sdlutils().images().at("weapons_arms"), 3, 3, 0, 2);
+	else if (tier == 2) {
 		impactDamage = consts::WEAPON_TIER3_DAMAGE;
 		fireRate = consts::WEAPON_TIER3_FIRERATE;
 	}

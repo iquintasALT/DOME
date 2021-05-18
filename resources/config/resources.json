@@ -26,6 +26,11 @@
           "size": 24
       },
       {
+          "id": "OrbitronBold32",
+          "file": "resources/fonts/Orbitron-Bold.ttf",
+          "size": 32
+      },
+      {
           "id": "Orbitron32",
           "file": "resources/fonts/Orbitron-Bold.ttf",
           "size": 32
@@ -34,6 +39,11 @@
           "id": "Orbitron14",
           "file": "resources/fonts/Orbitron-Bold.ttf",
           "size": 14
+      },
+      {
+          "id": "Orbitron24",
+          "file": "resources/fonts/Orbitron-Bold.ttf",
+          "size": 24
       },
       {
           "id": "Orbitron16",
@@ -158,7 +168,7 @@
   },
   {
     "id": "weapons_arms",
-    "file": "resources/sprites/weapons_arms_sheet.png"
+    "file": "resources/sprites/weapons_arms_sheet2.png"
   },
   {
     "id": "projectile",
@@ -413,8 +423,12 @@
     "file": "resources/sprites/craft_ui/0_hour_sleep.png"
   },
   {
-    "id": "dark",
-    "file": "resources/sprites/dark.png"
+      "id": "dark",
+      "file": "resources/sprites/dark.png"
+  },
+  {
+      "id": "holdToSkip",
+      "file": "resources/sprites/holdToSkip.png"
   }
 ],
 

@@ -87,6 +87,10 @@ MainMenuButton::MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBack
 	displacement = 0;
 }
 
+MainMenuButton::~MainMenuButton() {
+	//PauseButton::~PauseButton();
+}
+
 void MainMenuButton::update()
 {
 	PauseButton::update();
@@ -122,4 +126,3 @@ void MainMenuButton::render()
 	name->render({ xPos, (int)position.getY(), name->width() * height / 50 , height });
 
 }
-

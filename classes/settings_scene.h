@@ -31,4 +31,18 @@ class CreditsScene :public GameScene {
 public:
 	CreditsScene(Game* g);
 	void init() override;
+	void update() override;
+
+private:
+	bool exit;
+	float t;
+	float width;
+	int margin;
+
+	void addTitle(std::string t, int& y);
+	void addText(std::string t, int& y);
+	void addParallelTitle(std::string t, std::string t2, int& y);
+	void addParallel(std::string t, std::string t2, int& y);
+
+	Entity* holdToSkip;
 };

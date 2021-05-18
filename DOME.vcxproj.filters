@@ -272,6 +272,7 @@
     <ClCompile Include="classes\check_button.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
+    <ClCompile Include="components\HoldToSkip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -589,6 +590,7 @@
     <ClInclude Include="classes\check_button.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
+    <ClInclude Include="components\HoldToSkip.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
