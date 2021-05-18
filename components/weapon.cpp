@@ -222,12 +222,9 @@ void Weapon::init()
 
 	image_ = entity_->getComponent<Image>();
 	assert(image_ != nullptr);
-	image_->setRotationOrigin(tr_->getW() * 0.16f, tr_->getH() * 0.46f);
 
 	playerRb_ = player_->getComponent<RigidBody>();
 	assert(playerRb_ != nullptr);
-	/*if (bulletsInMagazine <= 0)
-		reload();*/
 }
 
 void Weapon::upgradeCurrentWeapon(int tier) {

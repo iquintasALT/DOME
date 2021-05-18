@@ -42,8 +42,9 @@ public:
 		musics_.emplace(key, path);
 	}
 
-	void addSFX(std::string key, std::string path) {
+	void addSFX(std::string key, std::string path, int volume) {
 		sfx_.emplace(key, path);
+		sfx_.at(key).setVolume(volume);
 	}
 
 	void playMusic(std::string key) {

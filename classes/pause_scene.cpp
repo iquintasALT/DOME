@@ -29,6 +29,7 @@ void PauseScene::init() {
 void PauseScene::update() {
 	GameScene::update();
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
+		mngr_->getGame()->setFPSActive(true);
 		mngr_->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE);
 		mngr_->getGame()->currentScene = SCENES::RAID;
 		ih().clearState();
@@ -37,6 +38,7 @@ void PauseScene::update() {
 
 void PauseScene::resume(Manager* mng) {
 	ih().clearState();
+	mng->getGame()->setFPSActive(true);
 	mng->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE);
 }
 

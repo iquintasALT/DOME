@@ -45,7 +45,8 @@ public:
 	void quitGame() { exit = true; }
 
 	void initLoot();
-	void changeActiveFPS() { fpsActive = !fpsActive; }
+	void setFPSActive(bool value) { fpsActive = value; }
+	bool getFSPActive() { return fpsActive; }
 	
 
 	// booleano para comprabar si el jugador ha sido creado, para mantener la informaci�n
