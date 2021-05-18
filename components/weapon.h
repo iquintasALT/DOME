@@ -53,8 +53,6 @@ public:
 	enum WeaponType { CLASSIC, RICOCHET, LASER };
 	WeaponType type = CLASSIC;
 
-	virtual int getBulletsInMagazine() { return bulletsInMagazine; };
-
 	Weapon() {};
 	Weapon(float rateOfFire, int damage, float bulletSpread = 0, int tier = 0);
 	~Weapon();
@@ -65,15 +63,17 @@ public:
 	inline virtual int getAmmoReserves() { return bulletsInReserve; }
 	int getDamage() { return impactDamage; }
 	virtual int getAnimationRow() { return type; };
+	virtual int getBulletsInMagazine() { return bulletsInMagazine; };
 	 
 	void setAmmo();
 	void setMaxAmmo();
 	void setDamage(int damage_) { impactDamage = damage_; }
 	void setBulletSpread(int i) { baseBulletSpread = i; }
+	virtual void setBulletsInMagazine(int bullets) { bulletsInMagazine = bullets; };
 
 	virtual void update();
 
-	void reload();
+	virtual void reload();
 
 	void adjustToCrouching();
 	virtual void upgradeCurrentWeapon(int tier);
