@@ -14,7 +14,7 @@ LoseScene::LoseScene(Game* game, WAYSTODIE opcion, bool state) : GameScene(game,
 	}
 	else
 	{
-		back = &sdlutils().images().at("lose");//Si ganas, cambiar el sprite
+		back = &sdlutils().images().at("win");//Si ganas, cambiar el sprite
 	}
 	string text;
 	switch (opcion)
@@ -35,13 +35,13 @@ LoseScene::LoseScene(Game* game, WAYSTODIE opcion, bool state) : GameScene(game,
 		text = "YOU SHOULD TRY TO FIND SOMETHING TO DETOXIFY";
 		break;
 	case WAYSTODIE::PAIN:
-		text = "YOU SHOULD TRY TO FIND SOMETHING SOME PAINKILLER";
+		text = "YOU SHOULD TRY TO FIND SOMETHING, SOME PAINKILLER";
 		break;
 	case WAYSTODIE::CONTUSION:
 		text = "CAREFUL WITH THE HEIGHTS";
 		break;
 	default:
-		text = "THIS SHOULD NOT APPEAR";
+		text = " ";
 		break;
 	}
 	advice = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at("OrbitronRegular"),
