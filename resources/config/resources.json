@@ -481,6 +481,10 @@
           "id": "walk",
           "file": "resources/sound/gun/footstep.wav"
       },
+      //{
+      //    "id": "openlocker",
+      //    "file": "resources/sound/openlocker.mp3"
+      //},
       {
           "id": "chestopen1",
           "file": "resources/sound/gun/chestopen1.wav"
