@@ -71,6 +71,7 @@
     <ClInclude Include="components\enemy_component.h" />
     <ClInclude Include="components\enemy_detection_component.h" />
     <ClInclude Include="classes\weapon_behaviour.h" />
+    <ClInclude Include="components\HoldToSkip.h" />
     <ClInclude Include="components\hunger_component.h" />
     <ClInclude Include="components\hypothermia_component.h" />
     <ClInclude Include="components\Image.h" />
@@ -178,6 +179,7 @@
     <ClCompile Include="components\enemy_component.cpp" />
     <ClCompile Include="components\enemy_detection_component.cpp" />
     <ClCompile Include="classes\weapon_behaviour.cpp" />
+    <ClCompile Include="components\HoldToSkip.cpp" />
     <ClCompile Include="components\hunger_component.cpp" />
     <ClCompile Include="components\hypothermia_component.cpp" />
     <ClCompile Include="components\interactableElement.cpp" />

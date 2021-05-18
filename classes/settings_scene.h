@@ -43,4 +43,6 @@ private:
 	void addText(std::string t, int& y);
 	void addParallelTitle(std::string t, std::string t2, int& y);
 	void addParallel(std::string t, std::string t2, int& y);
+
+	Entity* holdToSkip;
 };

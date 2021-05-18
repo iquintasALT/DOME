@@ -55,6 +55,7 @@ class CameraMovement;
 class ScrollingBackGround;
 class ChangeImage;
 class ParallaxComponent;
+class HoldToSkip;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -103,7 +104,8 @@ class ParallaxComponent;
 	CameraMovement, \
 	ScrollingBackGround, \
 	ChangeImage,\
-	ParallaxComponent
+	ParallaxComponent,\
+	HoldToSkip
 
 // groups
 

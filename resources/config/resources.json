@@ -423,8 +423,12 @@
     "file": "resources/sprites/craft_ui/0_hour_sleep.png"
   },
   {
-    "id": "dark",
-    "file": "resources/sprites/dark.png"
+      "id": "dark",
+      "file": "resources/sprites/dark.png"
+  },
+  {
+      "id": "holdToSkip",
+      "file": "resources/sprites/holdToSkip.png"
   }
 ],
 
