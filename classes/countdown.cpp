@@ -34,14 +34,8 @@ void Countdown::render() {
 	{
 		aux = "0:00";
 		s = build_sdlcolor(0xff000000);
-		
-		
-		
 	}
-	else
-	{
-		s = build_sdlcolor(0xffffffff);
-	}
+	else s = build_sdlcolor(0xffffffff);
 
 	//delete counter;
 	counter = new Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("OrbitronRegular"),
