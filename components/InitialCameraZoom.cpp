@@ -1,7 +1,9 @@
 #include "InitialCameraZoom.h"
 #include "../classes/camera.h"
 #include "../ecs/Entity.h"
+#include "../ecs/Manager.h"
 #include "../game/constant_variables.h"
+#include "CameraMovement.h"
 InitialCameraZoom::InitialCameraZoom(float zoom, float time):
 	 totalTime(time)
 {
@@ -16,6 +18,9 @@ void InitialCameraZoom::update()
 
 	if (t > totalTime) {
 		Camera::mainCamera->setScale(targetZoom);
+
+		entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = true;
+
 		entity_->setDead(true);
 		return;
 	}
@@ -23,5 +28,4 @@ void InitialCameraZoom::update()
 	float scale = Vector2D::Lerp(initialZoom, targetZoom, t / totalTime);
 	Vector2D pos = Camera::mainCamera->PointToWorldSpace(Vector2D(consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
 	Camera::mainCamera->setScale(scale);
-	//Camera::mainCamera->MoveToPoint(pos);
 }

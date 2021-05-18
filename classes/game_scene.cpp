@@ -147,7 +147,7 @@ void GameScene::loadMap(string& const path) {
 						new Player(mngr_, Point2D(aabb.left, aabb.top));
 						g_->playerCreated = true;
 					}
-					auto camPos = Vector2D(aabb.left, aabb.top);
+					auto camPos = Vector2D(aabb.left, aabb.top) + Vector2D(0, consts::CAMERA_MARGIN_FROM_PLAYER / Camera::mainCamera->getScale());
 					Camera::mainCamera->MoveToPoint(camPos);
 				}
 				else if (obj.getName() == "loot") {
