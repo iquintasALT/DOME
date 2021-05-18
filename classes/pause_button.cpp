@@ -88,7 +88,7 @@ MainMenuButton::MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBack
 }
 
 MainMenuButton::~MainMenuButton() {
-	PauseButton::~PauseButton();
+	//PauseButton::~PauseButton();
 }
 
 void MainMenuButton::update()
