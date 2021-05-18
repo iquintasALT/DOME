@@ -11,6 +11,7 @@ KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	stairsSpeed = consts::STAIRS_SPEED;
 	acceleration = consts::ACCELERATION;
 	deceleration = consts::DECELERATION;
+	cooldown = 0.0f;
 	tr_ = nullptr; rb_ = nullptr; darkArea = nullptr;
 
 	speed = 0;
@@ -48,6 +49,11 @@ void KeyboardPlayerCtrl::OnTrigger(Entity* bc) {
 void KeyboardPlayerCtrl::update() {
 	rb_->setGravity(consts::GRAVITY);
 
+	if (walking && sdlutils().currRealTime() - 500 > cooldown) {
+		walking = false;
+		cooldown = sdlutils().currRealTime();
+	}
+
 	darkArea->setPos(tr_->getPos() - Vector2D(consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
 
 	if (!onLadder) {
@@ -58,7 +64,11 @@ void KeyboardPlayerCtrl::update() {
 				//rb_->setVel(Vector2D(speed, rb_->getVel().getY()));
 				right = true;
 				if (tr_->getPos().getX() > stairPosition.getX() + stairSize.getX()) onLadderTrigger = false;
-				soundManager().playSFX("walk");
+				if (!walking && rb_->onFloor()) {
+					soundManager().playSFX("walk");
+					walking = true;
+					cooldown = sdlutils().currRealTime();
+				}
 			}
 			else if (keystates[SDL_SCANCODE_A]) {
 				speed -= acceleration * consts::DELTA_TIME;
@@ -66,7 +76,11 @@ void KeyboardPlayerCtrl::update() {
 				//rb_->setVel(Vector2D(-speed, rb_->getVel().getY()));
 				left = true;
 				if (tr_->getPos().getX() + tr_->getW() < stairPosition.getX()) onLadderTrigger = false;
-				soundManager().playSFX("walk");
+				if (!walking && rb_->onFloor()) {
+					soundManager().playSFX("walk");
+					walking = true;
+					cooldown = sdlutils().currRealTime();
+				}
 			}
 			else {
 				if (speed < -0.1f)
