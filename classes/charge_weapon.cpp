@@ -16,7 +16,11 @@
 
 #include "../classes/Item.h"
 
-ChargeWeapon::ChargeWeapon(float fR, int dam, int ntier, WeaponAnimation* animator) : Weapon(fR, dam, 0.0f, ntier), tier(ntier), animator_(animator) {};
+int ChargeWeapon::bulletsInMagazine = 0;
+
+ChargeWeapon::ChargeWeapon(float fR, int dam, int ntier, WeaponAnimation* animator) : Weapon(fR, dam, 0.0f, ntier), tier(ntier), animator_(animator) {
+	type = LASER;
+};
 
 void ChargeWeapon::update() {/*
 	if (playerCtrl_->isClimbingLadder()) image_->enabled = false;
