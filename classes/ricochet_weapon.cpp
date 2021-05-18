@@ -13,6 +13,8 @@
 
 #include "../classes/Item.h"
 
+int RicochetWeapon::bulletsInMagazine = 0;
+
 Entity* RicochetWeapon::createBullet(const Vector2D& direction){
 	Entity* bullet = entity_->getMngr()->addEntity();
 	bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);

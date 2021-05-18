@@ -21,7 +21,8 @@ public:
 		type = RICOCHET;
 	};
 
-	int getBulletsInMagazine() override { return bulletsInMagazine; };
+	int getBulletsInMagazine() override { return bulletsInMagazine; }; 
+	void setBulletsInMagazine(int bullets) override { bulletsInMagazine = bullets; };
 
 	virtual void upgradeCurrentWeapon(int tier) override;
 
