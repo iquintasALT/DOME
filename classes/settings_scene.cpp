@@ -141,7 +141,7 @@ void SettingsScene::decreaseEffectsVolume(Manager* mng)
 }
 
 void SettingsScene::showFPS(Manager* mng) {
-	mng->getGame()->changeActiveFPS();
+	mng->getGame()->setFPSActive(!mng->getGame()->getFSPActive());
 }
 
 CreditsScene::CreditsScene(Game* g) : GameScene(g, std::string("credits")) {
