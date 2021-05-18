@@ -11,8 +11,6 @@ private:
 
 	Image* im_;
 	Transform* tr_;
-	RigidBody* rb_;
-	bool animStop;
 
 	const enum animations_name { regular_gun_0, regular_gun_1, regular_gun_2, ricochet_0, ricochet_1, ricochet_2, 
 		laser_uncharged_0, laser_uncharged_1, laser_uncharged_2, laser_windup_0, laser_windup_1, laser_windup_2,

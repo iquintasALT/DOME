@@ -13,7 +13,7 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 	addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), 38, 24, 0);
 
 	addComponent<Image>(&sdlutils().images().at("weapons_arms"), 15, 8, 0, 0);
-	addComponent<WeaponAnimation>();
+	animator_ = addComponent<WeaponAnimation>();
 	weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 0);
 	weapon->bulletsInMagazine = 4;
 	weaponType = Weapon::WeaponType::CLASSIC;
@@ -74,15 +74,15 @@ void WeaponBehaviour::changeWeapon()
 	{
 	case Weapon::WeaponType::CLASSIC:
 		weaponType = Weapon::WeaponType::RICOCHET;
-		addComponent2<Weapon, RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, 10.0f, 3, weaponTiers[1]);
+		weapon = addComponent2<Weapon, RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, 10.0f, 3, weaponTiers[1]);
 		break;
 	case Weapon::WeaponType::RICOCHET:
 		weaponType = Weapon::WeaponType::LASER;
-		addComponent2<Weapon, ChargeWeapon>(consts::CHARGE_TIER1_TIMETOCHARGE, consts::CHARGE_TIER1_DAMAGE, weaponTiers[2]);
+		weapon = addComponent2<Weapon, ChargeWeapon>(consts::CHARGE_TIER1_TIMETOCHARGE, consts::CHARGE_TIER1_DAMAGE, weaponTiers[2], animator_);
 		break;
 	case Weapon::WeaponType::LASER:
 		weaponType = Weapon::WeaponType::CLASSIC;
-		addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
+		weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
 		break;
 	}
 	animator_->setAnimation(weaponType * 3); 
