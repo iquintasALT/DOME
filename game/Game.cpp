@@ -35,7 +35,7 @@ Game::Game(int totaltime) {
 
 	framesFPS = 0;
 	lastTimeFPS = SDL_GetTicks();
-	fpsActive = true;
+	fpsActive = false;
 	fpsText = nullptr;
 }
 
@@ -97,9 +97,9 @@ void Game::start() {
 void Game::drawFPS(int fps) {
 	if (fpsActive) {
 		std::stringstream ss;
-		ss << "fps: " << fps;
+		ss << "FPS: " << fps;
 		fpsText = new Texture(sdlutils().renderer(), ss.str(), sdlutils().fonts().at("Orbitron12"), build_sdlcolor(0xffffffff));
-		SDL_Rect dest = { 5,5, 40, 20 };
+		SDL_Rect dest = { 5,5, 60, 30 };
 		fpsText->render(dest);
 		delete fpsText;
 	}
