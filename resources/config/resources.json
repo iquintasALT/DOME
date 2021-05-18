@@ -450,6 +450,10 @@
           "file": "resources/sound/wall_hit.wav"
       },
       {
+          "id": "freeze",
+          "file": "resources/sound/freeze.mp3"
+      },
+      {
           "id": "chargingweapon",
           "file": "resources/sound/charging_weapon.wav"
       },
