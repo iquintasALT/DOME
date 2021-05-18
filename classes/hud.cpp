@@ -56,14 +56,14 @@ void hud::update()
 {
 	time->update();
 
-	bullets = player->getCurrentWeapon()->getWeapon()->bulletsInMagazine;
+	bullets = player->getCurrentWeapon()->getWeapon()->getBulletsInMagazine();
 	totalBullet = player->getCurrentWeapon()->getWeapon()->getAmmoReserves();
 	if (totalBullet < 0) totalBullet = 0;
 
 	int type = (int)player->getCurrentWeapon()->typeOfWeapon();
 	int tier = player->getCurrentWeapon()->tierOfWeapon();
 
-	chooseWeapon(type, tier-1);
+	chooseWeapon(type, tier);
 
 	if (!time->keepPlaying() && !frozen)
 	{

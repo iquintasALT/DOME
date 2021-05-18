@@ -1,36 +1,25 @@
 #pragma once
-//#include "../ecs/Component.h"
-//#include "../ecs/Entity.h"
-//#include "../components/Transform.h"
-//#include "../game/constant_variables.h"
-//#include "../ecs/Manager.h"
-//#include "../sdlutils/InputHandler.h"
-//#include "../components/Image.h"
-//#include "../sdlutils/SDLUtils.h"
 #include "../classes/game_entity.h"
 #include "../game/ecs_defs.h"
-//#include "../ecs/Manager.h"
 #include "../components/weapon.h"
 #include "../utils/checkML.h"
 #include "../classes/ricochet_weapon.h"
 #include "../classes/charge_weapon.h"
 #include <math.h>
 
-enum class WeaponType { CLASSIC, LASER, RICOCHET };
-
+class WeaponAnimation;
 class WeaponBehaviour : public GameEntity {
 private:
 	Weapon* weapon;
 	Transform* pl;
-	WeaponType weaponType;
+	WeaponAnimation* animator_;
 
-	int tierWeapon1 = 1;
-	int tierWeapon2 = 1; //Pasar por referencia el level de cada arma
-	int tierWeapon3 = 1;
+	Weapon::WeaponType weaponType;
+	short int weaponTiers [3] = {0, 0, 0};
 
-	InventoryController* inv;
+	InventoryController* inv_;
 
-	int weaponBullets[3] = { 0, 0, 0 };
+	//int weaponBullets[3] = { 0, 0, 0 };
 	int bulletSpread = 0;
 
 public:
@@ -38,15 +27,15 @@ public:
 	Weapon* getWeapon();
 
 	void setInv(InventoryController* inventory) {
-		inv = inventory;
+		inv_ = inventory;
 		//weapon->setAmmo();
 	}
 
 	void changeWeapon();
 
-	WeaponType typeOfWeapon() { return weaponType; }
+	Weapon::WeaponType typeOfWeapon() { return weaponType; }
 	int tierOfWeapon();
-	void upgradeTier();
+	void upgradeCurrentWeapon();
 
 	void addDispersion(int i);
 };

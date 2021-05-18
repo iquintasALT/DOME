@@ -12,6 +12,7 @@ class player_animation;
 class EnemyAnimation;
 class FlyingEnemyAnimation;
 class Weapon;
+class WeaponAnimation;
 class InventoryController;
 class Inventory;
 class EnemyComponent;
@@ -55,6 +56,7 @@ class CameraMovement;
 class ScrollingBackGround;
 class ChangeImage;
 class ParallaxComponent;
+class HoldToSkip;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -64,6 +66,7 @@ class ParallaxComponent;
 	EnemyAnimation, \
 	FlyingEnemyAnimation, \
     Weapon, \
+    WeaponAnimation, \
 	InventoryController, \
 	Inventory, \
 	EnemyComponent, \
@@ -81,12 +84,10 @@ class ParallaxComponent;
 	Loot, \
 	BackToShelter, \
 	ParticleSystem, \
-    RicochetWeapon, \
 	PlayerHealthComponent,\
 	HungerComponent, \
 	TirednessComponent, \
 	PlayerCollisions, \
-	ChargeWeapon, \
 	Charge, \
 	BoxCollider,\
 	BleedoutComponent,\
@@ -103,7 +104,8 @@ class ParallaxComponent;
 	CameraMovement, \
 	ScrollingBackGround, \
 	ChangeImage,\
-	ParallaxComponent
+	ParallaxComponent,\
+	HoldToSkip
 
 // groups
 

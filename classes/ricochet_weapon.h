@@ -7,6 +7,7 @@
 class RicochetWeapon: public Weapon
 {
 private:
+	static int bulletsInMagazine;
 	int ntier = 0;
 	int nbounce = 1;
 
@@ -15,9 +16,15 @@ protected:
 
 public:
 	inline RicochetWeapon() {};
-	inline RicochetWeapon(float rateOfFire, int damage, float bulletSpread, int bounce, int tier) : Weapon(rateOfFire, damage, bulletSpread), ntier(tier), nbounce(bounce) {};
+	inline RicochetWeapon(float rateOfFire, int damage, float bulletSpread = 10.0, int bounce = 3, int tier = 0) : Weapon(rateOfFire, damage, bulletSpread, tier), ntier(tier), nbounce(bounce) 
+	{
+		type = RICOCHET;
+	};
 
-	virtual void upgradeTier(int tier);
+	int getBulletsInMagazine() override { return bulletsInMagazine; }; 
+	void setBulletsInMagazine(int bullets) override { bulletsInMagazine = bullets; };
+
+	virtual void upgradeCurrentWeapon(int tier) override;
 
 	void init() override;
 };
