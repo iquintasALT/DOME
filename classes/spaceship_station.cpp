@@ -1,6 +1,7 @@
 #include "spaceship_station.h"
 #include "../game/Game.h"
 #include "../classes/shelter_scene.h"
+#include "../classes/lose_scene.h"
 
 SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_) : Workshop(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
@@ -47,15 +48,15 @@ SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingS
 	setWorkshopItems({ SPACESHIP_CABIN,SPACESHIP_RADAR,SPACESHIP_ROCKETS });
 
 	rocketTop = mngr_->addEntity();
-	rocketTop->addComponent<Transform>(Vector2D{ 145,50 }, 320, 213);
+	rocketTop->addComponent<Transform>(Vector2D{ bg_pos.getX() + bg_size.getX() * 0.075f,35 }, 320, 213);
 	rocketTopImg = rocketTop->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 0, 0, true);
 	if (!realMngr_->getGame()->radar)rocketTopImg->setAlpha(125);
 	rocketMid = mngr_->addEntity();
-	rocketMid->addComponent<Transform>(Vector2D{ 145,263 }, 320, 213);
+	rocketMid->addComponent<Transform>(Vector2D{ bg_pos.getX() + bg_size.getX() * 0.075f,248 }, 320, 213);
 	rocketMidImg = rocketMid->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 1, 0, true);
 	if (!realMngr_->getGame()->cabin) rocketMidImg->setAlpha(125);
 	rocketBot = mngr_->addEntity();
-	rocketBot->addComponent<Transform>(Vector2D{ 145,476 }, 320, 213);
+	rocketBot->addComponent<Transform>(Vector2D{ bg_pos.getX() + bg_size.getX() * 0.075f,461 }, 320, 213);
 	rocketBotImg = rocketBot->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 2, 0, true);
 	if (!realMngr_->getGame()->rockets)rocketBotImg->setAlpha(125);
 
@@ -139,6 +140,9 @@ void SpaceshipStation::update() {
 							renderRightWindow = false;
 							//gastar accion
 							shelterScene->useAction();
+
+							if (mngr_->getGame()->rockets && mngr_->getGame()->radar && mngr_->getGame()->cabin)
+								endGame = true;
 						}
 					}
 				}

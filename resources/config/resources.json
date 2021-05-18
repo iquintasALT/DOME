@@ -47,7 +47,7 @@
         },
         {
             "id": "Orbitron16",
-            "file": "resources/fonts/Orbitron-Bold.ttf",
+            "file": "resources/fonts/Orbitron-Regular.ttf",
             "size": 16
         },
         {
@@ -506,7 +506,7 @@
       },
       {
         "id": "walk",
-        "volume": 128,
+        "volume": 100,
         "file": "resources/sound/gun/footstep.wav"
       },
       {
