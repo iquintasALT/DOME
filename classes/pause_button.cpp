@@ -83,6 +83,10 @@ MainMenuButton::MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBack
 
 }
 
+MainMenuButton::~MainMenuButton() {
+	PauseButton::~PauseButton();
+}
+
 void MainMenuButton::render()
 {
 	if (over)
