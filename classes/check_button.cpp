@@ -3,11 +3,11 @@
 #include "../components/Image.h"
 
 CheckButton::CheckButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_) 
-	: MenuButton(pos, size, t, function, g, mngr_), over(false), img(nullptr), checked(true), clicked(false){
+	: MenuButton(pos, size, t, function, g, mngr_), over(false), img(nullptr), checked(false), clicked(false){
 	img = getComponent<Image>();
 	SDL_Rect rect = { 0, 0, t->width() / 3, t->height() };
 	img->setSrc(rect);
-	img->changeFrame(2, 0);
+	img->changeFrame(0, 0);
 }
 
 void CheckButton::update() {

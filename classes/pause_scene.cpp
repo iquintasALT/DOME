@@ -37,6 +37,7 @@ void PauseScene::update() {
 
 void PauseScene::resume(Manager* mng) {
 	ih().clearState();
+	mng->getGame()->setFPSActive(true);
 	mng->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE);
 }
 
