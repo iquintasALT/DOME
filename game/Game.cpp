@@ -98,9 +98,8 @@ void Game::drawFPS(int fps) {
 	if (fpsActive) {
 		std::stringstream ss;
 		ss << "FPS: " << fps;
-		fpsText = new Texture(sdlutils().renderer(), ss.str(), sdlutils().fonts().at("Orbitron12"), build_sdlcolor(0xffffffff));
-		SDL_Rect dest = { 5,5, 60, 30 };
-		fpsText->render(dest);
+		fpsText = new Texture(sdlutils().renderer(), ss.str(), sdlutils().fonts().at("Orbitron16"), build_sdlcolor(0xffffffff));
+		fpsText->render(10,10);
 		delete fpsText;
 	}
 }
