@@ -269,6 +269,9 @@
     <ClCompile Include="components\parallax_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="classes\check_button.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -582,6 +585,9 @@
     </ClInclude>
     <ClInclude Include="components\parallax_component.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\check_button.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
