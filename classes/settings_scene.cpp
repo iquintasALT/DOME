@@ -184,10 +184,11 @@ void CreditsScene::init() {
 	margin = 10;
 	int y = consts::WINDOW_HEIGHT * 0.8f;
 
+	int size = 70;
 	holdToSkip = mngr_->addEntity();
-	holdToSkip->addComponent<Transform>(Vector2D(100, 500), 100, 100);
+	holdToSkip->addComponent<Transform>(Vector2D(consts::WINDOW_WIDTH - size - 10, consts::WINDOW_HEIGHT - size - 10), size, size);
 	holdToSkip->addComponent<Image>(&sdlutils().images().at("holdToSkip"), true);
-	holdToSkip->addComponent<HoldToSkip>(2, [this]() { mngr_->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE); });
+	holdToSkip->addComponent<HoldToSkip>(1.5, [this]() { mngr_->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE); });
 	mngr_->addRenderLayer<Interface>(holdToSkip);
 
 	std::vector<std::vector<std::string>> arr = {

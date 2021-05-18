@@ -33,7 +33,7 @@ void HoldToSkip::update()
 }
 
 void HoldToSkip::render() {
-	for (float i = 0; i < t / maxT * 360; i += 3) {
+	for (float i = 0; i < t / maxT * 360; i += 7) {
 		transform->setRot(i);
 		image->render();
 	}
