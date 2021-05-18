@@ -11,16 +11,17 @@
 class Transform;
 class Image;
 class Player;
-class WeaponAnimation;
 
-enum class WeaponType;
 enum ITEMS;
+
 class Weapon : public Component
 {
+private:
+	static int bulletsInMagazine;
+
 protected:
 	Transform* tr_ = nullptr;
 	Image* image_ = nullptr;
-	WeaponAnimation* animator_ = nullptr;
 	Player* player_ = nullptr;
 	RigidBody* playerRb_ = nullptr;
 	Transform* playerTr_ = nullptr;
@@ -49,28 +50,33 @@ protected:
 	virtual void shoot(const Vector2D& direction);
 
 public:
-	int bulletsInMagazine = 0;
+	enum WeaponType { CLASSIC, RICOCHET, LASER };
+	WeaponType type = CLASSIC;
 
 	Weapon() {};
-	Weapon(float rateOfFire, int damage, float bulletSpread = 0);
+	Weapon(float rateOfFire, int damage, float bulletSpread = 0, int tier = 0);
 	~Weapon();
 
 	bool ItemIsAmmo(Item* item, WeaponType weaponType);
 
 	inline virtual int getMagazineSize() { return magazineSize; }
 	inline virtual int getAmmoReserves() { return bulletsInReserve; }
-	virtual void init();
-
+	int getDamage() { return impactDamage; }
+	virtual int getAnimationRow() { return type; };
+	virtual int getBulletsInMagazine() { return bulletsInMagazine; };
+	 
 	void setAmmo();
 	void setMaxAmmo();
+	void setDamage(int damage_) { impactDamage = damage_; }
+	void setBulletSpread(int i) { baseBulletSpread = i; }
+	virtual void setBulletsInMagazine(int bullets) { bulletsInMagazine = bullets; };
 
 	virtual void update();
 
-	void reload();
-	int getDamage() { return impactDamage; }
-	void setDamage(int damage_) { impactDamage = damage_; }
-	void setBulletSpread(int i) { baseBulletSpread = i; }
+	virtual void reload();
 
 	void adjustToCrouching();
-	virtual void upgradeTier(int tier);
+	virtual void upgradeCurrentWeapon(int tier);
+
+	virtual void init();
 };
