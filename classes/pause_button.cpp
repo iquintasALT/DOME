@@ -4,6 +4,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/Game.h"
 #include "../classes/settings_scene.h"
+#include "../game/constant_variables.h"
 
 PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName, Uint8 alpha)
 	: MenuButton(pos, size, t, function, g, mngr_) {
@@ -77,26 +78,52 @@ PauseButton::~PauseButton() {
 }
 
 
-MainMenuButton::MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName , Uint8 alpha) :
-	PauseButton(pos, size, t, function, g, mngr_, type, buttonName, alpha)
+MainMenuButton::MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName, int alpha, float time) :
+	PauseButton(pos, size, t, function, g, mngr_, type, buttonName, alpha), alpha(alpha)
 {
+	speed = (200 - 50) / time;
 
+	displacementSpeed = 20 / time;
+	displacement = 0;
 }
 
 MainMenuButton::~MainMenuButton() {
 	PauseButton::~PauseButton();
 }
 
+void MainMenuButton::update()
+{
+	PauseButton::update();
+
+	if (over) {
+		alpha += consts::DELTA_TIME * speed;
+		displacement += consts::DELTA_TIME * displacementSpeed;
+		if (alpha > 200)
+			alpha = 200;
+
+		if (displacement > 20)
+			displacement = 20;
+	}
+	else
+	{
+		alpha -= consts::DELTA_TIME * speed;
+		displacement -= consts::DELTA_TIME * displacementSpeed;
+		if (alpha < 50)
+			alpha = 50;
+
+		if (displacement < 0)
+			displacement = 0;
+	}
+}
+
 void MainMenuButton::render()
 {
-	if (over)
-		img->setAlpha(200);
+	img->setAlpha(int(alpha));
 
 	img->render();
-	int xPos = (int)position.getX() + 40;
+	int xPos = (int)position.getX() + 40 + displacement;
 	int height = (int)size.getY();
 	name->render({ xPos, (int)position.getY(), name->width() * height / 50 , height });
-	if (!over)
-		img->setAlpha(50);
+
 }
 
