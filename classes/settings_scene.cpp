@@ -3,9 +3,11 @@
 #include "../components/Transform.h"
 #include "../game/Game.h"
 #include "../classes/check_button.h"
-
+#include "../components/HoldToSkip.h"
+#include "../components/Image.h"
 #include "../components/TextWithBackGround.h"
 #include "../game/constant_variables.h"
+#include "../components/HoldToSkip.h"
 #include <vector>
 
 void SettingsScene::init() {
@@ -147,12 +149,16 @@ CreditsScene::CreditsScene(Game* g) : GameScene(g, std::string("credits")) {
 	t = 0;
 	width = 1;
 	margin = 0;
+	holdToSkip = nullptr;
 }
 
 void CreditsScene::update() {
 	mngr_->update();
+
 	Transform* tr = nullptr;
 	for (auto e : mngr_->getEntities()) {
+		if (e == holdToSkip)
+			continue;
 		if (e->hasComponent<Transform>()) {
 			tr = e->getComponent<Transform>();
 			auto& pos = tr->getPos();
@@ -176,7 +182,13 @@ void CreditsScene::update() {
 void CreditsScene::init() {
 	width = 0.8f;
 	margin = 10;
-	int y = 300;
+	int y = consts::WINDOW_HEIGHT * 0.8f;
+
+	holdToSkip = mngr_->addEntity();
+	holdToSkip->addComponent<Transform>(Vector2D(100, 500), 100, 100);
+	holdToSkip->addComponent<Image>(&sdlutils().images().at("holdToSkip"), true);
+	holdToSkip->addComponent<HoldToSkip>(2, [this]() { mngr_->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE); });
+	mngr_->addRenderLayer<Interface>(holdToSkip);
 
 	std::vector<std::vector<std::string>> arr = {
 		{"T", "CREDITS"},
