@@ -88,6 +88,11 @@ void TextWithBackground::changeTextTextures() {
 		} while (completed && str.size() > 0);
 		str = second;
 	} while (added);
+
+	float y = 0;
+	for (int i = 0; i < text_.size(); i++)
+		y += text_[i]->height();
+	tr_->setH(y);
 }
 
 void TextWithBackground::changeText(std::string txt) {
