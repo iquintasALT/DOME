@@ -75,6 +75,7 @@
     <ClInclude Include="components\hunger_component.h" />
     <ClInclude Include="components\hypothermia_component.h" />
     <ClInclude Include="components\Image.h" />
+    <ClInclude Include="components\InitialCameraZoom.h" />
     <ClInclude Include="components\interactableElement.h" />
     <ClInclude Include="components\interactions.h" />
     <ClInclude Include="components\intoxication_component.h" />
@@ -182,6 +183,7 @@
     <ClCompile Include="components\HoldToSkip.cpp" />
     <ClCompile Include="components\hunger_component.cpp" />
     <ClCompile Include="components\hypothermia_component.cpp" />
+    <ClCompile Include="components\InitialCameraZoom.cpp" />
     <ClCompile Include="components\interactableElement.cpp" />
     <ClCompile Include="components\interactions.cpp" />
     <ClCompile Include="components\intoxication_component.cpp" />

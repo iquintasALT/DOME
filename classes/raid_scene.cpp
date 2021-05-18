@@ -10,6 +10,7 @@
 #include "../classes/physiognomy.h"
 #include "../classes/countdown.h"
 #include "../components/parallax_component.h"
+#include "../components/InitialCameraZoom.h"
 
 void RaidScene::init() {
 	loadMap(path_);
@@ -27,6 +28,12 @@ void RaidScene::init() {
 	hud* h = new hud(mngr_, new Transform(Vector2D(100, 100), 64, 64, 0), player, timer);
 
 	createParallaxBackground(5);
+
+	Camera::mainCamera->MoveToPoint(player->getComponent<Transform>()->getPos());
+
+	auto cameraZoom = mngr_->addEntity();
+	cameraZoom->addComponent<InitialCameraZoom>(1.2, 2);
+
 	createTransition();
 }
 

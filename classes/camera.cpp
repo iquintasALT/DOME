@@ -17,7 +17,7 @@ Camera::Camera(Vector2D&& initial, int cam_w, int cam_h) {
 	scale = float(winWidth) / width;
 	
 	
-	setScale(scale * 1.2f);
+	//setScale(scale * 1.2f);
 }
 
 void Camera::setScale(float value) {
