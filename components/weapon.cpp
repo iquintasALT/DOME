@@ -20,9 +20,13 @@
 #include <iostream>
 #include <list>
 
+int Weapon::bulletsInMagazine = -1;
+
 Weapon::Weapon(float rateOfFire, int damage, float bulletSpread, int tier) : fireRate(rateOfFire), impactDamage(damage),
 baseBulletSpread(bulletSpread), magazineSize(30) {
 	upgradeCurrentWeapon(tier);
+	if (bulletsInMagazine == -1) // Ensures that  we start the game with at least a few bullets
+		bulletsInMagazine = 4;
 }
 
 Weapon::~Weapon() {}

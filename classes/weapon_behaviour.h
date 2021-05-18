@@ -17,9 +17,9 @@ private:
 	Weapon::WeaponType weaponType;
 	short int weaponTiers [3] = {0, 0, 0};
 
-	InventoryController* inv;
+	InventoryController* inv_;
 
-	int weaponBullets[3] = { 0, 0, 0 };
+	//int weaponBullets[3] = { 0, 0, 0 };
 	int bulletSpread = 0;
 
 public:
@@ -27,7 +27,7 @@ public:
 	Weapon* getWeapon();
 
 	void setInv(InventoryController* inventory) {
-		inv = inventory;
+		inv_ = inventory;
 		//weapon->setAmmo();
 	}
 

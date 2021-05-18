@@ -6,7 +6,7 @@
 #include "../components/weapon_animation.h"
 #include "../game/constant_variables.h"
 
-WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr) : GameEntity(mngr), pl(playerTr), weapon(nullptr), animator_(nullptr) {
+WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr) : GameEntity(mngr), pl(playerTr), weapon(nullptr), animator_(nullptr), inv_(nullptr) {
 	mngr->addEntity(this);
 	mngr->addRenderLayer<Bullets>(this);
 

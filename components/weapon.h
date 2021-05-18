@@ -16,6 +16,9 @@ enum ITEMS;
 
 class Weapon : public Component
 {
+private:
+	static int bulletsInMagazine;
+
 protected:
 	Transform* tr_ = nullptr;
 	Image* image_ = nullptr;
@@ -50,7 +53,7 @@ public:
 	enum WeaponType { CLASSIC, RICOCHET, LASER };
 	WeaponType type = CLASSIC;
 
-	int bulletsInMagazine = 0;
+	virtual int getBulletsInMagazine() { return bulletsInMagazine; };
 
 	Weapon() {};
 	Weapon(float rateOfFire, int damage, float bulletSpread = 0, int tier = 0);
