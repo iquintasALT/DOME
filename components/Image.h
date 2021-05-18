@@ -46,10 +46,10 @@ public:
 
 		SDL_Rect dest = build_sdlrect(pos, tr_->getW(), tr_->getH());
 		if (!isUI) {
-			dest.x *= scale;
-			dest.y *= scale;
-			dest.w *= scale;
-			dest.h *= scale;
+			dest.x = floor(dest.x * scale);
+			dest.y = floor(dest.y * scale);
+			dest.w = ceil(dest.w * scale);
+			dest.h = ceil(dest.h * scale);
 		}
 
 		// en caso de que esta imagen tenga algun tipo de alpha menor a 255
