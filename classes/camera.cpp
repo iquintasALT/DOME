@@ -41,8 +41,8 @@ void Camera::Move(Vector2D& newPos) {
 }
 
 void Camera::MoveToPoint(Vector2D& newPos) {
-	Vector2D newcamerapos = newPos - Vector2D(width / 2, height / 2);
-	pos = newPos;
+	Vector2D newcamerapos = newPos - Vector2D(winWidth / 2, winHeight / 2) + Vector2D(winWidth - width, winHeight - height) / 2;
+	pos = newcamerapos;
 }
 
 void Camera::Lerp(const Vector2D& newPos, float i) {
@@ -102,6 +102,11 @@ Point2D Camera::PointToWorldSpace(Point2D point) {
 
 Point2D Camera::WorldToPointSpace(Point2D point) {
 	return point / scale - pos;
+}
+
+Point2D Camera::getCameraPosition()
+{
+	return pos;
 }
 
 bool Camera::isVisible(Point2D point) {

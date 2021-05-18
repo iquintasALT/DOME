@@ -29,8 +29,6 @@ void RaidScene::init() {
 
 	createParallaxBackground(5);
 
-	Camera::mainCamera->MoveToPoint(player->getComponent<Transform>()->getPos());
-
 	auto cameraZoom = mngr_->addEntity();
 	cameraZoom->addComponent<InitialCameraZoom>(1.2, 2);
 
@@ -39,6 +37,7 @@ void RaidScene::init() {
 
 void RaidScene::update() {
 	GameScene::update();
+
 
 	if (!raidTimeEnded) {
 		if (!timer->keepPlaying()) {

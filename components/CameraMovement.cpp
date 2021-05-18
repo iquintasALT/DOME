@@ -20,12 +20,13 @@ void CameraMovement::init() {
 	cam = Camera::mainCamera;
 	assert(tr != nullptr && cam != nullptr);
 
-	cam->Move(tr->getPos());
+	//cam->MoveToPoint(tr->getPos());
 
 }
+ 
 
 void CameraMovement::update() {
-
+	return; 
 	Vector2D pos = tr->getPos();
 	if (rb != nullptr && rb->onFloor()) {
 		pos = pos + Vector2D(0, consts::CAMERA_MARGIN_FROM_PLAYER / cam->getScale());

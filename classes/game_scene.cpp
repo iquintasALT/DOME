@@ -147,8 +147,8 @@ void GameScene::loadMap(string& const path) {
 						new Player(mngr_, Point2D(aabb.left, aabb.top));
 						g_->playerCreated = true;
 					}
-					auto camPos = Vector2D(aabb.left - sdlutils().width() / 2, aabb.top - sdlutils().height() / 2);
-					Camera::mainCamera->Move(camPos);
+					auto camPos = Vector2D(aabb.left, aabb.top);
+					Camera::mainCamera->MoveToPoint(camPos);
 				}
 				else if (obj.getName() == "loot") {
 					Entity* interactableElement = mngr_->addEntity();
