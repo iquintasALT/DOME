@@ -16,3 +16,10 @@ public:
 	void update() override;
 	void render() override;
 };
+
+
+class MainMenuButton : public PauseButton {
+public:
+	MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type = 0, std::string buttonName = " ", Uint8 alpha = 255);
+	void render() override;
+};
