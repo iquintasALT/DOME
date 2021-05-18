@@ -6,6 +6,7 @@
 #include "../classes/pause_scene.h"
 #include "../components/open_station.h"
 #include "../classes/shelter_hud.h"
+#include "../classes/lose_scene.h"
 
 #include <memory>
 
@@ -21,6 +22,8 @@ using std::endl;
 #undef main
 
 void ShelterScene::init() {
+	mngr_->getGame()->currentScene = SCENES::SHELTER;
+
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
 
@@ -69,11 +72,14 @@ void ShelterScene::init() {
 void ShelterScene::update() {
 	mngr_->update();
 
+	if (spaceshipStation->isBuilt())mngr_->ChangeScene(new LoseScene(mngr_->getGame(), WAYSTODIE::NONE, true), SceneManager::SceneMode::ADDITIVE);
+
 	/*mechanical_Workshop->update();
 	medical_Workshop->update();
 	sleep_Station->update();*/
 
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
+		mngr_->getGame()->setFPSActive(false);
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
 	}
 }
