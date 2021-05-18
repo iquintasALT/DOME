@@ -334,7 +334,7 @@ void Workshop::rightWindowRender() {
 
 
 void Workshop::renderWeaponUpgrade() {
-	if (weapon->typeOfWeapon() == WeaponType::CLASSIC) {
+	if (weapon->typeOfWeapon() == Weapon::WeaponType::CLASSIC) {
 		if (weapon->tierOfWeapon() == 1) {
 			weaponImg->changeFrame(0, 0);
 		}
@@ -345,7 +345,7 @@ void Workshop::renderWeaponUpgrade() {
 			weaponImg->changeFrame(2, 0);
 		}
 	}
-	else if (weapon->typeOfWeapon() == WeaponType::RICOCHET) {
+	else if (weapon->typeOfWeapon() == Weapon::WeaponType::RICOCHET) {
 		if (weapon->tierOfWeapon() == 1) {
 			weaponImg->changeFrame(0, 1);
 		}
@@ -356,7 +356,7 @@ void Workshop::renderWeaponUpgrade() {
 			weaponImg->changeFrame(2, 1);
 		}
 	}
-	else if (weapon->typeOfWeapon() == WeaponType::LASER) {
+	else if (weapon->typeOfWeapon() == Weapon::WeaponType::LASER) {
 		if (weapon->tierOfWeapon() == 1) {
 			weaponImg->changeFrame(0, 2);
 		}
