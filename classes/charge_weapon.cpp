@@ -166,6 +166,7 @@ void ChargeWeapon::update() {/*
 				animator_->setAnimation(9 + tier);
 				chargeState = winding_up;
 			}
+			break;
 		case winding_up:
 			if (ih().getMouseButtonState(InputHandler::LEFT))
 			{
@@ -180,12 +181,14 @@ void ChargeWeapon::update() {/*
 				timeSinceLastShot = 0;
 				animator_->setAnimation(6 + tier);
 			}
+			break;
 		case charged:
 			if (!ih().getMouseButtonState(InputHandler::LEFT)) {
 				shoot(rotation);
 				animator_->setAnimation(6 + tier);
 				chargeState = not_charged;
 			}
+			break;
 		}
 	}
 	else
