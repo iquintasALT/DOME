@@ -15,7 +15,6 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 	addComponent<Image>(&sdlutils().images().at("weapons_arms"), 15, 8, 0, 0);
 	animator_ = addComponent<WeaponAnimation>();
 	weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 0);
-	weapon->bulletsInMagazine = 4;
 	weaponType = Weapon::WeaponType::CLASSIC;
 }
 
@@ -69,7 +68,6 @@ void WeaponBehaviour::changeWeapon()
 		if (weaponBullets <= 0)
 			weapon->setAmmo();
 	}*/
-	weaponBullets[weaponType] = getComponent<Weapon>()->bulletsInMagazine;
 	switch (weaponType)
 	{
 	case Weapon::WeaponType::CLASSIC:
@@ -86,10 +84,9 @@ void WeaponBehaviour::changeWeapon()
 		break;
 	}
 	animator_->setAnimation(weaponType * 3 + weaponTiers[weaponType]); 
-	weapon->bulletsInMagazine = weaponBullets[weaponType];
 
-	if (weaponBullets[weaponType] <= 0)
-		weapon->setAmmo();
+	if (weapon->getBulletsInMagazine() <= 0)
+		weapon->reload();
 }
 
 int WeaponBehaviour::tierOfWeapon()

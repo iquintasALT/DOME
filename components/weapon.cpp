@@ -25,8 +25,6 @@ int Weapon::bulletsInMagazine = -1;
 Weapon::Weapon(float rateOfFire, int damage, float bulletSpread, int tier) : fireRate(rateOfFire), impactDamage(damage),
 baseBulletSpread(bulletSpread), magazineSize(30) {
 	upgradeCurrentWeapon(tier);
-	if (bulletsInMagazine == -1) // Ensures that  we start the game with at least a few bullets
-		bulletsInMagazine = 4;
 }
 
 Weapon::~Weapon() {}
@@ -111,7 +109,7 @@ void Weapon::shoot(const Vector2D& direction) {
 	bulletTr->setPos(tr_->getPos() + direction * gunLength);
 	bulletTr->setRot(tr_->getRot());
 
-	bulletsInMagazine--;
+	setBulletsInMagazine(getBulletsInMagazine()-1);
 
 	if (bulletsInMagazine <= 0)
 		reload();
@@ -164,17 +162,16 @@ void Weapon::setMaxAmmo() {
 void Weapon::setAmmo() {
 	int totalBullets = 0;
 	Item* item = nullptr;
-	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
 
 	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
-		if (ItemIsAmmo(items, currentWeapon)) {
+		if (ItemIsAmmo(items, type)) {
 			item = items;
 			totalBullets += item->count;
 		}
 	}
 
 	if (item != nullptr) {
-		bulletsInMagazine = item->count;
+		setBulletsInMagazine(item->count);
 		bulletsInReserve = totalBullets - item->count;
 
 		player_->getComponent<InventoryController>()->inventory->removeItem(item);
@@ -202,7 +199,7 @@ bool Weapon::ItemIsAmmo(Item* item, WeaponType currentWeapon) {
 
 void Weapon::reload()
 {
-	if (!reloading && bulletsInMagazine < magazineSize)
+	if (!reloading && getBulletsInMagazine() < magazineSize)
 	{
 		reloading = true;
 		setAmmo();
@@ -228,6 +225,8 @@ void Weapon::init()
 
 	playerRb_ = player_->getComponent<RigidBody>();
 	assert(playerRb_ != nullptr);
+	/*if (bulletsInMagazine <= 0)
+		reload();*/
 }
 
 void Weapon::upgradeCurrentWeapon(int tier) {
