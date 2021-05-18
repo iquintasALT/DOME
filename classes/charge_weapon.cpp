@@ -1,4 +1,4 @@
-#include "charge_weapon.h"
+﻿#include "charge_weapon.h"
 #include "../utils/Vector2D.h"
 #include "../components/Transform.h"
 #include "../sdlutils/InputHandler.h"
@@ -22,6 +22,27 @@ ChargeWeapon::ChargeWeapon(float fR, int dam, int ntier, WeaponAnimation* animat
 	type = LASER;
 };
 
+Entity* ChargeWeapon::createBullet(const Vector2D& direction) {
+	Entity* bullet = entity_->getMngr()->addEntity();
+	Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
+
+	bulletTr->setH(1);
+	float squareX = consts::WINDOW_WIDTH * consts::WINDOW_WIDTH;
+	Vector2D yCenteredPos(tr_->getPos().getX(), tr_->getPos().getY() + tr_->getH() * 0.37f); //Punto {0, Altura del cañon}  
+	RayCast* raycast = new RayCast(yCenteredPos, direction);
+	float aux1 = tr_->getW() - 8; //Distancia del cañón del arma para spawnear la bala
+	float width = raycast->distanceToGroup<Wall_grp>(entity_->getMngr()) - aux1;
+	if (width + aux1 != -1)
+		bulletTr->setW(width);
+	else bulletTr->setW(sqrt(squareX + squareX));
+
+	bullet->addComponent<Image>(&sdlutils().images().at("charge"));
+	bullet->getComponent<Image>()->setRotationOrigin(0, bulletTr->getH() / 2);
+	bullet->addComponent<Charge>(atan2(direction.getY(), direction.getX()), raycast);
+	entity_->getMngr()->addRenderLayer<Bullets>(bullet);
+	return bullet;
+}
+
 void ChargeWeapon::update() {/*
 	if (playerCtrl_->isClimbingLadder()) image_->enabled = false;
 	else image_->enabled = true;
@@ -35,7 +56,7 @@ void ChargeWeapon::update() {/*
 
 	mousePos = Camera::mainCamera->PointToWorldSpace(mousePos);
 
-	Vector2D yCenteredPos(tr_->getPos().getX(), tr_->getPos().getY() + tr_->getH() * 0.37f); //Punto {0, Altura del ca��n}  
+	Vector2D yCenteredPos(tr_->getPos().getX(), tr_->getPos().getY() + tr_->getH() * 0.37f); //Punto {0, Altura del cañón}  
 	Vector2D  dir = (mousePos - yCenteredPos).normalize();
 
 	float radianAngle = atan2(dir.getY(), dir.getX());
@@ -66,7 +87,7 @@ void ChargeWeapon::update() {/*
 			bulletTr->setH(1);
 			
 
-			float aux1 = tr_->getW() - 8; //Distancia del ca��n del arma para spawnear la bala
+			float aux1 = tr_->getW() - 8; //Distancia del cañón del arma para spawnear la bala
 			float aux2 = tr_->getPos().getY() + tr_->getH() / 2 - yCenteredPos.getY();
 
 			Transform auxMousePos = Transform(mousePos, 1, 1, 0);

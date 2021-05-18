@@ -3,6 +3,7 @@
 #include "../utils/checkML.h"
 
 class WeaponAnimation;
+class Entity;
 class ChargeWeapon : public Weapon
 {
 	enum ChargeState {not_charged, winding_up, charged};
@@ -11,6 +12,8 @@ private:
 	ChargeState chargeState = not_charged;
 	int tier;
 	WeaponAnimation* animator_ = nullptr;
+protected:
+	Entity* createBullet(const Vector2D& direction) override;
 public:
 	ChargeWeapon(float fR, int dam, int tier, WeaponAnimation* animator);
 	int getBulletsInMagazine() override { return bulletsInMagazine; };
