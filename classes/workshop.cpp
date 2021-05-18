@@ -234,7 +234,7 @@ void Workshop::rightWindowRender() {
 	if (renderRightWindow) {
 		float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
 		float offsetY = bg_tr->getPos().getY() + 35;
-		if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getCurrentWeapon()->tierOfWeapon() < 3) {
+		if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getCurrentWeapon()->tierOfWeapon() < 2) {
 
 			std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].itemName;
 
@@ -335,10 +335,10 @@ void Workshop::rightWindowRender() {
 
 void Workshop::renderWeaponUpgrade() {
 	if (weapon->typeOfWeapon() == Weapon::WeaponType::CLASSIC) {
-		if (weapon->tierOfWeapon() == 1) {
+		if (weapon->tierOfWeapon() == 0) {
 			weaponImg->changeFrame(0, 0);
 		}
-		else if (weapon->tierOfWeapon() == 2) {
+		else if (weapon->tierOfWeapon() == 1) {
 			weaponImg->changeFrame(1, 0);
 		}
 		else {
@@ -346,10 +346,10 @@ void Workshop::renderWeaponUpgrade() {
 		}
 	}
 	else if (weapon->typeOfWeapon() == Weapon::WeaponType::RICOCHET) {
-		if (weapon->tierOfWeapon() == 1) {
+		if (weapon->tierOfWeapon() == 0) {
 			weaponImg->changeFrame(0, 1);
 		}
-		else if (weapon->tierOfWeapon() == 2) {
+		else if (weapon->tierOfWeapon() == 1) {
 			weaponImg->changeFrame(1, 1);
 		}
 		else {
@@ -357,10 +357,10 @@ void Workshop::renderWeaponUpgrade() {
 		}
 	}
 	else if (weapon->typeOfWeapon() == Weapon::WeaponType::LASER) {
-		if (weapon->tierOfWeapon() == 1) {
+		if (weapon->tierOfWeapon() == 0) {
 			weaponImg->changeFrame(0, 2);
 		}
-		else if (weapon->tierOfWeapon() == 2) {
+		else if (weapon->tierOfWeapon() == 1) {
 			weaponImg->changeFrame(1, 2);
 		}
 		else {

@@ -506,7 +506,7 @@
       },
       {
         "id": "walk",
-        "volume": 128,
+        "volume": 100,
         "file": "resources/sound/gun/footstep.wav"
       },
       {
