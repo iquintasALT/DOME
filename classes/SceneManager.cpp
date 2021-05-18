@@ -27,6 +27,8 @@ void SceneManager::LoadScene() {
 			while (!states->empty()) {
 				states->popState();
 			}
+			Vector2D pos;
+			Camera::mainCamera->Move(pos);
 		}
 
 		states->pushState(newScene);
@@ -36,5 +38,5 @@ void SceneManager::LoadScene() {
 		states->popState();
 	}
 	Vector2D a;
-	Camera::mainCamera->Move(a);
+//	Camera::mainCamera->Move(a);
 }

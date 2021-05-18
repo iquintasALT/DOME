@@ -32,6 +32,7 @@ public:
 	float getScale();
 	Point2D PointToWorldSpace(Point2D point);
 	Point2D WorldToPointSpace(Point2D point);
+	Point2D getCameraPosition();
 	bool isVisible(Point2D point);
 };
 

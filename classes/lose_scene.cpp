@@ -52,6 +52,7 @@ LoseScene::LoseScene(Game* game, WAYSTODIE opcion, bool state) : GameScene(game,
 void LoseScene::backToMenu(Manager* mngr) {
 	ih().clearState();
 	mngr->getGame()->numDays = 0;
+
 	mngr->ChangeScene(new MenuScene(mngr->getGame(), false), SceneManager::SceneMode::SINGLE);
 }
 
