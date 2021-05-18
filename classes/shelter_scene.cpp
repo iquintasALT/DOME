@@ -79,6 +79,7 @@ void ShelterScene::update() {
 	sleep_Station->update();*/
 
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
+		mngr_->getGame()->setFPSActive(false);
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
 	}
 }

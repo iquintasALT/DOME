@@ -166,8 +166,9 @@ void SDLUtils::loadReasources(std::string filename) {
 				if (v->IsObject()) {
 					JSONObject vObj = v->AsObject();
 					std::string key = vObj["id"]->AsString();
+					int volume = vObj["volume"]->AsNumber();
 					std::string file = vObj["file"]->AsString();
-					soundManager().addSFX(key, file);
+					soundManager().addSFX(key, file, volume);
 				} else {
 					throw "'sounds' array in '" + filename
 							+ "' includes and invalid value";
