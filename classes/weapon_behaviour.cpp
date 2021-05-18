@@ -85,10 +85,10 @@ void WeaponBehaviour::changeWeapon()
 		weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
 		break;
 	}
-	animator_->setAnimation(weaponType * 3); 
+	animator_->setAnimation(weaponType * 3 + weaponTiers[weaponType]); 
 	weapon->bulletsInMagazine = weaponBullets[weaponType];
 
-	if (weaponBullets <= 0)
+	if (weaponBullets[weaponType] <= 0)
 		weapon->setAmmo();
 }
 
