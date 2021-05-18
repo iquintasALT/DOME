@@ -273,6 +273,7 @@
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="components\HoldToSkip.cpp" />
+    <ClCompile Include="components\InitialCameraZoom.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -591,6 +592,7 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\HoldToSkip.h" />
+    <ClInclude Include="components\InitialCameraZoom.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
