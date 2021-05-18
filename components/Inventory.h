@@ -28,7 +28,7 @@ public:
 	void update() override;
 	void render() override;
 
-	list<Item*>& getItems();
+	inline list<Item*>& getItems() { return storedItems; };
 
 	void storeItem(Item* item);
 	void moveItem(Item* item, int x, int y);
@@ -93,6 +93,6 @@ class InventoryStorage {
 public:
 	std::list<Item*> storedItems;
 	~InventoryStorage();
-	void safe(Inventory* inv);
-	void load(Inventory* inv);
+	void safe(Inventory* inv_);
+	void load(Inventory* inv_);
 };

@@ -12,6 +12,7 @@ class player_animation;
 class EnemyAnimation;
 class FlyingEnemyAnimation;
 class Weapon;
+class WeaponAnimation;
 class InventoryController;
 class Inventory;
 class EnemyComponent;
@@ -65,6 +66,7 @@ class HoldToSkip;
 	EnemyAnimation, \
 	FlyingEnemyAnimation, \
     Weapon, \
+    WeaponAnimation, \
 	InventoryController, \
 	Inventory, \
 	EnemyComponent, \
@@ -82,12 +84,10 @@ class HoldToSkip;
 	Loot, \
 	BackToShelter, \
 	ParticleSystem, \
-    RicochetWeapon, \
 	PlayerHealthComponent,\
 	HungerComponent, \
 	TirednessComponent, \
 	PlayerCollisions, \
-	ChargeWeapon, \
 	Charge, \
 	BoxCollider,\
 	BleedoutComponent,\
