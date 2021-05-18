@@ -26,6 +26,5 @@ void InitialCameraZoom::update()
 	}
 
 	float scale = Vector2D::Lerp(initialZoom, targetZoom, t / totalTime);
-	Vector2D pos = Camera::mainCamera->PointToWorldSpace(Vector2D(consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
 	Camera::mainCamera->setScale(scale);
 }
