@@ -21,7 +21,7 @@ ItemInfo* ItemInfo::bottleOfWater()
 		static_cast<Player*>(player)->getPhysiognomy()->removePainState();
 	};
 
-	return new ItemInfo(WATER, "Scarse item, use it carefully", 1, 2, 4, 0, f);
+	return new ItemInfo(WATER, "Scarce item, use it carefully", 1, 2, 4, 0, f);
 }
 ItemInfo* ItemInfo::medicine()
 {
@@ -35,7 +35,17 @@ ItemInfo* ItemInfo::food()
 
 ItemInfo* ItemInfo::defaultAmmo()
 {
-	return new ItemInfo(CLASSIC_AMMO, "This is the classic ammo item", 1, 1, 1, 2);
+	return new ItemInfo(CLASSIC_AMMO, "Security-grade rubber-coated bullets. It wasn't hard to remove the rubber coating. Funny how that works out.", 1, 1, 1, 2);
+}
+
+ItemInfo* ItemInfo::ricochetAmmo()
+{
+	return new ItemInfo(RICOCHET_AMMO, "A spool of high-density polyethylene filament. The printing factories are all out of commission, but this can still be used as ammo for a POLYMER RIFLE.", 1, 1, 1, 2);
+}
+
+ItemInfo* ItemInfo::laserAmmo()
+{
+	return new ItemInfo(LASER_AMMO, "A stable high-discharge battery, used to power a MINING LASER.", 1, 1, 1, 2);
 }
 
 //&sdlutils().images().at("items")
