@@ -21,9 +21,15 @@ Camera::Camera(Vector2D&& initial, int cam_w, int cam_h) {
 }
 
 void Camera::setScale(float value) {
+	int pwidth = width;
+	int pheight = height;
+	float pScale = scale;
+
 	scale = value;
 	width = winWidth / scale;
 	height = winHeight / scale;
+
+	pos = pos + Vector2D(pwidth / 2 - width / 2, pheight / 2 - height /2);
 }
 
 float Camera::getScale() {
