@@ -42,7 +42,6 @@ Game::Game(int totaltime) {
 Game::~Game() {
 	delete states;
 	delete Camera::mainCamera;
-	delete fpsText;
 }
 
 void Game::init() {
@@ -102,6 +101,7 @@ void Game::drawFPS(int fps) {
 		fpsText = new Texture(sdlutils().renderer(), ss.str(), sdlutils().fonts().at("Orbitron12"), build_sdlcolor(0xffffffff));
 		SDL_Rect dest = { 5,5, 40, 20 };
 		fpsText->render(dest);
+		delete fpsText;
 	}
 }
 
