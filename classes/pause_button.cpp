@@ -17,7 +17,7 @@ PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClic
 	img->setAlpha(alpha);
 	//t = new Texture(renderer, str, *font_, col_);
 
-	name = new Texture(sdlutils().renderer(), buttonName, 
+	name = new Texture(sdlutils().renderer(), buttonName,
 		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0));
 }
 
@@ -50,7 +50,7 @@ void PauseButton::update() {
 			if (over) {
 				soundManager().playSFX("push_button");
 				cbOnClick(getMngr());
-				if (type_ == VOLUME){
+				if (type_ == VOLUME) {
 					static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->setAdjusterPosition();
 				}
 			}
@@ -67,7 +67,7 @@ void PauseButton::render() {
 	img->render();
 	int xPos = (int)position.getX() + 40;
 	int height = (int)size.getY();
-	name->render({xPos, (int)position.getY(), name->width() * height / 50 , height});
+	name->render({ xPos, (int)position.getY(), name->width() * height / 50 , height });
 	if (!over)
 		img->setAlpha(255);
 }
@@ -75,3 +75,24 @@ void PauseButton::render() {
 PauseButton::~PauseButton() {
 	delete name;
 }
+
+
+MainMenuButton::MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName , Uint8 alpha) :
+	PauseButton(pos, size, t, function, g, mngr_, type, buttonName, alpha)
+{
+
+}
+
+void MainMenuButton::render()
+{
+	if (over)
+		img->setAlpha(200);
+
+	img->render();
+	int xPos = (int)position.getX() + 40;
+	int height = (int)size.getY();
+	name->render({ xPos, (int)position.getY(), name->width() * height / 50 , height });
+	if (!over)
+		img->setAlpha(50);
+}
+
