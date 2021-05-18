@@ -15,7 +15,9 @@ Camera::Camera(Vector2D&& initial, int cam_w, int cam_h) {
 	xmin = ymin = xmax = ymax = 0;
 
 	scale = float(winWidth) / width;
-	//setScale(1);
+	
+	
+	setScale(scale * 1.2f);
 }
 
 void Camera::setScale(float value) {
@@ -95,11 +97,11 @@ Vector2D Camera::renderRect(Vector2D& imagePos) {
 
 
 Point2D Camera::PointToWorldSpace(Point2D point) {
-	return point + pos;
+	return point / scale + pos;
 }
 
 Point2D Camera::WorldToPointSpace(Point2D point) {
-	return point - pos;
+	return point / scale - pos;
 }
 
 bool Camera::isVisible(Point2D point) {

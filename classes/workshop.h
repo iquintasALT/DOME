@@ -31,6 +31,15 @@ protected:
 	Entity* craftButton;
 	Transform* craftButton_tr;
 
+	Entity* arrowLeft;
+	Transform* arrowLeft_tr;
+	Entity* arrowRight;
+	Transform* arrowRight_tr;
+
+	WeaponBehaviour* weapon;
+	Transform* weaponTr;
+	Image* weaponImg;
+
 	Manager* falseMngr;
 
 	std::vector<Slot>craftList;
@@ -55,6 +64,7 @@ public:
 	Workshop(Manager* mngr_) : GameEntity(mngr_) { };
 	Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_);
 
+	void renderWeaponUpgrade();
 	virtual void setWorkshopItems(vector<ITEMS>&& items);
 	void setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name);
 	void renderImg(float posX, float posY, int row, int col, int sizeX = 64, int sizeY = 64);

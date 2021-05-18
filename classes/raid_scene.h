@@ -16,12 +16,11 @@ private:
 	Countdown* timer;
 	Player* player;
 	bool raidTimeEnded;
+	void createParallaxBackground(int numOfRep) override;
 public:
 	RaidScene(string path, string name, Game* game) : GameScene(game, name) { path_ = path;}
 	~RaidScene() { delete timer; }
 	void init() override;
 	void update() override;
-	void createParallaxBackground(int numOfRep);
-	void createParallaxLayer(float scrollFactor, Texture* t, int numOfRep);
 };
 

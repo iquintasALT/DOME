@@ -66,6 +66,7 @@ bool GroundedMeleeAttack::attack()
 		// Apply jump boost
 		rb_->setVel(rb_->getVel() + jump);
 
+		soundManager().playSFX("monster1attack");
 		return true;
 	}
 	else return false;

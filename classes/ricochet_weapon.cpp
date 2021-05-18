@@ -22,6 +22,8 @@ Entity* RicochetWeapon::createBullet(const Vector2D& direction){
 	bullet->addComponent<Image>(bulletTexture_);
 	bullet->addComponent<Ricochet>(playerTr_, nbounce, ntier);
 	entity_->getMngr()->addRenderLayer<Bullets>(bullet);
+
+
 	return bullet;
 }
 

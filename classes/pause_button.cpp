@@ -4,8 +4,9 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/Game.h"
 #include "../classes/settings_scene.h"
+#include "../game/constant_variables.h"
 
-PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName)
+PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName, Uint8 alpha)
 	: MenuButton(pos, size, t, function, g, mngr_) {
 	img = getComponent<Image>();
 	over = false;
@@ -14,10 +15,10 @@ PauseButton::PauseButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClic
 	type_ = type;
 	clicked = false;
 	img->enabled = false;
-
+	img->setAlpha(alpha);
 	//t = new Texture(renderer, str, *font_, col_);
 
-	name = new Texture(sdlutils().renderer(), buttonName, 
+	name = new Texture(sdlutils().renderer(), buttonName,
 		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0));
 }
 
@@ -50,7 +51,7 @@ void PauseButton::update() {
 			if (over) {
 				soundManager().playSFX("push_button");
 				cbOnClick(getMngr());
-				if (getMngr()->getGame()->currentScene == SCENES::SETTINGS && type_ == VOLUME) {
+				if (type_ == VOLUME) {
 					static_cast<SettingsScene*>(getMngr()->getGame()->getStateMachine()->currentState())->setAdjusterPosition();
 				}
 			}
@@ -67,11 +68,62 @@ void PauseButton::render() {
 	img->render();
 	int xPos = (int)position.getX() + 40;
 	int height = (int)size.getY();
-	name->render({xPos, (int)position.getY(), name->width() * height / 50 , height});
-	if (over)
-		img->setAlpha(50);
+	name->render({ xPos, (int)position.getY(), name->width() * height / 50 , height });
+	if (!over)
+		img->setAlpha(255);
 }
 
 PauseButton::~PauseButton() {
 	delete name;
 }
+
+
+MainMenuButton::MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName, int alpha, float time) :
+	PauseButton(pos, size, t, function, g, mngr_, type, buttonName, alpha), alpha(alpha)
+{
+	speed = (200 - 50) / time;
+
+	displacementSpeed = 20 / time;
+	displacement = 0;
+}
+
+MainMenuButton::~MainMenuButton() {
+	//PauseButton::~PauseButton();
+}
+
+void MainMenuButton::update()
+{
+	PauseButton::update();
+
+	if (over) {
+		alpha += consts::DELTA_TIME * speed;
+		displacement += consts::DELTA_TIME * displacementSpeed;
+		if (alpha > 200)
+			alpha = 200;
+
+		if (displacement > 20)
+			displacement = 20;
+	}
+	else
+	{
+		alpha -= consts::DELTA_TIME * speed;
+		displacement -= consts::DELTA_TIME * displacementSpeed;
+		if (alpha < 50)
+			alpha = 50;
+
+		if (displacement < 0)
+			displacement = 0;
+	}
+}
+
+void MainMenuButton::render()
+{
+	img->setAlpha(int(alpha));
+
+	img->render();
+	int xPos = (int)position.getX() + 40 + displacement;
+	int height = (int)size.getY();
+	name->render({ xPos, (int)position.getY(), name->width() * height / 50 , height });
+
+}
+

@@ -124,6 +124,8 @@ void ChargeWeapon::update() {/*
 
 			bullet->addComponent<Charge>(radianAngle, raycast);
 
+			soundManager().playSFX("laser");
+
 			//COMPROBAR COLISIONES CON ENEMIGOS
 			bulletsInMagazine--;
 			if (bulletsInMagazine <= 0)

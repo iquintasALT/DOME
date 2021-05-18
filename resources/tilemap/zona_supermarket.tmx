@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="140" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="130">
+<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="140" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="11" nextobjectid="131">
  <editorsettings>
   <export target="template.json" format="json"/>
  </editorsettings>
@@ -61,6 +61,7 @@
   </object>
   <object id="127" name="loot" x="1544" y="608" width="48" height="64"/>
   <object id="128" name="loot" x="2792" y="224" width="48" height="64"/>
+  <object id="130" name="returnShelter" x="3328" y="840" width="32" height="56"/>
  </objectgroup>
  <objectgroup id="8" name="Walls">
   <object id="76" name="collision" x="1120.25" y="672" width="31.5" height="224"/>
