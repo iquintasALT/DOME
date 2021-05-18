@@ -9,6 +9,7 @@ void HypothermiaComponent::init() {
 	frameIndex = 3;
 	frost = &sdlutils().images().at("frost");
 	time = sdlutils().currRealTime();
+	soundManager().playSFX("freeze");
 }
 
 void HypothermiaComponent::update() {

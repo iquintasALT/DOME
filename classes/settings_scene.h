@@ -7,6 +7,7 @@ class SettingsScene : public GameScene
 {
 private:
 	Transform* createVolumeBar(Vector2D pos, Vector2D size, CallBackOnClick* raise, CallBackOnClick* decrease, Texture* t);
+	void createShowFPSBar();
 	Vector2D posBarVolume;  Vector2D posBarSFX;
 	float currentVolume;  float currentSFXVolume;
 	Transform* adjusterVolume; Transform* adjusterSFXVolume;
@@ -23,6 +24,7 @@ public:
 	static void decreaseVolume(Manager* mng);
 	static void raiseEffectsVolume(Manager* mng);
 	static void decreaseEffectsVolume(Manager* mng);
+	static void showFPS(Manager* mng);
 };
 
 class CreditsScene :public GameScene {

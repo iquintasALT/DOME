@@ -26,6 +26,7 @@ void EnemyContactDamage::OnCollision(Entity* other)
 				physiognomy->addBleedState();
 				other->getComponent<EnemyAnimation>()->setAttack(true);
 				entity_->getComponent<player_animation>()->setDmg(true);
+				soundManager().playSFX("hurt");
 			}
 			else if (other->hasGroup<FlyingEnemy_grp>()) {
 				//aleatorio entre Pain y Intoxication
@@ -34,6 +35,7 @@ void EnemyContactDamage::OnCollision(Entity* other)
 				else physiognomy->addIntoxicationState();
 				other->getComponent<FlyingEnemyAnimation>()->setAttack(true);
 				entity_->getComponent<player_animation>()->setDmg(true);
+				soundManager().playSFX("hurt");
 			}
 			canCollide = false;
 			cooldown = sdlutils().currRealTime();

@@ -6,6 +6,7 @@
 #include "../components/Image.h"
 #include "../components/TransitionComponent.h"
 #include "../game/Game.h"
+#include "../components/parallax_component.h"
 
 
 void GameScene::loadMap(string& const path) {
@@ -117,7 +118,7 @@ void GameScene::loadMap(string& const path) {
 				}
 			}
 		}
-		else if (layer->getType() == tmx::Layer::Type::Object) {
+		if (layer->getType() == tmx::Layer::Type::Object) {
 			tmx::ObjectGroup* object_layer = dynamic_cast<tmx::ObjectGroup*>(layer.get());
 
 			auto& objs = object_layer->getObjects();
@@ -175,9 +176,9 @@ void GameScene::loadMap(string& const path) {
 				else if (obj.getName() == "returnShelter") {
 					Entity* returnToShelter = mngr_->addEntity();
 					returnToShelter->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
-					returnToShelter->addComponent<Image>(&sdlutils().images().at("items"), 4, 3, 0, 0);
+					returnToShelter->addComponent<Image>(&sdlutils().images().at("back_to_shelter"), 1, 1, 0, 0);
 					returnToShelter->addComponent<BackToShelter>(this);
-					mngr_->addRenderLayer<Loot>(returnToShelter);
+					mngr_->addRenderLayer<Walls>(returnToShelter);
 				}
 				else if (obj.getName() == "sleepStation") {
 					static_cast<ShelterScene*>(this)->initSleepStation({ aabb.left, aabb.top }, { aabb.width, aabb.height });
@@ -214,22 +215,28 @@ void GameScene::changeState(GameScene* gs)
 	g_->getStateMachine()->changeState(gs);
 }
 
-void GameScene::createTransition() {
+void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<void()> f) {
 
 	int winWidth = consts::WINDOW_WIDTH;
 	int winheight = consts::WINDOW_HEIGHT;
-	float timeToFade = 2;
 
 	Entity* e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(), winWidth, winheight);
 	e->addComponent<Image>(&sdlutils().images().at("black"), true);
-	e->addComponent<TransitionComponent>(timeToFade);
+	e->addComponent<TransitionComponent>(timeToFade, fadeIn, f);
 	mngr_->addRenderLayer<Interface>(e);
 
 	e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(winWidth / 2, winheight / 2), winWidth, winheight);
 	e->addComponent<TextWithBackground>(name,
 		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
-	e->addComponent<TransitionComponent>(timeToFade);
+	e->addComponent<TransitionComponent>(timeToFade, fadeIn, f);
 	mngr_->addRenderLayer<Interface>(e);
+}
+
+void GameScene::createParallaxLayer(float scrollFactor, Texture* t, int numOfRep) {
+	auto layer = mngr_->addEntity();
+	layer->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
+	layer->addComponent<ParallaxComponent>(t, numOfRep)->setScrollFactor(scrollFactor);
+	mngr_->addRenderLayer<Parallax>(layer);
 }

@@ -13,6 +13,8 @@
 #include "../game/constant_variables.h"
 #include "../classes/weapon_behaviour.h"
 #include "../classes/camera.h"
+#include "../sdlutils/Texture.h"
+#include <sstream>
 
 #include "../ecs/Manager.h"
 #include "../utils/Vector2D.h"
@@ -22,6 +24,7 @@
 #include "../classes/shelter_scene.h"
 #include "../classes/locations_scene.h"
 #include "../classes/lose_scene.h"
+#include "../classes/pause_scene.h"
 
 Game::Game(int totaltime) {
 	initLoot();
@@ -29,11 +32,17 @@ Game::Game(int totaltime) {
 	states = new GameStateMachine();
 
 	Camera::setMain(new Camera(Vector2D(), 1080, 720));
+
+	framesFPS = 0;
+	lastTimeFPS = SDL_GetTicks();
+	fpsActive = true;
+	fpsText = nullptr;
 }
 
 Game::~Game() {
 	delete states;
 	delete Camera::mainCamera;
+	delete fpsText;
 }
 
 void Game::init() {
@@ -66,18 +75,33 @@ void Game::start() {
 			continue;
 		}
 
-		//states->currentState()->update();
-		//states->currentState()->refresh();
-		//states->currentState()->render();
+		//FPS
+		framesFPS++;
+		if (lastTimeFPS < SDL_GetTicks() - FPS_INTERVAL * 1000) {
+			lastTimeFPS = SDL_GetTicks();
+			currentFPS = framesFPS;
+			framesFPS = 0;
+		}
 
 		sdlutils().clearRenderer();
 		states->currentState()->cycle();
+		drawFPS(currentFPS);
 		sdlutils().presentRenderer();
 
 		Uint32 frameTime = sdlutils().currRealTime() - startTime;
 
 		if (frameTime < 1000 / consts::FRAME_RATE)
 			SDL_Delay((1000 / consts::FRAME_RATE) - frameTime);
+	}
+}
+
+void Game::drawFPS(int fps) {
+	if (fpsActive) {
+		std::stringstream ss;
+		ss << "fps: " << fps;
+		fpsText = new Texture(sdlutils().renderer(), ss.str(), sdlutils().fonts().at("Orbitron12"), build_sdlcolor(0xffffffff));
+		SDL_Rect dest = { 5,5, 40, 20 };
+		fpsText->render(dest);
 	}
 }
 
