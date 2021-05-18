@@ -317,6 +317,8 @@ void Inventory::storeDefaultItems() {
 	storeItem(new Item(ItemInfo::bottleOfWater(), entity_->getMngr(), this, 0, 0));
 	storeItem(new Item(ItemInfo::medicine(), entity_->getMngr(), this, 2, 2));
 	storeItem(new Item(ItemInfo::defaultAmmo(), entity_->getMngr(), this, 4, 0, 30));
+	storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 30));
+	storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 4, 4, 30));
 }
 
 
@@ -340,19 +342,19 @@ InventoryStorage::~InventoryStorage() {
 	storedItems.clear();
 }
 
-void InventoryStorage::load(Inventory* inv) {
+void InventoryStorage::load(Inventory* inv_) {
 	for (auto a : storedItems) {
-		inv->storeItem(new Item(a, inv));
+		inv_->storeItem(new Item(a, inv_));
 	}
 }
 
-void InventoryStorage::safe(Inventory* inv) {
+void InventoryStorage::safe(Inventory* inv_) {
 	for (auto a : storedItems) {
 		delete a;
 	}
 	storedItems.clear();
 
-	for (auto a : inv->storedItems) {
+	for (auto a : inv_->storedItems) {
 		storedItems.push_back(new Item(a, nullptr));
 	}
 }
