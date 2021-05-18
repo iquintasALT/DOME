@@ -78,14 +78,7 @@ PauseButton::~PauseButton() {
 
 
 MainMenuButton::MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName , Uint8 alpha) :
-	PauseButton(pos, size, t, function, g, mngr_, type, buttonName, alpha)
-{
-
-}
-
-MainMenuButton::~MainMenuButton() {
-	PauseButton::~PauseButton();
-}
+	PauseButton(pos, size, t, function, g, mngr_, type, buttonName, alpha) {}
 
 void MainMenuButton::render()
 {
