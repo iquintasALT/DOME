@@ -534,11 +534,36 @@
         "volume": 128,
         "file": "resources/sound/heal.mp3"
       },
-      {
-        "id": "laser",
-        "volume": 128,
-        "file": "resources/sound/gun/laser.mp3"
-      }
+        {
+            "id": "laser",
+            "volume": 128,
+            "file": "resources/sound/gun/laser.mp3"
+        },
+        {
+            "id": "reload",
+            "volume": 100,
+            "file": "resources/sound/gun/reload_B.mp3"
+        },
+        {
+            "id": "open",
+            "volume": 100,
+            "file": "resources/sound/openloot.wav"
+        },
+        {
+            "id": "close",
+            "volume": 128,
+            "file": "resources/sound/closeloot.wav"
+        },
+        {
+            "id": "pickup",
+            "volume": 128,
+            "file": "resources/sound/pickup.wav"
+        },
+        {
+            "id": "bonecrack",
+            "volume": 128,
+            "file": "resources/sound/bonecrack.wav"
+        }
     ],
 
     "musics": [
