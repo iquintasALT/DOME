@@ -10,6 +10,7 @@ class Countdown
 private:
 	float lefttime;
 	Texture* counter;
+	bool alarm;
 
 public:
 	Countdown(int totaltime);
