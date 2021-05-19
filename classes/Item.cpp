@@ -85,7 +85,7 @@ ItemInfo* ItemInfo::classicAmmo()
 	auto f = [](Entity* player) {
 	};
 
-	return new ItemInfo(CLASSIC_AMMO, "Bullets for the classic weapon", 2, 1, 1, 1, f);
+	return new ItemInfo(CLASSIC_AMMO, "Bullets for the classic weapon", 1, 1, 2, 1, f);
 }
 
 ItemInfo* ItemInfo::metalPlates()
