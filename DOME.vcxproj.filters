@@ -275,6 +275,9 @@
     <ClCompile Include="components\HoldToSkip.cpp" />
     <ClCompile Include="components\InitialCameraZoom.cpp" />
     <ClCompile Include="classes\InitialScene.cpp" />
+    <ClCompile Include="components\Dialogue.cpp" />
+    <ClCompile Include="components\CameraShake.cpp" />
+    <ClCompile Include="components\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -595,6 +598,9 @@
     <ClInclude Include="components\HoldToSkip.h" />
     <ClInclude Include="components\InitialCameraZoom.h" />
     <ClInclude Include="classes\InitialScene.h" />
+    <ClInclude Include="components\Dialogue.h" />
+    <ClInclude Include="components\CameraShake.h" />
+    <ClInclude Include="components\Timer.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

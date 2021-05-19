@@ -61,11 +61,13 @@
     <ClInclude Include="components\back_to_shelter.h" />
     <ClInclude Include="components\bleedout_component.h" />
     <ClInclude Include="components\CameraMovement.h" />
+    <ClInclude Include="components\CameraShake.h" />
     <ClInclude Include="components\charge.h" />
     <ClInclude Include="components\box_collider.h" />
     <ClInclude Include="components\classic_bullet.h" />
     <ClInclude Include="components\concussion_component.h" />
     <ClInclude Include="components\cover_component.h" />
+    <ClInclude Include="components\Dialogue.h" />
     <ClInclude Include="components\enemy_animation.h" />
     <ClInclude Include="components\enemy_attack_component.h" />
     <ClInclude Include="components\enemy_behaviour_component.h" />
@@ -97,6 +99,7 @@
     <ClInclude Include="components\tile_renderer.h" />
     <ClInclude Include="components\player_animation.h" />
     <ClInclude Include="components\ricochet.h" />
+    <ClInclude Include="components\Timer.h" />
     <ClInclude Include="components\tiredness_component.h" />
     <ClInclude Include="components\Transform.h" />
     <ClInclude Include="components\TransitionComponent.h" />
@@ -172,10 +175,12 @@
     <ClCompile Include="components\bleedout_component.cpp" />
     <ClCompile Include="components\box_collider.cpp" />
     <ClCompile Include="components\CameraMovement.cpp" />
+    <ClCompile Include="components\CameraShake.cpp" />
     <ClCompile Include="components\charge.cpp" />
     <ClCompile Include="components\classic_bullet.cpp" />
     <ClCompile Include="components\concussion_component.cpp" />
     <ClCompile Include="components\cover_component.cpp" />
+    <ClCompile Include="components\Dialogue.cpp" />
     <ClCompile Include="components\enemy_animation.cpp" />
     <ClCompile Include="components\enemy_attack_component.cpp" />
     <ClCompile Include="components\enemy_behaviour_component.cpp" />
@@ -206,6 +211,7 @@
     <ClCompile Include="components\tile_renderer.cpp" />
     <ClCompile Include="components\player_animation.cpp" />
     <ClCompile Include="components\ricochet.cpp" />
+    <ClCompile Include="components\Timer.cpp" />
     <ClCompile Include="components\tiredness_component.cpp" />
     <ClCompile Include="components\Transform.cpp" />
     <ClCompile Include="components\TransitionComponent.cpp" />

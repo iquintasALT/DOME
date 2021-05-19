@@ -44,5 +44,7 @@ public:
 	void update() override;
 	void setAlpha(int value);
 	void reset();
+
+	float finishedWriting;
 };
 
