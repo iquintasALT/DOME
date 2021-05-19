@@ -81,6 +81,7 @@ void SettingsScene::createShowFPSBar() {
 	auto fspButton = new CheckButton(showFPSButtonPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), showFPS, g_, mngr_);
 	mngr_->addEntity(fspButton);
 }
+
 void SettingsScene::setAdjusterPosition() {
 	currentVolume = soundManager().getMusicVolume();
 	currentSFXVolume = soundManager().getSFXVolume();
@@ -141,7 +142,7 @@ void SettingsScene::decreaseEffectsVolume(Manager* mng)
 }
 
 void SettingsScene::showFPS(Manager* mng) {
-	mng->getGame()->setFPSActive(!mng->getGame()->getFSPActive());
+	mng->getGame()->setFPSActive(!mng->getGame()->getFPSActive());
 }
 
 CreditsScene::CreditsScene(Game* g) : GameScene(g, std::string("credits")) {

@@ -25,6 +25,7 @@
 #include "../classes/locations_scene.h"
 #include "../classes/lose_scene.h"
 #include "../classes/pause_scene.h"
+#include "../classes/player.h"
 
 Game::Game(int totaltime) {
 	initLoot();
@@ -47,7 +48,9 @@ Game::~Game() {
 void Game::init() {
 
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "./resources/config/resources.json");
+
 	sdlutils().showCursor();
+	//sdlutils().toggleFullScreen();
 
 	initLoot();
 
@@ -105,9 +108,10 @@ void Game::drawFPS(int fps) {
 }
 
 void Game::initLoot() {
+	SCENES_LOOT.clear();
 	//, HOSPITAL, RESTAURANT, RAID, COMMUNICATIONS,NUCLEAR_STATION,SUPERMARKET,SHOP
 // ITEMS n, int cantidad (INUTIL PARA ESTE METODO), int w , int h , int x, int y,int row, int col,string desc
-	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<I>>{ {I(WATER, 3, 1, 2, 0, 0, 4, 0, "pues eso, agua. Se bebe"), I(MEDICAL_COMPONENTS, 5, 2, 2, 1, 0, 3, 2, "componentes medicos para ponerte hasta el culo")} });
+	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<I>>{ {I(WATER, 0, 1, 2, 0, 0, 4, 0, "pues eso, agua. Se bebe"), I(MEDICAL_COMPONENTS, 5, 2, 2, 1, 0, 3, 2, "componentes medicos para ponerte hasta el culo")} });
 	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<I>>{
 		{I{ SPACESHIP_KEY_ITEMS,0,2,2,0,0,4,2,"spaceship key item" }, I{ WATER,0,1,2,0,3,4,0,"water" }, I{ WATER,0,1,2,1,3,4,0,"water" },
 			I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" }, I{ CLASSIC_AMMO,0,1,1,4,1,2,1,"classic ammo" },

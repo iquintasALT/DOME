@@ -39,12 +39,13 @@ void Loot::Interact() {
 	playerInventory->setOther((isOpen ? inventory : nullptr));
 
 	if (isOpen) {
+		soundManager().playSFX("open");
 		float maxWidth = playerTransform->getW() + inventoryTransform->getW() + margin;
 		float x = (sdlutils().width() - maxWidth) / 2;
-
 		playerInventory->moveInventory(Vector2D(x, playerTransform->getPos().getY()));
 	}
 	else {
+		soundManager().playSFX("close");
 		playerInventory->defaultPosition();
 	}
 

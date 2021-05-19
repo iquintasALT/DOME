@@ -49,6 +49,7 @@ void PauseScene::settings(Manager* mng) {
 
 void PauseScene::menu(Manager* mng) {
 	ih().clearState();
+	mng->getGame()->playerCreated = false;
 	mng->getGame()->numDays = 0;
 	mng->ChangeScene(new MenuScene(mng->getGame(), false), SceneManager::SceneMode::SINGLE);
 }

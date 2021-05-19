@@ -52,6 +52,11 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	setGroup<Player_grp>(true);
 }
 
+Player::Player(const Player* prevPlayer): GameCharacter(NULL)
+{
+	//TODO AÑADIR COMPONENTES
+}
+
 Player::~Player() {
 	delete physiognomy;
 }

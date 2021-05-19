@@ -149,6 +149,7 @@ void ChargeWeapon::update() {/*
 	}*/
 	if (!playerCtrl_->isClimbingLadder())
 	{
+		if (!image_->enabled) image_->enabled = true;
 		calculatePosition();
 
 		Vector2D rotation = Vector2D();
