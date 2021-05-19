@@ -25,6 +25,7 @@ ChargeWeapon::ChargeWeapon(float fR, int dam, int ntier, WeaponAnimation* animat
 Entity* ChargeWeapon::createBullet(const Vector2D& direction) {
 	Entity* bullet = entity_->getMngr()->addEntity();
 	Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
+	
 
 	bulletTr->setH(1);
 	float squareX = consts::WINDOW_WIDTH * consts::WINDOW_WIDTH;
@@ -197,6 +198,7 @@ void ChargeWeapon::update() {/*
 				if (timeSinceLastShot >= fireRate) {
 					animator_->setAnimation(12 + tier);
 					chargeState = charged;
+
 				}
 			}
 			else // If mouse is released early, reset charge
