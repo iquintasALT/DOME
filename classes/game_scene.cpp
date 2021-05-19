@@ -141,8 +141,10 @@ void GameScene::loadMap(string& const path) {
 					stair->addComponent<BoxCollider>(true, 0);
 				}
 				else if (obj.getName() == "playerSpawn") {
-					if (g_->playerCreated)
+					if (g_->playerCreated) {
 						mngr_->getHandler<Player_hdlr>()->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
+
+					}
 					else {
 						new Player(mngr_, Point2D(aabb.left, aabb.top));
 						g_->playerCreated = true;
@@ -208,6 +210,16 @@ void GameScene::loadMap(string& const path) {
 			}
 		}
 	}
+}
+
+void GameScene::clonePlayer(Player* player)
+{
+	// TODO Añadir los componentes necesarios
+	auto ent = new Player(player);
+
+	mngr_->addEntity(ent);
+	mngr_->setHandler<Player_hdlr>(ent);
+	mngr_->addRenderLayer<Player>(ent);
 }
 
 void GameScene::changeState(GameScene* gs)
