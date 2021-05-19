@@ -58,6 +58,9 @@ class ChangeImage;
 class ParallaxComponent;
 class HoldToSkip;
 class InitialCameraZoom;
+class Dialogue;
+class CameraShake;
+class Timer;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -107,7 +110,10 @@ class InitialCameraZoom;
 	ChangeImage,\
 	ParallaxComponent,\
 	HoldToSkip, \
-	InitialCameraZoom
+	InitialCameraZoom, \
+	Dialogue, \
+	CameraShake, \
+	Timer
 
 // groups
 

@@ -14,6 +14,8 @@ TextWithBackground::TextWithBackground(std::string msg, Font& font, SDL_Color co
 	currentIndex = 0;
 	centerAlign = alignInCenter;
 	textSpeed = 1 / appearingTextSpeed;
+
+	finishedWriting = false;
 }
 
 void TextWithBackground::init() {
@@ -116,8 +118,10 @@ void TextWithBackground::update() {
 		message_ += finalMessage_[currentIndex++];
 		changeTextTextures();
 
-		if (currentIndex >= finalMessage_.size())
+		if (currentIndex >= finalMessage_.size()) {
 			appearingText_ = false;
+			finishedWriting = true;
+		}
 	}
 }
 

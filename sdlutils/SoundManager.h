@@ -80,7 +80,7 @@ public:
 
 	void changeSongWithFade(std::string key, int ticks) {
 		// this works, but weneed a way to get the damn end of the fade out so rn it does not work properly but w.e.
-		// currentMusic->fadeOut(ticks);
+		 currentMusic->fadeOut(ticks);
 
 		playMusic(key);
 	}
