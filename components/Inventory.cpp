@@ -102,12 +102,16 @@ void Inventory::render() {
 void Inventory::onEnable() {
 	for (auto a : storedItems) {
 		a->image->setActive(true);
+		if (a->numberTr != nullptr)
+			a->numberTr->getEntity()->setActive(true);
 	}
 }
 
 void Inventory::onDisable() {
 	for (auto a : storedItems) {
 		a->image->setActive(false);
+		if (a->numberTr != nullptr)
+			a->numberTr->getEntity()->setActive(false);
 	}
 	toolTips->setActive(false);
 }

@@ -61,6 +61,18 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 		Inventory::itemWidth * width, Inventory::itemHeight * height, 0);
 	image->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, info->row(), info->col(), true);
 	image->setActive(false);
+
+	if (count > 0) {
+		auto n = mngr->addEntity();
+		mngr->addRenderLayer<Item>(n);
+		float w = Inventory::itemWidth * (width - 0.3);
+		float h = Inventory::itemHeight * (height - 0.3);
+		numberTr = n->addComponent<Transform>(inventory->itemPosition(x, y) + Vector2D(w, h),
+			Inventory::itemWidth * 0.3, Inventory::itemHeight * 0.3, 0);
+		n->addComponent<Image>(new Texture(sdlutils().renderer(), std::to_string(count), sdlutils().fonts().at("OrbitronBold32"), build_sdlcolor(0xffffff)), true);
+		n->setActive(false);
+	}
+	else numberTr = nullptr;
 }
 
 Item::Item(Item* item, Inventory* inventory) {
@@ -70,6 +82,7 @@ Item::Item(Item* item, Inventory* inventory) {
 	x = item->x;
 	y = item->y;
 	count = item->count;
+	numberTr = nullptr;
 
 	if (inventory != nullptr) {
 		Manager* mngr = inventory->entity_->getMngr();
@@ -79,10 +92,23 @@ Item::Item(Item* item, Inventory* inventory) {
 			Inventory::itemWidth * width, Inventory::itemHeight * height, 0);
 		image->addComponent<Image>(&sdlutils().images().at("items"), 6, 3, info->row(), info->col(), true);
 		image->setActive(false);
+
+		if (count > 0) {
+			auto n = mngr->addEntity();
+			mngr->addRenderLayer<Item>(n);
+			float w = Inventory::itemWidth * (width - 0.3);
+			float h = Inventory::itemHeight * (height - 0.3);
+			numberTr = n->addComponent<Transform>(inventory->itemPosition(x + w, y + h),
+				w, h, 0);
+			n->addComponent<Image>(new Texture(sdlutils().renderer(), std::to_string(count), sdlutils().fonts().at("OrbitronBold32"), build_sdlcolor(0xffffff)), true);
+			n->setActive(false);
+		}
+		else numberTr = nullptr;
 	}
 	else {
 		image = nullptr;
 		transform = nullptr;
+		numberTr = nullptr;
 	}
 }
 
@@ -90,12 +116,16 @@ Item::~Item() {
 	delete info;
 	if (image != nullptr)
 		image->setDead(true);
+	if (numberTr != nullptr)
+		image->setDead(true);
 }
 
 void Item::render() {
-	image->setActive(true);
-	image->render();
-	image->setActive(false);
+	if (image != nullptr) {
+		image->setActive(true);
+		image->render();
+		image->setActive(false);
+	}
 }
 
 void Item::update() {
@@ -106,6 +136,12 @@ void Item::update() {
 
 void Item::setPosition(Vector2D&& pos) {
 	transform->setPos(std::move(pos));
+
+	float w = Inventory::itemWidth * (width - 0.3);
+	float h = Inventory::itemHeight * (height - 0.3);
+
+	if (numberTr != nullptr)
+		numberTr->setPos(pos + Vector2D(w, h));
 }
 
 ItemInfo* Item::getItemInfo() {
