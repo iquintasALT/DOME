@@ -25,6 +25,7 @@
 #include "../classes/locations_scene.h"
 #include "../classes/lose_scene.h"
 #include "../classes/pause_scene.h"
+#include "../classes/player.h"
 
 Game::Game(int totaltime) {
 	initLoot();
@@ -47,7 +48,9 @@ Game::~Game() {
 void Game::init() {
 
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "./resources/config/resources.json");
+
 	sdlutils().showCursor();
+	//sdlutils().toggleFullScreen();
 
 	initLoot();
 

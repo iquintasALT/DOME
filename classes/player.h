@@ -12,6 +12,7 @@ protected:
 
 public:
 	Player(Manager* mngr_, Point2D pos);
+	Player(const Player* prevPlayer);
 	~Player();
 	WeaponBehaviour* getCurrentWeapon();
 	WeaponBehaviour* equipWeapon(WeaponBehaviour* newWeapon);
