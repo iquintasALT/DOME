@@ -47,7 +47,7 @@ void RaidScene::update() {
 	}
 	
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
-		mngr_->getGame()->setFPSActive(false);
+		mngr_->getGame()->setShouldRenderFPS(false);
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
 	}
 }
