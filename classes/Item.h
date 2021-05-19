@@ -13,6 +13,7 @@ using namespace std;
 enum ITEMS {
 	BANDAGE, MEDICAL_COMPONENTS, WATER, ORGANIC_MATERIAL, MECANICAL_COMPONENTS, ANTIDOTE, FOOD, SPLINT, SPACESHIP_ROCKETS, SPACESHIP_KEY_ITEMS,
 	BUILDING_PARTS, ELECTRONIC_REMAINS, METAL_PLATES, WEAPON_UPGRADE, UPGRADE_KIT, CLASSIC_AMMO, RICOCHET_AMMO, LASER_AMMO, SPACESHIP_RADAR, SPACESHIP_CABIN
+	,PAINKILLER
 };
 
 class Inventory;
@@ -37,12 +38,15 @@ public:
 	inline int col() { return _col; }
 	inline void execute(Entity* player) { function(player); };
 
-	static ItemInfo* bottleOfWater();
-	static ItemInfo* medicine();
+	static ItemInfo* bandage();
+	static ItemInfo* antidote();
+	static ItemInfo* splint();
+	static ItemInfo* painKiller();
 	static ItemInfo* food();
-	static ItemInfo* defaultAmmo();
-	static ItemInfo* ricochetAmmo();
 	static ItemInfo* laserAmmo();
+	static ItemInfo* ricochetAmmo();
+	static ItemInfo* metalPlates();
+	static ItemInfo* classicAmmo();
 };
 
 class Item
@@ -50,7 +54,7 @@ class Item
 	friend class Inventory;
 public:
 	Item(ItemInfo* info, Manager* mnger, Inventory* inventory, int xPos = 0, int yPos = 0, int count = 0);
-	Item(Item* item,  Inventory* inventory);
+	Item(Item* item, Inventory* inventory);
 	~Item();
 	void render();
 	void update();
@@ -58,7 +62,7 @@ public:
 	int getX() { return x; }
 	int getY() { return y; }
 	ItemInfo* getItemInfo();
-	
+
 	int count;
 private:
 	ItemInfo* info;

@@ -26,7 +26,7 @@ private:
 	float stairsSpeed;
 	float cooldown;
 	bool left, right, crouched, up, down, onLadderTrigger, onLadder, xClicked, spaceDown;
-	bool walking;
+	bool walking, climbing;
 	Vector2D stairPosition, stairSize;
 	const Uint8* keystates = SDL_GetKeyboardState(NULL);
 
