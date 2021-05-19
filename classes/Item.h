@@ -66,6 +66,7 @@ private:
 	int width, height;
 	Entity* image;
 	Transform* transform;
+	Transform* numberTr;
 };
 
 
