@@ -206,6 +206,7 @@ void Weapon::reload()
 	{
 		reloading = true;
 		setAmmo();
+		soundManager().playSFX("reload");
 	}
 }
 
