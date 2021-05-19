@@ -35,17 +35,17 @@ ItemInfo* ItemInfo::food()
 
 ItemInfo* ItemInfo::defaultAmmo()
 {
-	return new ItemInfo(CLASSIC_AMMO, "Security-grade rubber-coated bullets. It wasn't hard to remove the rubber coating. Funny how that works out.", 1, 1, 1, 2);
+	return new ItemInfo(CLASSIC_AMMO, "Security-grade rubber-coated bullets. It wasn't hard to remove the rubber coating. Funny how that works out.", 1, 1, 2, 1);
 }
 
 ItemInfo* ItemInfo::ricochetAmmo()
 {
-	return new ItemInfo(RICOCHET_AMMO, "A spool of high-density polyethylene filament. The printing factories are all out of commission, but this can still be used as ammo for a POLYMER RIFLE.", 1, 1, 1, 2);
+	return new ItemInfo(RICOCHET_AMMO, "A spool of high-density polyethylene filament. The printing factories are all out of commission, but this can still be used as ammo for a POLYMER RIFLE.", 1, 1, 3, 1);
 }
 
 ItemInfo* ItemInfo::laserAmmo()
 {
-	return new ItemInfo(LASER_AMMO, "A stable high-discharge battery, used to power a MINING LASER.", 1, 1, 1, 2);
+	return new ItemInfo(LASER_AMMO, "A stable high-discharge battery, used to power a MINING LASER.", 1, 1, 3, 0);
 }
 
 //&sdlutils().images().at("items")

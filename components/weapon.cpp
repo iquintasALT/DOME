@@ -120,6 +120,8 @@ void Weapon::update() {
 
 	if (!playerCtrl_->isClimbingLadder())
 	{
+		if (!image_->enabled) image_->enabled = true;
+
 		timeSinceLastShot += consts::DELTA_TIME;
 
 		calculatePosition();
