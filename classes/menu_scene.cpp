@@ -15,6 +15,7 @@
 #include <iostream>
 
 void MenuScene::init() {
+	mngr_->getGame()->initLoot();
 	mngr_->getGame()->currentScene = SCENES::MAINMENU;
 
 	float size = 1.2f;
