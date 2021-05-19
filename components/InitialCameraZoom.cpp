@@ -25,6 +25,13 @@ void InitialCameraZoom::update()
 		return;
 	}
 
-	float scale = Vector2D::Lerp(initialZoom, targetZoom, t / totalTime);
+	float i = t / totalTime;
+	float dist = 1 - i;
+
+	dist = dist * dist;
+
+	i = 1 - dist;
+
+	float scale = Vector2D::Lerp(initialZoom, targetZoom, i);
 	Camera::mainCamera->setScale(scale);
 }
