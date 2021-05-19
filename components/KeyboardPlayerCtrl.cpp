@@ -98,6 +98,7 @@ void KeyboardPlayerCtrl::update() {
 			if (onLadderTrigger && (keystates[SDL_SCANCODE_W] || keystates[SDL_SCANCODE_S])) {
 				onLadder = true;
 				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
+				soundManager().playSFX("climbsound");
 			}
 
 			if (keystates[SDL_SCANCODE_SPACE] && rb_->onFloor()) {
@@ -194,6 +195,9 @@ float KeyboardPlayerCtrl::getSpeed() {
 
 void KeyboardPlayerCtrl::setSpeed(float speed_) {
 	speed = speed_;
+}
+void KeyboardPlayerCtrl::setMaxSpeed(float speed_) {
+	maxSpeed = speed_;
 }
 void KeyboardPlayerCtrl::setJumpSpeed(float jumpSpeed_) {
 	jumpSpeed = jumpSpeed_;
