@@ -21,19 +21,19 @@ void CameraMovement::init() {
 	assert(tr != nullptr && cam != nullptr);
 
 	
-	enabled = false;
+	//enabled = false;
 }
  
 
 void CameraMovement::update() {
 	Vector2D pos = tr->getPos();
 	if (rb != nullptr && rb->onFloor()) {
-		pos = pos + Vector2D(0, consts::CAMERA_MARGIN_FROM_PLAYER / cam->getScale());
+		pos = pos + Vector2D(0, consts::CAMERA_MARGIN_FROM_PLAYER / cam->getScale() / 2);
 	}
 
 	int x = rb->getVel().getX();
 	int dir = (x > 0) - (x < 0);
 	pos = pos + Vector2D(consts::PLAYER_SPEED, 0) * dir * consts::WINDOW_WIDTH / 5 / cam->getScale();
-	cam->Lerp(pos, velocity);
+	cam->LerpWithBounds(pos, velocity);
 }
 

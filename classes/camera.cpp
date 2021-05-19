@@ -61,10 +61,10 @@ void Camera::LerpWithBounds(const Vector2D& newPos, float i) {
 
 	Vector2D& p = pos;
 	if (p.getX() < xmin) p.setX(xmin);
-	else if (p.getX() > xmax * scale) p.setX(xmax);
+	else if (p.getX() > xmax) p.setX(xmax);
 
 	if (p.getY() < ymin) p.setY(ymin);
-	else if (p.getY() > ymax * scale) p.setY(ymax);
+	else if (p.getY() > ymax) p.setY(ymax);
 }
 
 void Camera::setBounds(float a, float b, float c, float d) {

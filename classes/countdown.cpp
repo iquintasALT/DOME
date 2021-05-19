@@ -19,6 +19,7 @@ Countdown::Countdown(int totaltime) {
 	lefttime = totaltime; //Recibe los milisegundos de tiempo en raid
 	counter = nullptr;
 	std::string aux = getHourString(lefttime / 1000);
+	alarm = false;
 }
 
 Countdown::~Countdown() {
@@ -35,8 +36,15 @@ void Countdown::render() {
 		aux = "0:00";
 		s = build_sdlcolor(0xff000000);
 	}
-	else s = build_sdlcolor(0xffffffff);
-
+	else
+	{
+		s = build_sdlcolor(0xffffffff);
+		if (lefttime <= 5.3 && !alarm)
+		{
+			soundManager().playSFX("alarm");
+			alarm = true;
+		}
+	}
 	//delete counter;
 	counter = new Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("OrbitronRegular"),
 		s);
