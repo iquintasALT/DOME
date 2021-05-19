@@ -510,6 +510,11 @@
         "file": "resources/sound/gun/footstep.wav"
       },
       {
+        "id": "climbsound",
+        "volume": 100,
+        "file": "resources/sound/climb.wav"
+      },
+      {
         "id": "chestopen1",
         "volume": 128,
         "file": "resources/sound/gun/chestopen1.wav"
