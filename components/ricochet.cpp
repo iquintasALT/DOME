@@ -54,6 +54,7 @@ void Ricochet::createExplosion()
 	particles->burstDuration = 0.02f;
 	particles->burstRepeat = 8;
 
+	//float i = (transf->getPos() - playerTr->getPos()).magnitude();
 
 	soundManager().playSFX("explosion");
 	/*particles->gravity = 0;

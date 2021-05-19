@@ -15,7 +15,7 @@
 void RaidScene::init() {
 	loadMap(path_);
 
-	timer = new Countdown(consts::RAID_TIME);
+	timer = new Countdown(10);
 
 	player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 	raidTimeEnded = false;
