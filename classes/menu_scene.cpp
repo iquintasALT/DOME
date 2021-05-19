@@ -5,6 +5,7 @@
 #include "../game/Game.h"
 #include "locations_scene.h"
 #include "controls_scene.h"
+#include "InitialScene.h"
 #include "../ecs/Manager.h"
 #include "../classes/settings_scene.h"
 #include "../classes/camera.h"
@@ -14,6 +15,7 @@
 #include <iostream>
 
 void MenuScene::init() {
+	mngr_->getGame()->initLoot();
 	mngr_->getGame()->currentScene = SCENES::MAINMENU;
 
 	float size = 1.2f;
@@ -74,7 +76,8 @@ void MenuScene::init() {
 void MenuScene::playGame(Manager* mngr) {
 	ih().clearState();
 	soundManager().playMusic("game_theme");
-	mngr->ChangeScene(new ControlsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+	mngr->ChangeScene(new LocationsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+	//mngr->ChangeScene(new InitialScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
 }
 
 void MenuScene::settings(Manager* mngr) {

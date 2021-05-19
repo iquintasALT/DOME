@@ -1,6 +1,7 @@
 #include "Item.h"
 #include "../classes/player.h"
 #include "../classes/physiognomy.h"
+#include "../components/hunger_component.h"
 
 ItemInfo::ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity* p)> f) :
 	_name(name), _description(description), _width(width), _height(height), _row(row), _col(col), function(f) {};
@@ -14,39 +15,88 @@ ItemInfo::ItemInfo(ItemInfo* item) {
 	_col = item->_col;
 	function = item->function;
 }
+//ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity*)> function = [](Entity*) {});
 
-ItemInfo* ItemInfo::bottleOfWater()
+
+ItemInfo* ItemInfo::antidote()
+{
+	auto f = [](Entity* player) {
+		static_cast<Player*>(player)->getPhysiognomy()->removeIntoxicationState();
+	};
+
+	return new ItemInfo(ANTIDOTE, "Can heal intoxication", 2, 2, 1, 0, f);
+}
+
+ItemInfo* ItemInfo::bandage()
+{
+	auto f = [](Entity* player) {
+		static_cast<Player*>(player)->getPhysiognomy()->removeBleedState();
+	};
+
+	return new ItemInfo(BANDAGE, "Can heal bleeding", 2, 1, 0, 2, f);
+}
+
+ItemInfo* ItemInfo::splint()
+{
+	auto f = [](Entity* player) {
+		static_cast<Player*>(player)->getPhysiognomy()->removeConcussionState();
+	};
+
+	return new ItemInfo(SPLINT, "Can heal concussions", 2, 2, 5, 1, f);
+}
+
+ItemInfo* ItemInfo::painKiller()
 {
 	auto f = [](Entity* player) {
 		static_cast<Player*>(player)->getPhysiognomy()->removePainState();
 	};
 
-	return new ItemInfo(WATER, "Scarce item, use it carefully", 1, 2, 4, 0, f);
+	return new ItemInfo(PAINKILLER, "Can heal pain", 1, 2, 0, 0, f);
 }
-ItemInfo* ItemInfo::medicine()
-{
-	return new ItemInfo(ANTIDOTE, "Mmmmmm", 2, 2, 0, 1);
-}
+
 
 ItemInfo* ItemInfo::food()
 {
-	return new ItemInfo(FOOD, "I dont know what im doing", 1, 1, 1, 2);
-}
+	auto f = [](Entity* player) {
+		static_cast<Player*>(player)->getComponent<HungerComponent>()->eat(0.20f);
+	};
 
-ItemInfo* ItemInfo::defaultAmmo()
-{
-	return new ItemInfo(CLASSIC_AMMO, "Security-grade rubber-coated bullets. It wasn't hard to remove the rubber coating. Funny how that works out.", 1, 1, 1, 2);
-}
-
-ItemInfo* ItemInfo::ricochetAmmo()
-{
-	return new ItemInfo(RICOCHET_AMMO, "A spool of high-density polyethylene filament. The printing factories are all out of commission, but this can still be used as ammo for a POLYMER RIFLE.", 1, 1, 1, 2);
+	return new ItemInfo(FOOD, "Good item against hunger", 1, 1, 1, 2, f);
 }
 
 ItemInfo* ItemInfo::laserAmmo()
 {
-	return new ItemInfo(LASER_AMMO, "A stable high-discharge battery, used to power a MINING LASER.", 1, 1, 1, 2);
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(LASER_AMMO, "High technology to use in the laser weapon", 1, 1, 3, 0, f);
 }
+
+ItemInfo* ItemInfo::ricochetAmmo()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(RICOCHET_AMMO, "Bullets covered in a bouncing alien material for the ricochet weapon", 1, 1, 3, 1, f);
+}
+
+ItemInfo* ItemInfo::classicAmmo()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(CLASSIC_AMMO, "Bullets for the classic weapon", 1, 1, 2, 1, f);
+}
+
+ItemInfo* ItemInfo::metalPlates()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(METAL_PLATES, "Metal plates", 2, 2, 7, 1, f);
+}
+
+
 
 //&sdlutils().images().at("items")
 

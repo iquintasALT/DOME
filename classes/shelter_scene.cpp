@@ -49,7 +49,7 @@ void ShelterScene::init() {
 	mngr_->addRenderLayer<Background>(spaceshipImg);
 
 	medical_Workshop = new Workshop(mngr_, uselessMngr, craftSys, this);
-	medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT});
+	medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT, PAINKILLER, FOOD});
 	Entity* medImg = mngr_->addEntity();
 	medImg->addComponent<Transform>(Vector2D{ medPos.getX(),medPos.getY() }, medSize.getX(), medSize.getY(), 0);
 	medImg->addComponent<Open_station>(medical_Workshop);
@@ -62,7 +62,7 @@ void ShelterScene::init() {
 	mngr_->addRenderLayer<Background>(sleepImg);
 
 	mechanical_Workshop = new Workshop(mngr_, uselessMngr, craftSys, this);
-	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO, SPLINT});
+	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO, LASER_AMMO, RICOCHET_AMMO});
 	Entity* mechImg = mngr_->addEntity();
 	mechImg->addComponent<Transform>(Vector2D{ mechPos.getX(),mechPos.getY() }, mechSize.getX(), mechSize.getY(), 0);
 	mechImg->addComponent<Open_station>(mechanical_Workshop);

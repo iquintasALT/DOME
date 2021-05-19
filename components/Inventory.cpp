@@ -162,7 +162,6 @@ void Inventory::update() {
 
 		if (ih().getMouseButtonState(InputHandler::LEFT)) {
 			if (!justPressed && (other == nullptr || (other != nullptr && other->selectedItem == nullptr))) {
-
 				justPressed = true;
 				timer = 0;
 				selectedItem_ = findItemInSlot(xCell, yCell);
@@ -170,6 +169,7 @@ void Inventory::update() {
 			else {
 				if (selectedItem_ != nullptr) {
 					timer += 1 / consts::DELTA_TIME;
+					soundManager().playSFX("pickup");
 
 					if (timer > timeToHold) {
 						selectedItem = selectedItem_;
@@ -318,9 +318,9 @@ void Inventory::adjustPanelSize() {
 }
 
 void Inventory::storeDefaultItems() {
-	storeItem(new Item(ItemInfo::bottleOfWater(), entity_->getMngr(), this, 0, 0));
-	storeItem(new Item(ItemInfo::medicine(), entity_->getMngr(), this, 2, 2));
-	storeItem(new Item(ItemInfo::defaultAmmo(), entity_->getMngr(), this, 4, 0, 30));
+	storeItem(new Item(ItemInfo::antidote(), entity_->getMngr(), this, 0, 0));
+	storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 2, 2));
+	storeItem(new Item(ItemInfo::classicAmmo(), entity_->getMngr(), this, 4, 0, 30));
 	storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 30));
 	storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 4, 4, 30));
 }

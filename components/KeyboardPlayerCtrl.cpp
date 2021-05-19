@@ -12,6 +12,7 @@ KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	acceleration = consts::ACCELERATION;
 	deceleration = consts::DECELERATION;
 	cooldown = 0.0f;
+	walking = false; climbing = false;
 	tr_ = nullptr; rb_ = nullptr; darkArea = nullptr;
 
 	speed = 0;
@@ -33,7 +34,7 @@ void KeyboardPlayerCtrl::init() {
 void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
 	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED) {
 		static_cast<Player*>(entity_)->getPhysiognomy()->addConcussionState();
-		soundManager().playSFX("hurt");
+		soundManager().playSFX("bonecrack");
 	}
 }
 
@@ -49,8 +50,9 @@ void KeyboardPlayerCtrl::OnTrigger(Entity* bc) {
 void KeyboardPlayerCtrl::update() {
 	rb_->setGravity(consts::GRAVITY);
 
-	if (walking && sdlutils().currRealTime() - 500 > cooldown) {
-		walking = false;
+	if ((walking || climbing) && sdlutils().currRealTime() - 500 > cooldown) {
+		if (walking) walking = false;
+		else if (climbing) climbing = false;
 		cooldown = sdlutils().currRealTime();
 	}
 
@@ -143,6 +145,13 @@ void KeyboardPlayerCtrl::update() {
 				up = true;
 				speed = 0;
 				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
+
+				if (!climbing) {
+					soundManager().playSFX("climbsound");
+					climbing = true;
+					cooldown = sdlutils().currRealTime();
+				}
+
 				if (tr_->getPos().getY() + tr_->getH() < stairPosition.getY()) {
 					onLadderTrigger = false;
 					onLadder = false;
@@ -153,6 +162,12 @@ void KeyboardPlayerCtrl::update() {
 				down = true;
 				speed = 0;
 				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
+				if (!climbing) {
+					soundManager().playSFX("climbsound");
+					climbing = true;
+					cooldown = sdlutils().currRealTime();
+				}
+
 				if (tr_->getPos().getY() > stairPosition.getY() + stairSize.getY()) {
 					onLadderTrigger = false;
 					onLadder = false;
