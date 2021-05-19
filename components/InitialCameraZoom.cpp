@@ -10,6 +10,12 @@ InitialCameraZoom::InitialCameraZoom(float zoom, float time):
 	t = 0;
 	initialZoom = Camera::mainCamera->getScale() / zoom;
 	targetZoom = initialZoom * zoom;
+
+}
+
+void InitialCameraZoom::init() {
+	entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = false;
+
 }
 
 void InitialCameraZoom::update()
@@ -26,6 +32,7 @@ void InitialCameraZoom::update()
 	}
 
 	float i = t / totalTime;
+
 	float dist = 1 - i;
 
 	dist = dist * dist;

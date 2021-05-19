@@ -33,6 +33,7 @@
     <ClInclude Include="classes\game_scene.h" />
     <ClInclude Include="classes\game_state_machine.h" />
     <ClInclude Include="classes\hud.h" />
+    <ClInclude Include="classes\InitialScene.h" />
     <ClInclude Include="classes\inventoryDropdown.h" />
     <ClInclude Include="classes\Item.h" />
     <ClInclude Include="classes\locations_scene.h" />
@@ -142,6 +143,7 @@
     <ClCompile Include="classes\game_scene.cpp" />
     <ClCompile Include="classes\game_state_machine.cpp" />
     <ClCompile Include="classes\hud.cpp" />
+    <ClCompile Include="classes\InitialScene.cpp" />
     <ClCompile Include="classes\inventoryDropdown.cpp" />
     <ClCompile Include="classes\Item.cpp" />
     <ClCompile Include="classes\locations_scene.cpp" />
