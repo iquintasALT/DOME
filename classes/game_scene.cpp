@@ -141,8 +141,11 @@ void GameScene::loadMap(string& const path) {
 					stair->addComponent<BoxCollider>(true, 0);
 				}
 				else if (obj.getName() == "playerSpawn") {
-					if (g_->playerCreated)
-						mngr_->getHandler<Player_hdlr>()->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
+					if (g_->playerCreated) {
+						auto test = mngr_->getHandler<Player_hdlr>();
+						test->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
+
+					}
 					else {
 						new Player(mngr_, Point2D(aabb.left, aabb.top));
 						g_->playerCreated = true;
