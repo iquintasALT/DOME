@@ -68,7 +68,7 @@ void LocationsScene::loadLocationButtons() {
 
 void LocationsScene::changeToRaid(Game* g, int index) {
 	g->currentScene = scenes[index];
-	g->setFPSActive(true);
+	g->setShouldRenderFPS(true);
 	soundManager().playSFX("push_button");
 	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::ADDITIVE);
 }

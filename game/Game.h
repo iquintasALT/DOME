@@ -28,7 +28,7 @@ private:
 	int lastTimeFPS; //ultimo registro de fps
 	int currentFPS; //el actual numero de fps
 	int framesFPS; //frames transcurrido desde el ultimo registro de fps
-	bool fpsActive;
+	bool fpsActive; bool shouldRenderFps;
 	Texture* fpsText;
 
 	void drawFPS(int fps);
@@ -48,6 +48,7 @@ public:
 	void initLoot();
 	void setFPSActive(bool value) { fpsActive = value; }
 	bool getFPSActive() { return fpsActive; }
+	void setShouldRenderFPS(bool value) { shouldRenderFps = value; }
 	
 	// booleano para comprabar si el jugador ha sido creado, para mantener la informaci�n
 	// entre escenas. Ponerlo a falso cuando se salga de juego (menu, endScreen, etc.)
