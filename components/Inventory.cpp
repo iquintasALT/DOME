@@ -162,7 +162,6 @@ void Inventory::update() {
 
 		if (ih().getMouseButtonState(InputHandler::LEFT)) {
 			if (!justPressed && (other == nullptr || (other != nullptr && other->selectedItem == nullptr))) {
-
 				justPressed = true;
 				timer = 0;
 				selectedItem_ = findItemInSlot(xCell, yCell);
@@ -170,6 +169,7 @@ void Inventory::update() {
 			else {
 				if (selectedItem_ != nullptr) {
 					timer += 1 / consts::DELTA_TIME;
+					soundManager().playSFX("pickup");
 
 					if (timer > timeToHold) {
 						selectedItem = selectedItem_;

@@ -34,7 +34,7 @@ void KeyboardPlayerCtrl::init() {
 void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
 	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED) {
 		static_cast<Player*>(entity_)->getPhysiognomy()->addConcussionState();
-		soundManager().playSFX("hurt");
+		soundManager().playSFX("bonecrack");
 	}
 }
 
@@ -79,10 +79,10 @@ void KeyboardPlayerCtrl::update() {
 				left = true;
 				if (tr_->getPos().getX() + tr_->getW() < stairPosition.getX()) onLadderTrigger = false;
 				if (!walking && rb_->onFloor()) {
+					soundManager().playSFX("walk");
 					walking = true;
 					cooldown = sdlutils().currRealTime();
 				}
-				if(walking && rb_->onFloor()) soundManager().playSFX("walk");
 			}
 			else {
 				if (speed < -0.1f)
