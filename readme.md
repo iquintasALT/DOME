@@ -205,7 +205,7 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 | Cabina de la nave | 3 restos clave de la nave + 2 materiales de construcción + 1 placas de metal | Segunda nave parte de la nave |
 | Arma mejorada | 2 partes mecánicas + 1 restos electrónicos + 1 kit de mejora | Aumenta el tier del arma |
 | Munición arma clásica |No se craftea | Munición para el arma clásica |
-| Munición arma laser |No se craftea | Munición para el arma clásica |
+| Munición arma laser | 1 Munición arma clásica + 2 partes restos electrónicos | Munición para el arma clásica |
 | Munición arma ricochet | 1 Munición arma clásica + 2 partes mecánicas | Munición para el arma ricochet |
 | Placas de metal | 1 materiales de construcción + 1 partes mecánicas | Para reaizar otros crafteos |
 
