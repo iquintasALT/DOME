@@ -140,8 +140,16 @@ void ParticleSystem::render() {
 		if (!worldPosition) relPos = relPos + transform->getPos();
 		Vector2D pos = Camera::mainCamera->renderRect(relPos, transform_->getW(), transform_->getH(), shouldRender);
 
-		if (shouldRender)
-			texture->render(source, build_sdlrect(pos, transform_->getW(), transform_->getH()), transform_->getRot(), nullptr, SDL_FLIP_NONE);
+
+		if (shouldRender) {
+			float scale = Camera::mainCamera->getScale();
+			SDL_Rect dest{ pos.getX(), pos.getY(), transform_->getW(), transform_->getH() };
+			dest.x = floor(dest.x * scale);
+			dest.y = floor(dest.y * scale);
+			dest.w = ceil(dest.w * scale);
+			dest.h = ceil(dest.h * scale);
+			texture->render(source, dest, transform_->getRot(), nullptr, SDL_FLIP_NONE);
+		}
 	}
 }
 
