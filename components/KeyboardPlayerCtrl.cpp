@@ -77,10 +77,10 @@ void KeyboardPlayerCtrl::update() {
 				left = true;
 				if (tr_->getPos().getX() + tr_->getW() < stairPosition.getX()) onLadderTrigger = false;
 				if (!walking && rb_->onFloor()) {
-					soundManager().playSFX("walk");
 					walking = true;
 					cooldown = sdlutils().currRealTime();
 				}
+				if(walking && rb_->onFloor()) soundManager().playSFX("walk");
 			}
 			else {
 				if (speed < -0.1f)
