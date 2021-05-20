@@ -1,8 +1,11 @@
 #pragma once
-#include "enemy_component.h"
+#include "../ecs/Component.h"
+
 #include "../utils/checkML.h"
 
-class EnemyDetectionComponent : public EnemyComponent {
+class Transform;
+
+class EnemyDetectionComponent : public Component {
 protected:
 	Transform* playerTr;
 	Transform* tr_;
