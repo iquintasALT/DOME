@@ -6,13 +6,12 @@
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
 #include <math.h>
-
+#include "../classes/Item.h"
 
 class Transform;
 class Image;
 class Player;
 
-enum ITEMS;
 
 class Weapon : public Component
 {
