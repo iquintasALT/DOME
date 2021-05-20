@@ -49,7 +49,7 @@ void InitialScene::init()
 			a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
 			auto d = a->addComponent<Dialogue>();
 			std::vector<std::string> texts = {
-				"It's getting pretty close", 
+				"It's getting pretty close",
 				"I need to hurry and pick all the things I need",
 				"FAST"
 			};

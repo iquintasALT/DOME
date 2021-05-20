@@ -54,9 +54,39 @@ Player::Player(Manager* mngr_, Point2D pos) : Entity(mngr_)
 	setGroup<Player_grp>(true);
 }
 
-Player::Player(const Player* prevPlayer): Entity(prevPlayer->mngr_)
+Player::Player(Player* prevPlayer):
+	Player(prevPlayer->getMngr(), getComponent<Transform>()->getPos())
 {
-	//TODO AÑADIR COMPONENTES
+	//Componentes a copiar:
+	//Inventario, Weapon,  physionomy
+	//Me dicen que physionomia no
+
+//======================================================================================
+
+	Inventory* oldInv = prevPlayer->getComponent<InventoryController>()->inventory;
+	Inventory* newInv = this->getComponent<InventoryController>()->inventory;
+	
+	for (auto item : oldInv->getItems()) {
+		newInv->storeItem(item);
+	}
+	oldInv->getItems().clear();
+
+//======================================================================================
+
+	WeaponBehaviour* oldWeapon = prevPlayer->getComponent<WeaponBehaviour>();
+	WeaponBehaviour* newWeapon = this->getComponent<WeaponBehaviour>();
+
+	for (int i = 0; i < 3; i++) {
+		int weaponTier = oldWeapon->tierOfWeapon();
+		for (int tier = 0; tier < weaponTier; tier++) {
+			newWeapon->upgradeCurrentWeapon();
+		}
+		newWeapon->changeWeapon();
+	}
+
+//======================================================================================
+
+	//Faltaria la fisionomia si es que la hacemos que se guarde al final
 }
 
 Player::~Player() {
