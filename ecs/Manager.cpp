@@ -14,7 +14,8 @@ Manager::Manager(Game* game) : game(game), sceneManager(game) {
 
 Manager::~Manager() {
 	for (auto e : entities_) {
-		//if (e != getHandler<Player_hdlr>())
+		if (e == getHandler<Player_hdlr>())
+			std::cout << "Copy player" << std::endl;
 		delete e;
 	}
 
@@ -45,7 +46,7 @@ void Manager::refresh() {
 						}*/
 						colliders.erase(e->getComponent<BoxCollider>()->getCollisionIterator());
 					}
-					if(e->renderGroup > -1) // eliminacion de la capa de renderizado
+					if (e->renderGroup > -1) // eliminacion de la capa de renderizado
 						renders_[e->renderGroup].remove(e);
 					delete e;
 					return true;

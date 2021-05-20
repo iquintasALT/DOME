@@ -69,8 +69,6 @@ protected:
 	// funcion de cargado de mapa usable por todas las escenas de juego
 	void loadMap(string& const path);
 
-	void clonePlayer(Player* player);
-
 public:
 	//constructora que crea el manager de gObjects de la clase
 	inline GameScene(Game* game, string sceneName) { mngr_ = new Manager(game); g_ = game; name = sceneName;}
