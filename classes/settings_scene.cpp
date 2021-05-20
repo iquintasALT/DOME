@@ -33,6 +33,7 @@ void SettingsScene::init() {
 
 	setAdjusterPosition();
 	createShowFPSBar();
+	createFullscreenToggle();
 }
 
 Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackOnClick* raise, CallBackOnClick* decrease, Texture* t) {
@@ -68,6 +69,7 @@ Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackO
 
 	return adjusterTr;
 }
+
 void SettingsScene::createShowFPSBar() {
 	//Texto
 	auto text = mngr_->addEntity();
@@ -78,8 +80,22 @@ void SettingsScene::createShowFPSBar() {
 
 	//Boton
 	Vector2D showFPSButtonPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.40f);
-	auto fspButton = new CheckButton(showFPSButtonPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), showFPS, g_, mngr_);
-	mngr_->addEntity(fspButton);
+	auto fpsButton = new CheckButton(showFPSButtonPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), showFPS, g_, mngr_);
+	mngr_->addEntity(fpsButton);
+}
+
+void SettingsScene::createFullscreenToggle() {
+	//Texto
+	auto text = mngr_->addEntity();
+	auto textBarPosition = Vector2D(consts::WINDOW_WIDTH * 0.15f, consts::WINDOW_HEIGHT * 0.5f);
+	text->addComponent<Transform>(textBarPosition, consts::SHOW_FPS_BAR_SIZE_X, consts::SHOW_FPS_BAR_SIZE_Y);
+	text->addComponent<Image>(&sdlutils().images().at("showFPSBar"), build_sdlrect(0, 0, 256, 32), true);
+	mngr_->addRenderLayer<Interface>(text);
+
+	//Boton
+	Vector2D fullscreenPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.5f);
+	auto fullScreenButton = new CheckButton(fullscreenPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), fullScreen, g_, mngr_);
+	mngr_->addEntity(fullScreenButton);
 }
 
 void SettingsScene::setAdjusterPosition() {
@@ -92,7 +108,6 @@ void SettingsScene::setAdjusterPosition() {
 	percent = 100 * currentSFXVolume / soundManager().getMaxSfxVolume();    y = consts::VOLUME_LEVELS * percent / 100;
 	adjusterSFXVolume->setPos(Vector2D(posBarSFX.getX() + ((consts::VOLUME_BARS_SIZE_X / consts::VOLUME_LEVELS) * y) - 8, adjusterSFXVolume->getPos().getY()));
 }
-
 
 //CALLBACKS
 void SettingsScene::back(Manager* mng) {
@@ -143,6 +158,14 @@ void SettingsScene::decreaseEffectsVolume(Manager* mng)
 
 void SettingsScene::showFPS(Manager* mng) {
 	mng->getGame()->setFPSActive(!mng->getGame()->getFPSActive());
+}
+
+void SettingsScene::fullScreen(Manager* mng) {
+	mng->getGame()->fullscreen = !mng->getGame()->fullscreen;
+
+	// TODO resize window proportions
+
+	sdlutils().toggleFullScreen();
 }
 
 CreditsScene::CreditsScene(Game* g) : GameScene(g, std::string("credits")) {
