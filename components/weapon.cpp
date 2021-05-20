@@ -36,6 +36,14 @@ void Weapon::calculatePosition() {
 	adjustToCrouching();
 }
 
+Point2D Weapon::calculateBulletPosition(const Vector2D& direction) {
+	Point2D pos = tr_->getPos() + Vector2D(tr_->getW() - 11, tr_->getH() * 0.45); // point at end of gun without rotation
+	Point2D rotationPin = image_->getOriginInWorld(tr_);
+	Point2D lengthOfGun = pos - rotationPin; // position of end of gun relative to rotation origin
+	pos = rotationPin + direction.normalize() * lengthOfGun.magnitude();
+	return pos;
+}
+
 Vector2D Weapon::calculateShotTrajectory(Vector2D direction) {
 	// If crouching, reduce spread by 20 but no lower than 0, otherwise use regular spread
 	float bulletSpread = playerCtrl_->isCrouching() ? std::max(baseBulletSpread - 20, 0.0f): baseBulletSpread;
@@ -62,7 +70,7 @@ void Weapon::calculateRotation(Vector2D& direction) {
 	// Position of mouse in world coordinates
 	Vector2D mousePos = Camera::mainCamera->PointToWorldSpace(Vector2D(ih().getMousePos().first, ih().getMousePos().second));
 
-	Vector2D yCenteredPos(tr_->getPos().getX(), tr_->getPos().getY() + tr_->getH() * 0.37f); //Punto {0, Altura del ca��n}  
+	Vector2D yCenteredPos(tr_->getPos().getX(), tr_->getPos().getY() + tr_->getH() * 0.5f); //Punto {0, Altura del ca��n}  
 	direction = (mousePos - yCenteredPos).normalize();
 
 	float radianAngle = atan2(direction.getY(), direction.getX());
@@ -104,9 +112,7 @@ void Weapon::shoot(const Vector2D& direction) {
 	Transform* bulletTr = bullet->getComponent<Transform>();
 	RigidBody* rb = bullet->getComponent<RigidBody>();
 
-	float gunLength = tr_->getW() - 8; //Longitud del ca��n del arma para spawnear la bala
-
-	bulletTr->setPos(tr_->getPos() + direction * gunLength);
+	bulletTr->setPos(calculateBulletPosition(direction));
 	bulletTr->setRot(tr_->getRot());
 
 	setBulletsInMagazine(getBulletsInMagazine()-1);
