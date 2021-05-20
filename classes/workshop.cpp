@@ -1,7 +1,7 @@
 #include "workshop.h"
 #include "../classes/shelter_scene.h"
 
-Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_) : GameObject(mngr_) {
+Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_) : Entity(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
 	craftSys = cs;
 	realMngr_->addEntity(this);

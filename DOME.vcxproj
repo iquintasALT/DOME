@@ -24,10 +24,8 @@
     <ClInclude Include="classes\check_button.h" />
     <ClInclude Include="classes\controls_scene.h" />
     <ClInclude Include="classes\countdown.h" />
-    <ClInclude Include="classes\cover.h" />
     <ClInclude Include="classes\crafting_system.h" />
     <ClInclude Include="classes\enemy.h" />
-    <ClInclude Include="classes\game_object.h" />
     <ClInclude Include="classes\game_scene.h" />
     <ClInclude Include="classes\game_state_machine.h" />
     <ClInclude Include="classes\hud.h" />
@@ -64,7 +62,6 @@
     <ClInclude Include="components\box_collider.h" />
     <ClInclude Include="components\classic_bullet.h" />
     <ClInclude Include="components\concussion_component.h" />
-    <ClInclude Include="components\cover_component.h" />
     <ClInclude Include="components\Dialogue.h" />
     <ClInclude Include="components\enemy_animation.h" />
     <ClInclude Include="components\enemy_attack_component.h" />
@@ -134,10 +131,8 @@
     <ClCompile Include="classes\check_button.cpp" />
     <ClCompile Include="classes\controls_scene.cpp" />
     <ClCompile Include="classes\countdown.cpp" />
-    <ClCompile Include="classes\cover.cpp" />
     <ClCompile Include="classes\crafting_system.cpp" />
     <ClCompile Include="classes\enemy.cpp" />
-    <ClCompile Include="classes\game_object.cpp" />
     <ClCompile Include="classes\game_scene.cpp" />
     <ClCompile Include="classes\game_state_machine.cpp" />
     <ClCompile Include="classes\hud.cpp" />
@@ -174,12 +169,10 @@
     <ClCompile Include="components\charge.cpp" />
     <ClCompile Include="components\classic_bullet.cpp" />
     <ClCompile Include="components\concussion_component.cpp" />
-    <ClCompile Include="components\cover_component.cpp" />
     <ClCompile Include="components\Dialogue.cpp" />
     <ClCompile Include="components\enemy_animation.cpp" />
     <ClCompile Include="components\enemy_attack_component.cpp" />
     <ClCompile Include="components\enemy_behaviour_component.cpp" />
-    <ClCompile Include="components\enemy_component.cpp" />
     <ClCompile Include="components\enemy_detection_component.cpp" />
     <ClCompile Include="classes\weapon_behaviour.cpp" />
     <ClCompile Include="components\HoldToSkip.cpp" />

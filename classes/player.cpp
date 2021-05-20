@@ -27,7 +27,7 @@
 #include "../classes/weapon_behaviour.h"
 #include "../classes/physiognomy.h"
 
-Player::Player(Manager* mngr_, Point2D pos) : GameObject(mngr_)
+Player::Player(Manager* mngr_, Point2D pos) : Entity(mngr_)
 {
 	mngr_->addEntity(this);
 	mngr_->setHandler<Player_hdlr>(this);
@@ -49,13 +49,12 @@ Player::Player(Manager* mngr_, Point2D pos) : GameObject(mngr_)
 	weapon->setInv(inv_);
 	//weapon->getWeapon()->reload();
 
-
 	physiognomy = new Physiognomy(this);
 	addComponent<EnemyContactDamage>(physiognomy);
 	setGroup<Player_grp>(true);
 }
 
-Player::Player(const Player* prevPlayer): GameObject(prevPlayer->mngr_)
+Player::Player(const Player* prevPlayer): Entity(prevPlayer->mngr_)
 {
 	//TODO AÑADIR COMPONENTES
 }

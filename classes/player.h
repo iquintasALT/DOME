@@ -1,14 +1,15 @@
 #pragma once
 
-#include "game_object.h"
+#include "../ecs/Entity.h"
 #include "../utils/checkML.h"
+#include "../utils/Vector2D.h"
 
 class Physiognomy;
 class WeaponBehaviour;
 
-class Player : public GameObject
+class Player : public Entity
 {
-protected:
+private:
 	WeaponBehaviour* weapon;
 	Physiognomy* physiognomy;
 
