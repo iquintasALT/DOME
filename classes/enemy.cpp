@@ -1,6 +1,9 @@
 #include "enemy.h"
-#include "../sdlutils/SDLUtils.h"
+
 #include "../ecs/Manager.h"
+
+#include "../sdlutils/SDLUtils.h"
+
 #include "../components/Transform.h"
 #include "../components/enemy_animation.h"
 #include "../components/Image.h"
@@ -11,8 +14,7 @@
 #include "../components/player_collisions.h"
 #include "../components/box_collider.h"
 
-
-Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameCharacter(mngr_)
+Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameObject(mngr_)
 {
 	mngr_->addEntity(this)->setGroup<Enemy_grp>(true);
 	addComponent<Transform>(pos);

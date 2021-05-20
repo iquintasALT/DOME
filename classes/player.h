@@ -1,10 +1,12 @@
 #pragma once
-#include "game_character.h"
+
+#include "game_object.h"
 #include "../utils/checkML.h"
+
 class Physiognomy;
 class WeaponBehaviour;
 
-class Player : public GameCharacter
+class Player : public GameObject
 {
 protected:
 	WeaponBehaviour* weapon;

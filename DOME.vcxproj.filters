@@ -5,12 +5,6 @@
     <ClCompile Include="utils\Collisions.cpp">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
-    <ClCompile Include="classes\game_character.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="classes\game_entity.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="classes\game_object.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -131,9 +125,6 @@
     <ClCompile Include="components\hunger_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\player_health_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="components\tiredness_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -208,9 +199,6 @@
     </ClCompile>
     <ClCompile Include="classes\sleep_station.cpp">
       <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="components\player_damage.cpp">
-      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="classes\cover.cpp">
       <Filter>Source Files\classes</Filter>
@@ -294,12 +282,6 @@
     </ClInclude>
     <ClInclude Include="sdlutils\Font.h">
       <Filter>Header Files\sdlutils</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\game_character.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\game_entity.h">
-      <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\game_object.h">
       <Filter>Header Files\classes</Filter>
@@ -531,9 +513,6 @@
     </ClInclude>
     <ClInclude Include="classes\navigation_station.h">
       <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="components\player_damage.h">
-      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="sdlutils\SoundManager.h">
       <Filter>Header Files\sdlutils</Filter>
