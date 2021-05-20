@@ -6,7 +6,7 @@
 #include "../components/tiredness_component.h"
 #include "../classes/shelter_scene.h"
 
-SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* shelterScene_) : GameEntity(realMngr_) {
+SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* shelterScene_) : GameObject(realMngr_) {
 	realMngr_->addEntity(this);
 	realMngr_->addRenderLayer<Interface>(this);
 
