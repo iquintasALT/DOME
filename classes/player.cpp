@@ -44,7 +44,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	weapon = new WeaponBehaviour(mngr_, t->getPos(), t);
 	auto inv_ = addComponent<InventoryController>();
 	weapon->setInv(inv_);
-	weapon->getWeapon()->reload();
+	//weapon->getWeapon()->reload();
 
 
 	physiognomy = new Physiognomy(this);

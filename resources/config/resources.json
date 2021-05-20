@@ -563,6 +563,11 @@
             "id": "bonecrack",
             "volume": 128,
             "file": "resources/sound/bonecrack.wav"
+        },
+        {
+            "id": "initialExplosion",
+            "volume": 128,
+            "file":"resources/sound/explosion.mp3"
         }
     ],
 

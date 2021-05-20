@@ -3,7 +3,9 @@
 #include "../components/CameraShake.h"
 #include "../components/Dialogue.h"
 #include "../components/TransitionComponent.h"
+#include "../components/InitialCameraZoom.h"
 #include "../components/Timer.h"
+#include "../sdlutils/SoundManager.h"
 #include <iostream>
 void InitialScene::init()
 {
@@ -14,6 +16,18 @@ void InitialScene::init()
 	mngr_->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = false;
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 
+	auto playExplosion = [this]() {soundManager().playSFX("initialExplosion"); };
+
+	//playExplosion();
+
+	auto sfx = mngr_->addEntity();
+	sfx->addComponent<Timer>(2, playExplosion);
+
+	sfx = mngr_->addEntity();
+	sfx->addComponent<Timer>(3.3, playExplosion);
+
+	sfx = mngr_->addEntity();
+	sfx->addComponent<Timer>(4, playExplosion);
 
 	auto startScene = [this]() {
 		auto a = mngr_->addEntity();
@@ -23,12 +37,18 @@ void InitialScene::init()
 		t->addComponent<TransitionComponent>(2);
 		mngr_->addRenderLayer<ULTIMATE>(t);
 
-		a->addComponent<CameraShake>(10, 15, 3, [this]() {
-	
+		a->addComponent<CameraShake>(10, 15, 5, [this]() {
+			auto cameraZoom = mngr_->addEntity();
+			cameraZoom->addComponent<InitialCameraZoom>(1.1, 2);
+
 			auto a = mngr_->addEntity();
 			a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
 			auto d = a->addComponent<Dialogue>();
-			std::vector<std::string> texts = { "QUE HA SIDO ESO???", "Hmmm tendre que darme prisa" };
+			std::vector<std::string> texts = {
+				"It's getting pretty close", 
+				"I need to hurry and pick all the things I need",
+				"FAST"
+			};
 			d->createText(texts, 20);
 			});
 	};
@@ -40,5 +60,4 @@ void InitialScene::init()
 	auto img = black->addComponent<Image>(texture, true);
 	black->addComponent<Timer>(5, startScene);
 	mngr_->addRenderLayer<ULTIMATE>(black);
-
 }

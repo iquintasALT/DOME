@@ -77,7 +77,7 @@ void Dialogue::showBackground() {
 	background = entity_->getMngr()->addEntity();
 	entity_->getMngr()->addRenderLayer<Interface>(background);
 	background->addComponent<Transform>(
-		Vector2D(0, consts::WINDOW_HEIGHT - 200), consts::WINDOW_WIDTH, 200);
+		Vector2D(0, consts::WINDOW_HEIGHT - height), consts::WINDOW_WIDTH, height);
 	background->addComponent<Image>(&sdlutils().images().at("panel"), true);
 }
 
@@ -86,6 +86,6 @@ void Dialogue::showText(std::string txt)
 	Entity* ent = entity_->getMngr()->addEntity();
 	entity_->getMngr()->addRenderLayer<Interface>(ent);
 	ent->addComponent<Transform>(
-		Vector2D(50, consts::WINDOW_HEIGHT - 150), consts::WINDOW_WIDTH - 50, 200);
-	text = ent->addComponent<TextWithBackground>(txt, sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xfffffffff), nullptr, true, textSpeed, false);
+		Vector2D(50, consts::WINDOW_HEIGHT - height + 50), consts::WINDOW_WIDTH - 50, height);
+	text = ent->addComponent<TextWithBackground>(txt, sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0), nullptr, true, textSpeed, false);
 }
