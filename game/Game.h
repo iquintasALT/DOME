@@ -32,7 +32,6 @@ private:
 	Texture* fpsText;
 
 	void drawFPS(int fps);
-
 public:
 	SCENES currentScene;
 	map<SCENES, vector<vector<I>>> SCENES_LOOT;

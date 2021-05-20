@@ -1,7 +1,11 @@
 #include "enemy_detection_component.h"
+
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
+
 #include "Transform.h"
+#include "rigid_body.h"
+
 
 void EnemyDetectionComponent::init() {
 	playerTr = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();

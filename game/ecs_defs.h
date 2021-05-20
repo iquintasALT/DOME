@@ -15,7 +15,6 @@ class Weapon;
 class WeaponAnimation;
 class InventoryController;
 class Inventory;
-class EnemyComponent;
 class EnemyBehaviourComponent;
 class ChasePlayer;
 class KeepDistance;
@@ -23,8 +22,7 @@ class FlyingChasePlayer;
 class EnemyAttackComponent;
 class MeleeAttack;
 class GroundedMeleeAttack;
-class RangedAttack;
-class TileRenderer;
+class TileRenderer; // WE NEED TO ERASE THIS ONE
 class DistanceDetection;
 class RayCastDetection;
 class Interactions;
@@ -34,7 +32,7 @@ class BackToShelter;
 class ParticleSystem;
 class Ricochet;
 class RicochetWeapon;
-class PlayerCollisions;
+class PlayerCollisions; // AND SPECIALLY THIS MF
 class PlayerHealthComponent;
 class HungerComponent;
 class TirednessComponent;
@@ -73,7 +71,6 @@ class Timer;
     WeaponAnimation, \
 	InventoryController, \
 	Inventory, \
-	EnemyComponent, \
 	EnemyBehaviourComponent, \
 	ChasePlayer, \
 	KeepDistance, \
@@ -123,24 +120,18 @@ struct Ladders_grp;
 struct Player_grp;
 struct DefaultEnemy_grp;
 struct FlyingEnemy_grp;
-struct RangedEnemy_grp;
 #define _GRPS_LIST_  \
 	Wall_grp, \
 	Enemy_grp, \
 	Ladders_grp, \
 	Player_grp, \
 	DefaultEnemy_grp, \
-	FlyingEnemy_grp, \
-	RangedEnemy_grp
+	FlyingEnemy_grp
 
 
 // handlers
 struct Player_hdlr;
 #define _HDLRS_LIST_ Player_hdlr
-
-// collision layers
-//struct CollLayer1;
-//#define _COLLISIONS_LIST_ CollLayer1
 
 // render layers
 struct Default;
@@ -160,10 +151,10 @@ struct ULTIMATE;
 	Background, \
 	Default, \
 	Walls, \
+	Loot, \
 	Player, \
 	Enemy, \
 	Bullets, \
-	Loot, \
 	Dark,\
 	Interface, \
 	Item, \

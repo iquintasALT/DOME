@@ -8,6 +8,7 @@
 #include "../utils/ray_cast.h"
 #include "../sdlutils/SDLUtils.h"
 
+
 Vector2D EnemyAttackComponent::getTarget()
 {
 	return playerTr_->getPos() - tr_->getPos();
@@ -67,28 +68,6 @@ bool GroundedMeleeAttack::attack()
 		rb_->setVel(rb_->getVel() + jump);
 
 		soundManager().playSFX("monster1attack");
-		return true;
-	}
-	else return false;
-}
-
-//--------------------------------------------------------------------------------------------------------------
-
-bool RangedAttack::attack()
-{
-	RayCast rC = RayCast(tr_->getPos(), playerTr_);
-	if (rC.getDistance() < range_)
-	{
-		Entity* bullet = entity_->getMngr()->addEntity();
-		Transform* bulletTr = bullet->addComponent<Transform>(Vector2D(tr_->getPos()), 4, 6, 0);
-		RigidBody* rb = bullet->addComponent<RigidBody>((playerTr_->getPos() - tr_->getPos()) * 10.0, false);
-
-
-		entity_->getMngr()->addRenderLayer<Bullets>(bullet);
-		entity_->setGroup<Enemy_grp>(true);
-		bullet->addComponent<Image>(&sdlutils().images().at("projectile"));
-		bullet->addComponent<ClassicBullet>();
-
 		return true;
 	}
 	else return false;

@@ -71,6 +71,8 @@ private:
 	Entity* image;
 	Transform* transform;
 	Transform* numberTr;
+
+	Texture* tex;
 };
 
 
