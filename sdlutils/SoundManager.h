@@ -115,7 +115,7 @@ private:
 	Music* currentMusic = nullptr;
 
 	float musicVolume = 40, sfxVolume = 40, maxVolume = 80, maxSfxVolume = 80;
-	string newSong = "";
+	std::string newSong = "";
 };
 
 // SoundManager::instance()->method() --> soundManager().method()
