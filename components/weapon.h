@@ -45,6 +45,7 @@ protected:
 
 	Vector2D calculateShotTrajectory(Vector2D direction); // Returns direction of the shot after accounting for random spread
 	void calculatePosition();
+	Point2D calculateBulletPosition(const Vector2D& direction);
 	void calculateRotation(Vector2D& direction);
 	virtual Entity* createBullet(const Vector2D& direction);
 	virtual void shoot(const Vector2D& direction);
