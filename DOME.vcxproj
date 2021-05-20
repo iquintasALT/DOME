@@ -26,6 +26,7 @@
     <ClInclude Include="classes\countdown.h" />
     <ClInclude Include="classes\crafting_system.h" />
     <ClInclude Include="classes\enemy.h" />
+    <ClInclude Include="classes\game_object.h" />
     <ClInclude Include="classes\game_scene.h" />
     <ClInclude Include="classes\game_state_machine.h" />
     <ClInclude Include="classes\hud.h" />

@@ -1,5 +1,6 @@
 #pragma once
-#include "game_object.h"
+#include "../ecs/Entity.h"
+#include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
 
 class Enemy : public Entity
