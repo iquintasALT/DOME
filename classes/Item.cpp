@@ -135,6 +135,7 @@ Item::Item(Item* item, Inventory* inventory) {
 	count = item->count;
 	numberTr = nullptr;
 	tex = nullptr;
+
 	if (inventory != nullptr) {
 		Manager* mngr = inventory->entity_->getMngr();
 		image = mngr->addEntity();
