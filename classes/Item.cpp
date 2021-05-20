@@ -150,7 +150,8 @@ Item::Item(Item* item, Inventory* inventory) {
 			float h = Inventory::itemHeight * (height - 0.3);
 			numberTr = n->addComponent<Transform>(inventory->itemPosition(x + w, y + h),
 				w, h, 0);
-			n->addComponent<Image>(new Texture(sdlutils().renderer(), std::to_string(count), sdlutils().fonts().at("OrbitronBold32"), build_sdlcolor(0xffffff)), true);
+			tex = new Texture(sdlutils().renderer(), std::to_string(count), sdlutils().fonts().at("OrbitronBold32"), build_sdlcolor(0xffffff));
+			n->addComponent<Image>(tex, true);
 			n->setActive(false);
 		}
 		else numberTr = nullptr;
@@ -167,7 +168,10 @@ Item::~Item() {
 	if (image != nullptr)
 		image->setDead(true);
 	if (numberTr != nullptr)
-		image->setDead(true);
+		numberTr->getEntity()->setDead(true);
+
+	if (tex != nullptr)
+		delete tex;
 }
 
 void Item::render() {
