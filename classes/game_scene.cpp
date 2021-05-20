@@ -6,7 +6,6 @@
 #include "../components/Image.h"
 
 #include "../components/TransitionComponent.h"
-#include "../game/Game.h"
 #include "../components/parallax_component.h"
 
 #include <SDL.h>
@@ -15,14 +14,12 @@
 #include <cassert>
 #include <iostream>
 
+#include "../sdlutils/Texture.h"
 #include "../sdlutils/Font.h"
 #include "../sdlutils/SDLUtils.h"
 
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
-
-	sdlutils().renderer();
-	SDL_Texture* a =
 
 	mapInfo.tile_map = new tmx::Map();
 	mapInfo.tile_map->load(path);
@@ -36,6 +33,20 @@ void GameScene::loadMap(string& const path) {
 	auto tilesize = mapInfo.tile_map->getTileSize();
 	mapInfo.tile_width = tilesize.x;
 	mapInfo.tile_height = tilesize.y;
+
+	//convertir a textura
+	auto rend = sdlutils().renderer();
+	int bgWidth = mapInfo.tile_width * mapInfo.cols;
+	int bgHeight = mapInfo.tile_height * mapInfo.rows;
+	SDL_Texture* background = SDL_CreateTexture(rend,
+		SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET,
+		bgWidth,
+		bgHeight
+		);
+
+	SDL_SetTextureBlendMode(background, SDL_BLENDMODE_BLEND);
+	SDL_SetRenderTarget(rend, background);
+
 
 	// establecemos los bordes de la camara con respecto al numero de tiles en el mapa
 	Camera::mainCamera->setBounds(0, 0, mapInfo.cols * mapInfo.tile_width, mapInfo.rows * mapInfo.tile_height);
@@ -125,8 +136,23 @@ void GameScene::loadMap(string& const path) {
 					vector<tmx::Property> tl_props = tile_layer->getProperties();
 
 					// metemos el tile
-					Tile(mngr_, mapInfo.tilesets[tset_gid], tl_props[0].getStringValue(), x_pos, y_pos,
-						region_x, region_y, mapInfo.tile_width, mapInfo.tile_height);
+					auto tileTex = mapInfo.tilesets[tset_gid];
+
+					SDL_Rect src;
+					src.x = region_x; src.y = region_y;
+					src.w = mapInfo.tile_width; 
+					src.h = mapInfo.tile_height;
+
+					SDL_Rect dest;
+					dest.x = x_pos;
+					dest.y = y_pos;
+					dest.w = src.w;
+					dest.h = src.h;
+
+					mapInfo.tilesets[tset_gid]->render(src, dest);
+
+					//Tile(mngr_, mapInfo.tilesets[tset_gid], tl_props[0].getStringValue(), x_pos, y_pos,
+					//	region_x, region_y, mapInfo.tile_width, mapInfo.tile_height);
 				}
 			}
 		}
@@ -226,6 +252,14 @@ void GameScene::loadMap(string& const path) {
 			}
 		}
 	}
+
+	SDL_SetRenderTarget(rend, nullptr);
+
+	Texture* finalTexture = new Texture(rend, background, bgWidth, bgHeight);
+	auto backgroundEntity = mngr_->addEntity();
+	mngr_->addRenderLayer<Background>(backgroundEntity);
+	backgroundEntity->addComponent<Transform>(Vector2D(), bgWidth, bgHeight);
+	backgroundEntity->addComponent<Image>(finalTexture);
 }
 
 void GameScene::changeState(GameScene* gs)
