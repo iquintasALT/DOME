@@ -8,6 +8,8 @@ class Manager;
 class Game;
 
 using CallBackOnClick = void(Manager* g);
+
+// habria que cambiarlo a entity
 class MenuButton : public GameObject {
 protected:
 	CallBackOnClick* cbOnClick;

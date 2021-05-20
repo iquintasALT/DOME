@@ -1,8 +1,9 @@
 #include "player.h"
-#include "../classes/weapon_behaviour.h"
+
 #include "../sdlutils/SDLUtils.h"
-#include "../game/ecs_defs.h"
+
 #include "../ecs/Manager.h"
+
 #include "../components/Transform.h"
 #include "../components/player_animation.h"
 #include "../components/Image.h"
@@ -12,7 +13,6 @@
 #include "../components/interactions.h"
 #include "../components/player_collisions.h"
 #include "../components/particleSystem.h"
-#include "../classes/physiognomy.h"
 #include "../components/bleedout_component.h"
 #include "../components/pain_component.h"
 #include "../components/concussion_component.h"
@@ -24,7 +24,10 @@
 #include "../components/CameraMovement.h"
 #include "../components/enemy_contact_damege.h"
 
-Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
+#include "../classes/weapon_behaviour.h"
+#include "../classes/physiognomy.h"
+
+Player::Player(Manager* mngr_, Point2D pos) : GameObject(mngr_)
 {
 	mngr_->addEntity(this);
 	mngr_->setHandler<Player_hdlr>(this);
@@ -52,7 +55,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	setGroup<Player_grp>(true);
 }
 
-Player::Player(const Player* prevPlayer): GameCharacter(prevPlayer->mngr_)
+Player::Player(const Player* prevPlayer): GameObject(prevPlayer->mngr_)
 {
 	//TODO AÑADIR COMPONENTES
 }
