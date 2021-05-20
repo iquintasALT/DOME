@@ -167,7 +167,7 @@ Item::~Item() {
 	if (image != nullptr)
 		image->setDead(true);
 	if (numberTr != nullptr)
-		image->setDead(true);
+		numberTr->getEntity()->setDead(true);
 }
 
 void Item::render() {
