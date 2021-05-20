@@ -142,11 +142,17 @@ void GameScene::loadMap(string& const path) {
 				}
 				else if (obj.getName() == "playerSpawn") {
 					if (g_->playerCreated) {
-						mngr_->getHandler<Player_hdlr>()->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
+						auto ent = static_cast<Entity*>(g_->playerSaved);
+
+						mngr_->addEntity(ent);
+						mngr_->setHandler<Player_hdlr>(ent);
+						mngr_->addRenderLayer<Player>(ent);
+
+						ent->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
 					}
 					else {
-						new Player(mngr_, Point2D(aabb.left, aabb.top));
-						g_->playerCreated = true;
+						g_->playerSaved = new Player(mngr_, Point2D(aabb.left, aabb.top));
+						g_->playerCreated = false; //CHANGE IT WHEN IT WORKS
 					}
 					auto camPos = Vector2D(aabb.left, aabb.top) + Vector2D(0, consts::CAMERA_MARGIN_FROM_PLAYER / Camera::mainCamera->getScale());
 					Camera::mainCamera->MoveToPoint(camPos);
@@ -209,16 +215,6 @@ void GameScene::loadMap(string& const path) {
 			}
 		}
 	}
-}
-
-void GameScene::clonePlayer(Player* player)
-{
-	// TODO Añadir los componentes necesarios
-	auto ent = new Player(player);
-
-	mngr_->addEntity(ent);
-	mngr_->setHandler<Player_hdlr>(ent);
-	mngr_->addRenderLayer<Player>(ent);
 }
 
 void GameScene::changeState(GameScene* gs)
