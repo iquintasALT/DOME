@@ -9,9 +9,20 @@
 #include "../game/Game.h"
 #include "../components/parallax_component.h"
 
+#include <SDL.h>
+#include <SDL_image.h>
+#include <string>
+#include <cassert>
+#include <iostream>
+
+#include "../sdlutils/Font.h"
+#include "../sdlutils/SDLUtils.h"
 
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
+
+	sdlutils().renderer();
+	SDL_Texture* a =
 
 	mapInfo.tile_map = new tmx::Map();
 	mapInfo.tile_map->load(path);
