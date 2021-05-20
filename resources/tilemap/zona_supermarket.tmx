@@ -17,12 +17,6 @@
    <point/>
   </object>
   <object id="118" name="returnShelter" x="1152" y="824" width="24" height="72"/>
-  <object id="119" name="enemy" x="2160" y="824">
-   <properties>
-    <property name="type" type="int" value="0"/>
-   </properties>
-   <point/>
-  </object>
   <object id="120" name="enemy" x="3088" y="832">
    <properties>
     <property name="type" type="int" value="0"/>

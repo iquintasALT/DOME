@@ -205,7 +205,7 @@
    </properties>
    <point/>
   </object>
-  <object id="64" name="enemy" x="2696" y="640">
+  <object id="64" name="enemy" x="3032" y="624">
    <properties>
     <property name="type" type="int" value="0"/>
    </properties>
