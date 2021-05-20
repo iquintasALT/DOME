@@ -39,7 +39,7 @@ void InitialScene::init()
 
 		a->addComponent<CameraShake>(10, 15, 5, [this]() {
 			auto cameraZoom = mngr_->addEntity();
-			cameraZoom->addComponent<InitialCameraZoom>(1.1, 2);
+			cameraZoom->addComponent<InitialCameraZoom>(3, 2);
 
 			auto a = mngr_->addEntity();
 			a->addComponent<Transform>(Vector2D(0, 200), 300, 400);

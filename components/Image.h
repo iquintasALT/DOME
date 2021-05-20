@@ -56,10 +56,13 @@ public:
 		if (alpha_ < 255)
 			tex_->setAlpha(alpha_);
 
+		SDL_Point rot = rotationOrigin;
+		rot.x*= scale;
+		rot.y*= scale;
 		if (rotationOrigin.x == -1 && rotationOrigin.y == -1)
 			tex_->render(src_, dest, tr_->getRot(), nullptr, flip_);
 		else
-			tex_->render(src_, dest, tr_->getRot(), &rotationOrigin, flip_);
+			tex_->render(src_, dest, tr_->getRot(), &rot, flip_);
 
 		// en caso de que esta imagen tenga algun tipo de alpha menor a 255
 		if (alpha_ < 255)
