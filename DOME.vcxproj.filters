@@ -559,6 +559,9 @@
     <ClInclude Include="components\Dialogue.h" />
     <ClInclude Include="components\CameraShake.h" />
     <ClInclude Include="components\Timer.h" />
+    <ClInclude Include="classes\game_object.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
