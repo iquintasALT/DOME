@@ -8,7 +8,6 @@
 #include "../components/InventoryController.h"
 #include "../components/particleSystem.h"
 #include "../classes/weapon_behaviour.h"
-#include "../classes/tile.h"
 #include "../classes/player.h"
 #include "../classes/enemy.h"
 #include "../components/loot.h"
