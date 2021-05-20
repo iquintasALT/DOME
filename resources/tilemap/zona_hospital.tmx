@@ -205,13 +205,13 @@
   <object id="101" name="playerSpawn" x="1264" y="912">
    <point/>
   </object>
-  <object id="109" name="enemy" x="1504" y="688">
+  <object id="109" name="enemy" x="1880" y="744">
    <properties>
     <property name="type" type="int" value="1"/>
    </properties>
    <point/>
   </object>
-  <object id="111" name="enemy" x="2672" y="696">
+  <object id="111" name="enemy" x="2952" y="728">
    <properties>
     <property name="type" type="int" value="0"/>
    </properties>
