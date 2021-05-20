@@ -1,4 +1,6 @@
 #include "parallax_component.h"
+
+#include "../ecs/Entity.h"
 #include "../components/Transform.h"
 #include "../classes/camera.h"
 

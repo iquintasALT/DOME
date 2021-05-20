@@ -79,8 +79,8 @@ public:
 	}
 
 	void changeSongWithFade(std::string key, int ticks) {
-		// this works, but weneed a way to get the damn end of the fade out so rn it does not work properly but w.e.
-		 currentMusic->fadeOut(ticks);
+		currentMusic->fadeOut(ticks);
+		newSong = key;
 
 		playMusic(key);
 	}
@@ -115,6 +115,7 @@ private:
 	Music* currentMusic = nullptr;
 
 	float musicVolume = 40, sfxVolume = 40, maxVolume = 80, maxSfxVolume = 80;
+	std::string newSong = "";
 };
 
 // SoundManager::instance()->method() --> soundManager().method()

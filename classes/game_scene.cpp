@@ -132,9 +132,6 @@ void GameScene::loadMap(string& const path) {
 					//		is_wall = tile_props[0].getBoolValue();
 					//}
 
-					//propiedades de la capa de tiles
-					vector<tmx::Property> tl_props = tile_layer->getProperties();
-
 					// metemos el tile
 					auto tileTex = mapInfo.tilesets[tset_gid];
 
@@ -150,9 +147,6 @@ void GameScene::loadMap(string& const path) {
 					dest.h = src.h;
 
 					mapInfo.tilesets[tset_gid]->render(src, dest);
-
-					//Tile(mngr_, mapInfo.tilesets[tset_gid], tl_props[0].getStringValue(), x_pos, y_pos,
-					//	region_x, region_y, mapInfo.tile_width, mapInfo.tile_height);
 				}
 			}
 		}
