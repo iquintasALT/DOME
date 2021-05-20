@@ -4,13 +4,12 @@
 #include "../ecs/Manager.h"
 #include "../game/constant_variables.h"
 #include "CameraMovement.h"
-InitialCameraZoom::InitialCameraZoom(float zoom, float time):
-	 totalTime(time)
+InitialCameraZoom::InitialCameraZoom(float zoom, float time, std::function<void()> f):
+	 totalTime(time), function(f)
 {
 	t = 0;
-	initialZoom = Camera::mainCamera->getScale() / zoom;
+	initialZoom = Camera::mainCamera->getScale();
 	targetZoom = initialZoom * zoom;
-
 }
 
 void InitialCameraZoom::init() {
@@ -25,7 +24,7 @@ void InitialCameraZoom::update()
 	if (t > totalTime) {
 		Camera::mainCamera->setScale(targetZoom);
 
-		entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = true;
+		function();
 
 		entity_->setDead(true);
 		return;

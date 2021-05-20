@@ -11,7 +11,7 @@
 #include "../classes/countdown.h"
 #include "../components/parallax_component.h"
 #include "../components/InitialCameraZoom.h"
-
+#include "../components/CameraMovement.h"
 void RaidScene::init() {
 	loadMap(path_);
 
@@ -30,7 +30,9 @@ void RaidScene::init() {
 	createParallaxBackground(5);
 
 	auto cameraZoom = mngr_->addEntity();
-	cameraZoom->addComponent<InitialCameraZoom>(1.2, 2);
+	cameraZoom->addComponent<InitialCameraZoom>(1.2, 2, [this]() {
+		mngr_->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = true;
+		});
 
 	createTransition();
 }
