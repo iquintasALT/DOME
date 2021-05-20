@@ -8,7 +8,7 @@ private:
 	bool over, checked, clicked;
 	Image* img;
 public:
-	CheckButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_);
+	CheckButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, bool startCondition);
 	void update() override;
 	void render() override;
 };
