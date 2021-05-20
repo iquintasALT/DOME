@@ -143,7 +143,6 @@ void GameScene::loadMap(string& const path) {
 				else if (obj.getName() == "playerSpawn") {
 					if (g_->playerCreated) {
 						mngr_->getHandler<Player_hdlr>()->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
-
 					}
 					else {
 						new Player(mngr_, Point2D(aabb.left, aabb.top));

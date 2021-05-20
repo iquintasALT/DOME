@@ -52,7 +52,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	setGroup<Player_grp>(true);
 }
 
-Player::Player(const Player* prevPlayer): GameCharacter(NULL)
+Player::Player(const Player* prevPlayer): GameCharacter(prevPlayer->mngr_)
 {
 	//TODO AÑADIR COMPONENTES
 }
