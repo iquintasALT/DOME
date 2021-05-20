@@ -57,8 +57,8 @@ public:
 			tex_->setAlpha(alpha_);
 
 		SDL_Point rot = rotationOrigin;
-		rot.x*= scale;
-		rot.y*= scale;
+		rot.x = round(rot.x * scale);
+		rot.y = round(rot.y * scale);
 		if (rotationOrigin.x == -1 && rotationOrigin.y == -1)
 			tex_->render(src_, dest, tr_->getRot(), nullptr, flip_);
 		else

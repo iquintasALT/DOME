@@ -7,12 +7,16 @@
 #include "../components/Timer.h"
 #include "../sdlutils/SoundManager.h"
 #include <iostream>
+
+
 void InitialScene::init()
 {
 	std::string path = std::string("./resources/tilemap/initialScene.tmx");
 	loadMap(path);
 
-	Camera::mainCamera->MoveToPoint(mngr_->getHandler<Player_hdlr>()->getComponent<Transform>()->getPos());
+	auto playerTr = mngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
+	Vector2D pos = playerTr->getPos() + Vector2D(playerTr->getW(), playerTr->getH()) / 2;
+	Camera::mainCamera->MoveToPoint(pos);
 	mngr_->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = false;
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 
@@ -50,6 +54,10 @@ void InitialScene::init()
 				"FAST"
 			};
 			d->createText(texts, 20);
+			d->function = [this]() {
+				auto cameraZoom = mngr_->addEntity();
+				cameraZoom->addComponent<InitialCameraZoom>(1.0 / 2.7, 2);
+			};
 			});
 	};
 
