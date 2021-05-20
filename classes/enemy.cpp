@@ -14,7 +14,7 @@
 #include "../components/player_collisions.h"
 #include "../components/box_collider.h"
 
-Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : GameObject(mngr_)
+Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : Entity(mngr_)
 {
 	mngr_->addEntity(this)->setGroup<Enemy_grp>(true);
 	addComponent<Transform>(pos);
@@ -64,14 +64,4 @@ FlyingEnemy::FlyingEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos, false)
 	addComponent<FlyingEnemyAnimation>();
 	addComponent<FlyingChasePlayer>(consts::MELEE_ENEMY_SPEED / 2, consts::MELEE_ENEMY_STOPDISTANCE, consts::FLYING_ENEMY_HOVERHEIGHT, consts::FLYING_ENEMY_APPROACHDISTANCE);
 	setGroup<FlyingEnemy_grp>(true);
-}
-
-RangedEnemy::RangedEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos) {
-	this->getComponent<Transform>()->setSize(32, 64);
-	mngr_->addRenderLayer<Enemy>(this);
-	addComponent<Image>(&sdlutils().images().at("player"), 3, 14, 0, 0);
-	addComponent<DistanceDetection>(consts::ACTIVATE_ENEMY_DISTANCE);
-	addComponent2<EnemyAttackComponent, RangedAttack>();
-	addComponent<KeepDistance>(consts::RANGED_ENEMY_SPEED, consts::RANGED_ENEMY_MARGINDISTANCE, consts::RANGED_ENEMY_SHOOTDISTANCE);
-	setGroup<RangedEnemy_grp>(true);
 }

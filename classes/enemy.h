@@ -1,8 +1,9 @@
 #pragma once
-#include "game_object.h"
+#include "../ecs/Entity.h"
+#include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
 
-class Enemy : public GameObject
+class Enemy : public Entity
 {
 public:
 	Enemy(Manager* mngr_, Point2D pos, bool hasGravity);
@@ -20,10 +21,4 @@ class FlyingEnemy : public Enemy
 {
 public:
 	FlyingEnemy(Manager* mngr_, Point2D pos);
-};
-
-class RangedEnemy : public Enemy
-{
-public:
-	RangedEnemy(Manager* mngr_, Point2D pos);
 };
