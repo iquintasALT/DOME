@@ -172,19 +172,19 @@
   </object>
   <object id="5" name="returnShelter" x="672" y="768" width="32" height="64"/>
   <object id="6" name="returnShelter" x="5376" y="768" width="32" height="64"/>
-  <object id="27" name="enemy" x="1616" y="456">
+  <object id="27" name="enemy" x="2016" y="472">
    <properties>
     <property name="type" type="int" value="1"/>
    </properties>
    <point/>
   </object>
-  <object id="28" name="enemy" x="1872" y="760">
+  <object id="28" name="enemy" x="2120" y="760">
    <properties>
     <property name="type" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="29" name="enemy" x="2456" y="520">
+  <object id="29" name="enemy" x="2576" y="472">
    <properties>
     <property name="type" type="int" value="0"/>
    </properties>
