@@ -1,14 +1,15 @@
 #include "classic_bullet.h"
+
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
+
+#include "../utils/ray_cast.h"
+
 #include "../components/Transform.h"
 #include "../components/particleSystem.h"
-#include "../utils/ray_cast.h"
 #include "../components/box_collider.h"
 
-
-#include "../components/enemy_component.h"
-
+#include "../classes/enemy.h"
 
 ClassicBullet::ClassicBullet() : tr_(nullptr), rb_(nullptr) { }
 
