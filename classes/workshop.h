@@ -1,5 +1,5 @@
 #pragma once
-#include "../classes/game_entity.h"
+#include "../classes/game_object.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Image.h"
@@ -17,7 +17,7 @@ struct Slot {
 	Entity* slot;
 };
 class ShelterScene;
-class Workshop : public GameEntity
+class Workshop : public GameObject
 {
 protected:
 	Entity* bg;
@@ -61,7 +61,7 @@ protected:
 	ShelterScene* shelterScene;
 
 public:
-	Workshop(Manager* mngr_) : GameEntity(mngr_) { };
+	Workshop(Manager* mngr_) : GameObject(mngr_) { };
 	Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_);
 
 	void renderWeaponUpgrade();

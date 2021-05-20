@@ -1,5 +1,5 @@
 #pragma once
-#include "../classes/game_entity.h"
+#include "game_object.h"
 #include "../game/ecs_defs.h"
 #include "../components/weapon.h"
 #include "../utils/checkML.h"
@@ -8,7 +8,7 @@
 #include <math.h>
 
 class WeaponAnimation;
-class WeaponBehaviour : public GameEntity {
+class WeaponBehaviour : public GameObject {
 private:
 	Weapon* weapon;
 	Transform* pl;
