@@ -162,7 +162,7 @@ void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
 	// Si no hay estados que dibujar, no deberiamos estar en este metodo
 	assert(states->size() > 0);
 
-	Vector2D aux = Vector2D(consts::STATUS_EFFECTS_SIZEX/2 + pos * consts::STATUS_EFFECTS_SIZEX, 20);
+	Vector2D aux = Vector2D(consts::STATUS_EFFECTS_SIZEX/2 + pos * consts::STATUS_EFFECTS_SIZEX, 30);
 	SDL_Rect dest = build_sdlrect(aux, consts::STATUS_EFFECTS_SIZEX, consts::STATUS_EFFECTS_SIZEY);
 	SDL_Rect src = build_sdlrect((frameIndex % 4) * 32, (frameIndex / 4) * 32, 32, 32);
 	states->front()->getTexture()->render(src, dest);
