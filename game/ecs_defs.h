@@ -160,10 +160,10 @@ struct ULTIMATE;
 	Background, \
 	Default, \
 	Walls, \
+	Loot, \
 	Player, \
 	Enemy, \
 	Bullets, \
-	Loot, \
 	Dark,\
 	Interface, \
 	Item, \
