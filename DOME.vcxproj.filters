@@ -5,12 +5,6 @@
     <ClCompile Include="utils\Collisions.cpp">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
-    <ClCompile Include="classes\game_character.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="classes\game_entity.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="classes\game_object.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -288,9 +282,6 @@
     </ClInclude>
     <ClInclude Include="sdlutils\Font.h">
       <Filter>Header Files\sdlutils</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\game_entity.h">
-      <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\game_object.h">
       <Filter>Header Files\classes</Filter>
@@ -589,9 +580,6 @@
     <ClInclude Include="components\Dialogue.h" />
     <ClInclude Include="components\CameraShake.h" />
     <ClInclude Include="components\Timer.h" />
-    <ClInclude Include="classes\game_character.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
