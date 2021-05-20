@@ -20,7 +20,7 @@ void SettingsScene::init() {
 	mngr_->addRenderLayer<Interface>(pixel);
 
 	//BOTON DE VOLVER ATRÁS
-	auto backButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH * 0.05f, consts::WINDOW_HEIGHT * 0.9f), Vector2D(256, 64), &sdlutils().images().at("backButton"), back, g_, mngr_);
+	auto backButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH * 0.03f, consts::WINDOW_HEIGHT * 0.87f), Vector2D(256, 64), &sdlutils().images().at("backButton"), back, g_, mngr_);
 	mngr_->addEntity(backButton);
 
 	posBarVolume = Vector2D(consts::WINDOW_WIDTH * 0.55f, consts::WINDOW_HEIGHT * 0.2f);
@@ -80,21 +80,21 @@ void SettingsScene::createShowFPSBar() {
 
 	//Boton
 	Vector2D showFPSButtonPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.40f);
-	auto fpsButton = new CheckButton(showFPSButtonPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), showFPS, g_, mngr_);
+	auto fpsButton = new CheckButton(showFPSButtonPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), showFPS, g_, mngr_, g_->getFPSActive());
 	mngr_->addEntity(fpsButton);
 }
 
 void SettingsScene::createFullscreenToggle() {
 	//Texto
 	auto text = mngr_->addEntity();
-	auto textBarPosition = Vector2D(consts::WINDOW_WIDTH * 0.15f, consts::WINDOW_HEIGHT * 0.5f);
+	auto textBarPosition = Vector2D(consts::WINDOW_WIDTH * 0.15f, consts::WINDOW_HEIGHT * 0.485f);
 	text->addComponent<Transform>(textBarPosition, consts::SHOW_FPS_BAR_SIZE_X, consts::SHOW_FPS_BAR_SIZE_Y);
-	text->addComponent<Image>(&sdlutils().images().at("showFPSBar"), build_sdlrect(0, 0, 256, 32), true);
+	text->addComponent<Image>(&sdlutils().images().at("fullscreenText"), build_sdlrect(0, 0, 256, 32), true);
 	mngr_->addRenderLayer<Interface>(text);
 
 	//Boton
-	Vector2D fullscreenPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.5f);
-	auto fullScreenButton = new CheckButton(fullscreenPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), fullScreen, g_, mngr_);
+	Vector2D fullscreenPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.485f);
+	auto fullScreenButton = new CheckButton(fullscreenPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), fullScreen, g_, mngr_, g_->fullscreen);
 	mngr_->addEntity(fullScreenButton);
 }
 

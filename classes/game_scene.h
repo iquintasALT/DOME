@@ -8,7 +8,6 @@
 #include "../components/InventoryController.h"
 #include "../components/particleSystem.h"
 #include "../classes/weapon_behaviour.h"
-#include "../classes/tile.h"
 #include "../classes/player.h"
 #include "../classes/enemy.h"
 #include "../components/loot.h"
@@ -60,7 +59,7 @@ protected:
 	Manager* mngr_;
 	MapInfo mapInfo;
 	Game* g_;
-
+	Texture* background;
 	void createTransition(float timeToFade = 2, bool fadeIn = true, std::function<void()> f = []() {});
 
 	void createParallaxLayer(float scrollFactor, Texture* t, int numOfRep);
@@ -69,12 +68,10 @@ protected:
 	// funcion de cargado de mapa usable por todas las escenas de juego
 	void loadMap(string& const path);
 
-	void clonePlayer(Player* player);
-
 public:
 	//constructora que crea el manager de gObjects de la clase
-	inline GameScene(Game* game, string sceneName) { mngr_ = new Manager(game); g_ = game; name = sceneName;}
-	inline virtual ~GameScene() { delete mngr_; }
+	inline GameScene(Game* game, string sceneName) { background = nullptr; mngr_ = new Manager(game); g_ = game; name = sceneName; }
+	inline virtual ~GameScene() { delete mngr_; if (background != nullptr) delete background; }
 	//creacion de objetos, que sera diferente en cada escena
 	inline virtual void init() = 0;
 	//metodos para llamar al manager de la escena

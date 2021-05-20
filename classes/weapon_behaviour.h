@@ -1,14 +1,14 @@
 #pragma once
-#include "../classes/game_entity.h"
-#include "../game/ecs_defs.h"
-#include "../components/weapon.h"
 #include "../utils/checkML.h"
+#include "../ecs/Entity.h"
+#include "../utils/Vector2D.h"
+#include "../components/weapon.h"
 #include "../classes/ricochet_weapon.h"
 #include "../classes/charge_weapon.h"
 #include <math.h>
 
 class WeaponAnimation;
-class WeaponBehaviour : public GameEntity {
+class WeaponBehaviour : public Entity {
 private:
 	Weapon* weapon;
 	Transform* pl;

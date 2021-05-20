@@ -186,19 +186,7 @@
    </properties>
    <point/>
   </object>
-  <object id="110" name="enemy" x="2096" y="336">
-   <properties>
-    <property name="type" type="int" value="1"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="111" name="enemy" x="1096" y="232">
-   <properties>
-    <property name="type" type="int" value="0"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="112" name="enemy" x="2456" y="144">
+  <object id="111" name="enemy" x="2552" y="152">
    <properties>
     <property name="type" type="int" value="0"/>
    </properties>
@@ -210,7 +198,7 @@
    </properties>
    <point/>
   </object>
-  <object id="114" name="enemy" x="3656" y="160">
+  <object id="114" name="enemy" x="3648" y="176">
    <properties>
     <property name="type" type="int" value="1"/>
    </properties>
