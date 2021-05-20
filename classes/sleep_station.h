@@ -1,5 +1,5 @@
 #pragma once
-#include "../classes/game_entity.h"
+#include "../classes/game_object.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Image.h"
@@ -12,7 +12,7 @@
 #include "../components/Inventory.h"
 #include <vector>
 class ShelterScene;
-class SleepStation : public GameEntity
+class SleepStation : public GameObject
 {
 private:
 	Entity* bg, * bButton, * leftButton, * rightButton, * clock, * arrow, * sleep0, * sleep1, * sleep2;

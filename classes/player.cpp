@@ -27,7 +27,7 @@
 #include "../classes/weapon_behaviour.h"
 #include "../classes/physiognomy.h"
 
-Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
+Player::Player(Manager* mngr_, Point2D pos) : GameObject(mngr_)
 {
 	mngr_->addEntity(this);
 	mngr_->setHandler<Player_hdlr>(this);
@@ -55,7 +55,7 @@ Player::Player(Manager* mngr_, Point2D pos) : GameCharacter(mngr_)
 	setGroup<Player_grp>(true);
 }
 
-Player::Player(const Player* prevPlayer): GameCharacter(prevPlayer->mngr_)
+Player::Player(const Player* prevPlayer): GameObject(prevPlayer->mngr_)
 {
 	//TODO AÑADIR COMPONENTES
 }
