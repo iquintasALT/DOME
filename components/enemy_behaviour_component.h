@@ -1,20 +1,21 @@
 #ifndef ENEMYBEHAVIOUR_H_
 #define ENEMYBEHAVIOUR_H_
 
-#include "enemy_component.h"
 #include "../ecs/Entity.h"
+#include "../ecs/Component.h"
 #include "../ecs/Manager.h"
 #include "../utils/ray_cast.h"
 #include "../utils/checkML.h"
-#include "../components/enemy_detection_component.h"
 #include "../game/constant_variables.h"
+#include "../components/enemy_detection_component.h"
+#include "../components/rigid_body.h"
 
 
 class Transform;
 class RigidBody;
 class EnemyAttackComponent;
 
-class EnemyBehaviourComponent : public EnemyComponent
+class EnemyBehaviourComponent : public Component
 {
 protected:
     Transform* playerTr_;

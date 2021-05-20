@@ -1,10 +1,12 @@
 #pragma once
-#include "enemy_component.h"
+#include "../ecs/Component.h"
 #include "../utils/Vector2D.h"
+#include "rigid_body.h"
+
 class Transform;
 class EnemyAnimation;
-class EnemyAttackComponent :
-    public EnemyComponent
+
+class EnemyAttackComponent : public Component
 {
     friend EnemyBehaviourComponent;
 protected:
@@ -24,8 +26,7 @@ public:
 
 //--------------------------------------------------------------------------------------------------------------
 
-class MeleeAttack :
-    public EnemyAttackComponent
+class MeleeAttack : public EnemyAttackComponent
 {
 protected:
     /// When the enemy performs its attack, it will lunge at the player with this boost of speed
@@ -40,8 +41,7 @@ public:
 
 //--------------------------------------------------------------------------------------------------------------
 
-class GroundedMeleeAttack :
-    public MeleeAttack
+class GroundedMeleeAttack : public MeleeAttack
 {
 protected:
     virtual bool attack() override;
@@ -52,14 +52,3 @@ public:
 };
 
 //--------------------------------------------------------------------------------------------------------------
-
-class RangedAttack :
-    public EnemyAttackComponent
-{
-protected:
-    float range_;
-
-    virtual bool attack() override;
-public:
-    RangedAttack(float range = 300.0) : range_(range) {};
-};
