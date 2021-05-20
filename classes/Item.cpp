@@ -111,7 +111,7 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 		Inventory::itemWidth * width, Inventory::itemHeight * height, 0);
 	image->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, info->row(), info->col(), true);
 	image->setActive(false);
-
+	tex = nullptr;
 	if (count > 0) {
 		auto n = mngr->addEntity();
 		mngr->addRenderLayer<Item>(n);
@@ -119,7 +119,8 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 		float h = Inventory::itemHeight * (height - 0.3);
 		numberTr = n->addComponent<Transform>(inventory->itemPosition(x, y) + Vector2D(w, h),
 			Inventory::itemWidth * 0.3, Inventory::itemHeight * 0.3, 0);
-		n->addComponent<Image>(new Texture(sdlutils().renderer(), std::to_string(count), sdlutils().fonts().at("OrbitronBold32"), build_sdlcolor(0xffffff)), true);
+		tex = new Texture(sdlutils().renderer(), std::to_string(count), sdlutils().fonts().at("OrbitronBold32"), build_sdlcolor(0xffffff));
+		n->addComponent<Image>(tex, true);
 		n->setActive(false);
 	}
 	else numberTr = nullptr;
@@ -133,7 +134,7 @@ Item::Item(Item* item, Inventory* inventory) {
 	y = item->y;
 	count = item->count;
 	numberTr = nullptr;
-
+	tex = nullptr;
 	if (inventory != nullptr) {
 		Manager* mngr = inventory->entity_->getMngr();
 		image = mngr->addEntity();
