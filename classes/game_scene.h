@@ -60,7 +60,7 @@ protected:
 	Manager* mngr_;
 	MapInfo mapInfo;
 	Game* g_;
-
+	Texture* background;
 	void createTransition(float timeToFade = 2, bool fadeIn = true, std::function<void()> f = []() {});
 
 	void createParallaxLayer(float scrollFactor, Texture* t, int numOfRep);
@@ -71,8 +71,8 @@ protected:
 
 public:
 	//constructora que crea el manager de gObjects de la clase
-	inline GameScene(Game* game, string sceneName) { mngr_ = new Manager(game); g_ = game; name = sceneName;}
-	inline virtual ~GameScene() { delete mngr_; }
+	inline GameScene(Game* game, string sceneName) { background = nullptr; mngr_ = new Manager(game); g_ = game; name = sceneName; }
+	inline virtual ~GameScene() { delete mngr_; if (background != nullptr) delete background; }
 	//creacion de objetos, que sera diferente en cada escena
 	inline virtual void init() = 0;
 	//metodos para llamar al manager de la escena
