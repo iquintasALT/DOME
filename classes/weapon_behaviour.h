@@ -38,4 +38,5 @@ public:
 	void upgradeCurrentWeapon();
 
 	void addDispersion(int i);
+
 };
