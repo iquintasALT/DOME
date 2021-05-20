@@ -24,6 +24,8 @@ public:
 	{
 		int w = tex->width() / cols;
 		int h = tex->height() / rows;
+		w_ = w;
+		h_ = h;
 		src_ = { w * c ,h * r, w, h };
 	}
 
@@ -113,9 +115,17 @@ public:
 		return rotationOrigin;
 	}
 
+	Point2D getOriginInWorld(Transform* tr)
+	{
+		return tr->getPos() + Vector2D(tr->getW() * 1.0 / w_ * rotationOrigin.x,
+			tr->getH() * 1.0 / h_ * rotationOrigin.y);
+	}
+
 private:
 	Transform* tr_;
 	Texture* tex_;
+
+	int w_ = 1, h_ = 1;
 
 	bool isUI;
 	float scrollFactor;
