@@ -5,9 +5,6 @@
     <ClCompile Include="utils\Collisions.cpp">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
-    <ClCompile Include="classes\game_object.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="json\JSON.cpp">
       <Filter>Source Files\json</Filter>
     </ClCompile>
@@ -60,9 +57,6 @@
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\player.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="components\enemy_component.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\weapon_behaviour.cpp">
@@ -200,12 +194,6 @@
     <ClCompile Include="classes\sleep_station.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="classes\cover.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="components\cover_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="components\TextWithBackGround.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -282,9 +270,6 @@
     </ClInclude>
     <ClInclude Include="sdlutils\Font.h">
       <Filter>Header Files\sdlutils</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\game_object.h">
-      <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\Image.h">
       <Filter>Header Files\components</Filter>
@@ -517,12 +502,6 @@
     <ClInclude Include="sdlutils\SoundManager.h">
       <Filter>Header Files\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="classes\cover.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="components\cover_component.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="components\TextWithBackGround.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
@@ -580,6 +559,9 @@
     <ClInclude Include="components\Dialogue.h" />
     <ClInclude Include="components\CameraShake.h" />
     <ClInclude Include="components\Timer.h" />
+    <ClInclude Include="classes\game_object.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
