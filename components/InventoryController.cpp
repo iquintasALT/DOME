@@ -32,11 +32,7 @@ void InventoryController::init() {
 	Inventory::setItemDimensions(t, width, height);
 	inventory->storeDefaultItems();
 
-
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
-
-
-	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon();
 
 	assert(playerMovement != nullptr);
 
