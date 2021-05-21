@@ -132,33 +132,6 @@ void SDLUtils::loadReasources(std::string filename) {
 		}
 	}
 
-	// load messages
-	jValue = root["messages"];
-	if (jValue != nullptr) {
-		if (jValue->IsArray()) {
-			for (auto &v : jValue->AsArray()) {
-				if (v->IsObject()) {
-					JSONObject vObj = v->AsObject();
-					std::string key = vObj["id"]->AsString();
-					std::string txt = vObj["text"]->AsString();
-					auto &font = fonts_.at(vObj["font"]->AsString());
-					if (vObj["bg"] == nullptr)
-						msgs_.emplace(key, Texture(renderer(), txt, font,
-										build_sdlcolor(vObj["color"]->AsString())));
-					else
-						msgs_.emplace(key, Texture(renderer(), txt, font,
-										build_sdlcolor(vObj["color"]->AsString()),
-										build_sdlcolor(vObj["bg"]->AsString())));
-				} else {
-					throw "'messages' array in '" + filename
-							+ "' includes and invalid value";
-				}
-			}
-		} else {
-			throw "'messages' is not an array in '" + filename + "'";
-		}
-	}
-
 	// load sounds
 	jValue = root["sounds"];
 	if (jValue != nullptr) {
@@ -230,8 +203,6 @@ void SDLUtils::loadReasources(std::string filename) {
 }
 
 void SDLUtils::closeSDLExtensions() {
-
-	msgs_.clear();
 	images_.clear();
 	fonts_.clear();
 	tilesets_.clear();

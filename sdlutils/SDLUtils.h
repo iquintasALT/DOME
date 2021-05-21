@@ -112,11 +112,6 @@ public:
 	inline sdl_resource_table<Texture>& images() {
 		return images_;
 	}
-
-	// messages map
-	inline sdl_resource_table<Texture>& msgs() {
-		return msgs_;
-	}
 	
 	// tilesets maps
 	inline sdl_resource_table<Texture>& tilesets() {
@@ -162,7 +157,6 @@ private:
 
 	sdl_resource_table<Font> fonts_; // fonts map (string -> font)
 	sdl_resource_table<Texture> images_; // textures map (string -> texture)
-	sdl_resource_table<Texture> msgs_; // textures map (string -> texture)
 	sdl_resource_table<Texture> tilesets_; // textures map (string -> texture)
 
 	RandomNumberGenerator random_; // (pseudo) random numbers generator
