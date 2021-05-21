@@ -52,9 +52,9 @@ protected:
 public:
 	enum WeaponType { CLASSIC, RICOCHET, LASER };
 	WeaponType type = CLASSIC;
+	int tier_;
 
-	Weapon() {};
-	Weapon(float rateOfFire, int damage, float bulletSpread = 0, int tier = 0);
+	Weapon(float bulletSpread = 0, int tier = 0);
 	~Weapon();
 
 	bool ItemIsAmmo(Item* item, WeaponType weaponType);
@@ -76,7 +76,6 @@ public:
 	virtual void reload();
 
 	void adjustToCrouching();
-	virtual void upgradeCurrentWeapon(int tier);
 
 	virtual void init();
 };

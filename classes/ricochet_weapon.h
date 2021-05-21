@@ -15,16 +15,13 @@ protected:
 	Entity* createBullet(const Vector2D& direction) override;
 
 public:
-	inline RicochetWeapon() {};
-	inline RicochetWeapon(float rateOfFire, int damage, float bulletSpread = 10.0, int bounce = 3, int tier = 0) : Weapon(rateOfFire, damage, bulletSpread, tier), ntier(tier), nbounce(bounce) 
+	inline RicochetWeapon(float bulletSpread = 10.0, int bounce = 3, int tier = 0) : Weapon(bulletSpread, tier), ntier(tier), nbounce(bounce) 
 	{
 		type = RICOCHET;
 	};
 
 	int getBulletsInMagazine() override { return bulletsInMagazine; }; 
 	void setBulletsInMagazine(int bullets) override { bulletsInMagazine = bullets; };
-
-	virtual void upgradeCurrentWeapon(int tier) override;
 
 	void init() override;
 };

@@ -26,9 +26,9 @@ private:
 	Animation(laser_uncharged_0, 1),
 	Animation(laser_uncharged_1, 1),
 	Animation(laser_uncharged_2, 1),
-	Animation(laser_windup_0, 8, false, 1 / consts::CHARGE_TIER1_TIMETOCHARGE),
-	Animation(laser_windup_1, 8, false, 1 / consts::CHARGE_TIER2_TIMETOCHARGE),
-	Animation(laser_windup_2, 8, false, 1 / consts::CHARGE_TIER3_TIMETOCHARGE),
+	Animation(laser_windup_0, 8, false, 1 / consts::WEAPON_FIRERATES[6]),
+	Animation(laser_windup_1, 8, false, 1 / consts::WEAPON_FIRERATES[7]),
+	Animation(laser_windup_2, 8, false, 1 / consts::WEAPON_FIRERATES[8]),
 	Animation(laser_sustaining_0, 4),
 	Animation(laser_sustaining_1, 4),
 	Animation(laser_sustaining_2, 4)

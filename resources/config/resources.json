@@ -144,16 +144,8 @@
       "file": "resources/sprites/weapons_sheet.png"
     },
     {
-      "id": "laser_windup",
-      "file": "resources/sprites/laser_windup_tier_3.png"
-    },
-    {
-      "id": "laser_held_charge",
-      "file": "resources/sprites/laser_held_charge_tier_3.png"
-    },
-    {
       "id": "weapons_arms",
-      "file": "resources/sprites/weapons_arms_sheet2.png"
+      "file": "resources/sprites/weapons_arms_sheet.png"
     },
     {
       "id": "projectile",
