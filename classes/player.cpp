@@ -46,35 +46,43 @@ Player::Player(Manager* mngr_, Point2D pos) : Entity(mngr_)
 
 	weapon = new WeaponBehaviour(mngr_, t->getPos(), t);
 	auto inv_ = addComponent<InventoryController>();
+	inv_->inventory->isPlayer = true;
 	weapon->setInv(inv_);
 	//weapon->getWeapon()->reload();
 
 	physiognomy = new Physiognomy(this);
 	addComponent<EnemyContactDamage>(physiognomy);
 	setGroup<Player_grp>(true);
+
+	mngr_->getGame()->playerSaved = this;
+	mngr_->getGame()->playerCreated = true;
 }
 
-Player::Player(Player* prevPlayer):
-	Player(prevPlayer->getMngr(), getComponent<Transform>()->getPos())
+Player::Player(Player* prevPlayer, Manager* mngr):
+	Player(mngr, prevPlayer->getComponent<Transform>()->getPos())
 {
 	//Componentes a copiar:
 	//Inventario, Weapon,  physionomy
 	//Me dicen que physionomia no
-
 //======================================================================================
 
 	Inventory* oldInv = prevPlayer->getComponent<InventoryController>()->inventory;
 	Inventory* newInv = this->getComponent<InventoryController>()->inventory;
 	
+	for (auto item : newInv->getItems()) {
+		delete item;
+	}
+	newInv->getItems().clear();
+
 	for (auto item : oldInv->getItems()) {
-		newInv->storeItem(item);
+		newInv->storeItem(new Item(item, newInv));
 	}
 	oldInv->getItems().clear();
 
 //======================================================================================
 
-	WeaponBehaviour* oldWeapon = prevPlayer->getComponent<WeaponBehaviour>();
-	WeaponBehaviour* newWeapon = this->getComponent<WeaponBehaviour>();
+	WeaponBehaviour* oldWeapon = prevPlayer->getCurrentWeapon();
+	WeaponBehaviour* newWeapon = this->getCurrentWeapon();
 
 	for (int i = 0; i < 3; i++) {
 		int weaponTier = oldWeapon->tierOfWeapon();
@@ -87,10 +95,18 @@ Player::Player(Player* prevPlayer):
 //======================================================================================
 
 	//Faltaria la fisionomia si es que la hacemos que se guarde al final
+
+//======================================================================================
+
+	setActive(false);
+	delete prevPlayer;
+
 }
 
 Player::~Player() {
 	delete physiognomy;
+	delete weapon;
+	delete getComponent<InventoryController>()->inventory;
 }
 
 WeaponBehaviour* Player::getCurrentWeapon() {

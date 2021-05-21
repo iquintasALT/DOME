@@ -45,6 +45,8 @@ public:
 
 	void onEnable() override;
 	void onDisable() override;
+
+	bool isPlayer = false;
 private:
 	Point2D originalPos;
 	const float timeToHold = 0.08f; //seconds

@@ -90,7 +90,6 @@ void Game::start() {
 		states->currentState()->cycle();
 		drawFPS(currentFPS);
 		sdlutils().presentRenderer();
-
 		Uint32 frameTime = sdlutils().currRealTime() - startTime;
 
 		if (frameTime < 1000 / consts::FRAME_RATE)

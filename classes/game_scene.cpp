@@ -173,17 +173,12 @@ void GameScene::loadMap(string& const path) {
 				}
 				else if (obj.getName() == "playerSpawn") {
 					if (g_->playerCreated) {
-						auto ent = static_cast<Entity*>(g_->playerSaved);
-
-						mngr_->addEntity(ent);
-						mngr_->setHandler<Player_hdlr>(ent);
-						mngr_->addRenderLayer<Player>(ent);
-
+						auto ent = mngr_->getHandler<Player_hdlr>();
 						ent->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
 					}
 					else {
 						g_->playerSaved = new Player(mngr_, Point2D(aabb.left, aabb.top));
-						g_->playerCreated = false; //CHANGE IT WHEN IT WORKS
+						g_->playerCreated = true;
 					}
 					auto camPos = Vector2D(aabb.left, aabb.top) + Vector2D(0, consts::CAMERA_MARGIN_FROM_PLAYER / Camera::mainCamera->getScale());
 					Camera::mainCamera->MoveToPoint(camPos);
