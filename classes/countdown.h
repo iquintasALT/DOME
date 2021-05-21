@@ -11,7 +11,7 @@ private:
 	float lefttime;
 	Texture* counter;
 	bool alarm;
-
+	float cooldown;
 public:
 	Countdown(int totaltime);
 	virtual ~Countdown();

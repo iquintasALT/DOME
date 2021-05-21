@@ -562,6 +562,11 @@
             "id": "build",
             "volume": 128,
             "file": "resources/sound/build.wav"
+        },
+        {
+            "id": "tick",
+            "volume": 100,
+            "file": "resources/sound/tick.wav"
         }
     ],
 
