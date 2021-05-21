@@ -17,10 +17,9 @@ private:
 protected:
 	Entity* createBullet(const Vector2D& direction) override;
 public:
-	ChargeWeapon(float fR, int dam, int tier, WeaponAnimation* animator);
+	ChargeWeapon(int tier, WeaponAnimation* animator);
 	int getBulletsInMagazine() override { return bulletsInMagazine; };
 	void setBulletsInMagazine(int bullets) override { bulletsInMagazine = bullets; };
 	virtual void update();
-	virtual void upgradeCurrentWeapon(int tier) override;
 };
 
