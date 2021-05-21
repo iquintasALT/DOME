@@ -31,7 +31,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 
 	numberOfStates = states->size();
 
-	charger = player->getCurrentWeapon()->getWeapon()->getMagazineSize();
+	charger = player->getWeapon()->getWeapon()->getMagazineSize();
 
 	//TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture * texture, bool appearingText = false, float appeatingTextSpeed = 1, bool alignInCenter = false);
 	
@@ -56,12 +56,12 @@ void hud::update()
 {
 	time->update();
 
-	bullets = player->getCurrentWeapon()->getWeapon()->getBulletsInMagazine();
-	totalBullet = player->getCurrentWeapon()->getWeapon()->getAmmoReserves();
+	bullets = player->getWeapon()->getWeapon()->getBulletsInMagazine();
+	totalBullet = player->getWeapon()->getWeapon()->getAmmoReserves();
 	if (totalBullet < 0) totalBullet = 0;
 
-	int type = (int)player->getCurrentWeapon()->typeOfWeapon();
-	int tier = player->getCurrentWeapon()->tierOfWeapon();
+	int type = (int)player->getWeapon()->typeOfWeapon();
+	int tier = player->getWeapon()->tierOfWeapon();
 
 	chooseWeapon(type, tier);
 

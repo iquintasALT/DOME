@@ -23,7 +23,7 @@ void RaidScene::init() {
 	player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 	raidTimeEnded = false;
 
-	auto weapon = player->getCurrentWeapon();
+	auto weapon = player->getWeapon();
 
 	if (!weapon->isActive())
 		weapon->setActive(true);
