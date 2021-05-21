@@ -186,7 +186,7 @@ void GameScene::loadMap(string& const path) {
 				else if (obj.getName() == "loot") {
 					Entity* interactableElement = mngr_->addEntity();
 					interactableElement->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
-					interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
+					interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 5, 0);
 					mngr_->addRenderLayer<Loot>(interactableElement);
 					interactableElement->addComponent<Loot>("Press E to open the loot", 5, 5);
 					Loot* loot = interactableElement->getComponent<Loot>();
