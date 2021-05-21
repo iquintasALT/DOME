@@ -25,7 +25,7 @@ void InventoryController::init() {
 	entity_->getMngr()->addRenderLayer<Interface>(inventoryPanel);
 
 
-	playerWeapon = static_cast<Player*>(entity_)->getWeapon();
+	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon();
 
 	inventory = inventoryPanel->addComponent<Inventory>(width, height, playerWeapon);
 
@@ -49,7 +49,7 @@ void InventoryController::Use() {
 	inventoryPanel->setActive(isOpen);
 	playerMovement->enabled = !isOpen;
 	playerMovement->resetSpeed();
-	playerWeapon->getWeapon()->enabled = !isOpen;
+	playerWeapon->getCurrentWeapon()->enabled = !isOpen;
 }
 
 void InventoryController::update() {

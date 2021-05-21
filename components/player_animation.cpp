@@ -48,7 +48,7 @@ bool player_animation::changeAnimations() {
 	auto& mouse = ih().getMousePos();
 	float mouseX = Camera::mainCamera->PointToWorldSpace(Vector2D(mouse.first, mouse.second)).getX();
 	float playerX = tr_->getPos().getX() + tr_->getW() / 2;
-	WeaponBehaviour* aux = static_cast<Player*>(entity_)->getWeapon();
+	WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
 	float x = rb->getVel().getX();
 
 	float xdir = mouseX - playerX;
