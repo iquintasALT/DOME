@@ -96,6 +96,17 @@ void ShelterScene::render()
 	sleep_Station->render();*/
 }
 
+void ShelterScene::sleepTransition()
+{
+	std::function<void()> goToLocationsScene([this] { 
+		mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
+		Camera::mainCamera->restoreScale();
+		});
+	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+	mngr_->getHandler<Player_hdlr>()->getComponent<RigidBody>()->setVel(Vector2D{ 0,0 });
+	createTransition(4.0, false, goToLocationsScene, ". . . Z Z Z");
+}
+
 void ShelterScene::useAction()
 {
 	if (actions > 0) actions--;

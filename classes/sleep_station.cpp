@@ -36,7 +36,7 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* she
 	bg_tr = bg->getComponent<Transform>();
 	bButton_tr = bButton->getComponent<Transform>();
 
-	text = new Texture(sdlutils().renderer(), "DESCANSO", sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
+	text = new Texture(sdlutils().renderer(), "DESCANSO", sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff));
 	dest_text = { (int) (bg_pos.getX() + bg_tr->getW() / 2 - text->width()/2),
 		(int) (bg_pos.getY() + bg_tr->getH() * (0.5f / 4.0f) - text->height() / 2),
 		text->width(),text->height() };
@@ -89,18 +89,20 @@ void SleepStation::update() {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
 				mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(0);
-				mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
+				/*mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);*/
 				mngr_->getGame()->numDays++;
+				shelterScene->sleepTransition();
 			}
 			else if (Collisions::collides(mousePos, 1, 1, sleep2_tr->getPos(), sleep2_tr->getW(), sleep2_tr->getH())) {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
 				if (shelterScene->getActions() >= 2) {
 					mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(8);
-					mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
+					/*mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);*/
 					mngr_->getGame()->numDays++;
 					shelterScene->useAction();
 					shelterScene->useAction();
+					shelterScene->sleepTransition();
 				}
 			}
 			else if (Collisions::collides(mousePos, 1, 1, sleep1_tr->getPos(), sleep1_tr->getW(), sleep1_tr->getH())) {
@@ -108,9 +110,10 @@ void SleepStation::update() {
 				playerTr->getEntity()->setActive(true);
 				if (shelterScene->getActions() >= 1) {
 					mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(3);
-					mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
+					/*mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);*/
 					mngr_->getGame()->numDays++;
 					shelterScene->useAction();
+					shelterScene->sleepTransition();
 				}
 			}
 		}

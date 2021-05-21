@@ -24,7 +24,7 @@ ShelterHud::ShelterHud(Manager* mngr, ShelterScene* shelter_) : Entity(mngr) {
 
 	Entity* tooltip = mngr->addEntity();
 	tooltipTr = tooltip->addComponent<Transform>(Vector2D(), 400, 10);
-	tooltipText = tooltip->addComponent<TextWithBackground>("Inventario", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+	tooltipText = tooltip->addComponent<TextWithBackground>("Inventario", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 	tooltip->setActive(false);
 
 	assert(hunger != nullptr && tiredness != nullptr);
@@ -79,7 +79,7 @@ void ShelterHud::manageToolTips()
 		Entity* ent = mngr_->addEntity();
 		Transform* t = ent->addComponent<Transform>(Vector2D(), 400, 10);
 		TextWithBackground* text = ent->addComponent<TextWithBackground>(" ",
-			sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+			sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 		tooltipTextures.push_back({ t, text });
 		ent->setActive(false);
 	}
