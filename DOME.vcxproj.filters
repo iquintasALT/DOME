@@ -95,12 +95,6 @@
     <ClCompile Include="components\loot.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\tile_renderer.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="classes\tile.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="components\player_collisions.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -390,9 +384,6 @@
     </ClInclude>
     <ClInclude Include="components\tile_renderer.h">
       <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\tile.h">
-      <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\ricochet_weapon.h">
       <Filter>Header Files\classes</Filter>

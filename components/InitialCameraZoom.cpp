@@ -14,7 +14,6 @@ InitialCameraZoom::InitialCameraZoom(float zoom, float time, std::function<void(
 
 void InitialCameraZoom::init() {
 	entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = false;
-
 }
 
 void InitialCameraZoom::update()
