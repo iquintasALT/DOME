@@ -23,6 +23,8 @@ protected:
 
 		void advanceFrame();
 
+		int getCurrentFrame() { return currentFrame; }
+
 		void render();
 
 		inline bool operator == (Animation& other) { return frameRow == other.frameRow; }
