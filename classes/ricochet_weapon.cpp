@@ -5,6 +5,7 @@
 #include "../classes/camera.h"
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../game/constant_variables.h"
@@ -15,6 +16,24 @@
 
 int RicochetWeapon::bulletsInMagazine = 0;
 
+void RicochetWeapon::shoot(const Vector2D& direction) {
+	timeSinceLastShot = 0;
+
+	Entity* bullet = createBullet(direction);
+
+	Transform* bulletTr = bullet->getComponent<Transform>();
+	RigidBody* rb = bullet->getComponent<RigidBody>();
+
+	bulletTr->setPos(calculateBulletPosition(direction));
+	bulletTr->setRot(tr_->getRot());
+
+	setBulletsInMagazine(getBulletsInMagazine() - 1);
+
+	if (bulletsInMagazine <= 0)
+		reload();
+	soundManager().playSFX("normalgun");
+}
+
 Entity* RicochetWeapon::createBullet(const Vector2D& direction){
 	Entity* bullet = entity_->getMngr()->addEntity();
 	bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);
@@ -22,7 +41,6 @@ Entity* RicochetWeapon::createBullet(const Vector2D& direction){
 	bullet->addComponent<Image>(bulletTexture_);
 	bullet->addComponent<Ricochet>(playerTr_, nbounce, ntier);
 	entity_->getMngr()->addRenderLayer<Bullets>(bullet);
-
 
 	return bullet;
 }

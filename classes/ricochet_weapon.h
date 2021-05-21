@@ -13,6 +13,7 @@ private:
 
 protected:
 	Entity* createBullet(const Vector2D& direction) override;
+	void shoot(const Vector2D& direction) override;
 
 public:
 	inline RicochetWeapon(float bulletSpread = 10.0, int bounce = 3, int tier = 0) : Weapon(bulletSpread, tier), ntier(tier), nbounce(bounce) 
