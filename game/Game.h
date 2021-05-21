@@ -32,6 +32,7 @@ private:
 	Texture* fpsText;
 
 	void drawFPS(int fps);
+
 public:
 	SCENES currentScene;
 	map<SCENES, vector<vector<I>>> SCENES_LOOT;
@@ -53,7 +54,6 @@ public:
 	// entre escenas. Ponerlo a falso cuando se salga de juego (menu, endScreen, etc.)
 	bool playerCreated = false;
 	Player* playerSaved = nullptr;
-
 
 	// booleano que control si hay fullscreen activo
 	bool fullscreen = false;
