@@ -87,5 +87,5 @@ void Dialogue::showText(std::string txt)
 	entity_->getMngr()->addRenderLayer<Interface>(ent);
 	ent->addComponent<Transform>(
 		Vector2D(50, consts::WINDOW_HEIGHT - height + 50), consts::WINDOW_WIDTH - 50, height);
-	text = ent->addComponent<TextWithBackground>(txt, sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0), nullptr, true, textSpeed, false);
+	text = ent->addComponent<TextWithBackground>(txt, sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0), nullptr, true, textSpeed, false);
 }
