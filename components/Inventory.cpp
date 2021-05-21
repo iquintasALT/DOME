@@ -62,7 +62,7 @@ void Inventory::moveInventory(Point2D pos) {
 	transform->setPos(pos);
 
 	for (auto a : storedItems) {
-		a->image->getComponent<Transform>()->setPos(itemPosition(a->x, a->y));
+		a->setPosition(itemPosition(a->x, a->y));
 	}
 }
 
@@ -186,7 +186,7 @@ void Inventory::update() {
 		}
 		else {
 			if (selectedItem) {
-				if (avaliableSpace(xCell, yCell, selectedItem)) {
+				if (availableSpace(xCell, yCell, selectedItem)) {
 					moveItem(selectedItem, xCell, yCell);
 				}
 
@@ -207,7 +207,7 @@ void Inventory::update() {
 				int xCell = (mousePos.getX() - pos.getX()) / other->transform->getW() * other->width;
 				int yCell = (mousePos.getY() - pos.getY()) / other->transform->getH() * other->height;
 
-				if (other->avaliableSpace(xCell, yCell, selectedItem)) {
+				if (other->availableSpace(xCell, yCell, selectedItem)) {
 					removeItem(selectedItem);
 
 					selectedItem->x = xCell;
@@ -244,7 +244,7 @@ Item* Inventory::findItemInSlot(int x, int y) {
 	return grid[x][y];
 }
 
-bool Inventory::avaliableSpace(int x, int y, Item* item) {
+bool Inventory::availableSpace(int x, int y, Item* item) {
 	if (x + item->width > width || y + item->height > height) return false;
 
 	for (int i = x; i < width && i < x + item->width; i++) {
