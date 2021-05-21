@@ -1,0 +1,8 @@
+zoom keeps getting closer if you go out to the menu
+
+bullet text moves from where it is when opening a loot
+
+when going to shelter game stops working partially, you get to the shelter 
+map but the camera and player stops working
+
+walking animation stops when going out of the stairs/getting pain

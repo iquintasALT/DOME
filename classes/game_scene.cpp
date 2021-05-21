@@ -176,10 +176,8 @@ void GameScene::loadMap(string& const path) {
 						auto ent = mngr_->getHandler<Player_hdlr>();
 						ent->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
 					}
-					else {
-						g_->playerSaved = new Player(mngr_, Point2D(aabb.left, aabb.top));
-						g_->playerCreated = true;
-					}
+					else
+						new Player(mngr_, Point2D(aabb.left, aabb.top));
 					auto camPos = Vector2D(aabb.left, aabb.top) + Vector2D(0, consts::CAMERA_MARGIN_FROM_PLAYER / Camera::mainCamera->getScale());
 					Camera::mainCamera->MoveToPoint(camPos);
 				}
@@ -242,6 +240,7 @@ void GameScene::loadMap(string& const path) {
 
 	SDL_SetRenderTarget(rend, nullptr);
 
+	// deja basura
 	Texture* finalTexture = new Texture(rend, background, bgWidth, bgHeight);
 	auto backgroundEntity = mngr_->addEntity();
 	mngr_->addRenderLayer<Background>(backgroundEntity);
