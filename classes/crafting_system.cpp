@@ -1,5 +1,6 @@
 #include "crafting_system.h"
 #include "../classes/workshop.h"
+#include "../sdlutils/SoundManager.h"
 
 CraftingSystem::CraftingSystem(Manager* mngr) {
 	playerInventory = mngr->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
@@ -58,6 +59,7 @@ bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool open
 		invAux->getInventory()->storeItem(new Item{ info,auxEntity->getMngr(),invAux->getInventory(),0,0 });
 		invAux->Interact();
 
+		soundManager().playSFX("build");
 		ws->setLoot(invAux);
 	}
 	return true;
