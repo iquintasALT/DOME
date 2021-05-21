@@ -206,7 +206,6 @@ bool Weapon::ItemIsAmmo(Item* item, WeaponType currentWeapon) {
 	}
 }
 
-
 void Weapon::reload()
 {
 	if (!reloading && getBulletsInMagazine() < magazineSize)
