@@ -37,6 +37,8 @@ bool MeleeAttack::attack()
 
 	rb_->setVel(jump);
 
+	soundManager().playSFX("dash");
+
 	return true;
 }
 
