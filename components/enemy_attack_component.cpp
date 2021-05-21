@@ -7,6 +7,7 @@
 #include "../ecs/Manager.h"
 #include "../utils/ray_cast.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 
 
 Vector2D EnemyAttackComponent::getTarget()

@@ -9,6 +9,7 @@
 #include "../ecs/ecs.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
+#include "../sdlutils/SoundManager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
 #include "../classes/weapon_behaviour.h"
@@ -68,7 +69,7 @@ void Game::start() {
 	while (!exit) {
 		Uint32 startTime = sdlutils().currRealTime();
 
-		//ih().clearState();
+		soundManager().update();
 		while (SDL_PollEvent(&event)) {
 			ih().update(event);
 		}

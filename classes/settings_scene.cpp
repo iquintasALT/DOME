@@ -3,6 +3,7 @@
 #include "../components/Transform.h"
 #include "../game/Game.h"
 #include "../classes/check_button.h"
+#include "../sdlutils/SoundManager.h"
 #include "../components/HoldToSkip.h"
 #include "../components/Image.h"
 #include "../components/TextWithBackGround.h"

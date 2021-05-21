@@ -1,6 +1,7 @@
 #include "loot.h"
 #include "../game/Game.h"
 #include "../classes/crafting_system.h"
+#include "../sdlutils/SoundManager.h"
 
 const float Loot::margin = 50;
 

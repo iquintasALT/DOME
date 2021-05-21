@@ -9,6 +9,7 @@
 #include "../components/box_collider.h"
 #include "../classes/enemy.h"
 #include "../utils/ray_cast.h"
+#include "../sdlutils/SoundManager.h"
 
 Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player),
 n(nrebotes), tier(typeOfWeapon) {}

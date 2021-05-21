@@ -4,6 +4,7 @@
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../game/constant_variables.h"
 #include "../classes/camera.h"
 #include "../classes/weapon_behaviour.h"

@@ -4,6 +4,7 @@
 #include "../components/box_collider.h"
 #include "../classes/weapon_behaviour.h"
 #include "../classes/physiognomy.h"
+#include "../sdlutils/SoundManager.h"
 
 KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	maxSpeed = consts::PLAYER_SPEED;
