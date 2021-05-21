@@ -19,7 +19,7 @@ void HoldToSkip::init()
 
 void HoldToSkip::update()
 {
-	if (ih().isKeyDown(SDLK_SPACE)) {
+	if (ih().isKeyDown(SDLK_SPACE) || ih().getMouseButtonState(InputHandler::LEFT)) {
 		t += consts::DELTA_TIME;
 
 		if (t > maxT) {
