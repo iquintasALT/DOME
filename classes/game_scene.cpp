@@ -34,6 +34,19 @@ void GameScene::loadMap(string& const path) {
 	mapInfo.tile_width = tilesize.x;
 	mapInfo.tile_height = tilesize.y;
 
+	//convertir a textura
+	auto rend = sdlutils().renderer();
+	int bgWidth = mapInfo.tile_width * mapInfo.cols;
+	int bgHeight = mapInfo.tile_height * mapInfo.rows;
+	SDL_Texture* background = SDL_CreateTexture(rend,
+		SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET,
+		bgWidth,
+		bgHeight
+	);
+
+	SDL_SetTextureBlendMode(background, SDL_BLENDMODE_BLEND);
+	SDL_SetRenderTarget(rend, background);
+
 	// establecemos los bordes de la camara con respecto al numero de tiles en el mapa
 	Camera::mainCamera->setBounds(0, 0, mapInfo.cols * mapInfo.tile_width, mapInfo.rows * mapInfo.tile_height);
 
@@ -55,19 +68,6 @@ void GameScene::loadMap(string& const path) {
 	for (auto& layer : map_layers) {
 		// aqui comprobamos que sea la capa de tiles
 		if (layer->getType() == tmx::Layer::Type::Tile) {
-			//convertir a textura
-			auto rend = sdlutils().renderer();
-			int bgWidth = mapInfo.tile_width * mapInfo.cols;
-			int bgHeight = mapInfo.tile_height * mapInfo.rows;
-			SDL_Texture* background = SDL_CreateTexture(rend,
-				SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET,
-				bgWidth,
-				bgHeight
-			);
-
-			SDL_SetTextureBlendMode(background, SDL_BLENDMODE_BLEND);
-			SDL_SetRenderTarget(rend, background);
-
 			// cargamos la capa
 			tmx::TileLayer* tile_layer = dynamic_cast<tmx::TileLayer*>(layer.get());
 
@@ -148,14 +148,6 @@ void GameScene::loadMap(string& const path) {
 					mapInfo.tilesets[tset_gid]->render(src, dest);
 				}
 			}
-
-			SDL_SetRenderTarget(rend, nullptr);
-
-			sdlutils().images().emplace(tile_layer->getName(), Texture(rend, background, bgWidth, bgHeight));
-			auto backgroundEntity = mngr_->addEntity();
-			mngr_->addRenderLayer<Background>(backgroundEntity);
-			backgroundEntity->addComponent<Transform>(Vector2D(), bgWidth, bgHeight);
-			backgroundEntity->addComponent<Image>(&sdlutils().images().at(tile_layer->getName()));
 		}
 		if (layer->getType() == tmx::Layer::Type::Object) {
 			tmx::ObjectGroup* object_layer = dynamic_cast<tmx::ObjectGroup*>(layer.get());
@@ -245,6 +237,13 @@ void GameScene::loadMap(string& const path) {
 		}
 	}
 
+	SDL_SetRenderTarget(rend, nullptr);
+
+	if (!sdlutils().images().count(path)) sdlutils().images().emplace(path, Texture(rend, background, bgWidth, bgHeight));
+	auto backgroundEntity = mngr_->addEntity();
+	mngr_->addRenderLayer<Background>(backgroundEntity);
+	backgroundEntity->addComponent<Transform>(Vector2D(), bgWidth, bgHeight);
+	backgroundEntity->addComponent<Image>(&sdlutils().images().at(path));
 	
 }
 
@@ -258,7 +257,7 @@ void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<vo
 
 	int winWidth = consts::WINDOW_WIDTH;
 	int winheight = consts::WINDOW_HEIGHT;
-	if (transitionText == "NADA") transitionText = name;
+	if (transitionText == "") transitionText = name;
 
 	Entity* e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(), winWidth, winheight);
