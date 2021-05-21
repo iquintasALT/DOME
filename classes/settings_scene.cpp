@@ -20,7 +20,7 @@ void SettingsScene::init() {
 	pixel->addComponent<Image>(&sdlutils().images().at("bgImageDark"), true);
 	mngr_->addRenderLayer<Interface>(pixel);
 
-	//BOTON DE VOLVER ATRÁS
+	//BOTON DE VOLVER ATRï¿½S
 	auto backButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH * 0.03f, consts::WINDOW_HEIGHT * 0.87f), Vector2D(256, 64), &sdlutils().images().at("backButton"), back, g_, mngr_);
 	mngr_->addEntity(backButton);
 
@@ -228,8 +228,24 @@ void CreditsScene::init() {
 		{"T", "CREDITS"},
 		{"SUREFFECT TEAM"},
 		{" "},
-		{"T", "Titulo de ejemplo", "Titulo de ejemplo descriptivo????"},
-		{"Hola soy un texto de ejemplo", "Hola soy un texto de ejemplo"}
+		{"EQUIPO DE DESARROLLO"},
+		{"CRISTIAN RENE CASTILLO LEON", "IVAN SANCHEZ MIGUEZ"},
+		{"IAGO QUINTAS DIZ", "PABLO FERNANDEZ ALVAREZ"},
+		{"YOJHAN STEVEN GARCIA PENA", "AARON NAUZET MORENO SOSA"},
+		{"EMILE DE KADT", "PABLO GONZALEZ ALVAREZ"},
+		{" "},
+		{"ARTE"},
+		{"CRISTIAN RENE CASTILLO LEON"},
+		{" "},
+		{"MUSICA"},
+		{"ROYALTY FREE MUSIC"},
+		{"https://soundcloud.com/royaltyfreebackgroundmusic/sets/creative-commons-music-dark-12"},
+		{"SERPENT STUDIOS"},
+		{"https://www.serpentsoundstudios.com/royalty-free-music/ambient"},
+		{" "},
+		{"MENCION ESPECIAL"},
+		{"ABEL MORO PAJE"},
+		{"PABLO ETAYO "}
 	};
 
 	for (auto txtArray : arr) {
