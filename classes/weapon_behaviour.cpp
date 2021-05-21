@@ -12,7 +12,7 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 
 	addComponent<Transform>(Vector2D(playerPos.getX() + playerTr->getW() / 2, playerPos.getY() + playerTr->getW() * 0.4), 55, 48, 0);
 
-	addComponent<Image>(&sdlutils().images().at("weapons_arms"), 15, 8, 0, 0)->setRotationOrigin(4, 25);
+	addComponent<Image>(&sdlutils().images().at("weapons_arms"), 15, 8, 0, 0)->setRotationOrigin(4, 24);
 
 	animator_ = addComponent<WeaponAnimation>();
 	weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 0);
