@@ -23,10 +23,7 @@
 
 int Weapon::bulletsInMagazine = -1;
 
-Weapon::Weapon(float rateOfFire, int damage, float bulletSpread, int tier) : fireRate(rateOfFire), impactDamage(damage),
-baseBulletSpread(bulletSpread), magazineSize(30) {
-	upgradeCurrentWeapon(tier);
-}
+Weapon::Weapon(float bulletSpread, int tier) : baseBulletSpread(bulletSpread), magazineSize(30), tier_(tier) {}
 
 Weapon::~Weapon() {}
 
@@ -234,15 +231,7 @@ void Weapon::init()
 
 	playerRb_ = player_->getComponent<RigidBody>();
 	assert(playerRb_ != nullptr);
-}
 
-void Weapon::upgradeCurrentWeapon(int tier) {
-	if (tier == 1) {
-		impactDamage = consts::WEAPON_TIER2_DAMAGE;
-		fireRate = consts::WEAPON_TIER2_FIRERATE;
-	}
-	else if (tier == 2) {
-		impactDamage = consts::WEAPON_TIER3_DAMAGE;
-		fireRate = consts::WEAPON_TIER3_FIRERATE;
-	}
+	fireRate = consts::WEAPON_FIRERATES[3 * type + tier_];
+	impactDamage = consts::WEAPON_DAMAGE_VALUES[3 * type + tier_];
 }

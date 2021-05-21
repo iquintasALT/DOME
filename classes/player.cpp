@@ -86,13 +86,13 @@ Player::Player(Player* prevPlayer, Manager* mngr):
 	WeaponBehaviour* oldWeapon = prevPlayer->getWeapon();
 	WeaponBehaviour* newWeapon = this->getWeapon();
 
-	for (int i = 0; i < 3; i++) {
+	/*for (int i = 0; i < 3; i++) {
 		int weaponTier = oldWeapon->tierOfWeapon();
 		for (int tier = 0; tier < weaponTier; tier++) {
 			newWeapon->upgradeCurrentWeapon();
 		}
 		newWeapon->changeWeapon();
-	}
+	}*/
 
 //======================================================================================
 
