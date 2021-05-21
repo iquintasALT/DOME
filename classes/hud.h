@@ -22,7 +22,7 @@ private:
 
 	bool frozen = false;
 	int bullets = 0;
-	int charger = 0;
+	int magSize = 0;
 	int totalBullet = 0;
 	list<PlayerHealthComponent*>* states;
 
@@ -31,7 +31,7 @@ private:
 	Texture* totalBullets;
 	Texture* timer;
 	Texture* marco;
-	Image* actweapon;
+	Image* currentWeapon;
 
 	Transform* tooltipTr;
 	TextWithBackground* tooltipText;
