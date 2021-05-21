@@ -66,10 +66,8 @@ void Manager::refresh() {
 
 void Manager::update() {
 	for (auto i = 0u; i < entities_.size(); i++)
-	{
 		if (entities_[i]->active)
 			entities_[i]->update();
-	}
 }
 
 void Manager::render() {
@@ -84,16 +82,11 @@ void Manager::AddInteractableElement(InteractableElement* ie) {
 }
 
 std::list<BoxCollider*>::iterator Manager::AddCollider(BoxCollider* bc) {
-	//colliders.push_back(bc);
 	std::list<BoxCollider*>::iterator it = colliders.insert(colliders.end(), bc);
 	return it;
 }
 
 void Manager::cycle() {
-	//update();
-	//refresh();
-	//render();
-
 	if (sceneManager)
 		sceneManager.LoadScene();
 }

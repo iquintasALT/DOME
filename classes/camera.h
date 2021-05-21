@@ -10,8 +10,6 @@ private:
 	int winWidth, winHeight;
 
 	float scale;
-
-
 	float xmin, ymin, xmax, ymax;
 
 public:

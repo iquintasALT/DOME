@@ -47,5 +47,7 @@ public:
 	void initSleepStation(Vector2D pos, Vector2D size) { sleepStPos = pos;  sleepStSize = size; };;
 	void initSpaceshipStation(Vector2D pos, Vector2D size) { spaceshipStPos = pos; spaceshipStSize = size; };;
 
+	void sleepTransition();
+
 	void useAction();
 };
