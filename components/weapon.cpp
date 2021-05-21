@@ -23,7 +23,7 @@
 
 int Weapon::bulletsInMagazine = -1;
 
-Weapon::Weapon(float bulletSpread, int tier) : baseBulletSpread(bulletSpread), magazineSize(30), tier_(tier) {}
+Weapon::Weapon(float bulletSpread, int tier) : baseBulletSpread(bulletSpread), tier_(tier) {}
 
 Weapon::~Weapon() {}
 
@@ -168,22 +168,27 @@ void Weapon::setMaxAmmo() {
 
 void Weapon::setAmmo() {
 	int totalBullets = 0;
-	Item* item = nullptr;
-
-	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
-		if (ItemIsAmmo(items, type)) {
-			item = items;
+	std::vector<Item*> items = std::vector<Item*>();
+	for (auto item : player_->getComponent<InventoryController>()->inventory->getItems()) {
+		if (ItemIsAmmo(item, type)) {
+			items.push_back(item);
 			totalBullets += item->count;
 		}
 	}
 
-	if (item != nullptr) {
-		setBulletsInMagazine(item->count);
-		bulletsInReserve = totalBullets - item->count;
+	/// por si acaso hay objetos de balas con menos balas restantes que el tamaño del cargador,
+	/// vamos a seguir vaciando más items hasta que se llene el cargador (o no queden items)
+	while (getBulletsInMagazine() < magazineSize && items.size() > 0) {
+		// cogemos balas del último objeto cargador
+		int ammoPulled = std::min(items[items.size() - 1]->count, magazineSize - getBulletsInMagazine());
+		setBulletsInMagazine(getBulletsInMagazine() + ammoPulled);
+		bulletsInReserve = totalBullets - ammoPulled;
 
-		player_->getComponent<InventoryController>()->inventory->removeItem(item);
-		delete item;
-		item = nullptr;
+		if (ammoPulled == items[items.size() - 1]->count) //solo tenemos que borrar el stack de municion si lo hemos vaciado
+		{
+			player_->getComponent<InventoryController>()->inventory->removeItem(items[items.size() - 1]);
+			delete items[items.size() - 1];
+		}
 	}
 }
 
@@ -234,4 +239,5 @@ void Weapon::init()
 
 	fireRate = consts::WEAPON_FIRERATES[3 * type + tier_];
 	impactDamage = consts::WEAPON_DAMAGE_VALUES[3 * type + tier_];
+	magazineSize = consts::WEAPON_MAGAZINE_SIZES[3 * type + tier_];
 }
