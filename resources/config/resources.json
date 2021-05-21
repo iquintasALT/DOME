@@ -556,7 +556,12 @@
         {
             "id": "initialExplosion",
             "volume": 128,
-            "file":"resources/sound/explosion.mp3"
+            "file": "resources/sound/explosion.mp3"
+        },
+        {
+            "id": "build",
+            "volume": 128,
+            "file": "resources/sound/build.wav"
         }
     ],
 
