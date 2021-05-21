@@ -22,7 +22,6 @@ class FlyingChasePlayer;
 class EnemyAttackComponent;
 class MeleeAttack;
 class GroundedMeleeAttack;
-class TileRenderer; // WE NEED TO ERASE THIS ONE
 class DistanceDetection;
 class RayCastDetection;
 class Interactions;
@@ -75,7 +74,6 @@ class Timer;
 	KeepDistance, \
 	FlyingChasePlayer, \
 	EnemyAttackComponent, \
-	TileRenderer, \
 	DistanceDetection, \
 	RayCastDetection, \
 	Interactions, \
