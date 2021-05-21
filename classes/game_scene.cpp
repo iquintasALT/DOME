@@ -258,7 +258,7 @@ void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<vo
 
 	int winWidth = consts::WINDOW_WIDTH;
 	int winheight = consts::WINDOW_HEIGHT;
-	if (transitionText == "NADA") transitionText = name;
+	if (transitionText == "") transitionText = name;
 
 	Entity* e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(), winWidth, winheight);
