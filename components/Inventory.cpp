@@ -75,7 +75,7 @@ void Inventory::init() {
 	toolTips = entity_->getMngr()->addEntity();
 	toolTipsTr = toolTips->addComponent<Transform>(Vector2D(100, 100), 500, 10, 0);
 	toolTipsText = toolTips->addComponent<TextWithBackground>("Inventario",
-		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 	entity_->getMngr()->addRenderLayer<ULTIMATE>(toolTips);
 	toolTips->setActive(false);
 

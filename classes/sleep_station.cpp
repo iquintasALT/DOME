@@ -36,7 +36,7 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* she
 	bg_tr = bg->getComponent<Transform>();
 	bButton_tr = bButton->getComponent<Transform>();
 
-	text = new Texture(sdlutils().renderer(), "DESCANSO", sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
+	text = new Texture(sdlutils().renderer(), "DESCANSO", sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff));
 	dest_text = { (int) (bg_pos.getX() + bg_tr->getW() / 2 - text->width()/2),
 		(int) (bg_pos.getY() + bg_tr->getH() * (0.5f / 4.0f) - text->height() / 2),
 		text->width(),text->height() };
