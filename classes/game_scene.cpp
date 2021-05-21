@@ -42,11 +42,10 @@ void GameScene::loadMap(string& const path) {
 		SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET,
 		bgWidth,
 		bgHeight
-		);
+	);
 
 	SDL_SetTextureBlendMode(background, SDL_BLENDMODE_BLEND);
 	SDL_SetRenderTarget(rend, background);
-
 
 	// establecemos los bordes de la camara con respecto al numero de tiles en el mapa
 	Camera::mainCamera->setBounds(0, 0, mapInfo.cols * mapInfo.tile_width, mapInfo.rows * mapInfo.tile_height);
@@ -240,12 +239,12 @@ void GameScene::loadMap(string& const path) {
 
 	SDL_SetRenderTarget(rend, nullptr);
 
-	// deja basura
-	Texture* finalTexture = new Texture(rend, background, bgWidth, bgHeight);
+	if (!sdlutils().images().count(path)) sdlutils().images().emplace(path, Texture(rend, background, bgWidth, bgHeight));
 	auto backgroundEntity = mngr_->addEntity();
 	mngr_->addRenderLayer<Background>(backgroundEntity);
 	backgroundEntity->addComponent<Transform>(Vector2D(), bgWidth, bgHeight);
-	backgroundEntity->addComponent<Image>(finalTexture);
+	backgroundEntity->addComponent<Image>(&sdlutils().images().at(path));
+	
 }
 
 void GameScene::changeState(GameScene* gs)
@@ -258,7 +257,7 @@ void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<vo
 
 	int winWidth = consts::WINDOW_WIDTH;
 	int winheight = consts::WINDOW_HEIGHT;
-	if (transitionText == "NADA") transitionText = name;
+	if (transitionText == "") transitionText = name;
 
 	Entity* e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(), winWidth, winheight);
