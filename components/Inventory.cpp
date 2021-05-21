@@ -266,9 +266,9 @@ void Inventory::storeItem(Item* item) {
 	}
 
 	if (playerWeapon != nullptr)
-		if (playerWeapon->getWeapon()->ItemIsAmmo(item, playerWeapon->typeOfWeapon())) {
+		if (playerWeapon->getCurrentWeapon()->ItemIsAmmo(item, playerWeapon->typeOfWeapon())) {
 			if (playerWeapon->hasComponent<InventoryController>())
-				playerWeapon->getWeapon()->setMaxAmmo();
+				playerWeapon->getCurrentWeapon()->setMaxAmmo();
 		}
 }
 void Inventory::removeItem(Item* item) {
@@ -281,9 +281,9 @@ void Inventory::removeItem(Item* item) {
 	storedItems.remove(item);
 
 	if (playerWeapon != nullptr)
-		if (playerWeapon->getWeapon()->ItemIsAmmo(item, playerWeapon->typeOfWeapon())) {
+		if (playerWeapon->getCurrentWeapon()->ItemIsAmmo(item, playerWeapon->typeOfWeapon())) {
 			if (playerWeapon->hasComponent<InventoryController>())
-				playerWeapon->getWeapon()->setMaxAmmo();
+				playerWeapon->getCurrentWeapon()->setMaxAmmo();
 		}
 }
 

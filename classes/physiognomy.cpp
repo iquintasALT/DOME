@@ -31,7 +31,7 @@ void Physiognomy::addPainState() {
 		painAdded = true;
 	}
 	else player->getComponent<PainComponent>()->reduceWeaponDamage();
-	player->getWeapon()->addDispersion(25);
+	player->getCurrentWeapon()->addDispersion(25);
 }
 
 void Physiognomy::addIntoxicationState() {
@@ -74,7 +74,7 @@ void Physiognomy::removePainState() {
 		healthComponents.remove(player->getComponent<PainComponent>());
 		player->removeComponent<PainComponent>();
 		painAdded = false;
-		player->getWeapon()->addDispersion(-25);
+		player->getCurrentWeapon()->addDispersion(-25);
 	}
 }
 

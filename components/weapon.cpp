@@ -153,7 +153,7 @@ void Weapon::setMaxAmmo() {
 	int totalBullets = 0;
 	Item* item = nullptr;
 
-	WeaponType currentWeapon = player_->getWeapon()->typeOfWeapon();
+	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
 	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
 		if (ItemIsAmmo(items, currentWeapon)) {
 			item = items;

@@ -57,7 +57,7 @@ Player::Player(Manager* mngr_, Point2D pos) : Entity(mngr_)
 	mngr_->getGame()->playerSaved = this;
 	mngr_->getGame()->playerCreated = true;
 
-	weapon->getWeapon()->setAmmo();
+	weapon->getCurrentWeapon()->setAmmo();
 }
 
 Player::Player(Player* prevPlayer, Manager* mngr):
@@ -83,8 +83,8 @@ Player::Player(Player* prevPlayer, Manager* mngr):
 
 //======================================================================================
 
-	WeaponBehaviour* oldWeapon = prevPlayer->getWeapon();
-	WeaponBehaviour* newWeapon = this->getWeapon();
+	WeaponBehaviour* oldWeapon = prevPlayer->getCurrentWeapon();
+	WeaponBehaviour* newWeapon = this->getCurrentWeapon();
 
 	/*for (int i = 0; i < 3; i++) {
 		int weaponTier = oldWeapon->tierOfWeapon();
@@ -109,7 +109,7 @@ Player::~Player() {
 	delete getComponent<InventoryController>()->inventory;
 }
 
-WeaponBehaviour* Player::getWeapon() {
+WeaponBehaviour* Player::getCurrentWeapon() {
 	return weapon;
 }
 

@@ -31,8 +31,6 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 
 	numberOfStates = states->size();
 
-	charger = player->getWeapon()->getWeapon()->getMagazineSize();
-
 	//TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture * texture, bool appearingText = false, float appeatingTextSpeed = 1, bool alignInCenter = false);
 	
 	Entity* tooltip = m->addEntity();
@@ -43,27 +41,29 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 
 	Entity* arma = m->addEntity();
 	arma->addComponent<Transform>(Vector2D(7, consts::WINDOW_HEIGHT - 75 - 7), 75, 75);
-	actweapon = arma->addComponent<Image>(&sdlutils().images().at("weaponHUD"), 3, 3, 0, 0, true);
+	currentWeapon = arma->addComponent<Image>(&sdlutils().images().at("weaponHUD"), 3, 3, 0, 0, true);
 	m->addRenderLayer<Interface>(arma);
 }
 
 void hud::chooseWeapon(int type, int tier)
 {
-	actweapon->changeFrame(tier, type);
+	currentWeapon->changeFrame(tier, type);
 }
 
 void hud::update()
 {
 	time->update();
 
-	bullets = player->getWeapon()->getWeapon()->getBulletsInMagazine();
-	totalBullet = player->getWeapon()->getWeapon()->getAmmoReserves();
+	bullets = player->getCurrentWeapon()->getCurrentWeapon()->getBulletsInMagazine();
+	totalBullet = player->getCurrentWeapon()->getCurrentWeapon()->getAmmoReserves();
 	if (totalBullet < 0) totalBullet = 0;
 
-	int type = (int)player->getWeapon()->typeOfWeapon();
-	int tier = player->getWeapon()->tierOfWeapon();
+	int type = (int)player->getCurrentWeapon()->typeOfWeapon();
+	int tier = player->getCurrentWeapon()->tierOfWeapon();
 
 	chooseWeapon(type, tier);
+
+	magSize = player->getCurrentWeapon()->getCurrentWeapon()->getMagazineSize();
 
 	if (!time->keepPlaying() && !frozen)
 	{
@@ -87,7 +87,7 @@ void hud::render() {
 	marco->render(dest);
 
 	//Renderizar las balas cargador
-	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(charger), sdlutils().fonts().at("Orbitron12"),
+	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(magSize), sdlutils().fonts().at("Orbitron12"),
 		build_sdlcolor(0xffffffff));
 
 	nbullets->render(100, consts::WINDOW_HEIGHT - 86);
