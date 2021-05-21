@@ -241,7 +241,11 @@ void CreditsScene::init() {
 		{"ROYALTY FREE MUSIC"},
 		{"https://soundcloud.com/royaltyfreebackgroundmusic/sets/creative-commons-music-dark-12"},
 		{"SERPENT STUDIOS"},
-		{"https://www.serpentsoundstudios.com/royalty-free-music/ambient"}
+		{"https://www.serpentsoundstudios.com/royalty-free-music/ambient"},
+		{" "},
+		{"MENCION ESPECIAL"},
+		{"ABEL MORO PAJE"},
+		{"PABLO ETAYO "}
 	};
 
 	for (auto txtArray : arr) {
