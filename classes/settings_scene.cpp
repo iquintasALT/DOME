@@ -228,8 +228,20 @@ void CreditsScene::init() {
 		{"T", "CREDITS"},
 		{"SUREFFECT TEAM"},
 		{" "},
-		{"T", "Titulo de ejemplo", "Titulo de ejemplo descriptivo????"},
-		{"Hola soy un texto de ejemplo", "Hola soy un texto de ejemplo"}
+		{"EQUIPO DE DESARROLLO"},
+		{"AARON NAUZET MORENO SOSA", "IVAN SANCHEZ MIGUEZ"},
+		{"IAGO QUINTAS DIZ", "PABLO FERNANDEZ ALVAREZ"},
+		{"YOJHAN STEVEN GARCIA PENA", "CRISTIAN RENE CASTILLO LEON"},
+		{"EMILE DE KADT", "PABLO GONZALEZ ALVAREZ"},
+		{" "},
+		{"ARTE"},
+		{"CRISTIAN RENE CASTILLO LEON"},
+		{" "},
+		{"MUSICA"},
+		{"ROYALTY FREE MUSIC"},
+		{"https://soundcloud.com/royaltyfreebackgroundmusic/sets/creative-commons-music-dark-12"},
+		{"SERPENT STUDIOS"},
+		{"https://www.serpentsoundstudios.com/royalty-free-music/ambient"}
 	};
 
 	for (auto txtArray : arr) {
