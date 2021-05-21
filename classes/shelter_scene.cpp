@@ -120,7 +120,3 @@ void ShelterScene::createParallaxBackground(int numOfRep) {
 	createParallaxLayer(0.6, &sdlutils().images().at("roadS"), numOfRep);
 	createParallaxLayer(0.7, &sdlutils().images().at("fence"), numOfRep);
 }
-
-
-
-
