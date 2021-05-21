@@ -195,7 +195,7 @@ void CreditsScene::update() {
 		if (e->hasComponent<Transform>()) {
 			tr = e->getComponent<Transform>();
 			auto& pos = tr->getPos();
-			pos = pos - Vector2D(0, 25 * consts::DELTA_TIME);
+			pos = pos - Vector2D(0, 50 * consts::DELTA_TIME);
 		}
 	}
 
@@ -228,24 +228,24 @@ void CreditsScene::init() {
 		{"T", "CREDITS"},
 		{"SUREFFECT TEAM"},
 		{" "},
-		{"EQUIPO DE DESARROLLO"},
+		{"DEVELOPMENT TEAM"},
 		{"CRISTIAN RENE CASTILLO LEON", "IVAN SANCHEZ MIGUEZ"},
 		{"IAGO QUINTAS DIZ", "PABLO FERNANDEZ ALVAREZ"},
 		{"YOJHAN STEVEN GARCIA PENA", "AARON NAUZET MORENO SOSA"},
 		{"EMILE DE KADT", "PABLO GONZALEZ ALVAREZ"},
 		{" "},
-		{"ARTE"},
-		{"CRISTIAN RENE CASTILLO LEON"},
-		{" "},
-		{"MUSICA"},
+		{"MUSIC"},
 		{"ROYALTY FREE MUSIC"},
 		{"https://soundcloud.com/royaltyfreebackgroundmusic/sets/creative-commons-music-dark-12"},
 		{"SERPENT STUDIOS"},
 		{"https://www.serpentsoundstudios.com/royalty-free-music/ambient"},
 		{" "},
-		{"MENCION ESPECIAL"},
+		{"HONORABLE MENTIONS"},
 		{"ABEL MORO PAJE"},
-		{"PABLO ETAYO "}
+		{"PABLO ETAYO "},
+		{" "},
+		{"AND ONE LAST BIG THANK YOU"},
+		{"TO YOU <3"},
 	};
 
 	for (auto txtArray : arr) {
