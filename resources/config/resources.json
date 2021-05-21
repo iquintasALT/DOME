@@ -1,21 +1,6 @@
 {
     "fonts": [
         {
-            "id": "ARIAL16",
-            "file": "resources/fonts/ARIAL.ttf",
-            "size": 16
-        },
-        {
-            "id": "ARIAL24",
-            "file": "resources/fonts/ARIAL.ttf",
-            "size": 24
-        },
-        {
-            "id": "ARIAL32",
-            "file": "resources/fonts/ARIAL.ttf",
-            "size": 32
-        },
-        {
             "id": "OrbitronRegular",
             "file": "resources/fonts/Orbitron-Regular.ttf",
             "size": 24
@@ -444,105 +429,100 @@
         {
             "id": "start",
             "text": "Press space to start",
-            "font": "ARIAL24",
+            "font": "OrbitronRegular",
             "color": "0x441155ff"
         },
         {
             "id": "continue",
             "text": "Press space to continue",
-            "font": "ARIAL24",
+            "font": "OrbitronRegular",
             "color": "0x112233ff",
             "bg": "0xffffffff"
         },
         {
             "id": "gameover",
             "text": "Game Over",
-            "font": "ARIAL24",
+            "font": "OrbitronRegular",
             "color": "0x0000ffff"
         }
     ],
 
     "sounds": [
-        {
-            "id": "over_button",
-            "volume": 60,
-            "file": "resources/sound/paddle_hit.wav"
-        },
-        {
-            "id": "push_button",
-            "volume": 128,
-            "file": "resources/sound/wall_hit.wav"
-        },
-        {
-            "id": "freeze",
-            "volume": 128,
-            "file": "resources/sound/freeze.mp3"
-        },
-        {
-            "id": "chargingweapon",
-            "volume": 128,
-            "file": "resources/sound/charging_weapon.wav"
-        },
-        {
-            "id": "alarm",
-            "volume": 128,
-            "file": "resources/sound/alarm2.wav"
-        },
-        {
-            "id": "explosion",
-            "volume": 128,
-            "file": "resources/sound/explosion.wav"
-        },
-        {
-            "id": "normalgun",
-            "volume": 128,
-            "file": "resources/sound/shoot.wav"
-        },
-        {
-            "id": "monster1attack",
-            "volume": 128,
-            "file": "resources/sound/monster_snarl.mp3"
-        },
-        {
-            "id": "bounce",
-            "volume": 128,
-            "file": "resources/sound/gun/bounce.wav"
-        },
-        {
-            "id": "walk",
-            "volume": 100,
-            "file": "resources/sound/gun/footstep.wav"
-        },
-        {
-            "id": "dash",
-            "volume": 100,
-            "file": "resources/sound/dashfly.wav"
-        },
-        {
-            "id": "climbsound",
-            "volume": 100,
-            "file": "resources/sound/climb.wav"
-        },
-        {
-            "id": "chestopen1",
-            "volume": 128,
-            "file": "resources/sound/gun/chestopen1.wav"
-        },
-        {
-            "id": "chestopen2",
-            "volume": 128,
-            "file": "resources/sound/gun/chestopen2.wav"
-        },
-        {
-            "id": "hurt",
-            "volume": 128,
-            "file": "resources/sound/hurt.mp3"
-        },
-        {
-            "id": "heal",
-            "volume": 128,
-            "file": "resources/sound/heal.mp3"
-        },
+      {
+        "id": "over_button",
+        "volume": 60,
+        "file": "resources/sound/paddle_hit.wav"
+      },
+      {
+        "id": "push_button",
+        "volume": 128,
+        "file": "resources/sound/wall_hit.wav"
+      },
+      {
+        "id": "freeze",
+        "volume": 128,
+        "file": "resources/sound/freeze.mp3"
+      },
+      {
+        "id": "chargingweapon",
+        "volume": 128,
+        "file": "resources/sound/charging_weapon.wav"
+      },
+      {
+        "id": "alarm",
+        "volume": 128,
+        "file": "resources/sound/alarm2.wav"
+      },
+      {
+        "id": "explosion",
+        "volume": 128,
+        "file": "resources/sound/explosion.wav"
+      },
+      {
+        "id": "normalgun",
+        "volume": 128,
+        "file": "resources/sound/shoot.wav"
+      },
+      {
+        "id": "monster1attack",
+        "volume": 128,
+        "file": "resources/sound/monster_snarl.mp3"
+      },
+      {
+        "id": "bounce",
+        "volume": 128,
+        "file": "resources/sound/gun/bounce.wav"
+      },
+      {
+        "id": "walk",
+        "volume": 100,
+        "file": "resources/sound/gun/footstep.wav"
+      },
+      {
+        "id": "climbsound",
+        "volume": 100,
+        "file": "resources/sound/climb.wav"
+      },
+      {
+        "id": "chestopen1",
+        "volume": 128,
+        "file": "resources/sound/gun/chestopen1.wav"
+      },
+      {
+        "id": "chestopen2",
+        "volume": 128,
+        "file": "resources/sound/gun/chestopen2.wav"
+      },
+      {
+        "id": "hurt",
+        "volume": 128,
+        "file": "resources/sound/hurt.mp3"
+      },
+      {
+        "id": "heal",
+        "volume": 128,
+        "file": "resources/sound/heal.mp3"
+      },
         {
             "id": "laser",
             "volume": 128,
@@ -577,6 +557,16 @@
             "id": "initialExplosion",
             "volume": 128,
             "file": "resources/sound/explosion.mp3"
+        },
+        {
+            "id": "build",
+            "volume": 128,
+            "file": "resources/sound/build.wav"
+        },
+        {
+            "id": "tick",
+            "volume": 100,
+            "file": "resources/sound/tick.wav"
         }
     ],
 

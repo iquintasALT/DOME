@@ -9,7 +9,7 @@ private:
 	int width, height;
 	int winWidth, winHeight;
 
-	float scale;
+	float scale, ogScale;
 	float xmin, ymin, xmax, ymax;
 
 public:
@@ -28,6 +28,7 @@ public:
 	void MoveDir(Vector2D dir);
 	void setScale(float value);
 	float getScale();
+	void restoreScale();
 	Point2D PointToWorldSpace(Point2D point);
 	Point2D WorldToPointSpace(Point2D point);
 	Point2D getCameraPosition();
