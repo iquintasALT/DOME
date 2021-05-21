@@ -7,7 +7,9 @@
 
 #include "Music.h"
 #include "SoundEffect.h"
+#include "SDLUtils.h"
 
+#include "../utils/Singleton.h"
 #include "../utils/Singleton.h"
 #include "../utils/checkML.h"
 
@@ -78,11 +80,16 @@ public:
 			currentMusic->resumeMusic();
 	}
 
-	void changeSongWithFade(std::string key, int ticks) {
+	void stopSongWithFade(std::string key, int ticks) {
 		currentMusic->fadeOut(ticks);
 		newSong = key;
+		ticks_ = ticks;
+		savedTime = sdlutils().currRealTime();
+	}
 
-		playMusic(key);
+	void playSongWithFadeIn(std::string key, int ticks) {
+		currentMusic = &musics_.at(key);
+		currentMusic->fadeIn(ticks);
 	}
 
 	float getMusicVolume() { return musicVolume; }
@@ -106,6 +113,16 @@ public:
 		SoundEffect::setChannelVolume(sfxVolume);
 	}
 
+	void update() {
+		if (newSong != "") { // for the fade-out/fade-in effect
+			if (sdlutils().currRealTime() - savedTime > ticks_) {
+				currentMusic = nullptr;
+				playSongWithFadeIn(newSong, 600);
+				newSong = "";
+			}
+		}
+	}
+
 private:
 	SoundManager() {}
 
@@ -115,7 +132,7 @@ private:
 	Music* currentMusic = nullptr;
 
 	float musicVolume = 40, sfxVolume = 40, maxVolume = 80, maxSfxVolume = 80;
-	std::string newSong = "";
+	std::string newSong = ""; int ticks_; int savedTime;
 };
 
 // SoundManager::instance()->method() --> soundManager().method()

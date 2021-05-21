@@ -4,6 +4,7 @@
 #include "../game/Game.h"
 #include "../classes/crafting_system.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../classes/weapon_behaviour.h"
 #include <iostream>
 

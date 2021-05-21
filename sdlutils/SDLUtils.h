@@ -11,8 +11,6 @@
 #include "Texture.h"
 #include "VirtualTimer.h"
 
-#include "SoundManager.h"
-
 #include "../utils/Singleton.h"
 #include "../utils/checkML.h"
 #include "../json/JSON.h"

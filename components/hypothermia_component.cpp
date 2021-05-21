@@ -1,5 +1,6 @@
 #include "hypothermia_component.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../game/constant_variables.h"
 #include "../classes/physiognomy.h"
 #include "../classes/lose_scene.h"

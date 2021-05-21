@@ -1,6 +1,7 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
 #include "SDLUtils.h"
+#include "SoundManager.h"
 
 #include <cassert>
 
