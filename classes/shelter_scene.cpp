@@ -24,6 +24,10 @@ using std::endl;
 void ShelterScene::init() {
 	mngr_->getGame()->currentScene = SCENES::SHELTER;
 
+	if (mngr_->getGame()->playerCreated) {
+		Player* p = new Player(mngr_->getGame()->playerSaved, mngr_);
+	}
+
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
 
