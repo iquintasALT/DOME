@@ -39,4 +39,7 @@ void SceneManager::LoadScene() {
 	}
 	Vector2D a;
 //	Camera::mainCamera->Move(a);
+	
+	//onload de la escena
+	states->currentState()->onLoad();
 }

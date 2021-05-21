@@ -15,6 +15,7 @@ private:
 public:
 	MenuScene(Game* game, bool firstTime = true) : GameScene(game, "Menu"), firstTime(firstTime) {};
 	void init() override;
+	void onLoad() override;
 	static void playGame(Manager* mngr);
 	static void settings(Manager* mngr);
 	static void credits(Manager* mngr);

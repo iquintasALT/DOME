@@ -77,8 +77,11 @@ void MenuScene::init() {
 		mngr_->addRenderLayer<Interface>(logo);
 	}
 	// hacemos que comienze en 1 (ciclo --> numDays <= MAX_DAYS)
-	getGame()->numDays++;
+	getGame()->numDays = 1;
+}
 
+void MenuScene::onLoad()
+{
 	soundManager().playMusic("menu_theme");
 }
 

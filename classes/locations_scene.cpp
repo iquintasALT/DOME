@@ -33,10 +33,15 @@ void LocationsScene::init()
 	mouseOverInfo = vector<bool>(locations.size(), false);
 
 	initFocus();
+}
 
+void LocationsScene::onLoad()
+{
 	name = "Day " + std::to_string(getGame()->numDays) + " out of " + std::to_string(consts::MAX_DAYS);
 	createTransition(3.5);
 }
+
+
 
 void LocationsScene::loadLocationButtons() {
 	string path = "./resources/tilemap/location_placements.tmx";

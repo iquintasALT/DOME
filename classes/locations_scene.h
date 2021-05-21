@@ -32,6 +32,7 @@ public:
 	LocationsScene(Game* g) : GameScene(g, "Locations"), focus(nullptr) {};
 	~LocationsScene() {};
 	void init() override;
+	void onLoad() override;
 	void update() override;
 	void addInfoText(Texture* t, Vector2D pos, int xSize, int ySize);
 	void addBackground(Texture* t);

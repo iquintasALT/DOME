@@ -191,6 +191,7 @@ void Workshop::update() {
 				renderFlag = true;
 				renderRightWindow = true;
 			}
+
 		}
 		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
 	}
@@ -198,7 +199,7 @@ void Workshop::update() {
 
 void Workshop::render() {
 	falseMngr->refresh();
-	if (renderFlag) {
+	if (renderFlag && loot == nullptr) {
 		bg->render();
 		bButton->render();
 
