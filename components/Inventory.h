@@ -29,7 +29,7 @@ public:
 	void update() override;
 	void render() override;
 
-	inline list<Item*>& getItems() { return storedItems; };
+	inline std::list<Item*>& getItems() { return storedItems; };
 
 	void storeItem(Item* item);
 	void moveItem(Item* item, int x, int y);

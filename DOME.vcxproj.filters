@@ -379,9 +379,6 @@
     <ClInclude Include="components\ricochet.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\tile_renderer.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="classes\ricochet_weapon.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
