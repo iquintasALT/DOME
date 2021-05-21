@@ -41,7 +41,7 @@ public:
 	WeaponAnimation();
 	~WeaponAnimation();
 
-	void setAnimation(int a) { currentAnimation = animations[a]; };
+	void setAnimation(int a) { currentAnimation = animations[a]; currentAnimation.advanceFrame(); };
 
 	virtual void init();
 
