@@ -6,7 +6,7 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
 #include "../utils/checkML.h"
-#include "../classes/camera.h";
+#include "../classes/camera.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
 #include "Transform.h"
