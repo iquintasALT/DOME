@@ -119,14 +119,14 @@ void KeyboardPlayerCtrl::update() {
 
 			if (keystates[SDL_SCANCODE_R]) //Recargar balas
 			{
-				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
+				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getWeapon();
 
 				aux->getCurrentWeapon()->reload();
 			}
 
 			if (keystates[SDL_SCANCODE_X] && !xClicked) //Cambiar arma
 			{
-				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
+				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getWeapon();
 				aux->changeWeapon();
 				xClicked = true;
 			}

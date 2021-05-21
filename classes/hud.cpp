@@ -54,16 +54,16 @@ void hud::update()
 {
 	time->update();
 
-	bullets = player->getCurrentWeapon()->getCurrentWeapon()->getBulletsInMagazine();
-	totalBullet = player->getCurrentWeapon()->getCurrentWeapon()->getAmmoReserves();
+	bullets = player->getWeapon()->getCurrentWeapon()->getBulletsInMagazine();
+	totalBullet = player->getWeapon()->getCurrentWeapon()->getAmmoReserves();
 	if (totalBullet < 0) totalBullet = 0;
 
-	int type = (int)player->getCurrentWeapon()->typeOfWeapon();
-	int tier = player->getCurrentWeapon()->tierOfWeapon();
+	int type = (int)player->getWeapon()->typeOfWeapon();
+	int tier = player->getWeapon()->tierOfWeapon();
 
 	chooseWeapon(type, tier);
 
-	magSize = player->getCurrentWeapon()->getCurrentWeapon()->getMagazineSize();
+	magSize = player->getWeapon()->getCurrentWeapon()->getMagazineSize();
 
 	if (!time->keepPlaying() && !frozen)
 	{

@@ -34,7 +34,7 @@ void ShelterScene::init() {
 
 	auto shelterHud = new ShelterHud(mngr_, this);
 
-	auto weapon = player->getCurrentWeapon();
+	auto weapon = player->getWeapon();
 
 	createParallaxBackground(5);
 
