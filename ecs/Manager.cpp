@@ -17,12 +17,12 @@ Manager::Manager(Game* game) : game(game), sceneManager(game) {
 
 Manager::~Manager() {
 	for (auto e : entities_) {
-		if (e == getHandler<Player_hdlr>()) {
-			//game->playerSaved = static_cast<Player*>(e);
-			//game->playerCreated = true;
-		}
-		else if (!e->hasComponent<Inventory>() || !e->getComponent<Inventory>()->isPlayer)
-			if (!e->hasComponent<Weapon>())
+		//if (e == getHandler<Player_hdlr>()) {
+		//	//game->playerSaved = static_cast<Player*>(e);
+		//	//game->playerCreated = true;
+		//}
+		/*else */if (e->hasComponent<Inventory>() && e->getComponent<Inventory>()->isPlayer)
+			if (e->hasComponent<Weapon>())
 				delete e;
 	}
 
