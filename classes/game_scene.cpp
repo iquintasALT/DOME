@@ -184,7 +184,7 @@ void GameScene::loadMap(string& const path) {
 				else if (obj.getName() == "loot") {
 					Entity* interactableElement = mngr_->addEntity();
 					interactableElement->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
-					interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
+					interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 5, 0);
 					mngr_->addRenderLayer<Loot>(interactableElement);
 					interactableElement->addComponent<Loot>("Press E to open the loot", 5, 5);
 					Loot* loot = interactableElement->getComponent<Loot>();
@@ -254,10 +254,11 @@ void GameScene::changeState(GameScene* gs)
 	g_->getStateMachine()->changeState(gs);
 }
 
-void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<void()> f) {
+void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<void()> f, string transitionText) {
 
 	int winWidth = consts::WINDOW_WIDTH;
 	int winheight = consts::WINDOW_HEIGHT;
+	if (transitionText == "NADA") transitionText = name;
 
 	Entity* e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(), winWidth, winheight);
@@ -267,7 +268,7 @@ void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<vo
 
 	e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(winWidth / 2, winheight / 2), winWidth, winheight);
-	e->addComponent<TextWithBackground>(name,
+	e->addComponent<TextWithBackground>(transitionText,
 		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
 	e->addComponent<TransitionComponent>(timeToFade, fadeIn, f);
 	mngr_->addRenderLayer<Interface>(e);

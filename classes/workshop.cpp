@@ -217,7 +217,7 @@ void Workshop::render() {
 
 			renderImg(offsetX, offsetY, imgRow, imgCol);
 
-			Texture* text = new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
+			Texture* text = new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff));
 			SDL_Rect dest{ offsetX + 80 ,craftList_tr[i]->getPos().getY() + craftList_tr[i]->getH() / 2 - text->height() / 2  ,text->width(),text->height() };
 			text->render(dest, 0);
 			delete text;
@@ -238,7 +238,7 @@ void Workshop::rightWindowRender() {
 
 			std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].itemName;
 
-			Texture* text = new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+			Texture* text = new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff));
 			SDL_Rect dest{ offsetX - text->width() / 2  , offsetY ,text->width(),text->height() };
 			text->render(dest, 0);
 
@@ -259,7 +259,7 @@ void Workshop::rightWindowRender() {
 
 			offsetY += 90;
 
-			text = new Texture(sdlutils().renderer(), "Needed items: ", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+			text = new Texture(sdlutils().renderer(), "Needed items: ", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff));
 			dest = { (int)(offsetX - text->width() / 2)  , (int)offsetY ,text->width(),text->height() };
 			text->render(dest, 0);
 
@@ -280,12 +280,12 @@ void Workshop::rightWindowRender() {
 				}
 
 
-				text = new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i].cantidad), sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
+				text = new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i].cantidad), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff));
 				dest = { (int)(offsetX + 30) , (int)offsetY + 48 - text->height() / 2 ,text->width(),text->height() };
 				text->render(dest, 0);
 				delete text;
 
-				text = new Texture(sdlutils().renderer(), ITEMS_INFO[itemsNeeded[i].name].itemName, sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+				text = new Texture(sdlutils().renderer(), ITEMS_INFO[itemsNeeded[i].name].itemName, sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff));
 				dest = { (int)(offsetX + 80) , (int)offsetY + 24 - text->height() / 2 ,text->width(),text->height() };
 				text->render(dest, 0);
 				delete text;
@@ -293,7 +293,7 @@ void Workshop::rightWindowRender() {
 				offsetY += 48 + 20;
 
 				craftButton->render();
-				text = new Texture(sdlutils().renderer(), "CRAFT", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+				text = new Texture(sdlutils().renderer(), "CRAFT", sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff));
 				dest = { (int)(craftButton_tr->getPos().getX() + craftButton_tr->getW() / 2 - text->width() / 2),
 					(int)(craftButton_tr->getPos().getY() + craftButton_tr->getH() / 2 - text->height() / 2),text->width(),text->height() };
 				text->render(dest, 0);
@@ -315,17 +315,17 @@ void Workshop::rightWindowRender() {
 			offsetY += 150;
 
 			//weapon is at its maximun tier and cant be upgraded
-			Texture* text = new Texture(sdlutils().renderer(), "The equiped weapon is ", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+			Texture* text = new Texture(sdlutils().renderer(), "The equiped weapon is ", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff));
 			SDL_Rect dest{ offsetX - text->width() / 2  , offsetY ,text->width(),text->height() };
 			text->render(dest, 0);
 			offsetY += text->height() + 25;  delete text;
 
-			text = new Texture(sdlutils().renderer(), "at its maximun tier", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+			text = new Texture(sdlutils().renderer(), "at its maximun tier", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff));
 			dest = { (int)offsetX - text->width() / 2  ,(int)offsetY ,text->width(),text->height() };
 			text->render(dest, 0);
 			offsetY += text->height() + 25;  delete text;
 
-			text = new Texture(sdlutils().renderer(), "and cant be upgraded", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+			text = new Texture(sdlutils().renderer(), "and cant be upgraded", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff));
 			dest = { (int)offsetX - text->width() / 2  ,(int)offsetY ,text->width(),text->height() };
 			text->render(dest, 0);
 		}

@@ -23,6 +23,7 @@ void MenuScene::init() {
 	//	mngr_->getGame()->playerCreated = false;
 	//}
 
+	Camera::mainCamera->restoreScale();
 	mngr_->getGame()->initLoot();
 	mngr_->getGame()->currentScene = SCENES::MAINMENU;
 
