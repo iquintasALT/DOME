@@ -4,6 +4,7 @@
 #include "../sdlutils/Texture.h"
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../ecs/Component.h"
 
 void LocationsScene::init()

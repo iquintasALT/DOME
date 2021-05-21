@@ -3,6 +3,7 @@
 #include "../components/Transform.h"
 #include "../game/Game.h"
 #include "../classes/check_button.h"
+#include "../sdlutils/SoundManager.h"
 #include "../components/HoldToSkip.h"
 #include "../components/Image.h"
 #include "../components/TextWithBackGround.h"
@@ -33,7 +34,7 @@ void SettingsScene::init() {
 
 	setAdjusterPosition();
 	createShowFPSBar();
-	createFullscreenToggle();
+	//createFullscreenToggle();
 }
 
 Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackOnClick* raise, CallBackOnClick* decrease, Texture* t) {
@@ -163,7 +164,15 @@ void SettingsScene::showFPS(Manager* mng) {
 void SettingsScene::fullScreen(Manager* mng) {
 	mng->getGame()->fullscreen = !mng->getGame()->fullscreen;
 
-	// TODO resize window proportions
+	// TODO change camera scale
+	if (mng->getGame()->fullscreen) {
+		sdlutils().changeWindowSize(1900, 1080);
+		Camera::mainCamera->setScale(Camera::mainCamera->getScale() * (1900.0 / consts::WINDOW_WIDTH));
+	}
+	else {
+		sdlutils().changeWindowSize(consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
+		Camera::mainCamera->setScale(Camera::mainCamera->getScale() / (1900.0 / consts::WINDOW_WIDTH));
+	}
 
 	sdlutils().toggleFullScreen();
 }

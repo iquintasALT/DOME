@@ -45,7 +45,6 @@
     <ClInclude Include="classes\ship_station.h" />
     <ClInclude Include="classes\sleep_station.h" />
     <ClInclude Include="classes\spaceship_station.h" />
-    <ClInclude Include="classes\tile.h" />
     <ClInclude Include="classes\menu_button.h" />
     <ClInclude Include="classes\menu_scene.h" />
     <ClInclude Include="classes\physiognomy.h" />
@@ -151,7 +150,6 @@
     <ClCompile Include="classes\ship_station.cpp" />
     <ClCompile Include="classes\sleep_station.cpp" />
     <ClCompile Include="classes\spaceship_station.cpp" />
-    <ClCompile Include="classes\tile.cpp" />
     <ClCompile Include="classes\menu_button.cpp" />
     <ClCompile Include="classes\menu_scene.cpp" />
     <ClCompile Include="classes\physiognomy.cpp" />
@@ -194,7 +192,6 @@
     <ClCompile Include="components\enemy_contact_damege.cpp" />
     <ClCompile Include="components\rigid_body.cpp" />
     <ClCompile Include="components\TextWithBackGround.cpp" />
-    <ClCompile Include="components\tile_renderer.cpp" />
     <ClCompile Include="components\player_animation.cpp" />
     <ClCompile Include="components\ricochet.cpp" />
     <ClCompile Include="components\Timer.cpp" />

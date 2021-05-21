@@ -24,6 +24,9 @@ using std::endl;
 void ShelterScene::init() {
 	mngr_->getGame()->currentScene = SCENES::SHELTER;
 
+	if (mngr_->getGame()->playerCreated) 
+		mngr_->getGame()->playerSaved = new Player(mngr_->getGame()->playerSaved, mngr_);
+
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
 
@@ -91,6 +94,14 @@ void ShelterScene::render()
 	/*mechanical_Workshop->render();
 	medical_Workshop->render();
 	sleep_Station->render();*/
+}
+
+void ShelterScene::sleepTransition()
+{
+	std::function<void()> goToLocationsScene([this] { mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);});
+	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+	mngr_->getHandler<Player_hdlr>()->getComponent<RigidBody>()->setVel(Vector2D{ 0,0 });
+	createTransition(4.0, false, goToLocationsScene, ". . . Z Z Z");
 }
 
 void ShelterScene::useAction()
