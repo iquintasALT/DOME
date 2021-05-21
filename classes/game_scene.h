@@ -74,6 +74,7 @@ public:
 	inline virtual ~GameScene() { delete mngr_; if (background != nullptr) delete background; }
 	//creacion de objetos, que sera diferente en cada escena
 	inline virtual void init() = 0;
+	inline virtual void onLoad() {};
 	//metodos para llamar al manager de la escena
 	inline virtual void update() { mngr_->update(); }
 	inline virtual void refresh() { mngr_->refresh(); }
