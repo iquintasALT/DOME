@@ -15,8 +15,8 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 	addComponent<Image>(&sdlutils().images().at("weapons_arms"), 15, 8, 0, 0)->setRotationOrigin(4, 24);
 
 	animator_ = addComponent<WeaponAnimation>();
-	weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE, 0);
 	weaponType = Weapon::WeaponType::CLASSIC;
+	weapon = addComponent<Weapon>(0, weaponTiers[weaponType]);
 }
 
 Weapon* WeaponBehaviour::getWeapon() {
@@ -29,15 +29,15 @@ void WeaponBehaviour::changeWeapon()
 	{
 	case Weapon::WeaponType::CLASSIC:
 		weaponType = Weapon::WeaponType::RICOCHET;
-		weapon = addComponent2<Weapon, RicochetWeapon>(consts::RICOCHET_TIER1_FIRERATE, consts::RICOCHET_TIER1_DAMAGE, 10.0f, 3, weaponTiers[1]);
+		weapon = addComponent2<Weapon, RicochetWeapon>(10.0f, 3, weaponTiers[1]);
 		break;
 	case Weapon::WeaponType::RICOCHET:
 		weaponType = Weapon::WeaponType::LASER;
-		weapon = addComponent2<Weapon, ChargeWeapon>(consts::CHARGE_TIER1_TIMETOCHARGE, consts::CHARGE_TIER1_DAMAGE, weaponTiers[2], animator_);
+		weapon = addComponent2<Weapon, ChargeWeapon>(weaponTiers[2], animator_);
 		break;
 	case Weapon::WeaponType::LASER:
 		weaponType = Weapon::WeaponType::CLASSIC;
-		weapon = addComponent<Weapon>(consts::WEAPON_TIER1_FIRERATE, consts::WEAPON_TIER1_DAMAGE);
+		weapon = addComponent<Weapon>(0, weaponTiers[0]);
 		break;
 	}
 	animator_->setAnimation(weaponType * 3 + weaponTiers[weaponType]); 
@@ -53,7 +53,6 @@ int WeaponBehaviour::tierOfWeapon()
 
 void WeaponBehaviour::upgradeCurrentWeapon() {
 	++weaponTiers[weaponType];
-	weapon->upgradeCurrentWeapon(weaponTiers[weaponType]);
 }
 
 void WeaponBehaviour::addDispersion(int i) {

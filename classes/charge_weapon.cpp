@@ -18,7 +18,7 @@
 
 int ChargeWeapon::bulletsInMagazine = 0;
 
-ChargeWeapon::ChargeWeapon(float fR, int dam, int ntier, WeaponAnimation* animator) : Weapon(fR, dam, 0.0f, ntier), tier(ntier), animator_(animator) {
+ChargeWeapon::ChargeWeapon(int ntier, WeaponAnimation* animator) : Weapon(0.0f, ntier), tier(ntier), animator_(animator) {
 	type = LASER;
 };
 
@@ -97,15 +97,4 @@ void ChargeWeapon::update() {
 	}
 	else
 	image_->enabled = false;
-}
-
-void ChargeWeapon::upgradeCurrentWeapon(int tier) {
-	if (tier == 1) {
-		impactDamage = consts::CHARGE_TIER2_DAMAGE;
-		fireRate = consts::CHARGE_TIER2_TIMETOCHARGE;
-	}
-	else if (tier == 2) {
-		impactDamage = consts::CHARGE_TIER3_DAMAGE;
-		fireRate = consts::CHARGE_TIER3_TIMETOCHARGE;
-	}
 }
