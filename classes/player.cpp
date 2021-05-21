@@ -98,9 +98,7 @@ Player::Player(Player* prevPlayer, Manager* mngr):
 
 //======================================================================================
 
-	setActive(false);
 	delete prevPlayer;
-
 }
 
 Player::~Player() {
