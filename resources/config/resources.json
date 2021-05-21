@@ -425,28 +425,6 @@
     }
   ],
 
-    "messages": [
-        {
-            "id": "start",
-            "text": "Press space to start",
-            "font": "OrbitronRegular",
-            "color": "0x441155ff"
-        },
-        {
-            "id": "continue",
-            "text": "Press space to continue",
-            "font": "OrbitronRegular",
-            "color": "0x112233ff",
-            "bg": "0xffffffff"
-        },
-        {
-            "id": "gameover",
-            "text": "Game Over",
-            "font": "OrbitronRegular",
-            "color": "0x0000ffff"
-        }
-    ],
-
     "sounds": [
       {
         "id": "over_button",
@@ -567,6 +545,11 @@
             "id": "tick",
             "volume": 100,
             "file": "resources/sound/tick.wav"
+        },
+        {
+          "id": "dash",
+          "volume": 100,
+          "file": "resources/sound/dashfly.wav"
         }
     ],
 
