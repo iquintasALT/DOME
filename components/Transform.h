@@ -6,12 +6,9 @@
 #include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
 
-
 #include "../ecs/Manager.h"
 #include "../ecs/Entity.h"
 #include "../utils/Collisions.h"
-
-#include "tile_renderer.h"
 
 class Transform : public Component {
 private:

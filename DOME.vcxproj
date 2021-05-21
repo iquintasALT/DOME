@@ -88,7 +88,6 @@
     <ClInclude Include="components\player_health_component.h" />
     <ClInclude Include="components\rigid_body.h" />
     <ClInclude Include="components\TextWithBackGround.h" />
-    <ClInclude Include="components\tile_renderer.h" />
     <ClInclude Include="components\player_animation.h" />
     <ClInclude Include="components\ricochet.h" />
     <ClInclude Include="components\Timer.h" />

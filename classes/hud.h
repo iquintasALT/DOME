@@ -24,7 +24,7 @@ private:
 	int bullets = 0;
 	int magSize = 0;
 	int totalBullet = 0;
-	list<PlayerHealthComponent*>* states;
+	std::list<PlayerHealthComponent*>* states;
 
 	Texture* nbullets;
 	Texture* ncharger;

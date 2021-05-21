@@ -81,9 +81,8 @@ Player::Player(Player* prevPlayer, Manager* mngr):
 	oldInv->getItems().clear();
 
 //======================================================================================
-
-	WeaponBehaviour* oldWeapon = prevPlayer->getCurrentWeapon();
-	WeaponBehaviour* newWeapon = this->getCurrentWeapon();
+	WeaponBehaviour* oldWeapon = prevPlayer->getWeapon();
+	WeaponBehaviour* newWeapon = this->getWeapon();
 
 	/*for (int i = 0; i < 3; i++) {
 		int weaponTier = oldWeapon->tierOfWeapon();
@@ -108,7 +107,7 @@ Player::~Player() {
 	delete getComponent<InventoryController>()->inventory;
 }
 
-WeaponBehaviour* Player::getCurrentWeapon() {
+WeaponBehaviour* Player::getWeapon() {
 	return weapon;
 }
 
