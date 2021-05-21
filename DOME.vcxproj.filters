@@ -95,9 +95,6 @@
     <ClCompile Include="components\loot.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\player_collisions.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="classes\ricochet_weapon.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -407,9 +404,6 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\animation_component.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\player_collisions.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="classes\crafting_system.h">

@@ -32,7 +32,6 @@ class BackToShelter;
 class ParticleSystem;
 class Ricochet;
 class RicochetWeapon;
-class PlayerCollisions; // AND SPECIALLY THIS MF
 class PlayerHealthComponent;
 class HungerComponent;
 class TirednessComponent;
@@ -88,7 +87,6 @@ class Timer;
 	PlayerHealthComponent,\
 	HungerComponent, \
 	TirednessComponent, \
-	PlayerCollisions, \
 	Charge, \
 	BoxCollider,\
 	BleedoutComponent,\
