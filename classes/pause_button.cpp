@@ -2,6 +2,7 @@
 #include "../sdlutils/InputHandler.h"
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../game/Game.h"
 #include "../classes/settings_scene.h"
 #include "../game/constant_variables.h"

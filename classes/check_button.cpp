@@ -1,5 +1,6 @@
 #include "check_button.h"
 #include "../sdlutils/InputHandler.h"
+#include "../sdlutils/SoundManager.h"
 #include "../components/Image.h"
 #include "../game/Game.h"
 

@@ -11,8 +11,6 @@
 #include "Texture.h"
 #include "VirtualTimer.h"
 
-#include "SoundManager.h"
-
 #include "../utils/Singleton.h"
 #include "../utils/checkML.h"
 #include "../json/JSON.h"
@@ -46,6 +44,13 @@ public:
 	// access to the underlying SDL_Window -- in principle not needed
 	inline SDL_Window* window() {
 		return window_;
+	}
+
+	// changes the window size
+	inline void changeWindowSize(int w, int h) {
+		width_ = w;
+		height_ = h;
+		SDL_SetWindowSize(window_, width_, height_);
 	}
 
 	// access to the underlying SDL_Renderer -- needed when creating textures

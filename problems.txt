@@ -1,0 +1,5 @@
+zoom keeps getting closer if you go out to the menu
+
+bullet text moves from where it is when opening a loot
+
+walking animation stops when going out of the stairs/getting pain
