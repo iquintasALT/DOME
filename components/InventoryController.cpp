@@ -25,7 +25,7 @@ void InventoryController::init() {
 	entity_->getMngr()->addRenderLayer<Interface>(inventoryPanel);
 
 
-	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon();
+	playerWeapon = static_cast<Player*>(entity_)->getWeapon();
 
 	inventory = inventoryPanel->addComponent<Inventory>(width, height, playerWeapon);
 

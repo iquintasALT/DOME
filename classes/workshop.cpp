@@ -20,7 +20,7 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, Shelt
 	renderRightWindow = false;
 	rightWindowIndex = 0;
 
-	weapon = static_cast<Player*>(realMngr_->getHandler<Player_hdlr>())->getCurrentWeapon();
+	weapon = static_cast<Player*>(realMngr_->getHandler<Player_hdlr>())->getWeapon();
 
 	weaponTr = falseMngr->addEntity()->addComponent<Transform>(Vector2D(), 128, 128);
 	weaponImg = weaponTr->getEntity()->addComponent<Image>(&sdlutils().images().at("weapons"), 3, 3, 0, 0, true);
@@ -141,7 +141,7 @@ void Workshop::update() {
 					if (shelterScene->getActions() > 0) {
 						if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
 							bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this, false);
-							WeaponBehaviour* weapon = static_cast<Player*>(playerTr->getEntity())->getCurrentWeapon();
+							WeaponBehaviour* weapon = static_cast<Player*>(playerTr->getEntity())->getWeapon();
 							if (isCraftable && weapon->tierOfWeapon() < 3) {
 								renderRightWindow = false;
 								weapon->upgradeCurrentWeapon();
@@ -235,7 +235,7 @@ void Workshop::rightWindowRender() {
 	if (renderRightWindow) {
 		float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
 		float offsetY = bg_tr->getPos().getY() + 35;
-		if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getCurrentWeapon()->tierOfWeapon() < 2) {
+		if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getWeapon()->tierOfWeapon() < 2) {
 
 			std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].itemName;
 
