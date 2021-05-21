@@ -71,7 +71,7 @@ private:
 
 	Item* findItemInSlot(int x, int y);
 
-	bool avaliableSpace(int x, int y, Item* item);
+	bool availableSpace(int x, int y, Item* item);
 
 	bool justPressed;
 	Item* selectedItem;
