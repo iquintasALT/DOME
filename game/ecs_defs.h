@@ -134,14 +134,14 @@ struct Player_hdlr;
 #define _HDLRS_LIST_ Player_hdlr
 
 // render layers
-struct Default;
 struct Parallax;
 struct Background;
+struct Default;
 struct Walls;
+struct Loot;
 struct Player;
 struct Enemy;
 struct Bullets;
-struct Loot;
 struct Dark;
 struct Interface;
 struct Item;
