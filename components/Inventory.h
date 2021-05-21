@@ -14,6 +14,7 @@
 class TextWithBackground;
 class Game;
 class WeaponBehaviour;
+
 class Inventory : public Component
 {
 	friend class Item;
