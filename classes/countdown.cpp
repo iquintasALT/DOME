@@ -20,6 +20,7 @@ Countdown::Countdown(int totaltime) {
 	counter = nullptr;
 	std::string aux = getHourString(lefttime / 1000);
 	alarm = false;
+	cooldown = 0.0f;
 }
 
 Countdown::~Countdown() {
@@ -56,4 +57,8 @@ void Countdown::render() {
 
 void Countdown::update() {
 	lefttime -= consts::DELTA_TIME; //Restamos el tiempoque ha pasado
+	if (cooldown < sdlutils().currRealTime() - 1000) {
+		soundManager().playSFX("tick");
+		cooldown = sdlutils().currRealTime();
+	}
 }
