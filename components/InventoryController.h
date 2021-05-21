@@ -10,7 +10,6 @@
 #include "../components/Transform.h"
 #include "../components/Inventory.h"
 #include "../classes/player.h"
-//#include "../components/weapon.h"
 #include "../components/weapon.h"
 #include "../utils/checkML.h"
 #include "../classes/weapon_behaviour.h"

@@ -42,8 +42,8 @@ void WeaponBehaviour::changeWeapon()
 	}
 	animator_->setAnimation(weaponType * 3 + weaponTiers[weaponType]); 
 
-	//if (weapon->getBulletsInMagazine() <= 0)
-		//weapon->reload();
+	if (weapon->getBulletsInMagazine() <= 0)
+		weapon->setAmmo();
 }
 
 int WeaponBehaviour::tierOfWeapon()

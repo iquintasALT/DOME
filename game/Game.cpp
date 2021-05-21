@@ -58,6 +58,7 @@ void Game::init() {
 
 	states->pushState(new MenuScene(this));
 	states->currentState()->init();
+	states->currentState()->onLoad();
 }
 
 void Game::start() {

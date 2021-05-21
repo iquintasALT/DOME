@@ -25,18 +25,14 @@ void InventoryController::init() {
 	entity_->getMngr()->addRenderLayer<Interface>(inventoryPanel);
 
 
-	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon();
+	playerWeapon = static_cast<Player*>(entity_)->getWeapon();
 
 	inventory = inventoryPanel->addComponent<Inventory>(width, height, playerWeapon);
 
 	Inventory::setItemDimensions(t, width, height);
 	inventory->storeDefaultItems();
 
-
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
-
-
-	playerWeapon = static_cast<Player*>(entity_)->getCurrentWeapon();
 
 	assert(playerMovement != nullptr);
 
