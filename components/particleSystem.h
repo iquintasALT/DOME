@@ -19,8 +19,8 @@ private:
 
 	Texture* texture;
 	SDL_Rect source;
-	vector<DynamicBody*> particles;
-	vector<float> particleLife;
+	std::vector<DynamicBody*> particles;
+	std::vector<float> particleLife;
 
 	int actualBurstCount = 0;
 
