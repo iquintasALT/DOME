@@ -17,7 +17,7 @@ public:
 	Player(Manager* mngr_, Point2D pos);
 	Player(Player* prevPlayer, Manager* mng);
 	~Player();
-	WeaponBehaviour* getWeapon();
+	WeaponBehaviour* getCurrentWeapon();
 	WeaponBehaviour* equipWeapon(WeaponBehaviour* newWeapon);
 	Physiognomy* getPhysiognomy();
 };
