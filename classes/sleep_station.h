@@ -16,8 +16,8 @@ class ShelterScene;
 class SleepStation : public Entity
 {
 private:
-	Entity* bg, * bButton, * leftButton, * rightButton, * clock, * arrow, * sleep0, * sleep1, * sleep2;
-	Transform* bg_tr, * bButton_tr, * rightButton_tr, * leftButton_tr, * clock_tr, * arrow_tr, * sleep2_tr, * sleep1_tr, * sleep0_tr;
+	Entity* bg, * bButton, * sleep0, * sleep1, * sleep2;
+	Transform* bg_tr, * bButton_tr, * sleep2_tr, * sleep1_tr, * sleep0_tr;
 
 	Transform* playerTr;
 	ShelterScene* shelterScene;
