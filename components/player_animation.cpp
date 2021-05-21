@@ -44,6 +44,7 @@ void player_animation::init() {
 bool debug = false;
 
 bool player_animation::changeAnimations() {
+	//std::cout << to_string((animations_name)currentAnimation.getCurrentFrame()) << endl;
 	auto& mouse = ih().getMousePos();
 	float mouseX = Camera::mainCamera->PointToWorldSpace(Vector2D(mouse.first, mouse.second)).getX();
 	float playerX = tr_->getPos().getX() + tr_->getW() / 2;
@@ -119,6 +120,7 @@ bool player_animation::changeAnimations() {
 			if (currentAnimation == animations[idle])
 				return false;
 			currentAnimation = animations[idle];
+			animStop = false;
 		}
 		else {
 			if (currentAnimation == animations[idle_arms])

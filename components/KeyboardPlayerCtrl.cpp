@@ -142,7 +142,9 @@ void KeyboardPlayerCtrl::update() {
 		}
 	}
 	else {
-		if (keystates[SDL_SCANCODE_SPACE] && !spaceDown) { onLadder = false; spaceDown = true; }
+		if (keystates[SDL_SCANCODE_SPACE] && !spaceDown) { 
+			onLadder = false; spaceDown = true;
+		}
 		else if (!keystates[SDL_SCANCODE_SPACE] && spaceDown) spaceDown = false;
 		else {
 			if (keystates[SDL_SCANCODE_W]) {
@@ -180,7 +182,9 @@ void KeyboardPlayerCtrl::update() {
 				}
 			}
 			else {
-				if (rb_->onFloor()) onLadder = false;
+				if (rb_->onFloor()) {
+					onLadder = false;
+				}
 				rb_->setGravity(0);
 				rb_->setVel(Vector2D(0, 0));
 				up = down = false;
