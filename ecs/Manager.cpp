@@ -13,8 +13,6 @@
 Manager::Manager(Game* game) : game(game), sceneManager(game) {
 	for (auto elem : hdlrs_)
 		elem = nullptr;
-
-
 }
 
 Manager::~Manager() {

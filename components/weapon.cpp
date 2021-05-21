@@ -32,8 +32,8 @@ Weapon::~Weapon() {}
 
 void Weapon::calculatePosition() {
 	Vector2D playerPos = playerTr_->getPos();
-	if (flipped) tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.56f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.57));
-	else tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.17f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.62));
+	if (flipped) tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.58f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.62));
+	else tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.21f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.62));
 	adjustToCrouching();
 }
 
