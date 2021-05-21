@@ -16,6 +16,13 @@
 #include <iostream>
 
 void MenuScene::init() {
+	// uncomment this when transition to shelter works
+	//if (mngr_->getGame()->playerSaved != nullptr) {
+	//	mngr_->getGame()->playerSaved->setDead(true);
+	//	mngr_->getGame()->playerSaved = nullptr;
+	//	mngr_->getGame()->playerCreated = false;
+	//}
+
 	mngr_->getGame()->initLoot();
 	mngr_->getGame()->currentScene = SCENES::MAINMENU;
 
