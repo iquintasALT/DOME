@@ -13,8 +13,12 @@
 #include "../components/InitialCameraZoom.h"
 #include "../components/CameraMovement.h"
 void RaidScene::init() {
-	loadMap(path_);
+	if (mngr_->getGame()->playerCreated) {
+		Player* p = new Player(mngr_->getGame()->playerSaved, mngr_);
+	}
 
+	loadMap(path_);
+	mngr_->getHandler<Player_hdlr>()->setActive(true);
 	timer = new Countdown(420);
 
 	player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());

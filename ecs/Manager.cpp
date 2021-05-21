@@ -6,17 +6,26 @@
 #include <algorithm>
 #include <iostream>
 #include "../ecs/Entity.h"
+#include "../game/Game.h"
+#include "../components/Inventory.h"
+#include "../components/weapon.h"
 
 Manager::Manager(Game* game) : game(game), sceneManager(game) {
 	for (auto elem : hdlrs_)
 		elem = nullptr;
+
+
 }
 
 Manager::~Manager() {
 	for (auto e : entities_) {
-		if (e == getHandler<Player_hdlr>())
-			std::cout << "Copy player" << std::endl;
-		delete e;
+		if (e == getHandler<Player_hdlr>()) {
+			//game->playerSaved = static_cast<Player*>(e);
+			//game->playerCreated = true;
+		}
+		else if (!e->hasComponent<Inventory>() || !e->getComponent<Inventory>()->isPlayer)
+			if (!e->hasComponent<Weapon>())
+				delete e;
 	}
 
 	entities_.clear();

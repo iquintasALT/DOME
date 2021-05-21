@@ -15,7 +15,7 @@ private:
 
 public:
 	Player(Manager* mngr_, Point2D pos);
-	Player(Player* prevPlayer);
+	Player(Player* prevPlayer, Manager* mng);
 	~Player();
 	WeaponBehaviour* getCurrentWeapon();
 	WeaponBehaviour* equipWeapon(WeaponBehaviour* newWeapon);
