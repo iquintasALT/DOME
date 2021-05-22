@@ -125,6 +125,7 @@ void Inventory::onDisable() {
 
 Inventory::~Inventory() {
 	for (auto a : storedItems) {
+		a->forceDelete = forceDelete;
 		delete a;
 	}
 	storedItems.clear();

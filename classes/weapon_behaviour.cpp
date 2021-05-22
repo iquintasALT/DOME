@@ -19,6 +19,11 @@ WeaponBehaviour::WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* p
 	weapon = addComponent<Weapon>(0, weaponTiers[weaponType]);
 }
 
+WeaponBehaviour::~WeaponBehaviour()
+{
+	Entity::~Entity();
+}
+
 Weapon* WeaponBehaviour::getCurrentWeapon() {
 	return weapon;
 }

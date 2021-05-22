@@ -64,6 +64,8 @@ public:
 	int getY() { return y; }
 	ItemInfo* getItemInfo();
 
+
+	bool forceDelete = false;
 	int count;
 private:
 	ItemInfo* info;
