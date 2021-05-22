@@ -136,7 +136,7 @@ void GameScene::loadMap(string& const path) {
 
 					SDL_Rect src;
 					src.x = region_x; src.y = region_y;
-					src.w = mapInfo.tile_width; 
+					src.w = mapInfo.tile_width;
 					src.h = mapInfo.tile_height;
 
 					SDL_Rect dest;
@@ -190,7 +190,11 @@ void GameScene::loadMap(string& const path) {
 
 					vector<I> chestLoot = getGame()->SCENES_LOOT.find(getGame()->currentScene)->second[sceneLoots];
 					for (int i = 0; i < chestLoot.size(); i++) {
-						loot->getInventory()->storeItem(new Item{ new ItemInfo(chestLoot[i].name, chestLoot[i].desc, chestLoot[i].w,chestLoot[i].h,chestLoot[i].row,chestLoot[i].col),mngr_,loot->getInventory(),chestLoot[i].x,chestLoot[i].y });
+						int count = 0;
+						if (chestLoot[i].name == CLASSIC_AMMO) count = 12;
+						if (chestLoot[i].name == LASER_AMMO) count = 5; 
+						if (chestLoot[i].name == RICOCHET_AMMO) count = 6;
+						loot->getInventory()->storeItem(new Item{ new ItemInfo(chestLoot[i].name, chestLoot[i].desc, chestLoot[i].w,chestLoot[i].h,chestLoot[i].row,chestLoot[i].col),mngr_,loot->getInventory(),chestLoot[i].x,chestLoot[i].y ,count });
 					}
 					sceneLoots++;
 				}
@@ -244,7 +248,6 @@ void GameScene::loadMap(string& const path) {
 	mngr_->addRenderLayer<Background>(backgroundEntity);
 	backgroundEntity->addComponent<Transform>(Vector2D(), bgWidth, bgHeight);
 	backgroundEntity->addComponent<Image>(&sdlutils().images().at(path));
-	
 }
 
 void GameScene::changeState(GameScene* gs)

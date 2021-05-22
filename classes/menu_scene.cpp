@@ -29,12 +29,12 @@ void MenuScene::init() {
 
 	float size = 1.2f;
 	auto a = mngr_->addEntity();
-	std::vector<Texture*> textures(5);
-	for (int i = 0; i < 5; i++) {
-		std::string str = "bgImage" + std::to_string(i);
+	std::vector<Texture*> textures(4);
+	for (int i = 0; i < 4; i++) {
+		std::string str = "bgImage" + std::to_string(i+3);
 		textures[i] = &sdlutils().images().at(str);
 	}
-	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .3, true);
+	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .2, true);
 	mngr_->addRenderLayer<Interface>(a);
 	int buttonHeight = 50;
 	int ypos = consts::WINDOW_HEIGHT - 7 * buttonHeight;
