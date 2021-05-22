@@ -121,6 +121,9 @@ void Game::initLoot() {
 	SCENES_LOOT.clear();
 	// HOSPITAL, RESTAURANT, RAID, COMMUNICATIONS,NUCLEAR_STATION,SUPERMARKET,SHOP
 	// ITEMS n, int cantidad = 0, int w , int h , int x, int y, int row, int col, string desc
+
+
+
 	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<I>>{
 		{
 			I(WATER, 0, 1, 2, 0, 0, 4, 0, "water"),
@@ -209,15 +212,21 @@ void Game::initLoot() {
 		}
 	});
 
-
 	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<I>>{
+		// ITEMS n, int cantidad = 0, int w , int h , int x, int y, int row, int col, string desc
 		{
+			I{ 0,0, ItemInfo::antidote()},
+			I{ 2,0, ItemInfo::painKiller() }, //duran mas los estados
+			I{ 2,2, ItemInfo::splint() }, //no saltar
+			I{ 3,0, ItemInfo::bandage() }
+		},
+		/*{
 			I{ ELECTRONIC_REMAINS,0,1,1,0,0,5,0,"electronic remains" },
 			I{ BUILDING_PARTS,0,2,2,1,1,7,0,"building parts" },
 			I{ SPACESHIP_KEY_ITEMS,0,2,2,0,3,4,2,"spaceship key item" },
 			I{ UPGRADE_KIT,0,2,2,3,3,6,2,"upgrade kit" },
 			I{ FOOD,0,1,1,4,0,2,0,"food" }
-		},
+		},*/
 		{
 			I{ WATER,0,1,2,0,0,4,0,"water" },
 			I{CLASSIC_AMMO,0,1,1,2,2,2,1,"classic ammo" },

@@ -51,8 +51,21 @@ struct CraftableItem {
 
 	int x, y, w, h, row, col;
 	std::string desc;
-	CraftableItem(ITEMS n, int c, int w = 0, int h = 0, int x = 0, int y = 0, int row = 0, int col = 0, string desc = "desc") : name(n), cantidad(c), x(x), y(y), w(w), h(h), col(col), row(row), desc(desc) {};
+	std::function<void(Entity*)> function;
+
+	CraftableItem(ITEMS n, int c, int w = 0, int h = 0, int x = 0, int y = 0, int row = 0, int col = 0, string desc = "desc", 
+		std::function<void(Entity*)>f = [](Entity* player) {}) 
+		: name(n), cantidad(c), x(x), y(y), w(w), h(h), col(col), row(row), desc(desc) {};
 	//AÑADIR MÁS INFO SI ES NECESARIA, 
+	CraftableItem(int x_, int y_, ItemInfo item) {
+		name = item._name;
+		desc = item._description;
+		cantidad = 0;
+		x = x_; y = y_;
+		w = item._width; h = item._height;
+		row = item._row; col = item._col;
+		function = item.function;
+	}
 };
 using I = CraftableItem;
 
