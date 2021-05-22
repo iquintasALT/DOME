@@ -175,27 +175,9 @@
   <object id="50" name="playerSpawn" x="1600" y="624">
    <point/>
   </object>
-  <object id="57" name="enemy" x="1688" y="216">
+  <object id="57" name="enemy" x="2648" y="888">
    <properties>
     <property name="type" type="int" value="0"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="58" name="enemy" x="2544" y="208">
-   <properties>
-    <property name="type" type="int" value="0"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="59" name="enemy" x="3328" y="208">
-   <properties>
-    <property name="type" type="int" value="0"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="62" name="enemy" x="3032" y="360">
-   <properties>
-    <property name="type" type="int" value="1"/>
    </properties>
    <point/>
   </object>
@@ -205,13 +187,7 @@
    </properties>
    <point/>
   </object>
-  <object id="64" name="enemy" x="3032" y="624">
-   <properties>
-    <property name="type" type="int" value="0"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="65" name="enemy" x="1576" y="384">
+  <object id="65" name="enemy" x="2536" y="184">
    <properties>
     <property name="type" type="int" value="1"/>
    </properties>
