@@ -140,8 +140,8 @@ void Game::initLoot() {
 		},
 		{
 			I{ UPGRADE_KIT,0,2,2,0,0,6,2,"upgrade kit" },
-			I{FOOD,0,1,1,2,2,2,0,"food" },
-			I{FOOD,0,1,1,3,1,2,0,"food" },
+			I{ FOOD,0,1,1,2,2,2,0,"food" },
+			I{ FOOD,0,1,1,3,1,2,0,"food" },
 			I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" },
 			I{ WATER,0,1,2,4,0,4,0,"water" }
 		}
@@ -226,8 +226,8 @@ void Game::initLoot() {
 		},
 		{
 			I{ BUILDING_PARTS,0,2,2,0,1,7,0,"building parts" },
-			I{BUILDING_PARTS,0,2,2,3,3,7,0,"building parts" },
-			I{UPGRADE_KIT,0,2,2,2,0,6,2,"upgrade kit" },
+			I{ BUILDING_PARTS,0,2,2,3,3,7,0,"building parts" },
+			I{ UPGRADE_KIT,0,2,2,2,0,6,2,"upgrade kit" },
 			I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" },
 			I{ CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" }
 		},
