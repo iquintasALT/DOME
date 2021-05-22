@@ -142,7 +142,7 @@ void Weapon::update() {
 			}
 		}
 		else if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate &&
-			bulletsInMagazine > 0 && !reloading) 
+			getBulletsInMagazine() > 0 && !reloading) 
 			shoot(rotation);
 	}
 	else
