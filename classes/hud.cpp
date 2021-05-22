@@ -43,6 +43,15 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 	arma->addComponent<Transform>(Vector2D(7, consts::WINDOW_HEIGHT - 75 - 7), 75, 75);
 	currentWeapon = arma->addComponent<Image>(&sdlutils().images().at("weaponHUD"), 3, 3, 0, 0, true);
 	m->addRenderLayer<Interface>(arma);
+
+	statesDescriptions = std::vector<std::string>{
+		{"You are intoxicated, find something to detox"},
+		{"You suffered a contusion, now, you can't jump"},
+		{"You feel a lot of pain, find some painkiller"},
+		{"You are so cold, leave now!"},
+		{"You are bleeding"}, 
+		{"You have a serious wound"}
+	};
 }
 
 void hud::chooseWeapon(int type, int tier)
@@ -117,7 +126,7 @@ void hud::render() {
 				Entity* ent = mngr_->addEntity();
 				Transform* t = ent->addComponent<Transform>(Vector2D(), 400, 10);
 				TextWithBackground* text = ent->addComponent<TextWithBackground>(" ",
-					sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+					sdlutils().fonts().at("Orbitron24"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 				tooltipTextures.push_back({t, text});
 				ent->setActive(false);
 			}
@@ -172,9 +181,14 @@ void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
 		
 		int n = pos;
 		tooltipTextures[n].t->setPos(mouse);
+
+		if (frameIndex > 3) {
+			if (frameIndex == 13) tooltipTextures[n].text->changeText(statesDescriptions[statesDescriptions.size() - 1]);
+			else  tooltipTextures[n].text->changeText(statesDescriptions[4]);
+		}
+		else tooltipTextures[n].text->changeText(statesDescriptions[frameIndex]);
+
 		tooltipTextures[n].text->render();
-		//tooltipTr->setPos(mouse);
-		//tooltipText->changeText("Habria que cambiar la descripcion del estado con un if o algo no se");
-		//tooltipText->render();
+		
 	}
 }
