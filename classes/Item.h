@@ -18,7 +18,7 @@ enum ITEMS {
 
 class Inventory;
 class ItemInfo {
-private:
+public:
 	ITEMS _name;
 	string _description;
 	int _width;
