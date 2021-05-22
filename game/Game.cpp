@@ -28,6 +28,9 @@
 #include "../classes/pause_scene.h"
 #include "../classes/player.h"
 
+#include "../components/hunger_component.h"
+#include "../components/tiredness_component.h"
+
 Game::Game(int totaltime) {
 	initLoot();
 
@@ -168,6 +171,13 @@ void Game::initLoot() {
 			I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" }, I{ ORGANIC_MATERIAL,0,2,2,3,3,1,2,"organic material" }
 		}
 	});
+}
+
+void Game::nextDay()
+{
+	playerSaved->getComponent<HungerComponent>()->decreaseHunger(0.5);
+	playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
+	numDays++;
 }
 
 

@@ -49,6 +49,7 @@ public:
 	void setFPSActive(bool value) { fpsActive = value; }
 	bool getFPSActive() { return fpsActive; }
 	void setShouldRenderFPS(bool value) { shouldRenderFps = value; }
+	void nextDay();
 	
 	// booleano para comprabar si el jugador ha sido creado, para mantener la informaci�n
 	// entre escenas. Ponerlo a falso cuando se salga de juego (menu, endScreen, etc.)
