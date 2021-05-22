@@ -258,6 +258,8 @@ void Workshop::update() {
 								weapon->upgradeCurrentWeapon();
 								//gastar accion
 								shelterScene->useAction();
+
+								craftSys->FinishCraft();
 							}
 
 						}
@@ -274,9 +276,11 @@ void Workshop::update() {
 					//Lo pongo 2 veces aposta (no quitar)
 					weapon->changeWeapon();
 					weapon->changeWeapon();
+					setRightRender();
 				}
 				else if (Collisions::collides(mousePos, 1, 1, arrowRight_tr->getPos(), arrowRight_tr->getW(), arrowRight_tr->getH())) {
 					weapon->changeWeapon();
+					setRightRender();
 				}
 			}
 		}
@@ -301,6 +305,8 @@ void Workshop::update() {
 				loot = nullptr;
 				renderFlag = true;
 				renderRightWindow = true;
+				setLeftRender();
+				setRightRender();
 			}
 
 		}
