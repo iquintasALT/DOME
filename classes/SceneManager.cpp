@@ -42,4 +42,5 @@ void SceneManager::LoadScene() {
 	
 	//onload de la escena
 	states->currentState()->onLoad();
+	ih().clearState();
 }
