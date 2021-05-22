@@ -29,6 +29,8 @@ public:
 	void update() override;
 	void render() override;
 
+	bool forceDelete = false;
+
 	inline std::list<Item*>& getItems() { return storedItems; };
 
 	void storeItem(Item* item);
