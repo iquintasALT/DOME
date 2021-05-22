@@ -19,7 +19,7 @@ private:
 	Texture* advice;
 public:
 	LoseScene(Game* game, WAYSTODIE opcion = WAYSTODIE::NONE, bool state = false); //Por determinado es derrota
-	void init() override {};
+	void init() override { mngr_->getGame()->setShouldRenderFPS(false); };
 	static void backToMenu(Manager* mngr);
 	void render();
 	~LoseScene();
