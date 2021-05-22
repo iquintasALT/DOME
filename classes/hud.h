@@ -5,6 +5,8 @@
 #include "countdown.h"
 #include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
+#include <vector>
+#include <string>
 
 class TextWithBackground;
 class Image;
@@ -32,6 +34,8 @@ private:
 	Texture* timer;
 	Texture* marco;
 	Image* currentWeapon;
+
+	std::vector<std::string> statesDescriptions;
 
 	Transform* tooltipTr;
 	TextWithBackground* tooltipText;
