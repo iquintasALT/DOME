@@ -201,7 +201,6 @@ void CreditsScene::update() {
 
 	if (tr != nullptr && tr->getPos().getY() < -tr->getH()) {
 		exit = true;
-
 	}
 	if (exit) {
 		t += consts::DELTA_TIME;
