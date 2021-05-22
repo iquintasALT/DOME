@@ -88,37 +88,34 @@ void SleepStation::update() {
 			else if (Collisions::collides(mousePos, 1, 1, sleep0_tr->getPos(), sleep0_tr->getW(), sleep0_tr->getH())) {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
-				mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(0);
-				/*mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);*/
-				mngr_->getGame()->numDays++;
-				shelterScene->sleepTransition();
+				goToSleep(0);
 			}
 			else if (Collisions::collides(mousePos, 1, 1, sleep2_tr->getPos(), sleep2_tr->getW(), sleep2_tr->getH())) {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
 				if (shelterScene->getActions() >= 2) {
-					mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(8);
-					/*mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);*/
-					mngr_->getGame()->numDays++;
 					shelterScene->useAction();
-					shelterScene->useAction();
-					shelterScene->sleepTransition();
+					goToSleep(8);
 				}
 			}
 			else if (Collisions::collides(mousePos, 1, 1, sleep1_tr->getPos(), sleep1_tr->getW(), sleep1_tr->getH())) {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
 				if (shelterScene->getActions() >= 1) {
-					mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(3);
-					/*mngr_->ChangeScene(new LocationsScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);*/
-					mngr_->getGame()->numDays++;
-					shelterScene->useAction();
-					shelterScene->sleepTransition();
+					goToSleep(3);
 				}
 			}
 		}
 	}
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
+}
+
+void SleepStation::goToSleep(int hours)
+{
+	mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(hours);
+	mngr_->getGame()->numDays++;
+	shelterScene->useAction();
+	shelterScene->sleepTransition();
 }
 
 void SleepStation::render() {
