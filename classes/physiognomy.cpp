@@ -122,7 +122,6 @@ bool Physiognomy::alive() {
 void Physiognomy::die(WAYSTODIE way) {
 	playerAlive = false;
 	removeAllStates();
-
 	player->getMngr()->ChangeScene(new LoseScene(player->getMngr()->getGame(), way), SceneManager::SceneMode::ADDITIVE);
 }
 
