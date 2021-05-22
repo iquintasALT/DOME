@@ -98,6 +98,7 @@ void ShelterScene::render()
 
 void ShelterScene::sleepTransition()
 {
+	sleep_Station->setActive(false);
 	std::function<void()> goToLocationsScene([this] { mngr_->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE); });
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 	mngr_->getHandler<Player_hdlr>()->getComponent<RigidBody>()->setVel(Vector2D{ 0,0 });
