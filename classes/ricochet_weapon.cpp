@@ -16,24 +16,6 @@
 
 int RicochetWeapon::bulletsInMagazine = 0;
 
-void RicochetWeapon::shoot(const Vector2D& direction) {
-	timeSinceLastShot = 0;
-
-	Entity* bullet = createBullet(direction);
-
-	Transform* bulletTr = bullet->getComponent<Transform>();
-	RigidBody* rb = bullet->getComponent<RigidBody>();
-
-	bulletTr->setPos(calculateBulletPosition(direction));
-	bulletTr->setRot(tr_->getRot());
-
-	setBulletsInMagazine(getBulletsInMagazine() - 1);
-
-	if (bulletsInMagazine <= 0)
-		reload();
-	soundManager().playSFX("normalgun");
-}
-
 Entity* RicochetWeapon::createBullet(const Vector2D& direction){
 	Entity* bullet = entity_->getMngr()->addEntity();
 	bullet->addComponent<Transform>(Vector2D(), 4, 6, 0);

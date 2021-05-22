@@ -3,6 +3,7 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/checkML.h"
 #include <vector>
+#include <string>
 
 class Manager;
 class HungerComponent;
@@ -11,6 +12,7 @@ class Player;
 class Texture;
 class ShelterScene;
 class TextWithBackground;
+
 
 class ShelterHud : public Entity
 {
@@ -31,6 +33,8 @@ private:
 	TextWithBackground* tooltipText;
 	std::vector<_tooltip_> tooltipTextures;
 	Transform* tooltipTr;
+
+	std::vector<std::string> statesDescriptions;
 
 public:
 	ShelterHud(Manager* mngr, ShelterScene* shelter);
