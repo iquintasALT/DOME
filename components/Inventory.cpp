@@ -52,6 +52,8 @@ Inventory::Inventory(int width, int height) : width(width), height(height), othe
 
 	dropDown = nullptr;
 	dropDownActive = false;
+
+	lastItemHovered = nullptr;
 }
 
 void Inventory::defaultPosition() {
@@ -141,10 +143,16 @@ void Inventory::update() {
 		auto hoverItem = findItemInSlot(xCell, yCell);
 		showToolTip = hoverItem != nullptr;
 
+
 		if (showToolTip) {
-			toolTipsText->changeText(hoverItem->getItemInfo()->description());
+			if (lastItemHovered != hoverItem) {
+				toolTipsText->changeText(hoverItem->getItemInfo()->description());
+			}
 			toolTipsTr->setPos(mousePos);
 		}
+
+		if (lastItemHovered == nullptr || lastItemHovered != hoverItem)
+			lastItemHovered = hoverItem;
 
 		if (ih().getMouseButtonState(InputHandler::RIGHT) && selectedItem == nullptr && hoverItem != nullptr) {
 			if (!dropDownActive) {
