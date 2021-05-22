@@ -28,6 +28,9 @@
 #include "../classes/pause_scene.h"
 #include "../classes/player.h"
 
+#include "../components/hunger_component.h"
+#include "../components/tiredness_component.h"
+
 Game::Game(int totaltime) {
 	initLoot();
 
@@ -45,6 +48,10 @@ Game::Game(int totaltime) {
 Game::~Game() {
 	delete states;
 	delete Camera::mainCamera;
+	if (playerCreated) {
+		playerSaved->getComponent<InventoryController>()->inventory->forceDelete = true;
+		delete playerSaved;
+	}
 }
 
 void Game::init() {
@@ -190,6 +197,13 @@ void Game::initLoot() {
 		}
 
 	});
+}
+
+void Game::nextDay()
+{
+	playerSaved->getComponent<HungerComponent>()->decreaseHunger(0.5);
+	playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
+	numDays++;
 }
 
 

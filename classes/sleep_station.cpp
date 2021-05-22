@@ -112,8 +112,8 @@ void SleepStation::update() {
 
 void SleepStation::goToSleep(int hours)
 {
+	mngr_->getGame()->nextDay();
 	mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(hours);
-	mngr_->getGame()->numDays++;
 	shelterScene->useAction();
 	shelterScene->sleepTransition();
 }

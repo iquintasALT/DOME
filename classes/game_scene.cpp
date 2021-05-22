@@ -214,8 +214,8 @@ void GameScene::loadMap(string& const path) {
 					mngr_->addRenderLayer<Walls>(returnToShelter);
 				}
 				else if (obj.getName() == "sleepStation") {
-					static_cast<ShelterScene*>(this)->initSleepStation({ aabb.left, aabb.top }, { aabb.width, aabb.height });
 					auto interactable = mngr_->addEntity();
+					static_cast<ShelterScene*>(this)->initSleepStation({ aabb.left, aabb.top }, { aabb.width, aabb.height }, interactable);
 					interactable->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
 					interactable->addComponent<InteractableElement>("Press E to SLEEP");
 				}
