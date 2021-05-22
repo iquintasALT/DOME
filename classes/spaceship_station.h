@@ -30,7 +30,7 @@ public:
 		}
 		rightRenderTexts.clear();
 
-		delete falseMngr;
+		//delete falseMngr;
 	}
 
 	void setRightRender();
