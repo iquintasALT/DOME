@@ -325,12 +325,6 @@ void Inventory::storeDefaultItems() {
 	storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 30));
 	storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 4, 4, 30));
 	storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 4, 4, 30));
-
-	auto f = [](Entity* player) {
-	};
-
-	storeItem(new Item(new ItemInfo(ELECTRONIC_REMAINS, "ewewe", 1, 1, 3, 0, f), entity_->getMngr(), this, 2, 2,0));
-	storeItem(new Item(new ItemInfo(ELECTRONIC_REMAINS, "ewewe", 1, 1, 3, 0, f), entity_->getMngr(), this, 1, 1,0));
 }
 
 
