@@ -30,6 +30,7 @@
 
 #include "../components/hunger_component.h"
 #include "../components/tiredness_component.h"
+#include "../classes/physiognomy.h"
 
 Game::Game(int totaltime) {
 	initLoot();
@@ -178,6 +179,7 @@ void Game::nextDay()
 	playerSaved->getComponent<HungerComponent>()->decreaseHunger(0.5);
 	playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
 	numDays++;
+	if (numDays > consts::MAX_DAYS) playerSaved->getPhysiognomy()->die(WAYSTODIE::DAYS);
 }
 
 
