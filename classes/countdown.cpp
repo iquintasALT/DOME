@@ -44,11 +44,6 @@ void Countdown::render() {
 	else
 	{
 		s = build_sdlcolor(0xffffffff);
-		if (lefttime <= 5.3 && !alarm)
-		{
-			soundManager().playSFX("alarm");
-			alarm = true;
-		}
 	}
 	//delete counter;
 	counter = new Texture(sdlutils().renderer(), aux, sdlutils().fonts().at("OrbitronRegular"),
@@ -62,7 +57,7 @@ void Countdown::render() {
 void Countdown::update() {
 	lefttime -= consts::DELTA_TIME; //Restamos el tiempoque ha pasado
 
-	if (cooldown < sdlutils().currRealTime() - 1000 && (auxCount < 5 || lefttime <= 30)) {
+	if (cooldown < sdlutils().currRealTime() - 1000 && (auxCount < 5 || (lefttime <= 30 && lefttime >5))) {
 		soundManager().playSFX("beep"); //beep o tick
 		cooldown = sdlutils().currRealTime();
 		auxCount++;
