@@ -88,21 +88,20 @@ void SleepStation::update() {
 			else if (Collisions::collides(mousePos, 1, 1, sleep0_tr->getPos(), sleep0_tr->getW(), sleep0_tr->getH())) {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
-				goToSleep(0);
+				goToSleep(0, 0);
 			}
 			else if (Collisions::collides(mousePos, 1, 1, sleep2_tr->getPos(), sleep2_tr->getW(), sleep2_tr->getH())) {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
 				if (shelterScene->getActions() >= 2) {
-					shelterScene->useAction();
-					goToSleep(8);
+					goToSleep(8, 2);
 				}
 			}
 			else if (Collisions::collides(mousePos, 1, 1, sleep1_tr->getPos(), sleep1_tr->getW(), sleep1_tr->getH())) {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
 				if (shelterScene->getActions() >= 1) {
-					goToSleep(3);
+					goToSleep(3, 1);
 				}
 			}
 		}
@@ -110,11 +109,11 @@ void SleepStation::update() {
 	else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
 }
 
-void SleepStation::goToSleep(int hours)
+void SleepStation::goToSleep(int hours, int numberOfActions)
 {
 	mngr_->getGame()->nextDay();
 	mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(hours);
-	shelterScene->useAction();
+	for(int i = 0; i < numberOfActions; i++) shelterScene->useAction();
 	shelterScene->sleepTransition();
 }
 
