@@ -104,7 +104,7 @@ void Game::drawFPS(int fps) {
 		std::stringstream ss;
 		ss << "FPS: " << fps;
 		fpsText = new Texture(sdlutils().renderer(), ss.str(), sdlutils().fonts().at("Orbitron16"), build_sdlcolor(0xffffffff));
-		fpsText->render(10,5);
+		fpsText->render(10, 5);
 		delete fpsText;
 	}
 }
@@ -146,23 +146,49 @@ void Game::initLoot() {
 	});
 
 	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<I>>{
-		{I{ ELECTRONIC_REMAINS,0,1,1,0,0,5,0,"electronic remains" }, I{ BUILDING_PARTS,0,2,2,3,0,7,0,"building parts" }, I{ ELECTRONIC_REMAINS,0,1,1,2,0,5,0,"electronic remains" },
-			I{ SPACESHIP_KEY_ITEMS,0,2,2,0,1,4,2,"spaceship key item" }, I{ UPGRADE_KIT,0,2,2,0,3,6,2,"upgrade kit" },
-			I{ BUILDING_PARTS,0,2,2,3,3,7,0,"building parts" }},
-		
-		{ I{ MECANICAL_COMPONENTS,0,2,1,0,2,4,1,"mecanical components" }, I{CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" },  I{UPGRADE_KIT,0,2,2,3,0,6,2,"upgrade kit" },
-			I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" }, I{ SPACESHIP_KEY_ITEMS,0,2,2,3,3,4,2,"spaceship key items" }
+		{
+			I{ FOOD,0,1,1,3,0,2,0,"food" }, I{ ELECTRONIC_REMAINS,0,1,1,2,0,5,0,"electronic remains" },
+				I{ SPACESHIP_KEY_ITEMS,0,2,2,0,1,4,2,"spaceship key item" }
+		},
+		{
+			I{ FOOD,0,1,1,3,0,2,0,"food" }, I{CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" }
+		},
+		{
+			 I{ WATER,0,1,2,3,0,4,0,"water" }, I{ ELECTRONIC_REMAINS,0,1,1,2,0,5,0,"electronic remains" }, I{CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" }
+		},
+		{
+			 I{ MEDICAL_COMPONENTS,0,1,2,4,3,0,1,"medical components" }, I{ MEDICAL_COMPONENTS,0,1,2,3,3,0,1,"medical components" }, I{CLASSIC_AMMO,0,1,1,1,0,2,1,"classic ammo" }
+		},
+		{
+			I{ BUILDING_PARTS,0,2,2,0,1,7,0,"building parts" }, I{BUILDING_PARTS,0,2,2,3,3,7,0,"building parts" }
 		}
 	});
+
 
 	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<I>>{
 		{I{ ELECTRONIC_REMAINS,0,1,1,0,0,5,0,"electronic remains" }, I{ BUILDING_PARTS,0,2,2,1,1,7,0,"building parts" },
 			I{ SPACESHIP_KEY_ITEMS,0,2,2,0,3,4,2,"spaceship key item" }, I{ UPGRADE_KIT,0,2,2,3,3,6,2,"upgrade kit" },
 			I{ FOOD,0,1,1,4,0,2,0,"food" }},
 
-		{ I{ WATER,0,1,2,0,0,4,0,"water" }, I{CLASSIC_AMMO,0,1,1,2,2,2,1,"classic ammo" },
+		{ 
+			I{ WATER,0,1,2,0,0,4,0,"water" }, I{CLASSIC_AMMO,0,1,1,2,2,2,1,"classic ammo" },
 			I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" }, I{ ORGANIC_MATERIAL,0,2,2,3,3,1,2,"organic material" }
+		},
+		{ I{ BUILDING_PARTS,0,2,2,0,1,7,0,"building parts" }, I{BUILDING_PARTS,0,2,2,3,3,7,0,"building parts" },  I{UPGRADE_KIT,0,2,2,2,0,6,2,"upgrade kit" },
+			I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" }, I{ CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" }
+		},
+		{ I{ MEDICAL_COMPONENTS,0,1,2,4,0,0,1,"medical components" }, I{ANTIDOTE,0,2,2,0,0,1,0,"antidote" },  I{FOOD,0,1,1,3,0,2,0,"food" },
+			I{ SPACESHIP_KEY_ITEMS,0,2,2,3,2,4,2,"spaceship key item" }, I{ WATER,0,1,2,1,2,4,0,"water" }
+		},
+		{
+		 I{ WATER,0,1,2,0,3,4,0,"water" }, I{ WATER,0,1,2,1,3,4,0,"water" },
+			I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" }, I{ CLASSIC_AMMO,0,1,1,4,1,2,1,"classic ammo" },
+			I{ CLASSIC_AMMO,0,1,1,3,1,2,1,"classic ammo" }, I{ CLASSIC_AMMO,0,1,1,3,2,2,1,"classic ammo" } },
+		{	
+			I{ UPGRADE_KIT,0,2,2,0,0,6,2,"upgrade kit" }, I{FOOD,0,1,1,2,2,2,0,"food" },  I{FOOD,0,1,1,3,1,2,0,"food" },
+			I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" }, I{ WATER,0,1,2,4,0,4,0,"water" }
 		}
+
 	});
 }
 
