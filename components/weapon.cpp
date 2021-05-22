@@ -115,7 +115,7 @@ void Weapon::shoot(const Vector2D& direction) {
 
 	setBulletsInMagazine(getBulletsInMagazine()-1);
 
-	if (bulletsInMagazine <= 0)
+	if (getBulletsInMagazine() <= 0)
 		reload();
 	soundManager().playSFX("normalgun");
 }
@@ -142,7 +142,7 @@ void Weapon::update() {
 			}
 		}
 		else if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate &&
-			bulletsInMagazine > 0 && !reloading) 
+			getBulletsInMagazine() > 0 && !reloading) 
 			shoot(rotation);
 	}
 	else
@@ -184,10 +184,12 @@ void Weapon::setAmmo() {
 		setBulletsInMagazine(getBulletsInMagazine() + ammoPulled);
 		bulletsInReserve = totalBullets - ammoPulled;
 
-		if (ammoPulled == items[items.size() - 1]->count) //solo tenemos que borrar el stack de municion si lo hemos vaciado
+		items[items.size() - 1]->count -= ammoPulled;
+
+		if (items[items.size() - 1]->count == 0) //solo tenemos que borrar el stack de municion si lo hemos vaciado
 		{
 			player_->getComponent<InventoryController>()->inventory->removeItem(items[items.size() - 1]);
-			delete items[items.size() - 1];
+			items.pop_back();
 		}
 	}
 }
