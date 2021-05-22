@@ -186,10 +186,10 @@ void Weapon::setAmmo() {
 
 		items[items.size() - 1]->count -= ammoPulled;
 
-		if (ammoPulled == items[items.size() - 1]->count) //solo tenemos que borrar el stack de municion si lo hemos vaciado
+		if (items[items.size() - 1]->count == 0) //solo tenemos que borrar el stack de municion si lo hemos vaciado
 		{
 			player_->getComponent<InventoryController>()->inventory->removeItem(items[items.size() - 1]);
-			delete items[items.size() - 1];
+			items.pop_back();
 		}
 	}
 }
