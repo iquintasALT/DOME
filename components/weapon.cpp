@@ -117,7 +117,20 @@ void Weapon::shoot(const Vector2D& direction) {
 
 	if (getBulletsInMagazine() <= 0)
 		reload();
-	soundManager().playSFX("normalgun");
+	switch (type)
+	{
+	case Weapon::CLASSIC:
+		soundManager().playSFX("normalgun");
+		break;
+	case Weapon::RICOCHET:
+		soundManager().playSFX("ricochetShot");
+		break;
+	case Weapon::LASER:
+		soundManager().playSFX("laserShot");
+		break;
+	default:
+		break;
+	}
 }
 
 void Weapon::update() {
