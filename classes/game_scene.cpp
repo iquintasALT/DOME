@@ -246,7 +246,6 @@ void GameScene::loadMap(string& const path) {
 	mngr_->addRenderLayer<Background>(backgroundEntity);
 	backgroundEntity->addComponent<Transform>(Vector2D(), bgWidth, bgHeight);
 	backgroundEntity->addComponent<Image>(&sdlutils().images().at(path));
-
 }
 
 void GameScene::changeState(GameScene* gs)
