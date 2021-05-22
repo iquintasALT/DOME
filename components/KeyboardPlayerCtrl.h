@@ -45,6 +45,7 @@ public:
 	
 	void resetSpeed();
 	float getSpeed();
+	float getMaxSpeed();
 	void setSpeed(float speed);
 	void setMaxSpeed(float speed_);
 	void setJumpSpeed(float jumpSpeed);
