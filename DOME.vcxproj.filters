@@ -245,6 +245,7 @@
     <ClCompile Include="components\Dialogue.cpp" />
     <ClCompile Include="components\CameraShake.cpp" />
     <ClCompile Include="components\Timer.cpp" />
+    <ClCompile Include="classes\qa_selection_scene.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -541,6 +542,7 @@
     <ClInclude Include="classes\game_object.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
+    <ClInclude Include="classes\qa_selection_scene.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
