@@ -37,7 +37,7 @@ public:
 	void renderImg(float posX, float posY, int row, int col, int sizeX = 64, int sizeY = 64);
 	virtual void render();
 	virtual void update();
-	void goToSleep(int hours);
+	void goToSleep(int hours, int numberOfActions);
 	void setRenderFlag(bool set);
 };
 
