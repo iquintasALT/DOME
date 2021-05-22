@@ -18,7 +18,7 @@ enum ITEMS {
 
 class Inventory;
 class ItemInfo {
-private:
+public:
 	ITEMS _name;
 	string _description;
 	int _width;
@@ -48,6 +48,9 @@ public:
 	static ItemInfo* ricochetAmmo();
 	static ItemInfo* metalPlates();
 	static ItemInfo* classicAmmo();
+	static ItemInfo* medicalComponent();
+	static ItemInfo* water();
+	static ItemInfo* organicMaterial();
 };
 
 class Item
