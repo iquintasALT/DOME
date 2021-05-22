@@ -328,7 +328,7 @@ void Workshop::rightWindowRender() {
 
 			text = new Texture(sdlutils().renderer(), "and cant be upgraded", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff));
 			dest = { (int)offsetX - text->width() / 2  ,(int)offsetY ,text->width(),text->height() };
-			text->render(dest, 0);
+			text->render(dest, 0); delete text;
 		}
 	}
 }
@@ -377,5 +377,6 @@ void Workshop::renderImg(float posX, float posY, int row, int col, int sizeX, in
 	Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, row, col, true);
 	img->render();
 
+	aux->setDead(true);
 	aux->setActive(false);
 }
