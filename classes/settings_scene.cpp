@@ -3,6 +3,7 @@
 #include "../components/Transform.h"
 #include "../game/Game.h"
 #include "../classes/check_button.h"
+#include "../sdlutils/SoundManager.h"
 #include "../components/HoldToSkip.h"
 #include "../components/Image.h"
 #include "../components/TextWithBackGround.h"
@@ -19,8 +20,8 @@ void SettingsScene::init() {
 	pixel->addComponent<Image>(&sdlutils().images().at("bgImageDark"), true);
 	mngr_->addRenderLayer<Interface>(pixel);
 
-	//BOTON DE VOLVER ATRÁS
-	auto backButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH * 0.05f, consts::WINDOW_HEIGHT * 0.9f), Vector2D(256, 64), &sdlutils().images().at("backButton"), back, g_, mngr_);
+	//BOTON DE VOLVER ATRï¿½S
+	auto backButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH * 0.03f, consts::WINDOW_HEIGHT * 0.87f), Vector2D(256, 64), &sdlutils().images().at("backButton"), back, g_, mngr_);
 	mngr_->addEntity(backButton);
 
 	posBarVolume = Vector2D(consts::WINDOW_WIDTH * 0.55f, consts::WINDOW_HEIGHT * 0.2f);
@@ -33,6 +34,7 @@ void SettingsScene::init() {
 
 	setAdjusterPosition();
 	createShowFPSBar();
+	//createFullscreenToggle();
 }
 
 Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackOnClick* raise, CallBackOnClick* decrease, Texture* t) {
@@ -68,6 +70,7 @@ Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackO
 
 	return adjusterTr;
 }
+
 void SettingsScene::createShowFPSBar() {
 	//Texto
 	auto text = mngr_->addEntity();
@@ -78,9 +81,24 @@ void SettingsScene::createShowFPSBar() {
 
 	//Boton
 	Vector2D showFPSButtonPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.40f);
-	auto fspButton = new CheckButton(showFPSButtonPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), showFPS, g_, mngr_);
-	mngr_->addEntity(fspButton);
+	auto fpsButton = new CheckButton(showFPSButtonPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), showFPS, g_, mngr_, g_->getFPSActive());
+	mngr_->addEntity(fpsButton);
 }
+
+void SettingsScene::createFullscreenToggle() {
+	//Texto
+	auto text = mngr_->addEntity();
+	auto textBarPosition = Vector2D(consts::WINDOW_WIDTH * 0.15f, consts::WINDOW_HEIGHT * 0.485f);
+	text->addComponent<Transform>(textBarPosition, consts::SHOW_FPS_BAR_SIZE_X, consts::SHOW_FPS_BAR_SIZE_Y);
+	text->addComponent<Image>(&sdlutils().images().at("fullscreenText"), build_sdlrect(0, 0, 256, 32), true);
+	mngr_->addRenderLayer<Interface>(text);
+
+	//Boton
+	Vector2D fullscreenPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.485f);
+	auto fullScreenButton = new CheckButton(fullscreenPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), fullScreen, g_, mngr_, g_->fullscreen);
+	mngr_->addEntity(fullScreenButton);
+}
+
 void SettingsScene::setAdjusterPosition() {
 	currentVolume = soundManager().getMusicVolume();
 	currentSFXVolume = soundManager().getSFXVolume();
@@ -91,7 +109,6 @@ void SettingsScene::setAdjusterPosition() {
 	percent = 100 * currentSFXVolume / soundManager().getMaxSfxVolume();    y = consts::VOLUME_LEVELS * percent / 100;
 	adjusterSFXVolume->setPos(Vector2D(posBarSFX.getX() + ((consts::VOLUME_BARS_SIZE_X / consts::VOLUME_LEVELS) * y) - 8, adjusterSFXVolume->getPos().getY()));
 }
-
 
 //CALLBACKS
 void SettingsScene::back(Manager* mng) {
@@ -141,7 +158,23 @@ void SettingsScene::decreaseEffectsVolume(Manager* mng)
 }
 
 void SettingsScene::showFPS(Manager* mng) {
-	mng->getGame()->setFPSActive(!mng->getGame()->getFSPActive());
+	mng->getGame()->setFPSActive(!mng->getGame()->getFPSActive());
+}
+
+void SettingsScene::fullScreen(Manager* mng) {
+	mng->getGame()->fullscreen = !mng->getGame()->fullscreen;
+
+	// TODO change camera scale
+	if (mng->getGame()->fullscreen) {
+		sdlutils().changeWindowSize(1900, 1080);
+		Camera::mainCamera->setScale(Camera::mainCamera->getScale() * (1900.0 / consts::WINDOW_WIDTH));
+	}
+	else {
+		sdlutils().changeWindowSize(consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
+		Camera::mainCamera->setScale(Camera::mainCamera->getScale() / (1900.0 / consts::WINDOW_WIDTH));
+	}
+
+	sdlutils().toggleFullScreen();
 }
 
 CreditsScene::CreditsScene(Game* g) : GameScene(g, std::string("credits")) {
@@ -162,13 +195,12 @@ void CreditsScene::update() {
 		if (e->hasComponent<Transform>()) {
 			tr = e->getComponent<Transform>();
 			auto& pos = tr->getPos();
-			pos = pos - Vector2D(0, 25 * consts::DELTA_TIME);
+			pos = pos - Vector2D(0, 50 * consts::DELTA_TIME);
 		}
 	}
 
 	if (tr != nullptr && tr->getPos().getY() < -tr->getH()) {
 		exit = true;
-
 	}
 	if (exit) {
 		t += consts::DELTA_TIME;
@@ -195,8 +227,24 @@ void CreditsScene::init() {
 		{"T", "CREDITS"},
 		{"SUREFFECT TEAM"},
 		{" "},
-		{"T", "Titulo de ejemplo", "Titulo de ejemplo descriptivo????"},
-		{"Hola soy un texto de ejemplo", "Hola soy un texto de ejemplo"}
+		{"DEVELOPMENT TEAM"},
+		{"CRISTIAN RENE CASTILLO LEON", "IVAN SANCHEZ MIGUEZ"},
+		{"IAGO QUINTAS DIZ", "PABLO FERNANDEZ ALVAREZ"},
+		{"YOJHAN STEVEN GARCIA PENA", "AARON NAUZET MORENO SOSA"},
+		{"EMILE DE KADT", "PABLO GONZALEZ ALVAREZ"},
+		{" "},
+		{"MUSIC"},
+		{"ROYALTY FREE MUSIC"},
+		{"https://soundcloud.com/royaltyfreebackgroundmusic/sets/creative-commons-music-dark-12"},
+		{"SERPENT STUDIOS"},
+		{"https://www.serpentsoundstudios.com/royalty-free-music/ambient"},
+		{" "},
+		{"HONORABLE MENTIONS"},
+		{"ABEL MORO PAJE"},
+		{"PABLO ETAYO "},
+		{" "},
+		{"AND ONE LAST BIG THANK YOU"},
+		{"TO YOU <3"},
 	};
 
 	for (auto txtArray : arr) {

@@ -4,6 +4,7 @@
 #include "../sdlutils/Texture.h"
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../ecs/Component.h"
 
 void LocationsScene::init()
@@ -32,10 +33,15 @@ void LocationsScene::init()
 	mouseOverInfo = vector<bool>(locations.size(), false);
 
 	initFocus();
+}
 
+void LocationsScene::onLoad()
+{
 	name = "Day " + std::to_string(getGame()->numDays) + " out of " + std::to_string(consts::MAX_DAYS);
 	createTransition(3.5);
 }
+
+
 
 void LocationsScene::loadLocationButtons() {
 	string path = "./resources/tilemap/location_placements.tmx";
@@ -68,7 +74,7 @@ void LocationsScene::loadLocationButtons() {
 
 void LocationsScene::changeToRaid(Game* g, int index) {
 	g->currentScene = scenes[index];
-	g->setFPSActive(true);
+	g->setShouldRenderFPS(true);
 	soundManager().playSFX("push_button");
 	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::ADDITIVE);
 }

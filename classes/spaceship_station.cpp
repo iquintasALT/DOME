@@ -92,6 +92,64 @@ void SpaceshipStation::setWorkshopItems(vector<ITEMS>&& items) {
 	}
 }
 
+void SpaceshipStation::setRightRender() {
+	for (int i = 0; i < rightRenderTexts.size(); ++i) {
+		delete  rightRenderTexts[i];
+	}
+	rightRenderTexts.clear();
+
+	for (int i = 0; i < rightRenderImgs.size(); ++i) {
+		rightRenderImgs[i]->setDead(true);
+		rightRenderImgs[i]->setActive(false);
+	}
+	falseMngr->refresh();
+	rightRenderImgs.clear();
+
+	std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].itemName;
+	rightRenderTexts.push_back(new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
+	rightRenderTexts.push_back(new Texture(sdlutils().renderer(), "Needed items: ", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
+
+	float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
+	float offsetY = rightRenderTexts[0]->height() + 25;
+	int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].row;
+	int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].col;
+
+
+	Entity* aux = falseMngr->addEntity();
+	aux->addComponent<Transform>(Vector2D{ offsetX - 32,offsetY + 80 }, 64, 64, 0);
+	Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, imgRow, imgCol, true);
+	img->render();
+
+	rightRenderImgs.push_back(aux);
+
+	offsetY = 312;
+	offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
+
+	vector<I> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
+	for (int i = 0; i < itemsNeeded.size(); ++i) {
+		int aux = 0;
+		list<Item*> items = playerInv->getItems();
+		for (auto it = items.begin(); it != items.end(); ++it)
+		{
+			if ((*it)->getItemInfo()->name() == itemsNeeded[i].name)
+				aux++;
+		}
+
+		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i].cantidad), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
+
+		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), ITEMS_INFO[itemsNeeded[i].name].itemName, sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
+
+		Entity* aux2 = falseMngr->addEntity();
+		aux2->addComponent<Transform>(Vector2D{ offsetX,offsetY }, 48, 48, 0);
+		Component* img = aux2->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, ITEMS_INFO[itemsNeeded[i].name].row, ITEMS_INFO[itemsNeeded[i].name].col, true);
+		img->render();
+		rightRenderImgs.push_back(aux2);
+
+		offsetY += 48 + 20;
+	}
+	rightRenderTexts.push_back(new Texture(sdlutils().renderer(), "CRAFT", sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
+}
+
 void SpaceshipStation::update() {
 	falseMngr->refresh();
 
@@ -115,6 +173,7 @@ void SpaceshipStation::update() {
 					if (Collisions::collides(mousePos, 1, 1, craftList_tr[i]->getPos(), craftList_tr[i]->getW(), craftList_tr[i]->getH())) {
 						renderRightWindow = true;
 						rightWindowIndex = craftList[i].index;
+						setRightRender();
 					}
 			}
 
@@ -141,32 +200,19 @@ void SpaceshipStation::update() {
 							//gastar accion
 							shelterScene->useAction();
 
+							craftSys->FinishCraft();
+
+							renderFlag = true;
+							renderRightWindow = true;
+
+							setLeftRender();
+							setRightRender();
+
 							if (mngr_->getGame()->rockets && mngr_->getGame()->radar && mngr_->getGame()->cabin)
 								endGame = true;
 						}
 					}
 				}
-			}
-		}
-		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
-	}
-
-	if (loot != nullptr) {
-		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
-		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
-			mouseClick = true;
-
-			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
-
-				if (loot->getInventory()->getItems().empty()) {
-					craftSys->FinishCraft();
-				}
-
-				loot->Interact();
-				loot->getEntity()->setActive(false);
-				loot = nullptr;
-				renderFlag = true;
-				renderRightWindow = true;
 			}
 		}
 		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
@@ -205,61 +251,54 @@ void SpaceshipStation::rightWindowRender() {
 
 		float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
 		float offsetY = bg_tr->getPos().getY() + 35;
+		if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getWeapon()->tierOfWeapon() < 2) {
 
-		std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].itemName;
+			std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].itemName;
 
-		Texture* text = new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
-		SDL_Rect dest{ offsetX - text->width() / 2  , offsetY ,text->width(),text->height() };
-		text->render(dest, 0);
+			SDL_Rect dest{ offsetX - rightRenderTexts[0]->width() / 2  , offsetY ,rightRenderTexts[0]->width(),rightRenderTexts[0]->height() };
+			rightRenderTexts[0]->render(dest, 0);
 
-		offsetY += text->height() + 25;
-		delete text;
+			offsetY += rightRenderTexts[0]->height() + 25;
 
-		int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].row;
-		int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].col;
-		renderImg(offsetX - 32, offsetY, imgRow, imgCol);
+			int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].row;
+			int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].col;
 
-		offsetY += 90;
+			if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
+				weaponTr->setPos(Vector2D(offsetX - 64, offsetY - 16));
+				renderWeaponUpgrade();
+				arrowLeft->render();
+				arrowRight->render();
+			}
+			else rightRenderImgs[0]->render();
 
-		text = new Texture(sdlutils().renderer(), "Needed items: ", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
-		dest = { (int)(offsetX - text->width() / 2)  , (int)offsetY ,text->width(),text->height() };
-		text->render(dest, 0);
+			offsetY += 90;
 
-		offsetY += text->height() + 35;
-		delete text;
-		offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
+			dest = { (int)(offsetX - rightRenderTexts[1]->width() / 2)  , (int)offsetY ,rightRenderTexts[1]->width(),rightRenderTexts[1]->height() };
+			rightRenderTexts[1]->render(dest, 0);
 
-		vector<I> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
-		for (int i = 0; i < itemsNeeded.size(); ++i) {
-			renderImg(offsetX, offsetY, ITEMS_INFO[itemsNeeded[i].name].row, ITEMS_INFO[itemsNeeded[i].name].col, 48, 48);
+			offsetY += rightRenderTexts[1]->height() + 35;
+			offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
 
-			int aux = 0;
-			list<Item*> items = playerInv->getItems();
-			for (auto it = items.begin(); it != items.end(); ++it)
-			{
-				if ((*it)->getItemInfo()->name() == itemsNeeded[i].name)
-					aux++;
+
+			vector<I> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
+			for (int i = 0; i < itemsNeeded.size(); ++i) {
+				rightRenderImgs[1 + i]->render();
+
+				dest = { (int)(offsetX + 30) , (int)offsetY + 48 - rightRenderTexts[2 * (i + 1)]->height() / 2 ,	rightRenderTexts[2 * (i + 1)]->width(),	rightRenderTexts[2 * (i + 1)]->height() };
+				rightRenderTexts[2 * (i + 1)]->render(dest, 0);
+
+				dest = { (int)(offsetX + 80) , (int)offsetY + 24 - rightRenderTexts[2 * (i + 1) + 1]->height() / 2 ,	rightRenderTexts[2 * (i + 1) + 1]->width(),	rightRenderTexts[2 * (i + 1) + 1]->height() };
+				rightRenderTexts[2 * (i + 1) + 1]->render(dest, 0);
+
+				offsetY += 48 + 20;
 			}
 
-
-			text = new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i].cantidad), sdlutils().fonts().at("ARIAL24"), build_sdlcolor(0xffffffff));
-			dest = { (int)(offsetX + 30) , (int)offsetY + 48 - text->height() / 2 ,text->width(),text->height() };
-			text->render(dest, 0);
-			delete text;
-
-			text = new Texture(sdlutils().renderer(), ITEMS_INFO[itemsNeeded[i].name].itemName, sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
-			dest = { (int)(offsetX + 80) , (int)offsetY + 24 - text->height() / 2 ,text->width(),text->height() };
-			text->render(dest, 0);
-			delete text;
-
-			offsetY += 48 + 20;
+			dest = { (int)(craftButton_tr->getPos().getX() + craftButton_tr->getW() / 2 - rightRenderTexts[rightRenderTexts.size() - 1]->width() / 2),
+				(int)(craftButton_tr->getPos().getY() + craftButton_tr->getH() / 2 - rightRenderTexts[rightRenderTexts.size() - 1]->height() / 2),
+				rightRenderTexts[rightRenderTexts.size() - 1]->width(),	rightRenderTexts[rightRenderTexts.size() - 1]->height() };
 
 			craftButton->render();
-			text = new Texture(sdlutils().renderer(), "CRAFT", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
-			dest = { (int)(craftButton_tr->getPos().getX() + craftButton_tr->getW() / 2 - text->width() / 2),
-				(int)(craftButton_tr->getPos().getY() + craftButton_tr->getH() / 2 - text->height() / 2),text->width(),text->height() };
-			text->render(dest, 0);
-			delete text;
+			rightRenderTexts[rightRenderTexts.size() - 1]->render(dest, 0);
 		}
 	}
 }

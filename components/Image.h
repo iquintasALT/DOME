@@ -6,7 +6,7 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/Texture.h"
 #include "../utils/checkML.h"
-#include "../classes/camera.h";
+#include "../classes/camera.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
 #include "Transform.h"
@@ -24,6 +24,8 @@ public:
 	{
 		int w = tex->width() / cols;
 		int h = tex->height() / rows;
+		w_ = w;
+		h_ = h;
 		src_ = { w * c ,h * r, w, h };
 	}
 
@@ -56,10 +58,13 @@ public:
 		if (alpha_ < 255)
 			tex_->setAlpha(alpha_);
 
+		SDL_Point rot = rotationOrigin;
+		rot.x = round(rot.x * scale);
+		rot.y = round(rot.y * scale);
 		if (rotationOrigin.x == -1 && rotationOrigin.y == -1)
 			tex_->render(src_, dest, tr_->getRot(), nullptr, flip_);
 		else
-			tex_->render(src_, dest, tr_->getRot(), &rotationOrigin, flip_);
+			tex_->render(src_, dest, tr_->getRot(), &rot, flip_);
 
 		// en caso de que esta imagen tenga algun tipo de alpha menor a 255
 		if (alpha_ < 255)
@@ -110,9 +115,17 @@ public:
 		return rotationOrigin;
 	}
 
+	Point2D getOriginInWorld(Transform* tr)
+	{
+		return tr->getPos() + Vector2D(tr->getW() * 1.0 / w_ * rotationOrigin.x,
+			tr->getH() * 1.0 / h_ * rotationOrigin.y);
+	}
+
 private:
 	Transform* tr_;
 	Texture* tex_;
+
+	int w_ = 1, h_ = 1;
 
 	bool isUI;
 	float scrollFactor;

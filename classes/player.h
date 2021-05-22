@@ -1,19 +1,23 @@
 #pragma once
-#include "game_character.h"
+
+#include "../ecs/Entity.h"
 #include "../utils/checkML.h"
+#include "../utils/Vector2D.h"
+
 class Physiognomy;
 class WeaponBehaviour;
 
-class Player : public GameCharacter
+class Player : public Entity
 {
-protected:
+private:
 	WeaponBehaviour* weapon;
 	Physiognomy* physiognomy;
 
 public:
 	Player(Manager* mngr_, Point2D pos);
+	Player(Player* prevPlayer, Manager* mng);
 	~Player();
-	WeaponBehaviour* getCurrentWeapon();
+	WeaponBehaviour* getWeapon();
 	WeaponBehaviour* equipWeapon(WeaponBehaviour* newWeapon);
 	Physiognomy* getPhysiognomy();
 };

@@ -15,7 +15,6 @@ class Weapon;
 class WeaponAnimation;
 class InventoryController;
 class Inventory;
-class EnemyComponent;
 class EnemyBehaviourComponent;
 class ChasePlayer;
 class KeepDistance;
@@ -23,8 +22,6 @@ class FlyingChasePlayer;
 class EnemyAttackComponent;
 class MeleeAttack;
 class GroundedMeleeAttack;
-class RangedAttack;
-class TileRenderer;
 class DistanceDetection;
 class RayCastDetection;
 class Interactions;
@@ -34,7 +31,6 @@ class BackToShelter;
 class ParticleSystem;
 class Ricochet;
 class RicochetWeapon;
-class PlayerCollisions;
 class PlayerHealthComponent;
 class HungerComponent;
 class TirednessComponent;
@@ -58,6 +54,9 @@ class ChangeImage;
 class ParallaxComponent;
 class HoldToSkip;
 class InitialCameraZoom;
+class Dialogue;
+class CameraShake;
+class Timer;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -70,13 +69,11 @@ class InitialCameraZoom;
     WeaponAnimation, \
 	InventoryController, \
 	Inventory, \
-	EnemyComponent, \
 	EnemyBehaviourComponent, \
 	ChasePlayer, \
 	KeepDistance, \
 	FlyingChasePlayer, \
 	EnemyAttackComponent, \
-	TileRenderer, \
 	DistanceDetection, \
 	RayCastDetection, \
 	Interactions, \
@@ -88,7 +85,6 @@ class InitialCameraZoom;
 	PlayerHealthComponent,\
 	HungerComponent, \
 	TirednessComponent, \
-	PlayerCollisions, \
 	Charge, \
 	BoxCollider,\
 	BleedoutComponent,\
@@ -107,7 +103,10 @@ class InitialCameraZoom;
 	ChangeImage,\
 	ParallaxComponent,\
 	HoldToSkip, \
-	InitialCameraZoom
+	InitialCameraZoom, \
+	Dialogue, \
+	CameraShake, \
+	Timer
 
 // groups
 
@@ -117,34 +116,28 @@ struct Ladders_grp;
 struct Player_grp;
 struct DefaultEnemy_grp;
 struct FlyingEnemy_grp;
-struct RangedEnemy_grp;
 #define _GRPS_LIST_  \
 	Wall_grp, \
 	Enemy_grp, \
 	Ladders_grp, \
 	Player_grp, \
 	DefaultEnemy_grp, \
-	FlyingEnemy_grp, \
-	RangedEnemy_grp
+	FlyingEnemy_grp
 
 
 // handlers
 struct Player_hdlr;
 #define _HDLRS_LIST_ Player_hdlr
 
-// collision layers
-//struct CollLayer1;
-//#define _COLLISIONS_LIST_ CollLayer1
-
 // render layers
-struct Default;
 struct Parallax;
 struct Background;
+struct Default;
 struct Walls;
+struct Loot;
 struct Player;
 struct Enemy;
 struct Bullets;
-struct Loot;
 struct Dark;
 struct Interface;
 struct Item;
@@ -154,10 +147,10 @@ struct ULTIMATE;
 	Background, \
 	Default, \
 	Walls, \
+	Loot, \
 	Player, \
 	Enemy, \
 	Bullets, \
-	Loot, \
 	Dark,\
 	Interface, \
 	Item, \

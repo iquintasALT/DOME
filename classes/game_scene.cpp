@@ -6,9 +6,17 @@
 #include "../components/Image.h"
 
 #include "../components/TransitionComponent.h"
-#include "../game/Game.h"
 #include "../components/parallax_component.h"
 
+#include <SDL.h>
+#include <SDL_image.h>
+#include <string>
+#include <cassert>
+#include <iostream>
+
+#include "../sdlutils/Texture.h"
+#include "../sdlutils/Font.h"
+#include "../sdlutils/SDLUtils.h"
 
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
@@ -25,6 +33,19 @@ void GameScene::loadMap(string& const path) {
 	auto tilesize = mapInfo.tile_map->getTileSize();
 	mapInfo.tile_width = tilesize.x;
 	mapInfo.tile_height = tilesize.y;
+
+	//convertir a textura
+	auto rend = sdlutils().renderer();
+	int bgWidth = mapInfo.tile_width * mapInfo.cols;
+	int bgHeight = mapInfo.tile_height * mapInfo.rows;
+	SDL_Texture* background = SDL_CreateTexture(rend,
+		SDL_PIXELFORMAT_RGBA8888, SDL_TEXTUREACCESS_TARGET,
+		bgWidth,
+		bgHeight
+	);
+
+	SDL_SetTextureBlendMode(background, SDL_BLENDMODE_BLEND);
+	SDL_SetRenderTarget(rend, background);
 
 	// establecemos los bordes de la camara con respecto al numero de tiles en el mapa
 	Camera::mainCamera->setBounds(0, 0, mapInfo.cols * mapInfo.tile_width, mapInfo.rows * mapInfo.tile_height);
@@ -110,12 +131,21 @@ void GameScene::loadMap(string& const path) {
 					//		is_wall = tile_props[0].getBoolValue();
 					//}
 
-					//propiedades de la capa de tiles
-					vector<tmx::Property> tl_props = tile_layer->getProperties();
-
 					// metemos el tile
-					Tile(mngr_, mapInfo.tilesets[tset_gid], tl_props[0].getStringValue(), x_pos, y_pos,
-						region_x, region_y, mapInfo.tile_width, mapInfo.tile_height);
+					auto tileTex = mapInfo.tilesets[tset_gid];
+
+					SDL_Rect src;
+					src.x = region_x; src.y = region_y;
+					src.w = mapInfo.tile_width;
+					src.h = mapInfo.tile_height;
+
+					SDL_Rect dest;
+					dest.x = x_pos;
+					dest.y = y_pos;
+					dest.w = src.w;
+					dest.h = src.h;
+
+					mapInfo.tilesets[tset_gid]->render(src, dest);
 				}
 			}
 		}
@@ -142,28 +172,29 @@ void GameScene::loadMap(string& const path) {
 				}
 				else if (obj.getName() == "playerSpawn") {
 					if (g_->playerCreated) {
-						auto test = mngr_->getHandler<Player_hdlr>();
-						test->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
-
+						auto ent = mngr_->getHandler<Player_hdlr>();
+						ent->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
 					}
-					else {
+					else
 						new Player(mngr_, Point2D(aabb.left, aabb.top));
-						g_->playerCreated = true;
-					}
 					auto camPos = Vector2D(aabb.left, aabb.top) + Vector2D(0, consts::CAMERA_MARGIN_FROM_PLAYER / Camera::mainCamera->getScale());
 					Camera::mainCamera->MoveToPoint(camPos);
 				}
 				else if (obj.getName() == "loot") {
 					Entity* interactableElement = mngr_->addEntity();
 					interactableElement->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
-					interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 4, 0);
+					interactableElement->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 5, 0);
 					mngr_->addRenderLayer<Loot>(interactableElement);
 					interactableElement->addComponent<Loot>("Press E to open the loot", 5, 5);
 					Loot* loot = interactableElement->getComponent<Loot>();
 
 					vector<I> chestLoot = getGame()->SCENES_LOOT.find(getGame()->currentScene)->second[sceneLoots];
 					for (int i = 0; i < chestLoot.size(); i++) {
-						loot->getInventory()->storeItem(new Item{ new ItemInfo(chestLoot[i].name, chestLoot[i].desc, chestLoot[i].w,chestLoot[i].h,chestLoot[i].row,chestLoot[i].col),mngr_,loot->getInventory(),chestLoot[i].x,chestLoot[i].y });
+						int count = 0;
+						if (chestLoot[i].name == CLASSIC_AMMO) count = 12;
+						if (chestLoot[i].name == LASER_AMMO) count = 5; 
+						if (chestLoot[i].name == RICOCHET_AMMO) count = 6;
+						loot->getInventory()->storeItem(new Item{ new ItemInfo(chestLoot[i].name, chestLoot[i].desc, chestLoot[i].w,chestLoot[i].h,chestLoot[i].row,chestLoot[i].col),mngr_,loot->getInventory(),chestLoot[i].x,chestLoot[i].y ,count });
 					}
 					sceneLoots++;
 				}
@@ -174,8 +205,6 @@ void GameScene::loadMap(string& const path) {
 						new DefaultEnemy(mngr_, Point2D(aabb.left, aabb.top));
 					else if (enemyType == 1) // volador
 						new FlyingEnemy(mngr_, Point2D(aabb.left, aabb.top));
-					else // rango
-						new RangedEnemy(mngr_, Point2D(aabb.left, aabb.top));
 				}
 				else if (obj.getName() == "returnShelter") {
 					Entity* returnToShelter = mngr_->addEntity();
@@ -211,6 +240,14 @@ void GameScene::loadMap(string& const path) {
 			}
 		}
 	}
+
+	SDL_SetRenderTarget(rend, nullptr);
+
+	if (!sdlutils().images().count(path)) sdlutils().images().emplace(path, Texture(rend, background, bgWidth, bgHeight));
+	auto backgroundEntity = mngr_->addEntity();
+	mngr_->addRenderLayer<Background>(backgroundEntity);
+	backgroundEntity->addComponent<Transform>(Vector2D(), bgWidth, bgHeight);
+	backgroundEntity->addComponent<Image>(&sdlutils().images().at(path));
 }
 
 void GameScene::changeState(GameScene* gs)
@@ -219,10 +256,11 @@ void GameScene::changeState(GameScene* gs)
 	g_->getStateMachine()->changeState(gs);
 }
 
-void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<void()> f) {
+void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<void()> f, string transitionText) {
 
 	int winWidth = consts::WINDOW_WIDTH;
 	int winheight = consts::WINDOW_HEIGHT;
+	if (transitionText == "") transitionText = name;
 
 	Entity* e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(), winWidth, winheight);
@@ -232,7 +270,7 @@ void GameScene::createTransition(float timeToFade, bool fadeIn, std::function<vo
 
 	e = mngr_->addEntity();
 	e->addComponent<Transform>(Vector2D(winWidth / 2, winheight / 2), winWidth, winheight);
-	e->addComponent<TextWithBackground>(name,
+	e->addComponent<TextWithBackground>(transitionText,
 		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
 	e->addComponent<TransitionComponent>(timeToFade, fadeIn, f);
 	mngr_->addRenderLayer<Interface>(e);

@@ -13,6 +13,7 @@ void BackToShelter::init() {
 }
 
 void BackToShelter::Interact() {
+	entity_->getMngr()->getGame()->setShouldRenderFPS(true);
 	static_cast<Player*>(player_)->getPhysiognomy()->removeAllStates();
 	entity_->getMngr()->ChangeScene(new ShelterScene(scene_->getGame()), SceneManager::SceneMode::OVERRIDE);
 }

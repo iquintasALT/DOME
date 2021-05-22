@@ -24,10 +24,20 @@ ShelterHud::ShelterHud(Manager* mngr, ShelterScene* shelter_) : Entity(mngr) {
 
 	Entity* tooltip = mngr->addEntity();
 	tooltipTr = tooltip->addComponent<Transform>(Vector2D(), 400, 10);
-	tooltipText = tooltip->addComponent<TextWithBackground>("Inventario", sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+	tooltipText = tooltip->addComponent<TextWithBackground>("Inventario", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 	tooltip->setActive(false);
 
 	assert(hunger != nullptr && tiredness != nullptr);
+
+
+	statesDescriptions = std::vector<std::string>{
+		{"You are not hungry but watch out"},
+		{"You are hungry, you should eat"},
+		{"You are starving, eat or die"},
+		{"You are not tired, but do not expend to much time out there"},
+		{"You are tired, you should rest"},
+		{"You are exhausted, rest or die"},
+	};
 }
 
 void ShelterHud::render() {
@@ -62,6 +72,13 @@ void ShelterHud::drawTooltip(int indice, SDL_Rect dest) {
 		mouse.getY() > dest.y && mouse.getY() < dest.y + dest.h) {
 
 		tooltipTextures[indice].t->setPos(mouse);
+
+		if (!indice) tooltipTextures[indice].text->changeText(statesDescriptions[(int)hunger->getHungerLevel()]);
+		else {
+			int index = (int)tiredness->getTirednessLevel() + 3;
+			tooltipTextures[indice].text->changeText(statesDescriptions[index]);
+		}
+
 		tooltipTextures[indice].text->render();
 	}
 }
@@ -79,7 +96,7 @@ void ShelterHud::manageToolTips()
 		Entity* ent = mngr_->addEntity();
 		Transform* t = ent->addComponent<Transform>(Vector2D(), 400, 10);
 		TextWithBackground* text = ent->addComponent<TextWithBackground>(" ",
-			sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+			sdlutils().fonts().at("Orbitron24"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 		tooltipTextures.push_back({ t, text });
 		ent->setActive(false);
 	}

@@ -30,5 +30,5 @@ public:
 };
 
 //interactableElement->addComponent<TextWithBackground>("Press E to open the loot",
-//sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
+//sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
 

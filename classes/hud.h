@@ -5,6 +5,8 @@
 #include "countdown.h"
 #include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
+#include <vector>
+#include <string>
 
 class TextWithBackground;
 class Image;
@@ -22,16 +24,18 @@ private:
 
 	bool frozen = false;
 	int bullets = 0;
-	int charger = 0;
+	int magSize = 0;
 	int totalBullet = 0;
-	list<PlayerHealthComponent*>* states;
+	std::list<PlayerHealthComponent*>* states;
 
 	Texture* nbullets;
 	Texture* ncharger;
 	Texture* totalBullets;
 	Texture* timer;
 	Texture* marco;
-	Image* actweapon;
+	Image* currentWeapon;
+
+	std::vector<std::string> statesDescriptions;
 
 	Transform* tooltipTr;
 	TextWithBackground* tooltipText;

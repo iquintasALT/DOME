@@ -11,16 +11,19 @@
 #include "../classes/countdown.h"
 #include "../components/parallax_component.h"
 #include "../components/InitialCameraZoom.h"
-
+#include "../components/CameraMovement.h"
 void RaidScene::init() {
-	loadMap(path_);
+	if (mngr_->getGame()->playerCreated) 
+		mngr_->getGame()->playerSaved = new Player(mngr_->getGame()->playerSaved, mngr_);
 
-	timer = new Countdown(10);
+	loadMap(path_);
+	mngr_->getHandler<Player_hdlr>()->setActive(true);
+	timer = new Countdown(420);
 
 	player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
 	raidTimeEnded = false;
 
-	auto weapon = player->getCurrentWeapon();
+	auto weapon = player->getWeapon();
 
 	if (!weapon->isActive())
 		weapon->setActive(true);
@@ -30,7 +33,9 @@ void RaidScene::init() {
 	createParallaxBackground(5);
 
 	auto cameraZoom = mngr_->addEntity();
-	cameraZoom->addComponent<InitialCameraZoom>(1.2, 2);
+	cameraZoom->addComponent<InitialCameraZoom>(1.2, 2, [this]() {
+		mngr_->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = true;
+		});
 
 	createTransition();
 }
@@ -47,7 +52,7 @@ void RaidScene::update() {
 	}
 	
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
-		mngr_->getGame()->setFPSActive(false);
+		mngr_->getGame()->setShouldRenderFPS(false);
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
 	}
 }

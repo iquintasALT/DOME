@@ -4,7 +4,7 @@
 #include "../utils/checkML.h"
 
 TextWithBackground::TextWithBackground(std::string msg, Font& font, SDL_Color col,
-	Texture* tex, bool appearingText, float appearingTextSpeed, bool alignInCenter) {
+	Texture* tex, bool appearingText, float appearingTextSpeed, bool alignInCenter, bool txtWrap) {
 	tr_ = nullptr;
 	texture_ = tex;
 	message_ = msg;
@@ -14,6 +14,9 @@ TextWithBackground::TextWithBackground(std::string msg, Font& font, SDL_Color co
 	currentIndex = 0;
 	centerAlign = alignInCenter;
 	textSpeed = 1 / appearingTextSpeed;
+
+	wrapWords = txtWrap;
+	finishedWriting = false;
 }
 
 void TextWithBackground::init() {
@@ -72,9 +75,35 @@ void TextWithBackground::changeTextTextures() {
 
 			completed = t->width() > tr_->getW();
 
-			if (completed && str.size() > 0) {
-				second = str[str.size() - 1] + second;
-				str.pop_back();
+			if (completed && str.size() > 0) { //Aqui entra si no cabe
+				if (wrapWords) {
+					std::string nextWord = "";
+					while (str.size() > 0 && str[str.size() - 1] != ' ') { //Separa por palabras
+						nextWord = str[str.size() - 1] + nextWord;
+						str.pop_back();
+					}
+
+					bool removedSpace = false;
+					if (str.size() > 0 && str[str.size() - 1] == ' ') {
+						str.pop_back();
+						removedSpace = true;
+					}
+
+					if (str.size() == 0) { //La linea de arriba se quedó vacia
+						str = (removedSpace ? " " : "") + nextWord;
+						second = str[str.size() - 1] + second;
+						str.pop_back();
+						//completed = false;
+					}
+					else { //
+						//Añade la palabra
+						second = nextWord + (removedSpace ? " " : "") + second;
+					}
+				}
+				else {
+					second = str[str.size() - 1] + second;
+					str.pop_back();
+				}
 				added = true;
 				delete t;
 				t = nullptr;
@@ -116,14 +145,16 @@ void TextWithBackground::update() {
 		message_ += finalMessage_[currentIndex++];
 		changeTextTextures();
 
-		if (currentIndex >= finalMessage_.size())
+		if (currentIndex >= finalMessage_.size()) {
 			appearingText_ = false;
+			finishedWriting = true;
+		}
 	}
 }
 
 void TextWithBackground::setAlpha(int value) {
-	if(texture_ != nullptr)
-	texture_->setAlpha(value);
+	if (texture_ != nullptr)
+		texture_->setAlpha(value);
 	for (auto t : text_) {
 		t->setAlpha(value);
 	}

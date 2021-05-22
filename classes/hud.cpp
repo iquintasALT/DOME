@@ -31,39 +31,48 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 
 	numberOfStates = states->size();
 
-	charger = player->getCurrentWeapon()->getWeapon()->getMagazineSize();
-
 	//TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture * texture, bool appearingText = false, float appeatingTextSpeed = 1, bool alignInCenter = false);
 	
 	Entity* tooltip = m->addEntity();
 	tooltipTr = tooltip->addComponent<Transform>(Vector2D(), 400, 10);
 	tooltipText = tooltip->addComponent<TextWithBackground>("Inventario",
-		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 	tooltip->setActive(false);
 
 	Entity* arma = m->addEntity();
 	arma->addComponent<Transform>(Vector2D(7, consts::WINDOW_HEIGHT - 75 - 7), 75, 75);
-	actweapon = arma->addComponent<Image>(&sdlutils().images().at("weaponHUD"), 3, 3, 0, 0, true);
+	currentWeapon = arma->addComponent<Image>(&sdlutils().images().at("weaponHUD"), 3, 3, 0, 0, true);
 	m->addRenderLayer<Interface>(arma);
+
+	statesDescriptions = std::vector<std::string>{
+		{"You are intoxicated, find something to detox"},
+		{"You suffered a contusion, now, you can't jump"},
+		{"You feel a lot of pain, find some painkiller"},
+		{"You are so cold, leave now!"},
+		{"You are bleeding"}, 
+		{"You have a serious wound"}
+	};
 }
 
 void hud::chooseWeapon(int type, int tier)
 {
-	actweapon->changeFrame(tier, type);
+	currentWeapon->changeFrame(tier, type);
 }
 
 void hud::update()
 {
 	time->update();
 
-	bullets = player->getCurrentWeapon()->getWeapon()->getBulletsInMagazine();
-	totalBullet = player->getCurrentWeapon()->getWeapon()->getAmmoReserves();
+	bullets = player->getWeapon()->getCurrentWeapon()->getBulletsInMagazine();
+	totalBullet = player->getWeapon()->getCurrentWeapon()->getAmmoReserves();
 	if (totalBullet < 0) totalBullet = 0;
 
-	int type = (int)player->getCurrentWeapon()->typeOfWeapon();
-	int tier = player->getCurrentWeapon()->tierOfWeapon();
+	int type = (int)player->getWeapon()->typeOfWeapon();
+	int tier = player->getWeapon()->tierOfWeapon();
 
 	chooseWeapon(type, tier);
+
+	magSize = player->getWeapon()->getCurrentWeapon()->getMagazineSize();
 
 	if (!time->keepPlaying() && !frozen)
 	{
@@ -87,7 +96,7 @@ void hud::render() {
 	marco->render(dest);
 
 	//Renderizar las balas cargador
-	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(charger), sdlutils().fonts().at("Orbitron12"),
+	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(magSize), sdlutils().fonts().at("Orbitron12"),
 		build_sdlcolor(0xffffffff));
 
 	nbullets->render(100, consts::WINDOW_HEIGHT - 86);
@@ -117,7 +126,7 @@ void hud::render() {
 				Entity* ent = mngr_->addEntity();
 				Transform* t = ent->addComponent<Transform>(Vector2D(), 400, 10);
 				TextWithBackground* text = ent->addComponent<TextWithBackground>(" ",
-					sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+					sdlutils().fonts().at("Orbitron24"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 				tooltipTextures.push_back({t, text});
 				ent->setActive(false);
 			}
@@ -162,7 +171,7 @@ void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
 	// Si no hay estados que dibujar, no deberiamos estar en este metodo
 	assert(states->size() > 0);
 
-	Vector2D aux = Vector2D(consts::STATUS_EFFECTS_SIZEX/2 + pos * consts::STATUS_EFFECTS_SIZEX, 20);
+	Vector2D aux = Vector2D(consts::STATUS_EFFECTS_SIZEX/2 + pos * consts::STATUS_EFFECTS_SIZEX, 30);
 	SDL_Rect dest = build_sdlrect(aux, consts::STATUS_EFFECTS_SIZEX, consts::STATUS_EFFECTS_SIZEY);
 	SDL_Rect src = build_sdlrect((frameIndex % 4) * 32, (frameIndex / 4) * 32, 32, 32);
 	states->front()->getTexture()->render(src, dest);
@@ -172,9 +181,14 @@ void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
 		
 		int n = pos;
 		tooltipTextures[n].t->setPos(mouse);
+
+		if (frameIndex > 3) {
+			if (frameIndex == 13) tooltipTextures[n].text->changeText(statesDescriptions[statesDescriptions.size() - 1]);
+			else  tooltipTextures[n].text->changeText(statesDescriptions[4]);
+		}
+		else tooltipTextures[n].text->changeText(statesDescriptions[frameIndex]);
+
 		tooltipTextures[n].text->render();
-		//tooltipTr->setPos(mouse);
-		//tooltipText->changeText("Habria que cambiar la descripcion del estado con un if o algo no se");
-		//tooltipText->render();
+		
 	}
 }

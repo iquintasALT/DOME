@@ -14,6 +14,7 @@
 class TextWithBackground;
 class Game;
 class WeaponBehaviour;
+
 class Inventory : public Component
 {
 	friend class Item;
@@ -28,7 +29,7 @@ public:
 	void update() override;
 	void render() override;
 
-	inline list<Item*>& getItems() { return storedItems; };
+	inline std::list<Item*>& getItems() { return storedItems; };
 
 	void storeItem(Item* item);
 	void moveItem(Item* item, int x, int y);
@@ -45,6 +46,8 @@ public:
 
 	void onEnable() override;
 	void onDisable() override;
+
+	bool isPlayer = false;
 private:
 	Point2D originalPos;
 	const float timeToHold = 0.08f; //seconds
@@ -69,12 +72,13 @@ private:
 
 	Item* findItemInSlot(int x, int y);
 
-	bool avaliableSpace(int x, int y, Item* item);
+	bool availableSpace(int x, int y, Item* item);
 
 	bool justPressed;
 	Item* selectedItem;
 	Item* selectedItem_;
 	Item* itemClickedInDropdown;
+	Item* lastItemHovered;
 
 	bool insideSquare(int mouseX, int mouseY, Transform* rect);
 	bool insideSquare(int mouseX, int mouseY);

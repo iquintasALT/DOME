@@ -9,6 +9,7 @@
 #include "../ecs/ecs.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/InputHandler.h"
+#include "../sdlutils/SoundManager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
 #include "../classes/weapon_behaviour.h"
@@ -25,6 +26,7 @@
 #include "../classes/locations_scene.h"
 #include "../classes/lose_scene.h"
 #include "../classes/pause_scene.h"
+#include "../classes/player.h"
 
 Game::Game(int totaltime) {
 	initLoot();
@@ -37,6 +39,7 @@ Game::Game(int totaltime) {
 	lastTimeFPS = SDL_GetTicks();
 	fpsActive = false;
 	fpsText = nullptr;
+	shouldRenderFps = false;
 }
 
 Game::~Game() {
@@ -47,12 +50,15 @@ Game::~Game() {
 void Game::init() {
 
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "./resources/config/resources.json");
+
 	sdlutils().showCursor();
+	//sdlutils().toggleFullScreen();
 
 	initLoot();
 
 	states->pushState(new MenuScene(this));
 	states->currentState()->init();
+	states->currentState()->onLoad();
 }
 
 void Game::start() {
@@ -64,7 +70,7 @@ void Game::start() {
 	while (!exit) {
 		Uint32 startTime = sdlutils().currRealTime();
 
-		//ih().clearState();
+		soundManager().update();
 		while (SDL_PollEvent(&event)) {
 			ih().update(event);
 		}
@@ -86,7 +92,6 @@ void Game::start() {
 		states->currentState()->cycle();
 		drawFPS(currentFPS);
 		sdlutils().presentRenderer();
-
 		Uint32 frameTime = sdlutils().currRealTime() - startTime;
 
 		if (frameTime < 1000 / consts::FRAME_RATE)
@@ -95,11 +100,11 @@ void Game::start() {
 }
 
 void Game::drawFPS(int fps) {
-	if (fpsActive) {
+	if (fpsActive && shouldRenderFps) {
 		std::stringstream ss;
 		ss << "FPS: " << fps;
 		fpsText = new Texture(sdlutils().renderer(), ss.str(), sdlutils().fonts().at("Orbitron16"), build_sdlcolor(0xffffffff));
-		fpsText->render(10,10);
+		fpsText->render(10,5);
 		delete fpsText;
 	}
 }
@@ -107,7 +112,7 @@ void Game::drawFPS(int fps) {
 void Game::initLoot() {
 	SCENES_LOOT.clear();
 	//, HOSPITAL, RESTAURANT, RAID, COMMUNICATIONS,NUCLEAR_STATION,SUPERMARKET,SHOP
-// ITEMS n, int cantidad (INUTIL PARA ESTE METODO), int w , int h , int x, int y,int row, int col,string desc
+	// ITEMS n, int cantidad (INUTIL PARA ESTE METODO), int w , int h , int x, int y,int row, int col,string desc
 	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<I>>{ {I(WATER, 0, 1, 2, 0, 0, 4, 0, "pues eso, agua. Se bebe"), I(MEDICAL_COMPONENTS, 5, 2, 2, 1, 0, 3, 2, "componentes medicos para ponerte hasta el culo")} });
 	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<I>>{
 		{I{ SPACESHIP_KEY_ITEMS,0,2,2,0,0,4,2,"spaceship key item" }, I{ WATER,0,1,2,0,3,4,0,"water" }, I{ WATER,0,1,2,1,3,4,0,"water" },
@@ -118,8 +123,6 @@ void Game::initLoot() {
 			I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" }, I{ WATER,0,1,2,4,0,4,0,"water" }
 		}
 	});
-
-
 
 	SCENES_LOOT.emplace(SCENES::HOSPITAL, vector<vector<I>>{
 		{I{ MEDICAL_COMPONENTS,0,1,2,0,0,0,1,"medical components" }, I{ MEDICAL_COMPONENTS,0,1,2,3,3,0,1,"medical components" }, I{ MEDICAL_COMPONENTS,0,1,2,4,2,0,1,"medical components" },

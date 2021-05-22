@@ -1,4 +1,5 @@
 #include "menu_button.h"
+#include "../ecs/Manager.h"
 #include "../components/Transform.h"
 #include "../components/Image.h"
 #include "../sdlutils/InputHandler.h"

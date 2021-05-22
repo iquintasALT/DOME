@@ -2,6 +2,7 @@
 
 #include "Texture.h"
 
+
 Texture& Texture::operator=(Texture &&other) noexcept {
 	this->~Texture();
 	texture_ = other.texture_;
@@ -58,6 +59,14 @@ Texture::Texture(SDL_Renderer *renderer, const std::string &text,
 Texture::Texture(SDL_Renderer *renderer, const std::string &text,
 		const Font &font, const SDL_Color &fgColor, const SDL_Color &bgColor) {
 	constructFromText(renderer, text, font, &fgColor, &bgColor);
+}
+
+Texture::Texture(SDL_Renderer* rend, SDL_Texture* tex, int width, int height)
+{
+	renderer_ = rend;
+	texture_ = tex;
+	width_ = width;
+	height_ = height;
 }
 
 void Texture::constructFromText(SDL_Renderer *renderer, const std::string &text,

@@ -11,8 +11,6 @@
 #include "Texture.h"
 #include "VirtualTimer.h"
 
-#include "SoundManager.h"
-
 #include "../utils/Singleton.h"
 #include "../utils/checkML.h"
 #include "../json/JSON.h"
@@ -46,6 +44,13 @@ public:
 	// access to the underlying SDL_Window -- in principle not needed
 	inline SDL_Window* window() {
 		return window_;
+	}
+
+	// changes the window size
+	inline void changeWindowSize(int w, int h) {
+		width_ = w;
+		height_ = h;
+		SDL_SetWindowSize(window_, width_, height_);
 	}
 
 	// access to the underlying SDL_Renderer -- needed when creating textures
@@ -107,11 +112,6 @@ public:
 	inline sdl_resource_table<Texture>& images() {
 		return images_;
 	}
-
-	// messages map
-	inline sdl_resource_table<Texture>& msgs() {
-		return msgs_;
-	}
 	
 	// tilesets maps
 	inline sdl_resource_table<Texture>& tilesets() {
@@ -157,7 +157,6 @@ private:
 
 	sdl_resource_table<Font> fonts_; // fonts map (string -> font)
 	sdl_resource_table<Texture> images_; // textures map (string -> texture)
-	sdl_resource_table<Texture> msgs_; // textures map (string -> texture)
 	sdl_resource_table<Texture> tilesets_; // textures map (string -> texture)
 
 	RandomNumberGenerator random_; // (pseudo) random numbers generator

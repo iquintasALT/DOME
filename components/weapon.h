@@ -6,13 +6,12 @@
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
 #include <math.h>
-
+#include "../classes/Item.h"
 
 class Transform;
 class Image;
 class Player;
 
-enum ITEMS;
 
 class Weapon : public Component
 {
@@ -45,6 +44,7 @@ protected:
 
 	Vector2D calculateShotTrajectory(Vector2D direction); // Returns direction of the shot after accounting for random spread
 	void calculatePosition();
+	Point2D calculateBulletPosition(const Vector2D& direction);
 	void calculateRotation(Vector2D& direction);
 	virtual Entity* createBullet(const Vector2D& direction);
 	virtual void shoot(const Vector2D& direction);
@@ -52,9 +52,9 @@ protected:
 public:
 	enum WeaponType { CLASSIC, RICOCHET, LASER };
 	WeaponType type = CLASSIC;
+	int tier_;
 
-	Weapon() {};
-	Weapon(float rateOfFire, int damage, float bulletSpread = 0, int tier = 0);
+	Weapon(float bulletSpread = 0, int tier = 0);
 	~Weapon();
 
 	bool ItemIsAmmo(Item* item, WeaponType weaponType);
@@ -76,7 +76,6 @@ public:
 	virtual void reload();
 
 	void adjustToCrouching();
-	virtual void upgradeCurrentWeapon(int tier);
 
 	virtual void init();
 };

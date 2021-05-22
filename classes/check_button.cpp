@@ -1,13 +1,23 @@
 #include "check_button.h"
 #include "../sdlutils/InputHandler.h"
+#include "../sdlutils/SoundManager.h"
 #include "../components/Image.h"
+#include "../game/Game.h"
 
-CheckButton::CheckButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_) 
+CheckButton::CheckButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, bool startCondition) 
 	: MenuButton(pos, size, t, function, g, mngr_), over(false), img(nullptr), checked(false), clicked(false){
 	img = getComponent<Image>();
 	SDL_Rect rect = { 0, 0, t->width() / 3, t->height() };
 	img->setSrc(rect);
-	img->changeFrame(0, 0);
+
+	if (startCondition) {
+		img->changeFrame(2, 0);
+		checked = true;
+	}
+	else {
+		img->changeFrame(0, 0);
+		checked = false;
+	}
 }
 
 void CheckButton::update() {

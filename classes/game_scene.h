@@ -8,7 +8,6 @@
 #include "../components/InventoryController.h"
 #include "../components/particleSystem.h"
 #include "../classes/weapon_behaviour.h"
-#include "../classes/tile.h"
 #include "../classes/player.h"
 #include "../classes/enemy.h"
 #include "../components/loot.h"
@@ -60,8 +59,8 @@ protected:
 	Manager* mngr_;
 	MapInfo mapInfo;
 	Game* g_;
-
-	void createTransition(float timeToFade = 2, bool fadeIn = true, std::function<void()> f = []() {});
+	Texture* background;
+	void createTransition(float timeToFade = 2, bool fadeIn = true, std::function<void()> f = []() {}, string transitionText = "");
 
 	void createParallaxLayer(float scrollFactor, Texture* t, int numOfRep);
 	virtual void createParallaxBackground(int numOfRep) {};
@@ -71,10 +70,11 @@ protected:
 
 public:
 	//constructora que crea el manager de gObjects de la clase
-	inline GameScene(Game* game, string sceneName) { mngr_ = new Manager(game); g_ = game; name = sceneName;}
-	inline virtual ~GameScene() { delete mngr_; }
+	inline GameScene(Game* game, string sceneName) { background = nullptr; mngr_ = new Manager(game); g_ = game; name = sceneName; }
+	inline virtual ~GameScene() { delete mngr_; if (background != nullptr) delete background; }
 	//creacion de objetos, que sera diferente en cada escena
 	inline virtual void init() = 0;
+	inline virtual void onLoad() {};
 	//metodos para llamar al manager de la escena
 	inline virtual void update() { mngr_->update(); }
 	inline virtual void refresh() { mngr_->refresh(); }

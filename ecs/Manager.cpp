@@ -6,6 +6,9 @@
 #include <algorithm>
 #include <iostream>
 #include "../ecs/Entity.h"
+#include "../game/Game.h"
+#include "../components/Inventory.h"
+#include "../components/weapon.h"
 
 Manager::Manager(Game* game) : game(game), sceneManager(game) {
 	for (auto elem : hdlrs_)
@@ -14,8 +17,13 @@ Manager::Manager(Game* game) : game(game), sceneManager(game) {
 
 Manager::~Manager() {
 	for (auto e : entities_) {
-		//if (e != getHandler<Player_hdlr>())
-		delete e;
+		//if (e == getHandler<Player_hdlr>()) {
+		//	//game->playerSaved = static_cast<Player*>(e);
+		//	//game->playerCreated = true;
+		//}
+		/*else */if (e->hasComponent<Inventory>() && e->getComponent<Inventory>()->isPlayer)
+			if (e->hasComponent<Weapon>())
+				delete e;
 	}
 
 	entities_.clear();
@@ -45,7 +53,7 @@ void Manager::refresh() {
 						}*/
 						colliders.erase(e->getComponent<BoxCollider>()->getCollisionIterator());
 					}
-					if(e->renderGroup > -1) // eliminacion de la capa de renderizado
+					if (e->renderGroup > -1) // eliminacion de la capa de renderizado
 						renders_[e->renderGroup].remove(e);
 					delete e;
 					return true;
@@ -56,10 +64,8 @@ void Manager::refresh() {
 
 void Manager::update() {
 	for (auto i = 0u; i < entities_.size(); i++)
-	{
 		if (entities_[i]->active)
 			entities_[i]->update();
-	}
 }
 
 void Manager::render() {
@@ -74,16 +80,11 @@ void Manager::AddInteractableElement(InteractableElement* ie) {
 }
 
 std::list<BoxCollider*>::iterator Manager::AddCollider(BoxCollider* bc) {
-	//colliders.push_back(bc);
 	std::list<BoxCollider*>::iterator it = colliders.insert(colliders.end(), bc);
 	return it;
 }
 
 void Manager::cycle() {
-	//update();
-	//refresh();
-	//render();
-
 	if (sceneManager)
 		sceneManager.LoadScene();
 }

@@ -28,9 +28,10 @@ private:
 	int lastTimeFPS; //ultimo registro de fps
 	int currentFPS; //el actual numero de fps
 	int framesFPS; //frames transcurrido desde el ultimo registro de fps
-	void drawFPS(int fps);
-	bool fpsActive;
+	bool fpsActive; bool shouldRenderFps;
 	Texture* fpsText;
+
+	void drawFPS(int fps);
 
 public:
 	SCENES currentScene;
@@ -46,12 +47,16 @@ public:
 
 	void initLoot();
 	void setFPSActive(bool value) { fpsActive = value; }
-	bool getFSPActive() { return fpsActive; }
+	bool getFPSActive() { return fpsActive; }
+	void setShouldRenderFPS(bool value) { shouldRenderFps = value; }
 	
-
 	// booleano para comprabar si el jugador ha sido creado, para mantener la informaci�n
 	// entre escenas. Ponerlo a falso cuando se salga de juego (menu, endScreen, etc.)
 	bool playerCreated = false;
+	Player* playerSaved = nullptr;
+
+	// booleano que control si hay fullscreen activo
+	bool fullscreen = false;
 
 	// contador de dias de juego. Partimos de 0 para dejar claro que no 
 	// se ha comenzado la partida, hacer que se haga + 1 para cada transicion a 
