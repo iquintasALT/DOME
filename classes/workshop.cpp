@@ -335,39 +335,8 @@ void Workshop::rightWindowRender() {
 
 
 void Workshop::renderWeaponUpgrade() {
-	if (weapon->typeOfWeapon() == Weapon::WeaponType::CLASSIC) {
-		if (weapon->tierOfWeapon() == 0) {
-			weaponImg->changeFrame(0, 0);
-		}
-		else if (weapon->tierOfWeapon() == 1) {
-			weaponImg->changeFrame(1, 0);
-		}
-		else {
-			weaponImg->changeFrame(2, 0);
-		}
-	}
-	else if (weapon->typeOfWeapon() == Weapon::WeaponType::RICOCHET) {
-		if (weapon->tierOfWeapon() == 0) {
-			weaponImg->changeFrame(0, 1);
-		}
-		else if (weapon->tierOfWeapon() == 1) {
-			weaponImg->changeFrame(1, 1);
-		}
-		else {
-			weaponImg->changeFrame(2, 1);
-		}
-	}
-	else if (weapon->typeOfWeapon() == Weapon::WeaponType::LASER) {
-		if (weapon->tierOfWeapon() == 0) {
-			weaponImg->changeFrame(0, 2);
-		}
-		else if (weapon->tierOfWeapon() == 1) {
-			weaponImg->changeFrame(1, 2);
-		}
-		else {
-			weaponImg->changeFrame(2, 2);
-		}
-	}
+	weaponImg->changeFrame(weapon->tierOfWeapon(), (int)weapon->typeOfWeapon());
+
 	weaponImg->render();
 }
 
