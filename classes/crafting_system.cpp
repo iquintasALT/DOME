@@ -26,7 +26,7 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 	crafts.emplace(METAL_PLATES, std::vector<I>{I(BUILDING_PARTS, 1), I(MECANICAL_COMPONENTS, 1) });
 
 	crafts.emplace(SPACESHIP_CABIN, std::vector<I>{I(SPACESHIP_KEY_ITEMS, 3), I(METAL_PLATES, 2)});
-	crafts.emplace(SPACESHIP_RADAR, std::vector<I>{I(SPACESHIP_KEY_ITEMS, 1), I(METAL_PLATES, 1)});
+	crafts.emplace(SPACESHIP_RADAR, std::vector<I>{I(SPACESHIP_KEY_ITEMS, 1)});
 	crafts.emplace(SPACESHIP_ROCKETS, std::vector<I>{I(SPACESHIP_KEY_ITEMS, 2)});
 
 }
