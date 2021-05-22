@@ -12,7 +12,7 @@ private:
 	Texture* counter;
 	bool alarm;
 	float cooldown;
-	std::string lasttime;
+	int auxCount;
 public:
 	Countdown(int totaltime);
 	virtual ~Countdown();
