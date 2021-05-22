@@ -59,7 +59,7 @@ void ShelterScene::init() {
 	mngr_->addRenderLayer<Background>(medImg);
 
 	sleep_Station = new SleepStation(mngr_, uselessMngr, this);
-	Entity* sleepImg = mngr_->addEntity();
+	sleepImg = mngr_->addEntity();
 	sleepImg->addComponent<Transform>(Vector2D{ sleepStPos.getX()  ,sleepStPos.getY() }, sleepStSize.getX(), sleepStSize.getY(), 0);
 	sleepImg->addComponent<Open_station>(sleep_Station);
 	mngr_->addRenderLayer<Background>(sleepImg);
@@ -98,11 +98,17 @@ void ShelterScene::render()
 
 void ShelterScene::sleepTransition()
 {
-	sleep_Station->setActive(false);
+	//funcion llamada al terminar la transicion
 	std::function<void()> goToLocationsScene([this] { mngr_->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE); });
+	//se desactivan el toolTip, la estacion, y su componente para abrirla
+	sleep_Station->setActive(false);
+	sleepInteractable->getComponent<InteractableElement>()->setToolTipActive(false);
+	sleepImg->getComponent<Open_station>()->enabled = false;
+	//se desactiva el movimiento mientras se duerme
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 	mngr_->getHandler<Player_hdlr>()->getComponent<RigidBody>()->setVel(Vector2D{ 0,0 });
 	createTransition(3.0, false, goToLocationsScene, ". . . Z Z Z");
+	//se reajusta la escala de la camara
 	Camera::mainCamera->restoreScale();
 }
 

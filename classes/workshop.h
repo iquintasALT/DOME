@@ -82,7 +82,7 @@ public:
 		}
 		rightRenderTexts.clear();
 
-		delete falseMngr;
+		//delete falseMngr;
 	}
 
 	virtual void setLeftRender();

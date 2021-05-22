@@ -5,6 +5,7 @@
 #include "../classes/workshop.h"
 #include "../classes/sleep_station.h"
 #include "../classes/spaceship_station.h"
+#include "../ecs/Entity.h"
 #include <functional>
 
 
@@ -24,6 +25,8 @@ private:
 
 	Vector2D sleepStPos;
 	Vector2D sleepStSize;
+	Entity* sleepInteractable;
+	Entity* sleepImg;
 
 	Vector2D spaceshipStPos;
 	Vector2D spaceshipStSize;
@@ -44,7 +47,7 @@ public:
 
 	void initMechWs(Vector2D pos, Vector2D size) { mechPos = pos; mechSize = size; };
 	void initMedWs(Vector2D pos, Vector2D size) { medPos = pos; medSize = size; };
-	void initSleepStation(Vector2D pos, Vector2D size) { sleepStPos = pos;  sleepStSize = size; };;
+	void initSleepStation(Vector2D pos, Vector2D size, Entity* interactable) { sleepStPos = pos;  sleepStSize = size; sleepInteractable = interactable; };
 	void initSpaceshipStation(Vector2D pos, Vector2D size) { spaceshipStPos = pos; spaceshipStSize = size; };;
 
 	void sleepTransition();

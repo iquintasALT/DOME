@@ -24,6 +24,7 @@ private:
 
 public:
 	WeaponBehaviour(Manager* mngr, Vector2D playerPos, Transform* playerTr);
+	~WeaponBehaviour();
 	Weapon* getCurrentWeapon();
 
 	void setInv(InventoryController* inventory) {

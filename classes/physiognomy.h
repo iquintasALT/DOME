@@ -11,7 +11,6 @@ class ContussionComponent;
 class IntoxicationComponent;
 class HypothermiaComponent;
 class LoseScene;
-using namespace std;
 
 /*
 * La fisonomia del jugador es un sistema que se encarga de los da�os que puede sufrir el jugador durante una raid.
@@ -24,7 +23,7 @@ using namespace std;
 class Physiognomy {
 private:
 	Player* player;
-	list<PlayerHealthComponent*> healthComponents;
+	std::list<PlayerHealthComponent*> healthComponents;
 	HypothermiaComponent* hypothermia;
 	//int numStates;
 	bool playerAlive;
@@ -62,6 +61,6 @@ public:
 
 	void die(WAYSTODIE way = WAYSTODIE::NONE);
 	inline bool alive();
-	inline list<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
+	inline std::list<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
 };
 
