@@ -414,6 +414,18 @@
     {
       "id": "holdToSkip",
       "file": "resources/sprites/holdToSkip.png"
+    },
+	{
+      "id": "shelterTutorial",
+      "file": "resources/sprites/shelter_tutorial.png"
+    },
+	{
+      "id": "raidTutorial",
+      "file": "resources/sprites/raid_tutorial.png"
+    },
+	{
+      "id": "locationsTutorial",
+      "file": "resources/sprites/locations_tutorial.png"
     }
   ],
 
