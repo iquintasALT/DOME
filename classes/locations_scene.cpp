@@ -56,7 +56,7 @@ void LocationsScene::loadLocationButtons() {
 		tmx::ObjectGroup* object_layer = dynamic_cast<tmx::ObjectGroup*>(layer.get());
 
 		auto& objs = object_layer->getObjects();
-
+		int i = 0;
 		for (auto obj : objs) {
 			auto aabb = obj.getAABB();
 			auto col = obj.getProperties()[0].getIntValue();
@@ -65,6 +65,13 @@ void LocationsScene::loadLocationButtons() {
 			auto button = mngr_->addEntity();
 			auto tr = button->addComponent<Transform>(Vector2D(aabb.left, aabb.top), 75, 75);
 			buttonPositions.push_back(tr);
+
+			if (i == 0) row = 1;
+			else {
+				row = 1;
+				col = 0;
+			}
+			i++;
 			button->addComponent<Image>(&sdlutils().images().at("location_icons"), 2, 3, row, col, true);
 			mngr_->addRenderLayer<Background>(button);
 			locations.push_back(button);
