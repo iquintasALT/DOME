@@ -96,6 +96,14 @@ Player::Player(Player* prevPlayer, Manager* mngr):
 
 	//Faltaria la fisionomia si es que la hacemos que se guarde al final
 
+	/*addComponent<HungerComponent>();*/
+	getComponent<HungerComponent>()->setHunger(prevPlayer->getComponent<HungerComponent>()->getHunger());
+	getComponent<TirednessComponent>()->setTirednessLfloat(prevPlayer->getComponent<TirednessComponent>()->getTirednessfloat());
+	
+	//addComponent<TirednessComponent>();*/
+
+
+
 //======================================================================================
 
 	delete prevPlayer;
@@ -119,4 +127,9 @@ WeaponBehaviour* Player::equipWeapon(WeaponBehaviour* newWeapon) {
 
 Physiognomy* Player::getPhysiognomy() {
 	return physiognomy;
+}
+
+void Player::setPhysiognomy(Physiognomy* physiognomy_)
+{
+	physiognomy = physiognomy_;
 }

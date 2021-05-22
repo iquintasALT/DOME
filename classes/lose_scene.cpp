@@ -64,5 +64,6 @@ void LoseScene::render() {
 }
 
 LoseScene::~LoseScene() {
+	//GameScene::~GameScene();
 	delete advice;
 }

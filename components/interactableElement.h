@@ -27,6 +27,8 @@ public:
 	virtual void Interact();
 	bool CheckCollision(Point2D playerPos, float width, float height);
 	bool CheckCollision(Transform* tr) { return CheckCollision(tr->getPos(), tr->getW(), tr->getH()); };
+
+	inline void setToolTipActive(bool cond) { toolTip->setActive(cond); };
 };
 
 //interactableElement->addComponent<TextWithBackground>("Press E to open the loot",
