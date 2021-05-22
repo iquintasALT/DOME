@@ -417,138 +417,148 @@
     }
   ],
 
-    "sounds": [
-        {
-            "id": "over_button",
-            "volume": 60,
-            "file": "resources/sound/paddle_hit.wav"
-        },
-        {
-            "id": "push_button",
-            "volume": 128,
-            "file": "resources/sound/wall_hit.wav"
-        },
-        {
-            "id": "beep",
-            "volume": 8,
-            "file": "resources/sound/beep.wav"
-        },
-        {
-            "id": "freeze",
-            "volume": 128,
-            "file": "resources/sound/freeze.mp3"
-        },
-        {
-            "id": "chargingweapon",
-            "volume": 128,
-            "file": "resources/sound/charging_weapon.wav"
-        },
-        {
-            "id": "alarm",
-            "volume": 128,
-            "file": "resources/sound/alarm2.wav"
-        },
-        {
-            "id": "explosion",
-            "volume": 128,
-            "file": "resources/sound/explosion.wav"
-        },
-        {
-            "id": "normalgun",
-            "volume": 128,
-            "file": "resources/sound/shoot.wav"
-        },
-        {
-            "id": "monster1attack",
-            "volume": 128,
-            "file": "resources/sound/monster_snarl.mp3"
-        },
-        {
-            "id": "bounce",
-            "volume": 128,
-            "file": "resources/sound/gun/bounce.wav"
-        },
-        {
-            "id": "walk",
-            "volume": 100,
-            "file": "resources/sound/gun/footstep.wav"
-        },
-        {
-            "id": "climbsound",
-            "volume": 100,
-            "file": "resources/sound/climb.wav"
-        },
-        {
-            "id": "chestopen1",
-            "volume": 128,
-            "file": "resources/sound/gun/chestopen1.wav"
-        },
-        {
-            "id": "chestopen2",
-            "volume": 128,
-            "file": "resources/sound/gun/chestopen2.wav"
-        },
-        {
-            "id": "hurt",
-            "volume": 128,
-            "file": "resources/sound/hurt.mp3"
-        },
-        {
-            "id": "heal",
-            "volume": 128,
-            "file": "resources/sound/heal.mp3"
-        },
-        {
-            "id": "laser",
-            "volume": 128,
-            "file": "resources/sound/gun/laser.mp3"
-        },
-        {
-            "id": "reload",
-            "volume": 100,
-            "file": "resources/sound/gun/reload_B.mp3"
-        },
-        {
-            "id": "open",
-            "volume": 100,
-            "file": "resources/sound/openloot.wav"
-        },
-        {
-            "id": "close",
-            "volume": 128,
-            "file": "resources/sound/closeloot.wav"
-        },
-        {
-            "id": "pickup",
-            "volume": 128,
-            "file": "resources/sound/pickup.wav"
-        },
-        {
-            "id": "bonecrack",
-            "volume": 128,
-            "file": "resources/sound/bonecrack.wav"
-        },
-        {
-            "id": "initialExplosion",
-            "volume": 128,
-            "file": "resources/sound/explosion.mp3"
-        },
-        {
-            "id": "build",
-            "volume": 128,
-            "file": "resources/sound/build.wav"
-        },
-        {
-            "id": "tick",
-            "volume": 100,
-            "file": "resources/sound/tick.wav"
-        },
-        {
-            "id": "dash",
-            "volume": 100,
-            "file": "resources/sound/dashfly.wav"
-        }
-    ],
+  "sounds": [
+    {
+      "id": "over_button",
+      "volume": 60,
+      "file": "resources/sound/paddle_hit.wav"
+    },
+    {
+      "id": "push_button",
+      "volume": 128,
+      "file": "resources/sound/wall_hit.wav"
+    },
+    {
+      "id": "beep",
+      "volume": 8,
+      "file": "resources/sound/beep.wav"
+    },
+    {
+      "id": "freeze",
+      "volume": 128,
+      "file": "resources/sound/freeze.mp3"
+    },
+    {
+      "id": "chargingweapon",
+      "volume": 128,
+      "file": "resources/sound/charging_weapon.wav"
+    },
+    {
+      "id": "alarm",
+      "volume": 128,
+      "file": "resources/sound/alarm2.wav"
+    },
+    {
+      "id": "explosion",
+      "volume": 128,
+      "file": "resources/sound/explosion.wav"
+    },
+    {
+      "id": "normalgun",
+      "volume": 128,
+      "file": "resources/sound/gun/normal_shot.mp3"
+    },
+    {
+      "id": "monster1attack",
+      "volume": 128,
+      "file": "resources/sound/monster_snarl.mp3"
+    },
+    {
+      "id": "bounce",
+      "volume": 128,
+      "file": "resources/sound/gun/bounce.wav"
+    },
+    {
+      "id": "walk",
+      "volume": 100,
+      "file": "resources/sound/gun/footstep.wav"
+    },
+    {
+      "id": "climbsound",
+      "volume": 100,
+      "file": "resources/sound/climb.wav"
+    },
+    {
+      "id": "chestopen1",
+      "volume": 128,
+      "file": "resources/sound/gun/chestopen1.wav"
+    },
+    {
+      "id": "chestopen2",
+      "volume": 128,
+      "file": "resources/sound/gun/chestopen2.wav"
+    },
+    {
+      "id": "hurt",
+      "volume": 128,
+      "file": "resources/sound/hurt.mp3"
+    },
+    {
+      "id": "heal",
+      "volume": 128,
+      "file": "resources/sound/heal.mp3"
+    },
+    {
+      "id": "laser",
+      "volume": 128,
+      "file": "resources/sound/gun/laser.mp3"
+    },
+    {
+      "id": "laserShot",
+      "volume": 128,
+      "file": "resources/sound/gun/laser_shot.mp3"
+    },
+    {
+      "id": "ricochetShot",
+      "volume": 128,
+      "file": "resources/sound/gun/ricochet_shot.ogg"
+    },
+    {
+      "id": "reload",
+      "volume": 100,
+      "file": "resources/sound/gun/reload_B.mp3"
+    },
+    {
+      "id": "open",
+      "volume": 100,
+      "file": "resources/sound/openloot.wav"
+    },
+    {
+      "id": "close",
+      "volume": 128,
+      "file": "resources/sound/closeloot.wav"
+    },
+    {
+      "id": "pickup",
+      "volume": 128,
+      "file": "resources/sound/pickup.wav"
+    },
+    {
+      "id": "bonecrack",
+      "volume": 128,
+      "file": "resources/sound/bonecrack.wav"
+    },
+    {
+      "id": "initialExplosion",
+      "volume": 128,
+      "file": "resources/sound/explosion.mp3"
+    },
+    {
+      "id": "build",
+      "volume": 128,
+      "file": "resources/sound/build.wav"
+    },
+    {
+      "id": "tick",
+      "volume": 100,
+      "file": "resources/sound/tick.wav"
+    },
+    {
+      "id": "dash",
+      "volume": 100,
+      "file": "resources/sound/dashfly.wav"
+    }
+  ],
 
     "musics": [
       {
