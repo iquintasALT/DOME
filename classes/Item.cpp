@@ -126,18 +126,26 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 	else numberTr = nullptr;
 }
 
-Item::Item(Item* item, Inventory* inventory):
-Item(item->getItemInfo(), inventory->getEntity()->getMngr(), inventory,
-	item->x, item->y, item->count){
-	
+Item::Item(Item* item, Inventory* inventory) :
+	Item(item->getItemInfo(), inventory->getEntity()->getMngr(), inventory,
+		item->x, item->y, item->count) {
+
 }
 
 Item::~Item() {
 	delete info;
 	if (image != nullptr)
-		image->setDead(true);
+		if (forceDelete) {
+			//delete image;
+		}
+		else
+			image->setDead(true);
 	if (numberTr != nullptr)
-		numberTr->getEntity()->setDead(true);
+		if (forceDelete) {
+			//delete numberTr;
+		}
+		else
+			numberTr->getEntity()->setDead(true);
 
 	if (tex != nullptr)
 		delete tex;
