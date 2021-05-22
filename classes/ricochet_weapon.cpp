@@ -5,6 +5,7 @@
 #include "../classes/camera.h"
 #include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../game/constant_variables.h"
@@ -23,21 +24,7 @@ Entity* RicochetWeapon::createBullet(const Vector2D& direction){
 	bullet->addComponent<Ricochet>(playerTr_, nbounce, ntier);
 	entity_->getMngr()->addRenderLayer<Bullets>(bullet);
 
-
 	return bullet;
-}
-
-void RicochetWeapon::upgradeCurrentWeapon(int tier) {
-	if (tier == 1) {
-		impactDamage = consts::RICOCHET_TIER2_DAMAGE;
-		fireRate = consts::RICOCHET_TIER2_FIRERATE;
-		nbounce++;
-	}
-	else if (tier == 2) {
-		impactDamage = consts::RICOCHET_TIER3_DAMAGE;
-		fireRate = consts::RICOCHET_TIER3_FIRERATE;
-		nbounce++;
-	}
 }
 
 void RicochetWeapon::init()

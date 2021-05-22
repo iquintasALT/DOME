@@ -24,6 +24,9 @@ using std::endl;
 void ShelterScene::init() {
 	mngr_->getGame()->currentScene = SCENES::SHELTER;
 
+	if (mngr_->getGame()->playerCreated) 
+		mngr_->getGame()->playerSaved = new Player(mngr_->getGame()->playerSaved, mngr_);
+
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
 
@@ -31,7 +34,7 @@ void ShelterScene::init() {
 
 	auto shelterHud = new ShelterHud(mngr_, this);
 
-	auto weapon = player->getCurrentWeapon();
+	auto weapon = player->getWeapon();
 
 	createParallaxBackground(5);
 
@@ -79,7 +82,7 @@ void ShelterScene::update() {
 	sleep_Station->update();*/
 
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
-		mngr_->getGame()->setFPSActive(false);
+		mngr_->getGame()->setShouldRenderFPS(false);
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
 	}
 }
@@ -91,6 +94,16 @@ void ShelterScene::render()
 	/*mechanical_Workshop->render();
 	medical_Workshop->render();
 	sleep_Station->render();*/
+}
+
+void ShelterScene::sleepTransition()
+{
+	sleep_Station->setActive(false);
+	std::function<void()> goToLocationsScene([this] { mngr_->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE); });
+	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+	mngr_->getHandler<Player_hdlr>()->getComponent<RigidBody>()->setVel(Vector2D{ 0,0 });
+	createTransition(3.0, false, goToLocationsScene, ". . . Z Z Z");
+	Camera::mainCamera->restoreScale();
 }
 
 void ShelterScene::useAction()
@@ -108,7 +121,3 @@ void ShelterScene::createParallaxBackground(int numOfRep) {
 	createParallaxLayer(0.6, &sdlutils().images().at("roadS"), numOfRep);
 	createParallaxLayer(0.7, &sdlutils().images().at("fence"), numOfRep);
 }
-
-
-
-

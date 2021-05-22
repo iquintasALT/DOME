@@ -5,15 +5,6 @@
     <ClCompile Include="utils\Collisions.cpp">
       <Filter>Source Files\utils</Filter>
     </ClCompile>
-    <ClCompile Include="classes\game_character.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="classes\game_entity.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="classes\game_object.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="json\JSON.cpp">
       <Filter>Source Files\json</Filter>
     </ClCompile>
@@ -68,9 +59,6 @@
     <ClCompile Include="classes\player.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\enemy_component.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="classes\weapon_behaviour.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -107,15 +95,6 @@
     <ClCompile Include="components\loot.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\tile_renderer.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="classes\tile.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="components\player_collisions.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="classes\ricochet_weapon.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -129,9 +108,6 @@
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="components\hunger_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="components\player_health_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="components\tiredness_component.cpp">
@@ -209,15 +185,6 @@
     <ClCompile Include="classes\sleep_station.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\player_damage.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="classes\cover.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="components\cover_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="components\TextWithBackGround.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -275,6 +242,9 @@
     <ClCompile Include="components\HoldToSkip.cpp" />
     <ClCompile Include="components\InitialCameraZoom.cpp" />
     <ClCompile Include="classes\InitialScene.cpp" />
+    <ClCompile Include="components\Dialogue.cpp" />
+    <ClCompile Include="components\CameraShake.cpp" />
+    <ClCompile Include="components\Timer.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -291,15 +261,6 @@
     </ClInclude>
     <ClInclude Include="sdlutils\Font.h">
       <Filter>Header Files\sdlutils</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\game_character.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\game_entity.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\game_object.h">
-      <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\Image.h">
       <Filter>Header Files\components</Filter>
@@ -385,9 +346,6 @@
     <ClInclude Include="classes\player.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\enemy_component.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="classes\weapon_behaviour.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
@@ -421,12 +379,6 @@
     <ClInclude Include="components\ricochet.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\tile_renderer.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\tile.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
     <ClInclude Include="classes\ricochet_weapon.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
@@ -449,9 +401,6 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\animation_component.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\player_collisions.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="classes\crafting_system.h">
@@ -529,17 +478,8 @@
     <ClInclude Include="classes\navigation_station.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\player_damage.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="sdlutils\SoundManager.h">
       <Filter>Header Files\sdlutils</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\cover.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="components\cover_component.h">
-      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\TextWithBackGround.h">
       <Filter>Header Files\components</Filter>
@@ -595,6 +535,12 @@
     <ClInclude Include="components\HoldToSkip.h" />
     <ClInclude Include="components\InitialCameraZoom.h" />
     <ClInclude Include="classes\InitialScene.h" />
+    <ClInclude Include="components\Dialogue.h" />
+    <ClInclude Include="components\CameraShake.h" />
+    <ClInclude Include="components\Timer.h" />
+    <ClInclude Include="classes\game_object.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

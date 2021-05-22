@@ -1,5 +1,6 @@
 #include "crafting_system.h"
 #include "../classes/workshop.h"
+#include "../sdlutils/SoundManager.h"
 
 CraftingSystem::CraftingSystem(Manager* mngr) {
 	playerInventory = mngr->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
@@ -35,7 +36,6 @@ bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool open
 
 	vector<I> itemsNeeded = (*crafts.find(item)).second;
 	list<Item*> itemsList = playerInventory->getItems();
-	list<Item*> itemsToDelete;
 
 	bool affordable = true;
 	for (Item* invItem : itemsList) {
@@ -49,20 +49,21 @@ bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool open
 		}
 	}
 
-	//if (itemsNeeded.size() == 0) {
-	if (openLoot) {
-		Entity* auxEntity = playerInventory->getEntity()->getMngr()->addEntity();
-		ItemInfo* info = getItemInfo(item);
-		auxEntity->addComponent<Transform>(Vector2D(x, y), info->width(), info->height(), 0);
-		Loot* invAux = auxEntity->addComponent<Loot>("Press E to open the loot", info->width(), info->height());
-		invAux->getInventory()->storeItem(new Item{ info,auxEntity->getMngr(),invAux->getInventory(),0,0 });
-		invAux->Interact();
+	if (itemsNeeded.size() == 0) {
+		if (openLoot) {
+			Entity* auxEntity = playerInventory->getEntity()->getMngr()->addEntity();
+			ItemInfo* info = getItemInfo(item);
+			auxEntity->addComponent<Transform>(Vector2D(x, y), info->width(), info->height(), 0);
+			Loot* invAux = auxEntity->addComponent<Loot>("Press E to open the loot", info->width(), info->height());
+			invAux->getInventory()->storeItem(new Item{ info,auxEntity->getMngr(),invAux->getInventory(),0,0 });
+			invAux->Interact();
 
-		ws->setLoot(invAux);
+			soundManager().playSFX("build");
+			ws->setLoot(invAux);
+		}
+		return true;
 	}
-	return true;
-	//}
-//	else return false;
+	else return false;
 }
 
 ItemInfo* CraftingSystem::getItemInfo(ITEMS item) {
@@ -101,8 +102,10 @@ ItemInfo* CraftingSystem::getItemInfo(ITEMS item) {
 }
 
 void CraftingSystem::FinishCraft() {
-	for (Item* i : itemsToDelete)
+	for (Item* i : itemsToDelete) {
 		playerInventory->removeItem(i);
+		delete i;
+	}
 	itemsToDelete.clear();
 }
 

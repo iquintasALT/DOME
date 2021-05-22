@@ -4,6 +4,7 @@
 #include "../components/box_collider.h"
 #include "../classes/weapon_behaviour.h"
 #include "../classes/physiognomy.h"
+#include "../sdlutils/SoundManager.h"
 
 KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	maxSpeed = consts::PLAYER_SPEED;
@@ -27,6 +28,9 @@ void KeyboardPlayerCtrl::init() {
 	auto ent = entity_->getMngr()->addEntity();
 	darkArea = ent->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH * 2, consts::WINDOW_HEIGHT * 2);
 	auto a = ent->addComponent<Image>(&sdlutils().images().at("dark"));
+
+	darkArea->setPos(tr_->getPos() - Vector2D(consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT));
+
 	a->setAlpha(240);
 	entity_->getMngr()->addRenderLayer<Dark>(ent);
 }
@@ -98,6 +102,7 @@ void KeyboardPlayerCtrl::update() {
 			if (onLadderTrigger && (keystates[SDL_SCANCODE_W] || keystates[SDL_SCANCODE_S])) {
 				onLadder = true;
 				tr_->setPos(Vector2D(stairPosition.getX(), tr_->getPos().getY()));
+				soundManager().playSFX("climbsound");
 			}
 
 			if (keystates[SDL_SCANCODE_SPACE] && rb_->onFloor()) {
@@ -114,14 +119,14 @@ void KeyboardPlayerCtrl::update() {
 
 			if (keystates[SDL_SCANCODE_R]) //Recargar balas
 			{
-				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
+				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getWeapon();
 
-				aux->getWeapon()->reload();
+				aux->getCurrentWeapon()->reload();
 			}
 
 			if (keystates[SDL_SCANCODE_X] && !xClicked) //Cambiar arma
 			{
-				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getCurrentWeapon();
+				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getWeapon();
 				aux->changeWeapon();
 				xClicked = true;
 			}
@@ -137,7 +142,9 @@ void KeyboardPlayerCtrl::update() {
 		}
 	}
 	else {
-		if (keystates[SDL_SCANCODE_SPACE] && !spaceDown) { onLadder = false; spaceDown = true; }
+		if (keystates[SDL_SCANCODE_SPACE] && !spaceDown) { 
+			onLadder = false; spaceDown = true;
+		}
 		else if (!keystates[SDL_SCANCODE_SPACE] && spaceDown) spaceDown = false;
 		else {
 			if (keystates[SDL_SCANCODE_W]) {
@@ -155,6 +162,7 @@ void KeyboardPlayerCtrl::update() {
 				if (tr_->getPos().getY() + tr_->getH() < stairPosition.getY()) {
 					onLadderTrigger = false;
 					onLadder = false;
+					rb_->setVelY(-stairsSpeed * 2);
 				}
 			}
 			else if (keystates[SDL_SCANCODE_S]) {
@@ -174,7 +182,9 @@ void KeyboardPlayerCtrl::update() {
 				}
 			}
 			else {
-				if (rb_->onFloor()) onLadder = false;
+				if (rb_->onFloor()) {
+					onLadder = false;
+				}
 				rb_->setGravity(0);
 				rb_->setVel(Vector2D(0, 0));
 				up = down = false;
@@ -194,6 +204,9 @@ float KeyboardPlayerCtrl::getSpeed() {
 
 void KeyboardPlayerCtrl::setSpeed(float speed_) {
 	speed = speed_;
+}
+void KeyboardPlayerCtrl::setMaxSpeed(float speed_) {
+	maxSpeed = speed_;
 }
 void KeyboardPlayerCtrl::setJumpSpeed(float jumpSpeed_) {
 	jumpSpeed = jumpSpeed_;

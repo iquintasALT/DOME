@@ -4,6 +4,8 @@
 #include "../ecs/Manager.h"
 #include "../classes/physiognomy.h"
 #include "../components/enemy_animation.h"
+#include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 
 void EnemyContactDamage::init() {
 	tr = entity_->getComponent<Transform>();

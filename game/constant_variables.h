@@ -58,32 +58,9 @@ namespace consts {
 
 	// WEAPONS
 
-	// Basic Weapon
-	const int WEAPON_TIER1_DAMAGE = 100;
-	const int WEAPON_TIER2_DAMAGE = 100;
-	const int WEAPON_TIER3_DAMAGE = 100;
-
-	const int WEAPON_TIER1_FIRERATE = 1.75f;
-	const int WEAPON_TIER2_FIRERATE = 1.75f;
-	const int WEAPON_TIER3_FIRERATE = 1.75f;
-
-	// Ricochet Weapon
-	const int RICOCHET_TIER1_DAMAGE = 100;
-	const int RICOCHET_TIER2_DAMAGE = 100;
-	const int RICOCHET_TIER3_DAMAGE = 100;
-
-	const int RICOCHET_TIER1_FIRERATE = 1.75f;
-	const int RICOCHET_TIER2_FIRERATE = 1.75f;
-	const int RICOCHET_TIER3_FIRERATE = 1.75f;
-
-	// Charge Weapon
-	const int CHARGE_TIER1_DAMAGE = 100;
-	const int CHARGE_TIER2_DAMAGE = 100;
-	const int CHARGE_TIER3_DAMAGE = 100;
-
-	const int CHARGE_TIER1_TIMETOCHARGE = 1;
-	const int CHARGE_TIER2_TIMETOCHARGE = 1;
-	const int CHARGE_TIER3_TIMETOCHARGE = 1;
+	const int WEAPON_FIRERATES[] = { 1.5f, 1.0f, 0.75f, 1.75f, 1.65f, 1.55f, 1.25f, 1.25f, 1.25f };
+	const int WEAPON_DAMAGE_VALUES[] = { 30, 30, 30, 70, 90, 110, 90, 130, 170 };
+	const int WEAPON_MAGAZINE_SIZES[] = { 12, 21, 35, 6, 7, 8, 5, 5, 5 };
 
 	const float CHARGEWEAPON_HEIGHT = 15;
 

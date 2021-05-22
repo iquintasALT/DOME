@@ -6,12 +6,12 @@
 #include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
 
-#include "player_collisions.h"
+#include "../ecs/Manager.h"
+#include "../ecs/Entity.h"
+#include "../utils/Collisions.h"
 
 class Transform : public Component {
 private:
-	PlayerCollisions* collisions_;
-
 	Vector2D pos_;
 	float width_;
 	float height_;

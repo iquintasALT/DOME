@@ -186,19 +186,7 @@
    </properties>
    <point/>
   </object>
-  <object id="110" name="enemy" x="2096" y="336">
-   <properties>
-    <property name="type" type="int" value="1"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="111" name="enemy" x="1096" y="232">
-   <properties>
-    <property name="type" type="int" value="0"/>
-   </properties>
-   <point/>
-  </object>
-  <object id="112" name="enemy" x="2456" y="144">
+  <object id="111" name="enemy" x="2552" y="152">
    <properties>
     <property name="type" type="int" value="0"/>
    </properties>
@@ -210,7 +198,7 @@
    </properties>
    <point/>
   </object>
-  <object id="114" name="enemy" x="3656" y="160">
+  <object id="114" name="enemy" x="3648" y="176">
    <properties>
     <property name="type" type="int" value="1"/>
    </properties>
@@ -240,8 +228,8 @@
    </properties>
    <point/>
   </object>
-  <object id="121" name="loot" x="2624" y="480" width="32" height="64"/>
-  <object id="122" name="loot" x="1632" y="936" width="24" height="56"/>
+  <object id="121" name="loot" x="2624" y="472" width="72" height="72"/>
+  <object id="122" name="loot" x="1592" y="936" width="72" height="56"/>
   <object id="124" name="returnShelter" x="3680" y="480" width="32" height="64"/>
   <object id="125" name="returnShelter" x="3688" y="1088" width="24" height="64"/>
  </objectgroup>

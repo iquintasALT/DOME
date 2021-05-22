@@ -40,6 +40,16 @@ public:
 		Mix_PlayMusic(music_, loops);
 	}
 
+	inline void fadeOut(int ticks){
+		assert(ticks >= 0);
+		Mix_FadeOutMusic(ticks);
+	}
+
+	inline void fadeIn(int ticks) {
+		assert(ticks >= 0);
+		Mix_FadeInMusic(music_, -1, ticks);
+	}
+
 	inline static int setMusicVolume(int volume) {
 		assert(volume >= 0 && volume <= 128);
 		return Mix_VolumeMusic(volume);
@@ -55,15 +65,6 @@ public:
 
 	inline static void resumeMusic() {
 		Mix_ResumeMusic();
-	}
-
-	inline static void fadeOut(int ticks){
-		assert(ticks >= 0);
-		Mix_FadeOutMusic(ticks);
-	}
-
-	inline static void onFinish(void (*cb)()) {
-		Mix_HookMusicFinished(cb);
 	}
 
 private:

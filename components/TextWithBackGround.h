@@ -34,9 +34,11 @@ private:
 
 	bool centerAlign;
 
+	bool wrapWords;
+
 	void changeTextTextures();
 public:
-	TextWithBackground(std::string str, Font& font, SDL_Color  color, Texture* texture, bool appearingText = false, float appeatingTextSpeed = 1, bool alignInCenter = false);
+	TextWithBackground(std::string str, Font& font, SDL_Color  color, Texture* texture, bool appearingText = false, float appeatingTextSpeed = 1, bool alignInCenter = false, bool wrapWords = true);
 	~TextWithBackground();
 	void changeText(std::string txt);
 	void init() override;
@@ -44,5 +46,7 @@ public:
 	void update() override;
 	void setAlpha(int value);
 	void reset();
+
+	float finishedWriting;
 };
 

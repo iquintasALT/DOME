@@ -2,7 +2,7 @@
 #include "../sdlutils/SDLUtils.h"
 inventoryDropdown::slot::slot(std::string text, std::function<void()> f) {
 	function = f;
-	texture = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff));
+	texture = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff));
 }
 inventoryDropdown::slot::~slot() {
 	if (texture != nullptr)

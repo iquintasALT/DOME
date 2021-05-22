@@ -27,6 +27,7 @@ private:
 	int _col;
 
 	std::function<void(Entity*)> function;
+
 public:
 	ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity*)> function = [](Entity*) {});
 	ItemInfo(ItemInfo* itemInfo);
@@ -71,6 +72,8 @@ private:
 	Entity* image;
 	Transform* transform;
 	Transform* numberTr;
+
+	Texture* tex;
 };
 
 

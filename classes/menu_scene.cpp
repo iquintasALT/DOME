@@ -2,6 +2,7 @@
 #include "shelter_scene.h"
 #include "raid_scene.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../game/Game.h"
 #include "locations_scene.h"
 #include "controls_scene.h"
@@ -15,17 +16,25 @@
 #include <iostream>
 
 void MenuScene::init() {
+	// uncomment this when transition to shelter works
+	//if (mngr_->getGame()->playerSaved != nullptr) {
+	//	mngr_->getGame()->playerSaved->setDead(true);
+	//	mngr_->getGame()->playerSaved = nullptr;
+	//	mngr_->getGame()->playerCreated = false;
+	//}
+
+	Camera::mainCamera->restoreScale();
 	mngr_->getGame()->initLoot();
 	mngr_->getGame()->currentScene = SCENES::MAINMENU;
 
 	float size = 1.2f;
 	auto a = mngr_->addEntity();
-	std::vector<Texture*> textures(5);
-	for (int i = 0; i < 5; i++) {
-		std::string str = "bgImage" + std::to_string(i);
+	std::vector<Texture*> textures(4);
+	for (int i = 0; i < 4; i++) {
+		std::string str = "bgImage" + std::to_string(i+3);
 		textures[i] = &sdlutils().images().at(str);
 	}
-	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .3, true);
+	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .2, true);
 	mngr_->addRenderLayer<Interface>(a);
 	int buttonHeight = 50;
 	int ypos = consts::WINDOW_HEIGHT - 7 * buttonHeight;
@@ -68,14 +77,17 @@ void MenuScene::init() {
 		mngr_->addRenderLayer<Interface>(logo);
 	}
 	// hacemos que comienze en 1 (ciclo --> numDays <= MAX_DAYS)
-	getGame()->numDays++;
+	getGame()->numDays = 1;
+}
 
+void MenuScene::onLoad()
+{
 	soundManager().playMusic("menu_theme");
 }
 
 void MenuScene::playGame(Manager* mngr) {
 	ih().clearState();
-	soundManager().playMusic("game_theme");
+	soundManager().stopSongWithFade("game_theme", 1000);
 	mngr->ChangeScene(new LocationsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
 	//mngr->ChangeScene(new InitialScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
 }

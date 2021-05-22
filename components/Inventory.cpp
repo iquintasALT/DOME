@@ -4,6 +4,7 @@
 #include "../game/Game.h"
 #include "../classes/crafting_system.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../classes/weapon_behaviour.h"
 #include <iostream>
 
@@ -51,6 +52,8 @@ Inventory::Inventory(int width, int height) : width(width), height(height), othe
 
 	dropDown = nullptr;
 	dropDownActive = false;
+
+	lastItemHovered = nullptr;
 }
 
 void Inventory::defaultPosition() {
@@ -61,7 +64,7 @@ void Inventory::moveInventory(Point2D pos) {
 	transform->setPos(pos);
 
 	for (auto a : storedItems) {
-		a->image->getComponent<Transform>()->setPos(itemPosition(a->x, a->y));
+		a->setPosition(itemPosition(a->x, a->y));
 	}
 }
 
@@ -74,13 +77,16 @@ void Inventory::init() {
 	toolTips = entity_->getMngr()->addEntity();
 	toolTipsTr = toolTips->addComponent<Transform>(Vector2D(100, 100), 500, 10, 0);
 	toolTipsText = toolTips->addComponent<TextWithBackground>("Inventario",
-		sdlutils().fonts().at("ARIAL32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
+		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
 	entity_->getMngr()->addRenderLayer<ULTIMATE>(toolTips);
 	toolTips->setActive(false);
 
 	dropDownActive = false;
 	std::vector<inventoryDropdown::slot*> slots;
-	slots.push_back(new inventoryDropdown::slot("Use", [this]() {itemClickedInDropdown->getItemInfo()->execute(player); removeItem(itemClickedInDropdown); delete itemClickedInDropdown; }));
+	slots.push_back(new inventoryDropdown::slot("Use", [this]() {
+		if (itemClickedInDropdown->getItemInfo()->name() != LASER_AMMO && itemClickedInDropdown->getItemInfo()->name() != CLASSIC_AMMO && itemClickedInDropdown->getItemInfo()->name() != RICOCHET_AMMO) {
+			itemClickedInDropdown->getItemInfo()->execute(player); removeItem(itemClickedInDropdown); delete itemClickedInDropdown;
+		}}));
 	slots.push_back(new inventoryDropdown::slot("Rotate", []() {std::cout << std::endl << "Elemento girado" << std::endl; }));
 	slots.push_back(new inventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown); delete itemClickedInDropdown; }));
 	dropDown = new inventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
@@ -137,10 +143,16 @@ void Inventory::update() {
 		auto hoverItem = findItemInSlot(xCell, yCell);
 		showToolTip = hoverItem != nullptr;
 
+
 		if (showToolTip) {
-			toolTipsText->changeText(hoverItem->getItemInfo()->description());
+			if (lastItemHovered != hoverItem) {
+				toolTipsText->changeText(hoverItem->getItemInfo()->description());
+			}
 			toolTipsTr->setPos(mousePos);
 		}
+
+		if (lastItemHovered == nullptr || lastItemHovered != hoverItem)
+			lastItemHovered = hoverItem;
 
 		if (ih().getMouseButtonState(InputHandler::RIGHT) && selectedItem == nullptr && hoverItem != nullptr) {
 			if (!dropDownActive) {
@@ -185,7 +197,7 @@ void Inventory::update() {
 		}
 		else {
 			if (selectedItem) {
-				if (avaliableSpace(xCell, yCell, selectedItem)) {
+				if (availableSpace(xCell, yCell, selectedItem)) {
 					moveItem(selectedItem, xCell, yCell);
 				}
 
@@ -206,7 +218,7 @@ void Inventory::update() {
 				int xCell = (mousePos.getX() - pos.getX()) / other->transform->getW() * other->width;
 				int yCell = (mousePos.getY() - pos.getY()) / other->transform->getH() * other->height;
 
-				if (other->avaliableSpace(xCell, yCell, selectedItem)) {
+				if (other->availableSpace(xCell, yCell, selectedItem)) {
 					removeItem(selectedItem);
 
 					selectedItem->x = xCell;
@@ -243,7 +255,7 @@ Item* Inventory::findItemInSlot(int x, int y) {
 	return grid[x][y];
 }
 
-bool Inventory::avaliableSpace(int x, int y, Item* item) {
+bool Inventory::availableSpace(int x, int y, Item* item) {
 	if (x + item->width > width || y + item->height > height) return false;
 
 	for (int i = x; i < width && i < x + item->width; i++) {
@@ -265,9 +277,9 @@ void Inventory::storeItem(Item* item) {
 	}
 
 	if (playerWeapon != nullptr)
-		if (playerWeapon->getWeapon()->ItemIsAmmo(item, playerWeapon->typeOfWeapon())) {
+		if (playerWeapon->getCurrentWeapon()->ItemIsAmmo(item, playerWeapon->typeOfWeapon())) {
 			if (playerWeapon->hasComponent<InventoryController>())
-				playerWeapon->getWeapon()->setMaxAmmo();
+				playerWeapon->getCurrentWeapon()->setMaxAmmo();
 		}
 }
 void Inventory::removeItem(Item* item) {
@@ -280,9 +292,9 @@ void Inventory::removeItem(Item* item) {
 	storedItems.remove(item);
 
 	if (playerWeapon != nullptr)
-		if (playerWeapon->getWeapon()->ItemIsAmmo(item, playerWeapon->typeOfWeapon())) {
+		if (playerWeapon->getCurrentWeapon()->ItemIsAmmo(item, playerWeapon->typeOfWeapon())) {
 			if (playerWeapon->hasComponent<InventoryController>())
-				playerWeapon->getWeapon()->setMaxAmmo();
+				playerWeapon->getCurrentWeapon()->setMaxAmmo();
 		}
 }
 

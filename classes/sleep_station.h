@@ -1,5 +1,6 @@
 #pragma once
-#include "../classes/game_entity.h"
+#include "../ecs/Entity.h"
+#include "../utils/Vector2D.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../components/Image.h"
@@ -12,11 +13,11 @@
 #include "../components/Inventory.h"
 #include <vector>
 class ShelterScene;
-class SleepStation : public GameEntity
+class SleepStation : public Entity
 {
 private:
-	Entity* bg, * bButton, * leftButton, * rightButton, * clock, * arrow, * sleep0, * sleep1, * sleep2;
-	Transform* bg_tr, * bButton_tr, * rightButton_tr, * leftButton_tr, * clock_tr, * arrow_tr, * sleep2_tr, * sleep1_tr, * sleep0_tr;
+	Entity* bg, * bButton, * sleep0, * sleep1, * sleep2;
+	Transform* bg_tr, * bButton_tr, * sleep2_tr, * sleep1_tr, * sleep0_tr;
 
 	Transform* playerTr;
 	ShelterScene* shelterScene;
@@ -36,6 +37,7 @@ public:
 	void renderImg(float posX, float posY, int row, int col, int sizeX = 64, int sizeY = 64);
 	virtual void render();
 	virtual void update();
+	void goToSleep(int hours);
 	void setRenderFlag(bool set);
 };
 

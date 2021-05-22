@@ -4,6 +4,7 @@
 #include "../ecs/Manager.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/SoundManager.h"
 #include "../game/constant_variables.h"
 #include "../classes/camera.h"
 #include "../classes/weapon_behaviour.h"
@@ -22,18 +23,23 @@
 
 int Weapon::bulletsInMagazine = -1;
 
-Weapon::Weapon(float rateOfFire, int damage, float bulletSpread, int tier) : fireRate(rateOfFire), impactDamage(damage),
-baseBulletSpread(bulletSpread), magazineSize(30) {
-	upgradeCurrentWeapon(tier);
-}
+Weapon::Weapon(float bulletSpread, int tier) : baseBulletSpread(bulletSpread), tier_(tier) {}
 
 Weapon::~Weapon() {}
 
 void Weapon::calculatePosition() {
 	Vector2D playerPos = playerTr_->getPos();
-	if (flipped) tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.56f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.57));
-	else tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.17f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.62));
+	if (flipped) tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.58f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.62));
+	else tr_->setPos(Vector2D(playerPos.getX() + playerTr_->getW() * 0.21f, playerPos.getY() + playerTr_->getH() / 2.7f - tr_->getH() * 0.62));
 	adjustToCrouching();
+}
+
+Point2D Weapon::calculateBulletPosition(const Vector2D& direction) {
+	Point2D pos = tr_->getPos() + Vector2D(tr_->getW() - 11, tr_->getH() * 0.45); // point at end of gun without rotation
+	Point2D rotationPin = image_->getOriginInWorld(tr_);
+	Point2D lengthOfGun = pos - rotationPin; // position of end of gun relative to rotation origin
+	pos = rotationPin + direction.normalize() * lengthOfGun.magnitude();
+	return pos;
 }
 
 Vector2D Weapon::calculateShotTrajectory(Vector2D direction) {
@@ -62,7 +68,7 @@ void Weapon::calculateRotation(Vector2D& direction) {
 	// Position of mouse in world coordinates
 	Vector2D mousePos = Camera::mainCamera->PointToWorldSpace(Vector2D(ih().getMousePos().first, ih().getMousePos().second));
 
-	Vector2D yCenteredPos(tr_->getPos().getX(), tr_->getPos().getY() + tr_->getH() * 0.37f); //Punto {0, Altura del ca��n}  
+	Vector2D yCenteredPos(tr_->getPos().getX(), tr_->getPos().getY() + tr_->getH() * 0.5f); //Punto {0, Altura del ca��n}  
 	direction = (mousePos - yCenteredPos).normalize();
 
 	float radianAngle = atan2(direction.getY(), direction.getX());
@@ -104,14 +110,12 @@ void Weapon::shoot(const Vector2D& direction) {
 	Transform* bulletTr = bullet->getComponent<Transform>();
 	RigidBody* rb = bullet->getComponent<RigidBody>();
 
-	float gunLength = tr_->getW() - 8; //Longitud del ca��n del arma para spawnear la bala
-
-	bulletTr->setPos(tr_->getPos() + direction * gunLength);
+	bulletTr->setPos(calculateBulletPosition(direction));
 	bulletTr->setRot(tr_->getRot());
 
 	setBulletsInMagazine(getBulletsInMagazine()-1);
 
-	if (bulletsInMagazine <= 0)
+	if (getBulletsInMagazine() <= 0)
 		reload();
 	soundManager().playSFX("normalgun");
 }
@@ -138,7 +142,7 @@ void Weapon::update() {
 			}
 		}
 		else if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate &&
-			bulletsInMagazine > 0 && !reloading) 
+			getBulletsInMagazine() > 0 && !reloading) 
 			shoot(rotation);
 	}
 	else
@@ -149,7 +153,7 @@ void Weapon::setMaxAmmo() {
 	int totalBullets = 0;
 	Item* item = nullptr;
 
-	WeaponType currentWeapon = player_->getCurrentWeapon()->typeOfWeapon();
+	WeaponType currentWeapon = player_->getWeapon()->typeOfWeapon();
 	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
 		if (ItemIsAmmo(items, currentWeapon)) {
 			item = items;
@@ -164,22 +168,29 @@ void Weapon::setMaxAmmo() {
 
 void Weapon::setAmmo() {
 	int totalBullets = 0;
-	Item* item = nullptr;
-
-	for (auto items : player_->getComponent<InventoryController>()->inventory->getItems()) {
-		if (ItemIsAmmo(items, type)) {
-			item = items;
+	std::vector<Item*> items = std::vector<Item*>();
+	for (auto item : player_->getComponent<InventoryController>()->inventory->getItems()) {
+		if (ItemIsAmmo(item, type)) {
+			items.push_back(item);
 			totalBullets += item->count;
 		}
 	}
 
-	if (item != nullptr) {
-		setBulletsInMagazine(item->count);
-		bulletsInReserve = totalBullets - item->count;
+	/// por si acaso hay objetos de balas con menos balas restantes que el tamaño del cargador,
+	/// vamos a seguir vaciando más items hasta que se llene el cargador (o no queden items)
+	while (getBulletsInMagazine() < magazineSize && items.size() > 0) {
+		// cogemos balas del último objeto cargador
+		int ammoPulled = std::min(items[items.size() - 1]->count, magazineSize - getBulletsInMagazine());
+		setBulletsInMagazine(getBulletsInMagazine() + ammoPulled);
+		bulletsInReserve = totalBullets - ammoPulled;
 
-		player_->getComponent<InventoryController>()->inventory->removeItem(item);
-		delete item;
-		item = nullptr;
+		items[items.size() - 1]->count -= ammoPulled;
+
+		if (items[items.size() - 1]->count == 0) //solo tenemos que borrar el stack de municion si lo hemos vaciado
+		{
+			player_->getComponent<InventoryController>()->inventory->removeItem(items[items.size() - 1]);
+			items.pop_back();
+		}
 	}
 }
 
@@ -198,7 +209,6 @@ bool Weapon::ItemIsAmmo(Item* item, WeaponType currentWeapon) {
 		break;
 	}
 }
-
 
 void Weapon::reload()
 {
@@ -228,15 +238,8 @@ void Weapon::init()
 
 	playerRb_ = player_->getComponent<RigidBody>();
 	assert(playerRb_ != nullptr);
-}
 
-void Weapon::upgradeCurrentWeapon(int tier) {
-	if (tier == 1) {
-		impactDamage = consts::WEAPON_TIER2_DAMAGE;
-		fireRate = consts::WEAPON_TIER2_FIRERATE;
-	}
-	else if (tier == 2) {
-		impactDamage = consts::WEAPON_TIER3_DAMAGE;
-		fireRate = consts::WEAPON_TIER3_FIRERATE;
-	}
+	fireRate = consts::WEAPON_FIRERATES[3 * type + tier_];
+	impactDamage = consts::WEAPON_DAMAGE_VALUES[3 * type + tier_];
+	magazineSize = consts::WEAPON_MAGAZINE_SIZES[3 * type + tier_];
 }

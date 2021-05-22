@@ -9,6 +9,7 @@
 #include "../components/box_collider.h"
 #include "../classes/enemy.h"
 #include "../utils/ray_cast.h"
+#include "../sdlutils/SoundManager.h"
 
 Ricochet::Ricochet(Transform* player, int nrebotes, int typeOfWeapon) : tr_(nullptr), playerTr(player),
 n(nrebotes), tier(typeOfWeapon) {}
@@ -79,7 +80,7 @@ void Ricochet::createExplosion()
 
 void Ricochet::hitEnemies(Point2D raycastOrigin)
 {
-	std::list<Entity*> collided = RayCast::allCollisionsInRadius<Enemy_grp>(entity_->getMngr(), raycastOrigin, 300);
+	std::list<Entity*> collided = RayCast::allCollisionsInRadius<Enemy_grp>(entity_->getMngr(), raycastOrigin, 55);
 	for (Entity* hit_entity : collided) {
 		static_cast<Enemy*>(hit_entity)->receiveDamage(2);
 	}
