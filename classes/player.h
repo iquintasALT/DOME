@@ -20,4 +20,5 @@ public:
 	WeaponBehaviour* getWeapon();
 	WeaponBehaviour* equipWeapon(WeaponBehaviour* newWeapon);
 	Physiognomy* getPhysiognomy();
+	void setPhysiognomy(Physiognomy* physiognomy_);
 };

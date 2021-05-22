@@ -37,5 +37,7 @@ public:
 	void sleep(int hours); //Horas descansadas como parametro
 	void decreaseTiredness(float tiredness);
 	tirednessLevel getTirednessLevel() { return tirednessLev; }
+	float getTirednessfloat() { return tiredness; }
+	void setTirednessLfloat(float tiredness_) { tiredness = tiredness_; updateLevel(); };
 };
 
