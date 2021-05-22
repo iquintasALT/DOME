@@ -184,6 +184,8 @@ void Weapon::setAmmo() {
 		setBulletsInMagazine(getBulletsInMagazine() + ammoPulled);
 		bulletsInReserve = totalBullets - ammoPulled;
 
+		items[items.size() - 1]->count -= ammoPulled;
+
 		if (ammoPulled == items[items.size() - 1]->count) //solo tenemos que borrar el stack de municion si lo hemos vaciado
 		{
 			player_->getComponent<InventoryController>()->inventory->removeItem(items[items.size() - 1]);
