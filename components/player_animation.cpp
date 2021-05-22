@@ -126,6 +126,7 @@ bool player_animation::changeAnimations() {
 			if (currentAnimation == animations[idle_arms])
 				return false;
 			currentAnimation = animations[idle_arms];
+			animStop = false;
 		}
 		currentAnimation.render();
 		walkDust->Stop();
