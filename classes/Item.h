@@ -48,6 +48,9 @@ public:
 	static ItemInfo* ricochetAmmo();
 	static ItemInfo* metalPlates();
 	static ItemInfo* classicAmmo();
+	static ItemInfo* medicalComponent();
+	static ItemInfo* water();
+	static ItemInfo* organicMaterial();
 };
 
 class Item

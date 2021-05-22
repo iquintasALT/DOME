@@ -29,9 +29,11 @@ Loot::~Loot() {
 		itemsInLoot.push_back(aux);
 	}
 	
-	auto* aux = &g->SCENES_LOOT.find(g->currentScene)->second;
-	aux->push_back(itemsInLoot);
-	aux->erase(aux->begin());
+	if (g->currentScene != SCENES::SHELTER) {
+		auto* aux = &g->SCENES_LOOT.find(g->currentScene)->second;
+		aux->push_back(itemsInLoot);
+		aux->erase(aux->begin());
+	}
 }
 
 void Loot::Interact() {

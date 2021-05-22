@@ -88,6 +88,30 @@ ItemInfo* ItemInfo::classicAmmo()
 	return new ItemInfo(CLASSIC_AMMO, "Bullets for the classic weapon", 1, 1, 2, 1, f);
 }
 
+ItemInfo* ItemInfo::medicalComponent()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(MEDICAL_COMPONENTS, "Medical component", 1, 1, 2, 1, f);
+}
+
+ItemInfo* ItemInfo::water()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(WATER, "Water", 1, 1, 2, 1, f);
+}
+
+ItemInfo* ItemInfo::organicMaterial()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(ORGANIC_MATERIAL, "Organic Material", 1, 1, 2, 1, f);
+}
+
 ItemInfo* ItemInfo::metalPlates()
 {
 	auto f = [](Entity* player) {
