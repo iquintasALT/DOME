@@ -78,6 +78,7 @@ private:
 	Item* selectedItem;
 	Item* selectedItem_;
 	Item* itemClickedInDropdown;
+	Item* lastItemHovered;
 
 	bool insideSquare(int mouseX, int mouseY, Transform* rect);
 	bool insideSquare(int mouseX, int mouseY);
