@@ -22,7 +22,7 @@ void HungerComponent::setHunger(float hunger_) {
 }
 void HungerComponent::decreaseHunger(float hunger_) {
 	hunger -= hunger_;
-	if (hunger < 0) hunger = 0;
+	if (hunger < 0.2) hunger = 0.2;
 	updateLevel();
 }
 float HungerComponent::getHunger() {

@@ -192,6 +192,7 @@ void KeyboardPlayerCtrl::update() {
 		}
 
 	}
+	std::cout << speed << std::endl;
 }
 
 void KeyboardPlayerCtrl::resetSpeed() {
@@ -200,6 +201,11 @@ void KeyboardPlayerCtrl::resetSpeed() {
 
 float KeyboardPlayerCtrl::getSpeed() {
 	return speed;
+}
+
+float KeyboardPlayerCtrl::getMaxSpeed()
+{
+	return maxSpeed;
 }
 
 void KeyboardPlayerCtrl::setSpeed(float speed_) {

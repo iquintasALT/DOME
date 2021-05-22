@@ -22,12 +22,13 @@ void TirednessComponent::decreaseTiredness(float tiredness_) {
 }
 
 void TirednessComponent::calculatePlayerSpeed() const {
-	float vel = kb->getSpeed();
+	float vel = consts::PLAYER_SPEED;
 
-	if (tiredness > 0.5f) vel *= tiredness;
-	else vel *= tiredness + tiredness / 4;
+	if (tiredness >= consts::NONETIRED_LEVEL) vel *= 1.0f;
+	else if (tiredness >= consts::TIRED_LEVEL) vel *= 0.8f;
+	else vel = vel *= 0.66f;
 
-	kb->setSpeed(vel);
+	kb->setMaxSpeed(vel);
 }
 
 void TirednessComponent::calculateTravelSpeed() const{
