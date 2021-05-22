@@ -200,32 +200,19 @@ void SpaceshipStation::update() {
 							//gastar accion
 							shelterScene->useAction();
 
+							craftSys->FinishCraft();
+
+							renderFlag = true;
+							renderRightWindow = true;
+
+							setLeftRender();
+							setRightRender();
+
 							if (mngr_->getGame()->rockets && mngr_->getGame()->radar && mngr_->getGame()->cabin)
 								endGame = true;
 						}
 					}
 				}
-			}
-		}
-		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
-	}
-
-	if (loot != nullptr) {
-		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
-		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
-			mouseClick = true;
-
-			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
-
-				if (loot->getInventory()->getItems().empty()) {
-					craftSys->FinishCraft();
-				}
-
-				loot->Interact();
-				loot->getEntity()->setActive(false);
-				loot = nullptr;
-				renderFlag = true;
-				renderRightWindow = true;
 			}
 		}
 		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
