@@ -43,6 +43,12 @@ protected:
 
 	Manager* falseMngr;
 
+	vector<Texture*> leftRenderTexts;
+	vector<Entity*> leftRenderImgs;
+
+	vector<Texture*> rightRenderTexts;
+	vector<Entity*> rightRenderImgs;
+
 	std::vector<Slot>craftList;
 	std::vector<Transform*>craftList_tr;
 
@@ -64,6 +70,23 @@ protected:
 public:
 	Workshop(Manager* mngr_) : Entity(mngr_) { };
 	Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_);
+
+	~Workshop() {
+		for (int i = 0; i < leftRenderTexts.size(); ++i) {
+			delete  leftRenderTexts[i];
+		}
+		leftRenderTexts.clear();
+
+		for (int i = 0; i < rightRenderTexts.size(); ++i) {
+			delete  rightRenderTexts[i];
+		}
+		rightRenderTexts.clear();
+
+		delete falseMngr;
+	}
+
+	virtual void setLeftRender();
+	virtual void setRightRender();
 
 	void renderWeaponUpgrade();
 	virtual void setWorkshopItems(vector<ITEMS>&& items);
