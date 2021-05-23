@@ -36,7 +36,7 @@ private:
 public:
 	SCENES currentScene;
 	map<SCENES, vector<vector<I>>> SCENES_LOOT;
-	bool cabin = false, rockets = false, radar = false;
+	bool cabin = false, rockets = true, radar = true;
 
 	Game(int totaltime);
 	virtual ~Game();
@@ -51,7 +51,7 @@ public:
 	void setShouldRenderFPS(bool value) { shouldRenderFps = value; }
 	void nextDay();
 	
-	// booleano para comprabar si el jugador ha sido creado, para mantener la informaciï¿½n
+	// booleano para comprabar si el jugador ha sido creado, para mantener la información
 	// entre escenas. Ponerlo a falso cuando se salga de juego (menu, endScreen, etc.)
 	bool playerCreated = false;
 	Player* playerSaved = nullptr;
@@ -64,3 +64,4 @@ public:
 	// LocationScene, comparandolo con consts::MAX_DAYS, y haciendo lo necesario cuando se llegue al ultimo dia 
 	int numDays = 0;
 };
+
