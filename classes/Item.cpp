@@ -41,105 +41,64 @@ ItemInfo* ItemInfo::bandage()
 		static_cast<Player*>(player)->getPhysiognomy()->removeBleedState();
 	};
 
-	return new ItemInfo(BANDAGE, "bandage", "Can heal bleeding", 2, 1, 0, 2, f);
+	return new ItemInfo(BANDAGE, "bandage", "Can heal bleeding", 1, 1, 0, 2, f);
 }
 
 ItemInfo* ItemInfo::medicalComponents()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(MEDICAL_COMPONENTS, "medical components", "Useful to craft medicines", 1, 2, 0, 1, f);
+	return new ItemInfo(MEDICAL_COMPONENTS, "medical components", "Useful to craft medicines", 1, 2, 0, 1);
 }
 
 
 ItemInfo* ItemInfo::water()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(WATER, "water", "Good against hunger", 1, 2, 4, 4, f);
+	return new ItemInfo(WATER, "water", "Good against hunger", 1, 2, 4, 4);
 }
 
 ItemInfo* ItemInfo::organicMaterial()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(ORGANIC_MATERIAL, "organic material", "Useful to craft medicines or food", 2, 2, 1, 2, f);
+	return new ItemInfo(ORGANIC_MATERIAL, "organic material", "Useful to craft medicines or food", 2, 2, 1, 2);
 }
 
 ItemInfo* ItemInfo::mecanicalComponents()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(MECANICAL_COMPONENTS, "mecanical components", "I could craft something with this...", 2, 1, 4, 1, f);
+	return new ItemInfo(MECANICAL_COMPONENTS, "mecanical components", "I could craft something with this...", 2, 1, 4, 1);
 }
 
 ItemInfo* ItemInfo::spaceshipRockets()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(SPACESHIP_ROCKETS, "spaceship rockets", "Important part of the spaceship", 1, 1, 6, 0, f);
+	return new ItemInfo(SPACESHIP_ROCKETS, "spaceship rockets", "Important part of the spaceship", 1, 1, 6, 0);
 }
 
 
 ItemInfo* ItemInfo::spaceshipKeyItem()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(SPACESHIP_KEY_ITEMS, "spaceship key item", "I could build spaceship parts with this", 2, 2, 4, 2, f);
+	return new ItemInfo(SPACESHIP_KEY_ITEMS, "spaceship key item", "I could build spaceship parts with this", 2, 2, 4, 2);
 }
 
 ItemInfo* ItemInfo::buildingParts()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(BUILDING_PARTS, "building parts", "I could craft something with this...", 2, 2, 7, 0, f);
+	return new ItemInfo(BUILDING_PARTS, "building parts", "I could craft something with this...", 2, 2, 7, 0);
 }
 
 ItemInfo* ItemInfo::electronicRemains() {
-	auto f = [](Entity* player) {
-
-	};
-
-	return new ItemInfo(ELECTRONIC_REMAINS, "electronic remains", "I could craft something with this...", 1, 1, 5, 0, f);
+	return new ItemInfo(ELECTRONIC_REMAINS, "electronic remains", "I could craft something with this...", 1, 1, 5, 0);
 }
 
 ItemInfo* ItemInfo::spaceshipRadar() {
-	auto f = [](Entity* player) {
-
-	};
-
-	return new ItemInfo(SPACESHIP_RADAR, "spaceship radar", "Important part of the spaceship", 1, 1, 5, 2, f);
+	return new ItemInfo(SPACESHIP_RADAR, "spaceship radar", "Important part of the spaceship", 1, 1, 5, 2);
 }
 
 ItemInfo* ItemInfo::spaceshipCabin() {
-	auto f = [](Entity* player) {
-
-	};
-
-	return new ItemInfo(SPACESHIP_CABIN, "spaceship cabin", "Important part of the spaceship", 1, 1, 6, 1, f);
+	return new ItemInfo(SPACESHIP_CABIN, "spaceship cabin", "Important part of the spaceship", 1, 1, 6, 1);
 }
 
 ItemInfo* ItemInfo::weaponUpgrade() {
-	auto f = [](Entity* player) {
-
-	};
-
-	return new ItemInfo(WEAPON_UPGRADE, "weapon upgrade", "weapon upgrade", 1, 1, 7, 2, f);
+	return new ItemInfo(WEAPON_UPGRADE, "weapon upgrade", "weapon upgrade", 1, 1, 7, 2);
 }
 
 ItemInfo* ItemInfo::upgradeKit() {
-	auto f = [](Entity* player) {
-
-	};
-
-	return new ItemInfo(UPGRADE_KIT, "upgrade kit", "perfect tools to improve my weapons!", 2, 2, 6, 2, f);
+	return new ItemInfo(UPGRADE_KIT, "upgrade kit", "perfect tools to improve my weapons!", 2, 2, 6, 2);
 }
 
 ItemInfo* ItemInfo::splint()
@@ -173,18 +132,12 @@ ItemInfo* ItemInfo::food()
 
 ItemInfo* ItemInfo::laserAmmo()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(LASER_AMMO, "laser ammo", "High technology to use in the laser weapon", 1, 1, 3, 0, f);
+	return new ItemInfo(LASER_AMMO, "laser ammo", "High technology to use in the laser weapon", 1, 1, 3, 0);
 }
 
 ItemInfo* ItemInfo::ricochetAmmo()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(RICOCHET_AMMO, "ricochet ammo", "Bullets covered in a bouncing alien material for the ricochet weapon", 1, 1, 3, 1, f);
+	return new ItemInfo(RICOCHET_AMMO, "ricochet ammo", "Bullets covered in a bouncing alien material for the ricochet weapon", 1, 1, 3, 1);
 }
 
 ItemInfo* ItemInfo::classicAmmo()
