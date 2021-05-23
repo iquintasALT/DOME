@@ -3,8 +3,16 @@
 #include "../classes/physiognomy.h"
 #include "../components/hunger_component.h"
 
+ItemInfo::ItemInfo(ITEMS name, string description, int width, int height, int row, int col):
+	_name(name), _description(description), _width(width), _height(height), _row(row), _col(col) {
+	function = [](Entity*) {};
+	functionCreated = false;
+};
+
+
 ItemInfo::ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity* p)> f) :
-	_name(name), _description(description), _width(width), _height(height), _row(row), _col(col), function(f) {};
+	_name(name), _description(description), _width(width), _height(height), _row(row), _col(col), function(f), functionCreated(true) {
+};
 
 ItemInfo::ItemInfo(ItemInfo* item) {
 	_name = item->_name;

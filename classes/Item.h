@@ -27,9 +27,10 @@ private:
 	int _col;
 
 	std::function<void(Entity*)> function;
-
+	bool functionCreated;
 public:
-	ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity*)> function = [](Entity*) {});
+	ItemInfo(ITEMS name, string description, int width, int height, int row, int col);
+	ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity*)> function);
 	ItemInfo(ItemInfo* itemInfo);
 	inline ITEMS name() { return _name; };
 	inline string description() { return _description; };
@@ -38,6 +39,8 @@ public:
 	inline int row() { return _row; }
 	inline int col() { return _col; }
 	inline void execute(Entity* player) { function(player); };
+
+	inline bool hasFunction() { return functionCreated; }
 
 	static ItemInfo* bandage();
 	static ItemInfo* antidote();
@@ -48,6 +51,7 @@ public:
 	static ItemInfo* ricochetAmmo();
 	static ItemInfo* metalPlates();
 	static ItemInfo* classicAmmo();
+
 };
 
 class Item
