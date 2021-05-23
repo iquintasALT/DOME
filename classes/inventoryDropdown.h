@@ -19,7 +19,7 @@ public:
 	inventoryDropdown(Texture* texture, std::vector<slot*> slots, float width);
 	~inventoryDropdown();
 	void render(bool isActive = true);
-	bool onClick(Vector2D& const mousePos);
+	bool onClick(Vector2D& const mousePos, bool isActive = true);
 	void setPos(Vector2D& pos);
 private:
 	float width;
