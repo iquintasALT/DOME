@@ -346,7 +346,7 @@ void Inventory::adjustPanelSize() {
 }
 
 void Inventory::storeDefaultItems() {
-	storeItem(new Item(ItemInfo::mecanicalComponents(), entity_->getMngr(), this, 0, 0));
+	storeItem(new Item(ItemInfo::bandage(), entity_->getMngr(), this, 0, 0));
 	storeItem(new Item(ItemInfo::buildingParts(), entity_->getMngr(), this, 2, 2));
 	storeItem(new Item(ItemInfo::classicAmmo(), entity_->getMngr(), this, 4, 0, 12));
 	storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 6));
