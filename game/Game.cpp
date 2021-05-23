@@ -31,7 +31,7 @@
 #include "../components/hunger_component.h"
 #include "../components/tiredness_component.h"
 #include "../classes/physiognomy.h"
-
+#include "../sdlutils/InputHandler.h"
 Game::Game(int totaltime) {
 	initLoot();
 
@@ -59,10 +59,14 @@ void Game::init() {
 
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "./resources/config/resources.json");
 
-	sdlutils().showCursor();
+	sdlutils().hideCursor();
+
 	//sdlutils().toggleFullScreen();
 
 	initLoot();
+
+	cursor = &sdlutils().images().at("cursor");
+	cursorCenter = Vector2D(0.5, 0.5);
 
 	states->pushState(new MenuScene(this));
 	states->currentState()->init();
@@ -99,6 +103,7 @@ void Game::start() {
 		sdlutils().clearRenderer();
 		states->currentState()->cycle();
 		drawFPS(currentFPS);
+		renderCursor();
 		sdlutils().presentRenderer();
 		Uint32 frameTime = sdlutils().currRealTime() - startTime;
 
@@ -182,4 +187,17 @@ void Game::nextDay()
 	if (numDays > consts::MAX_DAYS) playerSaved->getPhysiognomy()->die(WAYSTODIE::DAYS);
 }
 
+
+void Game::renderCursor() {
+	auto mousePos = ih().getMousePos();
+	int w = cursor->width();
+	int h = cursor->height();
+
+	int x = mousePos.first - cursorCenter.getX() * w;
+	int y = mousePos.second - cursorCenter.getY() * h;
+	SDL_Rect dest{
+		x, y, w, h
+	};
+	cursor->render(dest);
+}
 
