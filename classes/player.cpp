@@ -112,6 +112,7 @@ Player::Player(Player* prevPlayer, Manager* mngr):
 Player::~Player() {
 	delete physiognomy;
 	delete weapon;
+	getComponent<InventoryController>()->inventory->forceDelete = true;
 	delete getComponent<InventoryController>()->inventory;
 }
 

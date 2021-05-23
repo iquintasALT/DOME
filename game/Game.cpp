@@ -50,7 +50,7 @@ Game::~Game() {
 	delete states;
 	delete Camera::mainCamera;
 	if (playerCreated) {
-		playerSaved->getComponent<InventoryController>()->inventory->forceDelete = true;
+		//playerSaved->getComponent<InventoryController>()->inventory->forceDelete = true;
 		delete playerSaved;
 	}
 }
