@@ -187,28 +187,42 @@ void Game::initLoot() {
 	});
 
 	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<I>>{
+		//piso 0
 		{
-			I{ FOOD,0,1,1,3,0,2,0,"food" },
-			I{ ELECTRONIC_REMAINS,0,1,1,2,0,5,0,"electronic remains" },
-			I{ SPACESHIP_KEY_ITEMS,0,2,2,0,1,4,2,"spaceship key item" }
+			I{ 0,0, ItemInfo::spaceshipKeyItem() },
+			I{ 3,3, ItemInfo::bandage() },
+			I{ 3,0, ItemInfo::bandage() },
+			I{ 4,0, ItemInfo::water()}
 		},
 		{
-			I{ FOOD,0,1,1,3,0,2,0,"food" },
-			I{CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" }
+			I{ 0,0, ItemInfo::antidote()},
+			I{ 2,0, ItemInfo::medicalComponents() },
+			I{ 3,0, ItemInfo::medicalComponents() },
+			I{ 3,3, ItemInfo::electronicalRemains()}
 		},
 		{
-			I{ WATER,0,1,2,3,0,4,0,"water" },
-			I{ ELECTRONIC_REMAINS,0,1,1,2,0,5,0,"electronic remains" },
-			I{CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" }
+			I{ 0,0, ItemInfo::food()},
+			I{ 0,1, ItemInfo::food()},
+			I{ 0,2, ItemInfo::food()},
+			I{ 3,3, ItemInfo::bandage() }
+		},
+		//piso 1
+		{
+			I{ 0,3, ItemInfo::bandage() },
+			I{ 0,0, ItemInfo::buildingParts() },
+			I{ 2,2, ItemInfo::upgradeKit() },
+			I{ 3,0, ItemInfo::mechanicalComponents() }
+
 		},
 		{
-			I{ MEDICAL_COMPONENTS,0,1,2,4,3,0,1,"medical components" },
-			I{ MEDICAL_COMPONENTS,0,1,2,3,3,0,1,"medical components" },
-			I{CLASSIC_AMMO,0,1,1,1,0,2,1,"classic ammo" }
+			I{ 0,0, ItemInfo::mechanicalComponents()},
+			I{ 0,1, ItemInfo::mechanicalComponents()},
+			I{ 1,0, ItemInfo::electronicalRemains()}
 		},
 		{
-			I{ BUILDING_PARTS,0,2,2,0,1,7,0,"building parts" },
-			I{BUILDING_PARTS,0,2,2,3,3,7,0,"building parts" }
+			I{ 0,0, ItemInfo::spaceshipKeyItem() },
+			I{ 3,3, ItemInfo::electronicalRemains()}
+
 		}
 	});
 
@@ -223,20 +237,24 @@ void Game::initLoot() {
 		{
 			I{ 0,0, ItemInfo::painKiller() },
 			I{ 2,2, ItemInfo::painKiller() },
+			I{3,3, ItemInfo::laserAmmo()}
 		},
 		{
 			I{ 2,0, ItemInfo::painKiller() },
-			I{ 3,3, ItemInfo::bandage() }
+			I{ 3,3, ItemInfo::bandage() },
+			I{0,0, ItemInfo::classicAmmo()}
 		},
 		// piso 0
 		{
 			I{ 0,0, ItemInfo::bandage() },
-			I{ 2,2, ItemInfo::bandage() },
-			I{ 3,0, ItemInfo::bandage() }
+			I{ 1,0, ItemInfo::bandage() },
+			I{ 0,1, ItemInfo::spaceshipKeyItem() }
 		},
 		{
-			I{ 0,0, ItemInfo::bandage() },
-			I{ 2,2, ItemInfo::splint() } //no saltar
+			I{ 0,0, ItemInfo::spaceshipKeyItem() },
+			I{ 3,0, ItemInfo::bandage() },
+			I{ 0,3, ItemInfo::splint() }, //no saltar
+			I{ 4,4, ItemInfo::ricochetAmmo() },
 		},
 		//piso 1
 		{

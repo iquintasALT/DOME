@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.6.0" orientation="orthogonal" renderorder="right-down" width="190" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="40">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="190" height="40" tilewidth="32" tileheight="32" infinite="0" nextlayerid="7" nextobjectid="41">
  <tileset firstgid="1" source="template_tileset.tsx"/>
  <layer id="1" name="Background" width="190" height="40">
   <properties>
@@ -184,10 +184,11 @@
    </properties>
    <point/>
   </object>
+  <object id="38" name="loot" x="4896" y="536" width="72" height="72"/>
   <object id="35" name="loot" x="2608" y="536" width="72" height="72"/>
+  <object id="39" name="loot" x="704" y="536" width="72" height="72"/>
+  <object id="40" name="loot" x="5112" y="760" width="72" height="72"/>
   <object id="36" name="loot" x="4224" y="760" width="72" height="72"/>
   <object id="37" name="loot" x="1400" y="760" width="72" height="72"/>
-  <object id="38" name="loot" x="4896" y="536" width="72" height="72"/>
-  <object id="39" name="loot" x="704" y="536" width="72" height="72"/>
  </objectgroup>
 </map>
