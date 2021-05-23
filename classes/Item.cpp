@@ -52,7 +52,7 @@ ItemInfo* ItemInfo::medicalComponents()
 
 ItemInfo* ItemInfo::water()
 {
-	return new ItemInfo(WATER, "water", "Good against hunger", 1, 2, 4, 4);
+	return new ItemInfo(WATER, "water", "Good to craft some medicines", 1, 2, 4, 0);
 }
 
 ItemInfo* ItemInfo::organicMaterial()
@@ -94,11 +94,11 @@ ItemInfo* ItemInfo::spaceshipCabin() {
 }
 
 ItemInfo* ItemInfo::weaponUpgrade() {
-	return new ItemInfo(WEAPON_UPGRADE, "weapon upgrade", "weapon upgrade", 1, 1, 7, 2);
+	return new ItemInfo(WEAPON_UPGRADE, "weapon upgrade", "Weapon upgrade", 1, 1, 7, 2);
 }
 
 ItemInfo* ItemInfo::upgradeKit() {
-	return new ItemInfo(UPGRADE_KIT, "upgrade kit", "perfect tools to improve my weapons!", 2, 2, 6, 2);
+	return new ItemInfo(UPGRADE_KIT, "upgrade kit", "Perfect tools to improve my weapons!", 2, 2, 6, 2);
 }
 
 ItemInfo* ItemInfo::splint()
@@ -107,7 +107,7 @@ ItemInfo* ItemInfo::splint()
 		static_cast<Player*>(player)->getPhysiognomy()->removeConcussionState();
 	};
 
-	return new ItemInfo(SPLINT, "splint", "Can heal concussions", 2, 2, 5, 1, f);
+	return new ItemInfo(SPLINT, "splint", "Can heal concussions", 2, 1, 5, 1, f);
 }
 
 
@@ -146,7 +146,7 @@ ItemInfo* ItemInfo::classicAmmo()
 }
 
 ItemInfo* ItemInfo::metalPlates(){
-	return new ItemInfo(METAL_PLATES, "metal plates", "Metal plates", 2, 2, 7, 1);
+	return new ItemInfo(METAL_PLATES, "metal plates", "Metal plates, useful to repair the spaceship", 2, 2, 7, 1);
 }
 
 
