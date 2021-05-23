@@ -27,9 +27,10 @@ public:
 	int _col;
 
 	std::function<void(Entity*)> function;
-
+	bool functionCreated;
 public:
-	ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity*)> function = [](Entity*) {});
+	ItemInfo(ITEMS name, string description, int width, int height, int row, int col);
+	ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity*)> function);
 	ItemInfo(ItemInfo* itemInfo);
 	inline ITEMS name() { return _name; };
 	inline string description() { return _description; };
@@ -39,7 +40,8 @@ public:
 	inline int col() { return _col; }
 	inline void execute(Entity* player) { function(player); };
 
-	//water, medical, organic, mechanical, building, electronic, upgrade
+	inline bool hasFunction() { return functionCreated; }
+
 	static ItemInfo* bandage();
 	static ItemInfo* antidote();
 	static ItemInfo* splint();
@@ -86,5 +88,4 @@ private:
 
 	Texture* tex;
 };
-
 

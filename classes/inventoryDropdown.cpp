@@ -20,9 +20,15 @@ inventoryDropdown::~inventoryDropdown() {
 	slots.clear();
 }
 
-void inventoryDropdown::render() {
+void inventoryDropdown::render(bool isActive) {
 	SDL_Rect rect{ position.getX(), position.getY(), width, 0 };
+
+	bool first = isActive;
 	for (auto slot : slots) {
+		if (first) {
+			first = false;
+			continue;
+		}
 		int h = slot->texture->height();
 		rect.h = h;
 		rect.w = width;

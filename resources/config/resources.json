@@ -1,46 +1,46 @@
 {
-    "fonts": [
-        {
-            "id": "OrbitronRegular",
-            "file": "resources/fonts/Orbitron-Regular.ttf",
-            "size": 24
-        },
-        {
-            "id": "OrbitronBold",
-            "file": "resources/fonts/Orbitron-Bold.ttf",
-            "size": 24
-        },
-        {
-            "id": "OrbitronBold32",
-            "file": "resources/fonts/Orbitron-Bold.ttf",
-            "size": 32
-        },
-        {
-            "id": "Orbitron32",
-            "file": "resources/fonts/Orbitron-Bold.ttf",
-            "size": 32
-        },
-        {
-            "id": "Orbitron14",
-            "file": "resources/fonts/Orbitron-Bold.ttf",
-            "size": 14
-        },
-        {
-            "id": "Orbitron24",
-            "file": "resources/fonts/Orbitron-Bold.ttf",
-            "size": 24
-        },
-        {
-            "id": "Orbitron16",
-            "file": "resources/fonts/Orbitron-Regular.ttf",
-            "size": 16
-        },
-        {
-            "id": "Orbitron12",
-            "file": "resources/fonts/Orbitron-Bold.ttf",
-            "size": 12
-        }
-    ],
+  "fonts": [
+    {
+      "id": "OrbitronRegular",
+      "file": "resources/fonts/Orbitron-Regular.ttf",
+      "size": 24
+    },
+    {
+      "id": "OrbitronBold",
+      "file": "resources/fonts/Orbitron-Bold.ttf",
+      "size": 24
+    },
+    {
+      "id": "OrbitronBold32",
+      "file": "resources/fonts/Orbitron-Bold.ttf",
+      "size": 32
+    },
+    {
+      "id": "Orbitron32",
+      "file": "resources/fonts/Orbitron-Bold.ttf",
+      "size": 32
+    },
+    {
+      "id": "Orbitron14",
+      "file": "resources/fonts/Orbitron-Bold.ttf",
+      "size": 14
+    },
+    {
+      "id": "Orbitron24",
+      "file": "resources/fonts/Orbitron-Bold.ttf",
+      "size": 24
+    },
+    {
+      "id": "Orbitron16",
+      "file": "resources/fonts/Orbitron-Regular.ttf",
+      "size": 16
+    },
+    {
+      "id": "Orbitron12",
+      "file": "resources/fonts/Orbitron-Bold.ttf",
+      "size": 12
+    }
+  ],
 
   "images": [
     {
@@ -50,6 +50,10 @@
     {
       "id": "weaponHUD",
       "file": "resources/sprites/weapons_sheet_HUD.png"
+    },
+    {
+      "id": "cursor",
+      "file": "resources/sprites/cursor.png"
     },
     {
       "id": "marco",
@@ -415,15 +419,15 @@
       "id": "holdToSkip",
       "file": "resources/sprites/holdToSkip.png"
     },
-	{
+    {
       "id": "shelterTutorial",
       "file": "resources/sprites/shelter_tutorial.png"
     },
-	{
+    {
       "id": "raidTutorial",
       "file": "resources/sprites/raid_tutorial.png"
     },
-	{
+    {
       "id": "locationsTutorial",
       "file": "resources/sprites/locations_tutorial.png"
     }
@@ -572,35 +576,35 @@
     }
   ],
 
-    "musics": [
-      {
-        "id": "menu_theme",
-        "file": "resources/music/space_ambience.mp3"
-      },
-      {
-        "id": "game_theme",
-        "file": "resources/music/second_game_theme.mp3"
-      }
-    ],
+  "musics": [
+    {
+      "id": "menu_theme",
+      "file": "resources/music/space_ambience.mp3"
+    },
+    {
+      "id": "game_theme",
+      "file": "resources/music/second_game_theme.mp3"
+    }
+  ],
 
-    "tilesets": [
-        {
-            "id": "template_tileset",
-            "file": "resources/sprites/floor_tileset.png"
-        },
-        {
-            "id": "floor_tileset",
-            "file": "resources/sprites/floor_tileset.png"
-        },
+  "tilesets": [
+    {
+      "id": "template_tileset",
+      "file": "resources/sprites/floor_tileset.png"
+    },
+    {
+      "id": "floor_tileset",
+      "file": "resources/sprites/floor_tileset.png"
+    },
 
-        {
-            "id": "sprite_bg_tiles_32x32",
-            "file": "resources/sprites/sprite_bg_tiles_32x32.png"
-        },
+    {
+      "id": "sprite_bg_tiles_32x32",
+      "file": "resources/sprites/sprite_bg_tiles_32x32.png"
+    },
 
-        {
-            "id": "second_template_tileset",
-            "file": "resources/sprites/wardrobe_tileset.png"
-        }
-    ]
+    {
+      "id": "second_template_tileset",
+      "file": "resources/sprites/wardrobe_tileset.png"
+    }
+  ]
 }

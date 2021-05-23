@@ -59,6 +59,10 @@ public:
 	// booleano que control si hay fullscreen activo
 	bool fullscreen = false;
 
+	Point2D cursorCenter;
+	Texture* cursor;
+	void renderCursor();
+
 	// contador de dias de juego. Partimos de 0 para dejar claro que no 
 	// se ha comenzado la partida, hacer que se haga + 1 para cada transicion a 
 	// LocationScene, comparandolo con consts::MAX_DAYS, y haciendo lo necesario cuando se llegue al ultimo dia 
