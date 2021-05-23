@@ -35,7 +35,7 @@ private:
 
 public:
 	SCENES currentScene;
-	map<SCENES, vector<vector<I>>> SCENES_LOOT;
+	map<SCENES, vector<vector<pair<ItemInfo, Vector2D>>>> SCENES_LOOT;
 	bool cabin = false, rockets = false, radar = false;
 
 	Game(int totaltime);
