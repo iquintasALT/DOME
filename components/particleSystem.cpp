@@ -31,9 +31,9 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	source = { w * c ,h * r,w,h };
 
 	//Particle properties
-	lifeTime = 1;
+	lifeTime = .7;
 	distanceToOrigin = 0;
-	speed = 4;
+	speed = 2;
 	angleDispersion = 30;
 	dir = Vector2D(0, 1).normalize();
 	rateOverTime = 6;
@@ -45,7 +45,7 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	inheritVelocityMultiplier = -1;
 	emitting = playOnAwake;
 	offset = Vector2D(10, height / 2 + 10);
-	particleScale = 1;
+	particleScale = .8;
 	sizeOverTime = true;
 	sizeCurve = Function(-1, 0, 1);
 
