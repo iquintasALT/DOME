@@ -150,7 +150,7 @@ ItemInfo* ItemInfo::spaceshipKeyItem()
 	auto f = [](Entity* player) {
 	};
 
-	return new ItemInfo(SPACESHIP_KEY_ITEMS, "Key item to repair the spaceship", 3, 3, 6, 2, f);
+	return new ItemInfo(SPACESHIP_KEY_ITEMS, "Key item to repair the spaceship", 3, 3, 4, 2, f);
 }
 
 ItemInfo* ItemInfo::metalPlates()
