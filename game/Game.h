@@ -35,8 +35,10 @@ private:
 
 public:
 	SCENES currentScene;
-	map<SCENES, vector<vector<I>>> SCENES_LOOT;
+
+	map<SCENES, vector<vector<pair<ItemInfo, Vector2D>>>> SCENES_LOOT;
 	bool cabin = false, rockets = true, radar = true;
+
 
 	Game(int totaltime);
 	virtual ~Game();
@@ -51,7 +53,7 @@ public:
 	void setShouldRenderFPS(bool value) { shouldRenderFps = value; }
 	void nextDay();
 	
-	// booleano para comprabar si el jugador ha sido creado, para mantener la información
+	// booleano para comprabar si el jugador ha sido creado, para mantener la informaciï¿½n
 	// entre escenas. Ponerlo a falso cuando se salga de juego (menu, endScreen, etc.)
 	bool playerCreated = false;
 	Player* playerSaved = nullptr;

@@ -25,15 +25,15 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	int w = tex->width() / cols;
 	int h = tex->height() / rows;
 
-	width = texture->width() * particleScale / cols;
-	height = texture->height() * particleScale / rows;
+	width = texture->width()/ cols;
+	height = texture->height()/ rows;
 
 	source = { w * c ,h * r,w,h };
 
 	//Particle properties
-	lifeTime = 1;
+	lifeTime = .7;
 	distanceToOrigin = 0;
-	speed = 4;
+	speed = 2;
 	angleDispersion = 30;
 	dir = Vector2D(0, 1).normalize();
 	rateOverTime = 6;
@@ -45,7 +45,7 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	inheritVelocityMultiplier = -1;
 	emitting = playOnAwake;
 	offset = Vector2D(10, height / 2 + 10);
-	particleScale = 1;
+	particleScale = .8;
 	sizeOverTime = true;
 	sizeCurve = Function(-1, 0, 1);
 
@@ -71,8 +71,8 @@ void ParticleSystem::init() {
 
 	rb = entity_->getComponent<RigidBody>();
 
-	width *= particleScale;
-	height *= particleScale;
+	//width *= particleScale;
+	//height *= particleScale;
 
 	offset = Vector2D(0, transform->getH());
 }
@@ -113,8 +113,8 @@ void ParticleSystem::update() {
 		a->rb->update();
 
 		float life = particleLife[i];
-		a->tr->setW(width * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
-		a->tr->setH(height * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
+		a->tr->setW(particleScale * width * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
+		a->tr->setH(particleScale * height * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
 
 		if (gravity)
 			a->rb->setVel(a->rb->getVel() + Vector2D(0, gravityValue * consts::DELTA_TIME));

@@ -223,6 +223,8 @@ void CreditsScene::init() {
 	holdToSkip->addComponent<HoldToSkip>(1.5, [this]() { mngr_->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE); });
 	mngr_->addRenderLayer<Interface>(holdToSkip);
 
+	soundManager().playMusic("credits_theme");
+
 	std::vector<std::vector<std::string>> arr = {
 		{"T", "CREDITS"},
 		{"SUREFFECT TEAM"},
@@ -238,6 +240,8 @@ void CreditsScene::init() {
 		{"https://soundcloud.com/royaltyfreebackgroundmusic/sets/creative-commons-music-dark-12"},
 		{"SERPENT STUDIOS"},
 		{"https://www.serpentsoundstudios.com/royalty-free-music/ambient"},
+		{"ART OF SILENCE - by Uniq"},
+		{"under a Creative Commons license (Creative Commons - International Recognition 4.0 - CC BY 4.0)"},
 		{" "},
 		{"HONORABLE MENTIONS"},
 		{"ABEL MORO PAJE"},

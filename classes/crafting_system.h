@@ -56,7 +56,7 @@ struct CraftableItem {
 	CraftableItem(ITEMS n, int c, int w = 0, int h = 0, int x = 0, int y = 0, int row = 0, int col = 0, string desc = "desc", 
 		std::function<void(Entity*)>f = [](Entity* player) {}) 
 		: name(n), cantidad(c), x(x), y(y), w(w), h(h), col(col), row(row), desc(desc) {};
-	//AÑADIR MÁS INFO SI ES NECESARIA, 
+	//Aï¿½ADIR Mï¿½S INFO SI ES NECESARIA, 
 	CraftableItem(int x_, int y_, ItemInfo item) {
 		name = item._name;
 		desc = item._description;
@@ -69,7 +69,7 @@ struct CraftableItem {
 };
 using I = CraftableItem;
 
-using Crafts = std::map < ITEMS, std::vector<I>>; //NOMBRE / ITEMS NECESARIOS
+using Crafts = std::map < ITEMS, std::vector<ItemInfo* >>; //NOMBRE / ITEMS NECESARIOS
 
 class CraftingSystem
 {
@@ -77,11 +77,12 @@ private:
 	Crafts crafts;
 	Inventory* playerInventory;
 	list<Item*>  itemsToDelete;
+	list<Item*>  itemsToRestore;
 
-	ItemInfo* getItemInfo(ITEMS item);
 public:
+	static ItemInfo* getItemInfo(ITEMS item, int amount = 0);
 	CraftingSystem(Manager* mngr);
 	bool CraftItem(ITEMS item, int x, int y, Workshop* ws, bool openLoot = true);
-	void FinishCraft();
+	void restoreCraft();
 	Crafts* getCrafts();
 };

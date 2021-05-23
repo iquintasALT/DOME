@@ -12,6 +12,7 @@
 #include "../components/enemy_detection_component.h"
 #include "../components/enemy_attack_component.h"
 #include "../components/box_collider.h"
+#include "../components/particleSystem.h"
 
 Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : Entity(mngr_)
 {
@@ -34,8 +35,58 @@ void Enemy::receiveDamage(int damage_)
 	//usar constantes! 5 siendo max vida
 
 	if (lives <= 0) {
+		createExplosion();
 		setDead(true);
 	}
+}
+
+void Enemy::createExplosion()
+{
+	std::cout << "created explosion";
+	auto tr = getComponent<Transform>();
+
+	auto a = mngr_->addEntity();
+	a->addComponent<Transform>(tr->getPos() + Vector2D(tr->getW(), tr->getH()) / 2.0);
+	auto ap =a->addComponent<ParticleSystem>(&sdlutils().images().at("enemyDeath"), 1, 3, 0, 2);
+	ap->particleScale = 1.5;
+	ap->emitting = false;
+	ap->burst = true;
+	ap->burstCount = 10;
+	ap->burstRepeat = 1;
+	ap->destroyAfterBurst = true;
+	ap->rateOverTime = 0;
+	ap->lifeTime = 1;
+	ap->burstDuration = 0.2f;
+	ap->distanceToOrigin = tr->getW() / 2;
+	ap->dir = Vector2D(0, 1);
+	ap->angleDispersion = 150;
+	ap->speed = 1.1;
+	ap->gravityValue = 4;
+	ap->offset = Vector2D(0, -10);
+	ap->sizeCurve = ParticleSystem::Function(-1, 1);
+	mngr_->addRenderLayer<Enemy>(a);
+
+	a = mngr_->addEntity();
+	a->addComponent<Transform>(tr->getPos() + Vector2D(tr->getW(), tr->getH()) / 2.0);
+	ap = a->addComponent<ParticleSystem>(&sdlutils().images().at("enemyDeath"), 1, 3, 0, 0);
+	ap->particleScale = 2;
+	ap->emitting = false;
+	ap->burst = true;
+	ap->burstCount = 2;
+	ap->burstRepeat = 1;
+	ap->destroyAfterBurst = true;
+	ap->rateOverTime = 0;
+	ap->lifeTime =0.5;
+	ap->burstDuration = 0.2f;
+	ap->distanceToOrigin = tr->getW() / 4;
+	ap->dir = Vector2D(0, 1);
+	ap->angleDispersion = 90;
+	ap->speed = 1.3;
+	ap->gravityValue = 5;
+	ap->offset = Vector2D(0, -10);
+	ap->sizeCurve = ParticleSystem::Function(-1, 1);
+	
+	mngr_->addRenderLayer<Enemy>(a);
 }
 
 DefaultEnemy::DefaultEnemy(Manager* mngr_, Point2D pos) : Enemy(mngr_, pos)

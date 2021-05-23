@@ -25,8 +25,8 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* she
 	sleep1 = mngr_->addEntity();
 	sleep2 = mngr_->addEntity();
 
-	Vector2D bg_size = { 930, 630 };
-	Vector2D bg_pos = Vector2D(sdlutils().width() / 2 - bg_size.getX() / 2, sdlutils().height() / 2 - bg_size.getY() / 2);
+	Vector2D bg_size = { 790.5, 535.5 };
+	Vector2D bg_pos = Vector2D(sdlutils().width() / 2 - bg_size.getX() / 2, sdlutils().height() / 2 - bg_size.getY() / 2.5f);
 	Vector2D bButton_size = { 65,64 };
 	Vector2D bButton_pos = Vector2D(bg_pos.getX() - bButton_size.getX() / 2, bg_pos.getY() - bButton_size.getY() / 2);
 
@@ -36,24 +36,25 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* she
 	bg_tr = bg->getComponent<Transform>();
 	bButton_tr = bButton->getComponent<Transform>();
 
-	text = new Texture(sdlutils().renderer(), "DESCANSO", sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff));
-	dest_text = { (int) (bg_pos.getX() + bg_tr->getW() / 2 - text->width()/2),
-		(int) (bg_pos.getY() + bg_tr->getH() * (0.5f / 4.0f) - text->height() / 2),
-		text->width(),text->height() };
+	text = new Texture(sdlutils().renderer(), "BED", sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff));
+	text->width();
+	dest_text = { (int) (bg_pos.getX() + bg_tr->getW() / 2 - text->width()),
+		(int) (bg_pos.getY() + bg_tr->getH() * (0.5f / 4.0f) - text->height()),
+		text->width()*2,text->height()*2};
 
-	Vector2D sleepButton_size = { 265,105 };
+	Vector2D sleepButton_size = { 256, 128 };
 	Vector2D sleep_pos = { bg_pos.getX() + bg_tr->getW() / 2 - sleepButton_size.getX() / 2,
-		bg_pos.getY() + bg_tr->getH() * (1.5f / 4.0f) - sleepButton_size.getY() / 2 };
+		bg_pos.getY() + bg_tr->getH() * (1.5f / 4.0f) - sleepButton_size.getY() / 1.5f };
 	setImg(sleep0, sleep_pos, sleepButton_size, "0_hour_sleep");
 	sleep0_tr = sleep0->getComponent<Transform>();
 
 	Vector2D sleep_pos1 = { bg_pos.getX() + bg_tr->getW() / 2 - sleepButton_size.getX() / 2,
-		bg_pos.getY() + bg_tr->getH() * (2.5f / 4.0f) - sleepButton_size.getY() / 2 };
+		bg_pos.getY() + bg_tr->getH() * (2.5f / 4.0f) - sleepButton_size.getY() / 1.5f };
 	setImg(sleep1, sleep_pos1, sleepButton_size, "1_hour_sleep");
 	sleep1_tr = sleep1->getComponent<Transform>();
 
 	Vector2D sleep_pos2 = { bg_pos.getX() + bg_tr->getW() / 2 - sleepButton_size.getX() / 2,
-		bg_pos.getY() + bg_tr->getH() * (3.5f / 4.0f) - sleepButton_size.getY() / 2 };
+		bg_pos.getY() + bg_tr->getH() * (3.5f / 4.0f) - sleepButton_size.getY() / 1.5f };
 	setImg(sleep2, sleep_pos2, sleepButton_size, "2_hour_sleep");
 	sleep2_tr = sleep2->getComponent<Transform>();
 }
@@ -123,7 +124,7 @@ void SleepStation::render() {
 		bg->render();
 		bButton->render();
 
-		text->render(dest_text, 0);
+		text->render(dest_text);
 		sleep0->render();
 		sleep1->render();
 		sleep2->render();
