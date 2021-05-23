@@ -39,6 +39,7 @@ public:
 	inline int col() { return _col; }
 	inline void execute(Entity* player) { function(player); };
 
+	//water, medical, organic, mechanical, building, electronic, upgrade
 	static ItemInfo* bandage();
 	static ItemInfo* antidote();
 	static ItemInfo* splint();
@@ -48,9 +49,14 @@ public:
 	static ItemInfo* ricochetAmmo();
 	static ItemInfo* metalPlates();
 	static ItemInfo* classicAmmo();
-	static ItemInfo* medicalComponent();
 	static ItemInfo* water();
+	static ItemInfo* medicalComponents();
 	static ItemInfo* organicMaterial();
+	static ItemInfo* mechanicalComponents();
+	static ItemInfo* buildingParts();
+	static ItemInfo* electronicalRemains();
+	static ItemInfo* upgradeKit();
+	static ItemInfo* spaceshipKeyItem();
 };
 
 class Item

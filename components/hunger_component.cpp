@@ -5,6 +5,7 @@ HungerComponent::HungerComponent() : hunger(1.0f), hungerLev(hungerLevel::NONE) 
 
 void HungerComponent::eat(float hunger_) {
 	hunger += hunger_;
+	if (hunger > 1.0f) hunger = 1.0f;
 	updateLevel();
 }
 
