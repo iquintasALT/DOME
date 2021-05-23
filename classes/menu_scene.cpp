@@ -18,11 +18,11 @@
 
 void MenuScene::init() {
 	// uncomment this when transition to shelter works
-	//if (mngr_->getGame()->playerSaved != nullptr) {
-	//	mngr_->getGame()->playerSaved->setDead(true);
-	//	mngr_->getGame()->playerSaved = nullptr;
-	//	mngr_->getGame()->playerCreated = false;
-	//}
+	if (mngr_->getGame()->playerSaved != nullptr) {
+		mngr_->getGame()->playerSaved->setDead(true);
+		mngr_->getGame()->playerSaved = nullptr;
+		mngr_->getGame()->playerCreated = false;
+	}
 
 	Camera::mainCamera->restoreScale();
 	mngr_->getGame()->initLoot();
