@@ -61,6 +61,7 @@ public:
 	Item(ItemInfo* info, Manager* mnger, Inventory* inventory, int xPos = 0, int yPos = 0, int count = 0);
 	Item(Item* item, Inventory* inventory);
 	~Item();
+	void removeImage();
 	void render();
 	void update();
 	void setPosition(Vector2D&& pos);
