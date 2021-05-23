@@ -212,6 +212,11 @@ Item::~Item() {
 		delete tex;
 }
 
+void Item::removeImage()
+{
+	image->setDead(true);
+}
+
 void Item::render() {
 	if (image != nullptr) {
 		image->setActive(true);

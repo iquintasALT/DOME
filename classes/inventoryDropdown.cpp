@@ -23,7 +23,7 @@ inventoryDropdown::~inventoryDropdown() {
 void inventoryDropdown::render(bool isActive) {
 	SDL_Rect rect{ position.getX(), position.getY(), width, 0 };
 
-	bool first = isActive;
+	bool first = !isActive;
 	for (auto slot : slots) {
 		if (first) {
 			first = false;
@@ -39,13 +39,19 @@ void inventoryDropdown::render(bool isActive) {
 	}
 }
 
-bool inventoryDropdown::onClick(Vector2D& const mousePos) {
+bool inventoryDropdown::onClick(Vector2D& const mousePos, bool isActive) {
 	const float x = mousePos.getX();
 	const float y = mousePos.getY();
 	float posy = position.getY();
 	if (x >= position.getX() && x < position.getX() + width) {
 		float height = 0;
+		bool skipFirst = !isActive;
 		for (auto slot : slots) {
+			if (skipFirst) {
+				skipFirst = false;
+				continue;
+			}
+
 			height =slot->texture->height();
 			if (y >= posy && y < posy + height)
 			{

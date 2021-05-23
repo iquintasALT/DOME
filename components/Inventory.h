@@ -14,7 +14,7 @@
 class TextWithBackground;
 class Game;
 class WeaponBehaviour;
-
+class DropDownRender;
 class Inventory : public Component
 {
 	friend class Item;
@@ -88,7 +88,7 @@ private:
 	bool dropDownActive;
 
 	inventoryDropdown* dropDown;
-	Entity* dropDownRender;
+	DropDownRender* dropDownRender;
 	Entity* toolTips;
 	Transform* toolTipsTr;
 	TextWithBackground* toolTipsText;
