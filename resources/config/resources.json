@@ -397,15 +397,15 @@
         },
         {
             "id": "2_hour_sleep",
-            "file": "resources/sprites/craft_ui/2_hour_sleep.png"
+            "file": "resources/sprites/craft_ui/2_hour_sleepV2.png"
         },
         {
             "id": "1_hour_sleep",
-            "file": "resources/sprites/craft_ui/1_hour_sleep.png"
+            "file": "resources/sprites/craft_ui/1_hour_sleepV2.png"
         },
         {
             "id": "0_hour_sleep",
-            "file": "resources/sprites/craft_ui/0_hour_sleep.png"
+            "file": "resources/sprites/craft_ui/0_hour_sleepV2.png"
         },
         {
             "id": "dark",
