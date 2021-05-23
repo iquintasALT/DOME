@@ -74,99 +74,63 @@ ItemInfo* ItemInfo::food()
 
 ItemInfo* ItemInfo::laserAmmo()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(LASER_AMMO, "High technology to use in the laser weapon", 1, 1, 3, 0, f);
+	return new ItemInfo(LASER_AMMO, "High technology to use in the laser weapon", 1, 1, 3, 0);
 }
 
 ItemInfo* ItemInfo::ricochetAmmo()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(RICOCHET_AMMO, "Bullets covered in a bouncing alien material for the ricochet weapon", 1, 1, 3, 1, f);
+	return new ItemInfo(RICOCHET_AMMO, "Bullets covered in a bouncing alien material for the ricochet weapon", 1, 1, 3, 1);
 }
 
 ItemInfo* ItemInfo::classicAmmo()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(CLASSIC_AMMO, "Bullets for the classic weapon", 1, 1, 2, 1, f);
+	return new ItemInfo(CLASSIC_AMMO, "Bullets for the classic weapon", 1, 1, 2, 1);
 }
 
 
 ItemInfo* ItemInfo::water()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(WATER, "Drink, used for medical recipes", 1, 2, 4, 0, f);
+	return new ItemInfo(WATER, "Drink, used for medical recipes", 1, 2, 4, 0);
 }
 
 ItemInfo* ItemInfo::medicalComponents()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(MEDICAL_COMPONENTS, "Medical components used in multiple healing crafts", 1, 2, 0, 1, f);
+	return new ItemInfo(MEDICAL_COMPONENTS, "Medical components used in multiple healing crafts", 1, 2, 0, 1);
 }
 
 ItemInfo* ItemInfo::organicMaterial()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(ORGANIC_MATERIAL, "Organic material used on some crafts", 2, 2, 2, 0, f);
+	return new ItemInfo(ORGANIC_MATERIAL, "Organic material used on some crafts", 2, 2, 2, 0);
 }
 
 ItemInfo* ItemInfo::mechanicalComponents()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(MECANICAL_COMPONENTS, "Mechanical components used on crafts", 1, 1, 4, 1, f);
+	return new ItemInfo(MECANICAL_COMPONENTS, "Mechanical components used on crafts", 1, 1, 4, 1);
 }
 
 ItemInfo* ItemInfo::buildingParts()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(BUILDING_PARTS, "Building parts used on crafts", 2, 2, 7, 0, f);
+	return new ItemInfo(BUILDING_PARTS, "Building parts used on crafts", 2, 2, 7, 0);
 }
 
 ItemInfo* ItemInfo::electronicalRemains()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(ELECTRONIC_REMAINS, "Building parts used on crafts", 1, 1, 5, 0, f);
+	return new ItemInfo(ELECTRONIC_REMAINS, "Building parts used on crafts", 1, 1, 5, 0);
 }
 
 ItemInfo* ItemInfo::upgradeKit()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(UPGRADE_KIT, "Building parts used on crafts", 3, 3, 6, 2, f);
+	return new ItemInfo(UPGRADE_KIT, "Building parts used on crafts", 2, 2, 6, 2);
 }
 
 ItemInfo* ItemInfo::spaceshipKeyItem()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(SPACESHIP_KEY_ITEMS, "Key item to repair the spaceship", 3, 3, 4, 2, f);
+	return new ItemInfo(SPACESHIP_KEY_ITEMS, "Key item to repair the spaceship", 2, 2, 4, 2);
 }
 
 ItemInfo* ItemInfo::metalPlates()
 {
-	auto f = [](Entity* player) {
-	};
-
-	return new ItemInfo(METAL_PLATES, "Metal plates to repair the spaceship", 2, 2, 7, 1, f);
+	return new ItemInfo(METAL_PLATES, "Metal plates to repair the spaceship", 2, 2, 7, 1);
 }
 
 
