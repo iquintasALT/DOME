@@ -569,10 +569,14 @@
         "id": "menu_theme",
         "file": "resources/music/space_ambience.mp3"
       },
-      {
-        "id": "game_theme",
-        "file": "resources/music/second_game_theme.mp3"
-      }
+        {
+            "id": "game_theme",
+            "file": "resources/music/second_game_theme.mp3"
+        },
+        {
+            "id": "credits_theme",
+            "file": "resources/music/credits_theme.mp3"
+        }
     ],
 
     "tilesets": [
