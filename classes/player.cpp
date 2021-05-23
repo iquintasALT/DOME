@@ -55,8 +55,6 @@ Player::Player(Manager* mngr_, Point2D pos) : Entity(mngr_)
 
 	mngr_->getGame()->playerSaved = this;
 	mngr_->getGame()->playerCreated = true;
-
-	weapon->getCurrentWeapon()->setAmmo();
 }
 
 Player::Player(Player* prevPlayer, Manager* mngr):

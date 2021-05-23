@@ -346,13 +346,19 @@ void Inventory::adjustPanelSize() {
 }
 
 void Inventory::storeDefaultItems() {
-	storeItem(new Item(ItemInfo::antidote(), entity_->getMngr(), this, 0, 0));
+
 	storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 2, 0));
 	storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 3, 0));
 	storeItem(new Item(ItemInfo::water(), entity_->getMngr(), this, 4, 0, 30));
-	storeItem(new Item(ItemInfo::classicAmmo(), entity_->getMngr(), this, 0, 2, 30));
-	storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 0, 3, 30));
-	storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 0, 4, 30));
+	//balas
+	storeItem(new Item(ItemInfo::classicAmmo(), entity_->getMngr(), this, 0, 2, 13));
+	storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 0, 3, 4));
+	storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 0, 4, 3));
+	//curas
+	storeItem(new Item(ItemInfo::bandage(), entity_->getMngr(), this, 9, 0, 0));
+	storeItem(new Item(ItemInfo::bandage(), entity_->getMngr(), this, 8, 0, 0));
+	storeItem(new Item(ItemInfo::antidote(), entity_->getMngr(), this, 8, 1));
+	storeItem(new Item(ItemInfo::splint(), entity_->getMngr(), this, 8, 3));
 }
 
 

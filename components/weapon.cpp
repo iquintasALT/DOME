@@ -21,7 +21,7 @@
 #include <iostream>
 #include <list>
 
-int Weapon::bulletsInMagazine = -1;
+int Weapon::bulletsInMagazine = 4;
 
 Weapon::Weapon(float bulletSpread, int tier) : baseBulletSpread(bulletSpread), tier_(tier) {}
 
