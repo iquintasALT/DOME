@@ -162,7 +162,12 @@ void Inventory::update() {
 
 		if (showToolTip) {
 			if (lastItemHovered != hoverItem) {
-				toolTipsText->changeText(hoverItem->getItemInfo()->description());
+				try {
+					toolTipsText->changeText(hoverItem->getItemInfo()->description());
+				}
+				catch (std::exception e) {
+					std::cout << e.what() << std::endl;
+				}
 			}
 			toolTipsTr->setPos(mousePos);
 		}
