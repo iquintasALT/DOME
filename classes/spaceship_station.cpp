@@ -50,15 +50,15 @@ SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingS
 	rocketTop = mngr_->addEntity();
 	rocketTop->addComponent<Transform>(Vector2D{ bg_pos.getX() + bg_size.getX() * 0.075f,35 }, 320, 213);
 	rocketTopImg = rocketTop->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 0, 0, true);
-	if (!realMngr_->getGame()->radar)rocketTopImg->setAlpha(125);
+	rocketTopImg->setAlpha(125);
 	rocketMid = mngr_->addEntity();
 	rocketMid->addComponent<Transform>(Vector2D{ bg_pos.getX() + bg_size.getX() * 0.075f,248 }, 320, 213);
 	rocketMidImg = rocketMid->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 1, 0, true);
-	if (!realMngr_->getGame()->cabin) rocketMidImg->setAlpha(125);
+	 rocketMidImg->setAlpha(255);
 	rocketBot = mngr_->addEntity();
 	rocketBot->addComponent<Transform>(Vector2D{ bg_pos.getX() + bg_size.getX() * 0.075f,461 }, 320, 213);
 	rocketBotImg = rocketBot->addComponent<Image>(&sdlutils().images().at("rocket"), 3, 1, 2, 0, true);
-	if (!realMngr_->getGame()->rockets)rocketBotImg->setAlpha(125);
+	rocketBotImg->setAlpha(255);
 
 	falseMngr->addRenderLayer<Interface>(rocketTop);
 	falseMngr->addRenderLayer<Interface>(rocketMid);

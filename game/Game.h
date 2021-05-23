@@ -36,7 +36,7 @@ private:
 public:
 	SCENES currentScene;
 	map<SCENES, vector<vector<I>>> SCENES_LOOT;
-	bool cabin = false, rockets = false, radar = false;
+	bool cabin = false, rockets = true, radar = true;
 
 	Game(int totaltime);
 	virtual ~Game();
