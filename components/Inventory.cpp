@@ -332,10 +332,10 @@ void Inventory::adjustPanelSize() {
 
 void Inventory::storeDefaultItems() {
 	storeItem(new Item(ItemInfo::antidote(), entity_->getMngr(), this, 0, 0));
-	storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 2, 2));
-	storeItem(new Item(ItemInfo::organicMaterial(), entity_->getMngr(), this, 4, 0, 30));
-	storeItem(new Item(ItemInfo::water(), entity_->getMngr(), this, 6, 0, 30));
-	storeItem(new Item(ItemInfo::medicalComponent(), entity_->getMngr(), this, 4, 4, 30));
+	storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 0, 2));
+	storeItem(new Item(ItemInfo::organicMaterial(), entity_->getMngr(), this, 0, 3, 30));
+	storeItem(new Item(ItemInfo::water(), entity_->getMngr(), this, 3, 0, 30));
+	storeItem(new Item(ItemInfo::medicalComponents(), entity_->getMngr(), this, 3, 3, 30));
 }
 
 
