@@ -134,18 +134,6 @@ Item::Item(Item* item, Inventory* inventory) :
 
 Item::~Item() {
 	delete info;
-	if (image != nullptr)
-		if (forceDelete) {
-			//delete image;
-		}
-		else
-			image->setDead(true);
-	if (numberTr != nullptr)
-		if (forceDelete) {
-			//delete numberTr;
-		}
-		else
-			numberTr->getEntity()->setDead(true);
 
 	if (tex != nullptr)
 		delete tex;
