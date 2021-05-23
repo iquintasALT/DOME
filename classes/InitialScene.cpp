@@ -7,6 +7,8 @@
 #include "../components/Timer.h"
 #include "../sdlutils/SoundManager.h"
 #include <iostream>
+#include "../game/Game.h"
+#include "../classes/pause_scene.h"
 
 
 void InitialScene::init()
@@ -68,4 +70,14 @@ void InitialScene::init()
 	auto img = black->addComponent<Image>(texture, true);
 	black->addComponent<Timer>(5, startScene);
 	mngr_->addRenderLayer<ULTIMATE>(black);
+}
+
+void InitialScene::update()
+{
+	GameScene::update();
+
+	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
+		mngr_->getGame()->setShouldRenderFPS(false);
+		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
+	}
 }

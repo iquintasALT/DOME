@@ -32,6 +32,9 @@
 #include "../components/tiredness_component.h"
 #include "../classes/physiognomy.h"
 #include "../sdlutils/InputHandler.h"
+
+using namespace std;
+
 Game::Game(int totaltime) {
 	initLoot();
 
@@ -123,220 +126,77 @@ void Game::drawFPS(int fps) {
 }
 
 void Game::initLoot() {
+
 	SCENES_LOOT.clear();
-	// HOSPITAL, RESTAURANT, RAID, COMMUNICATIONS,NUCLEAR_STATION,SUPERMARKET,SHOP
-	// ITEMS n, int cantidad = 0, int w , int h , int x, int y, int row, int col, string desc
+	//, HOSPITAL, RESTAURANT, RAID, COMMUNICATIONS,NUCLEAR_STATION,SUPERMARKET,SHOP
+	// ITEMS n, int cantidad (INUTIL PARA ESTE METODO), int w , int h , int x, int y,int row, int col,string desc
 
+	//el pair es iteminfo/posicion en el inventario del loot
 
-
-	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<I>>{
+	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<pair<ItemInfo, Vector2D>>> {
 		{
-			I(WATER, 0, 1, 2, 0, 0, 4, 0, "water"),
-			I(MEDICAL_COMPONENTS, 5, 2, 2, 1, 0, 3, 2, "componentes medicos para ponerte hasta el culo")
+			make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(1, 0))
 		}
 	});
 
-	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<I>>{
+	SCENES_LOOT.emplace(SCENES::SHELTER, vector<vector<pair<ItemInfo, Vector2D>>> {
+	});
+
+	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<pair<ItemInfo, Vector2D>>> {
 		{
-			I{ SPACESHIP_KEY_ITEMS,0,2,2,0,0,4,2,"spaceship key item" },
-			I{ WATER,0,1,2,0,3,4,0,"water" },
-			I{ WATER,0,1,2,1,3,4,0,"water" },
-			I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" },
-			I{ CLASSIC_AMMO,0,1,1,4,1,2,1,"classic ammo" },
-			I{ CLASSIC_AMMO,0,1,1,3,1,2,1,"classic ammo" }, 
-			I{ CLASSIC_AMMO,0,1,1,3,2,2,1,"classic ammo" }
+			make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(0, 3)),
+				make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(1, 3)), make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(2, 3)),
+				make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(4, 1)), make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(3, 1)),
+				make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(3, 2))
 		},
-		{
-			I{ UPGRADE_KIT,0,2,2,0,0,6,2,"upgrade kit" },
-			I{ FOOD,0,1,1,2,2,2,0,"food" },
-			I{ FOOD,0,1,1,3,1,2,0,"food" },
-			I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" },
-			I{ WATER,0,1,2,4,0,4,0,"water" }
+			{ make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(2, 2)),
+					make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(3, 1)),
+					make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(2, 3)), make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(4, 0))
+			}
+	});
+
+	SCENES_LOOT.emplace(SCENES::HOSPITAL, vector<vector<pair<ItemInfo, Vector2D>>> {
+		{make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(3, 3)),
+			make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(4, 2)), make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(2, 0)),
+			make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(2, 3)), make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(0, 3))
+		},
+		{ make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(4, 0)), make_pair(CraftingSystem::getItemInfo(ANTIDOTE), Vector2D(0, 0)),
+				make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(3, 0)),
+				make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(3, 2)), make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(1, 2))
 		}
 	});
 
-	SCENES_LOOT.emplace(SCENES::HOSPITAL, vector<vector<I>>{
-		{
-			I{ MEDICAL_COMPONENTS,0,1,2,0,0,0,1,"medical components" },
-			I{ MEDICAL_COMPONENTS,0,1,2,3,3,0,1,"medical components" },
-			I{ MEDICAL_COMPONENTS,0,1,2,4,2,0,1,"medical components" },
-			I{ ORGANIC_MATERIAL,0,2,2,2,0,1,2,"organic materials" },
-			I{ CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" },
-			I{ UPGRADE_KIT,0,2,2,0,3,6,2,"upgrade kit" }
+
+	SCENES_LOOT.emplace(SCENES::COMMUNICATIONS, vector<vector<pair<ItemInfo, Vector2D>>> {
+		{make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(0, 1)), make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(0, 2)),
+			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(2, 4)), make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(2, 0)),
+			make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(4, 0)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(3, 2))
 		},
-		{
-			I{ MEDICAL_COMPONENTS,0,1,2,4,0,0,1,"medical components" },
-			I{ANTIDOTE,0,2,2,0,0,1,0,"antidote" },
-			I{FOOD,0,1,1,3,0,2,0,"food" },
-			I{ SPACESHIP_KEY_ITEMS,0,2,2,3,2,4,2,"spaceship key item" },
-			I{ WATER,0,1,2,1,2,4,0,"water" }
+		{ make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(0, 1)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(3, 3)),
+				make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(2, 0)),
+				make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 4)), make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(2, 3))
 		}
 	});
 
-	SCENES_LOOT.emplace(SCENES::COMMUNICATIONS, vector<vector<I>>{
-		{
-			I{ ELECTRONIC_REMAINS,0,1,1,0,1,5,0,"electronic remains" },
-			I{ ELECTRONIC_REMAINS,0,1,1,0,2,5,0,"electronic remains" },
-			I{ ELECTRONIC_REMAINS,0,1,1,2,4,5,0,"electronic remains" },
-			I{ SPACESHIP_KEY_ITEMS,0,2,2,2,0,4,2,"spaceship key item" },
-			I{ CLASSIC_AMMO,0,1,1,4,0,2,1,"classic ammo" },
-			I{ BUILDING_PARTS,0,2,2,3,2,7,0,"building parts" }
+	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<pair<ItemInfo, Vector2D>>> {
+		{make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(3, 0)),
+			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(2, 0)), make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 1)),
+			make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(0, 3)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(3, 3))
 		},
-		{
-			I{ BUILDING_PARTS,0,2,2,0,1,7,0,"building parts" },
-			I{BUILDING_PARTS,0,2,2,3,3,7,0,"building parts" },
-			I{UPGRADE_KIT,0,2,2,2,0,6,2,"upgrade kit" },
-			I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" },
-			I{ CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" }
+		{ make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 2)), make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(2, 3)),
+				make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(3, 0)),
+				make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 4)), make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(3, 3))
 		}
 	});
 
-	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<I>>{
-		//piso 0
-		{
-			I{ 0,0, ItemInfo::spaceshipKeyItem() },
-			I{ 3,3, ItemInfo::bandage() },
-			I{ 3,0, ItemInfo::bandage() },
-			I{ 4,0, ItemInfo::water()}
+	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<pair<ItemInfo, Vector2D>>> {
+		{make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(1, 1)),
+			make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 3)),
+			make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(3, 3)), make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(4, 0))
 		},
-		{
-			I{ 0,0, ItemInfo::antidote()},
-			I{ 2,0, ItemInfo::medicalComponents() },
-			I{ 3,0, ItemInfo::medicalComponents() },
-			I{ 3,3, ItemInfo::electronicalRemains()}
-		},
-		{
-			I{ 0,0, ItemInfo::food()},
-			I{ 0,1, ItemInfo::food()},
-			I{ 0,2, ItemInfo::food()},
-			I{ 3,3, ItemInfo::bandage() }
-		},
-		//piso 1
-		{
-			I{ 0,3, ItemInfo::bandage() },
-			I{ 0,0, ItemInfo::buildingParts() },
-			I{ 2,2, ItemInfo::upgradeKit() },
-			I{ 3,0, ItemInfo::mechanicalComponents() }
-
-		},
-		{
-			I{ 0,0, ItemInfo::mechanicalComponents()},
-			I{ 0,1, ItemInfo::mechanicalComponents()},
-			I{ 1,0, ItemInfo::electronicalRemains()}
-		},
-		{
-			I{ 0,0, ItemInfo::spaceshipKeyItem() },
-			I{ 3,3, ItemInfo::electronicalRemains()}
-
+		{ make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(2, 2)),
+				make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 4)), make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(3, 3))
 		}
-	});
-
-	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<I>>{
-		// ITEMS n, int cantidad = 0, int w , int h , int x, int y, int row, int col, string desc
-		//piso -1
-		{
-			I{ 0,0, ItemInfo::metalPlates() },
-			I{ 4,4, ItemInfo::food() },
-			I{ 3,3, ItemInfo::medicalComponents() },
-		},
-		{
-			I{ 0,0, ItemInfo::painKiller() },
-			I{ 2,2, ItemInfo::painKiller() },
-			I{3,3, ItemInfo::laserAmmo()}
-		},
-		{
-			I{ 2,0, ItemInfo::painKiller() },
-			I{ 3,3, ItemInfo::bandage() },
-			I{0,0, ItemInfo::classicAmmo()}
-		},
-		// piso 0
-		{
-			I{ 0,0, ItemInfo::bandage() },
-			I{ 1,0, ItemInfo::bandage() },
-			I{ 0,1, ItemInfo::spaceshipKeyItem() }
-		},
-		{
-			I{ 0,0, ItemInfo::spaceshipKeyItem() },
-			I{ 3,0, ItemInfo::bandage() },
-			I{ 0,3, ItemInfo::splint() }, //no saltar
-			I{ 4,4, ItemInfo::ricochetAmmo() },
-		},
-		//piso 1
-		{
-			I{ 0,0, ItemInfo::antidote()},
-			I{ 3,0, ItemInfo::water()},
-			I{ 2,0, ItemInfo::food()},
-			I{ 3,3, ItemInfo::food()}
-		},
-		{
-			I{ 0,0, ItemInfo::medicalComponents()},
-			I{ 0,2, ItemInfo::medicalComponents()},
-			I{ 3,0, ItemInfo::water()},
-			I{ 4,4, ItemInfo::food()}
-		},
-		//piso 2
-		{
-			I{ 0,0, ItemInfo::mechanicalComponents() },
-			I{ 1,1, ItemInfo::mechanicalComponents()},
-			I{ 2,2, ItemInfo::mechanicalComponents()},
-			I{ 3,3, ItemInfo::bandage()},
-			I{ 0,3, ItemInfo::mechanicalComponents()}
-		},
-		{
-			I{ 0,0, ItemInfo::upgradeKit() },
-			I{ 0,3, ItemInfo::electronicalRemains()},
-			I{ 3,3, ItemInfo::electronicalRemains()},
-			I{ 4,4, ItemInfo::food()}
-		},
-
-		//{metal
-		//	I{ 0,0, ItemInfo::antidote()},
-		//	I{ 2,0, ItemInfo::painKiller() }, //duran mas los estados
-		//	I{ 2,2, ItemInfo::splint() }, //no saltar
-		//	I{ 3,0, ItemInfo::bandage() }
-		//},
-		///*{
-		//	I{ ELECTRONIC_REMAINS,0,1,1,0,0,5,0,"electronic remains" },
-		//	I{ BUILDING_PARTS,0,2,2,1,1,7,0,"building parts" },
-		//	I{ SPACESHIP_KEY_ITEMS,0,2,2,0,3,4,2,"spaceship key item" },
-		//	I{ UPGRADE_KIT,0,2,2,3,3,6,2,"upgrade kit" },
-		//	I{ FOOD,0,1,1,4,0,2,0,"food" }
-		//},*/
-		//{
-		//	I{ WATER,0,1,2,0,0,4,0,"water" },
-		//	I{CLASSIC_AMMO,0,1,1,2,2,2,1,"classic ammo" },
-		//	I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" },
-		//	I{ ORGANIC_MATERIAL,0,2,2,3,3,1,2,"organic material" }
-		//},
-		//{
-		//	I{ BUILDING_PARTS,0,2,2,0,1,7,0,"building parts" },
-		//	I{ BUILDING_PARTS,0,2,2,3,3,7,0,"building parts" },
-		//	I{ UPGRADE_KIT,0,2,2,2,0,6,2,"upgrade kit" },
-		//	I{ MECANICAL_COMPONENTS,0,2,1,0,4,4,1,"mecanical components" },
-		//	I{ CLASSIC_AMMO,0,1,1,2,3,2,1,"classic ammo" }
-		//},
-		//{
-		//	I{ MEDICAL_COMPONENTS,0,1,2,4,0,0,1,"medical components" },
-		//	I{ANTIDOTE,0,2,2,0,0,1,0,"antidote" },
-		//	I{FOOD,0,1,1,3,0,2,0,"food" },
-		//	I{ SPACESHIP_KEY_ITEMS,0,2,2,3,2,4,2,"spaceship key item" },
-		//	I{ WATER,0,1,2,1,2,4,0,"water" }
-		//},
-		//{
-		//	I{ WATER,0,1,2,0,3,4,0,"water" }, 
-		//	I{ WATER,0,1,2,1,3,4,0,"water" },
-		//	I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" }, 
-		//	I{ CLASSIC_AMMO,0,1,1,4,1,2,1,"classic ammo" },
-		//	I{ CLASSIC_AMMO,0,1,1,3,1,2,1,"classic ammo" }, 
-		//	I{ CLASSIC_AMMO,0,1,1,3,2,2,1,"classic ammo" }
-		//},
-		//{
-		//	I{ UPGRADE_KIT,0,2,2,0,0,6,2,"upgrade kit" },
-		//	I{FOOD,0,1,1,2,2,2,0,"food" },  
-		//	I{FOOD,0,1,1,3,1,2,0,"food" },
-		//	I{ ORGANIC_MATERIAL,0,2,2,2,3,1,2,"organic materials" },
-		//	I{ WATER,0,1,2,4,0,4,0,"water" }
-		//}
 	});
 }
 

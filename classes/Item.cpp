@@ -3,15 +3,15 @@
 #include "../classes/physiognomy.h"
 #include "../components/hunger_component.h"
 
-ItemInfo::ItemInfo(ITEMS name, string description, int width, int height, int row, int col):
-	_name(name), _description(description), _width(width), _height(height), _row(row), _col(col) {
+ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, int craftAmount) :
+	_name(name), _strName(strName), _description(description), _width(width), _height(height), _row(row), _col(col), _craftAmount(craftAmount) {
 	function = [](Entity*) {};
 	functionCreated = false;
 };
 
 
-ItemInfo::ItemInfo(ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity* p)> f) :
-	_name(name), _description(description), _width(width), _height(height), _row(row), _col(col), function(f), functionCreated(true) {
+ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<void(Entity* p)> f, int craftAmount) :
+	_name(name), _strName(strName), _description(description), _width(width), _height(height), _row(row), _col(col), function(f), functionCreated(true), _craftAmount(craftAmount) {
 };
 
 ItemInfo::ItemInfo(ItemInfo* item) {
@@ -23,7 +23,7 @@ ItemInfo::ItemInfo(ItemInfo* item) {
 	_col = item->_col;
 	function = item->function;
 }
-//ITEMS name, string description, int width, int height, int row, int col, std::function<void(Entity*)> function = [](Entity*) {});
+
 
 
 ItemInfo* ItemInfo::antidote()
@@ -32,7 +32,7 @@ ItemInfo* ItemInfo::antidote()
 		static_cast<Player*>(player)->getPhysiognomy()->removeIntoxicationState();
 	};
 
-	return new ItemInfo(ANTIDOTE, "Can heal intoxication", 2, 2, 1, 0, f);
+	return new ItemInfo(ANTIDOTE, "antidote", "Can heal intoxication", 2, 2, 1, 0, f);
 }
 
 ItemInfo* ItemInfo::bandage()
@@ -41,7 +41,105 @@ ItemInfo* ItemInfo::bandage()
 		static_cast<Player*>(player)->getPhysiognomy()->removeBleedState();
 	};
 
-	return new ItemInfo(BANDAGE, "Can heal bleeding", 1, 1, 0, 2, f);
+	return new ItemInfo(BANDAGE, "bandage", "Can heal bleeding", 2, 1, 0, 2, f);
+}
+
+ItemInfo* ItemInfo::medicalComponents()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(MEDICAL_COMPONENTS, "medical components", "Useful to craft medicines", 1, 2, 0, 1, f);
+}
+
+
+ItemInfo* ItemInfo::water()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(WATER, "water", "Good against hunger", 1, 2, 4, 4, f);
+}
+
+ItemInfo* ItemInfo::organicMaterial()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(ORGANIC_MATERIAL, "organic material", "Useful to craft medicines or food", 2, 2, 1, 2, f);
+}
+
+ItemInfo* ItemInfo::mecanicalComponents()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(MECANICAL_COMPONENTS, "mecanical components", "I could craft something with this...", 2, 1, 4, 1, f);
+}
+
+ItemInfo* ItemInfo::spaceshipRockets()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(SPACESHIP_ROCKETS, "spaceship rockets", "Important part of the spaceship", 1, 1, 6, 0, f);
+}
+
+
+ItemInfo* ItemInfo::spaceshipKeyItem()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(SPACESHIP_KEY_ITEMS, "spaceship key item", "I could build spaceship parts with this", 2, 2, 4, 2, f);
+}
+
+ItemInfo* ItemInfo::buildingParts()
+{
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(BUILDING_PARTS, "building parts", "I could craft something with this...", 2, 2, 7, 0, f);
+}
+
+ItemInfo* ItemInfo::electronicRemains() {
+	auto f = [](Entity* player) {
+
+	};
+
+	return new ItemInfo(ELECTRONIC_REMAINS, "electronic remains", "I could craft something with this...", 1, 1, 5, 0, f);
+}
+
+ItemInfo* ItemInfo::spaceshipRadar() {
+	auto f = [](Entity* player) {
+
+	};
+
+	return new ItemInfo(SPACESHIP_RADAR, "spaceship radar", "Important part of the spaceship", 1, 1, 5, 2, f);
+}
+
+ItemInfo* ItemInfo::spaceshipCabin() {
+	auto f = [](Entity* player) {
+
+	};
+
+	return new ItemInfo(SPACESHIP_CABIN, "spaceship cabin", "Important part of the spaceship", 1, 1, 6, 1, f);
+}
+
+ItemInfo* ItemInfo::weaponUpgrade() {
+	auto f = [](Entity* player) {
+
+	};
+
+	return new ItemInfo(WEAPON_UPGRADE, "weapon upgrade", "weapon upgrade", 1, 1, 7, 2, f);
+}
+
+ItemInfo* ItemInfo::upgradeKit() {
+	auto f = [](Entity* player) {
+
+	};
+
+	return new ItemInfo(UPGRADE_KIT, "upgrade kit", "perfect tools to improve my weapons!", 2, 2, 6, 2, f);
 }
 
 ItemInfo* ItemInfo::splint()
@@ -50,8 +148,9 @@ ItemInfo* ItemInfo::splint()
 		static_cast<Player*>(player)->getPhysiognomy()->removeConcussionState();
 	};
 
-	return new ItemInfo(SPLINT, "Can heal concussions",2, 1, 5, 1, f);
+	return new ItemInfo(SPLINT, "splint", "Can heal concussions", 2, 2, 5, 1, f);
 }
+
 
 ItemInfo* ItemInfo::painKiller()
 {
@@ -59,7 +158,7 @@ ItemInfo* ItemInfo::painKiller()
 		static_cast<Player*>(player)->getPhysiognomy()->removePainState();
 	};
 
-	return new ItemInfo(PAINKILLER, "Can heal pain", 1, 2, 0, 0, f);
+	return new ItemInfo(PAINKILLER, "painkiller", "Can heal pain", 1, 2, 0, 0, f);
 }
 
 
@@ -69,68 +168,32 @@ ItemInfo* ItemInfo::food()
 		static_cast<Player*>(player)->getComponent<HungerComponent>()->eat(0.34f);
 	};
 
-	return new ItemInfo(FOOD, "Good item against hunger", 1, 1, 1, 2, f);
+	return new ItemInfo(FOOD, "food", "Good item against hunger", 1, 1, 1, 2, f);
 }
 
 ItemInfo* ItemInfo::laserAmmo()
 {
-	return new ItemInfo(LASER_AMMO, "High technology to use in the laser weapon", 1, 1, 3, 0);
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(LASER_AMMO, "laser ammo", "High technology to use in the laser weapon", 1, 1, 3, 0, f);
 }
 
 ItemInfo* ItemInfo::ricochetAmmo()
 {
-	return new ItemInfo(RICOCHET_AMMO, "Bullets covered in a bouncing alien material for the ricochet weapon", 1, 1, 3, 1);
+	auto f = [](Entity* player) {
+	};
+
+	return new ItemInfo(RICOCHET_AMMO, "ricochet ammo", "Bullets covered in a bouncing alien material for the ricochet weapon", 1, 1, 3, 1, f);
 }
 
 ItemInfo* ItemInfo::classicAmmo()
 {
-	return new ItemInfo(CLASSIC_AMMO, "Bullets for the classic weapon", 1, 1, 2, 1);
+	return new ItemInfo(CLASSIC_AMMO, "classic ammo", "Bullets for the classic weapon", 1, 1, 2, 1);
 }
 
-
-ItemInfo* ItemInfo::water()
-{
-	return new ItemInfo(WATER, "Drink, used for medical recipes", 1, 2, 4, 0);
-}
-
-ItemInfo* ItemInfo::medicalComponents()
-{
-	return new ItemInfo(MEDICAL_COMPONENTS, "Medical components used in multiple healing crafts", 1, 2, 0, 1);
-}
-
-ItemInfo* ItemInfo::organicMaterial()
-{
-	return new ItemInfo(ORGANIC_MATERIAL, "Organic material used on some crafts", 2, 2, 2, 0);
-}
-
-ItemInfo* ItemInfo::mechanicalComponents()
-{
-	return new ItemInfo(MECANICAL_COMPONENTS, "Mechanical components used on crafts", 1, 1, 4, 1);
-}
-
-ItemInfo* ItemInfo::buildingParts()
-{
-	return new ItemInfo(BUILDING_PARTS, "Building parts used on crafts", 2, 2, 7, 0);
-}
-
-ItemInfo* ItemInfo::electronicalRemains()
-{
-	return new ItemInfo(ELECTRONIC_REMAINS, "Building parts used on crafts", 1, 1, 5, 0);
-}
-
-ItemInfo* ItemInfo::upgradeKit()
-{
-	return new ItemInfo(UPGRADE_KIT, "Building parts used on crafts", 2, 2, 6, 2);
-}
-
-ItemInfo* ItemInfo::spaceshipKeyItem()
-{
-	return new ItemInfo(SPACESHIP_KEY_ITEMS, "Key item to repair the spaceship", 2, 2, 4, 2);
-}
-
-ItemInfo* ItemInfo::metalPlates()
-{
-	return new ItemInfo(METAL_PLATES, "Metal plates to repair the spaceship", 2, 2, 7, 1);
+ItemInfo* ItemInfo::metalPlates(){
+	return new ItemInfo(METAL_PLATES, "metal plates", "Metal plates", 2, 2, 7, 1);
 }
 
 

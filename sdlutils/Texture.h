@@ -66,7 +66,7 @@ public:
 		SDL_RendererFlip flip = SDL_FLIP_NONE) {
 		assert(texture_ != nullptr);
 		SDL_RenderCopyEx(renderer_, texture_, &src, &dest, angle, p, flip);
-	}
+		}
 
 	// This rendering method corresponds to method SDL_RenderCopy.
 	//

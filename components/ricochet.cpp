@@ -52,6 +52,7 @@ void Ricochet::createExplosion()
 	particles->emitting = false;
 	particles->particleScale = 2;
 
+	particles->destroyAfterBurst = true;
 	particles->burstDuration = 0.02f;
 	particles->burstRepeat = 8;
 
@@ -96,3 +97,4 @@ void Ricochet::OnCollision(Entity* other) {
 		soundManager().playSFX("bounce");
 	}
 }
+

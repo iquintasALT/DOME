@@ -8,6 +8,7 @@ class Enemy : public Entity
 public:
 	Enemy(Manager* mngr_, Point2D pos, bool hasGravity);
 	void receiveDamage(int damage_);
+	virtual void createExplosion();
 	int lives = 5;
 };
 
