@@ -60,7 +60,13 @@ namespace tmx
         Hexagonal,
         None
     };
-
+    enum class Connections 
+    {
+            NORTE,
+            SUR,
+            ESTE,
+            OESTE
+    };
     enum class RenderOrder
     {
         RightDown,
