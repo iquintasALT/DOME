@@ -15,7 +15,6 @@
 #include <string>
 #include <iostream>
 
-#include "../classes/qa_selection_scene.h"
 
 void MenuScene::init() {
 	// uncomment this when transition to shelter works
