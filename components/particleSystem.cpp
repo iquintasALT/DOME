@@ -25,8 +25,8 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	int w = tex->width() / cols;
 	int h = tex->height() / rows;
 
-	width = texture->width() * particleScale / cols;
-	height = texture->height() * particleScale / rows;
+	width = texture->width()/ cols;
+	height = texture->height()/ rows;
 
 	source = { w * c ,h * r,w,h };
 
@@ -71,8 +71,8 @@ void ParticleSystem::init() {
 
 	rb = entity_->getComponent<RigidBody>();
 
-	width *= particleScale;
-	height *= particleScale;
+	//width *= particleScale;
+	//height *= particleScale;
 
 	offset = Vector2D(0, transform->getH());
 }
@@ -113,8 +113,8 @@ void ParticleSystem::update() {
 		a->rb->update();
 
 		float life = particleLife[i];
-		a->tr->setW(width * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
-		a->tr->setH(height * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
+		a->tr->setW(particleScale * width * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
+		a->tr->setH(particleScale * height * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
 
 		if (gravity)
 			a->rb->setVel(a->rb->getVel() + Vector2D(0, gravityValue * consts::DELTA_TIME));
