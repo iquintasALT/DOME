@@ -97,6 +97,7 @@ ItemInfo* CraftingSystem::getItemInfo(ITEMS item) {
 		return ItemInfo::painKiller();
 		break;
 	default:
+		return 0;
 		break;
 	}
 }
