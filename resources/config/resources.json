@@ -284,6 +284,10 @@
             "file": "resources/sprites/craft_ui/back_button.png"
         },
         {
+            "id": "horizontal",
+            "file": "resources/sprites/horizontal.png"
+        },
+        {
             "id": "craft_slot_box",
             "file": "resources/sprites/craft_ui/slot.png"
         },

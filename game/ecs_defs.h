@@ -57,6 +57,8 @@ class InitialCameraZoom;
 class Dialogue;
 class CameraShake;
 class Timer;
+class TutorialLoot;
+class TutorialManager;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -106,7 +108,9 @@ class Timer;
 	InitialCameraZoom, \
 	Dialogue, \
 	CameraShake, \
-	Timer
+	Timer, \
+	TutorialLoot, \
+	TutorialManager
 
 // groups
 

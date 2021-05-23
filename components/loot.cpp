@@ -15,11 +15,14 @@ Loot::Loot(std::string mssg, int inventoryWidth, int inventoryHeight) :
 
 	invenWidth = inventoryWidth;
 	invenHeight = inventoryHeight;
+
+	isTutorial = false;
 }
 
 Loot::~Loot() {
-	Game* g = entity_->getMngr()->getGame();
+	if (isTutorial) return;
 
+	Game* g = entity_->getMngr()->getGame();
 
 	vector<pair<ItemInfo, Vector2D>> itemsInLoot;
 

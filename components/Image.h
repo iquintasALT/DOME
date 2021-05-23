@@ -121,6 +121,13 @@ public:
 			tr->getH() * 1.0 / h_ * rotationOrigin.y);
 	}
 
+	inline int getWidth() {
+		return tex_->width();
+	}
+	inline int getHeight() {
+		return tex_->height();
+	}
+
 private:
 	Transform* tr_;
 	Texture* tex_;
