@@ -70,12 +70,14 @@ void Inventory::moveInventory(Point2D pos) {
 
 class DropDownRender : public Entity {
 public:
+	bool canBeUsed;
 	DropDownRender(inventoryDropdown* i, Manager* mngr): Entity(mngr) {
 		dropDown = i;
+		canBeUsed = true;
 	}
 	inventoryDropdown* dropDown;
 	void render() override {
-		dropDown->render();
+		dropDown->render(canBeUsed);
 	};
 };
 
@@ -96,9 +98,9 @@ void Inventory::init() {
 		std::vector<inventoryDropdown::slot*> slots;
 		slots.push_back(new inventoryDropdown::slot("Use", [this]() {
 			if (itemClickedInDropdown->getItemInfo()->name() != LASER_AMMO && itemClickedInDropdown->getItemInfo()->name() != CLASSIC_AMMO && itemClickedInDropdown->getItemInfo()->name() != RICOCHET_AMMO) {
-				itemClickedInDropdown->getItemInfo()->execute(player); removeItem(itemClickedInDropdown); delete itemClickedInDropdown;
+				itemClickedInDropdown->getItemInfo()->execute(player); removeItem(itemClickedInDropdown); itemClickedInDropdown->removeImage(); delete itemClickedInDropdown;
 			}}));
-		slots.push_back(new inventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown); delete itemClickedInDropdown; }));
+		slots.push_back(new inventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown);  itemClickedInDropdown->removeImage(); delete itemClickedInDropdown; }));
 		dropDown = new inventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
 		dropDownRender = new DropDownRender(dropDown, entity_->getMngr());
 		entity_->getMngr()->addEntity(dropDownRender);
@@ -109,6 +111,7 @@ void Inventory::init() {
 void Inventory::render() {
 	if (dropDownActive && other == nullptr) {
 		toolTips->setActive(false);
+		dropDownRender->canBeUsed = lastItemHovered->getItemInfo()->hasFunction();
 		dropDownRender->setActive(true);
 	}
 	else {
@@ -164,7 +167,7 @@ void Inventory::update() {
 			toolTipsTr->setPos(mousePos);
 		}
 
-		if (lastItemHovered == nullptr || lastItemHovered != hoverItem)
+		if ((lastItemHovered == nullptr || lastItemHovered != hoverItem) && hoverItem != nullptr)
 			lastItemHovered = hoverItem;
 
 		if (ih().getMouseButtonState(InputHandler::RIGHT) && selectedItem == nullptr && hoverItem != nullptr && other == nullptr) {
@@ -176,7 +179,7 @@ void Inventory::update() {
 		}
 
 		if (dropDownActive && !justPressed && ih().getMouseButtonState(InputHandler::LEFT)) {
-			dropDown->onClick(mousePos);
+			dropDown->onClick(mousePos, lastItemHovered->getItemInfo()->hasFunction());
 			dropDownActive = false;
 			justPressed = true;
 			itemClickedInDropdown = nullptr;
