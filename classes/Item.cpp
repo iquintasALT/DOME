@@ -107,7 +107,7 @@ ItemInfo* ItemInfo::splint()
 		static_cast<Player*>(player)->getPhysiognomy()->removeConcussionState();
 	};
 
-	return new ItemInfo(SPLINT, "splint", "Can heal concussions", 2, 2, 5, 1, f);
+	return new ItemInfo(SPLINT, "splint", "Can heal concussions", 2, 1, 5, 1, f);
 }
 
 
