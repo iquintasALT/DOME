@@ -71,7 +71,7 @@ void Inventory::moveInventory(Point2D pos) {
 class DropDownRender : public Entity {
 public:
 	bool canBeUsed;
-	DropDownRender(inventoryDropdown* i, Manager* mngr): Entity(mngr) {
+	DropDownRender(inventoryDropdown* i, Manager* mngr) : Entity(mngr) {
 		dropDown = i;
 		canBeUsed = true;
 	}
@@ -346,8 +346,8 @@ void Inventory::adjustPanelSize() {
 }
 
 void Inventory::storeDefaultItems() {
-	storeItem(new Item(ItemInfo::antidote(), entity_->getMngr(), this, 0, 0));
-	storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 2, 2));
+	storeItem(new Item(ItemInfo::mecanicalComponents(), entity_->getMngr(), this, 0, 0));
+	storeItem(new Item(ItemInfo::buildingParts(), entity_->getMngr(), this, 2, 2));
 	storeItem(new Item(ItemInfo::classicAmmo(), entity_->getMngr(), this, 4, 0, 12));
 	storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 6));
 	storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 4, 4, 5));

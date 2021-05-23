@@ -6,50 +6,68 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 	playerInventory = mngr->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 
 	//CAMBIAR A ENUM
-	crafts.emplace(BANDAGE, std::vector<ItemInfo>{getItemInfo(BANDAGE, 1), getItemInfo(WATER, 1), getItemInfo(ORGANIC_MATERIAL, 1)});
+	crafts.emplace(BANDAGE, std::vector<ItemInfo* >{getItemInfo(BANDAGE, 1), getItemInfo(WATER, 1), getItemInfo(ORGANIC_MATERIAL, 1)});
 
-	crafts.emplace(ANTIDOTE, std::vector<ItemInfo>{getItemInfo(FOOD, 1), getItemInfo(WATER, 1), getItemInfo(MEDICAL_COMPONENTS, 1)});
+	crafts.emplace(ANTIDOTE, std::vector<ItemInfo* >{getItemInfo(FOOD, 1), getItemInfo(WATER, 1), getItemInfo(MEDICAL_COMPONENTS, 1)});
 
-	crafts.emplace(SPLINT, std::vector<ItemInfo>{getItemInfo(MECANICAL_COMPONENTS, 1), getItemInfo(WATER, 1)});
+	crafts.emplace(SPLINT, std::vector<ItemInfo* >{getItemInfo(MECANICAL_COMPONENTS, 1), getItemInfo(WATER, 1)});
 
-	crafts.emplace(PAINKILLER, std::vector<ItemInfo>{getItemInfo(FOOD, 2), getItemInfo(WATER, 1), getItemInfo(MEDICAL_COMPONENTS, 2)});
+	crafts.emplace(PAINKILLER, std::vector<ItemInfo* >{getItemInfo(FOOD, 2), getItemInfo(WATER, 1), getItemInfo(MEDICAL_COMPONENTS, 2)});
 
-	crafts.emplace(FOOD, std::vector<ItemInfo>{getItemInfo(ORGANIC_MATERIAL, 1), getItemInfo(WATER, 1)});
+	crafts.emplace(FOOD, std::vector<ItemInfo* >{getItemInfo(ORGANIC_MATERIAL, 1), getItemInfo(WATER, 1)});
 
-	crafts.emplace(WEAPON_UPGRADE, std::vector<ItemInfo>{getItemInfo(MECANICAL_COMPONENTS, 1), getItemInfo(ELECTRONIC_REMAINS, 1), getItemInfo(UPGRADE_KIT, 1)});
+	crafts.emplace(WEAPON_UPGRADE, std::vector<ItemInfo* >{getItemInfo(MECANICAL_COMPONENTS, 1), getItemInfo(ELECTRONIC_REMAINS, 1), getItemInfo(UPGRADE_KIT, 1)});
 
-	crafts.emplace(CLASSIC_AMMO, std::vector<ItemInfo>{getItemInfo(MECANICAL_COMPONENTS, 1), getItemInfo(MEDICAL_COMPONENTS, 1), getItemInfo(METAL_PLATES, 1)});
-	crafts.emplace(LASER_AMMO, std::vector<ItemInfo>{getItemInfo(CLASSIC_AMMO, 1), getItemInfo(ELECTRONIC_REMAINS, 2)});
-	crafts.emplace(RICOCHET_AMMO, std::vector<ItemInfo >{getItemInfo(CLASSIC_AMMO, 1), getItemInfo(MECANICAL_COMPONENTS, 2)});
+	crafts.emplace(CLASSIC_AMMO, std::vector<ItemInfo* >{getItemInfo(MECANICAL_COMPONENTS, 1), getItemInfo(MEDICAL_COMPONENTS, 1), getItemInfo(METAL_PLATES, 1)});
+	crafts.emplace(LASER_AMMO, std::vector<ItemInfo* >{getItemInfo(CLASSIC_AMMO, 1), getItemInfo(ELECTRONIC_REMAINS, 2)});
+	crafts.emplace(RICOCHET_AMMO, std::vector<ItemInfo* >{getItemInfo(CLASSIC_AMMO, 1), getItemInfo(MECANICAL_COMPONENTS, 2)});
 
 
-	crafts.emplace(METAL_PLATES, std::vector<ItemInfo>{getItemInfo(BUILDING_PARTS, 1), getItemInfo(MECANICAL_COMPONENTS, 1) });
+	crafts.emplace(METAL_PLATES, std::vector<ItemInfo* >{getItemInfo(BUILDING_PARTS, 1), getItemInfo(MECANICAL_COMPONENTS, 1) });
 
-	crafts.emplace(SPACESHIP_CABIN, std::vector<ItemInfo>{getItemInfo(SPACESHIP_KEY_ITEMS, 3), getItemInfo(METAL_PLATES, 2)});
-	crafts.emplace(SPACESHIP_RADAR, std::vector<ItemInfo>{getItemInfo(SPACESHIP_KEY_ITEMS, 1), getItemInfo(METAL_PLATES, 1)});
-	crafts.emplace(SPACESHIP_ROCKETS, std::vector<ItemInfo>{getItemInfo(SPACESHIP_KEY_ITEMS, 2)});
+	crafts.emplace(SPACESHIP_CABIN, std::vector<ItemInfo* >{getItemInfo(SPACESHIP_KEY_ITEMS, 3), getItemInfo(METAL_PLATES, 2)});
+	crafts.emplace(SPACESHIP_RADAR, std::vector<ItemInfo* >{getItemInfo(SPACESHIP_KEY_ITEMS, 1), getItemInfo(METAL_PLATES, 1)});
+	crafts.emplace(SPACESHIP_ROCKETS, std::vector<ItemInfo* >{getItemInfo(SPACESHIP_KEY_ITEMS, 2)});
 
 }
 
 bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool openLoot) {
 	itemsToDelete.clear();
 
-	vector<ItemInfo> itemsNeeded = (*crafts.find(item)).second;
+	//Vector de los items que se necesitan para craftear el objeto elegido. Realizo una copia para no modificar su cantidad
+	vector<ItemInfo> itemsNeeded;
+	for (ItemInfo* i : (*crafts.find(item)).second) {
+		itemsNeeded.push_back(*i);
+	}
+
+	//Lista de los items del inventario
 	list<Item*> itemsList = playerInventory->getItems();
 
-	bool affordable = true;
+
 	for (Item* invItem : itemsList) {
-		ITEMS nameToFind = invItem->getItemInfo()->name();
+		ITEMS nameToFind = invItem->getItemInfo()->name(); //nombre de cada objeto del inventario
 
 		for (int i = 0; i < itemsNeeded.size(); ++i) {
-			if (nameToFind == itemsNeeded[i].name()) {
+			if (nameToFind == itemsNeeded[i].name()) { //Si coinciden los nombres restamos 1 a la cantidad necesaria de ese item
 				itemsNeeded[i].setAmount(itemsNeeded[i].getAmount() - 1); itemsToDelete.push_back(invItem);
-				if (itemsNeeded[i].getAmount() <= 0)itemsNeeded.erase(itemsNeeded.begin() + i);
+				if (itemsNeeded[i].getAmount() <= 0)itemsNeeded.erase(itemsNeeded.begin() + i); //si la cantidad llega a 0 lo metemos al vector de items a eliminar una vez se ccraftee el objeto
 			}
 		}
+
 	}
 
 	if (itemsNeeded.size() == 0) {
+
+		for (Item* i : itemsToDelete) {
+			ItemInfo* info = getItemInfo(i->getItemInfo()->name());
+			itemsToRestore.push_back(new Item(getItemInfo(i->getItemInfo()->name()), playerInventory->getEntity()->getMngr(), playerInventory, i->getX(), i->getY(), i->count));
+
+			playerInventory->removeItem(i);
+			i->removeImage();
+			delete i;
+		}
+		itemsToDelete.clear();
+
 		if (openLoot) {
 			Entity* auxEntity = playerInventory->getEntity()->getMngr()->addEntity();
 			ItemInfo* info = getItemInfo(item);
@@ -63,7 +81,16 @@ bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool open
 		}
 		return true;
 	}
-	else return false;
+	return false;
+}
+
+void CraftingSystem::restoreCraft() {
+	//creo nuevo iteminfo e item porque al si fuese compartido al hacer clear de la lista se eliminan
+	for (Item* i : itemsToRestore) {
+		ItemInfo* info = getItemInfo(i->getItemInfo()->name());
+		playerInventory->storeItem(new Item(info, playerInventory->getEntity()->getMngr(), playerInventory, i->getX(), i->getY(), i->count));
+	}
+	itemsToRestore.clear();
 }
 
 //enum ITEMS {
@@ -223,16 +250,8 @@ ItemInfo* CraftingSystem::getItemInfo(ITEMS item, int amount) {
 	default: {
 		return nullptr;
 		break;
-		}
 	}
-}
-
-void CraftingSystem::FinishCraft() {
-	for (Item* i : itemsToDelete) {
-		playerInventory->removeItem(i);
-		delete i;
 	}
-	itemsToDelete.clear();
 }
 
 Crafts* CraftingSystem::getCrafts() { return &crafts; }
