@@ -139,6 +139,9 @@ void Game::initLoot() {
 		}
 	});
 
+	SCENES_LOOT.emplace(SCENES::SHELTER, vector<vector<pair<ItemInfo, Vector2D>>> {
+	});
+
 	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<pair<ItemInfo, Vector2D>>> {
 		{
 			make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(0, 3)),

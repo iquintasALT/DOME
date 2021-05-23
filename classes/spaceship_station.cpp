@@ -125,23 +125,23 @@ void SpaceshipStation::setRightRender() {
 	offsetY = 312;
 	offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
 
-	vector<ItemInfo> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
+	vector<ItemInfo*> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
 	for (int i = 0; i < itemsNeeded.size(); ++i) {
 		int aux = 0;
 		list<Item*> items = playerInv->getItems();
 		for (auto it = items.begin(); it != items.end(); ++it)
 		{
-			if ((*it)->getItemInfo()->name() == itemsNeeded[i].name())
+			if ((*it)->getItemInfo()->name() == itemsNeeded[i]->name())
 				aux++;
 		}
 
-		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i].getAmount()), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
+		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i]->getAmount()), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
 
-		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), itemsNeeded[i].strName(), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
+		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), itemsNeeded[i]->strName(), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
 
 		Entity* aux2 = falseMngr->addEntity();
 		aux2->addComponent<Transform>(Vector2D{ offsetX,offsetY }, 48, 48, 0);
-		Component* img = aux2->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, itemsNeeded[i].row(), itemsNeeded[i].col(), true);
+		Component* img = aux2->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, itemsNeeded[i]->row(), itemsNeeded[i]->col(), true);
 		img->render();
 		rightRenderImgs.push_back(aux2);
 
@@ -199,8 +199,6 @@ void SpaceshipStation::update() {
 							renderRightWindow = false;
 							//gastar accion
 							shelterScene->useAction();
-
-							craftSys->FinishCraft();
 
 							renderFlag = true;
 							renderRightWindow = true;
@@ -280,7 +278,7 @@ void SpaceshipStation::rightWindowRender() {
 			offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
 
 
-			vector<ItemInfo> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
+			vector<ItemInfo*> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
 			for (int i = 0; i < itemsNeeded.size(); ++i) {
 				rightRenderImgs[1 + i]->render();
 

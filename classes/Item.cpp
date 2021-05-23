@@ -3,14 +3,14 @@
 #include "../classes/physiognomy.h"
 #include "../components/hunger_component.h"
 
-ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col , int craftAmount) :
+ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, int craftAmount) :
 	_name(name), _strName(strName), _description(description), _width(width), _height(height), _row(row), _col(col), _craftAmount(craftAmount) {
 	function = [](Entity*) {};
 	functionCreated = false;
 };
 
 
-ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<void(Entity* p)> f , int craftAmount ) :
+ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<void(Entity* p)> f, int craftAmount) :
 	_name(name), _strName(strName), _description(description), _width(width), _height(height), _row(row), _col(col), function(f), functionCreated(true), _craftAmount(craftAmount) {
 };
 
