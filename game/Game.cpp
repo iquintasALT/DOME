@@ -178,24 +178,100 @@ void Game::initLoot() {
 		}
 	});
 
-	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<pair<ItemInfo, Vector2D>>> {
-		{make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(3, 0)),
-			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(2, 0)), make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 1)),
-			make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(0, 3)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(3, 3))
+	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<pair<ItemInfo, Vector2D>>> {
+		//PISO -1
+		{
+			make_pair(CraftingSystem::getItemInfo(METAL_PLATES), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(4, 4)),
+			make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(3, 3))
 		},
-		{ make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 2)), make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(2, 3)),
-				make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(3, 0)),
-				make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 4)), make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(3, 3))
+		{
+			make_pair(CraftingSystem::getItemInfo(PAINKILLER), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(PAINKILLER), Vector2D(2, 2)),
+			make_pair(CraftingSystem::getItemInfo(LASER_AMMO), Vector2D(3, 3))
+		},
+		{
+			make_pair(CraftingSystem::getItemInfo(PAINKILLER), Vector2D(2, 0)),
+			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(3, 3)),
+			make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(0, 0))
+		},
+		// PISO 0
+		{
+			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(1, 0)),
+			make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 1))
+		},
+		{
+			make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(3, 0)),
+			make_pair(CraftingSystem::getItemInfo(SPLINT), Vector2D(0, 3)),
+			make_pair(CraftingSystem::getItemInfo(RICOCHET_AMMO), Vector2D(4, 4))
+		},
+		//PISO 1
+		{
+			make_pair(CraftingSystem::getItemInfo(ANTIDOTE), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(3, 0)),
+			make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(2, 0)),
+			make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(3, 3))
+		},
+		{
+			make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(0, 2)),
+			make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(3, 0)),
+			make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(4, 4))
+		},
+		//PISO 2
+		{
+			make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(1, 1)),
+			make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(2, 2)),
+			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(3, 3)),
+			make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 3))
+		},
+		{
+			make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(0, 3)),
+			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(3, 3)),
+			make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(4, 4))
 		}
+
 	});
 
-	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<pair<ItemInfo, Vector2D>>> {
-		{make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(1, 1)),
-			make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 3)),
-			make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(3, 3)), make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(4, 0))
+	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<pair<ItemInfo, Vector2D>>> {
+		//PISO 0
+		{
+			make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(3, 3)),
+			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(3, 0)),
+			make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(4, 0))
 		},
-		{ make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(2, 2)),
-				make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 4)), make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(3, 3))
+		{ 
+			make_pair(CraftingSystem::getItemInfo(ANTIDOTE), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(2, 0)),
+			make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS),Vector2D(3, 0)),
+			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(3, 3))
+		},
+		{
+			make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(0, 1)),
+			make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(0, 2)),
+			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(3, 3))
+		},
+		//piso 1
+		{
+			make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(0, 3)),
+			make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(2, 2)),
+			make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(3, 0))
+		},
+		{
+			make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 1)),
+			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(1, 0))
+		},
+		{
+			make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 0)),
+			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(3, 3))
 		}
 	});
 }
