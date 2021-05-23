@@ -154,7 +154,7 @@ void Game::initLoot() {
 
 	SCENES_LOOT.emplace(SCENES::HOSPITAL, vector<vector<pair<ItemInfo, Vector2D>>> {
 		{make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(3, 3)),
-			make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(4, 2)), make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(2, 0)),
+			make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(4, 2)), make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(2, 0)),
 			make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(2, 3)), make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(0, 3))
 		},
 		{ make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(4, 0)), make_pair(CraftingSystem::getItemInfo(ANTIDOTE), Vector2D(0, 0)),

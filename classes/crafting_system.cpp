@@ -132,7 +132,7 @@ ItemInfo* CraftingSystem::getItemInfo(ITEMS item, int amount) {
 	}
 	case MECANICAL_COMPONENTS:
 	{
-		aux = ItemInfo::medicalComponents();
+		aux = ItemInfo::mecanicalComponents();
 		aux->setAmount(amount);
 		return aux;
 		break;
