@@ -12,12 +12,14 @@ using namespace std;
 class Manager;
 class Loot :public InteractableElement
 {
+protected:
+	bool isOpen;
+	bool isTutorial;
+	Inventory* inventory;
 private:
 	static const float margin;
-	bool isOpen;
 
 	Entity* inventoryEntity;
-	Inventory* inventory;
 	Inventory* playerInventory;
 	InventoryController* inventoryController;
 	Transform* playerTransform;
