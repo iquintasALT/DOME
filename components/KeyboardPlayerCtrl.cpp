@@ -192,7 +192,7 @@ void KeyboardPlayerCtrl::update() {
 		}
 
 	}
-	std::cout << speed << std::endl;
+	//std::cout << speed << std::endl;
 }
 
 void KeyboardPlayerCtrl::resetSpeed() {
