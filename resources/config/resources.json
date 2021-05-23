@@ -418,6 +418,10 @@
         {
             "id": "holdToSkip",
             "file": "resources/sprites/holdToSkip.png"
+        },
+        {
+            "id": "enemyDeath",
+            "file": "resources/sprites/enemyDeath.png"
         }
     ],
 
