@@ -122,12 +122,12 @@ void Workshop::setLeftRender() {
 
 	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 		craftList[i].index = listIndex + i;
-		std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[craftList[i].index])->first].itemName;
+		std::string itemName = craftSys->getItemInfo(workshopItems[craftList[i].index])->strName();
 		leftRenderTexts.push_back(new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
 
 
-		int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[craftList[i].index])->first].row;
-		int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[craftList[i].index])->first].col;
+		int imgRow = craftSys->getItemInfo(workshopItems[craftList[i].index])->row();
+		int imgCol = craftSys->getItemInfo(workshopItems[craftList[i].index])->col();
 
 		float offsetX = craftList_tr[i]->getPos().getX() + 35;
 		float offsetY = craftList_tr[i]->getPos().getY() + 17.5f;
@@ -154,14 +154,14 @@ void Workshop::setRightRender() {
 	rightRenderImgs.clear();
 
 	if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getWeapon()->tierOfWeapon() < 2) {
-		std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].itemName;
+		std::string itemName = craftSys->getItemInfo(workshopItems[rightWindowIndex])->strName();
 		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
 		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), "Needed items: ", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
 
 		float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
 		float offsetY = rightRenderTexts[0]->height() + 25;
-		int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].row;
-		int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].col;
+		int imgRow = craftSys->getItemInfo(workshopItems[rightWindowIndex])->row();
+		int imgCol = craftSys->getItemInfo(workshopItems[rightWindowIndex])->col();
 
 
 		Entity* aux = falseMngr->addEntity();
@@ -174,23 +174,23 @@ void Workshop::setRightRender() {
 		offsetY = 312;
 		offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
 
-		vector<I> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
+		vector<ItemInfo> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
 		for (int i = 0; i < itemsNeeded.size(); ++i) {
 			int aux = 0;
 			list<Item*> items = playerInv->getItems();
 			for (auto it = items.begin(); it != items.end(); ++it)
 			{
-				if ((*it)->getItemInfo()->name() == itemsNeeded[i].name)
+				if ((*it)->getItemInfo()->name() == itemsNeeded[i].name())
 					aux++;
 			}
 
-			rightRenderTexts.push_back(new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i].cantidad), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
+			rightRenderTexts.push_back(new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i].getAmount()), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
 
-			rightRenderTexts.push_back(new Texture(sdlutils().renderer(), ITEMS_INFO[itemsNeeded[i].name].itemName, sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
+			rightRenderTexts.push_back(new Texture(sdlutils().renderer(), itemsNeeded[i].strName(), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
 
 			Entity* aux2 = falseMngr->addEntity();
 			aux2->addComponent<Transform>(Vector2D{ offsetX,offsetY }, 48, 48, 0);
-			Component* img = aux2->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, ITEMS_INFO[itemsNeeded[i].name].row, ITEMS_INFO[itemsNeeded[i].name].col, true);
+			Component* img = aux2->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, itemsNeeded[i].row(), itemsNeeded[i].col(), true);
 			img->render();
 			rightRenderImgs.push_back(aux2);
 
@@ -347,15 +347,15 @@ void Workshop::rightWindowRender() {
 		float offsetY = bg_tr->getPos().getY() + 35;
 		if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getWeapon()->tierOfWeapon() < 2) {
 
-			std::string itemName = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].itemName;
+			std::string itemName = craftSys->getItemInfo(workshopItems[rightWindowIndex])->strName();
 
 			SDL_Rect dest{ offsetX - rightRenderTexts[0]->width() / 2  , offsetY ,rightRenderTexts[0]->width(),rightRenderTexts[0]->height() };
 			rightRenderTexts[0]->render(dest, 0);
 
 			offsetY += rightRenderTexts[0]->height() + 25;
 
-			int imgRow = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].row;
-			int imgCol = ITEMS_INFO[craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->first].col;
+			int imgRow = craftSys->getItemInfo(workshopItems[rightWindowIndex])->row();
+			int imgCol = craftSys->getItemInfo(workshopItems[rightWindowIndex])->col();
 
 			if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
 				weaponTr->setPos(Vector2D(offsetX - 64, offsetY - 16));
@@ -374,7 +374,7 @@ void Workshop::rightWindowRender() {
 			offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
 
 
-			vector<I> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
+			vector<ItemInfo> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
 			for (int i = 0; i < itemsNeeded.size(); ++i) {
 				rightRenderImgs[1 + i]->render();
 
