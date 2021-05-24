@@ -98,7 +98,7 @@ private:
 	Transform* transform;
 	Transform* numberTr;
 
-	Texture* tex;
+	Entity* countTex;
 };
 
 
