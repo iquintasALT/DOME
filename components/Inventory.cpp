@@ -8,7 +8,7 @@
 #include "../classes/weapon_behaviour.h"
 #include <iostream>
 
-bool Inventory::firstInitialization = true;
+bool Inventory::firstInitialization = false;
 
 Inventory::Inventory(int width, int height, WeaponBehaviour* weapon) : width(width), height(height), other(nullptr) {
 	transform = nullptr;
