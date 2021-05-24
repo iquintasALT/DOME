@@ -5,7 +5,7 @@
 #include "../classes/player.h"
 #include "../classes/physiognomy.h"
 
-BackToShelter::BackToShelter(GameScene* scene) : InteractableElement("Vuelta a refugio"), scene_(scene) {}
+BackToShelter::BackToShelter(GameScene* scene) : InteractableElement("Go back to SHELTER"), scene_(scene) {}
 
 void BackToShelter::init() {
 	InteractableElement::init();

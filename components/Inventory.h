@@ -20,6 +20,7 @@ class Inventory : public Component
 	friend class Item;
 	friend class InventoryStorage;
 public:
+	static bool firstInitialization;
 	Inventory(int width, int height, WeaponBehaviour* playerWeapon);
 	Inventory(int width, int height);
 	Inventory(int width, int height, Inventory* player);
