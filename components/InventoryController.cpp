@@ -30,7 +30,7 @@ void InventoryController::init() {
 	inventory = inventoryPanel->addComponent<Inventory>(width, height, playerWeapon);
 
 	Inventory::setItemDimensions(t, width, height);
-	inventory->storeDefaultItems();
+	if(Inventory::firstInitialization)inventory->storeDefaultItems();
 
 	playerMovement = entity_->getComponent<KeyboardPlayerCtrl>();
 
