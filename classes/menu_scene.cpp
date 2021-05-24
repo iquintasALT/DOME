@@ -24,6 +24,8 @@ void MenuScene::init() {
 	//}
 
 	Camera::mainCamera->restoreScale();
+	Vector2D cameraPos;
+	Camera::mainCamera->Move(cameraPos);
 	mngr_->getGame()->initLoot();
 	mngr_->getGame()->currentScene = SCENES::MAINMENU;
 
@@ -88,8 +90,8 @@ void MenuScene::onLoad()
 void MenuScene::playGame(Manager* mngr) {
 	ih().clearState();
 	soundManager().stopSongWithFade("game_theme", 1000);
-	mngr->ChangeScene(new LocationsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
-	//mngr->ChangeScene(new InitialScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+	//mngr->ChangeScene(new LocationsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+	mngr->ChangeScene(new InitialScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
 }
 
 void MenuScene::settings(Manager* mngr) {

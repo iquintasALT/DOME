@@ -12,10 +12,10 @@
 #include "../components/loot.h"
 #include "../game/constant_variables.h"
 #include "../components/TransitionComponent.h"
+#include "../components/TextWithBackGround.h"
 void InitialScene::init()
 {
-	auto tutorialManager = mngr_->addEntity();
-	tutorialManager->addComponent<TutorialManager>();
+	Camera::mainCamera->restoreScale();
 
 	if (mngr_->getGame()->playerCreated)
 	{
@@ -23,8 +23,13 @@ void InitialScene::init()
 		delete mngr_->getGame()->playerSaved;
 		mngr_->getGame()->playerSaved = nullptr;
 	}
+
 	std::string path = std::string("./resources/tilemap/initialScene.tmx");
 	loadMap(path);
+
+	auto tutorialentity = mngr_->addEntity();
+	auto tutorialManager = tutorialentity->addComponent<TutorialManager>();
+	tutorialManager->setReturnToShelter(this);
 
 	auto playerTr = mngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
 	Vector2D pos = playerTr->getPos() + Vector2D(playerTr->getW(), playerTr->getH()) / 2;
@@ -33,8 +38,6 @@ void InitialScene::init()
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 
 	auto playExplosion = [this]() {soundManager().playSFX("initialExplosion"); };
-
-	//playExplosion();
 
 	auto sfx = mngr_->addEntity();
 	sfx->addComponent<Timer>(2, playExplosion);
@@ -61,8 +64,8 @@ void InitialScene::init()
 			a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
 			auto d = a->addComponent<Dialogue>();
 			std::vector<std::string> texts = {
-				"It's getting pretty close",
-				"I need to hurry and pick all the things I need",
+				"It is getting pretty close",
+				"I need to hurry and pick all the things I need and go back home",
 				"FAST"
 			};
 			d->createText(texts, 20);
@@ -107,6 +110,19 @@ void TutorialManager::init()
 	instance = this;
 	currentCase = -1;
 	currentMessage = nullptr;
+
+
+	initialCollider = entity_->getMngr()->addEntity();
+	Vector2D initialColliderPos = Vector2D(Camera::mainCamera->getCameraPosition().getX() + 100,
+		entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>()->getPos().getY());
+	initialCollider->addComponent<Transform>(initialColliderPos, 30, 100);
+	initialCollider->addComponent<BoxCollider>();
+
+	trigger = nullptr;
+	triggerPos = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>()->getPos();
+
+	
+
 }
 
 void TutorialManager::update()
@@ -118,20 +134,12 @@ void TutorialManager::update()
 	case 0:
 		checkMovement();
 		break;
-	case 1:
-		checkInventory();
-		break;
-	case 2:
-		checkJump();
-		break;
-	case 3:
-		checkCrouch();
-		break;
 	}
 }
 
 void TutorialManager::changeCase(int newcase)
 {
+	if (newcase == currentCase) return;
 	if (currentMessage != nullptr && !currentMessage->hasComponent<TransitionComponent>())
 	{
 		currentMessage->addComponent<TransitionComponent>(2);
@@ -142,34 +150,132 @@ void TutorialManager::changeCase(int newcase)
 	if (newcase == -1)
 		return;
 
-	currentMessage = entity_->getMngr()->addEntity();
-	entity_->getMngr()->addRenderLayer<ULTIMATE>(currentMessage);
-	auto tr = currentMessage->addComponent<Transform>(Vector2D(consts::WINDOW_WIDTH, consts::WINDOW_WIDTH - 100 - 20) / 2
-		- Vector2D(400, 0) / 2,
-		400, 100);
-
 	switch (currentCase)
 	{
-	case 0:
+	case 0: {
+		currentMessage = entity_->getMngr()->addEntity();
+		entity_->getMngr()->addRenderLayer<ULTIMATE>(currentMessage);
+
+		auto tr = currentMessage->addComponent<Transform>(
+			Vector2D(consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT - 100 - 20)
+			- Vector2D(400, 0) / 2,
+			400, 100);
 		currentMessage->addComponent<Image>(&sdlutils().images().at("horizontal"), true);
 		break;
 	}
+	case 1: {
+		currentMessage = entity_->getMngr()->addEntity();
+		entity_->getMngr()->addRenderLayer<ULTIMATE>(currentMessage);
+
+		currentMessage->addComponent<Transform>(Vector2D(
+			consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT * 0.8 + 32), consts::WINDOW_WIDTH, 100);
+		currentMessage->addComponent<TextWithBackground>("I need to take all the loot I can",
+			sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xfffffffff), nullptr, false, 1, true);
+		break;
+	}
+	case 2: { // create trigger
+
+		initialCollider->setDead(true);
+		initialCollider = nullptr;
+
+		trigger = entity_->getMngr()->addEntity();
+		trigger->addComponent<Transform>(triggerPos + Vector2D(-50, 20), 30, 50);
+		trigger->addComponent<BoxCollider>(true);
+		trigger->addComponent<TutorialTrigger>();
+		break;
+	}
+	case 3: { //Move to focus point
+		trigger->setDead(true);
+		trigger = nullptr;
+
+		auto player = entity_->getMngr()->getHandler<Player_hdlr>();
+		player->getComponent<KeyboardPlayerCtrl>()->resetSpeed();
+		player->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+
+		auto cameraZoom = entity_->getMngr()->addEntity();
+		cameraZoom->addComponent<InitialCameraZoom>(3, 2);
+
+		auto a = entity_->getMngr()->addEntity();
+		a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
+		auto d = a->addComponent<Dialogue>();
+		std::vector<std::string> texts = {
+			"\"The stalkers\" will arrive at any moment now",
+			"I need to head to the exit before it's too late"
+		};
+		d->createText(texts, 20);
+		d->function = [this]() {
+			auto cameraZoom = entity_->getMngr()->addEntity();
+			cameraZoom->addComponent<InitialCameraZoom>(1.0 / 2.7, 2);
+
+			auto player = entity_->getMngr()->getHandler<Player_hdlr>();
+			player->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+			player->getComponent<KeyboardPlayerCtrl>()->resetSpeed();
+
+			auto cameraMovement = entity_->getMngr()->addEntity();
+			auto f = [this]() {
+				auto miniTimer = entity_->getMngr()->addEntity();
+				miniTimer->addComponent<Timer>(1, [this]() {changeCase(4); });
+			};
+			cameraMovement->addComponent<TutorialCameraMovement>(
+				Vector2D(backToShelter->getComponent<Transform>()->getPos()), f, 0.7f);
+		};
+		break;
+	}
+	case 4: { //Move back to player
+		auto cameraMovement = entity_->getMngr()->addEntity();
+		auto f = [this]() {
+			auto miniTimer = entity_->getMngr()->addEntity();
+			miniTimer->addComponent<Timer>(1, [this]() {changeCase(5); });
+		};
+		auto player = entity_->getMngr()->getHandler<Player_hdlr>();
+		auto playerTr = player->getComponent<Transform>();
+		cameraMovement->addComponent<TutorialCameraMovement>(
+			playerTr->getPos() + Vector2D(playerTr->getW(), playerTr->getH()) / 2.0, f, 0.9f);
+		break;
+	}
+	case 5: //Wait 1 second and let the player move freely now
+	{
+		auto player = entity_->getMngr()->getHandler<Player_hdlr>();
+		player->getComponent<KeyboardPlayerCtrl>()->enabled = true;
+		player->getComponent<KeyboardPlayerCtrl>()->resetSpeed();
+
+		player->getComponent<CameraMovement>()->enabled = true;
+		Camera::mainCamera->MoveToPoint(player->getComponent<Transform>()->getPos());
+		break;
+	}
+	}
+}
+
+void TutorialManager::setReturnToShelter(GameScene* scene)
+{
+	for (auto a : entity_->getMngr()->getEntities()) {
+		if (a->hasComponent<BackToShelter>()) {
+			backToShelter = a;
+			break;
+		}
+	}
+
+	backToShelter->setDead(true);
+
+	auto returnToShelter = entity_->getMngr()->addEntity();
+	returnToShelter->addComponent<Transform>(
+		backToShelter->getComponent<Transform>()->getPos(), 
+		backToShelter->getComponent<Transform>()->getW(), 
+		backToShelter->getComponent<Transform>()->getH(), 0);
+	returnToShelter->addComponent<Image>(&sdlutils().images().at("back_to_shelter"), 1, 1, 0, 0);
+	returnToShelter->addComponent<TutorialBackToShelter>(this);
+	entity_->getMngr()->addRenderLayer<Walls>(returnToShelter);
 }
 
 void TutorialManager::checkMovement()
 {
 	if (ih().isKeyDown(SDLK_a) ||
 		ih().isKeyDown(SDLK_d)) {
-		std::cout << "Te has movido bro" << std::endl;
 		changeCase(-1);
 	}
 }
 
 void TutorialManager::checkJump()
-{
-}
-
-void TutorialManager::checkInventory()
 {
 }
 
@@ -200,7 +306,32 @@ void TutorialLoot::Interact()
 	Loot::Interact();
 	if (!isOpen) {
 		if (inventory->getItems().size() == 0) {
-			std::cout << "Hola";
+			TutorialManager::instance->changeCase(2);
 		}
 	}
 }
+
+void TutorialLoot::CollisionEnter()
+{
+	InteractableElement::CollisionEnter();
+	TutorialManager::instance->changeCase(1);
+}
+
+void TutorialTrigger::OnTrigger(Entity* e)
+{
+	if (e == entity_->getMngr()->getHandler<Player_hdlr>()) {
+		TutorialManager::instance->changeCase(3);
+	}
+}
+
+void TutorialCameraMovement::update()
+{
+	Camera::mainCamera->Lerp(destination, speed);
+
+	float magnitude = (Camera::mainCamera->getCameraCenterPoisition() - destination).magnitude();
+	if (magnitude <= 15.0) {
+		function();
+		entity_->setDead(true);
+	}
+}
+

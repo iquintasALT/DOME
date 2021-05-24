@@ -22,6 +22,7 @@ private:
 	TextWithBackground* text;
 	Entity* background;
 
+	bool justPressed;
 	float textSpeed;
 
 	void showText(std::string txt);
