@@ -84,4 +84,5 @@ public:
 private:
 	GameScene* currentScene;
 	bool alreadyPressed;
+	void changeImage(int n, int i);
 };

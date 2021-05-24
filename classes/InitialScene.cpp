@@ -44,6 +44,10 @@ void InitialScene::init()
 	mngr_->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = false;
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 
+
+
+
+
 	auto playExplosion = [this]() {soundManager().playSFX("initialExplosion"); };
 
 	auto sfx = mngr_->addEntity();
@@ -224,7 +228,7 @@ void TutorialManager::changeCase(int newcase)
 		auto a = entity_->getMngr()->addEntity();
 		a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
 		auto d = a->addComponent<Dialogue>();
-		
+
 		//TODO: play sound
 		d->movePlayerAtTheEnd = false;
 		std::vector<std::string> texts = {
@@ -284,7 +288,7 @@ void TutorialManager::changeCase(int newcase)
 
 		auto enemy = new DefaultEnemy(entity_->getMngr(),
 			trigger->getComponent<Transform>()->getPos() +
-			Vector2D(-consts::WINDOW_WIDTH / 3, 0));
+			Vector2D(-consts::WINDOW_WIDTH / 3, -20));
 		enemy->getComponent<DistanceDetection>()->enabled = false;
 		enemy->getComponent<Image>()->setFlip(SDL_RendererFlip::SDL_FLIP_HORIZONTAL);
 		enemy->getComponent<ChasePlayer>()->enabled = false;
@@ -359,6 +363,7 @@ void TutorialCameraMovement::update()
 	Camera::mainCamera->Lerp(destination, speed);
 
 	float magnitude = (Camera::mainCamera->getCameraCenterPoisition() - destination).magnitude();
+	std::cout << magnitude << std::endl;
 	if (magnitude <= 15.0) {
 		function();
 		entity_->setDead(true);
@@ -369,9 +374,35 @@ void TutorialBackToShelter::Interact()
 {
 	if (alreadyPressed) return;
 
-	//TODO
+	/*Vector2D pos;
+	for (auto ent : entity_->getMngr()->getEntities()) {
+		if (ent->hasGroup<INITIALGRP>()) {
+			pos = ent->getComponent<Transform>()->getPos();
+		}
+	}*/
+	
+	auto start = [this]() {
+		float time = .4;
+		int n = 6;
+		for (int i = 0; i <= n; i++) {
+			auto timer = entity_->getMngr()->addEntity();
+			auto function = [this, i, n]() {
+				changeImage(n, i);
+				soundManager().playSFX("boom");
+			};
+
+			float t = i * time;
+			if (i == n)
+				t = (i + 1) * time;
+			timer->addComponent<Timer>(t, function);
+		}
+	};
+
 	auto timer = entity_->getMngr()->addEntity();
-	timer->addComponent<Timer>(1, [this]() {changeScene(); });
+	timer->addComponent<Timer>(.5, start);
+
+	auto player_ = entity_->getMngr()->getHandler<Player_hdlr>();
+	player_->getComponent<CameraMovement>()->enabled = false;
 }
 
 void TutorialBackToShelter::changeScene() {
@@ -379,4 +410,25 @@ void TutorialBackToShelter::changeScene() {
 	entity_->getMngr()->getGame()->setShouldRenderFPS(true);
 	static_cast<Player*>(player_)->getPhysiognomy()->removeAllStates();
 	entity_->getMngr()->ChangeScene(new ShelterScene(currentScene->getGame()), SceneManager::SceneMode::OVERRIDE);
+}
+
+void TutorialBackToShelter::changeImage(int n, int i)
+{
+	if (i == n) {
+		auto timer = entity_->getMngr()->addEntity();
+		timer->addComponent<Timer>(3, [this]() {changeScene(); });
+
+		auto b = entity_->getMngr()->addEntity();
+		entity_->getMngr()->addRenderLayer<ULTIMATE>(b);
+		b->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
+		b->addComponent<Image>(&sdlutils().images().at("logo"), true);
+		return;
+	}
+	int width = ceil(consts::WINDOW_WIDTH / float(n));
+	Vector2D pos = Vector2D(floor(consts::WINDOW_WIDTH - width * (i + 1)), 0);
+
+	auto b = entity_->getMngr()->addEntity();
+	entity_->getMngr()->addRenderLayer<ULTIMATE>(b);
+	b->addComponent<Transform>(pos, width, consts::WINDOW_HEIGHT);
+	b->addComponent<Image>(&sdlutils().images().at("black"), true);
 }

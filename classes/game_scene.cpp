@@ -227,6 +227,12 @@ void GameScene::loadMap(string& const path) {
 					returnToShelter->addComponent<TutorialBackToShelter>(this);
 					mngr_->addRenderLayer<Walls>(returnToShelter);
 				}
+				else if (obj.getName() == "InitialScene") {
+					Entity* ini = mngr_->addEntity();
+					std::cout << aabb.left;
+					ini->addComponent<Transform>(Vector2D(aabb.left, aabb.top));
+					ini->setGroup<INITIALGRP>(true);
+				}
 				else if (obj.getName() == "sleepStation") {
 					auto interactable = mngr_->addEntity();
 					static_cast<ShelterScene*>(this)->initSleepStation({ aabb.left, aabb.top }, { aabb.width, aabb.height }, interactable);
