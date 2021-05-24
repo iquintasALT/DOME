@@ -18,6 +18,8 @@ public:
 	void createText(std::vector<std::string> texts, float speed);
 
 	std::function<void()> function;
+
+	bool movePlayerAtTheEnd;
 private:
 	TextWithBackground* text;
 	Entity* background;

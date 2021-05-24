@@ -18,6 +18,8 @@
 #include "../sdlutils/Font.h"
 #include "../sdlutils/SDLUtils.h"
 
+#include "../classes/InitialScene.h"
+
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado
 
@@ -216,6 +218,13 @@ void GameScene::loadMap(string& const path) {
 					returnToShelter->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
 					returnToShelter->addComponent<Image>(&sdlutils().images().at("back_to_shelter"), 1, 1, 0, 0);
 					returnToShelter->addComponent<BackToShelter>(this);
+					mngr_->addRenderLayer<Walls>(returnToShelter);
+				}
+				else if (obj.getName() == "returnShelterT") {
+					Entity* returnToShelter = mngr_->addEntity();
+					returnToShelter->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					returnToShelter->addComponent<Image>(&sdlutils().images().at("back_to_shelter"), 1, 1, 0, 0);
+					returnToShelter->addComponent<TutorialBackToShelter>(this);
 					mngr_->addRenderLayer<Walls>(returnToShelter);
 				}
 				else if (obj.getName() == "sleepStation") {

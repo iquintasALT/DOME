@@ -61,6 +61,7 @@ class TutorialLoot;
 class TutorialManager;
 class TutorialTrigger;
 class TutorialCameraMovement;
+class TutorialBackToShelter;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -114,7 +115,8 @@ class TutorialCameraMovement;
 	TutorialLoot, \
 	TutorialManager, \
 	TutorialTrigger, \
-	TutorialCameraMovement
+	TutorialCameraMovement, \
+	TutorialBackToShelter
 
 // groups
 

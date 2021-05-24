@@ -192,11 +192,11 @@ void KeyboardPlayerCtrl::update() {
 		}
 
 	}
-	//std::cout << speed << std::endl;
 }
 
 void KeyboardPlayerCtrl::resetSpeed() {
 	rb_->setVel(Vector2D(0, rb_->getVel().getY()));
+	speed = 0;
 }
 
 float KeyboardPlayerCtrl::getSpeed() {

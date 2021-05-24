@@ -27,10 +27,10 @@ void Camera::setScale(float value) {
 	width = winWidth / scale;
 	height = winHeight / scale;
 
-	xmin *= scale;
-	xmax *= scale;
-	ymin *= scale;
-	ymax *= scale;
+	xmin = ogxmin * scale;
+	xmax = ogxmax * scale;
+	ymin = ogymin * scale;
+	ymax = ogymax * scale;
 
 	pos = pos + Vector2D(pwidth / 2 - width / 2, pheight / 2 - height /2);
 }
@@ -68,23 +68,23 @@ void Camera::LerpWithBounds(const Vector2D& newPos, float i) {
 
 	Vector2D& p = pos;
 	if (p.getX() < xmin) p.setX(xmin);
-	else if (p.getX() > xmax ) p.setX(xmax);
+	else if (p.getX() > xmax - winWidth) p.setX(xmax - winWidth);
 
 	if (p.getY() < ymin ) p.setY(ymin );
-	else if (p.getY() > ymax ) p.setY(ymax);
+	else if (p.getY() + height > ymax ) p.setY(ymax - height);
 
 }
 
 void Camera::setBounds(float a, float b, float c, float d) {
-	xmin = a;
-	ymin = b;
-	xmax = c - width;
-	ymax = d - height;
+	ogxmin = a;
+	ogymin = b;
+	ogxmax = c;
+	ogymax = d;
 
-	xmin *= scale;
-	xmax *= scale;
-	ymin *= scale;
-	ymax *= scale;
+	xmin = ogxmin * scale;
+	xmax = ogxmax * scale;
+	ymin = ogymin * scale;
+	ymax = ogymax * scale;
 }
 
 void Camera::MoveDir(Vector2D dir) {
