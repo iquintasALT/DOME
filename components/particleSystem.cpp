@@ -49,6 +49,11 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	sizeOverTime = true;
 	sizeCurve = Function(-1, 0, 1);
 
+	insideCircle = false;
+	initialRotation = 0;
+	rotationSpeed = 0;
+	randomRotation = false;
+
 	burst = false;
 	burstCount = 10;
 	burstTimer = 20;
@@ -110,12 +115,14 @@ void ParticleSystem::update() {
 	for (int i = 0; i < particles.size(); i++) {
 		auto a = particles[i];
 
-		a->rb->update();
+		a->tr->setPos(a->tr->getPos() + a->rb->getVel());
+		a->tr->setRot(a->tr->getRot() + rotationSpeed);
 
 		float life = particleLife[i];
-		a->tr->setW(particleScale * width * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
-		a->tr->setH(particleScale * height * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
-
+		if (sizeOverTime) {
+			a->tr->setW(particleScale * width * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
+			a->tr->setH(particleScale * height * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
+		}
 		if (gravity)
 			a->rb->setVel(a->rb->getVel() + Vector2D(0, gravityValue * consts::DELTA_TIME));
 		particleLife[i] -= consts::DELTA_TIME;
@@ -154,7 +161,9 @@ void ParticleSystem::render() {
 }
 
 void ParticleSystem::spawnParticle() {
-	Vector2D particleOrigin = Vector2D(randomInt(-10, 11), randomInt(-10, 11)).normalize() * distanceToOrigin + offset;
+	Vector2D particleOrigin = !insideCircle ? 
+		Vector2D(randomInt(-10, 11), randomInt(-10, 11)).normalize() * distanceToOrigin + offset:
+		Vector2D(randomInt(-10, 11) / 10.0, randomInt(-10, 11) / 10.0) * distanceToOrigin + offset;
 
 	if (worldPosition) particleOrigin = particleOrigin + transform->getPos();
 
@@ -167,7 +176,13 @@ void ParticleSystem::spawnParticle() {
 	if (inheritVelocity && rb != nullptr)
 		particleSpeed = particleSpeed + rb->getVel() * inheritVelocityMultiplier;
 
-	particles.push_back(new DynamicBody(new Transform(particleOrigin, width, height, 0), particleSpeed));
+
+	float rotation = initialRotation;
+	if (randomRotation) {
+		rotation = randomInt(0, 360);
+	}
+
+	particles.push_back(new DynamicBody(new Transform(particleOrigin, width, height, rotation), particleSpeed));
 	particleLife.push_back(lifeTime);
 }
 

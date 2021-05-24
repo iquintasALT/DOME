@@ -64,6 +64,10 @@
             "file": "resources/sprites/info_comunicaciones.png"
         },
         {
+            "id": "brillibrilli",
+            "file": "resources/sprites/brillibrilli.png"
+        },
+        {
             "id": "info_hospital",
             "file": "resources/sprites/info_hospital.png"
         },

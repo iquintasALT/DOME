@@ -83,13 +83,16 @@ public:
 	int width;
 	int height;
 	float distanceToOrigin;
+	bool insideCircle;
 
 	Vector2D dir;
 	Vector2D offset;
 
 	float angleDispersion;
 	float lifeTime;
+	bool randomRotation;
 	float initialRotation;
+	float rotationSpeed;
 	float speed;
 	int count;
 	bool burst;
