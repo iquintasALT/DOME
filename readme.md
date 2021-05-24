@@ -301,7 +301,7 @@ En el refugio, la única interfaz permanente es la de los estados de salud (hamb
 
 - **Crafteo**  
 
-- **Estados de daño **  
+- **Estados de daño**  
 
 - **Dificultad para pasarte el juego** 
  
