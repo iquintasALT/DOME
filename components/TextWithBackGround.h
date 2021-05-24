@@ -47,6 +47,8 @@ public:
 	void setAlpha(int value);
 	void reset();
 
+	void finishWriting();
+
 	float finishedWriting;
 };
 

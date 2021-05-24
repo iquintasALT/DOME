@@ -59,6 +59,8 @@ class CameraShake;
 class Timer;
 class TutorialLoot;
 class TutorialManager;
+class TutorialTrigger;
+class TutorialCameraMovement;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
@@ -110,7 +112,9 @@ class TutorialManager;
 	CameraShake, \
 	Timer, \
 	TutorialLoot, \
-	TutorialManager
+	TutorialManager, \
+	TutorialTrigger, \
+	TutorialCameraMovement
 
 // groups
 

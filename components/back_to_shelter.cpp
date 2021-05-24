@@ -19,5 +19,5 @@ void BackToShelter::Interact() {
 }
 
 void BackToShelter::update() {
-	if (ih().isKeyDown(SDLK_e) && CheckCollision(player_->getComponent<Transform>())) Interact();
+	//if (ih().isKeyDown(SDLK_e) && CheckCollision(player_->getComponent<Transform>())) Interact();
 }
