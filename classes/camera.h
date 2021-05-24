@@ -11,6 +11,7 @@ private:
 
 	float scale, ogScale;
 	float xmin, ymin, xmax, ymax;
+	float ogxmin, ogymin, ogxmax, ogymax;
 
 public:
 	static Camera* mainCamera;

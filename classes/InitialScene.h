@@ -25,14 +25,9 @@ public:
 	void init() override;
 	void update() override;
 	void changeCase(int);
-	void setReturnToShelter(GameScene* scene);
 private:
 	int currentCase;
 	void checkMovement();
-	void checkJump();
-	void checkCrouch();
-	void checkShoot();
-
 
 	Entity* initialCollider;
 	Entity* trigger;
@@ -47,11 +42,18 @@ public:
 	void init() override;
 	void Interact() override;
 	void CollisionEnter() override;
+
+private:
+	bool firstTime;
+	bool firstTimeClosing;
 };
 
 class TutorialTrigger : public Component {
 public:
+	TutorialTrigger(int i = 3) : i(i) {};
 	void OnTrigger(Entity*) override;
+private:
+	int i;
 };
 
 class TutorialCameraMovement : public Component {
@@ -73,8 +75,13 @@ private:
 class TutorialBackToShelter : public InteractableElement {
 public:
 	TutorialBackToShelter(GameScene* scene) : InteractableElement("Go back home") {
-
+		currentScene = scene;
+		alreadyPressed = false;
 	}
 
-	//void Interact() override;
+	void Interact() override;
+	void changeScene();
+private:
+	GameScene* currentScene;
+	bool alreadyPressed;
 };

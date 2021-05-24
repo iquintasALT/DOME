@@ -13,6 +13,14 @@
 #include "../game/constant_variables.h"
 #include "../components/TransitionComponent.h"
 #include "../components/TextWithBackGround.h"
+#include "../game/Game.h"
+#include "../classes/physiognomy.h"
+#include "../components/enemy_detection_component.h"
+#include "../components/enemy_animation.h"
+#include "../components/enemy_contact_damege.h"
+#include "../components/enemy_attack_component.h"
+#include "../components/enemy_behaviour_component.h"
+
 void InitialScene::init()
 {
 	Camera::mainCamera->restoreScale();
@@ -29,7 +37,6 @@ void InitialScene::init()
 
 	auto tutorialentity = mngr_->addEntity();
 	auto tutorialManager = tutorialentity->addComponent<TutorialManager>();
-	tutorialManager->setReturnToShelter(this);
 
 	auto playerTr = mngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
 	Vector2D pos = playerTr->getPos() + Vector2D(playerTr->getW(), playerTr->getH()) / 2;
@@ -71,7 +78,7 @@ void InitialScene::init()
 			d->createText(texts, 20);
 			d->function = [this]() {
 				auto cameraZoom = mngr_->addEntity();
-				cameraZoom->addComponent<InitialCameraZoom>(1.0 / 2.7, 2);
+				cameraZoom->addComponent<InitialCameraZoom>(1.2 / 3, 2);
 
 				TutorialManager::instance->changeCase(0);
 			};
@@ -119,10 +126,15 @@ void TutorialManager::init()
 	initialCollider->addComponent<BoxCollider>();
 
 	trigger = nullptr;
-	triggerPos = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>()->getPos();
+	triggerPos = Vector2D(-50, 0) + entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>()->getPos();
 
-	
 
+	for (auto a : entity_->getMngr()->getEntities()) {
+		if (a->hasComponent<TutorialBackToShelter>()) {
+			backToShelter = a;
+			break;
+		}
+	}
 }
 
 void TutorialManager::update()
@@ -178,8 +190,22 @@ void TutorialManager::changeCase(int newcase)
 		initialCollider->setDead(true);
 		initialCollider = nullptr;
 
+
+		auto player = entity_->getMngr()->getHandler<Player_hdlr>();
+		player->getComponent<KeyboardPlayerCtrl>()->resetSpeed();
+		player->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+
+		auto a = entity_->getMngr()->addEntity();
+		a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
+		auto d = a->addComponent<Dialogue>();
+		std::vector<std::string> texts = {
+			"This should be enought for today",
+			"I need to head to the exit before it's too late"
+		};
+		d->createText(texts, 20);
+
 		trigger = entity_->getMngr()->addEntity();
-		trigger->addComponent<Transform>(triggerPos + Vector2D(-50, 20), 30, 50);
+		trigger->addComponent<Transform>(triggerPos + Vector2D(0, 20), 30, 50);
 		trigger->addComponent<BoxCollider>(true);
 		trigger->addComponent<TutorialTrigger>();
 		break;
@@ -193,29 +219,31 @@ void TutorialManager::changeCase(int newcase)
 		player->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 
 		auto cameraZoom = entity_->getMngr()->addEntity();
-		cameraZoom->addComponent<InitialCameraZoom>(3, 2);
+		cameraZoom->addComponent<InitialCameraZoom>(3 / 1.2, 2);
 
 		auto a = entity_->getMngr()->addEntity();
 		a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
 		auto d = a->addComponent<Dialogue>();
+		
+		//TODO: play sound
+		d->movePlayerAtTheEnd = false;
 		std::vector<std::string> texts = {
-			"\"The stalkers\" will arrive at any moment now",
-			"I need to head to the exit before it's too late"
+			". . .",
+			"I hear something at the end of the corridor"
 		};
 		d->createText(texts, 20);
 		d->function = [this]() {
 			auto cameraZoom = entity_->getMngr()->addEntity();
-			cameraZoom->addComponent<InitialCameraZoom>(1.0 / 2.7, 2);
+			cameraZoom->addComponent<InitialCameraZoom>(1.2 / 3, 2);
 
 			auto player = entity_->getMngr()->getHandler<Player_hdlr>();
-			player->getComponent<KeyboardPlayerCtrl>()->enabled = false;
-			player->getComponent<KeyboardPlayerCtrl>()->resetSpeed();
 
 			auto cameraMovement = entity_->getMngr()->addEntity();
 			auto f = [this]() {
 				auto miniTimer = entity_->getMngr()->addEntity();
 				miniTimer->addComponent<Timer>(1, [this]() {changeCase(4); });
 			};
+
 			cameraMovement->addComponent<TutorialCameraMovement>(
 				Vector2D(backToShelter->getComponent<Transform>()->getPos()), f, 0.7f);
 		};
@@ -240,31 +268,36 @@ void TutorialManager::changeCase(int newcase)
 		player->getComponent<KeyboardPlayerCtrl>()->resetSpeed();
 
 		player->getComponent<CameraMovement>()->enabled = true;
-		Camera::mainCamera->MoveToPoint(player->getComponent<Transform>()->getPos());
+
+		trigger = entity_->getMngr()->addEntity();
+		trigger->addComponent<Transform>(
+			player->getComponent<Transform>()->getPos()
+			- Vector2D(300, 0)
+			+ Vector2D(-50, 20), 30, 50);
+		trigger->addComponent<BoxCollider>(true);
+		trigger->addComponent<TutorialTrigger>(6);
+
+		//TODO remove this things pls
+		trigger->addComponent<Image>(&sdlutils().images().at("panel"));
+		entity_->getMngr()->addRenderLayer<Loot>(trigger);
+
+
+		auto enemy = new DefaultEnemy(entity_->getMngr(),
+			trigger->getComponent<Transform>()->getPos() +
+			Vector2D(-consts::WINDOW_WIDTH / 3, 0));
+		enemy->getComponent<DistanceDetection>()->enabled = false;
+		enemy->getComponent<Image>()->setFlip(SDL_RendererFlip::SDL_FLIP_HORIZONTAL);
+		enemy->getComponent<ChasePlayer>()->enabled = false;
+		enemy->getComponent<EnemyAnimation>()->enabled = false;
+		enemy->getComponent<EnemyAttackComponent>()->enabled = false;
+		break;
+	}
+	case 6: {
+		auto player = entity_->getMngr()->getHandler<Player_hdlr>();
+
 		break;
 	}
 	}
-}
-
-void TutorialManager::setReturnToShelter(GameScene* scene)
-{
-	for (auto a : entity_->getMngr()->getEntities()) {
-		if (a->hasComponent<BackToShelter>()) {
-			backToShelter = a;
-			break;
-		}
-	}
-
-	backToShelter->setDead(true);
-
-	auto returnToShelter = entity_->getMngr()->addEntity();
-	returnToShelter->addComponent<Transform>(
-		backToShelter->getComponent<Transform>()->getPos(), 
-		backToShelter->getComponent<Transform>()->getW(), 
-		backToShelter->getComponent<Transform>()->getH(), 0);
-	returnToShelter->addComponent<Image>(&sdlutils().images().at("back_to_shelter"), 1, 1, 0, 0);
-	returnToShelter->addComponent<TutorialBackToShelter>(this);
-	entity_->getMngr()->addRenderLayer<Walls>(returnToShelter);
 }
 
 void TutorialManager::checkMovement()
@@ -275,24 +308,14 @@ void TutorialManager::checkMovement()
 	}
 }
 
-void TutorialManager::checkJump()
-{
-}
-
-void TutorialManager::checkCrouch()
-{
-}
-
-void TutorialManager::checkShoot()
-{
-}
 
 TutorialLoot::TutorialLoot()
 	: Loot("Press E to open loot", 5, 5)
 {
 	isTutorial = true;
+	firstTime = true;
+	firstTimeClosing = true;
 }
-
 
 void TutorialLoot::init()
 {
@@ -304,9 +327,13 @@ void TutorialLoot::init()
 void TutorialLoot::Interact()
 {
 	Loot::Interact();
+
 	if (!isOpen) {
 		if (inventory->getItems().size() == 0) {
-			TutorialManager::instance->changeCase(2);
+			if (firstTimeClosing) {
+				TutorialManager::instance->changeCase(2);
+				firstTimeClosing = false;
+			}
 		}
 	}
 }
@@ -314,13 +341,16 @@ void TutorialLoot::Interact()
 void TutorialLoot::CollisionEnter()
 {
 	InteractableElement::CollisionEnter();
-	TutorialManager::instance->changeCase(1);
+	if (firstTime) {
+		TutorialManager::instance->changeCase(1);
+		firstTime = false;
+	}
 }
 
 void TutorialTrigger::OnTrigger(Entity* e)
 {
 	if (e == entity_->getMngr()->getHandler<Player_hdlr>()) {
-		TutorialManager::instance->changeCase(3);
+		TutorialManager::instance->changeCase(i);
 	}
 }
 
@@ -335,3 +365,18 @@ void TutorialCameraMovement::update()
 	}
 }
 
+void TutorialBackToShelter::Interact()
+{
+	if (alreadyPressed) return;
+
+	//TODO
+	auto timer = entity_->getMngr()->addEntity();
+	timer->addComponent<Timer>(1, [this]() {changeScene(); });
+}
+
+void TutorialBackToShelter::changeScene() {
+	auto player_ = entity_->getMngr()->getHandler<Player_hdlr>();
+	entity_->getMngr()->getGame()->setShouldRenderFPS(true);
+	static_cast<Player*>(player_)->getPhysiognomy()->removeAllStates();
+	entity_->getMngr()->ChangeScene(new ShelterScene(currentScene->getGame()), SceneManager::SceneMode::OVERRIDE);
+}

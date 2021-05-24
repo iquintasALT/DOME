@@ -11,7 +11,7 @@
 #include "KeyboardPlayerCtrl.h"
 #include "Timer.h"
 
-Dialogue::Dialogue(int height):
+Dialogue::Dialogue(int height) :
 	height(height)
 {
 	text = nullptr;
@@ -22,13 +22,15 @@ Dialogue::Dialogue(int height):
 	function = []() {};
 
 	justPressed = false;
+
+	movePlayerAtTheEnd = true;
 }
 
 
 
 void Dialogue::update()
 {
-	if (text != nullptr ) {
+	if (text != nullptr) {
 		if (ih().isKeyDown(SDLK_SPACE)) {
 			if (justPressed) return;
 			justPressed = true;
@@ -48,11 +50,12 @@ void Dialogue::update()
 
 					function();
 
-					timer->addComponent<Timer>(0.5f, [this]() {
+					if (movePlayerAtTheEnd)
+						timer->addComponent<Timer>(0.5f, [this]() {
 						Entity* ent = entity_->getMngr()->getHandler<Player_hdlr>();
 						ent->getComponent<KeyboardPlayerCtrl>()->enabled = true;
 						entity_->setDead(true);
-						});
+							});
 				}
 			}
 			else {
