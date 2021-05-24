@@ -292,6 +292,21 @@ En la esquina superior derecha hay un reloj con el tiempo restante en el saqueo.
 Cuando el tiempo se agota, los bordes de la pantalla se recubren con un efecto de escarcha, indicando el nivel de hipotermia.
 
 En el refugio, la única interfaz permanente es la de los estados de salud (hambre y cansancio), que se representa igual que la de las heridas en el saqueo.
+## Conclusiones QA
+- **Feeling del juego** 
+
+- **Loot** 
+
+- **Armas**  
+
+- **Crafteo**  
+
+- **Estados de daño **  
+
+- **Dificultad para pasarte el juego** 
+ 
+- **Looteo y zonas** 
+
 
 ![Referencias](./docs/headers/h_referencias.png) <a name="refe"></a>
 
