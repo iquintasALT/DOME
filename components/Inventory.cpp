@@ -8,6 +8,8 @@
 #include "../classes/weapon_behaviour.h"
 #include <iostream>
 
+bool Inventory::firstInitialization = false;
+
 Inventory::Inventory(int width, int height, WeaponBehaviour* weapon) : width(width), height(height), other(nullptr) {
 	transform = nullptr;
 	selectedItem = nullptr;
@@ -346,11 +348,14 @@ void Inventory::adjustPanelSize() {
 }
 
 void Inventory::storeDefaultItems() {
-	storeItem(new Item(ItemInfo::bandage(), entity_->getMngr(), this, 0, 0));
-	storeItem(new Item(ItemInfo::buildingParts(), entity_->getMngr(), this, 2, 2));
-	storeItem(new Item(ItemInfo::classicAmmo(), entity_->getMngr(), this, 4, 0, 12));
-	storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 6));
-	storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 4, 4, 5));
+	if (firstInitialization) {
+		storeItem(new Item(ItemInfo::bandage(), entity_->getMngr(), this, 0, 0));
+		storeItem(new Item(ItemInfo::buildingParts(), entity_->getMngr(), this, 2, 2));
+		storeItem(new Item(ItemInfo::classicAmmo(), entity_->getMngr(), this, 4, 0, 12));
+		storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 6));
+		storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 4, 4, 5));
+		firstInitialization = false;
+	}
 }
 
 

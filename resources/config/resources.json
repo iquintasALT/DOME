@@ -555,9 +555,14 @@
       "file": "resources/sound/bonecrack.wav"
     },
     {
-      "id": "initialExplosion",
-      "volume": 128,
-      "file": "resources/sound/explosion.mp3"
+        "id": "initialExplosion",
+        "volume": 128,
+        "file": "resources/sound/explosion.mp3"
+    },
+    {
+        "id": "empty_clip",
+        "volume": 100,
+        "file": "resources/sound/gun/empty_clip.wav"
     },
     {
       "id": "build",

@@ -205,6 +205,9 @@ void Weapon::setAmmo() {
 			items.pop_back();
 		}
 	}
+
+	if (totalBullets != 0) soundManager().playSFX("reload");
+	else soundManager().playSFX("empty_clip");
 }
 
 bool Weapon::ItemIsAmmo(Item* item, WeaponType currentWeapon) {
@@ -229,7 +232,6 @@ void Weapon::reload()
 	{
 		reloading = true;
 		setAmmo();
-		soundManager().playSFX("reload");
 	}
 }
 

@@ -15,13 +15,14 @@
 #include <string>
 #include <iostream>
 
+
 void MenuScene::init() {
 	// uncomment this when transition to shelter works
-	//if (mngr_->getGame()->playerSaved != nullptr) {
-	//	mngr_->getGame()->playerSaved->setDead(true);
-	//	mngr_->getGame()->playerSaved = nullptr;
-	//	mngr_->getGame()->playerCreated = false;
-	//}
+	if (mngr_->getGame()->playerSaved != nullptr) {
+		mngr_->getGame()->playerSaved->setDead(true);
+		mngr_->getGame()->playerSaved = nullptr;
+		mngr_->getGame()->playerCreated = false;
+	}
 
 	Camera::mainCamera->restoreScale();
 	Vector2D cameraPos;
@@ -33,7 +34,7 @@ void MenuScene::init() {
 	auto a = mngr_->addEntity();
 	std::vector<Texture*> textures(4);
 	for (int i = 0; i < 4; i++) {
-		std::string str = "bgImage" + std::to_string(i+3);
+		std::string str = "bgImage" + std::to_string(i + 3);
 		textures[i] = &sdlutils().images().at(str);
 	}
 	a->addComponent<ScrollingBackGround>(consts::WINDOW_WIDTH * size, consts::WINDOW_HEIGHT * size, textures, .2, true);

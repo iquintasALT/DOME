@@ -166,17 +166,16 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 		Inventory::itemWidth * width, Inventory::itemHeight * height, 0);
 	image->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, info->row(), info->col(), true);
 	image->setActive(false);
-	tex = nullptr;
+	countTex = nullptr;
 	if (count > 0) {
-		auto n = mngr->addEntity();
-		mngr->addRenderLayer<Item>(n);
+		countTex = mngr->addEntity();
+		mngr->addRenderLayer<Item>(countTex);
 		float w = Inventory::itemWidth * (width - 0.3);
 		float h = Inventory::itemHeight * (height - 0.3);
-		numberTr = n->addComponent<Transform>(inventory->itemPosition(x, y) + Vector2D(w, h),
+		numberTr = countTex->addComponent<Transform>(inventory->itemPosition(x, y) + Vector2D(w, h),
 			Inventory::itemWidth * 0.3, Inventory::itemHeight * 0.3, 0);
-		tex = new Texture(sdlutils().renderer(), std::to_string(count), sdlutils().fonts().at("OrbitronBold32"), build_sdlcolor(0xffffff));
-		n->addComponent<Image>(tex, true);
-		n->setActive(false);
+		countTex->addComponent<Image>(new Texture(sdlutils().renderer(), std::to_string(count), sdlutils().fonts().at("OrbitronBold32"), build_sdlcolor(0xffffff)), true);
+		countTex->setActive(false);
 	}
 	else numberTr = nullptr;
 }
@@ -190,8 +189,10 @@ Item::Item(Item* item, Inventory* inventory) :
 Item::~Item() {
 	delete info;
 
-	if (tex != nullptr)
-		delete tex;
+	if (countTex != nullptr) {
+		countTex->setDead(true);
+	}
+		
 }
 
 void Item::removeImage()

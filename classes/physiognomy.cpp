@@ -63,9 +63,12 @@ void Physiognomy::removeBleedState() {
 	case 1:
 		player->removeComponent<BleedoutComponent>();
 		numBleedStates--;
+		if (numBleedStates < 0) numBleedStates = 0;
 	default:
 		healthComponents.pop_back();
 		numBleedStates--;
+		if (numBleedStates < 0) numBleedStates = 0;
+		break;
 	}
 }
 
