@@ -16,12 +16,12 @@ private:
 	const enum animations_name { idle = 0, walking, crouch, walking_arms, idle_arms, crouch_arms, climbing, dmg_idle, dmg_crouch, dmg_climb };
 	Animation animations[10]{
 	Animation(idle, 4),
-	Animation(walking, 14),
+	Animation(walking, 14, true, 1.25),
 	Animation(crouch, 4),
-	Animation(walking_arms, 14),
+	Animation(walking_arms, 14, true, 1.25),
 	Animation(idle_arms, 4),
 	Animation(crouch_arms, 4),
-	Animation(climbing, 4),
+	Animation(climbing, 4, true, 1.75),
 	Animation(dmg_idle, 1),
 	Animation(dmg_crouch, 1),
 	Animation(dmg_climb, 1)};
