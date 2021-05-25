@@ -32,7 +32,7 @@ private:
 	Vector2D spaceshipStSize;
 
 	Manager* uselessMngr;
-	const int MAX_ACTIONS = 6;
+	const int MAX_ACTIONS = 5;
 	int actions;
 
 	void createParallaxBackground(int numOfRep) override;
