@@ -60,8 +60,12 @@
     "file": "resources/sprites/marco.png"
   },
   {
-    "id": "info_comunicaciones",
-    "file": "resources/sprites/info_comunicaciones.png"
+      "id": "info_comunicaciones",
+      "file": "resources/sprites/info_comunicaciones.png"
+  },
+  {
+    "id": "donut",
+    "file": "resources/sprites/donut.png"
   },
   {
     "id": "brillibrilli",

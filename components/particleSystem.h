@@ -98,6 +98,8 @@ public:
 	bool burst;
 	float rateOverTime;
 
+	bool centerAlign;
+
 	float particleScale = 1;
 
 	bool worldPosition;

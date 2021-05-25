@@ -91,8 +91,8 @@ void MenuScene::onLoad()
 void MenuScene::playGame(Manager* mngr) {
 	ih().clearState();
 	soundManager().stopSongWithFade("game_theme", 1000);
-	//mngr->ChangeScene(new LocationsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
-	mngr->ChangeScene(new InitialScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+	mngr->ChangeScene(new LocationsScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+	//mngr->ChangeScene(new InitialScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
 }
 
 void MenuScene::settings(Manager* mngr) {
