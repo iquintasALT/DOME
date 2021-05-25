@@ -188,10 +188,10 @@ void Game::initLoot() {
 			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(2, 0)), make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 1)),
 			make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(0, 3)), make_pair(CraftingSystem::getItemInfo(SPLINT), Vector2D(3, 3))
 		},
-		{ make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 2)), make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(0, 0)),
+		{ make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 3)), make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(0, 0)),
 				make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(3, 0)),
 				make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 4)), make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(3, 3)),
-				make_pair(CraftingSystem::getItemInfo(RICOCHET_AMMO), Vector2D(3, 3))
+				make_pair(CraftingSystem::getItemInfo(RICOCHET_AMMO), Vector2D(3, 3)), make_pair(CraftingSystem::getItemInfo(METAL_PLATES), Vector2D(0, 1))
 		}
 	});
 
