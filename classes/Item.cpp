@@ -41,7 +41,7 @@ ItemInfo* ItemInfo::bandage()
 		static_cast<Player*>(player)->getPhysiognomy()->removeBleedState();
 	};
 
-	return new ItemInfo(BANDAGE, "bandage", "Can heal bleeding", 2, 1, 0, 2, f);
+	return new ItemInfo(BANDAGE, "bandage", "Can heal bleeding", 1, 1, 0, 2, f);
 }
 
 ItemInfo* ItemInfo::medicalComponents()
