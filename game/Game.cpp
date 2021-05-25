@@ -140,6 +140,7 @@ void Game::initLoot() {
 	});
 
 	SCENES_LOOT.emplace(SCENES::SHELTER, vector<vector<pair<ItemInfo, Vector2D>>> {
+		//to store items on shelter
 		{
 		
 		}
