@@ -14,7 +14,7 @@ namespace consts {
 	const float CAMERA_MARGIN_FROM_PLAYER = -250;
 	const float JUMP_SPEED = 3.0f;
 	const float STAIRS_SPEED = 1.5f;
-	const float FALLING_DMG_SPEED = 8;
+	const float FALLING_DMG_SPEED = 5;
 	const float ACCELERATION = 5;
 	const float DECELERATION = 7;
 	// ENEMIES
