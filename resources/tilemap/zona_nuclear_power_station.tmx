@@ -167,30 +167,30 @@
   <object id="25" name="ladder" x="4160" y="608" width="32" height="224"/>
  </objectgroup>
  <objectgroup id="6" name="MapElements">
-  <object id="3" name="playerSpawn" x="968" y="744">
+  <object id="3" name="playerSpawn" x="2728" y="528">
    <point/>
   </object>
   <object id="5" name="returnShelter" x="672" y="768" width="32" height="64"/>
   <object id="6" name="returnShelter" x="5376" y="768" width="32" height="64"/>
-  <object id="27" name="enemy" x="2016" y="472">
+  <object id="27" name="enemy" x="952" y="728">
    <properties>
     <property name="type" type="int" value="1"/>
    </properties>
    <point/>
   </object>
-  <object id="28" name="enemy" x="2120" y="760">
+  <object id="28" name="enemy" x="5240" y="736">
    <properties>
     <property name="type" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="29" name="enemy" x="2576" y="472">
+  <object id="29" name="enemy" x="1000" y="712">
    <properties>
     <property name="type" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="30" name="enemy" x="3008" y="680">
+  <object id="30" name="enemy" x="5320" y="712">
    <properties>
     <property name="type" type="int" value="1"/>
    </properties>
@@ -202,13 +202,13 @@
    </properties>
    <point/>
   </object>
-  <object id="32" name="enemy" x="4072" y="752">
+  <object id="32" name="enemy" x="5304" y="752">
    <properties>
     <property name="type" type="int" value="1"/>
    </properties>
    <point/>
   </object>
-  <object id="33" name="enemy" x="4696" y="744">
+  <object id="33" name="enemy" x="5144" y="720">
    <properties>
     <property name="type" type="int" value="0"/>
    </properties>
