@@ -31,6 +31,8 @@ private:
 	Entity* shelterImg;
 	Entity* travelLine;
 
+	Entity* particles;
+
 	void loadLocationButtons(int buttons);
 
 public:
@@ -47,6 +49,7 @@ public:
 	void setFocus(Vector2D position);
 	void initFocus();
 	void addTravelLine();
+	void addParticles();
 	void setTravelLine(Transform* buttonPos);
 
 	void changeToRaid(Game* g, int index);

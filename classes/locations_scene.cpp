@@ -7,6 +7,7 @@
 #include "../sdlutils/SoundManager.h"
 #include "../ecs/Component.h"
 #include "../components/tiredness_component.h"
+#include "../components/particleSystem.h"
 
 void LocationsScene::init()
 {
@@ -33,6 +34,8 @@ void LocationsScene::init()
 
 	addFocus();
 	addTravelLine();
+
+	addParticles();
 }
 
 void LocationsScene::onLoad()
@@ -85,7 +88,7 @@ void LocationsScene::loadLocationButtons(int buttons) {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-	mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->decreaseTiredness(travelTiredness[index]);
+//	mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->decreaseTiredness(travelTiredness[index]);
 	g->currentScene = scenes[index];
 	g->setShouldRenderFPS(true);
 	soundManager().playSFX("push_button");
@@ -188,6 +191,32 @@ void LocationsScene::addTravelLine() {
 	mngr_->addRenderLayer<Background>(travelLine);
 
 	setTravelLine(buttonPositions[2]);
+}
+
+void LocationsScene::addParticles()
+{
+	auto shelterTr = shelterImg->getComponent<Transform>();
+	particles = mngr_->addEntity();
+	mngr_->addRenderLayer<ULTIMATE>(particles);
+	auto pos = Camera::mainCamera->WorldToPointSpace(shelterTr->getPos());
+	particles->addComponent<Transform>(
+		 pos);
+	auto p = particles->addComponent<ParticleSystem>(
+		&sdlutils().images().at("donut"), 1, 1, 0, 0);
+
+	p->emitting = true;
+	p->rateOverTime = 1.1;
+	p->lifeTime = 1;
+	p->destroyAfterTime = false;
+	p->particleScale = 5;
+	p->sizeOverTime = true;
+	p->sizeCurve = ParticleSystem::Function(0.7, 0);
+	p->distanceToOrigin = 0;
+	p->speed = 0;
+	p->dir = Vector2D();
+	p->burst = false;
+	p->centerAlign = true;
+	p->gravity = false;
 }
 
 void LocationsScene::setTravelLine(Transform* buttonTr) {

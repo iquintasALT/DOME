@@ -48,7 +48,8 @@ ParticleSystem::ParticleSystem(Texture* tex, int rows, int cols, int r, int c) :
 	particleScale = .8;
 	sizeOverTime = true;
 	sizeCurve = Function(-1, 0, 1);
-
+	
+	centerAlign = false;
 	insideCircle = false;
 	initialRotation = 0;
 	rotationSpeed = 0;
@@ -120,8 +121,16 @@ void ParticleSystem::update() {
 
 		float life = particleLife[i];
 		if (sizeOverTime) {
+			Vector2D ogPos;
+			if (centerAlign) {
+				ogPos = a->tr->getPos() + Vector2D(a->tr->getW(), a->tr->getH()) / 2.0;
+			}
 			a->tr->setW(particleScale * width * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
 			a->tr->setH(particleScale * height * sizeCurve.Evaluate((lifeTime - life) / lifeTime));
+			
+			if (centerAlign) {
+				a->tr->setPos(ogPos - Vector2D(a->tr->getW(), a->tr->getH()) / 2.0);
+			}
 		}
 		if (gravity)
 			a->rb->setVel(a->rb->getVel() + Vector2D(0, gravityValue * consts::DELTA_TIME));
