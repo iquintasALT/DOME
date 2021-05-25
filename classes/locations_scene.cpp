@@ -23,11 +23,11 @@ void LocationsScene::init()
 	background->addComponent<Image>(&sdlutils().images().at("location_image"), 1, 3, 0, 0, true);
 	mngr_->addRenderLayer<Background>(background);
 
-	addInfoText(&sdlutils().images().at("info_shop"), Vector2D(50, 0), 280, 630); 
-	addInfoText(&sdlutils().images().at("info_nuclear"), Vector2D(50, 0), 280, 630); 
-	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); 
-	addInfoText(&sdlutils().images().at("info_comunicaciones"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_nuclear"), Vector2D(50, 0), 280, 630);
 	addInfoText(&sdlutils().images().at("info_supermercado"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_comunicaciones"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_hospital"), Vector2D(50, 0), 280, 630); 
+	addInfoText(&sdlutils().images().at("info_shop"), Vector2D(50, 0), 280, 630); 
 
 	loadLocationButtons(consts::NUM_LOCATIONS);
 	mouseOverInfo = vector<bool>(locations.size(), false);
@@ -123,6 +123,7 @@ void LocationsScene::update() {
 				if (!mouseClick) {
 					if (!mouseOverInfo[i]) {
 						mouseOverInfo[i] = true;
+
 						//Foco
 						setFocus(buttonPositions[i]->getPos());
 						setTravelLine(buttonPositions[i]);
@@ -180,11 +181,14 @@ void LocationsScene::setFocus(Vector2D position) {
 }
 
 void LocationsScene::initFocus() {
-	setFocus(buttonPositions[0]->getPos()); //Se establece el foco al principio en uno cualquiera
-	infos[0]->setActive(true);
-	backgrounds[0]->setActive(true); //Se activa el fondo correspondiente al boton con el foco
+	//Se establece el foco al principio en uno cualquiera
+	setFocus(buttonPositions[3]->getPos());
+	infos[3]->setActive(true);
+
+	//Se activa el fondo correspondiente al boton con el foco
+	backgrounds[3]->setActive(true); 
 	focus->getComponent<Image>()->changeFrame(0, 0);
-	lastBackGroundActive = 0;
+	lastBackGroundActive = 3;
 }
 
 void LocationsScene::addTravelLine() {
@@ -193,7 +197,7 @@ void LocationsScene::addTravelLine() {
 	travelLine->addComponent<Image>(&sdlutils().images().at("travelLine"), true);
 	mngr_->addRenderLayer<Background>(travelLine);
 
-	setTravelLine(buttonPositions[0]);
+	setTravelLine(buttonPositions[3]);
 }
 
 void LocationsScene::setTravelLine(Transform* buttonTr) {
@@ -219,7 +223,7 @@ void LocationsScene::addTravelLineAnimation() {
 	auto centerImg = shelterImg->getComponent<Transform>()->getCenterPos();
 
 	travelLineAnimation = mngr_->addEntity();
-	auto tr = travelLineAnimation->addComponent<Transform>(Vector2D(), 30, 10);
+	auto tr = travelLineAnimation->addComponent<Transform>(Vector2D(), 20, 10);
 	tr->setRot(travelLine->getComponent<Transform>()->getRot());
 	tr->setCenterPos(centerImg);
 
