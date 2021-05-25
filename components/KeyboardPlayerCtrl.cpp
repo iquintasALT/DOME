@@ -162,7 +162,7 @@ void KeyboardPlayerCtrl::update() {
 				if (tr_->getPos().getY() + tr_->getH() < stairPosition.getY()) {
 					onLadderTrigger = false;
 					onLadder = false;
-					rb_->setVelY(-stairsSpeed * 2);
+					rb_->setVelY(-stairsSpeed);
 				}
 			}
 			else if (keystates[SDL_SCANCODE_S]) {

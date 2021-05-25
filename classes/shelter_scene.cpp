@@ -72,6 +72,12 @@ void ShelterScene::init() {
 	mngr_->addRenderLayer<Background>(mechImg);
 }
 
+void ShelterScene::onLoad()
+{
+	getGame()->playerSaved->getComponent<HungerComponent>()->decreaseHunger(0.5);
+	getGame()->playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
+}
+
 void ShelterScene::update() {
 	mngr_->update();
 
