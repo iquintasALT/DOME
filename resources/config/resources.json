@@ -42,404 +42,408 @@
       }
   ],
 
-"images": [
-  {
-    "id": "player",
-    "file": "resources/sprites/character_sheet.png"
-  },
-  {
-    "id": "cursor",
-    "file": "resources/sprites/cursor.png"
-  },
-  {
-    "id": "weaponHUD",
-    "file": "resources/sprites/weapons_sheet_HUD.png"
-  },
-  {
-    "id": "marco",
-    "file": "resources/sprites/marco.png"
-  },
-  {
-      "id": "info_comunicaciones",
-      "file": "resources/sprites/info_comunicaciones.png"
-  },
-  {
-    "id": "donut",
-    "file": "resources/sprites/donut.png"
-  },
-  {
-    "id": "brillibrilli",
-    "file": "resources/sprites/brillibrilli.png"
-  },
-  {
-    "id": "info_hospital",
-    "file": "resources/sprites/info_hospital.png"
-  },
-  {
-    "id": "sureffect",
-    "file": "resources/sprites/initial_logo.png"
-  },
-  {
-    "id": "info_supermercado",
-    "file": "resources/sprites/info_supermercado.png"
-  },
-  {
-    "id": "info_nuclear",
-    "file": "resources/sprites/info_nuclear.png"
-  },
-  {
-    "id": "info_shop",
-    "file": "resources/sprites/info_shop.png"
-  },
-  {
-    "id": "enemy",
-    "file": "resources/sprites/enemy_sheet.png"
-  },
-  {
-    "id": "controls",
-    "file": "resources/sprites/controls.png"
-  },
-  {
-    "id": "bgImage",
-    "file": "resources/sprites/background/bg_image.png"
-  },
-  {
-    "id": "bgImage0",
-    "file": "resources/sprites/background/bg_image.png"
-  },
-  {
-    "id": "bgImage1",
-    "file": "resources/sprites/background/background1.jpg"
-  },
-  {
-    "id": "bgImage2",
-    "file": "resources/sprites/background/background2.jpg"
-  },
-  {
-    "id": "bgImage3",
-    "file": "resources/sprites/background/blueprints.jpg"
-  },
-  {
-    "id": "bgImage4",
-    "file": "resources/sprites/background/background3.png"
-  },
-  {
-    "id": "bgImage5",
-    "file": "resources/sprites/background/background4.jpg"
-  },
-  {
-    "id": "bgImage6",
-    "file": "resources/sprites/background/background5.jpg"
-  },
-  {
-    "id": "bgImage7",
-    "file": "resources/sprites/background/background6.jpg"
-  },
-  {
-    "id": "bgImageDark",
-    "file": "resources/sprites/background/bg_image_dark.png"
-  },
-  {
-    "id": "titleText",
-    "file": "resources/sprites/title_text.png"
-  },
-  {
-    "id": "flying_enemy",
-    "file": "resources/sprites/flying_enemy_sheet.png"
-  },
-  {
-    "id": "floor",
-    "file": "resources/sprites/floor_tileset.png"
-  },
-  {
-    "id": "weapons",
-    "file": "resources/sprites/weapons_sheet.png"
-  },
-  {
-    "id": "weapons_arms",
-    "file": "resources/sprites/weapons_arms_sheet.png"
-  },
-  {
-    "id": "projectile",
-    "file": "resources/sprites/projectile.png"
-  },
-  {
-    "id": "ricochet_projectile",
-    "file": "resources/sprites/ricochet_projectile.png"
-  },
-  {
-    "id": "panel",
-    "file": "resources/sprites/panel.png"
-  },
-  {
-    "id": "tooltipBox",
-    "file": "resources/sprites/tooltipbox.png"
-  },
-  {
-    "id": "shelterButton",
-    "file": "resources/sprites/buttons/shelter_button.png"
-  },
-  {
-    "id": "raidButton",
-    "file": "resources/sprites/buttons/raid_button.png"
-  },
-  {
-    "id": "yojhanButton",
-    "file": "resources/sprites/buttons/buttonYojhan.png"
-  },
-  {
-    "id": "resumeButton",
-    "file": "resources/sprites/buttons/resume_button.png"
-  },
-  {
-    "id": "settingsButton",
-    "file": "resources/sprites/buttons/settings_button.png"
-  },
-  {
-    "id": "mainmenuButton",
-    "file": "resources/sprites/buttons/mainmenu_button.png"
-  },
-  {
-    "id": "backButton",
-    "file": "resources/sprites/buttons/back_button.png"
-  },
-  {
-    "id": "volumeBar",
-    "file": "resources/sprites/buttons/volume_bar.png"
-  },
-  {
-    "id": "raiseVolume",
-    "file": "resources/sprites/buttons/raise_volume_button.png"
-  },
-  {
-    "id": "decreaseVolume",
-    "file": "resources/sprites/buttons/decrease_volume_button.png"
-  },
-  {
-    "id": "volumeAdjuster",
-    "file": "resources/sprites/buttons/volume_adjuster.png"
-  },
-  {
-    "id": "pixel",
-    "file": "resources/sprites/buttons/pixel.png"
-  },
-  {
-    "id": "travelLine",
-    "file": "resources/sprites/travel_line.png"
-  },
-  {
-    "id": "exitButton",
-    "file": "resources/sprites/buttons/exit_button.png"
-  },
-  {
-    "id": "playButton",
-    "file": "resources/sprites/buttons/play_button.png"
-  },
-  {
-    "id": "mainVolumeText",
-    "file": "resources/sprites/buttons/main_volume_text.png"
-  },
-  {
-    "id": "logo",
-    "file": "resources/sprites/logo.png"
-  },
-  {
-    "id": "effectsVolume",
-    "file": "resources/sprites/buttons/sfx_volume_text.png"
-  },
-  {
-    "id": "dust",
-    "file": "resources/sprites/dustParticle.png"
-  },
-  {
-    "id": "explosion",
-    "file": "resources/sprites/explosionParticle.png"
-  },
-  {
-    "id": "charge",
-    "file": "resources/sprites/charge_projectile.png"
-  },
-  {
-    "id": "locationButtonFocus",
-    "file": "resources/sprites/location_button_focus.png"
-  },
-  {
-    "id": "showFPSBar",
-    "file": "resources/sprites/buttons/show_fps.png"
-  },
-  {
-    "id": "fpsButton",
-    "file": "resources/sprites/buttons/fps_button.png"
-  },
-  {
-    "id": "craft_bg",
-    "file": "resources/sprites/craft_ui/bg.png"
-  },
-  {
-    "id": "station_bg",
-    "file": "resources/sprites/craft_ui/bg_2.png"
-  },
-  {
-    "id": "lose",
-    "file": "resources/sprites/lose_background.png"
-  },
-  {
-    "id": "win",
-    "file": "resources/sprites/win_background.png"
-  },
-  {
-    "id": "rocket",
-    "file": "resources/sprites/rocket.png"
-  },
-  {
-    "id": "craft_back_button",
-    "file": "resources/sprites/craft_ui/back_button.png"
-  },
-  {
-    "id": "horizontal",
-    "file": "resources/sprites/horizontal.png"
-  },
-  {
-    "id": "craft_slot_box",
-    "file": "resources/sprites/craft_ui/slot.png"
-  },
-  {
-    "id": "craft_arrow",
-    "file": "resources/sprites/craft_ui/arrow.png"
-  },
-  {
-    "id": "items",
-    "file": "resources/sprites/items_sheet.png"
-  },
-  {
-    "id": "frost",
-    "file": "resources/sprites/frost.png"
-  },
-  {
-    "id": "location_image",
-    "file": "resources/sprites/location_map.png"
-  },
-  {
-    "id": "location_icons",
-    "file": "resources/sprites/location_icons.png"
-  },
-  {
-    "id": "clock",
-    "file": "resources/sprites/clock.png"
-  },
-  {
-    "id": "dclock",
-    "file": "resources/sprites/digital_clock.png"
-  },
-  {
-    "id": "storage",
-    "file": "resources/sprites/storage_backgrounds.png"
-  },
-  {
-    "id": "wardrobe",
-    "file": "resources/sprites/wardrobe_tileset.png"
-  },
-  {
-    "id": "black",
-    "file": "resources/sprites/black.png"
-  },
-  {
-    "id": "shelterStatusEffects",
-    "file": "resources/sprites/shelter_status_effects.png"
-  },
-  {
-    "id": "status_effects",
-    "file": "resources/sprites/status_effects.png"
-  },
-  {
-    "id": "back_to_shelter",
-    "file": "resources/sprites/return_shelter.png"
-  },
-  {
-    "id": "houses1",
-    "file": "resources/sprites/parallax_background/raid/houses1.png"
-  },
-  {
-    "id": "houses2",
-    "file": "resources/sprites/parallax_background/raid/houses2.png"
-  },
-  {
-    "id": "houses3",
-    "file": "resources/sprites/parallax_background/raid/houses3.png"
-  },
-  {
-    "id": "houses4",
-    "file": "resources/sprites/parallax_background/raid/houses4.png"
-  },
-  {
-    "id": "road",
-    "file": "resources/sprites/parallax_background/raid/road.png"
-  },
-  {
-    "id": "sky",
-    "file": "resources/sprites/parallax_background/raid/sky.png"
-  },
-  {
-    "id": "wall",
-    "file": "resources/sprites/parallax_background/raid/wall.png"
-  },
-  {
-    "id": "fence",
-    "file": "resources/sprites/parallax_background/shelter/fence.png"
-  },
-  {
-    "id": "houses3S",
-    "file": "resources/sprites/parallax_background/shelter/house3.png"
-  },
-  {
-    "id": "houses1S",
-    "file": "resources/sprites/parallax_background/shelter/houses1.png"
-  },
-  {
-    "id": "houses2S",
-    "file": "resources/sprites/parallax_background/shelter/houses2.png"
-  },
-  {
-    "id": "roadS",
-    "file": "resources/sprites/parallax_background/shelter/road.png"
-  },
-  {
-    "id": "ruins",
-    "file": "resources/sprites/parallax_background/shelter/ruins.png"
-  },
-  {
-    "id": "skyS",
-    "file": "resources/sprites/parallax_background/shelter/sky.png"
-  },
-  {
-    "id": "2_hour_sleep",
-    "file": "resources/sprites/craft_ui/2_hour_sleepV2.png"
-  },
-  {
-    "id": "1_hour_sleep",
-    "file": "resources/sprites/craft_ui/1_hour_sleepV2.png"
-  },
-  {
-    "id": "0_hour_sleep",
-    "file": "resources/sprites/craft_ui/0_hour_sleepV2.png"
-  },
-  {
-    "id": "dark",
-    "file": "resources/sprites/dark.png"
-  },
-  {
-    "id": "fullscreenText",
-    "file": "resources/sprites/buttons/fullscreen_text.png"
-  },
-  {
-    "id": "holdToSkip",
-    "file": "resources/sprites/holdToSkip.png"
-  },
-  {
-    "id": "enemyDeath",
-    "file": "resources/sprites/enemyDeath.png"
-  }
-],
+    "images": [
+      {
+        "id": "player",
+        "file": "resources/sprites/character_sheet.png"
+      },
+      {
+        "id": "cursor",
+        "file": "resources/sprites/cursor.png"
+      },
+      {
+        "id": "weaponHUD",
+        "file": "resources/sprites/weapons_sheet_HUD.png"
+      },
+      {
+        "id": "marco",
+        "file": "resources/sprites/marco.png"
+      },
+      {
+        "id": "info_comunicaciones",
+        "file": "resources/sprites/info_comunicaciones.png"
+      },
+      {
+        "id": "donut",
+        "file": "resources/sprites/donut.png"
+      },
+      {
+        "id": "brillibrilli",
+        "file": "resources/sprites/brillibrilli.png"
+      },
+      {
+        "id": "info_hospital",
+        "file": "resources/sprites/info_hospital.png"
+      },
+      {
+        "id": "sureffect",
+        "file": "resources/sprites/initial_logo.png"
+      },
+      {
+        "id": "info_supermercado",
+        "file": "resources/sprites/info_supermercado.png"
+      },
+      {
+        "id": "info_nuclear",
+        "file": "resources/sprites/info_nuclear.png"
+      },
+      {
+        "id": "info_shop",
+        "file": "resources/sprites/info_shop.png"
+      },
+      {
+        "id": "enemy",
+        "file": "resources/sprites/enemy_sheet.png"
+      },
+      {
+        "id": "controls",
+        "file": "resources/sprites/controls.png"
+      },
+      {
+        "id": "bgImage",
+        "file": "resources/sprites/background/bg_image.png"
+      },
+      {
+        "id": "bgImage0",
+        "file": "resources/sprites/background/bg_image.png"
+      },
+      {
+        "id": "bgImage1",
+        "file": "resources/sprites/background/background1.jpg"
+      },
+      {
+        "id": "bgImage2",
+        "file": "resources/sprites/background/background2.jpg"
+      },
+      {
+        "id": "bgImage3",
+        "file": "resources/sprites/background/blueprints.jpg"
+      },
+      {
+        "id": "bgImage4",
+        "file": "resources/sprites/background/background3.png"
+      },
+      {
+        "id": "bgImage5",
+        "file": "resources/sprites/background/background4.jpg"
+      },
+      {
+        "id": "bgImage6",
+        "file": "resources/sprites/background/background5.jpg"
+      },
+      {
+        "id": "bgImage7",
+        "file": "resources/sprites/background/background6.jpg"
+      },
+      {
+        "id": "bgImageDark",
+        "file": "resources/sprites/background/bg_image_dark.png"
+      },
+      {
+        "id": "titleText",
+        "file": "resources/sprites/title_text.png"
+      },
+      {
+        "id": "flying_enemy",
+        "file": "resources/sprites/flying_enemy_sheet.png"
+      },
+      {
+        "id": "floor",
+        "file": "resources/sprites/floor_tileset.png"
+      },
+      {
+        "id": "weapons",
+        "file": "resources/sprites/weapons_sheet.png"
+      },
+      {
+        "id": "weapons_arms",
+        "file": "resources/sprites/weapons_arms_sheet.png"
+      },
+      {
+        "id": "projectile",
+        "file": "resources/sprites/projectile.png"
+      },
+      {
+        "id": "ricochet_projectile",
+        "file": "resources/sprites/ricochet_projectile.png"
+      },
+      {
+        "id": "panel",
+        "file": "resources/sprites/panel.png"
+      },
+      {
+        "id": "tooltipBox",
+        "file": "resources/sprites/tooltipbox.png"
+      },
+      {
+        "id": "shelterButton",
+        "file": "resources/sprites/buttons/shelter_button.png"
+      },
+      {
+        "id": "raidButton",
+        "file": "resources/sprites/buttons/raid_button.png"
+      },
+      {
+        "id": "yojhanButton",
+        "file": "resources/sprites/buttons/buttonYojhan.png"
+      },
+      {
+        "id": "resumeButton",
+        "file": "resources/sprites/buttons/resume_button.png"
+      },
+      {
+        "id": "settingsButton",
+        "file": "resources/sprites/buttons/settings_button.png"
+      },
+      {
+        "id": "mainmenuButton",
+        "file": "resources/sprites/buttons/mainmenu_button.png"
+      },
+      {
+        "id": "backButton",
+        "file": "resources/sprites/buttons/back_button.png"
+      },
+      {
+        "id": "volumeBar",
+        "file": "resources/sprites/buttons/volume_bar.png"
+      },
+      {
+        "id": "raiseVolume",
+        "file": "resources/sprites/buttons/raise_volume_button.png"
+      },
+      {
+        "id": "decreaseVolume",
+        "file": "resources/sprites/buttons/decrease_volume_button.png"
+      },
+      {
+        "id": "volumeAdjuster",
+        "file": "resources/sprites/buttons/volume_adjuster.png"
+      },
+      {
+        "id": "pixel",
+        "file": "resources/sprites/buttons/pixel.png"
+      },
+      {
+        "id": "travelLine",
+        "file": "resources/sprites/travel_line.png"
+      },
+      {
+        "id": "travelLineAnimation",
+        "file": "resources/sprites/travel_line_animation.png"
+      },
+      {
+        "id": "exitButton",
+        "file": "resources/sprites/buttons/exit_button.png"
+      },
+      {
+        "id": "playButton",
+        "file": "resources/sprites/buttons/play_button.png"
+      },
+      {
+        "id": "mainVolumeText",
+        "file": "resources/sprites/buttons/main_volume_text.png"
+      },
+      {
+        "id": "logo",
+        "file": "resources/sprites/logo.png"
+      },
+      {
+        "id": "effectsVolume",
+        "file": "resources/sprites/buttons/sfx_volume_text.png"
+      },
+      {
+        "id": "dust",
+        "file": "resources/sprites/dustParticle.png"
+      },
+      {
+        "id": "explosion",
+        "file": "resources/sprites/explosionParticle.png"
+      },
+      {
+        "id": "charge",
+        "file": "resources/sprites/charge_projectile.png"
+      },
+      {
+        "id": "locationButtonFocus",
+        "file": "resources/sprites/location_button_focus.png"
+      },
+      {
+        "id": "showFPSBar",
+        "file": "resources/sprites/buttons/show_fps.png"
+      },
+      {
+        "id": "fpsButton",
+        "file": "resources/sprites/buttons/fps_button.png"
+      },
+      {
+        "id": "craft_bg",
+        "file": "resources/sprites/craft_ui/bg.png"
+      },
+      {
+        "id": "station_bg",
+        "file": "resources/sprites/craft_ui/bg_2.png"
+      },
+      {
+        "id": "lose",
+        "file": "resources/sprites/lose_background.png"
+      },
+      {
+        "id": "win",
+        "file": "resources/sprites/win_background.png"
+      },
+      {
+        "id": "rocket",
+        "file": "resources/sprites/rocket.png"
+      },
+      {
+        "id": "craft_back_button",
+        "file": "resources/sprites/craft_ui/back_button.png"
+      },
+      {
+        "id": "horizontal",
+        "file": "resources/sprites/horizontal.png"
+      },
+      {
+        "id": "craft_slot_box",
+        "file": "resources/sprites/craft_ui/slot.png"
+      },
+      {
+        "id": "craft_arrow",
+        "file": "resources/sprites/craft_ui/arrow.png"
+      },
+      {
+        "id": "items",
+        "file": "resources/sprites/items_sheet.png"
+      },
+      {
+        "id": "frost",
+        "file": "resources/sprites/frost.png"
+      },
+      {
+        "id": "location_image",
+        "file": "resources/sprites/location_map.png"
+      },
+      {
+        "id": "location_icons",
+        "file": "resources/sprites/location_icons.png"
+      },
+      {
+        "id": "clock",
+        "file": "resources/sprites/clock.png"
+      },
+      {
+        "id": "dclock",
+        "file": "resources/sprites/digital_clock.png"
+      },
+      {
+        "id": "storage",
+        "file": "resources/sprites/storage_backgrounds.png"
+      },
+      {
+        "id": "wardrobe",
+        "file": "resources/sprites/wardrobe_tileset.png"
+      },
+      {
+        "id": "black",
+        "file": "resources/sprites/black.png"
+      },
+      {
+        "id": "shelterStatusEffects",
+        "file": "resources/sprites/shelter_status_effects.png"
+      },
+      {
+        "id": "status_effects",
+        "file": "resources/sprites/status_effects.png"
+      },
+      {
+        "id": "back_to_shelter",
+        "file": "resources/sprites/return_shelter.png"
+      },
+      {
+        "id": "houses1",
+        "file": "resources/sprites/parallax_background/raid/houses1.png"
+      },
+      {
+        "id": "houses2",
+        "file": "resources/sprites/parallax_background/raid/houses2.png"
+      },
+      {
+        "id": "houses3",
+        "file": "resources/sprites/parallax_background/raid/houses3.png"
+      },
+      {
+        "id": "houses4",
+        "file": "resources/sprites/parallax_background/raid/houses4.png"
+      },
+      {
+        "id": "road",
+        "file": "resources/sprites/parallax_background/raid/road.png"
+      },
+      {
+        "id": "sky",
+        "file": "resources/sprites/parallax_background/raid/sky.png"
+      },
+      {
+        "id": "wall",
+        "file": "resources/sprites/parallax_background/raid/wall.png"
+      },
+      {
+        "id": "fence",
+        "file": "resources/sprites/parallax_background/shelter/fence.png"
+      },
+      {
+        "id": "houses3S",
+        "file": "resources/sprites/parallax_background/shelter/house3.png"
+      },
+      {
+        "id": "houses1S",
+        "file": "resources/sprites/parallax_background/shelter/houses1.png"
+      },
+      {
+        "id": "houses2S",
+        "file": "resources/sprites/parallax_background/shelter/houses2.png"
+      },
+      {
+        "id": "roadS",
+        "file": "resources/sprites/parallax_background/shelter/road.png"
+      },
+      {
+        "id": "ruins",
+        "file": "resources/sprites/parallax_background/shelter/ruins.png"
+      },
+      {
+        "id": "skyS",
+        "file": "resources/sprites/parallax_background/shelter/sky.png"
+      },
+      {
+        "id": "2_hour_sleep",
+        "file": "resources/sprites/craft_ui/2_hour_sleepV2.png"
+      },
+      {
+        "id": "1_hour_sleep",
+        "file": "resources/sprites/craft_ui/1_hour_sleepV2.png"
+      },
+      {
+        "id": "0_hour_sleep",
+        "file": "resources/sprites/craft_ui/0_hour_sleepV2.png"
+      },
+      {
+        "id": "dark",
+        "file": "resources/sprites/dark.png"
+      },
+      {
+        "id": "fullscreenText",
+        "file": "resources/sprites/buttons/fullscreen_text.png"
+      },
+      {
+        "id": "holdToSkip",
+        "file": "resources/sprites/holdToSkip.png"
+      },
+      {
+        "id": "enemyDeath",
+        "file": "resources/sprites/enemyDeath.png"
+      }
+    ],
 
       "sounds": [
           {
