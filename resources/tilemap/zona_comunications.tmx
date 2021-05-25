@@ -180,12 +180,6 @@
    </properties>
    <point/>
   </object>
-  <object id="109" name="enemy" x="1024" y="904">
-   <properties>
-    <property name="type" type="int" value="0"/>
-   </properties>
-   <point/>
-  </object>
   <object id="111" name="enemy" x="2552" y="152">
    <properties>
     <property name="type" type="int" value="0"/>
