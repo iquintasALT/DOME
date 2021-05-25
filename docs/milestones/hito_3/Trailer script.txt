@@ -1,10 +1,9 @@
-What is Dome?
-[1]
+
 -Yojhan Steven, lead programmer
-Qué es Dome? Dome es muchas cosas. Pero si tuviera que limitarme a describirlo en una sola frase, l0 llamaría: una expresión. Una expresión de pasión hacia el medio de los videojuegos. 
+Qué es DOME? Dicho en una sola frase DOME es una expresión. Una expresión de pasión hacia el medio de los videojuegos. 
 
 -Abel Moro, visionary
-Cuando juegas a este juego, no estás completando una serie de objetivos inanes, ligeramente relacionados por poco más que un vago pretenxto. Cuando juegas a este juego, estás experimentando una amplia gama de emociones, puras y primordiales, comunicadas a través del medio del scroller lateral.
+Cuando juegas a este juego, no estás completando una serie de objetivos inanes, ligeramente relacionados por poco más que un vago pretexto. Cuando juegas a este juego, estás experimentando una amplia gama de emociones, puras y primordiales, comunicadas a través del género del scroller lateral.
 
 -Pablo Fernández, level designer
 Otros desarrolladores diseñan niveles. Estos son entretenidos, aunque a menudo sosos, frecuentemente conectados por poco más que la historia o las mecánicas básicas. Yo no diseño niveles. Yo diseño sensaciones. Desesperación, intriga, suspense, temor, alivio, pánico. Todos estos son los ladrillos con los que nuestro juego está hecho.
@@ -13,7 +12,21 @@ Otros desarrolladores diseñan niveles. Estos son entretenidos, aunque a menudo 
 Dentro de los confines de la cúpula 42, un jugador podrá destapar una rica y compleja historia de codicia empresarial, de soberbia y sobreexplotación natural, además de otros asuntos sociales de la actualidad. No obstante, basamos la construcción de nuestro mundo en la primera ley del cuento: muestra, no cuentes. Por este motivo, el jugador no puede esperar que se le regalen todas las respuestas; solo si verdaderamente se implica en la experiencia de juego y por ende crezca como persona podrá comprender la historia en su totalidad.
 
 -Abel
-Te podrías preguntar: ¿de dónde tomaron inspiración para concebir semejante obra? Una pregunta excelente, desde luego. Interesantemente, la inspiración no proviene de ningún juego, pues creemos que el medio entero carece de originalidad. No, nuestra inspiración se encuentra en las obras más revolucionarias otros medios del arte: al igual que El Capitán Calzoncillos para la literatura, o Transformers 2 para el cine, queremos que Dome marque un antes y después para el entretenimiento interactivo.
+Decidí que para realizar mi visión, necesitaría formar un equipo de desarrollo exclusivamente a partir de gente que nunca ha jugado a un solo videojuego.
+Muchos me llamaron loco. No les culpo, era un idea absolutamente radical, sin ningún precedente. Pero mi razonamiento es uno basado exclusivamente en la lógica. Pues, si te paras a pensarlo de verdad, esta es la única forma de crear un juego totalmente original, uno que no se base en ningún otro.
+Y es gracias a la amplia diversidad de trasfondos involucrados en el proyecto que hemos podido explorar conceptos totalmente desconocidos para los programadores corrientes.
+
+-Pablo
+Realmente no creo que haya alguien más apropiado para diseñar un hogar al jugador. Cuando te fijas, mucha gente se pasa su vida viviendo en sus casas, pero en ningún momento se para a pensar en qué es realmente una casa. Mi padre fue albañil, y su pericia en construcción de vivendas y el conocimiento que me transmitió fueron invaluables para mí a la hora de diseñar el refugio del jugador. Este tenía que ser un lugar seguro, con todos los abastecimientos necesarios.
+
+-Yojhan
+Yo encuentro que para hacer un monstruo realmente aterrador, es necesario examinar la psique humana y entender ¿qué es lo que nos da miedo? Tras mirarme más de tres páginas de creepypastas, decidí que la imagen que más terror evoca en el subconsciente humano era un monigote pálido, tal que evoca la familiaridad humana, haciendo destacar sus diferencias más horroríficas.
+
+-Pablo
+Te podrías preguntar: ¿de dónde tomaron inspiración para concebir semejante obra? Una pregunta excelente, desde luego. Interesantemente, la inspiración no proviene de ningún juego, pues creemos que el medio entero ha carecido de originalidad por muchos años. No, nuestra inspiración se encuentra en las obras más revolucionarias otros medios del arte: al igual que El Capitán Calzoncillos para la literatura, o Transformers 2 para el cine, queremos que Dome marque un antes y después para el entretenimiento interactivo.
+
+-Yojhan
+Teníamos que permitir una opción de crafteo. La creación de objetos en el mundo es la mayor expresión de voluntad. Cuando nuestro jugador empieza a crear objetos en el juego a partir de otros, estará comprometido con el juego de nuevas formas. Se sentirá como parte del mundo.
 
 ~Interviewer
 Aunque es muy temprano para juzgar el éxito comercial del juego, ya se ha demostrado polarizante entre los críticos. Una reseña comentó que: "Si solo hubiese tenido que pagar por este juego, al menos una parte falaz de mi cerebro habría querido jugarlo hasta el final, aunque solo fuese para justificar mi dinero.". Otros críticos, que murieron contra el primer enemigo, han hecho comparaciones del juego con Dark Souls.
