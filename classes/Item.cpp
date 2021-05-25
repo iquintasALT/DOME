@@ -128,7 +128,7 @@ ItemInfo* ItemInfo::food()
 		static_cast<Player*>(player)->getComponent<HungerComponent>()->eat(0.20f);
 	};
 
-	return new ItemInfo(FOOD, "food", "Good item against hunger", 1, 1, 1, 2, f);
+	return new ItemInfo(FOOD, "food", "Food, reduces hunger", 1, 1, 1, 2, f);
 }
 
 ItemInfo* ItemInfo::laserAmmo()
