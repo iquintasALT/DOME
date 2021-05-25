@@ -13,8 +13,8 @@ const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/zona_s
 												"./resources/tilemap/zona_supermarket.tmx" };
 const array<string, consts::NUM_LOCATIONS> names = {"SHOP", "NUCLEAR POWER STATION", "HOSPITAL", "COMMUNICATIONS", "SUPERMARKET"};
 
-const array<float, consts::NUM_LOCATIONS> travelTiredness = { consts::TRAVEL_TO_NUCLEAR_POWER_STATION_TIREDNESS, consts::TRAVEL_TO_SUPERMARKET_TIREDNESS,
-									consts::TRAVEL_TO_COMUNICATIONS_TIREDNESS, consts::TRAVEL_TO_HOSPITAL_TIREDNESS, consts::TRAVEL_TO_SHOP_TIREDNESS };
+const array<float, consts::NUM_LOCATIONS> travelTiredness = { consts::TRAVEL_TO_HOSPITAL_TIREDNESS, consts::TRAVEL_TO_SHOP_TIREDNESS,
+consts::TRAVEL_TO_SUPERMARKET_TIREDNESS, consts::TRAVEL_TO_NUCLEAR_POWER_STATION_TIREDNESS, consts::TRAVEL_TO_COMUNICATIONS_TIREDNESS };
 
 class LocationsScene : public GameScene
 {
