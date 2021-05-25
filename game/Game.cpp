@@ -140,6 +140,9 @@ void Game::initLoot() {
 	});
 
 	SCENES_LOOT.emplace(SCENES::SHELTER, vector<vector<pair<ItemInfo, Vector2D>>> {
+		{
+		
+		}
 	});
 
 	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<pair<ItemInfo, Vector2D>>> {
