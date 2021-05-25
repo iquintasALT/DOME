@@ -1,39 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="34" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="9">
+<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="34" height="23" tilewidth="32" tileheight="32" infinite="0" nextlayerid="3" nextobjectid="11">
  <objectgroup id="2" name="LocationPoints">
-  <object id="1" x="936" y="216">
+  <object id="1" x="728" y="344">
    <properties>
     <property name="col" type="int" value="1"/>
+    <property name="index" type="int" value="4"/>
     <property name="row" type="int" value="1"/>
    </properties>
    <point/>
   </object>
-  <object id="3" x="784" y="384">
+  <object id="3" x="496" y="360">
    <properties>
     <property name="col" type="int" value="0"/>
+    <property name="index" type="int" value="0"/>
     <property name="row" type="int" value="1"/>
    </properties>
    <point/>
   </object>
-  <object id="4" x="680" y="584">
+  <object id="4" x="664" y="568">
    <properties>
     <property name="col" type="int" value="0"/>
+    <property name="index" type="int" value="3"/>
     <property name="row" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="5" x="576" y="216">
+  <object id="5" x="712" y="96">
    <properties>
     <property name="col" type="int" value="1"/>
+    <property name="index" type="int" value="2"/>
     <property name="row" type="int" value="0"/>
    </properties>
    <point/>
   </object>
-  <object id="8" x="520" y="416">
+  <object id="8" x="912" y="168">
    <properties>
     <property name="col" type="int" value="2"/>
+    <property name="index" type="int" value="1"/>
     <property name="row" type="int" value="0"/>
    </properties>
+   <point/>
+  </object>
+  <object id="10" name="shelter" x="976" y="536">
    <point/>
   </object>
  </objectgroup>

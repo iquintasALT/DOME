@@ -13,6 +13,9 @@ const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/zona_s
 												"./resources/tilemap/zona_supermarket.tmx" };
 const array<string, consts::NUM_LOCATIONS> names = {"SHOP", "NUCLEAR POWER STATION", "HOSPITAL", "COMMUNICATIONS", "SUPERMARKET"};
 
+const array<float, consts::NUM_LOCATIONS> travelTiredness = { consts::TRAVEL_TO_NUCLEAR_POWER_STATION_TIREDNESS, consts::TRAVEL_TO_SUPERMARKET_TIREDNESS,
+									consts::TRAVEL_TO_COMUNICATIONS_TIREDNESS, consts::TRAVEL_TO_HOSPITAL_TIREDNESS, consts::TRAVEL_TO_SHOP_TIREDNESS };
+
 class LocationsScene : public GameScene
 {
 private:
@@ -25,11 +28,13 @@ private:
 	vector<Transform*> buttonPositions;
 	vector<bool> mouseOverInfo;
 	Entity* focus;
+	Entity* shelterImg;
+	Entity* travelLine;
 
-	void loadLocationButtons();
+	void loadLocationButtons(int buttons);
 
 public:
-	LocationsScene(Game* g) : GameScene(g, "Locations"), focus(nullptr) {};
+	LocationsScene(Game* g) : GameScene(g, "Locations"), focus(nullptr), shelterImg(nullptr), travelLine(nullptr) {};
 	~LocationsScene() {};
 	void init() override;
 	void onLoad() override;
@@ -41,6 +46,8 @@ public:
 	void addFocus();
 	void setFocus(Vector2D position);
 	void initFocus();
+	void addTravelLine();
+	void setTravelLine(Transform* buttonPos);
 
 	void changeToRaid(Game* g, int index);
 };
