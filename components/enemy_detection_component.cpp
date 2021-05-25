@@ -10,6 +10,7 @@
 void EnemyDetectionComponent::init() {
 	playerTr = entity_->getMngr()->getHandler<Player_hdlr>()->getComponent<Transform>();
 	tr_ = entity_->getComponent<Transform>();
+	activeEnemy = false;
 	assert(playerTr != nullptr && tr_ != nullptr);
 }
 
