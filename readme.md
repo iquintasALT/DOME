@@ -173,12 +173,10 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 ## Específico
 | Nombre | Sprite | Tamaño de stack | Uso |
 |--------|--------|-----------------|-----|
-| Kit de mejora básico | N/A | 1 | Permite la mejora de armas a nivel 2 |
-| Kit de mejora avanzado | N/A | 1 | Permite la mejora de armas a nivel 3 |
+| Kit de mejora | N/A | 1 | Permite la mejora de armas a nivel 2 |
 | Armas | N/A | N/A | N/A |
 | Restos clave de la nave | N/A | N/A | N/A |
 | Munición | N/A | N/A | N/A |
-| Mochila | N/A | N/A | N/A |
 | Placas de metal | N/A | N/A | N/A |
 
 ## Genérico
@@ -215,12 +213,19 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 ## Estación médica
 | Crafteo/Acción | Sprite | Coste | Tiempo (Coste) |
 |-----|-----|-----|-----|
-| N/A | N/A | N/A | N/A |
+| Antidoto | N/A | 1 comida, 1 agua, 1 componentes medicos | 1 Accion |
+| Vendas | N/A | 1 venda, 1 agua, 1 material organico | 1 Accion |
+| Torniquete | N/A | 1 agua, 1 componentes mecanicos | 1 Accion |
+| PainKiller | N/A | 2 comida, 1 agua, 2 componentes medicos | 1 Accion |
 
 ## Taller
 | Crafteo/Acción | Sprite | Coste | Tiempo (Coste) |
 |-----|-----|-----|-----|
-| N/A | N/A | N/A | N/A |
+| Placas metalicas | N/A | 1 componentes mecanicos, 1 partes de construcción | 1 Accion |
+| Mejora de arma | N/A |  1 componentes mecanicos, 1 resto electronico, 1 kit de mejora | 1 Accion |
+| Cargador normal | N/A |  1 componentes mecanicos, 1 componente medico, placas metalicas | 1 Accion |
+| Cargador laser | N/A | 1 cargador normal, 2 restos electronicos | 1 Accion |
+| Cargador ricochet | N/A | 1 cargador normal, 2 componentes mecanicos | 1 Accion |
 
 # Enemigos
 | Nombre | Sprite | .... |
@@ -293,19 +298,8 @@ Cuando el tiempo se agota, los bordes de la pantalla se recubren con un efecto d
 
 En el refugio, la única interfaz permanente es la de los estados de salud (hambre y cansancio), que se representa igual que la de las heridas en el saqueo.
 ## Conclusiones QA
-- **Feeling del juego** 
 
-- **Loot** 
-
-- **Armas**  
-
-- **Crafteo**  
-
-- **Estados de daño**  
-
-- **Dificultad para pasarte el juego** 
- 
-- **Looteo y zonas** 
+Despues de realizar una version del juego para pruebas y realizarle diversas preguntas a los jugadores hemosllegado a diversas conclusiones. La primera de todas era el tiempo de raid, y lo que hicimos fue disminuir el tiempo de raid ya que los jugadores se pasaban los mapas con  mucho tiempo extra. Pasando a hablar de los estados hemos llegado a la conclusion de que hacen falta mas vendas por el mapa ya que es la causa principal de muerte, disminuir la distancia de daño para darle mas valor y mejorar la descripciones de los estados de hambre y cansancio. Otro punto seria el crear un sitio donde guardar objetos en la base y el reducir el numero de acciones a hacer en la base ya que nadie gastaba todas. Tambien la gente no sabia que podia cambiar de arma, para ello introdujimos en el juego un tutorial que ademas te introduce al juego. Tambien llegamos a la conclusion de que la animacion del personaje iba mas despacio de como realmente se movia y aumentamos su velocidad ademas tambien de subir la velocidad en el movimiento en las escaleras.
 
 
 ![Referencias](./docs/headers/h_referencias.png) <a name="refe"></a>
