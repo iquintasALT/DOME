@@ -31,12 +31,12 @@ ShelterHud::ShelterHud(Manager* mngr, ShelterScene* shelter_) : Entity(mngr) {
 
 
 	statesDescriptions = std::vector<std::string>{
-		{"You are not hungry but watch out"},
-		{"You are hungry, you should eat"},
-		{"You are starving, you really need to eat"},
-		{"You are not tired, but do not expend to much time out there"},
-		{"You are tired, you should rest"},
-		{"You are exhausted, you really need a rest"},
+		{"You are not hungry, damage resistance is NORMAL"},
+		{"You are hungry, damage resistance is LOW"},
+		{"You are starving, damage resistance is VERY LOW"},
+		{"You are not tired, speed is NORMAL"},
+		{"You are tired, speed is LOW"},
+		{"You are exhausted, speed is VERY LOW"},
 	};
 }
 

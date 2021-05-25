@@ -140,6 +140,10 @@ void Game::initLoot() {
 	});
 
 	SCENES_LOOT.emplace(SCENES::SHELTER, vector<vector<pair<ItemInfo, Vector2D>>> {
+		//to store items on shelter
+		{
+		
+		}
 	});
 
 	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<pair<ItemInfo, Vector2D>>> { //SUPERMARKET
@@ -203,9 +207,8 @@ void Game::initLoot() {
 	});
 }
 
-void Game::nextDay() {
-	playerSaved->getComponent<HungerComponent>()->decreaseHunger(0.5);
-	playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
+void Game::nextDay()
+{
 	numDays++;
 	if (numDays > consts::MAX_DAYS) playerSaved->getPhysiognomy()->die(WAYSTODIE::DAYS);
 }
@@ -223,4 +226,3 @@ void Game::renderCursor() {
 	};
 	cursor->render(dest);
 }
-

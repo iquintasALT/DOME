@@ -13,12 +13,12 @@ namespace consts {
 	const float PLAYER_BACKWARDS_SPEED = 1.5f;
 	const float CAMERA_MARGIN_FROM_PLAYER = -250;
 	const float JUMP_SPEED = 3.0f;
-	const float STAIRS_SPEED = 1.5f;
-	const float FALLING_DMG_SPEED = 8;
+	const float STAIRS_SPEED = 2.25f;
+	const float FALLING_DMG_SPEED = 5;
 	const float ACCELERATION = 5;
-	const float DECELERATION = 7;
+	const float DECELERATION = 14;
 	// ENEMIES
-	const float MELEE_ENEMY_SPEED = 2.5f;
+	const float MELEE_ENEMY_SPEED = 2.0f;
 	const float MELEE_ENEMY_STOPDISTANCE = 80.0f;
 	const float RANGED_ENEMY_SPEED = PLAYER_SPEED / 2;
 	const float RANGED_ENEMY_MARGINDISTANCE = 250.0f;
