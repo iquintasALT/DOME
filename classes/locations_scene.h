@@ -8,10 +8,10 @@
 class Game;
 class Texture;
 
-const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/zona_shop.tmx", "./resources/tilemap/zona_nuclear_power_station.tmx",
-												"./resources/tilemap/zona_hospital.tmx", "./resources/tilemap/zona_comunications.tmx", 
-												"./resources/tilemap/zona_supermarket.tmx" };
-const array<string, consts::NUM_LOCATIONS> names = {"SHOP", "NUCLEAR POWER STATION", "HOSPITAL", "COMMUNICATIONS", "SUPERMARKET"};
+const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/zona_nuclear_power_station.tmx", "./resources/tilemap/zona_supermarket.tmx",
+												"./resources/tilemap/zona_comunications.tmx", "./resources/tilemap/zona_hospital.tmx", 
+												"./resources/tilemap/zona_shop.tmx" };
+const array<string, consts::NUM_LOCATIONS> names = {"NUCLEAR POWER STATION", "SUPERMARKET", "COMMUNICATIONS", "HOSPITAL", "SHOP",};
 
 const array<float, consts::NUM_LOCATIONS> travelTiredness = { consts::TRAVEL_TO_HOSPITAL_TIREDNESS, consts::TRAVEL_TO_SHOP_TIREDNESS,
 consts::TRAVEL_TO_SUPERMARKET_TIREDNESS, consts::TRAVEL_TO_NUCLEAR_POWER_STATION_TIREDNESS, consts::TRAVEL_TO_COMUNICATIONS_TIREDNESS };
