@@ -162,10 +162,19 @@ void TextWithBackground::setAlpha(int value) {
 
 void TextWithBackground::reset() {
 	appearingText_ = true;
+	finishedWriting = false;
 	message_ = "";
 	currentIndex = 0;
 
 	for (int i = 0; i < text_.size(); i++)
 		delete text_[i];
 	text_.clear();
+}
+
+void TextWithBackground::finishWriting()
+{
+	appearingText_ = false;
+	finishedWriting = true;
+	message_ = finalMessage_;
+	changeTextTextures();
 }

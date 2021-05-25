@@ -27,6 +27,11 @@ void Camera::setScale(float value) {
 	width = winWidth / scale;
 	height = winHeight / scale;
 
+	xmin = ogxmin * scale;
+	xmax = ogxmax * scale;
+	ymin = ogymin * scale;
+	ymax = ogymax * scale;
+
 	pos = pos + Vector2D(pwidth / 2 - width / 2, pheight / 2 - height /2);
 }
 
@@ -35,7 +40,7 @@ float Camera::getScale() {
 }
 
 void Camera::restoreScale() {
-	scale = ogScale;
+	setScale(ogScale);
 }
 
 void Camera::setMain(Camera* cam) {
@@ -63,17 +68,23 @@ void Camera::LerpWithBounds(const Vector2D& newPos, float i) {
 
 	Vector2D& p = pos;
 	if (p.getX() < xmin) p.setX(xmin);
-	else if (p.getX() > xmax) p.setX(xmax);
+	else if (p.getX() > xmax - winWidth) p.setX(xmax - winWidth);
 
-	if (p.getY() < ymin) p.setY(ymin);
-	else if (p.getY() > ymax) p.setY(ymax);
+	if (p.getY() < ymin ) p.setY(ymin );
+	else if (p.getY() + height > ymax ) p.setY(ymax - height);
+
 }
 
 void Camera::setBounds(float a, float b, float c, float d) {
-	xmin = a;
-	ymin = b;
-	xmax = c - width;
-	ymax = d - height;
+	ogxmin = a;
+	ogymin = b;
+	ogxmax = c;
+	ogymax = d;
+
+	xmin = ogxmin * scale;
+	xmax = ogxmax * scale;
+	ymin = ogymin * scale;
+	ymax = ogymax * scale;
 }
 
 void Camera::MoveDir(Vector2D dir) {
@@ -115,6 +126,11 @@ Point2D Camera::WorldToPointSpace(Point2D point) {
 Point2D Camera::getCameraPosition()
 {
 	return pos;
+}
+
+Point2D Camera::getCameraCenterPoisition()
+{
+	return pos + Vector2D(winWidth / 2, winHeight / 2) - Vector2D(winWidth - width, winHeight - height) / 2;
 }
 
 bool Camera::isVisible(Point2D point) {

@@ -11,6 +11,7 @@ private:
 
 	float scale, ogScale;
 	float xmin, ymin, xmax, ymax;
+	float ogxmin, ogymin, ogxmax, ogymax;
 
 public:
 	static Camera* mainCamera;
@@ -32,6 +33,7 @@ public:
 	Point2D PointToWorldSpace(Point2D point);
 	Point2D WorldToPointSpace(Point2D point);
 	Point2D getCameraPosition();
+	Point2D getCameraCenterPoisition();
 	bool isVisible(Point2D point);
 };
 
