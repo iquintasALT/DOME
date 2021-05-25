@@ -34,7 +34,7 @@ void LocationsScene::init()
 
 	addFocus();
 	addTravelLine();
-
+	addTravelLineAnimation();
 	addParticles();
 }
 
@@ -43,7 +43,6 @@ void LocationsScene::onLoad()
 	name = "Day " + std::to_string(getGame()->numDays) + " out of " + std::to_string(consts::MAX_DAYS);
 	createTransition(3.5);
 }
-
 
 
 void LocationsScene::loadLocationButtons(int buttons) {
@@ -88,7 +87,9 @@ void LocationsScene::loadLocationButtons(int buttons) {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-//	mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->decreaseTiredness(travelTiredness[index]);
+	if (g->playerCreated) {
+		g->playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(travelTiredness[index]);
+	}
 	g->currentScene = scenes[index];
 	g->setShouldRenderFPS(true);
 	soundManager().playSFX("push_button");
@@ -97,6 +98,7 @@ void LocationsScene::changeToRaid(Game* g, int index) {
 
 void LocationsScene::update() {
 	mngr_->update();
+	playTravelLineAnimation();
 
 	for (int i = 0; i < locations.size(); i++) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
@@ -126,6 +128,7 @@ void LocationsScene::update() {
 						setTravelLine(buttonPositions[i]);
 						focus->getComponent<Image>()->changeFrame(0, 0);
 						if (i != lastBackGroundActive) {
+							updateAnimation();
 							infos[lastBackGroundActive]->setActive(false);
 							backgrounds[lastBackGroundActive]->setActive(false);
 							infos[i]->setActive(true);
@@ -177,11 +180,11 @@ void LocationsScene::setFocus(Vector2D position) {
 }
 
 void LocationsScene::initFocus() {
-	setFocus(buttonPositions[2]->getPos()); //Se establece el foco al principio en uno cualquiera
-	infos[2]->setActive(true);
-	backgrounds[2]->setActive(true); //Se activa el fondo correspondiente al boton con el foco
+	setFocus(buttonPositions[0]->getPos()); //Se establece el foco al principio en uno cualquiera
+	infos[0]->setActive(true);
+	backgrounds[0]->setActive(true); //Se activa el fondo correspondiente al boton con el foco
 	focus->getComponent<Image>()->changeFrame(0, 0);
-	lastBackGroundActive = 2;
+	lastBackGroundActive = 0;
 }
 
 void LocationsScene::addTravelLine() {
@@ -190,43 +193,16 @@ void LocationsScene::addTravelLine() {
 	travelLine->addComponent<Image>(&sdlutils().images().at("travelLine"), true);
 	mngr_->addRenderLayer<Background>(travelLine);
 
-	setTravelLine(buttonPositions[2]);
-}
-
-void LocationsScene::addParticles()
-{
-	auto shelterTr = shelterImg->getComponent<Transform>();
-	particles = mngr_->addEntity();
-	mngr_->addRenderLayer<ULTIMATE>(particles);
-	auto pos = Camera::mainCamera->WorldToPointSpace(shelterTr->getPos());
-	particles->addComponent<Transform>(
-		 pos);
-	auto p = particles->addComponent<ParticleSystem>(
-		&sdlutils().images().at("donut"), 1, 1, 0, 0);
-
-	p->emitting = true;
-	p->rateOverTime = 1.1;
-	p->lifeTime = 1;
-	p->destroyAfterTime = false;
-	p->particleScale = 5;
-	p->sizeOverTime = true;
-	p->sizeCurve = ParticleSystem::Function(0.7, 0);
-	p->distanceToOrigin = 0;
-	p->speed = 0;
-	p->dir = Vector2D();
-	p->burst = false;
-	p->centerAlign = true;
-	p->gravity = false;
+	setTravelLine(buttonPositions[0]);
 }
 
 void LocationsScene::setTravelLine(Transform* buttonTr) {
-	//cout << travelLine->getComponent<Transform>()->getPos() << endl;
 	auto travelLineTr = travelLine->getComponent<Transform>();
 	auto shelterImgTr = shelterImg->getComponent<Transform>();
 
 	//Centro de la imagenes
-	auto buttonCenterPos = Vector2D(buttonTr->getPos().getX() + buttonTr->getW() / 2, buttonTr->getPos().getY() + buttonTr->getH() / 2);
-	auto shelterImgCenterPos = Vector2D(shelterImgTr->getPos().getX() + shelterImgTr->getW() / 2, shelterImgTr->getPos().getY() + shelterImgTr->getH() / 2);
+	auto buttonCenterPos = buttonTr->getCenterPos();
+	auto shelterImgCenterPos = shelterImgTr->getCenterPos();
 
 	Vector2D dir = buttonCenterPos - shelterImgCenterPos;
 	travelLineTr->setW(dir.magnitude());
@@ -239,9 +215,69 @@ void LocationsScene::setTravelLine(Transform* buttonTr) {
 	travelLineTr->setRot(Vector2D(1, 0).angle(dir.normalize()));
 }
 
+void LocationsScene::addTravelLineAnimation() {
+	auto centerImg = shelterImg->getComponent<Transform>()->getCenterPos();
+
+	travelLineAnimation = mngr_->addEntity();
+	auto tr = travelLineAnimation->addComponent<Transform>(Vector2D(), 30, 10);
+	tr->setRot(travelLine->getComponent<Transform>()->getRot());
+	tr->setCenterPos(centerImg);
+
+	travelLineAnimation->addComponent<Image>(&sdlutils().images().at("travelLineAnimation"), true);
+	mngr_->addRenderLayer<Background>(travelLineAnimation);
+}
+
+void LocationsScene::playTravelLineAnimation() {
+	auto tr = travelLineAnimation->getComponent<Transform>();
+
+	auto focusCenterPos = focus->getComponent<Transform>()->getCenterPos();
+	auto shelterImgCenterPos = shelterImg->getComponent<Transform>()->getCenterPos();
+	auto dir = focusCenterPos - shelterImgCenterPos;
+
+	auto focusPosition = focus->getComponent<Transform>()->getPos();
+
+	tr->setPos(tr->getPos() + dir.normalize() * animationSpeed);
+
+	if ((tr->getCenterPos()-focusCenterPos).magnitude() <= 5) tr->setCenterPos(shelterImgCenterPos);
+}
+
+void LocationsScene::updateAnimation() {
+	auto tr = travelLineAnimation->getComponent<Transform>();
+	auto shelterImgTr = shelterImg->getComponent<Transform>();
+	auto centerPos = shelterImg->getComponent<Transform>()->getCenterPos();
+	tr->setCenterPos(centerPos);
+	tr->setRot(travelLine->getComponent<Transform>()->getRot());
+}
+
+
+void LocationsScene::addParticles()
+{
+	auto shelterTr = shelterImg->getComponent<Transform>();
+	particles = mngr_->addEntity();
+	mngr_->addRenderLayer<ULTIMATE>(particles);
+	auto pos = Camera::mainCamera->WorldToPointSpace(shelterTr->getPos());
+	particles->addComponent<Transform>(
+		pos);
+	auto p = particles->addComponent<ParticleSystem>(
+		&sdlutils().images().at("donut"), 1, 1, 0, 0);
+
+	p->emitting = true;
+	p->rateOverTime = 1;
+	p->lifeTime = 0.8;
+	p->destroyAfterTime = false;
+	p->particleScale = 3;
+	p->sizeOverTime = true;
+	p->sizeCurve = ParticleSystem::Function(0.7, 0);
+	p->distanceToOrigin = 0;
+	p->speed = 0;
+	p->dir = Vector2D();
+	p->burst = false;
+	p->centerAlign = true;
+	p->gravity = false;
+}
+
 
 //FADE
-
 Fade::Fade(float speed, Texture* t) : tr_(nullptr) {
 	t = 0;
 	f = 255;

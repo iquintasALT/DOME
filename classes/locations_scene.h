@@ -27,16 +27,20 @@ private:
 	vector<Entity*> backgrounds;
 	vector<Transform*> buttonPositions;
 	vector<bool> mouseOverInfo;
+
+	//Foco y linea de trayecto
 	Entity* focus;
 	Entity* shelterImg;
 	Entity* travelLine;
-
+	Entity* travelLineAnimation;
 	Entity* particles;
+	float animationSpeed;
 
 	void loadLocationButtons(int buttons);
 
 public:
-	LocationsScene(Game* g) : GameScene(g, "Locations"), focus(nullptr), shelterImg(nullptr), travelLine(nullptr) {};
+	LocationsScene(Game* g) : GameScene(g, "Locations"), focus(nullptr), shelterImg(nullptr), travelLine(nullptr),
+											animationSpeed(3), travelLineAnimation(nullptr), particles(nullptr) {};
 	~LocationsScene() {};
 	void init() override;
 	void onLoad() override;
@@ -52,8 +56,16 @@ public:
 	void addParticles();
 	void setTravelLine(Transform* buttonPos);
 
+	//Animation
+	void addTravelLineAnimation();
+	void playTravelLineAnimation();
+	void updateAnimation();
+
 	void changeToRaid(Game* g, int index);
 };
+
+
+//Fade
 
 class Fade : public Component {
 public:

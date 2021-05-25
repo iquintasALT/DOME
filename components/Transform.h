@@ -29,6 +29,10 @@ public:
 
 	inline Vector2D& getPos() { return pos_; }
 
+	Vector2D getCenterPos();
+
+	void setCenterPos(Vector2D pos);
+
 	inline float getH() const { return height_; }
 
 	inline void setH(float height) { height_ = height; }
