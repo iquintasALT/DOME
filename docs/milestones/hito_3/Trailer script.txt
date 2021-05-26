@@ -2,10 +2,10 @@
 -Yojhan Steven, lead programmer - Pablo
 Qué es DOME? Dicho en una sola frase DOME es una expresión. Una expresión de pasión hacia el medio de los videojuegos. 
 
+-DOME es un juego de supervivencia en vista lateral 2d, en la que el jugador debe saquear los restos de una colonia espacial, defendiéndose de monstruosos extraterrestres hasta poder escapar.
+
 -Abel Moro, visionary
 Cuando juegas a este juego, no estás completando una serie de objetivos inanes, ligeramente relacionados por poco más que un vago pretexto. Cuando juegas a este juego, estás experimentando una amplia gama de emociones, puras y primordiales, comunicadas a través del género del scroller lateral.
-
--DOME es un juego de supervivencia en vista lateral 2d, en la que el jugador debe saquear los restos de una colonia espacial, defendiéndose de monstruosos extraterrestres hasta poder escapar.
 
 -Yojhan
 Dentro de los confines de la cúpula 42, un jugador podrá destapar una rica y compleja historia de codicia empresarial, de soberbia y sobreexplotación natural, además de otros asuntos sociales de la actualidad. No obstante, basamos la construcción de nuestro mundo en la primera ley del cuento: muestra, no expliques. Por este motivo, el jugador no puede esperar que se le regalen todas las respuestas; solo si verdaderamente se implica en la experiencia de juego y por ende crezca como persona podrá comprender la historia en su totalidad.
@@ -19,7 +19,7 @@ Muchos me llamaron loco. No les culpo, era un idea absolutamente radical, sin ni
 Y es gracias a la amplia diversidad de trasfondos involucrados en el proyecto que hemos podido explorar conceptos totalmente desconocidos para los programadores corrientes.
 
 -Pablo
-Realmente no creo que haya alguien más apropiado para diseñar un hogar al jugador. Cuando te fijas, mucha gente se pasa su vida viviendo en sus casas, pero en ningún momento se para a pensar en qué es realmente una casa. Mi padre fue albañil, y su pericia en construcción de vivendas y el conocimiento que me transmitió fueron invaluables para mí a la hora de diseñar el refugio del jugador. Este tenía que ser un lugar seguro, con todos los abastecimientos necesarios.
+Realmente no creo que haya alguien más apropiado para diseñar un hogar al protagonista. Cuando te fijas, mucha gente se pasa su vida viviendo en sus casas, pero en ningún momento se para a pensar en qué es realmente una casa. Mi padre fue albañil, y su pericia en construcción de vivendas y el conocimiento que me transmitió fueron invaluables para mí a la hora de diseñar el refugio del jugador. Este tenía que ser un lugar seguro, con todos los abastecimientos necesarios.
 
 -Yojhan
 Teníamos que permitir una opción de crafteo. La creación de objetos en el mundo es la mayor expresión de voluntad. Cuando nuestro jugador empieza a crear objetos en el juego a partir de otros, estará comprometido con el juego de nuevas formas. Se sentirá como parte del mundo.
@@ -31,7 +31,7 @@ Yo encuentro que para hacer un monstruo realmente aterrador, es necesario examin
 Te podrías preguntar: ¿de dónde tomaron inspiración para concebir semejante obra? Una pregunta excelente, desde luego. Interesantemente, la inspiración no proviene de ningún juego, pues creemos que el medio entero ha carecido de originalidad por muchos años. Nuestro objetivo es marcar un antes y un después para el entretenimiento interactivo. Por ello, nuestra inspiración se encuentra en las obras que marcaron ese antes y después para otros medios del arte, como El Capitán Calzoncillos para la literatura, o Transformers 2 para el cine.
 
 ~Interviewer
-Aunque es muy temprano para juzgar el éxito comercial del juego, ya se ha demostrado polarizante entre los críticos. Una reseña comentó que: "Si solo hubiese tenido que pagar por este juego, al menos una parte falaz de mi cerebro habría querido jugarlo hasta el final, aunque solo fuese para justificar mi dinero.". Otros críticos, que murieron contra el primer enemigo, han hecho comparaciones del juego con Dark Souls.
+A pocos días del lanzamiento, el público está ansioso para probar el juego, pero ya se están viendo las primeras críticas.
 
 -Abel
 No nos sorprende esto, tampoco nos preocupa. Cada vez que sale al mundo una obra así de revolucionaria, siempre habrán aquellos que tienen miedo al cambio que señala. Esta gente intenta aferrarse al pasado para un sentido de familiaridad. No obstante, con el lanzamiento del juego, esa era está casi acabada. Después de esto, el mundo de los videojuegos podría nunca volver a ser el mismo.
