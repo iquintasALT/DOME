@@ -5,7 +5,7 @@ Qué es DOME? Dicho en una sola frase DOME es una expresión. Una expresión de 
 -DOME es un juego de supervivencia en vista lateral 2d, en la que el jugador debe saquear los restos de una colonia espacial, defendiéndose de monstruosos extraterrestres hasta poder escapar.
 
 -Abel Moro, visionary
-Cuando juegas a este juego, no estás completando una serie de objetivos inanes, ligeramente relacionados por poco más que un vago pretexto. Cuando juegas a este juego, estás experimentando una amplia gama de emociones, puras y primordiales, comunicadas a través del género del scroller lateral.
+Cuando juegas a este juego, no estás completando una serie de objetivos inutiles ligeramente relacionados por poco más que un vago pretexto. Cuando juegas a este juego, estás experimentando una amplia gama de emociones, puras y primordiales, comunicadas a través del género del scroller lateral.
 
 -Yojhan
 Dentro de los confines de la cúpula 42, un jugador podrá destapar una rica y compleja historia de codicia empresarial, de soberbia y sobreexplotación natural, además de otros asuntos sociales de la actualidad. No obstante, basamos la construcción de nuestro mundo en la primera ley del cuento: muestra, no expliques. Por este motivo, el jugador no puede esperar que se le regalen todas las respuestas; solo si verdaderamente se implica en la experiencia de juego y por ende crezca como persona podrá comprender la historia en su totalidad.
@@ -34,5 +34,5 @@ Te podrías preguntar: ¿de dónde tomaron inspiración para concebir semejante 
 A pocos días del lanzamiento, el público está ansioso para probar el juego, pero ya se están viendo las primeras críticas.
 
 -Abel
-No nos sorprende esto, tampoco nos preocupa. Cada vez que sale al mundo una obra así de revolucionaria, siempre habrán aquellos que tienen miedo al cambio que señala. Esta gente intenta aferrarse al pasado para un sentido de familiaridad. No obstante, con el lanzamiento del juego, esa era está casi acabada. Después de esto, el mundo de los videojuegos podría nunca volver a ser el mismo.
+No nos sorprende esto, tampoco nos preocupa. Cada vez que sale al mundo una obra así de revolucionaria, siempre habrá criticas del avance que supone proyecto. Esta gente intenta aferrarse al pasado para un sentido de familiaridad. No obstante, con el lanzamiento del juego, esa era está casi acabada. Después de esto, el mundo de los videojuegos podría nunca volver a ser el mismo.
 
