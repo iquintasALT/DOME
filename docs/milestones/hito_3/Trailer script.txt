@@ -6,7 +6,7 @@ Qué es DOME? Dicho en una sola frase DOME es una expresión. Una expresión de 
 Cuando juegas a este juego, no estás completando una serie de objetivos inanes, ligeramente relacionados por poco más que un vago pretexto. Cuando juegas a este juego, estás experimentando una amplia gama de emociones, puras y primordiales, comunicadas a través del género del scroller lateral.
 
 -Pablo Fernández, level designer
-Otros desarrolladores diseñan niveles. Estos son entretenidos, aunque a menudo sosos, frecuentemente conectados por poco más que la historia o las mecánicas básicas. Yo no diseño niveles. Yo diseño sensaciones. Desesperación, intriga, suspense, temor, alivio, pánico. Todos estos son los ladrillos con los que nuestro juego está hecho.
+Otros desarrolladores diseñan niveles. Pueden estar entretenidos, pero cometen el error de seccionar el juego, y solo se puentean de formas superficiales: mecánicas o historia. Yo no diseño niveles. Yo diseño sensaciones. Desesperación, intriga, suspense, temor, alivio, pánico. Todos estos son los ladrillos con los que nuestro juego está hecho.
 
 -Yojhan
 Dentro de los confines de la cúpula 42, un jugador podrá destapar una rica y compleja historia de codicia empresarial, de soberbia y sobreexplotación natural, además de otros asuntos sociales de la actualidad. No obstante, basamos la construcción de nuestro mundo en la primera ley del cuento: muestra, no cuentes. Por este motivo, el jugador no puede esperar que se le regalen todas las respuestas; solo si verdaderamente se implica en la experiencia de juego y por ende crezca como persona podrá comprender la historia en su totalidad.
@@ -23,7 +23,7 @@ Realmente no creo que haya alguien más apropiado para diseñar un hogar al juga
 Yo encuentro que para hacer un monstruo realmente aterrador, es necesario examinar la psique humana y entender ¿qué es lo que nos da miedo? Tras mirarme más de tres páginas de creepypastas, decidí que la imagen que más terror evoca en el subconsciente humano era un monigote pálido, tal que evoca la familiaridad humana, haciendo destacar sus diferencias más horroríficas.
 
 -Pablo
-Te podrías preguntar: ¿de dónde tomaron inspiración para concebir semejante obra? Una pregunta excelente, desde luego. Interesantemente, la inspiración no proviene de ningún juego, pues creemos que el medio entero ha carecido de originalidad por muchos años. No, nuestra inspiración se encuentra en las obras más revolucionarias otros medios del arte: al igual que El Capitán Calzoncillos para la literatura, o Transformers 2 para el cine, queremos que Dome marque un antes y después para el entretenimiento interactivo.
+Te podrías preguntar: ¿de dónde tomaron inspiración para concebir semejante obra? Una pregunta excelente, desde luego. Interesantemente, la inspiración no proviene de ningún juego, pues creemos que el medio entero ha carecido de originalidad por muchos años. Nuestro objetivo es marcar un antes y un después para el entretenimiento interactivo. Por ello, nuestra inspiración se encuentra en las obras que marcaron ese antes y después para otros medios del arte, como El Capitán Calzoncillos para la literatura, o Transformers 2 para el cine.
 
 -Yojhan
 Teníamos que permitir una opción de crafteo. La creación de objetos en el mundo es la mayor expresión de voluntad. Cuando nuestro jugador empieza a crear objetos en el juego a partir de otros, estará comprometido con el juego de nuevas formas. Se sentirá como parte del mundo.
