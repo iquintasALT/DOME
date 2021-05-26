@@ -5,11 +5,13 @@ Qué es DOME? Dicho en una sola frase DOME es una expresión. Una expresión de 
 -Abel Moro, visionary
 Cuando juegas a este juego, no estás completando una serie de objetivos inanes, ligeramente relacionados por poco más que un vago pretexto. Cuando juegas a este juego, estás experimentando una amplia gama de emociones, puras y primordiales, comunicadas a través del género del scroller lateral.
 
--Pablo Fernández, level designer
-Otros desarrolladores diseñan niveles. Pueden estar entretenidos, pero cometen el error de seccionar el juego, y solo se puentean de formas superficiales: mecánicas o historia. Yo no diseño niveles. Yo diseño sensaciones. Desesperación, intriga, suspense, temor, alivio, pánico. Todos estos son los ladrillos con los que nuestro juego está hecho.
+-DOME es un juego de supervivencia en vista lateral 2d, en la que el jugador debe saquear los restos de una colonia espacial, defendiéndose de monstruosos extraterrestres hasta poder escapar.
 
 -Yojhan
-Dentro de los confines de la cúpula 42, un jugador podrá destapar una rica y compleja historia de codicia empresarial, de soberbia y sobreexplotación natural, además de otros asuntos sociales de la actualidad. No obstante, basamos la construcción de nuestro mundo en la primera ley del cuento: muestra, no cuentes. Por este motivo, el jugador no puede esperar que se le regalen todas las respuestas; solo si verdaderamente se implica en la experiencia de juego y por ende crezca como persona podrá comprender la historia en su totalidad.
+Dentro de los confines de la cúpula 42, un jugador podrá destapar una rica y compleja historia de codicia empresarial, de soberbia y sobreexplotación natural, además de otros asuntos sociales de la actualidad. No obstante, basamos la construcción de nuestro mundo en la primera ley del cuento: muestra, no expliques. Por este motivo, el jugador no puede esperar que se le regalen todas las respuestas; solo si verdaderamente se implica en la experiencia de juego y por ende crezca como persona podrá comprender la historia en su totalidad.
+
+-Pablo Fernández, level designer
+Otros desarrolladores diseñan niveles. Pueden estar entretenidos, pero cometen el error de seccionar el juego, y solo se puentean de formas superficiales: mecánicas o historia. Yo no diseño niveles. Yo diseño sensaciones. Desesperación, intriga, suspense, temor, alivio, pánico. Todos estos son los ladrillos con los que nuestro juego está hecho.
 
 -Abel
 Decidí que para realizar mi visión, necesitaría formar un equipo de desarrollo exclusivamente a partir de gente que nunca ha jugado a un solo videojuego.
@@ -20,13 +22,13 @@ Y es gracias a la amplia diversidad de trasfondos involucrados en el proyecto qu
 Realmente no creo que haya alguien más apropiado para diseñar un hogar al jugador. Cuando te fijas, mucha gente se pasa su vida viviendo en sus casas, pero en ningún momento se para a pensar en qué es realmente una casa. Mi padre fue albañil, y su pericia en construcción de vivendas y el conocimiento que me transmitió fueron invaluables para mí a la hora de diseñar el refugio del jugador. Este tenía que ser un lugar seguro, con todos los abastecimientos necesarios.
 
 -Yojhan
+Teníamos que permitir una opción de crafteo. La creación de objetos en el mundo es la mayor expresión de voluntad. Cuando nuestro jugador empieza a crear objetos en el juego a partir de otros, estará comprometido con el juego de nuevas formas. Se sentirá como parte del mundo.
+
+-Yojhan
 Yo encuentro que para hacer un monstruo realmente aterrador, es necesario examinar la psique humana y entender ¿qué es lo que nos da miedo? Tras mirarme más de tres páginas de creepypastas, decidí que la imagen que más terror evoca en el subconsciente humano era un monigote pálido, tal que evoca la familiaridad humana, haciendo destacar sus diferencias más horroríficas.
 
 -Pablo
 Te podrías preguntar: ¿de dónde tomaron inspiración para concebir semejante obra? Una pregunta excelente, desde luego. Interesantemente, la inspiración no proviene de ningún juego, pues creemos que el medio entero ha carecido de originalidad por muchos años. Nuestro objetivo es marcar un antes y un después para el entretenimiento interactivo. Por ello, nuestra inspiración se encuentra en las obras que marcaron ese antes y después para otros medios del arte, como El Capitán Calzoncillos para la literatura, o Transformers 2 para el cine.
-
--Yojhan
-Teníamos que permitir una opción de crafteo. La creación de objetos en el mundo es la mayor expresión de voluntad. Cuando nuestro jugador empieza a crear objetos en el juego a partir de otros, estará comprometido con el juego de nuevas formas. Se sentirá como parte del mundo.
 
 ~Interviewer
 Aunque es muy temprano para juzgar el éxito comercial del juego, ya se ha demostrado polarizante entre los críticos. Una reseña comentó que: "Si solo hubiese tenido que pagar por este juego, al menos una parte falaz de mi cerebro habría querido jugarlo hasta el final, aunque solo fuese para justificar mi dinero.". Otros críticos, que murieron contra el primer enemigo, han hecho comparaciones del juego con Dark Souls.
