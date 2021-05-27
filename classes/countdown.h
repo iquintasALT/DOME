@@ -8,7 +8,7 @@
 class Countdown
 {
 private:
-	float lefttime;
+	float timeLeft;
 	Texture* counter;
 	bool alarm;
 	float cooldown;
@@ -19,5 +19,5 @@ public:
 	void update();
 	void render();
 
-	inline bool keepPlaying() { return lefttime > 0; }
+	inline bool keepPlaying() { return timeLeft > 0; }
 };

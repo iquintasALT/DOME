@@ -45,7 +45,7 @@ SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingS
 	setImg(craftButton, craftButton_pos, Vector2D{ 265,105 }, "craft_slot_box");
 	craftButton_tr = craftButton->getComponent<Transform>();
 
-	//setWorkshopItems({ SPACESHIP_CABIN,SPACESHIP_RADAR,SPACESHIP_ROCKETS });
+	setWorkshopItems({ SPACESHIP_CABIN,SPACESHIP_RADAR,SPACESHIP_ROCKETS });
 
 	rocketTop = mngr_->addEntity();
 	rocketTop->addComponent<Transform>(Vector2D{ bg_pos.getX() + bg_size.getX() * 0.075f,35 }, 320, 213);

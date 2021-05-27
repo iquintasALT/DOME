@@ -98,8 +98,8 @@ void InitialScene::init()
 
 	auto loot = mngr_->addEntity();
 	mngr_->addRenderLayer<Loot>(loot);
-	loot->addComponent<Transform>(playerTr->getPos() + Vector2D(300, 40), 40, 60);
-	loot->addComponent<Image>(&sdlutils().images().at("panel"));
+	loot->addComponent<Transform>(playerTr->getPos() + Vector2D(250, 20), 64, 64);
+	loot->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 5, 0);
 	loot->addComponent<TutorialLoot>();
 }
 

@@ -8,7 +8,7 @@ class Transform;
 class Image;
 class Fade;
 class KeyboardPlayerCtrl;
-class player_animation;
+class PlayerAnimation;
 class EnemyAnimation;
 class FlyingEnemyAnimation;
 class Weapon;
@@ -67,7 +67,7 @@ class TutorialBackToShelter;
 	Image,\
 	Fade,\
 	KeyboardPlayerCtrl, \
-	player_animation, \
+	PlayerAnimation, \
 	EnemyAnimation, \
 	FlyingEnemyAnimation, \
     Weapon, \
