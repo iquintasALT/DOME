@@ -172,13 +172,8 @@ void GameScene::loadMap(string& const path) {
 					stair->addComponent<Transform>(Point2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					stair->addComponent<BoxCollider>(true, 0);
 				}
-				else if (obj.getName() == "playerSpawn") {
-					if (g_->playerCreated) {
-						auto ent = mngr_->getHandler<Player_hdlr>();
-						ent->getComponent<Transform>()->setPos(Point2D(aabb.left, aabb.top));
-					}
-					else
-						new Player(mngr_, Point2D(aabb.left, aabb.top));
+				else if (obj.getName() == "playerSpawn") {	
+					new Player(mngr_, Point2D(aabb.left, aabb.top));
 					auto camPos = Vector2D(aabb.left, aabb.top) + Vector2D(0, consts::CAMERA_MARGIN_FROM_PLAYER / Camera::mainCamera->getScale());
 					Camera::mainCamera->MoveToPoint(camPos);
 				}

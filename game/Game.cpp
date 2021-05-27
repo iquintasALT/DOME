@@ -50,9 +50,6 @@ Game::Game(int totaltime) {
 Game::~Game() {
 	delete states;
 	delete Camera::mainCamera;
-	if (playerCreated) {
-		delete playerSaved;
-	}
 
 	int i = 1;
 	std::cout << std::endl << "Hola soy la destructora del game" << std::endl;
@@ -258,13 +255,6 @@ void Game::initLoot() {
 		}
 	});
 }
-
-void Game::nextDay()
-{
-	numDays++;
-	if (numDays > consts::MAX_DAYS) playerSaved->getPhysiognomy()->die(WAYSTODIE::DAYS);
-}
-
 
 void Game::renderCursor() {
 	auto mousePos = ih().getMousePos();
