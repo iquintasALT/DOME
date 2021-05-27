@@ -141,7 +141,12 @@ void Inventory::onDisable() {
 
 
 Inventory::~Inventory() {
-	for (auto a : storedItems) {
+	if (isPlayer && !forceDelete)
+		std::cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
+
+	if (isPlayer) forceDelete = true;
+
+	for (auto& a : storedItems) {
 		a->forceDelete = forceDelete;
 		delete a;
 	}
@@ -371,29 +376,5 @@ bool Inventory::insideSquare(int mouseX, int mouseY) {
 
 	return mouseX > pos.getX() && mouseX < pos.getX() + transform->getW()
 		&& mouseY > pos.getY() && mouseY < pos.getY() + transform->getH();
-}
-
-InventoryStorage::~InventoryStorage() {
-	for (auto a : storedItems) {
-		delete a;
-	}
-	storedItems.clear();
-}
-
-void InventoryStorage::load(Inventory* inv_) {
-	for (auto a : storedItems) {
-		inv_->storeItem(new Item(a, inv_));
-	}
-}
-
-void InventoryStorage::safe(Inventory* inv_) {
-	for (auto a : storedItems) {
-		delete a;
-	}
-	storedItems.clear();
-
-	for (auto a : inv_->storedItems) {
-		storedItems.push_back(new Item(a, nullptr));
-	}
 }
 

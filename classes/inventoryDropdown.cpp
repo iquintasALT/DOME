@@ -5,12 +5,14 @@ inventoryDropdown::slot::slot(std::string text, std::function<void()> f) {
 	texture = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff));
 }
 inventoryDropdown::slot::~slot() {
-	if (texture != nullptr)
-		delete texture;
+	delete texture;
 	texture = nullptr;
 }
 
-inventoryDropdown::inventoryDropdown(Texture* texture, std::vector<inventoryDropdown::slot*> slot, float width) : slots(slot), texture(texture), width(width) {
+inventoryDropdown::inventoryDropdown(Texture* texture,
+	std::vector<inventoryDropdown::slot*> slot, float width)
+	: slots(slot), texture(texture), width(width) {
+
 }
 
 inventoryDropdown::~inventoryDropdown() {

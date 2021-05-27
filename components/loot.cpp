@@ -24,16 +24,23 @@ Loot::~Loot() {
 
 	Game* g = entity_->getMngr()->getGame();
 
-	vector<pair<ItemInfo, Vector2D>> itemsInLoot;
+	vector<pair<ItemInfo*, Vector2D>> itemsInLoot;
 
 	for (Item* i : inventory->getItems()) {
 		ItemInfo* info = i->getItemInfo();
-		ItemInfo aux = ItemInfo{ info->name(),info->strName(),info->description(),info->width(),info->height(),info->row(),info->col(), info->getFunc(),info->getAmount() };
+		ItemInfo* aux =
+			new ItemInfo(info);
 		itemsInLoot.push_back(make_pair(aux, Vector2D(i->getX(), i->getY())));
 	}
 
 	auto* aux = &g->SCENES_LOOT.find(g->currentScene)->second;
 	aux->push_back(itemsInLoot);
+
+	auto variableAuxiliar = *aux->begin();
+	for (auto variableParaRecorrerLaVariableAuxiliar : variableAuxiliar) {
+		delete variableParaRecorrerLaVariableAuxiliar.first;
+	}
+
 	aux->erase(aux->begin());
 }
 
