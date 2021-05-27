@@ -2,6 +2,7 @@
 #include "../classes/player.h"
 #include "../classes/physiognomy.h"
 #include "../components/hunger_component.h"
+#include "../sdlutils/SoundManager.h"
 
 ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, int craftAmount) :
 	_name(name), _strName(strName), _description(description), _width(width), _height(height), _row(row), _col(col), _craftAmount(craftAmount) {
@@ -44,6 +45,7 @@ ItemInfo* ItemInfo::bandage()
 {
 	auto f = [](Entity* player) {
 		static_cast<Player*>(player)->getPhysiognomy()->removeBleedState();
+		soundManager().playSFX("heal");
 	};
 
 	return new ItemInfo(BANDAGE, "bandage", "Can heal bleeding", 1, 1, 0, 2, f);
@@ -63,7 +65,7 @@ ItemInfo* ItemInfo::water()
 
 ItemInfo* ItemInfo::organicMaterial()
 {
-	return new ItemInfo(ORGANIC_MATERIAL, "organic material", "Useful to craft medicines or food", 2, 2, 1, 2);
+	return new ItemInfo(ORGANIC_MATERIAL, "organic material", "Useful to craft medicines or food", 2, 2, 0, 0);
 }
 
 ItemInfo* ItemInfo::mecanicalComponents()
@@ -111,6 +113,7 @@ ItemInfo* ItemInfo::splint()
 {
 	auto f = [](Entity* player) {
 		static_cast<Player*>(player)->getPhysiognomy()->removeConcussionState();
+		soundManager().playSFX("splint");
 	};
 
 	return new ItemInfo(SPLINT, "splint", "Can heal concussions", 2, 2, 5, 1, f);
@@ -121,9 +124,10 @@ ItemInfo* ItemInfo::painKiller()
 {
 	auto f = [](Entity* player) {
 		static_cast<Player*>(player)->getPhysiognomy()->removePainState();
+		soundManager().playSFX("pills");
 	};
 
-	return new ItemInfo(PAINKILLER, "painkiller", "Can heal pain", 1, 2, 0, 0, f);
+	return new ItemInfo(PAINKILLER, "painkiller", "Can heal pain", 1, 2, 2, 0, f);
 }
 
 
