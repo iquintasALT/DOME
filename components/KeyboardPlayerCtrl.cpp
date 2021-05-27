@@ -94,7 +94,7 @@ void KeyboardPlayerCtrl::update() {
 				else if (speed > 0.1f)
 					speed -= deceleration * consts::DELTA_TIME;
 
-				if (abs(speed) < .1f)
+				if (abs(speed) < .15f)
 					speed = 0;
 			}
 			rb_->setVel(Vector2D(speed, rb_->getVel().getY()));
