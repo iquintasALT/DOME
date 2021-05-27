@@ -13,7 +13,7 @@
 class Manager;
 class Entity;
 
-const enum class SCENES { SHOP, NUCLEAR_STATION, HOSPITAL, COMMUNICATIONS, SUPERMARKET, SHELTER, RAID, SETTINGS, MAINMENU, NONE, CREDITS };
+const enum class SCENES { SHOP, NUCLEAR_STATION, HOSPITAL, COMMUNICATIONS, SUPERMARKET, SHELTER, RAID, SETTINGS, MAINMENU, CREDITS, NONE};
 const vector<SCENES> scenes = { SCENES::SHOP,  SCENES::NUCLEAR_STATION,  SCENES::HOSPITAL, SCENES::COMMUNICATIONS,  SCENES::SUPERMARKET };
 const vector<int> SCENES_CHESTS = { 0,0,2,1,0 };
 
@@ -32,6 +32,7 @@ private:
 	Texture* fpsText;
 
 	void drawFPS(int fps);
+	void clearSceneLoot();
 
 public:
 	SCENES currentScene;
@@ -46,6 +47,7 @@ public:
 	void quitGame() { exit = true; }
 
 	void initLoot();
+
 	void setFPSActive(bool value) { fpsActive = value; }
 	bool getFPSActive() { return fpsActive; }
 	void setShouldRenderFPS(bool value) { shouldRenderFps = value; }

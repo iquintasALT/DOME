@@ -124,13 +124,13 @@ void KeyboardPlayerCtrl::update() {
 				aux->getCurrentWeapon()->reload();
 			}
 
-			if (keystates[SDL_SCANCODE_X] && !xClicked) //Cambiar arma
+			if (keystates[SDL_SCANCODE_Q] && !xClicked) //Cambiar arma
 			{
 				WeaponBehaviour* aux = static_cast<Player*>(entity_)->getWeapon();
 				aux->changeWeapon();
 				xClicked = true;
 			}
-			else if (!keystates[SDL_SCANCODE_X] && xClicked)
+			else if (!keystates[SDL_SCANCODE_Q] && xClicked)
 			{
 				xClicked = false;
 			}
