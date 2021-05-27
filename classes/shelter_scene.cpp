@@ -124,6 +124,11 @@ void ShelterScene::useAction()
 	std::cout << "actions: " << actions << endl;
 }
 
+void ShelterScene::addAction()
+{
+	actions++;
+}
+
 void ShelterScene::createParallaxBackground(int numOfRep) {
 	createParallaxLayer(0, &sdlutils().images().at("skyS"), numOfRep);
 	createParallaxLayer(0.2, &sdlutils().images().at("ruins"), numOfRep);
