@@ -188,15 +188,14 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 }
 
 Item::Item(Item* item, Inventory* inventory) :
-	Item(item->getItemInfo(), inventory->getEntity()->getMngr(), inventory,
+	Item(new ItemInfo(item->getItemInfo()), inventory->getEntity()->getMngr(), inventory,
 		item->x, item->y, item->count) {
-
 }
 
 Item::~Item() {
 	delete info;
 
-	if (countTex != nullptr) {
+	if (countTex != nullptr && !forceDelete) {
 		countTex->setDead(true);
 	}
 
