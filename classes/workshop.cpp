@@ -75,6 +75,18 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, Shelt
 	shelterScene = shelterScene_;
 }
 
+void Workshop::closeCraft()
+{
+	loot->Interact();
+	loot->getEntity()->setActive(false);
+	loot = nullptr;
+	renderFlag = true;
+	renderRightWindow = true;
+	setLeftRender();
+	setRightRender();
+
+}
+
 void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
 	workshopItems = move(items);
 
@@ -99,6 +111,7 @@ void Workshop::setRenderFlag(bool set) {
 		playerTr->getEntity()->setActive(false);
 
 	setLeftRender();
+	ih().clearState();
 }
 
 void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
@@ -218,9 +231,24 @@ void Workshop::setRightRender() {
 void Workshop::update() {
 	falseMngr->refresh();
 
+	if (loot != nullptr && ih().isKeyDown(SDL_SCANCODE_E)) {
+		if (!loot->getInventory()->getItems().empty()) {
+			craftSys->restoreCraft();
+			shelterScene->addAction();
+		}
+		closeCraft();
+		ih().clearState();
+	}
+
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
+		if (ih().isKeyDown(SDL_SCANCODE_E)) {
+			renderFlag = false;
+			renderRightWindow = false;
+			playerTr->getEntity()->setActive(true);
+			ih().clearState();
+		}
 
 		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
 			mouseClick = true;
@@ -293,26 +321,18 @@ void Workshop::update() {
 
 	if (loot != nullptr) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
-		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
-			mouseClick = true;
 
-			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
+		mouseClick = true;
 
-				if (!loot->getInventory()->getItems().empty()) {
-					craftSys->restoreCraft();			
-				}
-
-				loot->Interact();
-				loot->getEntity()->setActive(false);
-				loot = nullptr;
-				renderFlag = true;
-				renderRightWindow = true;
-				setLeftRender();
-				setRightRender();
-			}
-
+		if (loot->getInventory()->getItems().empty()) {
+			closeCraft();
+			renderFlag = true;
 		}
-		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
+		else if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick)
+			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
+				craftSys->restoreCraft();
+				shelterScene->addAction();
+			}
 	}
 }
 
