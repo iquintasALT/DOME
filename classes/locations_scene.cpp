@@ -8,9 +8,13 @@
 #include "../ecs/Component.h"
 #include "../components/tiredness_component.h"
 #include "../components/particleSystem.h"
-
+#include "../classes/camera.h"
 void LocationsScene::init()
 {
+	Vector2D a;
+	Camera::mainCamera->Move(a);
+
+
 	addBackground(&sdlutils().images().at("bgImage7"));
 	addBackground(&sdlutils().images().at("bgImage5"));
 	addBackground(&sdlutils().images().at("bgImage2"));
