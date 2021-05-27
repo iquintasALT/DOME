@@ -33,6 +33,7 @@ private:
 	Texture* totalBullets;
 	Texture* timer;
 	Texture* marco;
+	Texture* stateBackground;
 	Image* currentWeapon;
 
 	std::vector<std::string> woundDescriptions;
