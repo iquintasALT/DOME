@@ -77,19 +77,24 @@ Player::Player(Player* prevPlayer, Manager* mngr):
 	for (auto item : oldInv->getItems()) {
 		newInv->storeItem(new Item(item, newInv));
 	}
-	oldInv->getItems().clear();
+
+	/*for (auto item : oldInv->getItems()) {
+
+	}*/
+
+	//oldInv->getItems().clear();
 
 //======================================================================================
 	WeaponBehaviour* oldWeapon = prevPlayer->getWeapon();
 	WeaponBehaviour* newWeapon = this->getWeapon();
 
-	/*for (int i = 0; i < 3; i++) {
+	for (int i = 0; i < 3; i++) {
 		int weaponTier = oldWeapon->tierOfWeapon();
 		for (int tier = 0; tier < weaponTier; tier++) {
 			newWeapon->upgradeCurrentWeapon();
 		}
 		newWeapon->changeWeapon();
-	}*/
+	}
 
 //======================================================================================
 
@@ -100,8 +105,6 @@ Player::Player(Player* prevPlayer, Manager* mngr):
 	getComponent<TirednessComponent>()->setTirednessLfloat(prevPlayer->getComponent<TirednessComponent>()->getTirednessfloat());
 	
 	//addComponent<TirednessComponent>();*/
-
-
 
 //======================================================================================
 

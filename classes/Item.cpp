@@ -24,6 +24,11 @@ ItemInfo::ItemInfo(ItemInfo* item) {
 	function = item->function;
 }
 
+ItemInfo::~ItemInfo()
+{
+
+}
+
 
 
 ItemInfo* ItemInfo::antidote()
@@ -151,8 +156,6 @@ ItemInfo* ItemInfo::metalPlates()
 	return new ItemInfo(METAL_PLATES, "metal plates", "Metal plates, useful to repair the spaceship", 2, 2, 7, 1);
 }
 
-
-
 //&sdlutils().images().at("items")
 
 Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int xPos, int yPos, int count) :
@@ -167,6 +170,7 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 	image->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, info->row(), info->col(), true);
 	image->setActive(false);
 	countTex = nullptr;
+	textureNumber = nullptr;
 	if (count > 0) {
 		countTex = mngr->addEntity();
 		mngr->addRenderLayer<Item>(countTex);
@@ -174,25 +178,30 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 		float h = Inventory::itemHeight * (height - 0.3);
 		numberTr = countTex->addComponent<Transform>(inventory->itemPosition(x, y) + Vector2D(w, h),
 			Inventory::itemWidth * 0.3, Inventory::itemHeight * 0.3, 0);
-		countTex->addComponent<Image>(new Texture(sdlutils().renderer(), std::to_string(count), sdlutils().fonts().at("OrbitronBold32"), build_sdlcolor(0xffffff)), true);
+		textureNumber = new Texture(sdlutils().renderer()
+			, std::to_string(count), sdlutils().fonts().at("OrbitronBold32")
+			, build_sdlcolor(0xffffff));
+		countTex->addComponent<Image>(textureNumber, true);
 		countTex->setActive(false);
 	}
 	else numberTr = nullptr;
 }
 
 Item::Item(Item* item, Inventory* inventory) :
-	Item(item->getItemInfo(), inventory->getEntity()->getMngr(), inventory,
+	Item(new ItemInfo(item->getItemInfo()), inventory->getEntity()->getMngr(), inventory,
 		item->x, item->y, item->count) {
-
 }
 
 Item::~Item() {
 	delete info;
 
-	if (countTex != nullptr) {
+	if (countTex != nullptr && !forceDelete) {
 		countTex->setDead(true);
 	}
-		
+
+	if (textureNumber != nullptr) {
+		delete textureNumber;
+	}
 }
 
 void Item::removeImage()
