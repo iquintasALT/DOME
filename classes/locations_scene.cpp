@@ -14,7 +14,6 @@ void LocationsScene::init()
 	Vector2D a;
 	Camera::mainCamera->Move(a);
 
-	addBackground(&sdlutils().images().at("bgImage7"));
 	addBackground(&sdlutils().images().at("bgImage5"));
 	addBackground(&sdlutils().images().at("bgImage4"));
 	addBackground(&sdlutils().images().at("bgImage6"));
