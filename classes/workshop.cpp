@@ -122,15 +122,18 @@ void Workshop::setLeftRender() {
 
 	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 		craftList[i].index = listIndex + i;
-		std::string itemName = craftSys->getItemInfo(workshopItems[craftList[i].index])->strName();
+		auto item = craftSys->getItemInfo(workshopItems[craftList[i].index]);
+		std::string itemName = item->strName();
 		leftRenderTexts.push_back(new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
 
 
-		int imgRow = craftSys->getItemInfo(workshopItems[craftList[i].index])->row();
-		int imgCol = craftSys->getItemInfo(workshopItems[craftList[i].index])->col();
+		int imgRow = item->row();
+		int imgCol = item->col();
 
 		float offsetX = craftList_tr[i]->getPos().getX() + 35;
 		float offsetY = craftList_tr[i]->getPos().getY() + 17.5f;
+
+		delete item;
 
 		Entity* aux = falseMngr->addEntity();
 		aux->addComponent<Transform>(Vector2D{ offsetX,offsetY }, 64, 64, 0);
@@ -154,15 +157,17 @@ void Workshop::setRightRender() {
 	rightRenderImgs.clear();
 
 	if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getWeapon()->tierOfWeapon() < 2) {
-		std::string itemName = craftSys->getItemInfo(workshopItems[rightWindowIndex])->strName();
+		auto rightWindowItem = craftSys->getItemInfo(workshopItems[rightWindowIndex]);
+		std::string itemName = rightWindowItem->strName();
 		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
 		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), "Needed items: ", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
 
 		float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
 		float offsetY = rightRenderTexts[0]->height() + 25;
-		int imgRow = craftSys->getItemInfo(workshopItems[rightWindowIndex])->row();
-		int imgCol = craftSys->getItemInfo(workshopItems[rightWindowIndex])->col();
+		int imgRow = rightWindowItem->row();
+		int imgCol = rightWindowItem->col();
 
+		delete rightWindowItem;
 
 		Entity* aux = falseMngr->addEntity();
 		aux->addComponent<Transform>(Vector2D{ offsetX - 32,offsetY + 80 }, 64, 64, 0);
