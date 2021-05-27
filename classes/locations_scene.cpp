@@ -14,12 +14,11 @@ void LocationsScene::init()
 	Vector2D a;
 	Camera::mainCamera->Move(a);
 
-
-	addBackground(&sdlutils().images().at("bgImage7"));
 	addBackground(&sdlutils().images().at("bgImage5"));
-	addBackground(&sdlutils().images().at("bgImage2"));
-	addBackground(&sdlutils().images().at("bgImage6"));
 	addBackground(&sdlutils().images().at("bgImage4"));
+	addBackground(&sdlutils().images().at("bgImage6"));
+	addBackground(&sdlutils().images().at("bgImage2"));
+	addBackground(&sdlutils().images().at("bgImage7"));
 
 	auto background = mngr_->addEntity();
 	background->addComponent<Transform>(Vector2D(sdlutils().width() * 0.33 , 0),
