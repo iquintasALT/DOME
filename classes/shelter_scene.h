@@ -54,4 +54,5 @@ public:
 	void sleepTransition();
 
 	void useAction();
+	void addAction();
 };

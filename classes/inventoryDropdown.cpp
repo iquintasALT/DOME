@@ -1,28 +1,28 @@
 #include "inventoryDropdown.h"
 #include "../sdlutils/SDLUtils.h"
-inventoryDropdown::slot::slot(std::string text, std::function<void()> f) {
+InventoryDropdown::slot::slot(std::string text, std::function<void()> f) {
 	function = f;
 	texture = new Texture(sdlutils().renderer(), text, sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff));
 }
-inventoryDropdown::slot::~slot() {
+InventoryDropdown::slot::~slot() {
 	delete texture;
 	texture = nullptr;
 }
 
-inventoryDropdown::inventoryDropdown(Texture* texture,
-	std::vector<inventoryDropdown::slot*> slot, float width)
+InventoryDropdown::InventoryDropdown(Texture* texture,
+	std::vector<InventoryDropdown::slot*> slot, float width)
 	: slots(slot), texture(texture), width(width) {
 
 }
 
-inventoryDropdown::~inventoryDropdown() {
+InventoryDropdown::~InventoryDropdown() {
 	for (auto s : slots) {
 		delete s;
 	}
 	slots.clear();
 }
 
-void inventoryDropdown::render(bool isActive) {
+void InventoryDropdown::render(bool isActive) {
 	SDL_Rect rect{ position.getX(), position.getY(), width, 0 };
 
 	bool first = !isActive;
@@ -41,7 +41,7 @@ void inventoryDropdown::render(bool isActive) {
 	}
 }
 
-bool inventoryDropdown::onClick(Vector2D& const mousePos, bool isActive) {
+bool InventoryDropdown::onClick(Vector2D& const mousePos, bool isActive) {
 	const float x = mousePos.getX();
 	const float y = mousePos.getY();
 	float posy = position.getY();
@@ -67,7 +67,17 @@ bool inventoryDropdown::onClick(Vector2D& const mousePos, bool isActive) {
 	return false;
 }
 
-void inventoryDropdown::setPos(Vector2D& const mousePos) {
+void InventoryDropdown::setPos(Vector2D& const mousePos)
+{
 	position = mousePos;
+}
 
+Vector2D InventoryDropdown::getPos()
+{
+	return position;
+}
+
+Vector2D InventoryDropdown::getDimensions()
+{
+	return Vector2D(width, slots.size() * texture->height());
 }

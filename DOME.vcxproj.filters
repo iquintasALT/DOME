@@ -179,9 +179,6 @@
     <ClCompile Include="classes\ship_station.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="classes\navigation_station.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="classes\sleep_station.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -256,6 +253,9 @@
     </ClCompile>
     <ClCompile Include="components\Timer.cpp">
       <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\PlayerSaveData.cpp">
+      <Filter>Source Files\classes</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -487,9 +487,6 @@
     <ClInclude Include="classes\sleep_station.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="classes\navigation_station.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
     <ClInclude Include="sdlutils\SoundManager.h">
       <Filter>Header Files\sdlutils</Filter>
     </ClInclude>
@@ -564,6 +561,9 @@
     </ClInclude>
     <ClInclude Include="components\Timer.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\PlayerSaveData.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

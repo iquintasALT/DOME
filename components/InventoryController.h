@@ -14,7 +14,7 @@
 #include "../utils/checkML.h"
 #include "../classes/weapon_behaviour.h"
 
-class InventoryController: public Component
+class InventoryController : public Component
 {
 private:
 	bool used = false;
@@ -25,13 +25,15 @@ protected:
 	KeyboardPlayerCtrl* playerMovement = nullptr;
 	WeaponBehaviour* playerWeapon = nullptr;
 
-public :
+public:
 	InventoryController();
 	~InventoryController();
 
 	void update() override;
 	void init() override;
 	void Use();
+
+	bool isInvOpen() { return isOpen; };
 
 	void OpenLoot(bool state);
 

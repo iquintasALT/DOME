@@ -5,7 +5,7 @@
 #include <vector>
 #include <functional>
 
-class inventoryDropdown {
+class InventoryDropdown {
 
 public:
 	class slot {
@@ -16,11 +16,14 @@ public:
 		~slot();
 	};
 
-	inventoryDropdown(Texture* texture, std::vector<slot*> slots, float width);
-	~inventoryDropdown();
+	InventoryDropdown(Texture* texture, std::vector<slot*> slots, float width);
+	~InventoryDropdown();
 	void render(bool isActive = true);
 	bool onClick(Vector2D& const mousePos, bool isActive = true);
 	void setPos(Vector2D& pos);
+	Vector2D getPos();
+	Vector2D getDimensions();
+
 private:
 	float width;
 	Vector2D position;
