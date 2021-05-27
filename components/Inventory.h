@@ -88,7 +88,7 @@ private:
 
 	bool dropDownActive;
 
-	inventoryDropdown* dropDown;
+	InventoryDropdown* dropDown;
 	DropDownRender* dropDownRender;
 	Entity* toolTips;
 	Transform* toolTipsTr;

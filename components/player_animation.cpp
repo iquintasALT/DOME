@@ -2,15 +2,15 @@
 #include "../classes/player.h"
 #include "../classes/weapon_behaviour.h"
 
-player_animation::player_animation() : tr_(nullptr), playerCtrl_(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
+PlayerAnimation::PlayerAnimation() : tr_(nullptr), playerCtrl_(nullptr), im_(nullptr), rb(nullptr), walkDust(nullptr){
 	animStop = false;
 	dmgReceived = false;
 	cooldown = 0.0f;
 };
 
-player_animation::~player_animation() {}
+PlayerAnimation::~PlayerAnimation() {}
 
-void player_animation::update() {
+void PlayerAnimation::update() {
 	if (changeAnimations()) {
 		timer = 0; return;
 	}
@@ -27,7 +27,7 @@ void player_animation::update() {
 	}
 }
 
-void player_animation::init() {
+void PlayerAnimation::init() {
 	currentAnimation.setImage(im_ = entity_->getComponent<Image>());
 
 	for (Animation& anim : animations) {
@@ -43,7 +43,7 @@ void player_animation::init() {
 }
 bool debug = false;
 
-bool player_animation::changeAnimations() {
+bool PlayerAnimation::changeAnimations() {
 	//std::cout << to_string((animations_name)currentAnimation.getCurrentFrame()) << endl;
 	auto& mouse = ih().getMousePos();
 	float mouseX = Camera::mainCamera->PointToWorldSpace(Vector2D(mouse.first, mouse.second)).getX();

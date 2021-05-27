@@ -18,12 +18,7 @@
 
 void MenuScene::init() {
 	// uncomment this when transition to shelter works
-	if (mngr_->getGame()->playerCreated) {
-		delete mngr_->getGame()->playerSaved;
-		mngr_->getGame()->playerSaved = nullptr;
-		mngr_->getGame()->playerCreated = false;
-	}
-
+	
 	Camera::mainCamera->restoreScale();
 	Vector2D cameraPos;
 	Camera::mainCamera->Move(cameraPos);

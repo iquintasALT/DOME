@@ -75,11 +75,11 @@ void Inventory::moveInventory(Point2D pos) {
 class DropDownRender : public Entity {
 public:
 	bool canBeUsed;
-	DropDownRender(inventoryDropdown* i, Manager* mngr) : Entity(mngr) {
+	DropDownRender(InventoryDropdown* i, Manager* mngr) : Entity(mngr) {
 		dropDown = i;
 		canBeUsed = true;
 	}
-	inventoryDropdown* dropDown;
+	InventoryDropdown* dropDown;
 	void render() override {
 		dropDown->render(canBeUsed);
 	};
@@ -99,13 +99,13 @@ void Inventory::init() {
 	toolTips->setActive(false);
 	dropDownActive = false;
 	if (other == nullptr) {
-		std::vector<inventoryDropdown::slot*> slots;
-		slots.push_back(new inventoryDropdown::slot("Use", [this]() {
+		std::vector<InventoryDropdown::slot*> slots;
+		slots.push_back(new InventoryDropdown::slot("Use", [this]() {
 			if (itemClickedInDropdown->getItemInfo()->name() != LASER_AMMO && itemClickedInDropdown->getItemInfo()->name() != CLASSIC_AMMO && itemClickedInDropdown->getItemInfo()->name() != RICOCHET_AMMO) {
 				itemClickedInDropdown->getItemInfo()->execute(player); removeItem(itemClickedInDropdown); itemClickedInDropdown->removeImage(); delete itemClickedInDropdown;
 			}}));
-		slots.push_back(new inventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown);  itemClickedInDropdown->removeImage(); delete itemClickedInDropdown; }));
-		dropDown = new inventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
+		slots.push_back(new InventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown);  itemClickedInDropdown->removeImage(); delete itemClickedInDropdown; }));
+		dropDown = new InventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
 		dropDownRender = new DropDownRender(dropDown, entity_->getMngr());
 		entity_->getMngr()->addEntity(dropDownRender);
 		entity_->getMngr()->addRenderLayer<ULTIMATE>(dropDownRender);

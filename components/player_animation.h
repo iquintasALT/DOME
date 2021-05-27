@@ -11,7 +11,7 @@
 #include "../components/particleSystem.h"
 #include <iostream>
 
-class player_animation : public AnimationComponent {
+class PlayerAnimation : public AnimationComponent {
 private:
 	const enum animations_name { idle = 0, walking, crouch, walking_arms, idle_arms, crouch_arms, climbing, dmg_idle, dmg_crouch, dmg_climb };
 	Animation animations[10]{
@@ -42,11 +42,11 @@ private:
 	ParticleSystem* walkDust;
 
 public:
-	player_animation();
+	PlayerAnimation();
 
 	virtual void init();
 
-	virtual ~player_animation();
+	virtual ~PlayerAnimation();
 
 	virtual void update();
 	inline void setDmg(bool dmg) { dmgReceived = dmg; };
