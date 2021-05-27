@@ -95,9 +95,6 @@ void Game::start() {
 
 		if (event.type == SDL_QUIT) {
 			exit = true;
-
-
-
 			continue;
 		}
 
@@ -138,12 +135,6 @@ void Game::initLoot() {
 	// ITEMS n, int cantidad (INUTIL PARA ESTE METODO), int w , int h , int x, int y,int row, int col,string desc
 
 	clearSceneLoot();
-
-	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<pair<ItemInfo*, Vector2D>>> {
-		{
-			make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(1, 0))
-		}
-	});
 
 	SCENES_LOOT.emplace(SCENES::SHELTER, vector<vector<pair<ItemInfo*, Vector2D>>> {
 		//to store items on shelter
