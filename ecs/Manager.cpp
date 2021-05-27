@@ -17,10 +17,9 @@ Manager::Manager(Game* game) : game(game), sceneManager(game) {
 
 Manager::~Manager() {
 	for (auto e : entities_) {
-		//if (e != getHandler<Player_hdlr>())
-			//if (!e->hasComponent<Inventory>() || !e->getComponent<Inventory>()->isPlayer)
-				//if (!e->hasComponent<Weapon>())
-			delete e;
+		if (e == getHandler<Player_hdlr>())
+			getGame()->playerSavedData->save(static_cast<Player*>(e));
+		delete e;
 	}
 	entities_.clear();
 }

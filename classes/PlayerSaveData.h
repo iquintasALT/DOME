@@ -1,8 +1,7 @@
 #pragma once
 #include <list>
-
+#include "../utils/Vector2D.h"
 class Player;
-class Vector2D;
 
 class ItemInfo;
 class Inventory;
@@ -24,6 +23,7 @@ private:
 		int x, y;
 		int count;
 		ItemSaveData(Item* item);
+		~ItemSaveData();
 		Item* createItem(Inventory* inv);
 	};
 

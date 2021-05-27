@@ -21,7 +21,6 @@
 #include "../components/CameraMovement.h"
 #include "../components/enemy_contact_damege.h"
 
-
 PlayerSaveData::PlayerSaveData()
 {
 	isSaved = false;
@@ -40,6 +39,12 @@ void PlayerSaveData::save(Player* p)
 	isSaved = true;
 
 	//Items
+
+	for (auto item : itemsSaved) {
+		delete item;
+	}
+	itemsSaved.clear();
+
 	for (auto item : p->getComponent<InventoryController>()->inventory->getItems()) {
 		itemsSaved.push_back(new ItemSaveData(item));
 	}
@@ -59,12 +64,11 @@ void PlayerSaveData::load(Player* p)
 {
 	if (!isSaved) return;
 
-	//position
-	p->getComponent<Transform>()->setPos(position);
-
 	//Items
 	auto inventory = p->getComponent<InventoryController>()->inventory;
+	
 	for (auto item : inventory->getItems()) {
+		inventory->removeItem(item);
 		delete item;
 	}
 	inventory->getItems().clear();
@@ -88,7 +92,12 @@ PlayerSaveData::ItemSaveData::ItemSaveData(Item* item)
 	count = item->count;
 }
 
+PlayerSaveData::ItemSaveData::~ItemSaveData()
+{
+	delete info;
+}
+
 Item* PlayerSaveData::ItemSaveData::createItem(Inventory* inv)
 {
-	return new Item(info, inv->getEntity()->getMngr(), inv, x, y, count);
+	return new Item(new ItemInfo(info), inv->getEntity()->getMngr(), inv, x, y, count);
 }
