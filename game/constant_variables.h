@@ -11,7 +11,7 @@ namespace consts {
 	const float GRAVITY = 8.0f;
 	const float PLAYER_SPEED = 3.0f;
 	const float PLAYER_BACKWARDS_SPEED = 1.5f;
-	const float CAMERA_MARGIN_FROM_PLAYER = -250;
+	const float CAMERA_MARGIN_FROM_PLAYER = -150;
 	const float JUMP_SPEED = 3.0f;
 	const float STAIRS_SPEED = 2.25f;
 	const float FALLING_DMG_SPEED = 5;
@@ -44,8 +44,8 @@ namespace consts {
 	const float REDUCE_WEAPON_DAMAGE = 0.2f; //En %
 	const int CONTUSION_INCREASE_TIME = 5000; //Cantidad de tiempo que PainComponent añade a ContusionComponent
 	const int INTOXICATION_INCREASE_TIME = 5000; //Cantidad de tiempo que PainComponent añade a IntoxicationComponent
-	const int CONTUSION_TIME = 10000;	 //Tiempo que dura la contusion
-	const int INTOXICATION_TIME = 20000; //Tiempo que dura la intoxicacion
+	const int CONTUSION_TIME = 50000;	 //Tiempo que dura la contusion
+	const int INTOXICATION_TIME = 60000; //Tiempo que dura la intoxicacion
 	const int TIME_PER_NEWSUMOFTIME = 8000; //Tiempo que tarda PainComponent en añadir tiempo a Contusion e Intoxication
 	const int TIME_TO_DECREASE_HUNGER = 10000;
 	const float HUNGER_TO_DECREASE = 0.15f; //En %
