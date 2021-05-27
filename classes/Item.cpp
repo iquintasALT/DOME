@@ -63,7 +63,7 @@ ItemInfo* ItemInfo::water()
 
 ItemInfo* ItemInfo::organicMaterial()
 {
-	return new ItemInfo(ORGANIC_MATERIAL, "organic material", "Useful to craft medicines or food", 2, 2, 1, 2);
+	return new ItemInfo(ORGANIC_MATERIAL, "organic material", "Useful to craft medicines or food", 2, 2, 0, 0);
 }
 
 ItemInfo* ItemInfo::mecanicalComponents()
@@ -123,7 +123,7 @@ ItemInfo* ItemInfo::painKiller()
 		static_cast<Player*>(player)->getPhysiognomy()->removePainState();
 	};
 
-	return new ItemInfo(PAINKILLER, "painkiller", "Can heal pain", 1, 2, 0, 0, f);
+	return new ItemInfo(PAINKILLER, "painkiller", "Can heal pain", 1, 2, 2, 0, f);
 }
 
 
