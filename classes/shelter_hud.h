@@ -34,7 +34,7 @@ private:
 	std::vector<_tooltip_> tooltipTextures;
 	Transform* tooltipTr;
 
-	std::vector<std::string> statesDescriptions;
+	std::vector<std::string> woundDescriptions;
 
 public:
 	ShelterHud(Manager* mngr, ShelterScene* shelter);

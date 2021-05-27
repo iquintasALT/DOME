@@ -17,9 +17,9 @@ std::string getHourString(int lefttime) {
 }
 
 Countdown::Countdown(int totaltime) {
-	lefttime = totaltime; //Recibe los milisegundos de tiempo en raid
+	timeLeft = totaltime; //Recibe los milisegundos de tiempo en raid
 	counter = nullptr;
-	std::string aux = getHourString(lefttime / 1000);
+	std::string aux = getHourString(timeLeft / 1000);
 	
 	alarm = false;
 	cooldown = 0.0f;
@@ -33,10 +33,10 @@ Countdown::~Countdown() {
 }
 
 void Countdown::render() {
-	std::string aux = getHourString(floor(lefttime));
+	std::string aux = getHourString(floor(timeLeft));
 	
 	SDL_Color s;
-	if (lefttime <= 0)
+	if (timeLeft <= 0)
 	{
 		aux = "0:00";
 		s = build_sdlcolor(0xff000000);
@@ -55,9 +55,9 @@ void Countdown::render() {
 }
 
 void Countdown::update() {
-	lefttime -= consts::DELTA_TIME; //Restamos el tiempoque ha pasado
+	timeLeft -= consts::DELTA_TIME; //Restamos el tiempoque ha pasado
 
-	if (cooldown < sdlutils().currRealTime() - 1000 && (auxCount < 5 || (lefttime <= 30 && lefttime >5))) {
+	if (cooldown < sdlutils().currRealTime() - 1000 && (auxCount < 5 || (timeLeft <= 30 && timeLeft >5))) {
 		soundManager().playSFX("beep"); //beep o tick
 		cooldown = sdlutils().currRealTime();
 		auxCount++;

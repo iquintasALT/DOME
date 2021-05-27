@@ -120,7 +120,7 @@ void Physiognomy::removeAllStates() {
 	removeHypothermiaState();
 }
 
-bool Physiognomy::alive() {
+bool Physiognomy::isAlive() const {
 	return playerAlive;
 }
 void Physiognomy::die(WAYSTODIE way) {

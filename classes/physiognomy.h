@@ -25,7 +25,6 @@ private:
 	Player* player;
 	std::list<PlayerHealthComponent*> healthComponents;
 	HypothermiaComponent* hypothermia;
-	//int numStates;
 	bool playerAlive;
 
 	int numBleedStates;
@@ -34,10 +33,9 @@ private:
 	bool concussionAdded;
 
 	void checkAlive(WAYSTODIE way = WAYSTODIE::NONE);
-	//void moveElems(int i);
 public:
 	inline Physiognomy(Player* player_) : player(player_), healthComponents(list<PlayerHealthComponent*>()), hypothermia(nullptr) {
-		/*numStates = 0*/; numBleedStates = 0; painAdded = false; intoxicationAdded = false; concussionAdded = false; playerAlive = true; }
+		numBleedStates = 0; painAdded = false; intoxicationAdded = false; concussionAdded = false; playerAlive = true; }
 
 	//Añadir estados al sistema
 	void addBleedState();
@@ -60,6 +58,6 @@ public:
 	int getNumUniqueStates() { return healthComponents.size() - numBleedStates + (numBleedStates > 0); };
 
 	void die(WAYSTODIE way = WAYSTODIE::NONE);
-	inline bool alive();
+	inline bool isAlive() const;
 	inline std::list<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
 };
