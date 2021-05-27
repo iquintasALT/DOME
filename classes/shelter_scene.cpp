@@ -1,19 +1,17 @@
-#include "../classes/shelter_scene.h"
-#include "../components/hunger_component.h"
-#include "../components/tiredness_component.h"
-#include "../game/Game.h"
 #include "locations_scene.h"
+
+#include "../game/Game.h"
+
+#include "../classes/shelter_scene.h"
 #include "../classes/pause_scene.h"
-#include "../components/open_station.h"
 #include "../classes/shelter_hud.h"
 #include "../classes/lose_scene.h"
 
-#include <memory>
+#include "../components/open_station.h"
+#include "../components/hunger_component.h"
+#include "../components/tiredness_component.h"
 
-//#if defined(_WIN32)
-//#include <windows.h>
-//#endif
-//#include <iostream>
+#include <memory>
 
 using std::cout;
 using std::cerr;
@@ -27,16 +25,18 @@ void ShelterScene::init() {
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
 
-	Player* player = dynamic_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+
+	auto weapon = player->getWeapon();
+	if (weapon->isActive())
+		weapon->setActive(false);
+
+	player->getComponent<HungerComponent>()->decreaseHunger(0.5);
+	player->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
 
 	auto shelterHud = new ShelterHud(mngr_, this);
 
-	auto weapon = player->getWeapon();
-
 	createParallaxBackground(5);
-
-	if (weapon->isActive())
-		weapon->setActive(false);
 
 	uselessMngr = new Manager(g_);
 	craftSys = new CraftingSystem(mngr_);
@@ -67,12 +67,6 @@ void ShelterScene::init() {
 	mechImg->addComponent<Transform>(Vector2D{ mechPos.getX(),mechPos.getY() }, mechSize.getX(), mechSize.getY(), 0);
 	mechImg->addComponent<Open_station>(mechanical_Workshop);
 	mngr_->addRenderLayer<Background>(mechImg);
-}
-
-void ShelterScene::onLoad()
-{
-	//getGame()->playerSaved->getComponent<HungerComponent>()->decreaseHunger(0.5);
-	//getGame()->playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
 }
 
 void ShelterScene::update() {

@@ -1,25 +1,12 @@
 #include "PlayerSaveData.h"
+
 #include "../classes/player.h"
+#include "../classes/weapon_behaviour.h"
 
-
-#include "../components/Transform.h"
-#include "../components/player_animation.h"
-#include "../components/Image.h"
-#include "../components/KeyboardPlayerCtrl.h"
 #include "../components/InventoryController.h"
-#include "../components/weapon.h"
-#include "../components/interactions.h"
-#include "../components/particleSystem.h"
-#include "../components/bleedout_component.h"
-#include "../components/pain_component.h"
-#include "../components/concussion_component.h"
-#include "../components/intoxication_component.h"
 #include "../components/hunger_component.h"
 #include "../components/tiredness_component.h"
-#include "../components/hypothermia_component.h"
-#include "../components/box_collider.h"
-#include "../components/CameraMovement.h"
-#include "../components/enemy_contact_damege.h"
+
 
 PlayerSaveData::PlayerSaveData()
 {
@@ -39,7 +26,6 @@ void PlayerSaveData::save(Player* p)
 	isSaved = true;
 
 	//Items
-
 	if (itemsSaved.size() > 0) {
 		for (auto item : itemsSaved)
 			delete item;
@@ -49,12 +35,16 @@ void PlayerSaveData::save(Player* p)
 	for (auto item : p->getComponent<InventoryController>()->inventory->getItems())
 		itemsSaved.push_back(new ItemSaveData(item));
 
-	//Hunger
-
-	//Tiredness
-
 	//Weapons
+	auto weapon = p->getWeapon();
 
+	auto arrAux = weapon->tiersOfWeapons();
+	for (int i = 0; i < 3; i++)
+		weaponTiers[i] = arrAux[i];
+
+	//Hunger/Tiredness
+	hunger = p->getComponent<HungerComponent>()->getHunger();
+	tiredness = p->getComponent<TirednessComponent>()->getTirednessFloat();
 }
 
 void PlayerSaveData::load(Player* p)
@@ -73,12 +63,14 @@ void PlayerSaveData::load(Player* p)
 	for (auto item : itemsSaved) {
 		inventory->storeItem(item->createItem(inventory));
 	}
-}
 
-void PlayerSaveData::clear()
-{
-	PlayerSaveData::~PlayerSaveData();
-	isSaved = false;
+	//Weapons
+	auto weapon = p->getWeapon();
+	weapon->updateWeapons(weaponTiers);
+
+	//Hunger/Tiredness
+	p->getComponent<HungerComponent>()->setHunger(hunger);
+	p->getComponent<TirednessComponent>()->setTirednessFloat(tiredness);
 }
 
 void PlayerSaveData::reset()
