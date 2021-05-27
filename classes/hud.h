@@ -35,11 +35,11 @@ private:
 	Texture* marco;
 	Image* currentWeapon;
 
-	std::vector<std::string> statesDescriptions;
+	std::vector<std::string> woundDescriptions;
 
 	Transform* tooltipTr;
 	TextWithBackground* tooltipText;
-	int numberOfStates;
+	int numberOfWounds;
 	void drawStatus(int pos, int frameIndex, Vector2D mouse);
 	std::vector<_tooltip_> tooltipTextures;
 public:

@@ -95,14 +95,8 @@
     <ClCompile Include="components\loot.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="classes\ricochet_weapon.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="components\ricochet.cpp">
       <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="classes\charge_weapon.cpp">
-      <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="components\charge.cpp">
       <Filter>Source Files\components</Filter>
@@ -173,9 +167,6 @@
     <ClCompile Include="classes\locations_scene.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\back_to_shelter.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="classes\ship_station.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -238,6 +229,15 @@
     </ClCompile>
     <ClCompile Include="classes\check_button.cpp">
       <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="components\back_to_shelter.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\charge_weapon.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\ricochet_weapon.cpp">
+      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="components\CameraShake.cpp">
       <Filter>Source Files\components</Filter>
@@ -394,12 +394,6 @@
     <ClInclude Include="components\ricochet.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="classes\ricochet_weapon.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\charge_weapon.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
     <ClInclude Include="components\charge.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
@@ -481,9 +475,6 @@
     <ClInclude Include="classes\locations_scene.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\back_to_shelter.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
     <ClInclude Include="classes\ship_station.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
@@ -549,6 +540,15 @@
     </ClInclude>
     <ClInclude Include="classes\game_object.h">
       <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\back_to_shelter.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\charge_weapon.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\ricochet_weapon.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\CameraShake.h">
       <Filter>Header Files\components</Filter>

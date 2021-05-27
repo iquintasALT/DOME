@@ -27,7 +27,7 @@ void EnemyContactDamage::OnCollision(Entity* other)
 			if (other->hasGroup<DefaultEnemy_grp>()) {
 				physiognomy->addBleedState();
 				other->getComponent<EnemyAnimation>()->setAttack(true);
-				entity_->getComponent<player_animation>()->setDmg(true);
+				entity_->getComponent<PlayerAnimation>()->setDmg(true);
 				soundManager().playSFX("hurt");
 			}
 			else if (other->hasGroup<FlyingEnemy_grp>()) {
@@ -36,7 +36,7 @@ void EnemyContactDamage::OnCollision(Entity* other)
 				if(rand < 50) physiognomy->addPainState();
 				else physiognomy->addIntoxicationState();
 				other->getComponent<FlyingEnemyAnimation>()->setAttack(true);
-				entity_->getComponent<player_animation>()->setDmg(true);
+				entity_->getComponent<PlayerAnimation>()->setDmg(true);
 				soundManager().playSFX("hurt");
 			}
 			canCollide = false;

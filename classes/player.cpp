@@ -37,7 +37,7 @@ Player::Player(Manager* mngr_, Point2D pos) : Entity(mngr_)
 	addComponent<BoxCollider>();
 	addComponent<RigidBody>();
 	addComponent<KeyboardPlayerCtrl>();
-	addComponent<player_animation>();
+	addComponent<PlayerAnimation>();
 	addComponent<Interactions>();
 	addComponent<HungerComponent>();
 	addComponent<TirednessComponent>();
@@ -47,7 +47,6 @@ Player::Player(Manager* mngr_, Point2D pos) : Entity(mngr_)
 	auto inv_ = addComponent<InventoryController>();
 	inv_->inventory->isPlayer = true;
 	weapon->setInv(inv_);
-	//weapon->getWeapon()->reload();
 
 	physiognomy = new Physiognomy(this);
 	addComponent<EnemyContactDamage>(physiognomy);

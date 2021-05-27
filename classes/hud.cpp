@@ -29,7 +29,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 
 	states = player->getPhysiognomy()->getHealthComponents();
 
-	numberOfStates = states->size();
+	numberOfWounds = states->size();
 
 	//TextWithBackground(std::string str, Font & font, SDL_Color  color, Texture * texture, bool appearingText = false, float appeatingTextSpeed = 1, bool alignInCenter = false);
 	
@@ -44,7 +44,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 	currentWeapon = arma->addComponent<Image>(&sdlutils().images().at("weaponHUD"), 3, 3, 0, 0, true);
 	m->addRenderLayer<Interface>(arma);
 
-	statesDescriptions = std::vector<std::string>{
+	woundDescriptions = std::vector<std::string>{
 		{"You are intoxicated, find something to detox"},
 		{"You suffered a contusion, now, you can't jump"},
 		{"You feel a lot of pain, find some painkiller"},
@@ -114,15 +114,15 @@ void hud::render() {
 	//Renderizar los estados
 	if (states->size() > 0)
 	{
-		if (states->size() != numberOfStates) {
-			numberOfStates = states->size();
+		if (states->size() != numberOfWounds) {
+			numberOfWounds = states->size();
 			for (int i = 0; i < tooltipTextures.size(); i++) {
 				tooltipTextures[i].t->getEntity()->setDead(true);
 			}
 			tooltipTextures.clear();
 
-			tooltipTextures.reserve(numberOfStates);
-			for (int i = 0; i < numberOfStates; i++) {
+			tooltipTextures.reserve(numberOfWounds);
+			for (int i = 0; i < numberOfWounds; i++) {
 				Entity* ent = mngr_->addEntity();
 				Transform* t = ent->addComponent<Transform>(Vector2D(), 400, 10);
 				TextWithBackground* text = ent->addComponent<TextWithBackground>(" ",
@@ -183,10 +183,10 @@ void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
 		tooltipTextures[n].t->setPos(mouse);
 
 		if (frameIndex > 3) {
-			if (frameIndex == 13) tooltipTextures[n].text->changeText(statesDescriptions[statesDescriptions.size() - 1]);
-			else  tooltipTextures[n].text->changeText(statesDescriptions[4]);
+			if (frameIndex == 13) tooltipTextures[n].text->changeText(woundDescriptions[woundDescriptions.size() - 1]);
+			else  tooltipTextures[n].text->changeText(woundDescriptions[4]);
 		}
-		else tooltipTextures[n].text->changeText(statesDescriptions[frameIndex]);
+		else tooltipTextures[n].text->changeText(woundDescriptions[frameIndex]);
 
 		tooltipTextures[n].text->render();
 		

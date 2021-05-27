@@ -7,7 +7,7 @@ void Open_station::init() { myTr = entity_->getComponent<Transform>(); playerTr 
 }
 
 void Open_station::update() {
-	if (ih().isKeyDown(SDL_SCANCODE_E) && !eClicked) {
+	if (ih().isKeyDown(SDL_SCANCODE_E) && !eClicked && !playerTr->getEntity()->getComponent<InventoryController>()->isInvOpen()) {
 		eClicked = true;
 		if (Collisions::collides(myTr->getPos(), myTr->getW(), myTr->getH(), playerTr->getPos(), playerTr->getW(), playerTr->getW())) {
 			Workshop* aux = dynamic_cast<Workshop*>(station);
