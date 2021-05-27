@@ -170,6 +170,7 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 	image->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, info->row(), info->col(), true);
 	image->setActive(false);
 	countTex = nullptr;
+	textureNumber = nullptr;
 	if (count > 0) {
 		countTex = mngr->addEntity();
 		mngr->addRenderLayer<Item>(countTex);
@@ -177,7 +178,10 @@ Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int x
 		float h = Inventory::itemHeight * (height - 0.3);
 		numberTr = countTex->addComponent<Transform>(inventory->itemPosition(x, y) + Vector2D(w, h),
 			Inventory::itemWidth * 0.3, Inventory::itemHeight * 0.3, 0);
-		countTex->addComponent<Image>(new Texture(sdlutils().renderer(), std::to_string(count), sdlutils().fonts().at("OrbitronBold32"), build_sdlcolor(0xffffff)), true);
+		textureNumber = new Texture(sdlutils().renderer()
+			, std::to_string(count), sdlutils().fonts().at("OrbitronBold32")
+			, build_sdlcolor(0xffffff));
+		countTex->addComponent<Image>(textureNumber, true);
 		countTex->setActive(false);
 	}
 	else numberTr = nullptr;
@@ -194,6 +198,10 @@ Item::~Item() {
 
 	if (countTex != nullptr) {
 		countTex->setDead(true);
+	}
+
+	if (textureNumber != nullptr) {
+		delete textureNumber;
 	}
 }
 

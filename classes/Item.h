@@ -93,6 +93,7 @@ public:
 	int count;
 private:
 	ItemInfo* info;
+	Texture* textureNumber;
 	int x, y;
 	int width, height;
 	Entity* image;

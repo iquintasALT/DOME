@@ -18,7 +18,6 @@ class DropDownRender;
 class Inventory : public Component
 {
 	friend class Item;
-	friend class InventoryStorage;
 public:
 	static bool firstInitialization;
 	Inventory(int width, int height, WeaponBehaviour* playerWeapon);
@@ -96,11 +95,3 @@ private:
 	bool showToolTip;
 };
 
-
-class InventoryStorage {
-public:
-	std::list<Item*> storedItems;
-	~InventoryStorage();
-	void safe(Inventory* inv_);
-	void load(Inventory* inv_);
-};

@@ -105,6 +105,7 @@ void Game::start() {
 
 		if (event.type == SDL_QUIT) {
 			exit = true;
+
 			continue;
 		}
 
@@ -126,8 +127,6 @@ void Game::start() {
 		if (frameTime < 1000 / consts::FRAME_RATE)
 			SDL_Delay((1000 / consts::FRAME_RATE) - frameTime);
 	}
-
-	std::cout << "juego finalizado" << std::endl;
 }
 
 void Game::drawFPS(int fps) {

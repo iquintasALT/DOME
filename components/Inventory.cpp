@@ -354,7 +354,7 @@ void Inventory::storeDefaultItems() {
 		storeItem(new Item(ItemInfo::classicAmmo(), entity_->getMngr(), this, 4, 0, 16));
 		storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 3));
 		storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 4, 4, 5));
-		storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 6, 2, 3));
+		//storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 6, 2, 3));
 		firstInitialization = false;
 	}
 }
@@ -371,29 +371,5 @@ bool Inventory::insideSquare(int mouseX, int mouseY) {
 
 	return mouseX > pos.getX() && mouseX < pos.getX() + transform->getW()
 		&& mouseY > pos.getY() && mouseY < pos.getY() + transform->getH();
-}
-
-InventoryStorage::~InventoryStorage() {
-	for (auto a : storedItems) {
-		delete a;
-	}
-	storedItems.clear();
-}
-
-void InventoryStorage::load(Inventory* inv_) {
-	for (auto a : storedItems) {
-		inv_->storeItem(new Item(a, inv_));
-	}
-}
-
-void InventoryStorage::safe(Inventory* inv_) {
-	for (auto a : storedItems) {
-		delete a;
-	}
-	storedItems.clear();
-
-	for (auto a : inv_->storedItems) {
-		storedItems.push_back(new Item(a, nullptr));
-	}
 }
 
