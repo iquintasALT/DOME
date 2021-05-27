@@ -67,7 +67,17 @@ bool inventoryDropdown::onClick(Vector2D& const mousePos, bool isActive) {
 	return false;
 }
 
-void inventoryDropdown::setPos(Vector2D& const mousePos) {
+void inventoryDropdown::setPos(Vector2D& const mousePos) 
+{
 	position = mousePos;
+}
 
+Vector2D inventoryDropdown::getPos()
+{
+	return position;
+}
+
+Vector2D inventoryDropdown::getDimensions()
+{
+	return Vector2D(width, slots.size() * texture->height());
 }

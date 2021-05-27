@@ -36,7 +36,6 @@
     <ClInclude Include="classes\locations_scene.h" />
     <ClInclude Include="classes\lore_scene.h" />
     <ClInclude Include="classes\lose_scene.h" />
-    <ClInclude Include="classes\navigation_station.h" />
     <ClInclude Include="classes\pause_button.h" />
     <ClInclude Include="classes\pause_scene.h" />
     <ClInclude Include="classes\SceneManager.h" />
@@ -139,7 +138,6 @@
     <ClCompile Include="classes\locations_scene.cpp" />
     <ClCompile Include="classes\lore_scene.cpp" />
     <ClCompile Include="classes\lose_scene.cpp" />
-    <ClCompile Include="classes\navigation_station.cpp" />
     <ClCompile Include="classes\pause_button.cpp" />
     <ClCompile Include="classes\pause_scene.cpp" />
     <ClCompile Include="classes\SceneManager.cpp" />
