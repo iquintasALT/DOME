@@ -24,11 +24,11 @@ Loot::~Loot() {
 
 	Game* g = entity_->getMngr()->getGame();
 
-	vector<pair<ItemInfo, Vector2D>> itemsInLoot;
+	vector<pair<ItemInfo*, Vector2D>> itemsInLoot;
 
 	for (Item* i : inventory->getItems()) {
 		ItemInfo* info = i->getItemInfo();
-		ItemInfo aux = ItemInfo{ info->name(),info->strName(),info->description(),info->width(),info->height(),info->row(),info->col(), info->getFunc(),info->getAmount() };
+		ItemInfo* aux = new ItemInfo{ info->name(),info->strName(),info->description(),info->width(),info->height(),info->row(),info->col(), info->getFunc(),info->getAmount() };
 		itemsInLoot.push_back(make_pair(aux, Vector2D(i->getX(), i->getY())));
 	}
 
