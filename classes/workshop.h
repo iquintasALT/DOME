@@ -71,6 +71,8 @@ public:
 	Workshop(Manager* mngr_) : Entity(mngr_) { };
 	Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_);
 
+	void closeCraft();
+
 	~Workshop() {
 		for (int i = 0; i < leftRenderTexts.size(); ++i) {
 			delete  leftRenderTexts[i];
@@ -88,7 +90,7 @@ public:
 	virtual void setLeftRender();
 	virtual void setRightRender();
 
-	void renderWeaponUpgrade();
+	void renderWeaponUpgrade(float offsetX, float offsetY);
 	virtual void setWorkshopItems(vector<ITEMS>&& items);
 	void setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name);
 	void renderImg(float posX, float posY, int row, int col, int sizeX = 64, int sizeY = 64);

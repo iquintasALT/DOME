@@ -7,7 +7,7 @@
 #include "../utils/checkML.h"
 #include <memory>
 #include <stack>
-
+#include "../classes/PlayerSaveData.h"
 // when you are not using the methods of a class, just
 // say that it exists, that saves time when parsing files
 class Manager;
@@ -67,4 +67,6 @@ public:
 	// se ha comenzado la partida, hacer que se haga + 1 para cada transicion a 
 	// LocationScene, comparandolo con consts::MAX_DAYS, y haciendo lo necesario cuando se llegue al ultimo dia 
 	int numDays = 0;
+
+	PlayerSaveData* playerSavedData;
 };

@@ -142,29 +142,21 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 
 # Localizaciones
 
-| Nombre | Sprite | Desc | Dificultad/Enemigos |
-|--------|--------|-------|-------|
-| Puesto de seguridad | N/A | bla bla bla bla bla | 3 pepegas |
-| N/A | N/A | N/A | N/A | [SPECIFICS_REQUIRED]
-
-# Contenedores
-
-| Nombre | Sprite | Loot table |
-|--------|--------|-------|
-| Estantería | N/A | Componentes electrónicos (5-10) / Materiales (10-20) |
-| N/A | N/A | N/A |
+| Nombre |  Desc | Dificultad |
+|--------|-------|-------|
+| Tienda | bla bla bla bla bla | Media |
+| Supermercado | bla bla bla bla bla | Media |
+| Zona de comunicaciones | bla bla bla bla bla | Alta|
+| Estacion nuclear | bla bla bla bla bla | Alta |
+| Hospital | bla bla bla bla bla | Bajo |
 
 # Equipamiento
 
 ## Armas
-| Tier 1 | Tier 1 Sprite | Tier 2 | Tier 2 Sprite | Tier 3 | Tier 3 Sprite |
-|--------|--------|--------|--------|--------|--------|
-| Tier 1 Weapon | ![alt text](./docs/images/w_tier_1.png)| Tier 2 Weapon | ![alt text](./docs/images/w_tier_2.png)| Tier 3 Weapon | ![alt text](./docs/images/w_tier_3.png)|
-
-## Armaduras/Trajes
-| Nombre | Sprite | Stats |
-|--------|--------|-------|
-| N/A | N/A | N/A |
+| Weapon | Tier 1 Sprite |  Tier 2 Sprite | Tier 3 Sprite |
+| Classic Weapon | ![alt text](./resources/sprites/11weapon.png)| ![alt text](./resources/sprites/12weapon.png)| ![alt text](./resources/sprites/13weapon.png)|
+| Laser Weapon | ![alt text](./resources/sprites/21weapon.png)| ![alt text](./resources/sprites/22weapon.png)| ![alt text](./resources/sprites/23weapon.png)|
+| Ricochet Weapon | ![alt text](./resources/sprites/31weapon.png)| ![alt text](./resources/sprites/32weapon.png)| ![alt text](./resources/sprites/33weapon.png)|
 
 # Loot en localización
 
