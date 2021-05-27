@@ -40,17 +40,14 @@ void PlayerSaveData::save(Player* p)
 
 	//Items
 
-	for (auto item : itemsSaved) {
-		delete item;
+	if (itemsSaved.size() > 0) {
+		for (auto item : itemsSaved)
+			delete item;
+		itemsSaved.clear();
 	}
-	itemsSaved.clear();
 
-	for (auto item : p->getComponent<InventoryController>()->inventory->getItems()) {
+	for (auto item : p->getComponent<InventoryController>()->inventory->getItems())
 		itemsSaved.push_back(new ItemSaveData(item));
-	}
-
-	//Position
-	position = p->getComponent<Transform>()->getPos();
 
 	//Hunger
 
@@ -66,7 +63,7 @@ void PlayerSaveData::load(Player* p)
 
 	//Items
 	auto inventory = p->getComponent<InventoryController>()->inventory;
-	
+
 	for (auto item : inventory->getItems()) {
 		inventory->removeItem(item);
 		delete item;
@@ -81,6 +78,11 @@ void PlayerSaveData::load(Player* p)
 void PlayerSaveData::clear()
 {
 	PlayerSaveData::~PlayerSaveData();
+	isSaved = false;
+}
+
+void PlayerSaveData::reset()
+{
 	isSaved = false;
 }
 

@@ -13,7 +13,7 @@
 class Manager;
 class Entity;
 
-const enum class SCENES { SHOP, NUCLEAR_STATION, HOSPITAL, COMMUNICATIONS, SUPERMARKET, SHELTER, RAID, SETTINGS, MAINMENU, NONE, CREDITS };
+const enum class SCENES { SHOP, NUCLEAR_STATION, HOSPITAL, COMMUNICATIONS, SUPERMARKET, SHELTER, RAID, SETTINGS, MAINMENU, CREDITS, NONE};
 const vector<SCENES> scenes = { SCENES::SHOP,  SCENES::NUCLEAR_STATION,  SCENES::HOSPITAL, SCENES::COMMUNICATIONS,  SCENES::SUPERMARKET };
 const vector<int> SCENES_CHESTS = { 0,0,2,1,0 };
 
@@ -26,12 +26,13 @@ private:
 	bool exit;
 
 	int lastTimeFPS; //ultimo registro de fps
-	int currentFPS; //el actual numero de fps
-	int framesFPS; //frames transcurrido desde el ultimo registro de fps
+	int currentFPS;  //el actual numero de fps
+	int framesFPS;   //frames transcurrido desde el ultimo registro de fps
 	bool fpsActive; bool shouldRenderFps;
 	Texture* fpsText;
 
 	void drawFPS(int fps);
+	void clearSceneLoot();
 
 public:
 	SCENES currentScene;
@@ -46,19 +47,18 @@ public:
 	void quitGame() { exit = true; }
 
 	void initLoot();
+
 	void setFPSActive(bool value) { fpsActive = value; }
 	bool getFPSActive() { return fpsActive; }
 	void setShouldRenderFPS(bool value) { shouldRenderFps = value; }
-	void nextDay();
 	
-	// booleano para comprabar si el jugador ha sido creado, para mantener la informaci�n
-	// entre escenas. Ponerlo a falso cuando se salga de juego (menu, endScreen, etc.)
-	bool playerCreated = false;
-	Player* playerSaved = nullptr;
+	// datos guardados del jugador para poder trasladarlos entre escenas
+	PlayerSaveData* playerSavedData;
 
 	// booleano que control si hay fullscreen activo
 	bool fullscreen = false;
 
+	// cursor customizado
 	Point2D cursorCenter;
 	Texture* cursor;
 	void renderCursor();
@@ -67,6 +67,4 @@ public:
 	// se ha comenzado la partida, hacer que se haga + 1 para cada transicion a 
 	// LocationScene, comparandolo con consts::MAX_DAYS, y haciendo lo necesario cuando se llegue al ultimo dia 
 	int numDays = 0;
-
-	PlayerSaveData* playerSavedData;
 };

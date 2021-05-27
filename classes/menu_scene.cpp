@@ -17,7 +17,8 @@
 
 
 void MenuScene::init() {
-	// uncomment this when transition to shelter works
+	// to reset player saved boolean so the game works fine
+	mngr_->getGame()->playerSavedData->reset();
 	
 	Camera::mainCamera->restoreScale();
 	Vector2D cameraPos;
