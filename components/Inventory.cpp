@@ -102,7 +102,9 @@ void Inventory::init() {
 		std::vector<InventoryDropdown::slot*> slots;
 		slots.push_back(new InventoryDropdown::slot("Use", [this]() {
 			if (itemClickedInDropdown->getItemInfo()->name() != LASER_AMMO && itemClickedInDropdown->getItemInfo()->name() != CLASSIC_AMMO && itemClickedInDropdown->getItemInfo()->name() != RICOCHET_AMMO) {
-				itemClickedInDropdown->getItemInfo()->execute(player); removeItem(itemClickedInDropdown); itemClickedInDropdown->removeImage(); delete itemClickedInDropdown;
+				if (itemClickedInDropdown->getItemInfo()->execute(player)) {
+					removeItem(itemClickedInDropdown); itemClickedInDropdown->removeImage(); delete itemClickedInDropdown;
+				}
 			}}));
 		slots.push_back(new InventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown);  itemClickedInDropdown->removeImage(); delete itemClickedInDropdown; }));
 		dropDown = new InventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);

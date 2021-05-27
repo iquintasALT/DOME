@@ -79,7 +79,7 @@ El jugador dispone de tres armas diferentes que le aportan versatilidad en el co
 
 - **Arma polimérica:** dispara un proyectil de media velocidad que rebota sobre superficies 4 veces [CONFIRMATION_REQUIRED] o hasta colisionar con un enemigo. Cuando el proyectil se destruye, crea una explosión que daña a todos los enemigos cercanos que estén en visión directa del epicentro. Requieren filamento poliatílico como munición.
 
-Se puede cambiar de arma pulsando el botón X, ciclando por las tres armas en orden.[CONFIRMATION_REQUIRED]
+Se puede cambiar de arma pulsando el botón Q, ciclando por las tres armas en orden.[CONFIRMATION_REQUIRED]
 
 # Combate <a name="comb"></a>
 
@@ -291,9 +291,16 @@ En la esquina superior derecha hay un reloj con el tiempo restante en el saqueo.
 Cuando el tiempo se agota, los bordes de la pantalla se recubren con un efecto de escarcha, indicando el nivel de hipotermia.
 
 En el refugio, la única interfaz permanente es la de los estados de salud (hambre y cansancio), que se representa igual que la de las heridas en el saqueo.
-## Conclusiones QA
 
-Despues de realizar una version del juego para pruebas y realizarle diversas preguntas a los jugadores hemosllegado a diversas conclusiones. La primera de todas era el tiempo de raid, y lo que hicimos fue disminuir el tiempo de raid ya que los jugadores se pasaban los mapas con  mucho tiempo extra. Pasando a hablar de los estados hemos llegado a la conclusion de que hacen falta mas vendas por el mapa ya que es la causa principal de muerte, disminuir la distancia de daño para darle mas valor y mejorar la descripciones de los estados de hambre y cansancio. Otro punto seria el crear un sitio donde guardar objetos en la base y el reducir el numero de acciones a hacer en la base ya que nadie gastaba todas. Tambien la gente no sabia que podia cambiar de arma, para ello introdujimos en el juego un tutorial que ademas te introduce al juego. Tambien llegamos a la conclusion de que la animacion del personaje iba mas despacio de como realmente se movia y aumentamos su velocidad ademas tambien de subir la velocidad en el movimiento en las escaleras.
+## Conclusiones QA
+Enlace del cuestionario : [CUESTIONARIO](https://forms.gle/dXmFYaxsFPzpo7za7)\ 
+Enlace de las respuestas : [RESPUESTAS_CUESTIONARIO](https://docs.google.com/spreadsheets/d/1cimQlVsfxfbKJ-LkXWf5XLELRlipmXTu-zazRjlLzmE/edit?usp=sharing)\
+Despues de realizar una version del juego para pruebas y realizar diversas preguntas a los jugadores hemos llegado a las siguientes conclusiones:
+- La primera de todas era el tiempo de raid, y lo que hicimos fue disminuir el tiempo de raid ya que los jugadores se pasaban los mapas con mucho tiempo extra. 
+- Pasando a hablar de los estados hemos llegado a la conclusion de que hacen falta mas vendas por el mapa ya que es la causa principal de muerte y mejorar la descripciones de los estados de hambre y cansancio. 
+- Hemos notado la imperante necesidad de reducir el numero de acciones disponibles en la base ya que nadie gastaba todas.
+- Tambien la gente no sabia que podia cambiar de arma, para ello introdujimos en el juego un tutorial que ademas te introduce al juego. Hemos cambiado la tecla de cambio de arma de 'X' a 'Q', puesto que el icono de X parecia que servia para cerrar una ventana.
+- Tambien llegamos a la conclusion de que la animacion del personaje iba mas despacio de como realmente se movia y aumentamos su velocidad ademas tambien de subir la velocidad en el movimiento en las escaleras.
 
 
 ![Referencias](./docs/headers/h_referencias.png) <a name="refe"></a>

@@ -6,12 +6,12 @@
 
 ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, int craftAmount) :
 	_name(name), _strName(strName), _description(description), _width(width), _height(height), _row(row), _col(col), _craftAmount(craftAmount) {
-	function = [](Entity*) {};
+	function = [](Entity*) {return true; };
 	functionCreated = false;
 };
 
 
-ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<void(Entity* p)> f, int craftAmount) :
+ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<bool(Entity* p)> f, int craftAmount) :
 	_name(name), _strName(strName), _description(description), _width(width), _height(height), _row(row), _col(col), function(f), functionCreated(true), _craftAmount(craftAmount) {
 };
 
@@ -36,6 +36,7 @@ ItemInfo* ItemInfo::antidote()
 {
 	auto f = [](Entity* player) {
 		static_cast<Player*>(player)->getPhysiognomy()->removeIntoxicationState();
+		return true;
 	};
 
 	return new ItemInfo(ANTIDOTE, "antidote", "Can heal intoxication", 2, 2, 1, 0, f);
@@ -46,6 +47,7 @@ ItemInfo* ItemInfo::bandage()
 	auto f = [](Entity* player) {
 		static_cast<Player*>(player)->getPhysiognomy()->removeBleedState();
 		soundManager().playSFX("heal");
+		return true; // CAMBIAA
 	};
 
 	return new ItemInfo(BANDAGE, "bandage", "Can heal bleeding", 1, 1, 0, 2, f);
@@ -114,6 +116,7 @@ ItemInfo* ItemInfo::splint()
 	auto f = [](Entity* player) {
 		static_cast<Player*>(player)->getPhysiognomy()->removeConcussionState();
 		soundManager().playSFX("splint");
+		return true; //CAMBIAA
 	};
 
 	return new ItemInfo(SPLINT, "splint", "Can heal concussions", 2, 2, 5, 1, f);
@@ -125,6 +128,7 @@ ItemInfo* ItemInfo::painKiller()
 	auto f = [](Entity* player) {
 		static_cast<Player*>(player)->getPhysiognomy()->removePainState();
 		soundManager().playSFX("pills");
+		return true; //CAMBIAA
 	};
 
 	return new ItemInfo(PAINKILLER, "painkiller", "Can heal pain", 1, 2, 2, 0, f);
@@ -134,7 +138,11 @@ ItemInfo* ItemInfo::painKiller()
 ItemInfo* ItemInfo::food()
 {
 	auto f = [](Entity* player) {
-		static_cast<Player*>(player)->getComponent<HungerComponent>()->eat(0.20f);
+		if (player->getMngr()->getGame()->currentScene == SCENES::SHELTER) {
+			static_cast<Player*>(player)->getComponent<HungerComponent>()->eat(0.20f);
+			return true;
+		}
+		else return false;
 	};
 
 	return new ItemInfo(FOOD, "food", "Food, reduces hunger", 1, 1, 1, 2, f);

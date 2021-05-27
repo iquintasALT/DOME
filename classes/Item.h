@@ -28,7 +28,7 @@ private:
 	int _row;
 	int _col;
 
-	std::function<void(Entity*)> function;
+	std::function<bool(Entity*)> function;
 	bool functionCreated;
 public:
 	void setAmount(int amount) { _craftAmount = amount; }
@@ -57,7 +57,7 @@ public:
 	static ItemInfo* classicAmmo();
 
 	ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, int craftAmount = 0);
-	ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<void(Entity*)> function, int craftAmount = 0);
+	ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<bool(Entity*)> function, int craftAmount = 0);
 	ItemInfo(ItemInfo* itemInfo);
 	~ItemInfo();
 	inline ITEMS name() { return _name; };
@@ -68,7 +68,7 @@ public:
 	inline int row() { return _row; }
 	inline int col() { return _col; }
 	std::function<void(Entity*)> getFunc() { return function; };
-	inline void execute(Entity* player) { function(player); };
+	inline bool execute(Entity* player) { return function(player); };
 
 	inline bool hasFunction() { return functionCreated; }
 };
