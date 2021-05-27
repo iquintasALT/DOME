@@ -257,6 +257,9 @@
     <ClCompile Include="components\Timer.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="classes\PlayerSaveData.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -565,6 +568,7 @@
     <ClInclude Include="components\Timer.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="classes\PlayerSaveData.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">
