@@ -69,10 +69,14 @@ Game::~Game() {
 	}
 	SCENES_LOOT.clear();
 	std::cout << "Gracias por jugar";
+
+	delete playerSavedData;
 }
 
 
 void Game::init() {
+	playerSavedData = new PlayerSaveData();
+
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "./resources/config/resources.json");
 	sdlutils().hideCursor();
 
