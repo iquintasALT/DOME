@@ -176,9 +176,6 @@
     <ClCompile Include="components\back_to_shelter.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="classes\ship_station.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="classes\sleep_station.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -479,9 +476,6 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\back_to_shelter.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\ship_station.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\sleep_station.h">

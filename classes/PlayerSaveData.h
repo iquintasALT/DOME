@@ -15,7 +15,6 @@ private:
 	float hunger;
 	float tiredness;
 	int weaponTiers[3];
-	Vector2D position;
 
 	class ItemSaveData {
 	public:
@@ -35,5 +34,6 @@ public:
 	void save(Player* p);
 	void load(Player* p);
 	void clear();
+	void reset();
 };
 

@@ -35,19 +35,8 @@ void Manager::refresh() {
 					return false;
 				}
 				else {
-					if (e->hasComponent<BoxCollider>()) {
-						//colliders.erase(e->getComponent<BoxCollider>()->getCollisionIterator()); NO SE PUEDE ACCEDER A getCollisionIterator porque tras borrar puede tener un iterador no valido
-						//solucion fea temporal, buscarlo
-						/*list<BoxCollider*>::iterator it = colliders.begin();
-						while (it != colliders.end()) {
-							if ((*it)->getEntity() == e) {
-								it = colliders.erase(it);
-								break;
-							}
-							else it++;
-						}*/
+					if (e->hasComponent<BoxCollider>()) // eliminacion del collider guardado
 						colliders.erase(e->getComponent<BoxCollider>()->getCollisionIterator());
-					}
 					if (e->renderGroup > -1) // eliminacion de la capa de renderizado
 						renders_[e->renderGroup].remove(e);
 					delete e;

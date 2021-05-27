@@ -90,9 +90,6 @@ void LocationsScene::loadLocationButtons(int buttons) {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-	if (g->playerCreated) {
-		g->playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(travelTiredness[index]);
-	}
 	g->currentScene = scenes[index];
 	g->setShouldRenderFPS(true);
 	soundManager().playSFX("push_button");
