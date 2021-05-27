@@ -41,7 +41,6 @@ public:
 	ShelterScene(Game* game) :GameScene(game, "Shelter") { actions = MAX_ACTIONS; };
 	virtual ~ShelterScene() { delete craftSys, delete uselessMngr; };
 	void init() override;
-	void onLoad() override;
 	virtual void update();
 	virtual void render() override;
 	inline int getActions() { return actions; };
