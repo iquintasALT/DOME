@@ -32,6 +32,7 @@ public:
 	void init() override;
 	void Interact() override;
 	inline Inventory* getInventory() { return inventory; }
+	inline Entity* getInventoryEntity() { return inventoryEntity; };
 
 
 };
