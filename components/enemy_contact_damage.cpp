@@ -1,4 +1,4 @@
-#include "enemy_contact_damege.h"
+#include "enemy_contact_damage.h"
 
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"

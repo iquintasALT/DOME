@@ -128,9 +128,6 @@
     <ClCompile Include="components\pain_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\enemy_contact_damege.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="components\rigid_body.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -253,6 +250,9 @@
     </ClCompile>
     <ClCompile Include="classes\PlayerSaveData.cpp">
       <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="components\enemy_contact_damage.cpp">
+      <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -421,9 +421,6 @@
     <ClInclude Include="components\pain_component.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\enemy_contact_damege.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="components\rigid_body.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
@@ -558,6 +555,9 @@
     </ClInclude>
     <ClInclude Include="classes\PlayerSaveData.h">
       <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\enemy_contact_damage.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

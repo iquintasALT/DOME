@@ -21,7 +21,7 @@
 #include "../components/hypothermia_component.h"
 #include "../components/box_collider.h"
 #include "../components/CameraMovement.h"
-#include "../components/enemy_contact_damege.h"
+#include "../components/enemy_contact_damage.h"
 
 #include "../classes/weapon_behaviour.h"
 #include "../classes/physiognomy.h"
@@ -59,9 +59,6 @@ Player::Player(Manager* mngr_, Point2D pos) : Entity(mngr_)
 
 Player::~Player() {
 	delete physiognomy;
-	//delete weapon;
-	//getComponent<InventoryController>()->inventory->forceDelete = true;
-	//delete getComponent<InventoryController>()->inventory;
 }
 
 WeaponBehaviour* Player::getWeapon() {

@@ -14,7 +14,7 @@ private:
 	//=====DATA=======
 	float hunger;
 	float tiredness;
-	int weaponTiers[3];
+	short int weaponTiers[3];
 
 	class ItemSaveData {
 	public:
@@ -33,7 +33,6 @@ public:
 	~PlayerSaveData();
 	void save(Player* p);
 	void load(Player* p);
-	void clear();
 	void reset();
 };
 

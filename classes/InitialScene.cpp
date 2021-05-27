@@ -17,7 +17,7 @@
 #include "../classes/physiognomy.h"
 #include "../components/enemy_detection_component.h"
 #include "../components/enemy_animation.h"
-#include "../components/enemy_contact_damege.h"
+#include "../components/enemy_contact_damage.h"
 #include "../components/enemy_attack_component.h"
 #include "../components/enemy_behaviour_component.h"
 #include "../classes/locations_scene.h"
