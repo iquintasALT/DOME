@@ -31,6 +31,15 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 
 }
 
+CraftingSystem::~CraftingSystem()
+{
+	for (auto craft : crafts) {
+		for (auto items : craft.second) {
+			delete items;
+		}
+	}
+}
+
 bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool openLoot) {
 	itemsToDelete.clear();
 
@@ -49,7 +58,8 @@ bool CraftingSystem::CraftItem(ITEMS item, int x, int y, Workshop* ws, bool open
 
 		for (int i = 0; i < itemsNeeded.size(); ++i) {
 			if (nameToFind == itemsNeeded[i].name()) { //Si coinciden los nombres restamos 1 a la cantidad necesaria de ese item
-				itemsNeeded[i].setAmount(itemsNeeded[i].getAmount() - 1); itemsToDelete.push_back(invItem);
+				itemsNeeded[i].setAmount(itemsNeeded[i].getAmount() - 1);
+				itemsToDelete.push_back(invItem);
 				if (itemsNeeded[i].getAmount() <= 0)itemsNeeded.erase(itemsNeeded.begin() + i); //si la cantidad llega a 0 lo metemos al vector de items a eliminar una vez se ccraftee el objeto
 			}
 		}

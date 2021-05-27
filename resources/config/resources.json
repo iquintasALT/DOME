@@ -332,8 +332,12 @@
         "file": "resources/sprites/clock.png"
       },
       {
-        "id": "dclock",
-        "file": "resources/sprites/digital_clock.png"
+          "id": "dclock",
+          "file": "resources/sprites/digital_clock.png"
+      },
+      {
+        "id": "dialogbg",
+        "file": "resources/sprites/panelbg.png"
       },
       {
         "id": "storage",
@@ -535,6 +539,16 @@
               "id": "heal",
               "volume": 128,
               "file": "resources/sound/heal.mp3"
+          },
+          {
+              "id": "splint",
+              "volume": 128,
+              "file": "resources/sound/splint.wav"
+          },
+          {
+              "id": "pills",
+              "volume": 128,
+              "file": "resources/sound/pills.wav"
           },
           {
               "id": "laser",

@@ -50,7 +50,7 @@ void ShelterScene::init() {
 	spaceshipImg->addComponent<Image>(&sdlutils().images().at("rocket"), 1, 1, 0, 0);
 	spaceshipImg->addComponent<Open_station>(spaceshipStation);
 	mngr_->addRenderLayer<Background>(spaceshipImg);
-
+	
 	medical_Workshop = new Workshop(mngr_, uselessMngr, craftSys, this);
 	medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT, PAINKILLER, FOOD});
 	Entity* medImg = mngr_->addEntity();
@@ -74,8 +74,8 @@ void ShelterScene::init() {
 
 void ShelterScene::onLoad()
 {
-	getGame()->playerSaved->getComponent<HungerComponent>()->decreaseHunger(0.5);
-	getGame()->playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
+	//getGame()->playerSaved->getComponent<HungerComponent>()->decreaseHunger(0.5);
+	//getGame()->playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
 }
 
 void ShelterScene::update() {
@@ -122,6 +122,11 @@ void ShelterScene::useAction()
 {
 	if (actions > 0) actions--;
 	std::cout << "actions: " << actions << endl;
+}
+
+void ShelterScene::addAction()
+{
+	actions++;
 }
 
 void ShelterScene::createParallaxBackground(int numOfRep) {
