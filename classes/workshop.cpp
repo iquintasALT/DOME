@@ -89,17 +89,20 @@ void Workshop::closeCraft()
 
 }
 
+//INICIALIZACION SLOTS DE LA LISTA 
 void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
 	workshopItems = move(items);
 
-	//INICIALIZACION SLOTS DE LA LISTA 
+	//Para cada item de la workshop
 	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
-		Slot aux = { 0,falseMngr->addEntity() };
-		setImg(aux.slot, Vector2D(), Vector2D{ 365,105 }, "craft_slot_box");
-		craftList.push_back(aux);
+		Slot aux = { 0,falseMngr->addEntity() }; //Se crea un slot
+		setImg(aux.slot, Vector2D(), Vector2D{ 365,105 }, "craft_slot_box"); //Se le pone imagen
+		craftList.push_back(aux); //Se añade a la lista
 	}
 	float offsetX = bg_tr->getPos().getX() + 45;
 	float offsetY = bg_tr->getPos().getY() + 50;
+
+	//Guardamos los transforms de cada slot para luego renderizarlos
 	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 		craftList[i].slot->getComponent<Transform>()->setPos(Vector2D{ offsetX,offsetY });
 		craftList_tr.push_back(craftList[i].slot->getComponent<Transform>());
@@ -107,6 +110,7 @@ void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
 	}
 }
 
+//Comenzar a renderizar
 void Workshop::setRenderFlag(bool set) {
 	renderFlag = set;
 	if (set)
@@ -140,7 +144,7 @@ void Workshop::setLeftRender() {
 
 	//Cargo en el vector las texturas los textos y las imagenes de los 4 items de los slots mostrados
 	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
-		craftList[i].index = listIndex + i; //vemos el indice de cada item del slot (desde listindex hasta listindex + 3)
+		craftList[i].index = listIndex + i; //para cada slot guardamos un indice
 
 		//Cargo texto
 		auto item = craftSys->getItemInfo(workshopItems[craftList[i].index]);
