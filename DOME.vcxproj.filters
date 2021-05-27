@@ -173,9 +173,6 @@
     <ClCompile Include="classes\locations_scene.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\back_to_shelter.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="classes\ship_station.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -245,6 +242,9 @@
     <ClCompile Include="components\Dialogue.cpp" />
     <ClCompile Include="components\CameraShake.cpp" />
     <ClCompile Include="components\Timer.cpp" />
+    <ClCompile Include="components\back_to_shelter.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -466,9 +466,6 @@
     <ClInclude Include="classes\locations_scene.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\back_to_shelter.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
     <ClInclude Include="classes\ship_station.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
@@ -540,6 +537,9 @@
     <ClInclude Include="components\Timer.h" />
     <ClInclude Include="classes\game_object.h">
       <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\back_to_shelter.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
