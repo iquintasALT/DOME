@@ -171,7 +171,7 @@ void Workshop::setLeftRender() {
 
 //Preparacion de imagenes y textos de la zona derecha
 void Workshop::setRightRender() {
-	////limpio los vectores de texturas e imagenes
+	//limpio los vectores de texturas e imagenes
 	for (int i = 0; i < rightRenderTexts.size(); ++i) {
 		delete  rightRenderTexts[i];
 	}
@@ -235,7 +235,6 @@ void Workshop::setRightRender() {
 			Entity* necessaryItemImage = falseMngr->addEntity();
 			necessaryItemImage->addComponent<Transform>(Vector2D{ offsetX,offsetY }, 48, 48, 0);
 			Component* img = necessaryItemImage->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, itemsNeeded[i]->row(), itemsNeeded[i]->col(), true);
-			img->render();
 			rightRenderImgs.push_back(necessaryItemImage);
 
 			offsetY += 48 + 20;
@@ -273,7 +272,7 @@ void Workshop::update() {
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
-		//Cerramos el menu
+		//Cerramos el menu si pulsamos la E
 		if (ih().isKeyDown(SDL_SCANCODE_E)) {
 			renderFlag = false;
 			renderRightWindow = false;
@@ -399,7 +398,7 @@ void Workshop::render() {
 		arrowUp->render();
 		arrowDown->render();
 
-		//Para cada item de los 4 slots de la lista
+		//Para cada item de los slots de la lista
 		for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 			craftList[i].slot->render(); //Renderizamos el fondo
 
