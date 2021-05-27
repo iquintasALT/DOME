@@ -239,12 +239,24 @@
     <ClCompile Include="classes\check_button.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\HoldToSkip.cpp" />
-    <ClCompile Include="components\InitialCameraZoom.cpp" />
-    <ClCompile Include="classes\InitialScene.cpp" />
-    <ClCompile Include="components\Dialogue.cpp" />
-    <ClCompile Include="components\CameraShake.cpp" />
-    <ClCompile Include="components\Timer.cpp" />
+    <ClCompile Include="components\CameraShake.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\Dialogue.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\HoldToSkip.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\InitialCameraZoom.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\InitialScene.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\Timer.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -532,14 +544,26 @@
     <ClInclude Include="classes\check_button.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\HoldToSkip.h" />
-    <ClInclude Include="components\InitialCameraZoom.h" />
-    <ClInclude Include="classes\InitialScene.h" />
-    <ClInclude Include="components\Dialogue.h" />
-    <ClInclude Include="components\CameraShake.h" />
-    <ClInclude Include="components\Timer.h" />
     <ClInclude Include="classes\game_object.h">
       <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\CameraShake.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Dialogue.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\HoldToSkip.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\InitialCameraZoom.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\InitialScene.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\Timer.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
