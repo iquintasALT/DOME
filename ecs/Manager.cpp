@@ -22,7 +22,6 @@ Manager::~Manager() {
 				if (!e->hasComponent<Weapon>())
 			delete e;
 	}
-
 	entities_.clear();
 }
 
