@@ -141,6 +141,7 @@ void Inventory::onDisable() {
 
 
 Inventory::~Inventory() {
+	if (isPlayer) forceDelete = true;
 	for (auto a : storedItems) {
 		a->forceDelete = forceDelete;
 		delete a;
