@@ -446,6 +446,10 @@
       {
         "id": "enemyDeath",
         "file": "resources/sprites/enemyDeath.png"
+      },
+      {
+        "id": "statesBackground",
+        "file": "resources/sprites/states_background.png"
       }
     ],
 

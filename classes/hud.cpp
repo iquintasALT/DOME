@@ -44,6 +44,9 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 	currentWeapon = arma->addComponent<Image>(&sdlutils().images().at("weaponHUD"), 3, 3, 0, 0, true);
 	m->addRenderLayer<Interface>(arma);
 
+	stateBackground = &sdlutils().images().at("statesBackground");
+	stateBackground->setAlpha(100);
+
 	woundDescriptions = std::vector<std::string>{
 		{"You are intoxicated, find something to detox"},
 		{"You suffered a contusion, now, you can't jump"},
@@ -111,6 +114,13 @@ void hud::render() {
 	delete nbullets;
 	nbullets = nullptr;
 
+	//Renderizar los fondos de los estados
+	SDL_Rect destRect = { consts::STATUS_EFFECTS_SIZEX / 2, 30, consts::STATUS_EFFECTS_SIZEX, consts::STATUS_EFFECTS_SIZEY };
+	for (int i = 0; i < consts::MAX_MULTIPLE_STATES; i++) {
+		stateBackground->render(destRect);
+		destRect.x += destRect.w;
+	}
+
 	//Renderizar los estados
 	if (states->size() > 0)
 	{
@@ -166,8 +176,7 @@ void hud::render() {
 	}
 }
 
-void hud::drawStatus(int pos, int frameIndex, Vector2D mouse)
-{
+void hud::drawStatus(int pos, int frameIndex, Vector2D mouse) {
 	// Si no hay estados que dibujar, no deberiamos estar en este metodo
 	assert(states->size() > 0);
 
