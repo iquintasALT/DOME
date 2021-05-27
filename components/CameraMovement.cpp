@@ -33,7 +33,7 @@ void CameraMovement::update() {
 
 	int x = rb->getVel().getX();
 	int dir = (x > 0) - (x < 0);
-	pos = pos + Vector2D(consts::PLAYER_SPEED, 0) * dir * consts::WINDOW_WIDTH / 5 / cam->getScale();
+	pos = pos + Vector2D(consts::PLAYER_SPEED, 0) * dir * consts::WINDOW_WIDTH / 7.5 / cam->getScale();
 	cam->LerpWithBounds(pos, velocity);
 }
 

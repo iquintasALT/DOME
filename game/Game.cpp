@@ -185,7 +185,7 @@ void Game::initLoot() {
 		},
 		{ make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(0, 1)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(3, 3)),
 				make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(2, 0)), make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(4, 0)), 
-				make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(1, 3)), make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(4, 3)),
+				make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(1, 3)), make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(4, 2)),
 				make_pair(CraftingSystem::getItemInfo(MECANICAL_COMPONENTS), Vector2D(0, 4)), make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(2, 3))
 		}
 	});
