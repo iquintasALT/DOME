@@ -36,7 +36,7 @@ void KeyboardPlayerCtrl::init() {
 }
 
 void KeyboardPlayerCtrl::OnCollision(Entity* bc) {
-	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED) {
+	if (rb_->onFloor() && rb_->collisionVelocity.getY() > consts::FALLING_DMG_SPEED && bc->getMngr()->getGame()->currentScene != SCENES::SHELTER) {
 		static_cast<Player*>(entity_)->getPhysiognomy()->addConcussionState();
 		soundManager().playSFX("bonecrack");
 	}
