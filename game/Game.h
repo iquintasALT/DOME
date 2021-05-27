@@ -32,6 +32,7 @@ private:
 	Texture* fpsText;
 
 	void drawFPS(int fps);
+	void clearSceneLoot();
 
 public:
 	SCENES currentScene;
@@ -46,6 +47,7 @@ public:
 	void quitGame() { exit = true; }
 
 	void initLoot();
+
 	void setFPSActive(bool value) { fpsActive = value; }
 	bool getFPSActive() { return fpsActive; }
 	void setShouldRenderFPS(bool value) { shouldRenderFps = value; }

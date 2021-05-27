@@ -54,20 +54,7 @@ Game::~Game() {
 		delete playerSaved;
 	}
 
-	int i = 1;
-	std::cout << std::endl << "Hola soy la destructora del game" << std::endl;
-	for (auto a : SCENES_LOOT) {
-		for (auto b : a.second) {
-			for (auto& c : b) {
-				std::cout << "eliminado item desde destructora game" << i++ << std::endl;
-				auto d = c.first;
-				delete d;
-			}
-			b.clear();
-		}
-		a.second.clear();
-	}
-	SCENES_LOOT.clear();
+	clearSceneLoot();
 	std::cout << "Gracias por jugar";
 
 	delete playerSavedData;
@@ -150,20 +137,7 @@ void Game::initLoot() {
 	//, HOSPITAL, RESTAURANT, RAID, COMMUNICATIONS,NUCLEAR_STATION,SUPERMARKET,SHOP
 	// ITEMS n, int cantidad (INUTIL PARA ESTE METODO), int w , int h , int x, int y,int row, int col,string desc
 
-	//el pair es iteminfo/posicion en el inventario del loot
-	int i = 1;
-	for (auto a : SCENES_LOOT) { //Esto es para eliminar el loot anterior y dejarlo vacio para uno nuevo
-		for (auto b : a.second) {
-			for (auto& c : b) {
-				auto d = c.first;
-				std::cout << "eliminado itemInfo " << i++ << std::endl;
-				delete d;
-			}
-			b.clear();
-		}
-		a.second.clear();
-	}
-	SCENES_LOOT.clear();
+	clearSceneLoot();
 
 	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<pair<ItemInfo*, Vector2D>>> {
 		{
@@ -257,6 +231,24 @@ void Game::initLoot() {
 			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(0, 3)), make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(1, 0))
 		}
 	});
+}
+
+void Game::clearSceneLoot()
+{
+	//el pair es iteminfo/posicion en el inventario del loot
+	int i = 1;
+	for (auto a : SCENES_LOOT) { //Esto es para eliminar el loot anterior y dejarlo vacio para uno nuevo
+		for (auto b : a.second) {
+			for (auto& c : b) {
+				auto d = c.first;
+				std::cout << "eliminado itemInfo " << i++ << std::endl;
+				delete d;
+			}
+			b.clear();
+		}
+		a.second.clear();
+	}
+	SCENES_LOOT.clear();
 }
 
 void Game::nextDay()
