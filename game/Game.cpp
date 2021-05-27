@@ -106,6 +106,8 @@ void Game::start() {
 		if (event.type == SDL_QUIT) {
 			exit = true;
 
+
+
 			continue;
 		}
 
