@@ -162,12 +162,14 @@ void Inventory::update() {
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 	Vector2D pos = transform->getPos();
 
-	if (insideSquare(mousePos.getX(), mousePos.getY()) /*|| (dropDownActive && insideSquare(mousePos.getX(), mousePos.getY(), dropDown))*/)
+	if (insideSquare(mousePos.getX(), mousePos.getY()) ||
+		(dropDownActive && insideSquare(mousePos.getX(), mousePos.getY(), dropDown->getPos(), dropDown->getDimensions())))
 	{
 		int xCell = (mousePos.getX() - pos.getX()) / transform->getW() * width;
 		int yCell = (mousePos.getY() - pos.getY()) / transform->getH() * height;
 
-		auto hoverItem = findItemInSlot(xCell, yCell);
+		Item* hoverItem = nullptr;
+		if (!dropDownActive) hoverItem = findItemInSlot(xCell, yCell);
 		showToolTip = hoverItem != nullptr;
 
 
@@ -379,4 +381,9 @@ bool Inventory::insideSquare(int mouseX, int mouseY) {
 
 	return mouseX > pos.getX() && mouseX < pos.getX() + transform->getW()
 		&& mouseY > pos.getY() && mouseY < pos.getY() + transform->getH();
+}
+
+bool Inventory::insideSquare(int mouseX, int mouseY, Vector2D pos, Vector2D dimensions) {
+	return mouseX > pos.getX() && mouseX < pos.getX() + dimensions.getX()
+		&& mouseY > pos.getY() && mouseY < pos.getY() + dimensions.getY();
 }

@@ -79,7 +79,7 @@ void SpaceshipStation::setWorkshopItems(vector<ITEMS>&& items) {
 		int imgCol = itemInfo->col();
 		std::string itemName = itemInfo->strName();
 
-		//Creamos un slot con su respectiva imagen y lo añadimos a lalista de items
+		//Creamos un slot con su respectiva imagen y lo aï¿½adimos a lalista de items
 		Slot aux = { 0,getMngr()->addEntity() };
 		aux.slot->addComponent<Transform>(Vector2D(), 64, 64, 0);
 		aux.slot->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, imgRow, imgCol, true);
@@ -164,7 +164,7 @@ void SpaceshipStation::setRightRender() {
 
 		offsetY += 48 + 20;
 	}
-	//Cargo el texto para el botón de craftear
+	//Cargo el texto para el botï¿½n de craftear
 	rightRenderTexts.push_back(new Texture(sdlutils().renderer(), "CRAFT", sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
 }
 
@@ -186,14 +186,14 @@ void SpaceshipStation::update() {
 		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
 			mouseClick = true;
 
-			//En el botón de regreso cerramos el menu
+			//En el botï¿½n de regreso cerramos el menu
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
 				renderRightWindow = false;
 			}
 
-			//Si haces click en alguno de los slots se abre el menú derecho
+			//Si haces click en alguno de los slots se abre el menï¿½ derecho
 			for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 				if ((workshopItems[i] == SPACESHIP_CABIN && !mngr_->getGame()->cabin) ||
 					(workshopItems[i] == SPACESHIP_ROCKETS && !mngr_->getGame()->rockets)
@@ -205,7 +205,7 @@ void SpaceshipStation::update() {
 					}
 			}
 
-			//Si la zona derecha está abierta
+			//Si la zona derecha estï¿½ abierta
 			if (renderRightWindow) {
 				//Si hacemos click en craftear
 				if (Collisions::collides(mousePos, 1, 1, craftButton_tr->getPos(), craftButton_tr->getW(), craftButton_tr->getH())) {
@@ -308,7 +308,7 @@ void SpaceshipStation::rightWindowRender() {
 
 		dest = { (int)(offsetX - rightRenderTexts[1]->width() / 2)  , (int)offsetY ,rightRenderTexts[1]->width(),rightRenderTexts[1]->height() };
 
-		rightRenderTexts[1]->render(dest, 0); //Renderizamos el texto "Items needed" que siempre es la posición 1
+		rightRenderTexts[1]->render(dest, 0); //Renderizamos el texto "Items needed" que siempre es la posiciï¿½n 1
 
 		offsetY += rightRenderTexts[1]->height() + 35;
 		offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
