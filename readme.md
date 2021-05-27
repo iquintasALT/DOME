@@ -154,6 +154,7 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 
 ## Armas
 | Weapon | Tier 1 Sprite |  Tier 2 Sprite | Tier 3 Sprite |
+|--------|-------|-------|
 | Classic Weapon | ![alt text](./resources/sprites/11weapon.png)| ![alt text](./resources/sprites/12weapon.png)| ![alt text](./resources/sprites/13weapon.png)|
 | Laser Weapon | ![alt text](./resources/sprites/21weapon.png)| ![alt text](./resources/sprites/22weapon.png)| ![alt text](./resources/sprites/23weapon.png)|
 | Ricochet Weapon | ![alt text](./resources/sprites/31weapon.png)| ![alt text](./resources/sprites/32weapon.png)| ![alt text](./resources/sprites/33weapon.png)|
