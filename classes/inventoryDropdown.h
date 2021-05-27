@@ -21,6 +21,9 @@ public:
 	void render(bool isActive = true);
 	bool onClick(Vector2D& const mousePos, bool isActive = true);
 	void setPos(Vector2D& pos);
+	Vector2D getPos();
+	Vector2D getDimensions();
+
 private:
 	float width;
 	Vector2D position;
