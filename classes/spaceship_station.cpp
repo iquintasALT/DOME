@@ -269,7 +269,7 @@ void SpaceshipStation::rightWindowRender() {
 			delete rightItemInfo;
 			if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
 				weaponTr->setPos(Vector2D(offsetX - 64, offsetY - 16));
-				renderWeaponUpgrade();
+				renderWeaponUpgrade(offsetX, offsetY);
 				arrowLeft->render();
 				arrowRight->render();
 			}
