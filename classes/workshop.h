@@ -90,7 +90,7 @@ public:
 	virtual void setLeftRender();
 	virtual void setRightRender();
 
-	void renderWeaponUpgrade();
+	void renderWeaponUpgrade(float offsetX, float offsetY);
 	virtual void setWorkshopItems(vector<ITEMS>&& items);
 	void setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name);
 	void renderImg(float posX, float posY, int row, int col, int sizeX = 64, int sizeY = 64);

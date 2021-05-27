@@ -3,22 +3,24 @@
 
 Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_) : Entity(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
-	craftSys = cs;
+	craftSys = cs; 
 	realMngr_->addEntity(this);
 	realMngr_->addRenderLayer<Interface>(this);
 
-	renderFlag = false;
-	listIndex = 0;
+	renderFlag = false; //booleano para comenzar a renderizar
+	listIndex = 0; //indice para manejar los items de la lista
+
 	mouseClick = false;
 	loot = nullptr;
 
 	falseMngr = mngr_;
 
+	//inventario y transform del player
 	playerInv = realMngr_->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
 
-	renderRightWindow = false;
-	rightWindowIndex = 0;
+	renderRightWindow = false; //booleano para comenzar a renderizar la zona derecha
+	rightWindowIndex = 0; //indice para guardar el indice del item seleccionado y usarlo en la derecha
 
 	weapon = static_cast<Player*>(realMngr_->getHandler<Player_hdlr>())->getWeapon();
 
@@ -120,7 +122,9 @@ void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string n
 	falseMngr->addRenderLayer<Interface>(entity);
 }
 
+//Preparacion de imagenes y textos de la zona izquierda
 void Workshop::setLeftRender() {
+	//limpio los vectores de texturas e imagenes
 	for (int i = 0; i < leftRenderTexts.size(); ++i) {
 		delete  leftRenderTexts[i];
 	}
@@ -133,8 +137,12 @@ void Workshop::setLeftRender() {
 	falseMngr->refresh();
 	leftRenderImgs.clear();
 
+
+	//Cargo en el vector las texturas los textos y las imagenes de los 4 items de los slots mostrados
 	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
-		craftList[i].index = listIndex + i;
+		craftList[i].index = listIndex + i; //vemos el indice de cada item del slot (desde listindex hasta listindex + 3)
+
+		//Cargo texto
 		auto item = craftSys->getItemInfo(workshopItems[craftList[i].index]);
 		std::string itemName = item->strName();
 		leftRenderTexts.push_back(new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
@@ -148,6 +156,7 @@ void Workshop::setLeftRender() {
 
 		delete item;
 
+		//Cargo imagen
 		Entity* aux = falseMngr->addEntity();
 		aux->addComponent<Transform>(Vector2D{ offsetX,offsetY }, 64, 64, 0);
 		Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, imgRow, imgCol, true);
@@ -156,7 +165,9 @@ void Workshop::setLeftRender() {
 	}
 }
 
+//Preparacion de imagenes y textos de la zona derecha
 void Workshop::setRightRender() {
+	////limpio los vectores de texturas e imagenes
 	for (int i = 0; i < rightRenderTexts.size(); ++i) {
 		delete  rightRenderTexts[i];
 	}
@@ -169,7 +180,10 @@ void Workshop::setRightRender() {
 	falseMngr->refresh();
 	rightRenderImgs.clear();
 
+	//Si el item no es la mejora de arma o si el arma no esta en su maximo tier
 	if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getWeapon()->tierOfWeapon() < 2) {
+
+		//Guardo el nombre del item y otro texto
 		auto rightWindowItem = craftSys->getItemInfo(workshopItems[rightWindowIndex]);
 		std::string itemName = rightWindowItem->strName();
 		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
@@ -182,43 +196,53 @@ void Workshop::setRightRender() {
 
 		delete rightWindowItem;
 
-		Entity* aux = falseMngr->addEntity();
-		aux->addComponent<Transform>(Vector2D{ offsetX - 32,offsetY + 80 }, 64, 64, 0);
-		Component* img = aux->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, imgRow, imgCol, true);
+
+		//Guardo imagen de item seleccionado
+		Entity* selectedItemImg = falseMngr->addEntity();
+		selectedItemImg->addComponent<Transform>(Vector2D{ offsetX - 32,offsetY + 80 }, 64, 64, 0);
+		Component* img = selectedItemImg->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, imgRow, imgCol, true);
 		img->render();
 
-		rightRenderImgs.push_back(aux);
+		rightRenderImgs.push_back(selectedItemImg);
 
 		offsetY = 312;
 		offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
 
+
+		//Para cada item que se necesita para craftear el item elegido
 		vector<ItemInfo*> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
 		for (int i = 0; i < itemsNeeded.size(); ++i) {
-			int aux = 0;
+			int quantityOfItem = 0;
+
+			//Cuento cuanta cantidad tengo en el inventario del item a buscar
 			list<Item*> items = playerInv->getItems();
 			for (auto it = items.begin(); it != items.end(); ++it)
 			{
 				if ((*it)->getItemInfo()->name() == itemsNeeded[i]->name())
-					aux++;
+					quantityOfItem++;
 			}
 
-			rightRenderTexts.push_back(new Texture(sdlutils().renderer(), to_string(aux) + "/" + to_string(itemsNeeded[i]->getAmount()), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
-
+			//Cargo el texto  "itemsquetengo/itemsnecesarios"
+			rightRenderTexts.push_back(new Texture(sdlutils().renderer(), to_string(quantityOfItem) + "/" + to_string(itemsNeeded[i]->getAmount()), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
+			//Cargo el nombre del item que necesito
 			rightRenderTexts.push_back(new Texture(sdlutils().renderer(), itemsNeeded[i]->strName(), sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
 
-			Entity* aux2 = falseMngr->addEntity();
-			aux2->addComponent<Transform>(Vector2D{ offsetX,offsetY }, 48, 48, 0);
-			Component* img = aux2->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, itemsNeeded[i]->row(), itemsNeeded[i]->col(), true);
+			//Cargo la imagen del item necesario
+			Entity* necessaryItemImage = falseMngr->addEntity();
+			necessaryItemImage->addComponent<Transform>(Vector2D{ offsetX,offsetY }, 48, 48, 0);
+			Component* img = necessaryItemImage->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, itemsNeeded[i]->row(), itemsNeeded[i]->col(), true);
 			img->render();
-			rightRenderImgs.push_back(aux2);
+			rightRenderImgs.push_back(necessaryItemImage);
 
 			offsetY += 48 + 20;
 		}
 
+		//Cargo el texto para el botón de craftear
 		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), "CRAFT", sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
 	}
-	else {
-		//weapon is at its maximun tier and cant be upgraded
+	else {	//Si el arma no se puede mejorar
+
+		//cargo los textos a mostrar
 		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), "The equiped weapon is ", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
 
 		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), "at its maximun tier", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
@@ -231,18 +255,21 @@ void Workshop::setRightRender() {
 void Workshop::update() {
 	falseMngr->refresh();
 
+	//Si estamos en la ventana con el item crafteado y pulsas E
 	if (loot != nullptr && ih().isKeyDown(SDL_SCANCODE_E)) {
+		//Si no has cogido el item recuperas tus items y la acción consumida
 		if (!loot->getInventory()->getItems().empty()) {
 			craftSys->restoreCraft();
 			shelterScene->addAction();
 		}
-		closeCraft();
+		closeCraft(); //Cierra el crafteo
 		ih().clearState();
 	}
 
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
+		//Cerramos el menu
 		if (ih().isKeyDown(SDL_SCANCODE_E)) {
 			renderFlag = false;
 			renderRightWindow = false;
@@ -250,53 +277,71 @@ void Workshop::update() {
 			ih().clearState();
 		}
 
+		//Al hacer click
 		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
 			mouseClick = true;
 
+			//En el botón de regreso cerramos el menu
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
 				renderFlag = false;
 				playerTr->getEntity()->setActive(true);
 				renderRightWindow = false;
 			}
+			//En la flecha hacia arriba aumentamos el indice de la lista que se renderiza
 			else if (Collisions::collides(mousePos, 1, 1, arrowUp_tr->getPos(), arrowUp_tr->getW(), arrowUp_tr->getH())) {
 				if (listIndex > 0)listIndex--;
 
+				//Cambiamos los arrays de imagenes y textos de la zona izquierda ya que ha cambiado el indice
 				setLeftRender();
 			}
+			//En la flecha hacia abajo reducimos el indice de la lista que se renderiza
 			else if (Collisions::collides(mousePos, 1, 1, arrowDown_tr->getPos(), arrowDown_tr->getW(), arrowDown_tr->getH())) {
 				int aux = workshopItems.size();
 				if (listIndex < aux - 4) listIndex++;
 
+				//Cambiamos los arrays de imagenes y textos de la zona izquierda ya que ha cambiado el indice
 				setLeftRender();
 			}
 
+			//Si haces click en alguno de los slots se abre el menú derecho
 			for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 				if (Collisions::collides(mousePos, 1, 1, craftList_tr[i]->getPos(), craftList_tr[i]->getW(), craftList_tr[i]->getH())) {
 					renderRightWindow = true;
+
+					//Right window index es para guardar el indice del item clickado y asi renderizarlo a la derecha
 					rightWindowIndex = craftList[i].index;
 
-					setRightRender();
+					setRightRender(); // Cargamos imagenes y textos de la zona derecha
 				}
 			}
 
+
+			//Si la zona derecha está abierta
 			if (renderRightWindow) {
+				//Si hacemos click en craftear
 				if (Collisions::collides(mousePos, 1, 1, craftButton_tr->getPos(), craftButton_tr->getW(), craftButton_tr->getH())) {
+
 					//si tengo acciones
 					if (shelterScene->getActions() > 0) {
+						//Si el item elegido es la mejora de arma
 						if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
+							//Comprobamos si es crafteable y el tier es < 3
 							bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this, false);
 							WeaponBehaviour* weapon = static_cast<Player*>(playerTr->getEntity())->getWeapon();
 							if (isCraftable && weapon->tierOfWeapon() < 3) {
+								//Mejora el arma y gasta accion
 								renderRightWindow = false;
 								weapon->upgradeCurrentWeapon();
 								//gastar accion
 								shelterScene->useAction();
 							}
 
-						}
+						} //Si no es un arma
 						else {
+							//Comprobamos si es crafteable
 							bool isCraftable = craftSys->CraftItem(workshopItems[rightWindowIndex], craftButton_tr->getPos().getX() * 3 / 2, consts::WINDOW_HEIGHT / 3, this);
 							if (isCraftable) {
+								//Si es crafteable la variable loot ya será != nullptr y usamos una accion
 								renderRightWindow = false;
 								renderFlag = false;
 								shelterScene->useAction();
@@ -304,12 +349,13 @@ void Workshop::update() {
 						}
 					}
 				}
+				//Si hacemos click en la flecha izq cambiamos el arma elegida en la mejora de armas
 				if (Collisions::collides(mousePos, 1, 1, arrowLeft_tr->getPos(), arrowLeft_tr->getW(), arrowLeft_tr->getH())) {
-					//Lo pongo 2 veces aposta (no quitar)
+					//Lo pongo 2 veces aposta porque el changeweapon solo es en una direccion y solo hay 3 tipos de arma
 					weapon->changeWeapon();
 					weapon->changeWeapon();
 					setRightRender();
-				}
+				} //Si hacemos click en la flecha derecha cambiamos el arma elegida en la mejora de armas
 				else if (Collisions::collides(mousePos, 1, 1, arrowRight_tr->getPos(), arrowRight_tr->getW(), arrowRight_tr->getH())) {
 					weapon->changeWeapon();
 					setRightRender();
@@ -319,16 +365,19 @@ void Workshop::update() {
 		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
 	}
 
+	//Si hemos crafteado un item
 	if (loot != nullptr) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
 		mouseClick = true;
 
+		//Cuando lo movamos a nuestro inventario se cierra el loot y volvemos al menú de crafteo
 		if (loot->getInventory()->getItems().empty()) {
 			closeCraft();
 			renderFlag = true;
 		}
 		else if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick)
+			// Si no lo hemos movido al inventario y pulsamos el botón de volver se cierra el loot y volvemos al menú de crafteo
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
 				craftSys->restoreCraft();
 				shelterScene->addAction();
@@ -337,74 +386,80 @@ void Workshop::update() {
 }
 
 void Workshop::render() {
+
 	falseMngr->refresh();
 	if (renderFlag && loot == nullptr) {
+		//render del fondo , el botón de volver y las flechas para mover la lista de items
 		bg->render();
 		bButton->render();
-
 		arrowUp->render();
 		arrowDown->render();
 
+		//Para cada item de los 4 slots de la lista
 		for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
-			craftList[i].slot->render();
+			craftList[i].slot->render(); //Renderizamos el fondo
 
-			leftRenderImgs[i]->render();
+			leftRenderImgs[i]->render(); //Renderizamos las imagenes
 
 			float offsetX = craftList_tr[i]->getPos().getX() + 35;
 
 			SDL_Rect dest{ offsetX + 80 ,craftList_tr[i]->getPos().getY() + craftList_tr[i]->getH() / 2 - leftRenderTexts[i]->height() / 2  ,leftRenderTexts[i]->width(),leftRenderTexts[i]->height() };
-			leftRenderTexts[i]->render(dest, 0);
+			leftRenderTexts[i]->render(dest, 0); //Renderizamos el texto
 
 			rightWindowRender();
 		}
 	}
 	else if (loot != nullptr) {
-		bButton->render();
+		bButton->render(); //Si hay un crafteo solo renderizamos el boton de volver
 	}
 }
 
 void Workshop::rightWindowRender() {
 	if (renderRightWindow) {
+
 		float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
 		float offsetY = bg_tr->getPos().getY() + 35;
+
+		//Si el item no es la mejora de arma o si el arma no esta en su maximo tier
 		if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getWeapon()->tierOfWeapon() < 2) {
 
 			std::string itemName = craftSys->getItemInfo(workshopItems[rightWindowIndex])->strName();
-
 			SDL_Rect dest{ offsetX - rightRenderTexts[0]->width() / 2  , offsetY ,rightRenderTexts[0]->width(),rightRenderTexts[0]->height() };
-			rightRenderTexts[0]->render(dest, 0);
+
+			rightRenderTexts[0]->render(dest, 0); //Renderizamos el nombre del item que siempre es la posición 0
 
 			offsetY += rightRenderTexts[0]->height() + 25;
 
 			int imgRow = craftSys->getItemInfo(workshopItems[rightWindowIndex])->row();
 			int imgCol = craftSys->getItemInfo(workshopItems[rightWindowIndex])->col();
 
+			//Si el item elegido es la mejora de armas renderizamos las flechas y el arma elegida
 			if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
-				weaponTr->setPos(Vector2D(offsetX - 64, offsetY - 16));
-				renderWeaponUpgrade();
-				arrowLeft->render();
-				arrowRight->render();
+				renderWeaponUpgrade(offsetX, offsetY); //Renderizamos el arma
 			}
-			else rightRenderImgs[0]->render();
+			else rightRenderImgs[0]->render(); //Si no renderizamos la imagen del item que siempre es la posicion 0
 
 			offsetY += 90;
 
 			dest = { (int)(offsetX - rightRenderTexts[1]->width() / 2)  , (int)offsetY ,rightRenderTexts[1]->width(),rightRenderTexts[1]->height() };
-			rightRenderTexts[1]->render(dest, 0);
+
+			rightRenderTexts[1]->render(dest, 0); //Renderizamos el texto "Items needed" que siempre es la posición 1
 
 			offsetY += rightRenderTexts[1]->height() + 35;
 			offsetX = bg_tr->getPos().getX() + bg_tr->getW() / 2 + 30;
 
-
+			//Para cada item necesario
 			vector<ItemInfo*> itemsNeeded = craftSys->getCrafts()->find(workshopItems[rightWindowIndex])->second;
 			for (int i = 0; i < itemsNeeded.size(); ++i) {
-				rightRenderImgs[1 + i]->render();
+				rightRenderImgs[1 + i]->render(); //Renderizamos su imagen
 
 				dest = { (int)(offsetX + 30) , (int)offsetY + 48 - rightRenderTexts[2 * (i + 1)]->height() / 2 ,	rightRenderTexts[2 * (i + 1)]->width(),	rightRenderTexts[2 * (i + 1)]->height() };
-				rightRenderTexts[2 * (i + 1)]->render(dest, 0);
+
+				rightRenderTexts[2 * (i + 1)]->render(dest, 0); // Renderizamos el texto "itemsquetengo/itemsnecesarios"
 
 				dest = { (int)(offsetX + 80) , (int)offsetY + 24 - rightRenderTexts[2 * (i + 1) + 1]->height() / 2 ,	rightRenderTexts[2 * (i + 1) + 1]->width(),	rightRenderTexts[2 * (i + 1) + 1]->height() };
-				rightRenderTexts[2 * (i + 1) + 1]->render(dest, 0);
+
+				rightRenderTexts[2 * (i + 1) + 1]->render(dest, 0); //Renderizamos el nombre del item
 
 				offsetY += 48 + 20;
 			}
@@ -413,24 +468,23 @@ void Workshop::rightWindowRender() {
 				(int)(craftButton_tr->getPos().getY() + craftButton_tr->getH() / 2 - rightRenderTexts[rightRenderTexts.size() - 1]->height() / 2),
 				rightRenderTexts[rightRenderTexts.size() - 1]->width(),	rightRenderTexts[rightRenderTexts.size() - 1]->height() };
 
-			craftButton->render();
-			rightRenderTexts[rightRenderTexts.size() - 1]->render(dest, 0);
+			craftButton->render(); //Renderizamos el botón de crafteo
+			rightRenderTexts[rightRenderTexts.size() - 1]->render(dest, 0); //Renderizamos el texto "craft"
 		}
-		else {
+		else { //Si el item es la mejora de arma y está en su maximo tier
 
 			offsetY += 61;
 
 			if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
-				weaponTr->setPos(Vector2D(offsetX - 64, offsetY - 16));
-				renderWeaponUpgrade();
-				arrowLeft->render();
-				arrowRight->render();
+				renderWeaponUpgrade(offsetX, offsetY); //Renderizamos el arma y flechas
 			}
 
 			offsetY += 150;
 
 
 			//weapon is at its maximun tier and cant be upgraded
+			//Renderizamos  los textos que indican que no se puede craftear. Siempre estan en la misma posicion
+
 			SDL_Rect dest{ offsetX - rightRenderTexts[0]->width() / 2  , offsetY ,rightRenderTexts[0]->width(),rightRenderTexts[0]->height() };
 			rightRenderTexts[0]->render(dest, 0);
 			offsetY += rightRenderTexts[0]->height() + 25;
@@ -446,10 +500,16 @@ void Workshop::rightWindowRender() {
 }
 
 
-void Workshop::renderWeaponUpgrade() {
-	weaponImg->changeFrame(weapon->tierOfWeapon(), (int)weapon->typeOfWeapon());
+void Workshop::renderWeaponUpgrade(float offsetX, float offsetY) {
+	weaponTr->setPos(Vector2D(offsetX - 64, offsetY - 16));
 
+	//Ponemos el frame del arma equipada y la renderiza
+	weaponImg->changeFrame(weapon->tierOfWeapon(), (int)weapon->typeOfWeapon());
 	weaponImg->render();
+
+	//Renderizamos las flechas
+	arrowLeft->render();
+	arrowRight->render();
 }
 
 void Workshop::renderImg(float posX, float posY, int row, int col, int sizeX, int sizeY) {
