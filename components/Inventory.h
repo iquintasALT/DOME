@@ -84,6 +84,7 @@ private:
 
 	bool insideSquare(int mouseX, int mouseY, Transform* rect);
 	bool insideSquare(int mouseX, int mouseY);
+	bool insideSquare(int mouseX, int mouseY, Vector2D pos, Vector2D dimensions);
 
 	bool dropDownActive;
 
