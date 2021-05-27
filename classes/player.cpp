@@ -53,8 +53,8 @@ Player::Player(Manager* mngr_, Point2D pos) : Entity(mngr_)
 	addComponent<EnemyContactDamage>(physiognomy);
 	setGroup<Player_grp>(true);
 
-	mngr_->getGame()->playerSaved = this;
-	mngr_->getGame()->playerCreated = true;
+	//mngr_->getGame()->playerSaved = this;
+	//mngr_->getGame()->playerCreated = true;
 
 	weapon->getCurrentWeapon()->setAmmo();
 }
@@ -114,9 +114,9 @@ Player::Player(Player* prevPlayer, Manager* mngr):
 
 Player::~Player() {
 	delete physiognomy;
-	delete weapon;
-	getComponent<InventoryController>()->inventory->forceDelete = true;
-	delete getComponent<InventoryController>()->inventory;
+	//delete weapon;
+	//getComponent<InventoryController>()->inventory->forceDelete = true;
+	//delete getComponent<InventoryController>()->inventory;
 }
 
 WeaponBehaviour* Player::getWeapon() {
