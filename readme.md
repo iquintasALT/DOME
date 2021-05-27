@@ -154,33 +154,34 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 
 ## Armas
 | Weapon | Tier 1 Sprite |  Tier 2 Sprite | Tier 3 Sprite |
-| Classic Weapon | ![alt text](./resources/sprites/11weapon.png)| ![alt text](./resources/sprites/12weapon.png)| ![alt text](./resources/sprites/13weapon.png)|
-| Laser Weapon | ![alt text](./resources/sprites/21weapon.png)| ![alt text](./resources/sprites/22weapon.png)| ![alt text](./resources/sprites/23weapon.png)|
-| Ricochet Weapon | ![alt text](./resources/sprites/31weapon.png)| ![alt text](./resources/sprites/32weapon.png)| ![alt text](./resources/sprites/33weapon.png)|
+|--------|-------|-------|-------|
+| Classic Weapon | ![alt text](./resources/sprites/11weapon.png) | ![alt text](./resources/sprites/12weapon.png) | ![alt text](./resources/sprites/13weapon.png) |
+| Laser Weapon | ![alt text](./resources/sprites/21weapon.png) | ![alt text](./resources/sprites/22weapon.png) | ![alt text](./resources/sprites/23weapon.png) |
+| Ricochet Weapon | ![alt text](./resources/sprites/31weapon.png) | ![alt text](./resources/sprites/32weapon.png) | ![alt text](./resources/sprites/33weapon.png) |
 
 # Loot en localización
 
 ![loot](./docs/images/loot_system.png)
 
 ## Específico
-| Nombre | Sprite | Tamaño de stack | Uso |
-|--------|--------|-----------------|-----|
-| Kit de mejora | N/A | 1 | Permite la mejora de armas a nivel 2 |
-| Armas | N/A | N/A | N/A |
-| Restos clave de la nave | N/A | N/A | N/A |
-| Munición | N/A | N/A | N/A |
-| Placas de metal | N/A | N/A | N/A |
+| Nombre | Sprite | Uso |
+|--------|--------|-----------------|
+| Kit de mejora | N/A | Permite la mejora de armas a nivel 2 o 3 |
+| Restos clave de la nave | N/A | Permite reparar la nave |
+| Munición clasica| N/A | Permite disparar el arma clasica |
+| Munición laser| N/A | Permite disparar el arma laser |
+| Munición ricochet| N/A | Permite disparar el arma ricochet |
 
 ## Genérico
-| Nombre | Sprite | Tamaño de stack |
-|--------|--------|-----------------|
-| Materiales de construcción | N/A | 5 |
-| Partes mecánicas | N/A | 10 |
-| Restos electronicas | N/A | 10 |
-| Componentes médicos | N/A | N/A |
+| Nombre | Sprite | 
+|--------|--------|
+| Materiales de construcción | N/A |
+| Partes mecánicas | N/A | 
+| Restos electronicas | N/A |
+| Componentes médicos | N/A |
 | Agua | N/A | N/A |
-| Elementos orgánicos | N/A | N/A |
-| Comida | N/A | N/A |
+| Elementos orgánicos | N/A |
+| Comida | N/A |
 
 ## Crafteos
 | Objeto | Elementos necesarios | Uso |
@@ -220,7 +221,7 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 | Cargador ricochet | N/A | 1 cargador normal, 2 componentes mecanicos | 1 Accion |
 
 # Enemigos
-| Nombre | Sprite | .... |
+| Nombre | Sprite | Descripción |
 |--------|--------|-------|
 | Acechador | N/A | Se acerca al jugador y le aplica desangrado al contacto |
 | Persecutor | N/A | Vuela, persigue al jugador y aplica dolor al contacto |
@@ -241,8 +242,9 @@ El juego tiene estetica en pixel-art de 64-bits inspirado en juegos como Kingdom
 ## En partida
 - **A,D ->** Movimiento lateral
 - **W,S ->** Seleccionar el subir y bajar escaleras
-- **SPACE ->** Saltar
+- **SPACE ->** Saltar, soltarse de las escaleras
 - **C ->** Agacharse
+- **Q ->** Cambiar de arma
 - **Movimiento del raton ->** Apuntar
 - **Click izquierdo ->** Disparar
 - **R ->** Recargar el arma
