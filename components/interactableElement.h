@@ -31,6 +31,3 @@ public:
 	inline void setToolTipActive(bool cond) { toolTip->setActive(cond); };
 };
 
-//interactableElement->addComponent<TextWithBackground>("Press E to open the loot",
-//sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), nullptr, false, 0, true);
-

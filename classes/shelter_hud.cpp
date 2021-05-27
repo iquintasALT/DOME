@@ -30,7 +30,7 @@ ShelterHud::ShelterHud(Manager* mngr, ShelterScene* shelter_) : Entity(mngr) {
 	assert(hunger != nullptr && tiredness != nullptr);
 
 
-	statesDescriptions = std::vector<std::string>{
+	woundDescriptions = std::vector<std::string>{
 		{"You are not hungry, damage resistance is NORMAL"},
 		{"You are hungry, damage resistance is LOW"},
 		{"You are starving, damage resistance is VERY LOW"},
@@ -73,10 +73,10 @@ void ShelterHud::drawTooltip(int indice, SDL_Rect dest) {
 
 		tooltipTextures[indice].t->setPos(mouse);
 
-		if (!indice) tooltipTextures[indice].text->changeText(statesDescriptions[(int)hunger->getHungerLevel()]);
+		if (!indice) tooltipTextures[indice].text->changeText(woundDescriptions[(int)hunger->getHungerLevel()]);
 		else {
 			int index = (int)tiredness->getTirednessLevel() + 3;
-			tooltipTextures[indice].text->changeText(statesDescriptions[index]);
+			tooltipTextures[indice].text->changeText(woundDescriptions[index]);
 		}
 
 		tooltipTextures[indice].text->render();
