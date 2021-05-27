@@ -36,8 +36,6 @@
 using namespace std;
 
 Game::Game(int totaltime) {
-	initLoot();
-
 	states = new GameStateMachine();
 
 	Camera::setMain(new Camera(Vector2D(), 1080, 720));
@@ -53,21 +51,35 @@ Game::~Game() {
 	delete states;
 	delete Camera::mainCamera;
 	if (playerCreated) {
-		//playerSaved->getComponent<InventoryController>()->inventory->forceDelete = true;
 		delete playerSaved;
 	}
+
+	int i = 1;
+	std::cout << std::endl << "Hola soy la destructora del game" << std::endl;
+	for (auto a : SCENES_LOOT) {
+		for (auto b : a.second) {
+			for (auto& c : b) {
+				std::cout << "eliminado item desde destructora game" << i++ << std::endl;
+				auto d = c.first;
+				delete d;
+			}
+			b.clear();
+		}
+		a.second.clear();
+	}
+	SCENES_LOOT.clear();
+	std::cout << "Gracias por jugar";
 }
 
+
 void Game::init() {
-
 	SDLUtils::init("DOME", consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT, "./resources/config/resources.json");
-
 	sdlutils().hideCursor();
 
 	//sdlutils().toggleFullScreen();
 
-	initLoot();
-
+	//initLoot();
+	
 	cursor = &sdlutils().images().at("cursor");
 	cursorCenter = Vector2D(0.5, 0.5);
 
@@ -92,6 +104,9 @@ void Game::start() {
 
 		if (event.type == SDL_QUIT) {
 			exit = true;
+
+
+
 			continue;
 		}
 
@@ -127,26 +142,39 @@ void Game::drawFPS(int fps) {
 
 void Game::initLoot() {
 
-	SCENES_LOOT.clear();
+	//SCENES_LOOT.clear();
 	//, HOSPITAL, RESTAURANT, RAID, COMMUNICATIONS,NUCLEAR_STATION,SUPERMARKET,SHOP
 	// ITEMS n, int cantidad (INUTIL PARA ESTE METODO), int w , int h , int x, int y,int row, int col,string desc
 
 	//el pair es iteminfo/posicion en el inventario del loot
+	int i = 1;
+	for (auto a : SCENES_LOOT) { //Esto es para eliminar el loot anterior y dejarlo vacio para uno nuevo
+		for (auto b : a.second) {
+			for (auto& c : b) {
+				auto d = c.first;
+				std::cout << "eliminado itemInfo " << i++ << std::endl;
+				delete d;
+			}
+			b.clear();
+		}
+		a.second.clear();
+	}
+	SCENES_LOOT.clear();
 
-	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<pair<ItemInfo, Vector2D>>> {
+	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<pair<ItemInfo*, Vector2D>>> {
 		{
 			make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(1, 0))
 		}
 	});
 
-	SCENES_LOOT.emplace(SCENES::SHELTER, vector<vector<pair<ItemInfo, Vector2D>>> {
+	SCENES_LOOT.emplace(SCENES::SHELTER, vector<vector<pair<ItemInfo*, Vector2D>>> {
 		//to store items on shelter
 		{
 		
 		}
 	});
 
-	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<pair<ItemInfo, Vector2D>>> { //SUPERMARKET
+	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<pair<ItemInfo*, Vector2D>>> { //SUPERMARKET
 		{
 			make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(0, 3)),
 				make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(1, 3)), make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(2, 3)),
@@ -162,7 +190,7 @@ void Game::initLoot() {
 		}
 	});
 
-	SCENES_LOOT.emplace(SCENES::HOSPITAL, vector<vector<pair<ItemInfo, Vector2D>>> { //COMUNICATIONS
+	SCENES_LOOT.emplace(SCENES::HOSPITAL, vector<vector<pair<ItemInfo*, Vector2D>>> { //COMUNICATIONS
 		{make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(3, 3)),
 			make_pair(CraftingSystem::getItemInfo(MEDICAL_COMPONENTS), Vector2D(4, 1)), make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(2, 0)),
 			make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(2, 3)), make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(0, 3)),
@@ -177,7 +205,7 @@ void Game::initLoot() {
 	});
 
 
-	SCENES_LOOT.emplace(SCENES::COMMUNICATIONS, vector<vector<pair<ItemInfo, Vector2D>>> { //HOSPITAL
+	SCENES_LOOT.emplace(SCENES::COMMUNICATIONS, vector<vector<pair<ItemInfo*, Vector2D>>> { //HOSPITAL
 		{make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(0, 1)), make_pair(CraftingSystem::getItemInfo(WATER), Vector2D(0, 2)),
 			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(2, 4)), make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(2, 0)),
 			make_pair(CraftingSystem::getItemInfo(CLASSIC_AMMO), Vector2D(4, 0)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(3, 2)),
@@ -190,7 +218,7 @@ void Game::initLoot() {
 		}
 	});
 
-	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<pair<ItemInfo, Vector2D>>> {  //NUCLEAR
+	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<pair<ItemInfo*, Vector2D>>> {  //NUCLEAR
 		{make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(3, 0)),
 			make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(2, 0)), make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 1)),
 			make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(0, 3)), make_pair(CraftingSystem::getItemInfo(SPLINT), Vector2D(3, 3)),
@@ -204,7 +232,7 @@ void Game::initLoot() {
 		}
 	});
 
-	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<pair<ItemInfo, Vector2D>>> { //SHOP
+	SCENES_LOOT.emplace(SCENES::SUPERMARKET, vector<vector<pair<ItemInfo*, Vector2D>>> { //SHOP
 		{make_pair(CraftingSystem::getItemInfo(ELECTRONIC_REMAINS), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(BUILDING_PARTS), Vector2D(1, 1)),
 			make_pair(CraftingSystem::getItemInfo(SPACESHIP_KEY_ITEMS), Vector2D(0, 3)),
 			make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(3, 3)), make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(4, 0)),

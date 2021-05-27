@@ -190,18 +190,18 @@ void GameScene::loadMap(string& const path) {
 					interactableElement->addComponent<Loot>("Press E to open the loot", 5, 5);
 					Loot* loot = interactableElement->getComponent<Loot>();
 
-					vector<pair<ItemInfo, Vector2D>> chestLoot = getGame()->SCENES_LOOT.find(getGame()->currentScene)->second[sceneLoots];
+					vector<pair<ItemInfo*, Vector2D>> chestLoot = getGame()->SCENES_LOOT.find(getGame()->currentScene)->second[sceneLoots];
 					for (int i = 0; i < chestLoot.size(); i++) {
 						int count = 0;
-						if (chestLoot[i].first.name() == CLASSIC_AMMO) count = 12;
-						if (chestLoot[i].first.name() == LASER_AMMO) count = 5;
-						if (chestLoot[i].first.name() == RICOCHET_AMMO) count = 6;
+						if (chestLoot[i].first->name() == CLASSIC_AMMO) count = 12;
+						if (chestLoot[i].first->name() == LASER_AMMO) count = 5;
+						if (chestLoot[i].first->name() == RICOCHET_AMMO) count = 6;
 						ItemInfo infoAux = chestLoot[i].first;
 						Vector2D pos = chestLoot[i].second;
 						//	ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<void(Entity*)> function, int craftAmount = 0);
 						loot->getInventory()->storeItem(
-							new Item{ new ItemInfo(infoAux.name(),infoAux.strName(), infoAux.description(), infoAux.width(),infoAux.height(),infoAux.row(),infoAux.col(),infoAux.getFunc()),
-							mngr_,loot->getInventory(),(int)pos.getX(),(int)pos.getY() ,count });
+							new Item{ new ItemInfo(infoAux),
+							mngr_,loot->getInventory() ,(int)pos.getX() ,(int)pos.getY() ,count });
 					}
 					sceneLoots++;
 				}
