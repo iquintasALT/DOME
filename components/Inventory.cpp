@@ -9,6 +9,8 @@
 #include <iostream>
 
 bool Inventory::firstInitialization = false;
+int Inventory::itemWidth = 1;
+int Inventory::itemHeight = 1;
 
 Inventory::Inventory(int width, int height, WeaponBehaviour* weapon) : width(width), height(height), other(nullptr) {
 	transform = nullptr;
@@ -137,6 +139,8 @@ void Inventory::onDisable() {
 			a->numberTr->getEntity()->setActive(false);
 	}
 	toolTips->setActive(false);
+	dropDownActive = false;
+	dropDownRender->setActive(false);
 }
 
 
@@ -158,7 +162,7 @@ void Inventory::update() {
 	Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 	Vector2D pos = transform->getPos();
 
-	if (insideSquare(mousePos.getX(), mousePos.getY()))
+	if (insideSquare(mousePos.getX(), mousePos.getY()) /*|| (dropDownActive && insideSquare(mousePos.getX(), mousePos.getY(), dropDown))*/)
 	{
 		int xCell = (mousePos.getX() - pos.getX()) / transform->getW() * width;
 		int yCell = (mousePos.getY() - pos.getY()) / transform->getH() * height;
@@ -168,13 +172,13 @@ void Inventory::update() {
 
 
 		if (showToolTip) {
-			if (lastItemHovered != hoverItem) {
+			if (lastItemHovered != hoverItem && !dropDownActive) {
 				toolTipsText->changeText(hoverItem->getItemInfo()->description());
 			}
 			toolTipsTr->setPos(mousePos);
 		}
 
-		if ((lastItemHovered == nullptr || lastItemHovered != hoverItem) && hoverItem != nullptr)
+		if ((lastItemHovered == nullptr || lastItemHovered != hoverItem) && hoverItem != nullptr && !dropDownActive)
 			lastItemHovered = hoverItem;
 
 		if (ih().getMouseButtonState(InputHandler::RIGHT) && selectedItem == nullptr && hoverItem != nullptr && other == nullptr) {
@@ -186,7 +190,7 @@ void Inventory::update() {
 		}
 
 		if (dropDownActive && !justPressed && ih().getMouseButtonState(InputHandler::LEFT)) {
-			dropDown->onClick(mousePos, lastItemHovered->getItemInfo()->hasFunction());
+			dropDown->onClick(mousePos, itemClickedInDropdown->getItemInfo()->hasFunction());
 			dropDownActive = false;
 			justPressed = true;
 			itemClickedInDropdown = nullptr;
@@ -270,6 +274,7 @@ void Inventory::update() {
 Vector2D Inventory::itemPosition(int x, int y) {
 	return transform->getPos() + Vector2D(x * itemWidth, y * itemHeight);
 }
+
 Vector2D Inventory::itemPosition(int x, int y, Transform* transform) {
 	return transform->getPos() + Vector2D(x * itemWidth, y * itemHeight);
 }
@@ -305,6 +310,7 @@ void Inventory::storeItem(Item* item) {
 				playerWeapon->getCurrentWeapon()->setMaxAmmo();
 		}
 }
+
 void Inventory::removeItem(Item* item) {
 	for (int i = item->x; i < width && i < item->x + item->width; i++) {
 		for (int c = item->y; c < height && c < item->y + item->height; c++) {
@@ -338,9 +344,6 @@ void Inventory::moveItem(Item* item, int x, int y) {
 	}
 }
 
-int Inventory::itemWidth = 1;
-int Inventory::itemHeight = 1;
-
 void Inventory::setItemDimensions(Transform* transform, int width, int height) {
 	itemWidth = transform->getW() / width;
 	itemHeight = transform->getW() / height;
@@ -364,17 +367,16 @@ void Inventory::storeDefaultItems() {
 	}
 }
 
-
 bool Inventory::insideSquare(int mouseX, int mouseY, Transform* rect) {
 	Vector2D& pos = rect->getPos();
 
 	return mouseX > pos.getX() && mouseX < pos.getX() + rect->getW()
 		&& mouseY > pos.getY() && mouseY < pos.getY() + rect->getH();
 }
+
 bool Inventory::insideSquare(int mouseX, int mouseY) {
 	Vector2D& pos = transform->getPos();
 
 	return mouseX > pos.getX() && mouseX < pos.getX() + transform->getW()
 		&& mouseY > pos.getY() && mouseY < pos.getY() + transform->getH();
 }
-
