@@ -537,6 +537,16 @@
               "file": "resources/sound/heal.mp3"
           },
           {
+              "id": "splint",
+              "volume": 128,
+              "file": "resources/sound/splint.wav"
+          },
+          {
+              "id": "pills",
+              "volume": 128,
+              "file": "resources/sound/pills.wav"
+          },
+          {
               "id": "laser",
               "volume": 128,
               "file": "resources/sound/gun/laser.mp3"

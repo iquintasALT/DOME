@@ -16,7 +16,6 @@ public:
 	void update() override;
 };
 
-
 class TutorialManager : public Component {
 public:
 	static TutorialManager* instance;
@@ -28,11 +27,13 @@ public:
 private:
 	int currentCase;
 	void checkMovement();
+	void checkShoot();
 
 	Entity* initialCollider;
 	Entity* trigger;
 	Entity* backToShelter;
 	Vector2D triggerPos;
+	DefaultEnemy* enemy;
 };
 
 
@@ -69,7 +70,6 @@ private:
 	float speed;
 	std::function<void()> function;
 };
-
 
 
 class TutorialBackToShelter : public InteractableElement {

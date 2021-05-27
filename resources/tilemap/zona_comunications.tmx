@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="140" height="45" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="126">
+<map version="1.4" tiledversion="1.4.3" orientation="orthogonal" renderorder="right-down" width="140" height="45" tilewidth="32" tileheight="32" infinite="0" nextlayerid="16" nextobjectid="127">
  <tileset firstgid="1" source="floor_tileset.tsx"/>
  <tileset firstgid="358" source="sprite_bg_tiles_32x32.tsx"/>
  <layer id="3" name="Fondo" width="140" height="45">
@@ -226,6 +226,7 @@
   <object id="122" name="loot" x="1592" y="936" width="72" height="56"/>
   <object id="124" name="returnShelter" x="3680" y="480" width="32" height="64"/>
   <object id="125" name="returnShelter" x="3688" y="1088" width="24" height="64"/>
+  <object id="126" name="loot" x="3373.36" y="1079" width="72" height="72"/>
  </objectgroup>
  <objectgroup id="13" name="Walls">
   <object id="52" name="collision" x="960" y="544" width="2424" height="32"/>
