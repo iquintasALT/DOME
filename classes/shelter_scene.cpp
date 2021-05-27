@@ -24,9 +24,6 @@ using std::endl;
 void ShelterScene::init() {
 	mngr_->getGame()->currentScene = SCENES::SHELTER;
 
-	if (mngr_->getGame()->playerCreated) 
-		mngr_->getGame()->playerSaved = new Player(mngr_->getGame()->playerSaved, mngr_);
-
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
 
@@ -83,10 +80,6 @@ void ShelterScene::update() {
 
 	if (spaceshipStation->isBuilt())mngr_->ChangeScene(new LoseScene(mngr_->getGame(), WAYSTODIE::NONE, true), SceneManager::SceneMode::ADDITIVE);
 
-	/*mechanical_Workshop->update();
-	medical_Workshop->update();
-	sleep_Station->update();*/
-
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		mngr_->getGame()->setShouldRenderFPS(false);
 		mngr_->ChangeScene(new PauseScene(mngr_->getGame()), SceneManager::SceneMode::ADDITIVE);
@@ -96,10 +89,6 @@ void ShelterScene::update() {
 void ShelterScene::render()
 {
 	mngr_->render();
-
-	/*mechanical_Workshop->render();
-	medical_Workshop->render();
-	sleep_Station->render();*/
 }
 
 void ShelterScene::sleepTransition()

@@ -26,13 +26,6 @@ void InitialScene::init()
 {
 	Camera::mainCamera->restoreScale();
 
-	if (mngr_->getGame()->playerCreated)
-	{
-		mngr_->getGame()->playerCreated = false;
-		delete mngr_->getGame()->playerSaved;
-		mngr_->getGame()->playerSaved = nullptr;
-	}
-
 	std::string path = std::string("./resources/tilemap/initialScene.tmx");
 	loadMap(path);
 

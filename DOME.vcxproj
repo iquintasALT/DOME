@@ -42,7 +42,6 @@
     <ClInclude Include="classes\SceneManager.h" />
     <ClInclude Include="classes\settings_scene.h" />
     <ClInclude Include="classes\shelter_hud.h" />
-    <ClInclude Include="classes\ship_station.h" />
     <ClInclude Include="classes\sleep_station.h" />
     <ClInclude Include="classes\spaceship_station.h" />
     <ClInclude Include="classes\menu_button.h" />
@@ -145,7 +144,6 @@
     <ClCompile Include="classes\SceneManager.cpp" />
     <ClCompile Include="classes\settings_scene.cpp" />
     <ClCompile Include="classes\shelter_hud.cpp" />
-    <ClCompile Include="classes\ship_station.cpp" />
     <ClCompile Include="classes\sleep_station.cpp" />
     <ClCompile Include="classes\spaceship_station.cpp" />
     <ClCompile Include="classes\menu_button.cpp" />

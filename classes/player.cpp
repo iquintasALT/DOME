@@ -52,65 +52,9 @@ Player::Player(Manager* mngr_, Point2D pos) : Entity(mngr_)
 	addComponent<EnemyContactDamage>(physiognomy);
 	setGroup<Player_grp>(true);
 
-	//mngr_->getGame()->playerSaved = this;
-	//mngr_->getGame()->playerCreated = true;
-
 	weapon->getCurrentWeapon()->setAmmo();
 
 	mngr_->getGame()->playerSavedData->load(this);
-}
-
-Player::Player(Player* prevPlayer, Manager* mngr):
-	Player(mngr, prevPlayer->getComponent<Transform>()->getPos())
-{
-	//Componentes a copiar:
-	//Inventario, Weapon,  physionomy
-	//Me dicen que physionomia no
-//======================================================================================
-
-	Inventory* oldInv = prevPlayer->getComponent<InventoryController>()->inventory;
-	Inventory* newInv = this->getComponent<InventoryController>()->inventory;
-	
-	for (auto item : newInv->getItems()) {
-		delete item;
-	}
-	newInv->getItems().clear();
-
-	for (auto item : oldInv->getItems()) {
-		newInv->storeItem(new Item(item, newInv));
-	}
-
-	/*for (auto item : oldInv->getItems()) {
-
-	}*/
-
-	//oldInv->getItems().clear();
-
-//======================================================================================
-	WeaponBehaviour* oldWeapon = prevPlayer->getWeapon();
-	WeaponBehaviour* newWeapon = this->getWeapon();
-
-	for (int i = 0; i < 3; i++) {
-		int weaponTier = oldWeapon->tierOfWeapon();
-		for (int tier = 0; tier < weaponTier; tier++) {
-			newWeapon->upgradeCurrentWeapon();
-		}
-		newWeapon->changeWeapon();
-	}
-
-//======================================================================================
-
-	//Faltaria la fisionomia si es que la hacemos que se guarde al final
-
-	/*addComponent<HungerComponent>();*/
-	getComponent<HungerComponent>()->setHunger(prevPlayer->getComponent<HungerComponent>()->getHunger());
-	getComponent<TirednessComponent>()->setTirednessLfloat(prevPlayer->getComponent<TirednessComponent>()->getTirednessfloat());
-	
-	//addComponent<TirednessComponent>();*/
-
-//======================================================================================
-
-	delete prevPlayer;
 }
 
 Player::~Player() {

@@ -123,6 +123,7 @@ void Physiognomy::removeAllStates() {
 bool Physiognomy::isAlive() const {
 	return playerAlive;
 }
+
 void Physiognomy::die(WAYSTODIE way) {
 	playerAlive = false;
 	removeAllStates();
