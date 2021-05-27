@@ -71,6 +71,8 @@ public:
 	Workshop(Manager* mngr_) : Entity(mngr_) { };
 	Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_);
 
+	void closeCraft();
+
 	~Workshop() {
 		for (int i = 0; i < leftRenderTexts.size(); ++i) {
 			delete  leftRenderTexts[i];

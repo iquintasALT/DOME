@@ -73,14 +73,17 @@ void SpaceshipStation::setWorkshopItems(vector<ITEMS>&& items) {
 
 	//INICIALIZACION SLOTS DE LA LISTA 
 	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
-		int imgRow = craftSys->getItemInfo(workshopItems[i])->row();
-		int imgCol = craftSys->getItemInfo(workshopItems[i])->col();
-		std::string itemName = craftSys->getItemInfo(workshopItems[i])->strName();
+		auto itemInfo = craftSys->getItemInfo(workshopItems[i]);
+		int imgRow = itemInfo->row();
+		int imgCol = itemInfo->col();
+		std::string itemName = itemInfo->strName();
 		Slot aux = { 0,getMngr()->addEntity() };
 		aux.slot->addComponent<Transform>(Vector2D(), 64, 64, 0);
 		aux.slot->addComponent<Image>(&sdlutils().images().at("items"), 8, 3, imgRow, imgCol, true);
 		craftList.push_back(aux);
 		falseMngr->addRenderLayer<Interface>(aux.slot);
+
+		delete itemInfo;
 	}
 
 	float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * 0.25f - 32;
@@ -105,15 +108,16 @@ void SpaceshipStation::setRightRender() {
 	falseMngr->refresh();
 	rightRenderImgs.clear();
 
-	std::string itemName = craftSys->getItemInfo(workshopItems[rightWindowIndex])->strName();
+	auto rightWindowItemInfo = craftSys->getItemInfo(workshopItems[rightWindowIndex]);
+	std::string itemName = rightWindowItemInfo->strName();
 	rightRenderTexts.push_back(new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
 	rightRenderTexts.push_back(new Texture(sdlutils().renderer(), "Needed items: ", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
 
 	float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
 	float offsetY = rightRenderTexts[0]->height() + 25;
-	int imgRow = craftSys->getItemInfo(workshopItems[rightWindowIndex])->row();
-	int imgCol = craftSys->getItemInfo(workshopItems[rightWindowIndex])->col();
-
+	int imgRow = rightWindowItemInfo->row();
+	int imgCol = rightWindowItemInfo->col();
+	delete rightWindowItemInfo;
 
 	Entity* aux = falseMngr->addEntity();
 	aux->addComponent<Transform>(Vector2D{ offsetX - 32,offsetY + 80 }, 64, 64, 0);
@@ -250,17 +254,19 @@ void SpaceshipStation::rightWindowRender() {
 		float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
 		float offsetY = bg_tr->getPos().getY() + 35;
 		if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getWeapon()->tierOfWeapon() < 2) {
-
-			std::string itemName = craftSys->getItemInfo(workshopItems[rightWindowIndex])->strName();
+			auto rightItemInfo = craftSys->getItemInfo(workshopItems[rightWindowIndex]);
+			std::string itemName = rightItemInfo->strName();
 
 			SDL_Rect dest{ offsetX - rightRenderTexts[0]->width() / 2  , offsetY ,rightRenderTexts[0]->width(),rightRenderTexts[0]->height() };
 			rightRenderTexts[0]->render(dest, 0);
 
 			offsetY += rightRenderTexts[0]->height() + 25;
 
-			int imgRow = craftSys->getItemInfo(workshopItems[rightWindowIndex])->row();
-			int imgCol = craftSys->getItemInfo(workshopItems[rightWindowIndex])->col();
+			int imgRow = rightItemInfo->row();
+			int imgCol = rightItemInfo->col();
 
+
+			delete rightItemInfo;
 			if (workshopItems[rightWindowIndex] == WEAPON_UPGRADE) {
 				weaponTr->setPos(Vector2D(offsetX - 64, offsetY - 16));
 				renderWeaponUpgrade();

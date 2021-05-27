@@ -20,6 +20,7 @@
 #include "../components/enemy_contact_damege.h"
 #include "../components/enemy_attack_component.h"
 #include "../components/enemy_behaviour_component.h"
+#include "../classes/locations_scene.h"
 
 void InitialScene::init()
 {
@@ -43,9 +44,6 @@ void InitialScene::init()
 	Camera::mainCamera->MoveToPoint(pos);
 	mngr_->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = false;
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
-
-
-
 
 
 	auto playExplosion = [this]() {soundManager().playSFX("initialExplosion"); };
@@ -100,8 +98,8 @@ void InitialScene::init()
 
 	auto loot = mngr_->addEntity();
 	mngr_->addRenderLayer<Loot>(loot);
-	loot->addComponent<Transform>(playerTr->getPos() + Vector2D(300, 40), 40, 60);
-	loot->addComponent<Image>(&sdlutils().images().at("panel"));
+	loot->addComponent<Transform>(playerTr->getPos() + Vector2D(250, 20), 64, 64);
+	loot->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 5, 0);
 	loot->addComponent<TutorialLoot>();
 }
 
@@ -149,6 +147,9 @@ void TutorialManager::update()
 	{
 	case 0:
 		checkMovement();
+		break;
+	case 6:
+		checkShoot();
 		break;
 	}
 }
@@ -281,14 +282,9 @@ void TutorialManager::changeCase(int newcase)
 		trigger->addComponent<BoxCollider>(true);
 		trigger->addComponent<TutorialTrigger>(6);
 
-		//TODO remove this things pls
-		trigger->addComponent<Image>(&sdlutils().images().at("panel"));
-		entity_->getMngr()->addRenderLayer<Loot>(trigger);
-
-
-		auto enemy = new DefaultEnemy(entity_->getMngr(),
+		enemy = new DefaultEnemy(entity_->getMngr(),
 			trigger->getComponent<Transform>()->getPos() +
-			Vector2D(-consts::WINDOW_WIDTH / 3, -20));
+			Vector2D(-consts::WINDOW_WIDTH / 3 + 100, -20));
 		enemy->getComponent<DistanceDetection>()->enabled = false;
 		enemy->getComponent<Image>()->setFlip(SDL_RendererFlip::SDL_FLIP_HORIZONTAL);
 		enemy->getComponent<ChasePlayer>()->enabled = false;
@@ -297,7 +293,43 @@ void TutorialManager::changeCase(int newcase)
 		break;
 	}
 	case 6: {
+		trigger->setDead(true);
+		trigger = nullptr;
+
 		auto player = entity_->getMngr()->getHandler<Player_hdlr>();
+	
+		auto a = entity_->getMngr()->addEntity();
+		a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
+		auto d = a->addComponent<Dialogue>();
+
+		player->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+		player->getComponent<KeyboardPlayerCtrl>()->resetSpeed();
+		d->movePlayerAtTheEnd = true;
+		std::vector<std::string> texts = {
+			"Oh caspitas!",
+			"I think I can take one down..."
+		};
+		d->createText(texts, 20);
+		d->function = [this]() {
+			changeCase(7);
+		};
+
+		break;
+	}
+	case 7:
+	{
+		currentMessage = entity_->getMngr()->addEntity();
+		entity_->getMngr()->addRenderLayer<ULTIMATE>(currentMessage);
+		currentMessage->addComponent<Transform>(Vector2D(
+			consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT * 0.8 + 32), consts::WINDOW_WIDTH, 100);
+		currentMessage->addComponent<TextWithBackground>("Press MBL to shoot and X to change Weapon",
+			sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xfffffffff), nullptr, false, 1, true);
+
+
+		enemy->getComponent<DistanceDetection>()->enabled = true;
+		enemy->getComponent<ChasePlayer>()->enabled = true;
+		enemy->getComponent<EnemyAnimation>()->enabled = true;
+		enemy->getComponent<EnemyAttackComponent>()->enabled = true;
 
 		break;
 	}
@@ -308,6 +340,13 @@ void TutorialManager::checkMovement()
 {
 	if (ih().isKeyDown(SDLK_a) ||
 		ih().isKeyDown(SDLK_d)) {
+		changeCase(-1);
+	}
+}
+
+void TutorialManager::checkShoot()
+{
+	if (ih().getMouseButtonState(InputHandler::MOUSEBUTTON::LEFT)) {
 		changeCase(-1);
 	}
 }
@@ -380,7 +419,7 @@ void TutorialBackToShelter::Interact()
 			pos = ent->getComponent<Transform>()->getPos();
 		}
 	}*/
-	
+
 	auto start = [this]() {
 		float time = .4;
 		int n = 6;
@@ -409,7 +448,8 @@ void TutorialBackToShelter::changeScene() {
 	auto player_ = entity_->getMngr()->getHandler<Player_hdlr>();
 	entity_->getMngr()->getGame()->setShouldRenderFPS(true);
 	static_cast<Player*>(player_)->getPhysiognomy()->removeAllStates();
-	entity_->getMngr()->ChangeScene(new ShelterScene(currentScene->getGame()), SceneManager::SceneMode::OVERRIDE);
+
+	entity_->getMngr()->ChangeScene(new LocationsScene(entity_->getMngr()->getGame()), SceneManager::SceneMode::OVERRIDE);
 }
 
 void TutorialBackToShelter::changeImage(int n, int i)

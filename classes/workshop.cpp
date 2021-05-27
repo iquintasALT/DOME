@@ -75,6 +75,18 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, Shelt
 	shelterScene = shelterScene_;
 }
 
+void Workshop::closeCraft()
+{
+	loot->Interact();
+	loot->getEntity()->setActive(false);
+	loot = nullptr;
+	renderFlag = true;
+	renderRightWindow = true;
+	setLeftRender();
+	setRightRender();
+
+}
+
 void Workshop::setWorkshopItems(vector<ITEMS>&& items) {
 	workshopItems = move(items);
 
@@ -99,6 +111,7 @@ void Workshop::setRenderFlag(bool set) {
 		playerTr->getEntity()->setActive(false);
 
 	setLeftRender();
+	ih().clearState();
 }
 
 void Workshop::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
@@ -122,15 +135,18 @@ void Workshop::setLeftRender() {
 
 	for (int i = 0; i < workshopItems.size() && i < 4; ++i) {
 		craftList[i].index = listIndex + i;
-		std::string itemName = craftSys->getItemInfo(workshopItems[craftList[i].index])->strName();
+		auto item = craftSys->getItemInfo(workshopItems[craftList[i].index]);
+		std::string itemName = item->strName();
 		leftRenderTexts.push_back(new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xffffffff)));
 
 
-		int imgRow = craftSys->getItemInfo(workshopItems[craftList[i].index])->row();
-		int imgCol = craftSys->getItemInfo(workshopItems[craftList[i].index])->col();
+		int imgRow = item->row();
+		int imgCol = item->col();
 
 		float offsetX = craftList_tr[i]->getPos().getX() + 35;
 		float offsetY = craftList_tr[i]->getPos().getY() + 17.5f;
+
+		delete item;
 
 		Entity* aux = falseMngr->addEntity();
 		aux->addComponent<Transform>(Vector2D{ offsetX,offsetY }, 64, 64, 0);
@@ -154,15 +170,17 @@ void Workshop::setRightRender() {
 	rightRenderImgs.clear();
 
 	if (workshopItems[rightWindowIndex] != WEAPON_UPGRADE || static_cast<Player*>(playerTr->getEntity())->getWeapon()->tierOfWeapon() < 2) {
-		std::string itemName = craftSys->getItemInfo(workshopItems[rightWindowIndex])->strName();
+		auto rightWindowItem = craftSys->getItemInfo(workshopItems[rightWindowIndex]);
+		std::string itemName = rightWindowItem->strName();
 		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), itemName, sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
 		rightRenderTexts.push_back(new Texture(sdlutils().renderer(), "Needed items: ", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff)));
 
 		float offsetX = bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f);
 		float offsetY = rightRenderTexts[0]->height() + 25;
-		int imgRow = craftSys->getItemInfo(workshopItems[rightWindowIndex])->row();
-		int imgCol = craftSys->getItemInfo(workshopItems[rightWindowIndex])->col();
+		int imgRow = rightWindowItem->row();
+		int imgCol = rightWindowItem->col();
 
+		delete rightWindowItem;
 
 		Entity* aux = falseMngr->addEntity();
 		aux->addComponent<Transform>(Vector2D{ offsetX - 32,offsetY + 80 }, 64, 64, 0);
@@ -213,9 +231,24 @@ void Workshop::setRightRender() {
 void Workshop::update() {
 	falseMngr->refresh();
 
+	if (loot != nullptr && ih().isKeyDown(SDL_SCANCODE_E)) {
+		if (!loot->getInventory()->getItems().empty()) {
+			craftSys->restoreCraft();
+			shelterScene->addAction();
+		}
+		closeCraft();
+		ih().clearState();
+	}
+
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
+		if (ih().isKeyDown(SDL_SCANCODE_E)) {
+			renderFlag = false;
+			renderRightWindow = false;
+			playerTr->getEntity()->setActive(true);
+			ih().clearState();
+		}
 
 		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
 			mouseClick = true;
@@ -288,26 +321,18 @@ void Workshop::update() {
 
 	if (loot != nullptr) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
-		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
-			mouseClick = true;
 
-			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
+		mouseClick = true;
 
-				if (!loot->getInventory()->getItems().empty()) {
-					craftSys->restoreCraft();			
-				}
-
-				loot->Interact();
-				loot->getEntity()->setActive(false);
-				loot = nullptr;
-				renderFlag = true;
-				renderRightWindow = true;
-				setLeftRender();
-				setRightRender();
-			}
-
+		if (loot->getInventory()->getItems().empty()) {
+			closeCraft();
+			renderFlag = true;
 		}
-		else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
+		else if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick)
+			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
+				craftSys->restoreCraft();
+				shelterScene->addAction();
+			}
 	}
 }
 

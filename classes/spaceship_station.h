@@ -29,7 +29,6 @@ public:
 			delete  rightRenderTexts[i];
 		}
 		rightRenderTexts.clear();
-
 		//delete falseMngr;
 	}
 
