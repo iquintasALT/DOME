@@ -59,6 +59,7 @@ public:
 	ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, int craftAmount = 0);
 	ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<void(Entity*)> function, int craftAmount = 0);
 	ItemInfo(ItemInfo* itemInfo);
+	~ItemInfo();
 	inline ITEMS name() { return _name; };
 	string  strName() { return _strName; };
 	inline string description() { return _description; };

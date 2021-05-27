@@ -24,6 +24,11 @@ ItemInfo::ItemInfo(ItemInfo* item) {
 	function = item->function;
 }
 
+ItemInfo::~ItemInfo()
+{
+
+}
+
 
 
 ItemInfo* ItemInfo::antidote()
@@ -151,8 +156,6 @@ ItemInfo* ItemInfo::metalPlates()
 	return new ItemInfo(METAL_PLATES, "metal plates", "Metal plates, useful to repair the spaceship", 2, 2, 7, 1);
 }
 
-
-
 //&sdlutils().images().at("items")
 
 Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int xPos, int yPos, int count) :
@@ -192,7 +195,6 @@ Item::~Item() {
 	if (countTex != nullptr) {
 		countTex->setDead(true);
 	}
-		
 }
 
 void Item::removeImage()
