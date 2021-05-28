@@ -10,20 +10,20 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 
 	crafts.emplace(ANTIDOTE, std::vector<ItemInfo* >{getItemInfo(FOOD, 1), getItemInfo(WATER, 1), getItemInfo(MEDICAL_COMPONENTS, 1)});
 
-	crafts.emplace(SPLINT, std::vector<ItemInfo* >{getItemInfo(MECANICAL_COMPONENTS, 1), getItemInfo(WATER, 1)});
+	crafts.emplace(SPLINT, std::vector<ItemInfo* >{getItemInfo(MECHANICAL_COMPONENTS, 1), getItemInfo(WATER, 1)});
 
 	crafts.emplace(PAINKILLER, std::vector<ItemInfo* >{getItemInfo(FOOD, 2), getItemInfo(WATER, 1), getItemInfo(MEDICAL_COMPONENTS, 2)});
 
 	crafts.emplace(FOOD, std::vector<ItemInfo* >{getItemInfo(ORGANIC_MATERIAL, 1), getItemInfo(WATER, 1)});
 
-	crafts.emplace(WEAPON_UPGRADE, std::vector<ItemInfo* >{getItemInfo(MECANICAL_COMPONENTS, 1), getItemInfo(ELECTRONIC_REMAINS, 1), getItemInfo(UPGRADE_KIT, 1)});
+	crafts.emplace(WEAPON_UPGRADE, std::vector<ItemInfo* >{getItemInfo(MECHANICAL_COMPONENTS, 1), getItemInfo(ELECTRONIC_REMAINS, 1), getItemInfo(UPGRADE_KIT, 1)});
 
-	crafts.emplace(CLASSIC_AMMO, std::vector<ItemInfo* >{getItemInfo(MECANICAL_COMPONENTS, 1), getItemInfo(MEDICAL_COMPONENTS, 1), getItemInfo(METAL_PLATES, 1)});
+	crafts.emplace(CLASSIC_AMMO, std::vector<ItemInfo* >{getItemInfo(MECHANICAL_COMPONENTS, 1), getItemInfo(MEDICAL_COMPONENTS, 1), getItemInfo(METAL_PLATES, 1)});
 	crafts.emplace(LASER_AMMO, std::vector<ItemInfo* >{getItemInfo(CLASSIC_AMMO, 1), getItemInfo(ELECTRONIC_REMAINS, 2)});
-	crafts.emplace(RICOCHET_AMMO, std::vector<ItemInfo* >{getItemInfo(CLASSIC_AMMO, 1), getItemInfo(MECANICAL_COMPONENTS, 2)});
+	crafts.emplace(RICOCHET_AMMO, std::vector<ItemInfo* >{getItemInfo(CLASSIC_AMMO, 1), getItemInfo(MECHANICAL_COMPONENTS, 2)});
 
 
-	crafts.emplace(METAL_PLATES, std::vector<ItemInfo* >{getItemInfo(BUILDING_PARTS, 1), getItemInfo(MECANICAL_COMPONENTS, 1) });
+	crafts.emplace(METAL_PLATES, std::vector<ItemInfo* >{getItemInfo(METAL_SCRAPS, 1), getItemInfo(MECHANICAL_COMPONENTS, 1) });
 
 	crafts.emplace(SPACESHIP_CABIN, std::vector<ItemInfo* >{getItemInfo(SPACESHIP_KEY_ITEMS, 3), getItemInfo(METAL_PLATES, 2)});
 	crafts.emplace(SPACESHIP_RADAR, std::vector<ItemInfo* >{getItemInfo(SPACESHIP_KEY_ITEMS, 1), getItemInfo(METAL_PLATES, 1)});
@@ -147,9 +147,9 @@ ItemInfo* CraftingSystem::getItemInfo(ITEMS item, int amount) {
 		return aux;
 		break;
 	}
-	case BUILDING_PARTS:
+	case METAL_SCRAPS:
 	{
-		aux = ItemInfo::buildingParts();
+		aux = ItemInfo::metalScraps();
 		aux->setAmount(amount);
 		return aux;
 		break;
@@ -168,9 +168,9 @@ ItemInfo* CraftingSystem::getItemInfo(ITEMS item, int amount) {
 		return aux;
 		break;
 	}
-	case MECANICAL_COMPONENTS:
+	case MECHANICAL_COMPONENTS:
 	{
-		aux = ItemInfo::mecanicalComponents();
+		aux = ItemInfo::mechanicalComponents();
 		aux->setAmount(amount);
 		return aux;
 		break;

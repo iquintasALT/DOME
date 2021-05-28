@@ -89,6 +89,7 @@ void MenuScene::playGame(Manager* mngr) {
 	soundManager().stopSongWithFade("game_theme", 1000);
 	Inventory::firstInitialization = true;
 	mngr->ChangeScene(new InitialScene(mngr->getGame()), SceneManager::SceneMode::ADDITIVE);
+	mngr->getGame()->currentScene = SCENES::TUTORIAL;
 }
 
 void MenuScene::settings(Manager* mngr) {
