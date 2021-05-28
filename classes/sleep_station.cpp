@@ -11,8 +11,6 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* she
 	realMngr_->addRenderLayer<Interface>(this);
 
 	renderFlag = false;
-	mouseClick = false;
-
 	shelterScene = shelterScene_;
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
 
@@ -80,8 +78,7 @@ void SleepStation::update() {
 
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
-		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
-			mouseClick = true;
+		if (ih().getMouseButtonState(InputHandler::LEFT)) {
 
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
 				renderFlag = false;
@@ -108,7 +105,6 @@ void SleepStation::update() {
 			}
 		}
 	}
-	else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
 }
 
 void SleepStation::goToSleep(int hours, int numberOfActions)
