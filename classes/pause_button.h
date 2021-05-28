@@ -20,7 +20,7 @@ public:
 
 class MainMenuButton : public PauseButton {
 public:
-	MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type = 0, std::string buttonName = " ", int alpha = 255, float time = .4);
+	MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type = 0, std::string buttonName = " ", int alpha = 255, float time = .4, float displacement = 0);
 	~MainMenuButton();
 	void update() override;
 	void render() override;

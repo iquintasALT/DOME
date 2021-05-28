@@ -450,6 +450,10 @@
       {
         "id": "statesBackground",
         "file": "resources/sprites/states_background.png"
+      },
+      {
+        "id": "statesBackgroundRed",
+        "file": "resources/sprites/states_background_red.png"
       }
     ],
 
