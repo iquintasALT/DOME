@@ -330,7 +330,7 @@
       <AdditionalIncludeDirectories>.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2-2.0.14\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\tmxlite-1.2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <SubSystem>Console</SubSystem>
+      <SubSystem>Windows</SubSystem>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
