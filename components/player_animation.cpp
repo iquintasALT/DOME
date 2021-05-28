@@ -82,7 +82,7 @@ bool PlayerAnimation::changeAnimations() {
 		return true;
 	}
 
-	if (playerCtrl_->isCrouching()) {
+	if (playerCtrl_->isCrouching() && !playerCtrl_->isClimbingLadder()) {
 		if (aux->isActive()) {
 			if (currentAnimation == animations[crouch])
 				return false;
