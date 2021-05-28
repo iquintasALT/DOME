@@ -24,7 +24,8 @@ void CameraShake::update()
 	t += consts::DELTA_TIME;
 
 	float s = speed;
-	int r = floor(t * speed);
+	int r = 
+		(t * speed);
 
 	if (r % 2 != 0) s *= -1;
 
