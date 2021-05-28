@@ -56,6 +56,8 @@ Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber qué 
 
 Para poder volver al refugio, el jugador tendrá que salir por la zona por la que entró. En caso de que se tarde demasiado tiempo en volver, empezará a sufrir un estado de hipotermia, que se ve como un efecto de hielo en la interfaz que adquiere opacidad progresivamente. Si el efecto llega a la opacidad máxima, el jugador muere.
 
+![raidmenu](./docs/images/CapturaInGame.png)
+
 # Refugio <a name="refu"></a>
 
 El refugio es una zona pequeña donde el jugador tendrá acceso a diferentes estaciones de crafteo para crear objetos. Además, dispone de una cama para descansar y comenzar el siguiente ciclo de día. Cada acción que el jugador realice en el refugio contará contra el tiempo que tiene aquí. A diferencia del saqueo, el tiempo aquí se cuenta de forma discreta, como un recurso, y no baja solo. [CONFIRMATION_REQUIRED]
@@ -124,6 +126,8 @@ Intoxicación: Esta herida, mostrado con un icono de radiación sobre fondo verd
 Dolor: Esta herida tiene de icono una figura tumbada con rayos saliendo de la espalda. No tiene ningún efecto adicional por sí mismo, sino que afecta a otras heridas, incrementando el tiempo que tardan las heridas de contusión e intoxicación en desaparecer.
 
 Hipotermia. Este efecto de estado no es una herida formal, por lo que no cuenta para el número de heridas que se pueden sufrir. No es provocado por ningún enemigo, aparece cuando acaba el tiempo de raid, y va avanzando a medida que el jugador permanece en la raid. Es una forma de avisar al jugador de que va a anochecer y necesita volver al refugio. Si se deja avanzar hasta su límite, el jugador muere independiente del número de heridas que tenga.
+
+![raidmenu](./docs/images/statesicons.png)
 
 ![Dinámicas](./docs/headers/h_dinamicas.png) <a name="dina"></a>
 
