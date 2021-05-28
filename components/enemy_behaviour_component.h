@@ -64,7 +64,8 @@ public:
 };
 
 //--------------------------------------------------------------------------------------------------------------
-/// While far from the player, maintains hoverHeight above the closest floor
+/// While far from the player, maintains hoverHeight above the closest 
+/// 
 /// When it comes within attackDistance of player, it will begin to match the player's altitude
 /// Stops still when within stopDistance of the player
 class FlyingChasePlayer : public EnemyBehaviourComponent

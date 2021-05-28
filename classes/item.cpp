@@ -25,12 +25,7 @@ ItemInfo::ItemInfo(ItemInfo* item) {
 	function = item->function;
 }
 
-ItemInfo::~ItemInfo()
-{
-
-}
-
-
+ItemInfo::~ItemInfo() {}
 
 ItemInfo* ItemInfo::antidote()
 {
@@ -47,7 +42,7 @@ ItemInfo* ItemInfo::bandage()
 	auto f = [](Entity* player) {
 		static_cast<Player*>(player)->getPhysiognomy()->removeBleedState();
 		soundManager().playSFX("heal");
-		return true; // CAMBIAA
+		return true; // CAMBIA
 	};
 
 	return new ItemInfo(BANDAGE, "bandage", "Can heal bleeding", 1, 1, 0, 2, f);
@@ -79,7 +74,6 @@ ItemInfo* ItemInfo::spaceshipRockets()
 {
 	return new ItemInfo(SPACESHIP_ROCKETS, "spaceship rockets", "Important part of the spaceship", 1, 1, 6, 0);
 }
-
 
 ItemInfo* ItemInfo::spaceshipKeyItem()
 {
@@ -167,8 +161,6 @@ ItemInfo* ItemInfo::metalPlates()
 {
 	return new ItemInfo(METAL_PLATES, "metal plates", "Metal plates, useful to repair the spaceship", 2, 2, 7, 1);
 }
-
-//&sdlutils().images().at("items")
 
 Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int xPos, int yPos, int count) :
 	info(itemInformation), x(xPos), y(yPos), count(count) {
