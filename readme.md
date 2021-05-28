@@ -2,8 +2,8 @@
  Juego de Proyectos II hecho en c++ con SDL.
 
 ## ENLACES
-[PÁGINA WEB](https://www.pivotaltracker.com/n/projects/2489079)\
-[PIVOTAL (editable)](https://www.pivotaltracker.com/n/projects/2489079)\
+[PÁGINA WEB](https://iquintasalt.github.io/DOME/)\
+[PIVOTAL](https://www.pivotaltracker.com/n/projects/2489079)\
 [DIAGRAMA UML - MENUS, ESCENA Y REFUGIO](https://lucid.app/lucidchart/invitations/accept/aae27cba-d4f9-486b-8103-88b7f02d1c62)\
 [DIAGRAMA UML - MECÁNICAS DE SAQUEO](https://lucid.app/lucidchart/invitations/accept/355e2dc6-1896-49d8-9c1d-601517544eb8)\
 [DIAGRAMA UML - COMPONENTES](https://lucid.app/lucidchart/invitations/accept/4e6c891a-a004-42ba-a569-ac58c1c28972)\
@@ -66,7 +66,7 @@ Además, hay un área designada para la reparación del cohete, el objetivo fina
 
 Las estructuras estarán ya situadas en distintas zonas del refugio, pudiendo el jugador interactuar con ellas para realizar acciones.
 
-![alt text](./docs/images/capturaCasa.PNG)
+![alt text](./docs/images/CapturaCasa.PNG)
 
 # Inventario <a name="inv"></a>
 

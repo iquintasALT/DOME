@@ -21,10 +21,28 @@
 #include "../components/enemy_attack_component.h"
 #include "../components/enemy_behaviour_component.h"
 #include "../classes/locations_scene.h"
-
+#include "../components/hold_to_skip.h"
 void InitialScene::init()
 {
 	Camera::mainCamera->restoreScale();
+
+	auto skipText = mngr_->addEntity();
+	auto skipTextTr = skipText->addComponent<Transform>(Vector2D(consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT - 64), consts::WINDOW_WIDTH, 20);
+	skipText->addComponent<TextWithBackground>("Hold 'P' to skip the initial sequence", 
+		sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xFFFFFFFF), nullptr, false, 1, true);
+	skipText->addComponent<TransitionComponent>(5);
+	mngr_->addRenderLayer<LastRenderLayer>(skipText);
+
+	int size = 70;
+	auto holdToSkip = mngr_->addEntity();
+	holdToSkip->addComponent<Transform>(Vector2D(consts::WINDOW_WIDTH - size - 10, consts::WINDOW_HEIGHT - size - 10), size, size);
+	holdToSkip->addComponent<Image>(&sdlutils().images().at("holdToSkip"), true);
+	holdToSkip->addComponent<HoldToSkip>(1.5, [this]() { 
+		mngr_->ChangeScene(new LocationsScene(mngr_->getGame()),
+			SceneManager::SceneMode::OVERRIDE);
+		}, true);
+	mngr_->addRenderLayer<LastRenderLayer>(holdToSkip);
+
 
 	std::string path = std::string("./resources/tilemap/initialScene.tmx");
 	loadMap(path);
@@ -59,7 +77,7 @@ void InitialScene::init()
 		t->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
 		t->addComponent<Image>(&sdlutils().images().at("black"), true);
 		t->addComponent<TransitionComponent>(2);
-		mngr_->addRenderLayer<LastRenderLayer>(t);
+		mngr_->addRenderLayer<Item>(t);
 
 		a->addComponent<CameraShake>(10, 15, 5, [this]() {
 			auto cameraZoom = mngr_->addEntity();
@@ -89,7 +107,7 @@ void InitialScene::init()
 	texture->setAlpha(255);
 	auto img = black->addComponent<Image>(texture, true);
 	black->addComponent<Timer>(5, startScene);
-	mngr_->addRenderLayer<LastRenderLayer>(black);
+	mngr_->addRenderLayer<Item>(black);
 
 
 	auto loot = mngr_->addEntity();
@@ -439,11 +457,12 @@ void TutorialBackToShelter::Interact()
 
 	auto player_ = entity_->getMngr()->getHandler<Player_hdlr>();
 	player_->getComponent<CameraMovement>()->enabled = false;
+
+	player_->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 }
 
 void TutorialBackToShelter::changeScene() {
 	auto player_ = entity_->getMngr()->getHandler<Player_hdlr>();
-	entity_->getMngr()->getGame()->setShouldRenderFPS(true);
 	static_cast<Player*>(player_)->getPhysiognomy()->removeAllStates();
 	static_cast<Player*>(player_)->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 	Inventory::firstInitialization = true;
@@ -459,7 +478,7 @@ void TutorialBackToShelter::changeImage(int n, int i)
 		auto b = entity_->getMngr()->addEntity();
 		entity_->getMngr()->addRenderLayer<LastRenderLayer>(b);
 		b->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
-		b->addComponent<Image>(&sdlutils().images().at("logo"), true);
+		b->addComponent<Image>(&sdlutils().images().at("logoWhite"), true);
 		return;
 	}
 	int width = ceil(consts::WINDOW_WIDTH / float(n));

@@ -19,13 +19,15 @@ void PauseScene::init() {
 	buttonImg->setAlpha(50);
 	Uint8 alpha = 50;
 
-	auto resumeButton = new MainMenuButton(Vector2D(0, consts::WINDOW_HEIGHT * 0.64), Vector2D(consts::WINDOW_WIDTH, 64), buttonImg, resume, g_, mngr_, 0, "Resume", 50);
+	float buttonHeight = 64;
+	float ypos = consts::WINDOW_HEIGHT - buttonHeight * 3 - 40;
+	auto resumeButton = new MainMenuButton(Vector2D(0, ypos), Vector2D(consts::WINDOW_WIDTH, buttonHeight), buttonImg, resume, g_, mngr_, 0, "Resume", 50);
 	mngr_->addEntity(resumeButton);
-
-	auto settingsButton = new MainMenuButton(Vector2D(0, consts::WINDOW_HEIGHT * 0.75), Vector2D(consts::WINDOW_WIDTH, 64), buttonImg, settings, g_, mngr_, 0, "Settings", 50);
+	ypos += buttonHeight;
+	auto settingsButton = new MainMenuButton(Vector2D(0, ypos), Vector2D(consts::WINDOW_WIDTH, buttonHeight), buttonImg, settings, g_, mngr_, 0, "Settings", 50);
 	mngr_->addEntity(settingsButton);
-
-	auto menuButton = new MainMenuButton(Vector2D(0, consts::WINDOW_HEIGHT * 0.86), Vector2D(consts::WINDOW_WIDTH, 64), buttonImg, menu, g_, mngr_, 0, "Main Menu", 50);
+	ypos += buttonHeight;
+	auto menuButton = new MainMenuButton(Vector2D(0, ypos), Vector2D(consts::WINDOW_WIDTH, buttonHeight), buttonImg, menu, g_, mngr_, 0, "Main Menu", 50);
 	mngr_->addEntity(menuButton);
 
 	auto domeLogo = mngr_->addEntity();
