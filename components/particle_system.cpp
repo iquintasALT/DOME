@@ -143,7 +143,6 @@ void ParticleSystem::update() {
 			particles.erase(particles.begin() + i);
 
 			if (destroyParticles && particles.size() <= 0) {
-				std::cout << std::endl << "Destroyed particles" << std::endl;
 				entity_->setDead(true);
 			}
 		}

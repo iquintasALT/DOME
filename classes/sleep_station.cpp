@@ -58,7 +58,6 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* she
 }
 
 void SleepStation::init() {
-	/*playerInv = getMngr()->getHandler<Player_hdlr>()->getComponent<Inventory>();*/
 	ih().clearState();
 }
 
