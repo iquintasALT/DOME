@@ -589,6 +589,11 @@
               "id": "dash",
               "volume": 100,
               "file": "resources/sound/dashfly.wav"
+          },
+    {
+              "id": "error",
+              "volume": 100,
+              "file": "resources/sound/error.wav"
           }
       ],
 

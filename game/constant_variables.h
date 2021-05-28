@@ -94,4 +94,5 @@ namespace consts {
 	// GAME CYCLE
 	const int MAX_DAYS = 10;
 	const int RAID_TIME = 8 * 60;
+	const int MAX_ACTIONS = 5;
 }

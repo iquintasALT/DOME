@@ -104,9 +104,9 @@ void ShelterScene::sleepTransition()
 	Camera::mainCamera->restoreScale();
 }
 
-void ShelterScene::useAction()
+void ShelterScene::useActions(int numActions)
 {
-	if (actions > 0) actions--;
+	if (actions - numActions >= 0) actions -= numActions;
 }
 
 void ShelterScene::addAction()
