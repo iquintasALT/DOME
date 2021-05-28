@@ -326,6 +326,17 @@ Tras recibir el feedback hemos llegado a las siguientes conclusiones:
 - Nuestra idea principal era limitar la cantidad de items que podía tener el jugador para que así tuviese la necesidad de salir a lootear y elegir que items son más importantes en cada momento. Pero nos hemos dado cuenta de que al menos tener un cofre en la base podría ser un buen añadido al juego. Sin embargo, por falta de tiempo, no hemos sido capaces de añadir esta funcionalidad.
 - Hemos arreglado multiples bugs que hacian que el juego crasheara, además de refactorizar partes del código en el proceso, como por ejemplo la creación de Items.
 
+#Contribución de cada miembro
+-Pablo Fernández Álvarez: 13%
+-Pablo González Álvarez: 10%
+-Cristian René Castillo de León: 13%
+-Iván Sánchez Míguez: 12%
+-Yojhan Steven García Peña: 14%
+-Emile David de Kadt: 13%
+-Aaron Nauzet Moreno Sosa: 13%
+-Iago Quintas Diz: 12%
+
+Lista consensuada por todos los miembros del equipo.
 
 ![Referencias](./docs/headers/h_referencias.png) <a name="refe"></a>
 
