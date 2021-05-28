@@ -44,7 +44,6 @@ void PlayerAnimation::init() {
 bool debug = false;
 
 bool PlayerAnimation::changeAnimations() {
-	//std::cout << to_string((animations_name)currentAnimation.getCurrentFrame()) << endl;
 	auto& mouse = ih().getMousePos();
 	float mouseX = Camera::mainCamera->PointToWorldSpace(Vector2D(mouse.first, mouse.second)).getX();
 	float playerX = tr_->getPos().getX() + tr_->getW() / 2;
@@ -82,7 +81,7 @@ bool PlayerAnimation::changeAnimations() {
 		return true;
 	}
 
-	if (playerCtrl_->isCrouching()) {
+	if (playerCtrl_->isCrouching() && !playerCtrl_->isClimbingLadder()) {
 		if (aux->isActive()) {
 			if (currentAnimation == animations[crouch])
 				return false;

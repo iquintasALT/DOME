@@ -224,9 +224,8 @@ void GameScene::loadMap(string& const path) {
 				}
 				else if (obj.getName() == "InitialScene") {
 					Entity* ini = mngr_->addEntity();
-					std::cout << aabb.left;
 					ini->addComponent<Transform>(Vector2D(aabb.left, aabb.top));
-					ini->setGroup<INITIALGRP>(true);
+					ini->setGroup<Initial_grp>(true);
 				}
 				else if (obj.getName() == "sleepStation") {
 					auto interactable = mngr_->addEntity();

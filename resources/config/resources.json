@@ -140,10 +140,6 @@
         "file": "resources/sprites/background/bg_image_dark.png"
       },
       {
-        "id": "titleText",
-        "file": "resources/sprites/title_text.png"
-      },
-      {
         "id": "flying_enemy",
         "file": "resources/sprites/flying_enemy_sheet.png"
       },
@@ -166,10 +162,6 @@
       {
         "id": "ricochet_projectile",
         "file": "resources/sprites/ricochet_projectile.png"
-      },
-      {
-        "id": "panel",
-        "file": "resources/sprites/panel.png"
       },
       {
         "id": "tooltipBox",
@@ -230,10 +222,6 @@
       {
         "id": "travelLineAnimation",
         "file": "resources/sprites/travel_line_animation.png"
-      },
-      {
-        "id": "exitButton",
-        "file": "resources/sprites/buttons/exit_button.png"
       },
       {
         "id": "playButton",
@@ -488,16 +476,6 @@
               "file": "resources/sound/freeze.mp3"
           },
           {
-              "id": "chargingweapon",
-              "volume": 128,
-              "file": "resources/sound/charging_weapon.wav"
-          },
-          {
-              "id": "alarm",
-              "volume": 128,
-              "file": "resources/sound/alarm2.wav"
-          },
-          {
               "id": "explosion",
               "volume": 128,
               "file": "resources/sound/explosion.wav"
@@ -526,16 +504,6 @@
               "id": "climbsound",
               "volume": 100,
               "file": "resources/sound/climb.wav"
-          },
-          {
-              "id": "chestopen1",
-              "volume": 128,
-              "file": "resources/sound/gun/chestopen1.wav"
-          },
-          {
-              "id": "chestopen2",
-              "volume": 128,
-              "file": "resources/sound/gun/chestopen2.wav"
           },
           {
               "id": "hurt",
@@ -621,6 +589,11 @@
               "id": "dash",
               "volume": 100,
               "file": "resources/sound/dashfly.wav"
+          },
+    {
+              "id": "error",
+              "volume": 100,
+              "file": "resources/sound/error.wav"
           }
       ],
 
