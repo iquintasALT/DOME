@@ -13,7 +13,7 @@ namespace consts {
 	const float PLAYER_BACKWARDS_SPEED = 1.5f;
 	const float CAMERA_MARGIN_FROM_PLAYER = -150;
 	const float JUMP_SPEED = 3.0f;
-	const float STAIRS_SPEED = 2.25f;
+	const float STAIRS_SPEED = 1.4f;
 	const float FALLING_DMG_SPEED = 5;
 	const float ACCELERATION = 5;
 	const float DECELERATION = 14;
