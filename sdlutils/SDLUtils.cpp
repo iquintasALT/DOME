@@ -20,7 +20,7 @@ SDLUtils::SDLUtils(std::string windowTitle, int width, int height,
 		std::string filename) : SDLUtils(windowTitle, width, height) {
 	loadReasources(filename);
 
-	SDL_Surface* icon = IMG_Load("./docs/images/w_tier_3.png");
+	SDL_Surface* icon = IMG_Load("./resources/icons/gameIcon.png");
 	SDL_SetWindowIcon(window_, icon);
 }
 
