@@ -39,6 +39,7 @@ void InitialScene::init()
 	holdToSkip->addComponent<Image>(&sdlutils().images().at("holdToSkip"), true);
 	holdToSkip->addComponent<HoldToSkip>(1.5, [this]() { 
 		Inventory::firstInitialization = true;
+		static_cast<Player*>(mngr_->getHandler<Player_hdlr>())->getWeapon()->getCurrentWeapon()->setTutEnabled(true);
 		mngr_->ChangeScene(new LocationsScene(mngr_->getGame()),
 			SceneManager::SceneMode::OVERRIDE);
 		}, true);
