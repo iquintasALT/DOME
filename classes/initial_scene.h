@@ -60,9 +60,7 @@ private:
 
 class TutorialCameraMovement : public Component {
 public:
-	TutorialCameraMovement(Vector2D p, std::function<void()> f, float speed) :
-	destination(p), function(f), speed(speed) {
-	};
+	TutorialCameraMovement(Vector2D p, std::function<void()> f, float speed) : destination(p), function(f), speed(speed) {};
 
 	void update() override;
 
@@ -71,7 +69,6 @@ private:
 	float speed;
 	std::function<void()> function;
 };
-
 
 class TutorialBackToShelter : public InteractableElement {
 public:

@@ -211,6 +211,7 @@ void CreditsScene::update() {
 	if (tr != nullptr && tr->getPos().getY() < -tr->getH()) {
 		exit = true;
 	}
+
 	if (exit) {
 		t += consts::DELTA_TIME;
 
@@ -277,7 +278,6 @@ void CreditsScene::init() {
 		addText(txtArray[0], y);
 	}
 }
-
 
 void CreditsScene::addTitle(std::string txt, int& y) {
 	auto text = mngr_->addEntity();
