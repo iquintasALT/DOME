@@ -64,7 +64,7 @@ void ChargeWeapon::update() {
 		switch (chargeState)
 		{
 		case not_charged:
-			if (ih().getMouseButtonState(InputHandler::LEFT) && bulletsInMagazine > 0) {
+			if (ih().getMouseButtonState(InputHandler::LEFT) && bulletsInMagazine > 0 && isTutorialEnabled) {
 				timeSinceLastShot += consts::DELTA_TIME;
 				animator_->setAnimation(9 + tier);
 				chargeState = winding_up;
