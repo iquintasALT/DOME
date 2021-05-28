@@ -383,7 +383,7 @@ void Inventory::storeDefaultItems() {
 		storeItem(new Item(ItemInfo::water(), entity_->getMngr(), this, 2, 2));
 		storeItem(new Item(ItemInfo::classicAmmo(), entity_->getMngr(), this, 4, 0, 16));
 		storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 3));
-		storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 4, 4, 5));
+		storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 4, 4));
 		storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 6, 2, 3));
 		firstInitialization = false;
 	}
