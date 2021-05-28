@@ -25,6 +25,7 @@
 - [Estética](#este)
 - [Controles](#keys)
 - [Interfaz y menús](#hud)
+- [Conclusiones QA](#conclusiones)
 - [Referencias](#refe)
 
 ![Descripción](./docs/headers/h_descripcion.png) <a name="desc"></a>
@@ -269,13 +270,17 @@ El juego tiene estetica en pixel-art de 64-bits inspirado en juegos como Kingdom
 # Menú de inicio
 En este menú el jugador tendra la opción de salir del juego, ir al juego o irse al menu de opciones.
 
+![raidmenu](./docs/images/CapturaMenu.PNG)
+
 # Menú de opciones
-Menú de ajustes donde el jugador podrá ajustar el volumen del juego.
+Menú de ajustes donde el jugador podrá ajustar el volumen del juego, tanto de efectos de sonido como la musica y habilitar o deshabilitar la opcion de que se vean los fps.
+
+![raidmenu](./docs/images/CapturaAjustes.PNG)
 
 # Mapa de saqueo
 En esta pantalla el jugador tendrá que seleccionar a qué zona del mapa se quiere dirigir para efectuar la raid. Además en la parte superior izquierda se verán los estados del jugador para facilitarle el ver que es lo que mas necesita en ese momento. También aparecerá la distacia que hay al lugar, indicativo del tiempo que se consumirá en viajar ahí.
 
-![raidmenu](./docs/images/select_raid.png)
+![raidmenu](./docs/images/CapturaSelRaid.png)
 
 # Menú de pausa
 Este menú aparecera si el jugador pulsa esc durante la partida, aquí el jugador podra irse al menu de opciones, volver a la partida o volver al menú principal.
@@ -283,12 +288,12 @@ Este menú aparecera si el jugador pulsa esc durante la partida, aquí el jugado
 # Inventario
 Menú que se le abrirá al jugador cuando pulse el tabulador durante el juego, ya sea en refugio o saqueo. Aquí el jugador podrá ver el los objetos que tiene en el inventario.
 
-![inventory](./docs/images/inventory.png)
+![raidmenu](./docs/images/CapturaInventario.PNG)
 
 # Interfaz de espacios de almacenamiento
 Esta es una interfaz que aparece al lado del inventario del jugador cuando interactúa con una caja de almacenamiento. Podrá arrastrar objetos del lugar de almacenamiento a su inventario y viceversa.
 
-![openchest](./docs/images/take_objects.jpg)
+![raidmenu](./docs/images/CapturaCofre.PNG)
 
 # Interfaz de juego
 Durante los saqueos, la interfaz del jugador tendrá:
@@ -299,7 +304,8 @@ Cuando el tiempo se agota, los bordes de la pantalla se recubren con un efecto d
 
 En el refugio, la única interfaz permanente es la de los estados de salud (hambre y cansancio), que se representa igual que la de las heridas en el saqueo.
 
-## Conclusiones QA
+## Conclusiones QA 
+<a name="conclusiones"></a>
 Enlace del cuestionario : [CUESTIONARIO](https://forms.gle/dXmFYaxsFPzpo7za7)\ 
 Enlace de las respuestas : [RESPUESTAS_CUESTIONARIO](https://docs.google.com/spreadsheets/d/1cimQlVsfxfbKJ-LkXWf5XLELRlipmXTu-zazRjlLzmE/edit?usp=sharing)\
 

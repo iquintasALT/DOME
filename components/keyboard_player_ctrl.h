@@ -15,7 +15,7 @@ class KeyboardPlayerCtrl : public Component {
 private:
 	RigidBody* rb_;
 	Transform* tr_;
-	
+
 	Transform* darkArea;
 
 	float speed;
@@ -41,8 +41,9 @@ public:
 	virtual void update();
 
 	inline bool isCrouching() { return crouched; }
-    inline bool isClimbingLadder() { return onLadder; };
-	
+	inline bool isClimbingLadder() { return onLadder; };
+	inline bool isWalking() { return walking; };
+
 	void resetSpeed();
 	float getSpeed();
 	float getMaxSpeed();

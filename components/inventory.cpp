@@ -37,6 +37,7 @@ Inventory::Inventory(int width, int height, WeaponBehaviour* weapon) : width(wid
 	dropDown = nullptr;
 	dropDownActive = false;
 }
+
 Inventory::Inventory(int width, int height, Inventory* player) : Inventory(width, height) {
 	this->other = player;
 	originalPos = Vector2D();
@@ -79,12 +80,12 @@ void Inventory::moveInventory(Point2D pos) {
 
 class DropDownRender : public Entity {
 public:
+	InventoryDropdown* dropDown;
 	bool canBeUsed;
 	DropDownRender(InventoryDropdown* i, Manager* mngr) : Entity(mngr) {
 		dropDown = i;
 		canBeUsed = true;
 	}
-	InventoryDropdown* dropDown;
 	void render() override {
 		dropDown->render(canBeUsed);
 	};
@@ -100,29 +101,32 @@ void Inventory::init() {
 	toolTipsTr = toolTips->addComponent<Transform>(Vector2D(100, 100), 500, 10, 0);
 	toolTipsText = toolTips->addComponent<TextWithBackground>("Inventario",
 		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
-	entity_->getMngr()->addRenderLayer<ULTIMATE>(toolTips);
+	entity_->getMngr()->addRenderLayer<LastRenderLayer>(toolTips);
 	toolTips->setActive(false);
 	dropDownActive = false;
+
 	if (other == nullptr) {
 		std::vector<InventoryDropdown::slot*> slots;
 		slots.push_back(new InventoryDropdown::slot("Use", [this]() {
-			if (itemClickedInDropdown->getItemInfo()->name() != LASER_AMMO && itemClickedInDropdown->getItemInfo()->name() != CLASSIC_AMMO && itemClickedInDropdown->getItemInfo()->name() != RICOCHET_AMMO) {
-				if (itemClickedInDropdown->getItemInfo()->execute(player)) {
-					removeItem(itemClickedInDropdown); itemClickedInDropdown->removeImage(); delete itemClickedInDropdown;
-				}
-			}}));
+			if (itemClickedInDropdown->getItemInfo()->execute(player)) {
+				removeItem(itemClickedInDropdown);
+				itemClickedInDropdown->removeImage();
+				delete itemClickedInDropdown;
+			}
+			}));
+
 		slots.push_back(new InventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown);  itemClickedInDropdown->removeImage(); delete itemClickedInDropdown; }));
 		dropDown = new InventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
 		dropDownRender = new DropDownRender(dropDown, entity_->getMngr());
 		entity_->getMngr()->addEntity(dropDownRender);
-		entity_->getMngr()->addRenderLayer<ULTIMATE>(dropDownRender);
+		entity_->getMngr()->addRenderLayer<LastRenderLayer>(dropDownRender);
 		dropDownRender->setActive(false);
 	}
 }
 void Inventory::render() {
 	if (dropDownActive && other == nullptr) {
 		toolTips->setActive(false);
-		dropDownRender->canBeUsed = lastItemHovered->getItemInfo()->hasFunction();
+		dropDownRender->canBeUsed = isAvailableInTheScene(lastItemHovered->getItemInfo()->name());
 		dropDownRender->setActive(true);
 	}
 	else {
@@ -301,6 +305,18 @@ bool Inventory::availableSpace(int x, int y, Item* item) {
 	return true;
 }
 
+bool Inventory::isAvailableInTheScene(int itemName)
+{
+	return isUsable(itemName) && (((ITEMS)itemName == ITEMS::FOOD && player->getMngr()->getGame()->currentScene == SCENES::SHELTER)
+			|| ((ITEMS)itemName != ITEMS::FOOD && player->getMngr()->getGame()->currentScene != SCENES::SHELTER));
+}
+
+bool Inventory::isUsable(int itemName)
+{
+	return (ITEMS)itemName == ITEMS::FOOD || (ITEMS)itemName == ITEMS::PAINKILLER || (ITEMS)itemName == ITEMS::SPLINT
+		|| (ITEMS)itemName == ITEMS::BANDAGE || (ITEMS)itemName == ITEMS::ANTIDOTE;
+}
+
 void Inventory::storeItem(Item* item) {
 	storedItems.push_back(item);
 
@@ -367,8 +383,9 @@ void Inventory::storeDefaultItems() {
 		storeItem(new Item(ItemInfo::water(), entity_->getMngr(), this, 2, 2));
 		storeItem(new Item(ItemInfo::classicAmmo(), entity_->getMngr(), this, 4, 0, 16));
 		storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 3));
-		storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 4, 4, 5));
+		storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 4, 4));
 		storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 6, 2, 3));
+		storeItem(new Item(ItemInfo::mecanicalComponents(), entity_->getMngr(), this, 8, 2));
 		firstInitialization = false;
 	}
 }

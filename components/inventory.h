@@ -1,16 +1,21 @@
 #pragma once
+
 #include "../ecs/Entity.h"
 #include "../ecs/Component.h"
-#include "../classes/item.h"
-#include "../components/transform.h"
-#include "../game/constant_variables.h"
-#include "../utils/checkML.h"
-#include "../classes/inventory_dropdown.h"
 
+#include "../utils/checkML.h"
+
+#include "../game/constant_variables.h"
+
+#include "../components/transform.h"
+
+#include "../classes/item.h"
+#include "../classes/inventory_dropdown.h"
 
 #include <list>
 #include <string>
 #include <functional>
+
 class TextWithBackground;
 class Game;
 class WeaponBehaviour;
@@ -50,15 +55,14 @@ public:
 	void onDisable() override;
 
 	bool isPlayer = false;
+
 private:
 	Point2D originalPos;
 	const float timeToHold = 0.08f; //seconds
 	float timer = 0;
 
 	Inventory* other;
-
 	Player* player;
-
 	WeaponBehaviour* playerWeapon;
 
 	Vector2D itemPosition(int x, int y);
@@ -75,6 +79,8 @@ private:
 	Item* findItemInSlot(int x, int y);
 
 	bool availableSpace(int x, int y, Item* item);
+	bool isAvailableInTheScene(int itemName);
+	bool isUsable(int itemName);
 
 	bool justPressed;
 	Item* selectedItem;
