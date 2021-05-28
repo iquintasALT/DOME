@@ -211,6 +211,7 @@ void CreditsScene::update() {
 	if (tr != nullptr && tr->getPos().getY() < -tr->getH()) {
 		exit = true;
 	}
+
 	if (exit) {
 		t += consts::DELTA_TIME;
 
@@ -236,9 +237,8 @@ void CreditsScene::init() {
 
 	std::vector<std::vector<std::string>> arr = {
 		{"T", "CREDITS"},
-		{"SUREFFECT TEAM"},
+		{"TEAM SUREFFECT"},
 		{" "},
-		{"DEVELOPMENT TEAM"},
 		{"CRISTIAN RENE CASTILLO LEON", "IVAN SANCHEZ MIGUEZ"},
 		{"IAGO QUINTAS DIZ", "PABLO FERNANDEZ ALVAREZ"},
 		{"YOJHAN STEVEN GARCIA PENA", "AARON NAUZET MORENO SOSA"},
@@ -277,7 +277,6 @@ void CreditsScene::init() {
 		addText(txtArray[0], y);
 	}
 }
-
 
 void CreditsScene::addTitle(std::string txt, int& y) {
 	auto text = mngr_->addEntity();

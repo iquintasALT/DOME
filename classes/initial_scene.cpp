@@ -214,7 +214,7 @@ void TutorialManager::changeCase(int newcase)
 		d->createText(texts, 20);
 
 		trigger = entity_->getMngr()->addEntity();
-		trigger->addComponent<Transform>(triggerPos + Vector2D(0, 20), 30, 50);
+		trigger->addComponent<Transform>(triggerPos + Vector2D(-150, 20), 30, 50);
 		trigger->addComponent<BoxCollider>(true);
 		trigger->addComponent<TutorialTrigger>();
 		break;
@@ -254,7 +254,7 @@ void TutorialManager::changeCase(int newcase)
 			};
 
 			cameraMovement->addComponent<TutorialCameraMovement>(
-				Vector2D(backToShelter->getComponent<Transform>()->getPos()), f, 0.7f);
+				Vector2D(backToShelter->getComponent<Transform>()->getPos().getX() + 300, backToShelter->getComponent<Transform>()->getPos().getY()), f, 0.7f);
 		};
 		break;
 	}
@@ -405,8 +405,8 @@ void TutorialCameraMovement::update()
 {
 	Camera::mainCamera->Lerp(destination, speed);
 
-	float magnitude = (Camera::mainCamera->getCameraCenterPoisition() - destination).magnitude();
-	if (magnitude <= 15.0) {
+	float magnitude = (Camera::mainCamera->getCameraCenterPosition() - destination).magnitude();
+	if (magnitude <= 30.0) {
 		function();
 		entity_->setDead(true);
 	}
@@ -415,13 +415,6 @@ void TutorialCameraMovement::update()
 void TutorialBackToShelter::Interact()
 {
 	if (alreadyPressed) return;
-
-	/*Vector2D pos;
-	for (auto ent : entity_->getMngr()->getEntities()) {
-		if (ent->hasGroup<INITIALGRP>()) {
-			pos = ent->getComponent<Transform>()->getPos();
-		}
-	}*/
 
 	auto start = [this]() {
 		float time = .4;
@@ -451,7 +444,8 @@ void TutorialBackToShelter::changeScene() {
 	auto player_ = entity_->getMngr()->getHandler<Player_hdlr>();
 	entity_->getMngr()->getGame()->setShouldRenderFPS(true);
 	static_cast<Player*>(player_)->getPhysiognomy()->removeAllStates();
-
+	static_cast<Player*>(player_)->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+	Inventory::firstInitialization = true;
 	entity_->getMngr()->ChangeScene(new LocationsScene(entity_->getMngr()->getGame()), SceneManager::SceneMode::OVERRIDE);
 }
 
