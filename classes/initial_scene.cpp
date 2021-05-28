@@ -38,6 +38,7 @@ void InitialScene::init()
 	holdToSkip->addComponent<Transform>(Vector2D(consts::WINDOW_WIDTH - size - 10, consts::WINDOW_HEIGHT - size - 10), size, size);
 	holdToSkip->addComponent<Image>(&sdlutils().images().at("holdToSkip"), true);
 	holdToSkip->addComponent<HoldToSkip>(1.5, [this]() { 
+		Inventory::firstInitialization = true;
 		mngr_->ChangeScene(new LocationsScene(mngr_->getGame()),
 			SceneManager::SceneMode::OVERRIDE);
 		}, true);
