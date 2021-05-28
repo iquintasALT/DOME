@@ -5,14 +5,13 @@
 #include "../classes/player.h"
 #include "../components/tiredness_component.h"
 #include "../classes/shelter_scene.h"
+#include "../sdlutils/SoundManager.h"
 
 SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* shelterScene_) : Entity(realMngr_) {
 	realMngr_->addEntity(this);
 	realMngr_->addRenderLayer<Interface>(this);
 
 	renderFlag = false;
-	mouseClick = false;
-
 	shelterScene = shelterScene_;
 	playerTr = realMngr_->getHandler<Player_hdlr>()->getComponent<Transform>();
 
@@ -26,7 +25,7 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* she
 	sleep2 = mngr_->addEntity();
 
 	Vector2D bg_size = { 790.5, 535.5 };
-	Vector2D bg_pos = Vector2D(sdlutils().width() / 2 - bg_size.getX() / 2, sdlutils().height() / 2 - bg_size.getY() / 2.5f);
+	Vector2D bg_pos = Vector2D(sdlutils().width() / 2.0f - bg_size.getX() / 2.0f, sdlutils().height() / 2.0f - bg_size.getY() / 2.0f);
 	Vector2D bButton_size = { 65,64 };
 	Vector2D bButton_pos = Vector2D(bg_pos.getX() - bButton_size.getX() / 2, bg_pos.getY() - bButton_size.getY() / 2);
 
@@ -60,14 +59,13 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* she
 }
 
 void SleepStation::init() {
-	/*playerInv = getMngr()->getHandler<Player_hdlr>()->getComponent<Inventory>();*/
 	ih().clearState();
 }
 
 void SleepStation::setRenderFlag(bool set) {
 	renderFlag = set;
-	if (set)
-		playerTr->getEntity()->setActive(false);
+	if (set) playerTr->getEntity()->setActive(false);
+	ih().clearState();
 }
 
 void SleepStation::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
@@ -80,8 +78,7 @@ void SleepStation::update() {
 
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
-		if (ih().getMouseButtonState(InputHandler::LEFT) && !mouseClick) {
-			mouseClick = true;
+		if (ih().getMouseButtonState(InputHandler::LEFT)) {
 
 			if (Collisions::collides(mousePos, 1, 1, bButton_tr->getPos(), bButton_tr->getW(), bButton_tr->getH())) {
 				renderFlag = false;
@@ -98,6 +95,7 @@ void SleepStation::update() {
 				if (shelterScene->getActions() >= 2) {
 					goToSleep(8, 2);
 				}
+				else soundManager().playSFX("error");
 			}
 			else if (Collisions::collides(mousePos, 1, 1, sleep1_tr->getPos(), sleep1_tr->getW(), sleep1_tr->getH())) {
 				renderFlag = false;
@@ -105,10 +103,15 @@ void SleepStation::update() {
 				if (shelterScene->getActions() >= 1) {
 					goToSleep(3, 1);
 				}
+				else soundManager().playSFX("error");
 			}
 		}
+		else if (ih().isKeyDown(SDL_SCANCODE_E)) {
+			renderFlag = false;
+			playerTr->getEntity()->setActive(true);
+			ih().clearState();
+		}
 	}
-	else if (!ih().getMouseButtonState(InputHandler::LEFT)) { mouseClick = false; }
 }
 
 void SleepStation::goToSleep(int hours, int numberOfActions)
@@ -118,7 +121,7 @@ void SleepStation::goToSleep(int hours, int numberOfActions)
 		mngr_->ChangeScene(new LoseScene(mngr_->getGame(), WAYSTODIE::DAYS), SceneManager::SceneMode::ADDITIVE);
 
 	mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(hours);
-	for(int i = 0; i < numberOfActions; i++) shelterScene->useAction();
+	shelterScene->useActions(numberOfActions);
 	shelterScene->sleepTransition();
 }
 

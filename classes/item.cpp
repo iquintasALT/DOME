@@ -24,10 +24,7 @@ ItemInfo::ItemInfo(ItemInfo* item) {
 	function = item->function;
 }
 
-ItemInfo::~ItemInfo()
-{
-
-}
+ItemInfo::~ItemInfo() {}
 
 ItemInfo* ItemInfo::antidote()
 {
@@ -44,7 +41,7 @@ ItemInfo* ItemInfo::bandage()
 	auto f = [](Entity* player) {
 		static_cast<Player*>(player)->getPhysiognomy()->removeBleedState();
 		soundManager().playSFX("heal");
-		return true; // CAMBIAA
+		return true; // CAMBIA
 	};
 
 	return new ItemInfo(BANDAGE, "bandage", "Clean bandages for treating bloodloss.", 1, 1, 0, 2, f);
@@ -163,8 +160,6 @@ ItemInfo* ItemInfo::metalPlates()
 {
 	return new ItemInfo(METAL_PLATES, "metal plates", "Polished metal plating for the fuselage of an escape shuttle.", 2, 2, 7, 1);
 }
-
-//&sdlutils().images().at("items")
 
 Item::Item(ItemInfo* itemInformation, Manager* mngr, Inventory* inventory, int xPos, int yPos, int count) :
 	info(itemInformation), x(xPos), y(yPos), count(count) {

@@ -230,7 +230,7 @@ void SpaceshipStation::update() {
 							}
 
 							//gastar accion
-							shelterScene->useAction();
+							shelterScene->useActions(1);
 
 							renderFlag = true;
 							renderRightWindow = true;
