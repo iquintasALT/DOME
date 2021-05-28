@@ -1,14 +1,21 @@
 #include "locations_scene.h"
+
+#include "../ecs/Component.h"
+
 #include "../game/Game.h"
-#include "../classes/raid_scene.h"
+#include "../game/constant_variables.h"
+
 #include "../sdlutils/Texture.h"
-#include "../components/Image.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/SoundManager.h"
-#include "../ecs/Component.h"
+
+#include "../components/Image.h"
 #include "../components/tiredness_component.h"
 #include "../components/particleSystem.h"
+
+#include "../classes/raid_scene.h"
 #include "../classes/camera.h"
+
 void LocationsScene::init()
 {
 	Vector2D a;
@@ -90,7 +97,8 @@ void LocationsScene::loadLocationButtons(int buttons) {
 }
 
 void LocationsScene::changeToRaid(Game* g, int index) {
-	g->currentScene = scenes[index];
+	g->playerSavedData->updateTiredness(consts::TIREDNESS_FROM_TRAVELING[index]);
+	g->currentScene = (SCENES)index;
 	g->setShouldRenderFPS(true);
 	soundManager().playSFX("push_button");
 	mngr_->ChangeScene(new RaidScene(paths[index], names[index], g), SceneManager::SceneMode::ADDITIVE);
@@ -168,6 +176,7 @@ void LocationsScene::addBackground(Texture* t) {
 	mngr_->addRenderLayer<Background>(background);
 	backgrounds.push_back(background);
 }
+
 void LocationsScene::addFocus() {
 	focus = mngr_->addEntity();
 	focus->addComponent<Transform>(Vector2D(100, 100), 75, 75);
@@ -253,7 +262,6 @@ void LocationsScene::updateAnimation() {
 	tr->setRot(travelLine->getComponent<Transform>()->getRot());
 }
 
-
 void LocationsScene::addParticles()
 {
 	auto shelterTr = shelterImg->getComponent<Transform>();
@@ -278,41 +286,4 @@ void LocationsScene::addParticles()
 	p->burst = false;
 	p->centerAlign = true;
 	p->gravity = false;
-}
-
-
-//FADE
-Fade::Fade(float speed, Texture* t) : tr_(nullptr) {
-	t = 0;
-	f = 255;
-	done = false;
-	speed_ = speed;
-	black_ = t;
-}
-
-void Fade::init() {
-	tr_ = entity_->getComponent<Transform>();
-	assert(tr_ != nullptr);
-}
-
-void Fade::update() {
-	if (!done) {
-		t += consts::DELTA_TIME * speed_;
-
-		const float fade = 0.2f;
-
-		if (t < fade)
-		f = (fade - t) / fade * 255;
-
-		if (f < 10) done = true;
-	}
-}
-
-void Fade::render(){
-	black_->setAlpha(f);
-	black_->render({ 0,0, sdlutils().width(), sdlutils().height() });
-}
-
-void Fade::setAlpha(float alpha) {
-	f = alpha;
 }

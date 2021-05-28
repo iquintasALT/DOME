@@ -29,15 +29,13 @@ private:
 public:
 	TirednessComponent();
 	void init() override;
-	void updateLevel(); //Actualiza el nivel de cansacio de jugador en base a su cansancio
-	void calculatePlayerSpeed() const ; //Calcula velocidad del jugador en base a su cansancio y la modifica (velocidad del transform)
+	void updateLevel();					//Actualiza el nivel de cansacio de jugador en base a su cansancio
+	void calculatePlayerSpeed() const; //Calcula velocidad del jugador en base a su cansancio y la modifica (velocidad del transform)
 	 
-	void calculateTravelSpeed() const; //Metodo que en base al cansancio, aumente  en un cierto % el tiempo de viaje a las localizaciones (necesita el sistema de localizaciones)
-
-	void sleep(int hours); //Horas descansadas como parametro
+	void sleep(int hours);			    //Horas descansadas como parametro
 	void decreaseTiredness(float tiredness);
 	tirednessLevel getTirednessLevel() { return tirednessLev; }
 	float getTirednessFloat() { return tiredness; }
-	void setTirednessFloat(float tiredness_) { tiredness = tiredness_; updateLevel(); };
+	void setTirednessFloat(float tiredness_);
 };
 

@@ -1,11 +1,13 @@
 #include "rigid_body.h"
-#include "box_collider.h"
 
+#include "box_collider.h"
 #include "KeyboardPlayerCtrl.h"
+#include "Transform.h"
+
 #include <iostream>
 
-RigidBody::RigidBody(Vector2D vel, bool gravity) : tr_(nullptr), vel_(vel),
-grActive_(gravity), onFloor_(false), gravity(consts::GRAVITY), collide(true), bounciness(0)
+RigidBody::RigidBody(Vector2D vel, bool gravity) : tr_(nullptr), vel_(vel), grActive_(gravity), onFloor_(false), 
+		gravity(consts::GRAVITY), collide(true), bounciness(0)
 {
 	for (bool& b : collisions)
 		b = false;
@@ -25,6 +27,7 @@ RigidBody::RigidBody(Vector2D vel, Transform* tr) {
 		b = false;
 	collisions[0] = true;
 }
+
 RigidBody::~RigidBody() {};
 
 void RigidBody::init() {
@@ -136,10 +139,4 @@ void RigidBody::update() {
 void RigidBody::applyGravity() {
 	if (!onFloor_)
 		setVelY(vel_.getY() + gravity / consts::FRAME_RATE);
-}
-
-void RigidBody::reachedFloor() {
-	if (vel_.getY() > consts::FALLING_DMG_SPEED) std::cout << "OUCH, CAI DESDE MUY ALTO Y YOJHAN ES FEO";
-	setVelY(0);
-	setOnFloor(true);
 }

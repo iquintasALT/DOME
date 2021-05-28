@@ -1,12 +1,17 @@
 #include "Inventory.h"
-#include "../sdlutils/InputHandler.h"
-#include "../components/TextWithBackGround.h"
-#include "../game/Game.h"
-#include "../classes/crafting_system.h"
-#include "../sdlutils/SDLUtils.h"
-#include "../sdlutils/SoundManager.h"
-#include "../classes/weapon_behaviour.h"
+
 #include <iostream>
+
+#include "../game/Game.h"
+
+#include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/InputHandler.h"
+#include "../sdlutils/SoundManager.h"
+
+#include "../classes/crafting_system.h"
+#include "../classes/weapon_behaviour.h"
+
+#include "../components/TextWithBackGround.h"
 
 bool Inventory::firstInitialization = false;
 int Inventory::itemWidth = 1;
@@ -147,9 +152,6 @@ void Inventory::onDisable() {
 
 
 Inventory::~Inventory() {
-	if (isPlayer && !forceDelete)
-		std::cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-
 	if (isPlayer) forceDelete = true;
 
 	for (auto& a : storedItems) {

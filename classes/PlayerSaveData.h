@@ -34,5 +34,6 @@ public:
 	void save(Player* p);
 	void load(Player* p);
 	void reset();
+	void updateTiredness(float decTiredness);
 };
 
