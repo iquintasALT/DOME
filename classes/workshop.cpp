@@ -1,5 +1,6 @@
 #include "workshop.h"
 #include "../classes/shelter_scene.h"
+#include "../sdlutils/SoundManager.h"
 
 Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_) : Entity(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
@@ -70,7 +71,7 @@ Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, Shelt
 	Vector2D craftButton_pos = { bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f) - 132.5f, bg_tr->getPos().getY() + bg_tr->getH() - 105.0f / 1.5f };
 
 	//BOTON DE CRAFTEO
-	setImg(craftButton, craftButton_pos, Vector2D{ 265,105 }, "craft_slot_box");
+	setImg(craftButton, craftButton_pos, Vector2D{ 265,80 }, "actionButton");
 	craftButton_tr = craftButton->getComponent<Transform>();
 
 	//referencia para usar acciones
@@ -336,7 +337,7 @@ void Workshop::update() {
 								renderRightWindow = false;
 								weapon->upgradeCurrentWeapon();
 								//gastar accion
-								shelterScene->useAction();
+								shelterScene->useActions(1);
 							}
 
 						} //Si no es un arma
@@ -347,10 +348,11 @@ void Workshop::update() {
 								//Si es crafteable la variable loot ya será != nullptr y usamos una accion
 								renderRightWindow = false;
 								renderFlag = false;
-								shelterScene->useAction();
+								shelterScene->useActions(1);
 							}
 						}
 					}
+					else soundManager().playSFX("error");
 				}
 				//Si hacemos click en la flecha izq cambiamos el arma elegida en la mejora de armas
 				if (Collisions::collides(mousePos, 1, 1, arrowLeft_tr->getPos(), arrowLeft_tr->getW(), arrowLeft_tr->getH())) {
@@ -467,7 +469,7 @@ void Workshop::rightWindowRender() {
 				offsetY += 48 + 20;
 			}
 
-			dest = { (int)(craftButton_tr->getPos().getX() + craftButton_tr->getW() / 2 - rightRenderTexts[rightRenderTexts.size() - 1]->width() / 2),
+			dest = { (int)(craftButton_tr->getPos().getX() + craftButton_tr->getW() / 1.5f - rightRenderTexts[rightRenderTexts.size() - 1]->width() / 2),
 				(int)(craftButton_tr->getPos().getY() + craftButton_tr->getH() / 2 - rightRenderTexts[rightRenderTexts.size() - 1]->height() / 2),
 				rightRenderTexts[rightRenderTexts.size() - 1]->width(),	rightRenderTexts[rightRenderTexts.size() - 1]->height() };
 

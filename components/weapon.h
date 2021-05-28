@@ -19,6 +19,8 @@ private:
 	static int bulletsInMagazine;
 
 protected:
+	static bool isTutorialEnabled;
+
 	Transform* tr_ = nullptr;
 	Image* image_ = nullptr;
 	Player* player_ = nullptr;
@@ -39,6 +41,7 @@ protected:
 	bool reloading = false; 
 
 	float baseBulletSpread;
+
 
 	Texture* bulletTexture_ = &sdlutils().images().at("projectile");
 
@@ -70,6 +73,7 @@ public:
 	void setDamage(int damage_) { impactDamage = damage_; }
 	void setBulletSpread(int i) { baseBulletSpread = i; }
 	virtual void setBulletsInMagazine(int bullets) { bulletsInMagazine = bullets; };
+	void setTutEnabled(bool en) { isTutorialEnabled = en; };
 
 	virtual void update();
 

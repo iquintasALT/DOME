@@ -16,8 +16,8 @@
 using namespace std;
 
 enum ITEMS {
-	BANDAGE, MEDICAL_COMPONENTS, WATER, ORGANIC_MATERIAL, MECANICAL_COMPONENTS, ANTIDOTE, FOOD, SPLINT, SPACESHIP_ROCKETS, 
-	SPACESHIP_KEY_ITEMS, BUILDING_PARTS, ELECTRONIC_REMAINS, METAL_PLATES, WEAPON_UPGRADE, UPGRADE_KIT, CLASSIC_AMMO, 
+	BANDAGE, MEDICAL_COMPONENTS, WATER, ORGANIC_MATERIAL, MECHANICAL_COMPONENTS, ANTIDOTE, FOOD, SPLINT, SPACESHIP_ROCKETS, 
+	SPACESHIP_KEY_ITEMS, METAL_SCRAPS, ELECTRONIC_REMAINS, METAL_PLATES, WEAPON_UPGRADE, UPGRADE_KIT, CLASSIC_AMMO, 
 	RICOCHET_AMMO, LASER_AMMO, SPACESHIP_RADAR, SPACESHIP_CABIN, PAINKILLER
 };
 
@@ -44,13 +44,13 @@ public:
 	static ItemInfo* medicalComponents();
 	static ItemInfo* water();
 	static ItemInfo* organicMaterial();
-	static ItemInfo* mecanicalComponents();
+	static ItemInfo* mechanicalComponents();
 	static ItemInfo* antidote();
 	static ItemInfo* food();
 	static ItemInfo* splint();
 	static ItemInfo* spaceshipRockets();
 	static ItemInfo* spaceshipKeyItem();
-	static ItemInfo* buildingParts();
+	static ItemInfo* metalScraps();
 	static ItemInfo* electronicRemains();
 	static ItemInfo* spaceshipRadar();
 	static ItemInfo* spaceshipCabin();

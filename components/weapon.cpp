@@ -22,6 +22,7 @@
 #include <list>
 
 int Weapon::bulletsInMagazine = -1;
+bool Weapon::isTutorialEnabled = true;
 
 Weapon::Weapon(float bulletSpread, int tier) : baseBulletSpread(bulletSpread), tier_(tier) {}
 
@@ -158,7 +159,7 @@ void Weapon::update() {
 			}
 		}
 		else if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate &&
-			getBulletsInMagazine() > 0 && !reloading)
+			getBulletsInMagazine() > 0 && !reloading && isTutorialEnabled)
 			shoot(rotation);
 	}
 	else

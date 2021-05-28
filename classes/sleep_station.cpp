@@ -5,6 +5,7 @@
 #include "../classes/player.h"
 #include "../components/tiredness_component.h"
 #include "../classes/shelter_scene.h"
+#include "../sdlutils/SoundManager.h"
 
 SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* shelterScene_) : Entity(realMngr_) {
 	realMngr_->addEntity(this);
@@ -94,6 +95,7 @@ void SleepStation::update() {
 				if (shelterScene->getActions() >= 2) {
 					goToSleep(8, 2);
 				}
+				else soundManager().playSFX("error");
 			}
 			else if (Collisions::collides(mousePos, 1, 1, sleep1_tr->getPos(), sleep1_tr->getW(), sleep1_tr->getH())) {
 				renderFlag = false;
@@ -101,6 +103,7 @@ void SleepStation::update() {
 				if (shelterScene->getActions() >= 1) {
 					goToSleep(3, 1);
 				}
+				else soundManager().playSFX("error");
 			}
 		}
 		else if (ih().isKeyDown(SDL_SCANCODE_E)) {
@@ -118,7 +121,7 @@ void SleepStation::goToSleep(int hours, int numberOfActions)
 		mngr_->ChangeScene(new LoseScene(mngr_->getGame(), WAYSTODIE::DAYS), SceneManager::SceneMode::ADDITIVE);
 
 	mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(hours);
-	for(int i = 0; i < numberOfActions; i++) shelterScene->useAction();
+	shelterScene->useActions(numberOfActions);
 	shelterScene->sleepTransition();
 }
 

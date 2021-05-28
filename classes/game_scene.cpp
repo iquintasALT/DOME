@@ -246,9 +246,9 @@ void GameScene::loadMap(string& const path) {
 					interactable->addComponent<InteractableElement>("Press E to craft MEDICAL ITEMS");
 				}
 				else if (obj.getName() == "spaceShip") {
-					static_cast<ShelterScene*>(this)->initSpaceshipStation({ aabb.left, aabb.top }, { aabb.width, aabb.height });
+					static_cast<ShelterScene*>(this)->initSpaceshipStation({ aabb.left, aabb.top }, { aabb.width, aabb.height }, obj.getRotation());
 					auto interactable = mngr_->addEntity();
-					interactable->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height, 0);
+					interactable->addComponent<Transform>(Vector2D(aabb.left, aabb.top), aabb.width, aabb.height);
 					interactable->addComponent<InteractableElement>("Press E to see the SHIP STATE");
 				}
 			}
@@ -296,3 +296,4 @@ void GameScene::createParallaxLayer(float scrollFactor, Texture* t, int numOfRep
 	layer->addComponent<ParallaxComponent>(t, numOfRep)->setScrollFactor(scrollFactor);
 	mngr_->addRenderLayer<Parallax>(layer);
 }
+

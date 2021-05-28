@@ -1,5 +1,7 @@
 #include "player_save_data.h"
 
+#include "../game/Game.h"
+
 #include "../classes/player.h"
 #include "../classes/weapon_behaviour.h"
 
@@ -23,6 +25,9 @@ PlayerSaveData::~PlayerSaveData()
 
 void PlayerSaveData::save(Player* p)
 {
+	if (p->getMngr()->getGame()->currentScene == SCENES::TUTORIAL)
+		return;
+
 	isSaved = true;
 
 	//Items
