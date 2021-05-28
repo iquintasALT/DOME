@@ -446,7 +446,11 @@
       {
         "id": "buttonBackground",
         "file": "resources/sprites/buttons/button_background.png"
-      }
+      },
+  {
+     "id": "actionButton",
+     "file": "resources/sprites/craft_ui/action_button.png"
+  }
     ],
 
       "sounds": [
@@ -589,6 +593,11 @@
               "id": "dash",
               "volume": 100,
               "file": "resources/sound/dashfly.wav"
+          },
+    {
+              "id": "error",
+              "volume": 100,
+              "file": "resources/sound/error.wav"
           }
       ],
 
