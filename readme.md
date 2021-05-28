@@ -176,7 +176,7 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 ## Genérico
 | Nombre | Sprite | 
 |--------|--------|
-| Materiales de construcción | ![alt text](./docs/images/tile021.png) |
+| Desechos metálicos | ![alt text](./docs/images/tile021.png) |
 | Partes mecánicas | ![alt text](./docs/images/tile013.png) | 
 | Restos electronicas | ![alt text](./docs/images/tile015.png) |
 | Componentes médicos | ![alt text](./docs/images/tile001.png) |

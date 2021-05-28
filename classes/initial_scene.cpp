@@ -367,7 +367,7 @@ TutorialLoot::TutorialLoot() : Loot("Press E to open loot", 5, 5)
 void TutorialLoot::init()
 {
 	Loot::init();
-	inventory->storeItem(new Item(ItemInfo::mecanicalComponents(), entity_->getMngr(), inventory, 0, 0));
+	inventory->storeItem(new Item(ItemInfo::mechanicalComponents(), entity_->getMngr(), inventory, 0, 0));
 	inventory->storeItem(new Item(ItemInfo::food(), entity_->getMngr(), inventory, 2, 3));
 }
 
