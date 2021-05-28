@@ -161,6 +161,6 @@ struct ULTIMATE;
 	Enemy, \
 	Bullets, \
 	Dark,\
-	Interface, \
 	Item, \
+	Interface, \
 	ULTIMATE

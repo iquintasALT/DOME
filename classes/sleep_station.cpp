@@ -24,7 +24,7 @@ SleepStation::SleepStation(Manager* realMngr_, Manager* mngr_, ShelterScene* she
 	sleep2 = mngr_->addEntity();
 
 	Vector2D bg_size = { 790.5, 535.5 };
-	Vector2D bg_pos = Vector2D(sdlutils().width() / 2 - bg_size.getX() / 2, sdlutils().height() / 2 - bg_size.getY() / 2.5f);
+	Vector2D bg_pos = Vector2D(sdlutils().width() / 2.0f - bg_size.getX() / 2.0f, sdlutils().height() / 2.0f - bg_size.getY() / 2.0f);
 	Vector2D bButton_size = { 65,64 };
 	Vector2D bButton_pos = Vector2D(bg_pos.getX() - bButton_size.getX() / 2, bg_pos.getY() - bButton_size.getY() / 2);
 
@@ -63,8 +63,8 @@ void SleepStation::init() {
 
 void SleepStation::setRenderFlag(bool set) {
 	renderFlag = set;
-	if (set)
-		playerTr->getEntity()->setActive(false);
+	if (set) playerTr->getEntity()->setActive(false);
+	ih().clearState();
 }
 
 void SleepStation::setImg(Entity* entity, Vector2D pos, Vector2D size, std::string name) {
@@ -102,6 +102,11 @@ void SleepStation::update() {
 					goToSleep(3, 1);
 				}
 			}
+		}
+		else if (ih().isKeyDown(SDL_SCANCODE_E)) {
+			renderFlag = false;
+			playerTr->getEntity()->setActive(true);
+			ih().clearState();
 		}
 	}
 }
