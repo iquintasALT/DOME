@@ -25,6 +25,7 @@
 - [Estética](#este)
 - [Controles](#keys)
 - [Interfaz y menús](#hud)
+- [Conclusiones QA](#conclusiones)
 - [Referencias](#refe)
 
 ![Descripción](./docs/headers/h_descripcion.png) <a name="desc"></a>
@@ -299,7 +300,8 @@ Cuando el tiempo se agota, los bordes de la pantalla se recubren con un efecto d
 
 En el refugio, la única interfaz permanente es la de los estados de salud (hambre y cansancio), que se representa igual que la de las heridas en el saqueo.
 
-## Conclusiones QA
+## Conclusiones QA 
+<a name="conclusiones"></a>
 Enlace del cuestionario : [CUESTIONARIO](https://forms.gle/dXmFYaxsFPzpo7za7)\ 
 Enlace de las respuestas : [RESPUESTAS_CUESTIONARIO](https://docs.google.com/spreadsheets/d/1cimQlVsfxfbKJ-LkXWf5XLELRlipmXTu-zazRjlLzmE/edit?usp=sharing)\
 
