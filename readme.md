@@ -30,15 +30,17 @@
 
 ![Descripción](./docs/headers/h_descripcion.png) <a name="desc"></a>
 
-DOME es un survival shooter scroller 2D donde el jugador controlará a uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora. Cada día, deberá aprovechar las horas de luz para buscar los objetos que necesita para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el frío es tal que deberás volver al refugio a descansar y gestionar tu tiempo y recursos. ¿Serás capaz de escapar?.
+DOME es un survival shooter scroller 2D donde el jugador controlará a uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora. Cada día, deberá aprovechar las horas de luz para buscar los objetos que necesita para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el frío es tal que deberás volver al refugio a descansar y gestionar tu tiempo y recursos. ¿Serás capaz de escapar?
+
+El juego se puede jugar en Windows, y es apto para un público mayor de 12 años, de acuerdo con la clasificación PEGI, pues contiene violencia y
 
 ![Mecánicas](./docs/headers/h_mecanicas.png) <a name="mec"></a>
 
 # Ciclo diario <a name="day"></a>
 
-El jugador tendrá que escapar del planeta antes de que pasen unos días determinados ([SPECIFICS_REQUIRED]) antes de que el refugio se congele y el jugador quede encerrado en Aurora.
+El jugador tendrá que escapar del planeta antes de que pasen 10 días antes de que el refugio se congele y el jugador quede encerrado en Aurora.
 
-Así, cada día de juego el jugador dispondrá de 12 horas (que se jugarán como 8 minutos cronometrados) para saquear puntos de interés, seguidas por otras 12 horas (que se gestionan como recurso de forma discreta [CONFIRMATION_REQUIRED]) para descansar y gestionar sus recursos en el refugio, ya que será de noche y el frío le impedirá salir.
+Así, cada día de juego el jugador dispondrá de 12 horas (que se jugarán como unos minutos cronometrados) para saquear puntos de interés, seguidas por otras 12 horas (que se gestionan como recurso de forma discreta) para descansar y gestionar sus recursos en el refugio, ya que será de noche y el frío le impedirá salir. Cuando termine sus tareas en el refugio, podrá dormir lo que le quede de la noche para reponer sus fuerzas y volver a explorar.
 
 ![alt text](./docs/images/infogfx_daycycle.png)
 
@@ -46,27 +48,25 @@ Así, cada día de juego el jugador dispondrá de 12 horas (que se jugarán como
 
 Los lugares de saqueo serán pequeños, rápidos de recorrer y contendrán botín escaso dependiendo del lugar (farmacia--> ingredientes de medicina, supermercado--> comida, etc) en los que el jugador gastará tiempo del día. Solo podrá saquear lo que su equipamiento y su estado (herido, hambriento, cansado) le permita llevar de vuelta al refugio.
 
-La dificultad de cada lugar de saqueo será definido por el peligro que presentan los enemigos (apartado "Combate") que haya. Además, la distancia sobre el mapa entre el lugar de saqueo y el refugio reducirá el tiempo del cual dispone el jugador para saquear.
+La dificultad de cada lugar de saqueo estará definida por el peligro que presentan los enemigos que haya (apartado "Combate"). Además, la distancia sobre el mapa entre el lugar de saqueo y el refugio reducirá el tiempo del cual dispone el jugador para saquear.
 
-Estos lugares pueden presentar obstáculos como puertas bloqueadas, necesidad de contraseñas o herramientas para saquearlo completamente.
+Existe la posibilidad de volver a la misma localización por si en un anterior ciclo no se terminó de saquearla por completo.
 
-Existe la posibilidad de volver a la misma localización por si en un anterior ciclo no se terminó de saquear por completo.
+Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber qué esperar. Por ejemplo, la descripción del hospital delata que habrá un nivel bajo de mostruos, que el tiempo de viaje es de 1 hora y que se podrán encontrar recursos médicos, agua y suministros electrónicos. 
 
-Los lugares de saqueo tendrán descripciones que ayuden al jugador a saber qué esperar. Por ejemplo, la descripción del hospital delata que habrá recursos médicos, con un nivel medio de mostruos, y que el jugador dispondrá de 6 minutos. 
-
-Para poder volver al refugio, el jugador tendrá que salir por la zona por la que entró. En caso de que se tarde demasiado tiempo en volver, empezará a sufrir un estado de hipotermia, que se ve como un efecto de hielo en la interfaz que adquiere opacidad progresivamente. Si el efecto llega a la opacidad máxima, el jugador muere.
+Para poder volver al refugio, el jugador tendrá que salir por la zona por la que entró o alguna salida adicional que se encuentre. En caso de que se tarde demasiado tiempo en volver, empezará a sufrir de hipotermia, que se ve como un efecto de hielo en la interfaz que adquiere opacidad progresivamente. Si el efecto llega a la opacidad máxima, el jugador muere.
 
 ![raidmenu](./docs/images/CapturaInGame.png)
 
 # Refugio <a name="refu"></a>
 
-El refugio es una zona pequeña donde el jugador tendrá acceso a diferentes estaciones de crafteo para crear objetos. Además, dispone de una cama para descansar y comenzar el siguiente ciclo de día. Cada acción que el jugador realice en el refugio contará contra el tiempo que tiene aquí. A diferencia del saqueo, el tiempo aquí se cuenta de forma discreta, como un recurso, y no baja solo. [CONFIRMATION_REQUIRED]
+El refugio es una zona pequeña donde el jugador tendrá acceso a diferentes estaciones de crafteo para crear objetos. Además, dispone de una cama para descansar y comenzar el siguiente ciclo de día. Cada acción que el jugador realice en el refugio contará contra el tiempo que tiene aquí. A diferencia del saqueo, el tiempo aquí se cuenta de forma discreta, como un recurso, y no baja solo. Cada noche se disponen de 5 puntos de acción, representados como relojes.
 
 Además, hay un área designada para la reparación del cohete, el objetivo final del juego. Al interactuar con el cohete, se abrirá un menú similar a las estaciones de crafteo, el cual ofrecerá una serie de posibles reparaciones al cohete, cada uno de los ciales requiere una serie de materiales concretos. Si se llegan a efectuar todas las reparaciones, habrá una nueva opción para despegar, completando el juego.
 
-Las estructuras estarán ya situadas en distintas zonas del refugio, pudiendo el jugador interactuar con ellas para mejorarlas, repararlas, o realizar acciones.
+Las estructuras estarán ya situadas en distintas zonas del refugio, pudiendo el jugador interactuar con ellas para realizar acciones.
 
-![alt text](./docs/images/hideout_concept.png)
+![alt text](./docs/images/capturaCasa.PNG)
 
 # Inventario <a name="inv"></a>
 
@@ -80,9 +80,9 @@ El jugador dispone de tres armas diferentes que le aportan versatilidad en el co
 
 - **Láser de minería:** el jugador debe mantener pulsada la tecla de disparo por un momento para cargar el arma antes de disparar. Cuando el arma está completamente cargada, se puede soltar la tecla para disparar un láser que traza una línea recta hasta impactar con una pared, dañando a todos los enemigos que atraviese. Requiere baterías como munición.
 
-- **Arma polimérica:** dispara un proyectil de media velocidad que rebota sobre superficies 4 veces [CONFIRMATION_REQUIRED] o hasta colisionar con un enemigo. Cuando el proyectil se destruye, crea una explosión que daña a todos los enemigos cercanos que estén en visión directa del epicentro. Requieren filamento poliatílico como munición.
+- **Arma polimérica:** dispara un proyectil de media velocidad que rebota sobre superficies un número de veces según el nivel del arma o hasta colisionar con un enemigo. Cuando el proyectil se destruye, crea una explosión que daña a todos los enemigos cercanos que estén en visión directa del epicentro. Requieren filamento poliatílico como munición.
 
-Se puede cambiar de arma pulsando el botón Q, ciclando por las tres armas en orden.[CONFIRMATION_REQUIRED]
+Se puede cambiar de arma pulsando el botón Q, ciclando por las tres armas en orden.
 
 # Combate <a name="comb"></a>
 
