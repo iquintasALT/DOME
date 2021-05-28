@@ -34,3 +34,4 @@ void BleedoutComponent::update() {
 		}
 	}
 }
+
