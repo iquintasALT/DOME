@@ -508,11 +508,6 @@
               "file": "resources/sound/gun/normal_shot.mp3"
           },
           {
-              "id": "boom",
-              "volume": 128,
-              "file": "resources/sound/boom.mp3"
-          },
-          {
               "id": "monster1attack",
               "volume": 128,
               "file": "resources/sound/monster_snarl.mp3"
