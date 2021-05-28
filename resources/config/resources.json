@@ -235,6 +235,10 @@
         "id": "logo",
         "file": "resources/sprites/logo.png"
       },
+  {
+    "id": "logoWhite",
+        "file": "resources/sprites/logo_white.png"
+  },
       {
         "id": "effectsVolume",
         "file": "resources/sprites/buttons/sfx_volume_text.png"
