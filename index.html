@@ -29,7 +29,8 @@
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#about">¿Quienes somos?</a></li>
                         <li class="nav-item"><a class="nav-link js-scroll-trigger" href="#projects">DOME</a></li>
                     </ul>
-                    <button class="btn info" onclick=" window.open('resources/sprites/donut.png','_blank')" >Descargar DOME</button>
+                    <!-- <button class="btn info" onclick=" window.open('Installer/DomeInstaller.exe','_blank')" >Descargar DOME</button> BOTON DE DESCARGA DESCOMENTAR CUANDO ESTE LA VERSION FINAL-->
+                    <button class="btn info" onclick=" window.open('resources/sprites/donut.png','_blank')">Descargar DOME</button>
                 </div>
             </div>
         </nav>
@@ -48,7 +49,7 @@
                     <div class="col-lg-8 mx-auto">
                         <h2 class="text-white mb-4">¿Quienes somos?</h2>
                         <p class="text-white-50">
-                            Sureffect es una desarrolladora de videojuegos para PC centrada en la creacion de juegos Indie. Actualmente centrada en el desarrollo de 
+                            Sureffect es una desarrolladora de videojuegos para PC centrada en la creacion de juegos Indie. Actualmente centrada en el desarrollo de
                             <a href="https://github.com/iquintasALT/DOME">DOME</a>
                         </p>
                     </div>
@@ -63,28 +64,41 @@
                     <div class="col-xl-8 col-lg-7"><img class="img-fluid mb-3 mb-lg-0" src="docs/logo/game_logo_broken_dark.png" alt="..." /></div>
                     <div class="col-xl-4 col-lg-5">
                         <div class="featured-text text-center text-lg-left text-white-50">
-                            <h4>DOME</h4>
-                            <p class="text-black-50 mb-0 text-white-50">Juego de exploración espacial en el que tú, tendras que conseguir escapar Aurora. Planeta en el que estas viviendo en una cupula, pero que se encuentra destruida.</p>
+                            <h4 style="color: white;">DOME</h4>
+                            <p class="text-black-50 mb-0 text-white-50">
+                                Sobrevive en la cúpula abandonada del planeta Aurora, enfréntate a una raza alienígena desconocida y reúne los recursos suficientes para escapar.
+                                <br> DOME es un juego survival 2D basado en el manejo de recursos y el combate con armas de fuego.
+                            </p>
+                            <p>
+                                <h5 style="color: white;">¿Serás capaz de huir del planeta?</h5>
+                            </p>
                         </div>
                     </div>
                 </div>
-                
+            
                 <!-- Project Two Row-->
                 <div class="row justify-content-center no-gutters">
-                    <div class="col-lg-3"><img class="img-fluid" src="assets/img/enemy.gif" width="260" height="260" alt="..." />
-                                          <img class="img-fluid" src="assets/img/prota.gif" width="260" height="260" left="300" alt="..." /></div>
-                   <div class="col-lg-3"><img class="img-fluid" src="assets/img/weapons.gif" width="260" height="260" alt="..." />
-                                            <img class="img-fluid" src="assets/img/enemybasico.gif" width="245" height="245" left="300" alt="..." /></div>          
+                    <div class="col-lg-3">
+                        <img class="img-fluid" src="assets/img/enemy.gif" width="260" height="260" alt="..." />
+                        <img class="img-fluid" src="assets/img/prota.gif" width="260" height="260" left="300" alt="..." />
+                    </div>
+                    <div class="col-lg-3">
+                        <img class="img-fluid" src="assets/img/weapons.gif" width="260" height="260" alt="..." />
+                        <img class="img-fluid" src="assets/img/enemybasico.gif" width="250" height="250" left="300" alt="..." />
+                    </div>
                     <div class="col-lg-6 order-lg-first">
                         <div class="bg-black text-center h-100 project">
                             <div class="d-flex h-100">
                                 <div class="project-text w-100 my-auto text-center text-lg-right">
-                                    <h4 class="text-white">Desarrollo</h4>
-                                    <p class="mb-0 text-white-50">DOME es un survival shooter scroller 2D donde el jugador controlará a uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora. 
-                                        Cada día, deberá aprovechar las horas de luz para buscar los objetos que necesita para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el
-                                         frío es mortal por lo que deberá volver al refugio a descansar y gestionar sus recursos. 
-                                        
-                                        Algunas de las mecánicas principales están basadas en juegos como This War Of Mine, Escape from Tarkov y Metro Exudos.</p>
+                                    <h4 class="text-white">CONTEXTO</h4>
+                                    <p class="mb-0 text-white-50">
+                                        Eres uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora, el ataque alienígena reciente
+                                        ha provocado el deterioro de la cúpula de la colonia y con el objetivo de escapar de este infierno helado decides explorar la cúpula para reparar una nave y volver a casa.
+                                    </p>
+                                    <p class="mb-0 text-white-50" style="margin-top: 10px;">
+                                        Cada día, deberás aprovechar las horas de luz para buscar los objetos que necesitas para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el
+                                        frío es mortal por lo que deberás volver al refugio a descansar y gestionar tus recursos.
+                                    </p>
                                     <hr class="d-none d-lg-block mb-0 mr-0" />
                                 </div>
                             </div>
@@ -93,10 +107,13 @@
                 </div>
             </div>
         </section>
+        <!-- Contact-->
         <section class="contact-section bg-black" id="signup">
-            <div class="social d-flex justify-content-center">
-                <a class="mx-2" href="https://www.pivotaltracker.com/n/projects/2489079"><img src="docs/images/pivotal.png" width="25" height="25" style="margin-top:11px;"></a>
-                <a class="mx-2" href="https://github.com/iquintasALT/DOME"><i class="fab fa-github"></i></a>
+            <div class="container">
+                <div class="social d-flex justify-content-center">
+                    <a class="mx-2" href="https://www.pivotaltracker.com/n/projects/2489079"><img src="docs/images/pivotal.png" width="25" height="25" style="margin-top:11px;"></a>
+                    <a class="mx-2" href="https://github.com/iquintasALT/DOME"><i class="fab fa-github"></i></a>
+                </div>
             </div>
         </section>
         <!-- Footer-->
