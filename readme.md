@@ -313,14 +313,16 @@ En el refugio, la única interfaz permanente es la de los estados de salud (hamb
 Enlace del cuestionario : [CUESTIONARIO](https://forms.gle/dXmFYaxsFPzpo7za7)\ 
 Enlace de las respuestas : [RESPUESTAS_CUESTIONARIO](https://docs.google.com/spreadsheets/d/1cimQlVsfxfbKJ-LkXWf5XLELRlipmXTu-zazRjlLzmE/edit?usp=sharing)\
 
-El cuestionario ha sido rellenado por 13 personas, cada una ha instalado una versión específica para hacer QA en su ordenador y ha rellenado el cuestionario anterior. Dado que este cuestionario se ha realizado en el corto intervalo que transucurre desde el Lunes 23 de Mayo hasta el Miercoles 26, las preguntas han tenido como objetivo balancear el juego y descubrir problemas o bugs en este.
+El cuestionario ha sido rellenado por 13 personas, de las cuales cada una ha instalado una versión específica para hacer QA en su ordenador. Dado que este cuestionario se ha realizado en el corto intervalo que transucurre desde el Lunes 23 de Mayo hasta el Miercoles 26, las preguntas han tenido como objetivo balancear el juego y descubrir problemas o bugs en este.
 
 Tras recibir el feedback hemos llegado a las siguientes conclusiones:
 - El tiempo de raid era excesivo ya que los jugadores se pasaban los mapas con mucho tiempo extra. 
 - En cuanto a los estados hemos notado la falta de más vendas por el mapa ya que es la causa principal de muerte y mejorar la descripciones de todos los estados del juego. 
 - Hemos notado la imperante necesidad de reducir el numero de acciones disponibles en la base ya que nadie gastaba todas.
-- Tambien la gente no sabia que podia cambiar de arma, para ello introdujimos en el juego un tutorial que ademas te introduce al juego. Hemos cambiado la tecla de cambio de arma de 'X' a 'Q', puesto que el icono de X parecia que servia para cerrar una ventana.
+- Muchas personas no sabian como cambiar de arma. Hemos cambiado la tecla de cambio de arma de 'X' a 'Q', puesto que el icono de X parecia que servia para cerrar una ventana.
+- Partes concretas del juego no se entendían bien, por lo que hemos hecho un tutorial para explicar las bases del juego.
 - Tambien aumentamos ligeramente la velocidad del jugador cuando utiliza las escaleras de mano.
+- Nuestra idea principal era limitar la cantidad de items que podía tener el jugador para que así tuviese la necesidad de salir a lootear y elegir que items son más importantes en cada momento. Pero nos hemos dado cuenta de que al menos tener un cofre en la base podría ser un buen añadido al juego. Sin embargo, por falta de tiempo, no hemos sido capaces de añadir esta funcionalidad.
 
 
 ![Referencias](./docs/headers/h_referencias.png) <a name="refe"></a>
