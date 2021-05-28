@@ -142,13 +142,13 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 
 # Localizaciones
 
-| Nombre |  Desc | Dificultad |
-|--------|-------|-------|
-| Tienda | Establecimiento a corta distancia del refugio, una tienda abandonada infestada por acechadores y persecutores. | Media |
-| Supermercado | Zona a media distancia del refugio, con bastantes recursos útiles para sobrevivir, pero no para escapar. | Media |
-| Zona de comunicaciones | Área de peligro de la cúpula, la raza alienígena estableció un nido en esta zona. Se encuentra a una distancia considerable del refugio. | Alta |
-| Estacion nuclear | Estación abandonada que debido a la radiación nuclear atrajo a un gran número de acechadores y persecutores. Aún así, los objetos a encontrar ahí pueden ser muy útiles. | Alta |
-| Hospital | Zona a muy poca distancia del refugio, un hospital con grandes cantidades de recursos médicos pero sin muchos objetos de valor, debido a esto se encuentra poco habitado por alienígenas. | Bajo |
+| Nombre | Icono | Descripción | Dificultad |
+|--------|-------|-------|-------|
+| Tienda | ![alt text](./docs/images/tile0041.png) | Establecimiento a corta distancia del refugio, una tienda abandonada infestada por acechadores y persecutores. | Media |
+| Supermercado | ![alt text](./docs/images/tile0021.png) | Zona a media distancia del refugio, con bastantes recursos útiles para sobrevivir, pero no para escapar. | Media |
+| Zona de comunicaciones | ![alt text](./docs/images/tile0011.png) | Área de peligro de la cúpula, la raza alienígena estableció un nido en esta zona. Se encuentra a una distancia considerable del refugio. | Alta |
+| Estacion nuclear | ![alt text](./docs/images/tile0031.png) | Estación abandonada que debido a la radiación nuclear atrajo a un gran número de acechadores y persecutores. Aún así, los objetos a encontrar ahí pueden ser muy útiles. | Alta |
+| Hospital | ![alt text](./docs/images/tile0001.png) | Zona a muy poca distancia del refugio, un hospital con grandes cantidades de recursos médicos pero sin muchos objetos de valor, debido a esto se encuentra poco habitado por alienígenas. | Bajo |
 
 # Equipamiento
 
@@ -224,8 +224,8 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 | Crafteo/Acción | Sprite | Coste | Tiempo (Coste) |
 |-----|-----|-----|-----|
 | Cabina | ![alt text](./docs/images/tile019.png) | 3 partes clave de la nave, 2 placas metálicas | 1 Accion |
-| Radar | ![alt text](./docs/images/tile0218.png) |  1 parte clave de la nave, 1 placa metálica | 1 Accion |
-| Cohetes | ![alt text](./docs/images/tile017.png) |  2 partes clave de la nave | 1 Accion |
+| Radar | ![alt text](./docs/images/tile017.png) |  1 parte clave de la nave, 1 placa metálica | 1 Accion |
+| Cohetes | ![alt text](./docs/images/tile018.png) |  2 partes clave de la nave | 1 Accion |
 
 # Enemigos
 | Nombre | Sprite | Descripción |
