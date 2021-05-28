@@ -27,6 +27,7 @@ public:
 	Weapon* getCurrentWeapon();
 
 	void setInv(InventoryController* inventory) { inv_ = inventory; }
+	InventoryController* getInv() { return inv_; };
 
 	void changeWeapon();
 
