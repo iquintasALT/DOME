@@ -2,7 +2,7 @@
 #include <map>
 #include <iostream>
 #include <vector>
-#include "../components/InventoryController.h"
+#include "../components/inventory_controller.h"
 #include "../components/loot.h"
 #include "../ecs/Manager.h"
 #include "../classes/player.h"

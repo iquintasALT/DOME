@@ -1,7 +1,7 @@
 #include "parallax_component.h"
 
 #include "../ecs/Entity.h"
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "../classes/camera.h"
 
 void ParallaxComponent::init() {

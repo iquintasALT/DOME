@@ -1,7 +1,7 @@
 #include "interactions.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
-#include "../components/interactableElement.h"
+#include "../components/interactable_element.h"
 void Interactions::init() {
 	manager = entity_->getMngr();
 	transform = entity_->getComponent<Transform>();

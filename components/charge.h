@@ -6,7 +6,7 @@
 #include "../ecs/Entity.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
-#include "Transform.h"
+#include "transform.h"
 #include "../utils/checkML.h"
 #include "../components/rigid_body.h"
 #include "../utils/ray_cast.h"

@@ -1,6 +1,6 @@
-#include "../components/TransitionComponent.h"
-#include "../components/TextWithBackGround.h"
-#include "../components/Image.h"
+#include "../components/transition_component.h"
+#include "../components/text_with_background.h"
+#include "../components/image.h"
 #include "../game/constant_variables.h"
 
 

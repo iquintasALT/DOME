@@ -1,4 +1,4 @@
-#include "TextWithBackGround.h"
+#include "text_with_background.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
 #include "../utils/checkML.h"

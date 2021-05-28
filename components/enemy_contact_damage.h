@@ -1,5 +1,5 @@
 #include "../ecs/Component.h"
-#include "../Components/Transform.h"
+#include "../Components/transform.h"
 #include "../utils/checkML.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"

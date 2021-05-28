@@ -1,8 +1,8 @@
 #include "rigid_body.h"
 
 #include "box_collider.h"
-#include "KeyboardPlayerCtrl.h"
-#include "Transform.h"
+#include "keyboard_player_ctrl.h"
+#include "transform.h"
 
 #include <iostream>
 

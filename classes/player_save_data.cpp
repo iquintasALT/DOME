@@ -1,9 +1,9 @@
-#include "PlayerSaveData.h"
+#include "player_save_data.h"
 
 #include "../classes/player.h"
 #include "../classes/weapon_behaviour.h"
 
-#include "../components/InventoryController.h"
+#include "../components/inventory_controller.h"
 #include "../components/hunger_component.h"
 #include "../components/tiredness_component.h"
 

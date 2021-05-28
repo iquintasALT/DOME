@@ -1,8 +1,8 @@
 #include "weapon_behaviour.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../components/Image.h"
-#include "../components/Transform.h"
+#include "../components/image.h"
+#include "../components/transform.h"
 #include "../components/weapon_animation.h"
 #include "../game/constant_variables.h"
 

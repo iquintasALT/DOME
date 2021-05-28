@@ -1,6 +1,6 @@
 #pragma once
 #include "../ecs/Component.h"
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "../classes/camera.h"
 
 class CameraMovement: public Component
