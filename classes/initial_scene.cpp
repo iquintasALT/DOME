@@ -39,6 +39,7 @@ void InitialScene::init()
 	Camera::mainCamera->MoveToPoint(pos);
 	mngr_->getHandler<Player_hdlr>()->getComponent<CameraMovement>()->enabled = false;
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
+	static_cast<Player*>(mngr_->getHandler<Player_hdlr>())->getWeapon()->getCurrentWeapon()->setTutEnabled(false);
 
 
 	auto playExplosion = [this]() {soundManager().playSFX("initialExplosion"); };
@@ -68,9 +69,9 @@ void InitialScene::init()
 			a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
 			auto d = a->addComponent<Dialogue>();
 			std::vector<std::string> texts = {
-				"It is getting pretty close",
-				"I need to hurry and pick all the things I need and go back home",
-				"FAST"
+				"It is getting pretty close.",
+				"I need to hurry and pick all the things I need and go back home.",
+				"And I need to do it FAST"
 			};
 			d->createText(texts, 20);
 			d->function = [this]() {
@@ -196,10 +197,8 @@ void TutorialManager::changeCase(int newcase)
 		break;
 	}
 	case 2: { // create trigger
-
 		initialCollider->setDead(true);
 		initialCollider = nullptr;
-
 
 		auto player = entity_->getMngr()->getHandler<Player_hdlr>();
 		player->getComponent<KeyboardPlayerCtrl>()->resetSpeed();
@@ -263,7 +262,7 @@ void TutorialManager::changeCase(int newcase)
 		auto cameraMovement = entity_->getMngr()->addEntity();
 		auto f = [this]() {
 			auto miniTimer = entity_->getMngr()->addEntity();
-			miniTimer->addComponent<Timer>(1, [this]() {changeCase(5); });
+			miniTimer->addComponent<Timer>(1, [this]() { changeCase(5); });
 		};
 		auto player = entity_->getMngr()->getHandler<Player_hdlr>();
 		auto playerTr = player->getComponent<Transform>();
@@ -302,7 +301,7 @@ void TutorialManager::changeCase(int newcase)
 		trigger = nullptr;
 
 		auto player = entity_->getMngr()->getHandler<Player_hdlr>();
-	
+
 		auto a = entity_->getMngr()->addEntity();
 		a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
 		auto d = a->addComponent<Dialogue>();
@@ -327,9 +326,10 @@ void TutorialManager::changeCase(int newcase)
 		entity_->getMngr()->addRenderLayer<LastRenderLayer>(currentMessage);
 		currentMessage->addComponent<Transform>(Vector2D(
 			consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT * 0.8 + 32), consts::WINDOW_WIDTH, 100);
-		currentMessage->addComponent<TextWithBackground>("Press MBL to shoot and X to change Weapon",
+		currentMessage->addComponent<TextWithBackground>("Press MBL to shoot and Q to change Weapon",
 			sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xfffffffff), nullptr, false, 1, true);
 
+		static_cast<Player*>(entity_->getMngr()->getHandler<Player_hdlr>())->getWeapon()->getCurrentWeapon()->setTutEnabled(true);
 
 		enemy->getComponent<DistanceDetection>()->enabled = true;
 		enemy->getComponent<ChasePlayer>()->enabled = true;
@@ -357,8 +357,7 @@ void TutorialManager::checkShoot()
 }
 
 
-TutorialLoot::TutorialLoot()
-	: Loot("Press E to open loot", 5, 5)
+TutorialLoot::TutorialLoot() : Loot("Press E to open loot", 5, 5)
 {
 	isTutorial = true;
 	firstTime = true;
