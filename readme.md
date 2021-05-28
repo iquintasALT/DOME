@@ -270,13 +270,17 @@ El juego tiene estetica en pixel-art de 64-bits inspirado en juegos como Kingdom
 # Menú de inicio
 En este menú el jugador tendra la opción de salir del juego, ir al juego o irse al menu de opciones.
 
+![raidmenu](./docs/images/CapturaMenu.png)
+
 # Menú de opciones
-Menú de ajustes donde el jugador podrá ajustar el volumen del juego.
+Menú de ajustes donde el jugador podrá ajustar el volumen del juego, tanto de efectos de sonido como la musica y habilitar o deshabilitar la opcion de que se vean los fps.
+
+![raidmenu](./docs/images/CapturaAjustes.png)
 
 # Mapa de saqueo
 En esta pantalla el jugador tendrá que seleccionar a qué zona del mapa se quiere dirigir para efectuar la raid. Además en la parte superior izquierda se verán los estados del jugador para facilitarle el ver que es lo que mas necesita en ese momento. También aparecerá la distacia que hay al lugar, indicativo del tiempo que se consumirá en viajar ahí.
 
-![raidmenu](./docs/images/select_raid.png)
+![raidmenu](./docs/images/CapturaSelRaid.png)
 
 # Menú de pausa
 Este menú aparecera si el jugador pulsa esc durante la partida, aquí el jugador podra irse al menu de opciones, volver a la partida o volver al menú principal.
