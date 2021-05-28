@@ -295,12 +295,15 @@ En el refugio, la única interfaz permanente es la de los estados de salud (hamb
 ## Conclusiones QA
 Enlace del cuestionario : [CUESTIONARIO](https://forms.gle/dXmFYaxsFPzpo7za7)\ 
 Enlace de las respuestas : [RESPUESTAS_CUESTIONARIO](https://docs.google.com/spreadsheets/d/1cimQlVsfxfbKJ-LkXWf5XLELRlipmXTu-zazRjlLzmE/edit?usp=sharing)\
-Despues de realizar una version del juego para pruebas y realizar diversas preguntas a los jugadores hemos llegado a las siguientes conclusiones:
-- La primera de todas era el tiempo de raid, y lo que hicimos fue disminuir el tiempo de raid ya que los jugadores se pasaban los mapas con mucho tiempo extra. 
-- Pasando a hablar de los estados hemos llegado a la conclusion de que hacen falta mas vendas por el mapa ya que es la causa principal de muerte y mejorar la descripciones de los estados de hambre y cansancio. 
+
+El cuestionario ha sido rellenado por 13 personas, cada una ha instalado una versión específica para hacer QA en su ordenador y ha rellenado el cuestionario anterior. Dado que este cuestionario se ha realizado en el corto intervalo que transucurre desde el Lunes 23 de Mayo hasta el Miercoles 26, las preguntas han tenido como objetivo balancear el juego y descubrir problemas o bugs en este.
+
+Tras recibir el feedback hemos llegado a las siguientes conclusiones:
+- El tiempo de raid era excesivo ya que los jugadores se pasaban los mapas con mucho tiempo extra. 
+- En cuanto a los estados hemos notado la falta de más vendas por el mapa ya que es la causa principal de muerte y mejorar la descripciones de todos los estados del juego. 
 - Hemos notado la imperante necesidad de reducir el numero de acciones disponibles en la base ya que nadie gastaba todas.
 - Tambien la gente no sabia que podia cambiar de arma, para ello introdujimos en el juego un tutorial que ademas te introduce al juego. Hemos cambiado la tecla de cambio de arma de 'X' a 'Q', puesto que el icono de X parecia que servia para cerrar una ventana.
-- Tambien llegamos a la conclusion de que la animacion del personaje iba mas despacio de como realmente se movia y aumentamos su velocidad ademas tambien de subir la velocidad en el movimiento en las escaleras.
+- Tambien aumentamos ligeramente la velocidad del jugador cuando utiliza las escaleras de mano.
 
 
 ![Referencias](./docs/headers/h_referencias.png) <a name="refe"></a>
