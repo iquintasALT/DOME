@@ -1,10 +1,12 @@
 #pragma once
 
+#include <string>
+
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
-#include "transform.h"
-#include <string>
 #include "../utils/checkML.h"
+
+#include "../components/Transform.h"
 
 using namespace std;
 

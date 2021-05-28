@@ -2,8 +2,7 @@
 #include "interactable_element.h"
 
 class GameScene;
-class BackToShelter :
-    public InteractableElement
+class BackToShelter : public InteractableElement
 {
 private:
 	Entity* player_;
