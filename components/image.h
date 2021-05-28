@@ -48,8 +48,7 @@ public:
 
 		SDL_Rect dest = build_sdlrect(pos, tr_->getW(), tr_->getH());
 		if (!isUI) {
-			dest.x = 
-				(dest.x * scale);
+			dest.x = floor(dest.x * scale);
 			dest.y = floor(dest.y * scale);
 			dest.w = ceil(dest.w * scale);
 			dest.h = ceil(dest.h * scale);
