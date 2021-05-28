@@ -385,7 +385,7 @@ void Inventory::storeDefaultItems() {
 		storeItem(new Item(ItemInfo::ricochetAmmo(), entity_->getMngr(), this, 6, 0, 3));
 		storeItem(new Item(ItemInfo::food(), entity_->getMngr(), this, 4, 4));
 		storeItem(new Item(ItemInfo::laserAmmo(), entity_->getMngr(), this, 6, 2, 3));
-		storeItem(new Item(ItemInfo::mecanicalComponents(), entity_->getMngr(), this, 8, 2));
+		storeItem(new Item(ItemInfo::mechanicalComponents(), entity_->getMngr(), this, 8, 2));
 		firstInitialization = false;
 	}
 }
