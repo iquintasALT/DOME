@@ -2,10 +2,13 @@
 
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
-#include "../classes/physiognomy.h"
-#include "../components/enemy_animation.h"
+
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/SoundManager.h"
+
+#include "../components/enemy_animation.h"
+
+#include "../classes/physiognomy.h"
 
 void EnemyContactDamage::init() {
 	tr = entity_->getComponent<Transform>();

@@ -78,6 +78,11 @@ void PlayerSaveData::reset()
 	isSaved = false;
 }
 
+void PlayerSaveData::updateTiredness(float decTiredness)
+{
+	tiredness - decTiredness < 0.0f ? tiredness = 0.0f : tiredness -= decTiredness;
+}
+
 PlayerSaveData::ItemSaveData::ItemSaveData(Item* item)
 {
 	info = new ItemInfo(item->getItemInfo());
