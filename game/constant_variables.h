@@ -17,6 +17,7 @@ namespace consts {
 	const float FALLING_DMG_SPEED = 5;
 	const float ACCELERATION = 5;
 	const float DECELERATION = 14;
+
 	// ENEMIES
 	const float MELEE_ENEMY_SPEED = 2.0f;
 	const float MELEE_ENEMY_STOPDISTANCE = 80.0f;
@@ -33,22 +34,22 @@ namespace consts {
 
 	// PHYSIOGNOMY
 	// Hunger y Tiredness
-	const int MAX_MULTIPLE_STATES = 8; //Numero de estados de daño que el jugador puede tener
-	const float NONEHUNGER_LEVEL = 0.75f; //Por encima del 75% estará en NONE y por debajo en HUNGER
-	const float HUNGER_LEVEL = 0.35f; //Por encima del 35% estará en HUNGER y por debajo en STARVING
-	const int MAX_SLEEP_HOURS = 8; //Horas máximas de sueño en una noche
-	const float NONETIRED_LEVEL = 0.75f; //Por encima del 75% estará en NONE y por debajo en TIRED
-	const float TIRED_LEVEL = 0.35f; //Por encima del 35% estará en TIRED y por debajo en EXHASUTED
+	const int MAX_MULTIPLE_STATES = 8;		 //Numero de estados de daño que el jugador puede tener
+	const float NONEHUNGER_LEVEL = 0.75f;	 //Por encima del 75% estará en NONE y por debajo en HUNGER
+	const float HUNGER_LEVEL = 0.35f;		 //Por encima del 35% estará en HUNGER y por debajo en STARVING
+	const int MAX_SLEEP_HOURS = 8;			 //Horas máximas de sueño en una noche
+	const float NONETIRED_LEVEL = 0.75f;	 //Por encima del 75% estará en NONE y por debajo en TIRED
+	const float TIRED_LEVEL = 0.35f;		 //Por encima del 35% estará en TIRED y por debajo en EXHASUTED
 
 	// Pain, Bleed, Concussion, Intoxication y Hypothermia
-	const float REDUCE_WEAPON_DAMAGE = 0.2f; //En %
-	const int CONTUSION_INCREASE_TIME = 5000; //Cantidad de tiempo que PainComponent añade a ContusionComponent
-	const int INTOXICATION_INCREASE_TIME = 5000; //Cantidad de tiempo que PainComponent añade a IntoxicationComponent
-	const int CONTUSION_TIME = 120000;	 //Tiempo que dura la contusion
-	const int INTOXICATION_TIME = 120000; //Tiempo que dura la intoxicacion
-	const int TIME_PER_NEWSUMOFTIME = 8000; //Tiempo que tarda PainComponent en añadir tiempo a Contusion e Intoxication
+	const float REDUCE_WEAPON_DAMAGE = 0.2f;		//En %
+	const int CONTUSION_INCREASE_TIME = 5000;		//Cantidad de tiempo que PainComponent añade a ContusionComponent
+	const int INTOXICATION_INCREASE_TIME = 5000;	//Cantidad de tiempo que PainComponent añade a IntoxicationComponent
+	const int CONTUSION_TIME = 120000;				//Tiempo que dura la contusion
+	const int INTOXICATION_TIME = 120000;			//Tiempo que dura la intoxicacion
+	const int TIME_PER_NEWSUMOFTIME = 8000;			//Tiempo que tarda PainComponent en añadir tiempo a Contusion e Intoxication
 	const int TIME_TO_DECREASE_HUNGER = 10000;
-	const float HUNGER_TO_DECREASE = 0.15f; //En %
+	const float HUNGER_TO_DECREASE = 0.15f;			//En %
 	const int MAX_NEWDAMAGE_TIME = 12000;
 	const int HYPOTHERMIA_TIME = 30000;
 
@@ -57,7 +58,6 @@ namespace consts {
 	const int STATUS_EFFECTS_SIZEY = 48;
 
 	// WEAPONS
-
 	const int WEAPON_FIRERATES[] = { 1.5f, 1.0f, 0.75f, 1.75f, 1.65f, 1.55f, 1.25f, 1.25f, 1.25f };
 	const int WEAPON_DAMAGE_VALUES[] = { 30, 30, 30, 70, 90, 110, 90, 130, 170 };
 	const int WEAPON_MAGAZINE_SIZES[] = { 12, 21, 35, 6, 7, 8, 5, 5, 5 };
@@ -72,11 +72,7 @@ namespace consts {
 	// LOCALIZACIONES
 	const int NUM_LOCATIONS = 5;
 
-	const float TRAVEL_TO_HOSPITAL_TIREDNESS = 0.1f;
-	const float TRAVEL_TO_SHOP_TIREDNESS = 0.15f;
-	const float TRAVEL_TO_SUPERMARKET_TIREDNESS = 0.2;
-	const float TRAVEL_TO_NUCLEAR_POWER_STATION_TIREDNESS = 0.25f;
-	const float TRAVEL_TO_COMUNICATIONS_TIREDNESS = 0.3f;
+	const float TIREDNESS_FROM_TRAVELING[] = { 0.25f, 0.2f, 0.3f, 0.1f, 0.15f };
 
 	// ESCENA DE AJUSTES Y SETTINGS
 	const int VOLUME_LEVELS = 6;
@@ -95,7 +91,7 @@ namespace consts {
 	const int SHOW_FPS_BAR_SIZE_X = 400;
 	const int SHOW_FPS_BAR_SIZE_Y = 40;
 
-	// GAMECYCLE
+	// GAME CYCLE
 	const int MAX_DAYS = 10;
 	const int RAID_TIME = 8 * 60;
 }

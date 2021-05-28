@@ -1,12 +1,9 @@
-// This file is part of the course TPV2@UCM - Samir Genaim
-
 #pragma once
 #include "../utils/checkML.h"
 
 // components -- forward declaration, i.e., assume they are defined somewhere
 class Transform;
 class Image;
-class Fade;
 class KeyboardPlayerCtrl;
 class PlayerAnimation;
 class EnemyAnimation;
@@ -65,7 +62,6 @@ class TutorialBackToShelter;
 #define _CMPS_LIST_  \
 	Transform,\
 	Image,\
-	Fade,\
 	KeyboardPlayerCtrl, \
 	PlayerAnimation, \
 	EnemyAnimation, \

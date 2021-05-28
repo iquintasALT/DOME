@@ -1,20 +1,19 @@
 #pragma once
 
-#include <vector>
 #include "game_scene.h"
-#include "../game/constant_variables.h"
+
+#include <vector>
+
 #include "../ecs/Component.h"
 
 class Game;
 class Texture;
 
-const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/zona_nuclear_power_station.tmx", "./resources/tilemap/zona_supermarket.tmx",
-												"./resources/tilemap/zona_comunications.tmx", "./resources/tilemap/zona_hospital.tmx", 
-												"./resources/tilemap/zona_shop.tmx" };
-const array<string, consts::NUM_LOCATIONS> names = {"NUCLEAR POWER STATION", "SUPERMARKET", "COMMUNICATIONS", "HOSPITAL", "SHOP",};
+const array<string, consts::NUM_LOCATIONS> paths = { "./resources/tilemap/zona_nuclear_power_station.tmx",
+	"./resources/tilemap/zona_supermarket.tmx", "./resources/tilemap/zona_comunications.tmx", 
+	"./resources/tilemap/zona_hospital.tmx", "./resources/tilemap/zona_shop.tmx" };
 
-const array<float, consts::NUM_LOCATIONS> travelTiredness = { consts::TRAVEL_TO_NUCLEAR_POWER_STATION_TIREDNESS, consts::TRAVEL_TO_SUPERMARKET_TIREDNESS,
-consts::TRAVEL_TO_COMUNICATIONS_TIREDNESS, consts::TRAVEL_TO_HOSPITAL_TIREDNESS, consts::TRAVEL_TO_SHOP_TIREDNESS };
+const array<string, consts::NUM_LOCATIONS> names = { "NUCLEAR POWER STATION", "SUPERMARKET", "COMMUNICATIONS", "HOSPITAL", "SHOP" };
 
 class LocationsScene : public GameScene
 {
@@ -63,30 +62,3 @@ public:
 
 	void changeToRaid(Game* g, int index);
 };
-
-
-//Fade
-
-class Fade : public Component {
-public:
-	Fade(float speed, Texture* t = &sdlutils().images().at("black"));
-
-	virtual void init() override;
-
-	virtual ~Fade() {};
-
-	virtual void update() override;
-
-	void render() override;
-
-	void setAlpha(float alpha);
-
-	inline void setDone(bool d) { done = d; f = 255; t = 0; };
-private:
-	float t, speed_, f;
-	bool done;
-	Texture* black_;
-	Transform* tr_;
-};
-
-

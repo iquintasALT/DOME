@@ -1,12 +1,17 @@
 #include "Inventory.h"
-#include "../sdlutils/InputHandler.h"
-#include "../components/TextWithBackGround.h"
-#include "../game/Game.h"
-#include "../classes/crafting_system.h"
-#include "../sdlutils/SDLUtils.h"
-#include "../sdlutils/SoundManager.h"
-#include "../classes/weapon_behaviour.h"
+
 #include <iostream>
+
+#include "../game/Game.h"
+
+#include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/InputHandler.h"
+#include "../sdlutils/SoundManager.h"
+
+#include "../classes/crafting_system.h"
+#include "../classes/weapon_behaviour.h"
+
+#include "../components/TextWithBackGround.h"
 
 bool Inventory::firstInitialization = false;
 int Inventory::itemWidth = 1;
@@ -102,7 +107,9 @@ void Inventory::init() {
 		std::vector<InventoryDropdown::slot*> slots;
 		slots.push_back(new InventoryDropdown::slot("Use", [this]() {
 			if (itemClickedInDropdown->getItemInfo()->name() != LASER_AMMO && itemClickedInDropdown->getItemInfo()->name() != CLASSIC_AMMO && itemClickedInDropdown->getItemInfo()->name() != RICOCHET_AMMO) {
-				itemClickedInDropdown->getItemInfo()->execute(player); removeItem(itemClickedInDropdown); itemClickedInDropdown->removeImage(); delete itemClickedInDropdown;
+				if (itemClickedInDropdown->getItemInfo()->execute(player)) {
+					removeItem(itemClickedInDropdown); itemClickedInDropdown->removeImage(); delete itemClickedInDropdown;
+				}
 			}}));
 		slots.push_back(new InventoryDropdown::slot("Delete", [this]() {removeItem(itemClickedInDropdown);  itemClickedInDropdown->removeImage(); delete itemClickedInDropdown; }));
 		dropDown = new InventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
@@ -145,9 +152,6 @@ void Inventory::onDisable() {
 
 
 Inventory::~Inventory() {
-	if (isPlayer && !forceDelete)
-		std::cout << "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA";
-
 	if (isPlayer) forceDelete = true;
 
 	for (auto& a : storedItems) {
