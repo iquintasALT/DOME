@@ -237,9 +237,8 @@ void CreditsScene::init() {
 
 	std::vector<std::vector<std::string>> arr = {
 		{"T", "CREDITS"},
-		{"SUREFFECT TEAM"},
+		{"TEAM SUREFFECT"},
 		{" "},
-		{"DEVELOPMENT TEAM"},
 		{"AARON NAUZET MORENO SOSA", "IVAN SANCHEZ MIGUEZ"},
 		{"IAGO QUINTAS DIZ", "PABLO FERNANDEZ ALVAREZ"},
 		{"YOJHAN STEVEN GARCIA PENA", "CRISTIAN RENE CASTILLO LEON"},

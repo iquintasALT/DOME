@@ -116,8 +116,8 @@ void SleepStation::update() {
 
 void SleepStation::goToSleep(int hours, int numberOfActions)
 {
-	int nDays = mngr_->getGame()->numDays++;
-	if(nDays > consts::MAX_DAYS)
+	mngr_->getGame()->numDays++;
+	if(mngr_->getGame()->numDays > consts::MAX_DAYS)
 		mngr_->ChangeScene(new LoseScene(mngr_->getGame(), WAYSTODIE::DAYS), SceneManager::SceneMode::ADDITIVE);
 
 	mngr_->getHandler<Player_hdlr>()->getComponent<TirednessComponent>()->sleep(hours);
