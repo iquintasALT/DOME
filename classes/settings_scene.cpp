@@ -51,16 +51,13 @@ void SettingsScene::init() {
 void SettingsScene::render() {
 	GameScene::render();
 
-	float y = 0.60f;
-	SDL_Rect dest = { 0, consts::WINDOW_HEIGHT * y, consts::WINDOW_WIDTH ,  consts::WINDOW_HEIGHT / 10 }; 
-	for (int i = 0; i < 3; i++) {
-		buttonBackground->render(dest);
-		dest.y += 0.13*consts::WINDOW_HEIGHT;
-	}
+	float y = 0.605f;
+	SDL_Rect dest = { 0, consts::WINDOW_HEIGHT * y, consts::WINDOW_WIDTH , consts::WINDOW_HEIGHT / 3 }; 
+	buttonBackground->render(dest);
 
 	mainVolumeTex->render({ (int)(consts::WINDOW_WIDTH * 0.1f), (int)(consts::WINDOW_HEIGHT * 0.59f), 450, 80 });
 	effectsVolumeTex->render({ (int)(consts::WINDOW_WIDTH * 0.1f), (int)(consts::WINDOW_HEIGHT * 0.72f), 450, 80 });
-	showFPSTex->render({ (int)(consts::WINDOW_WIDTH * 0.1f), (int)(consts::WINDOW_HEIGHT * 0.86f), 350, 70 });
+	showFPSTex->render({ (int)(consts::WINDOW_WIDTH * 0.1f), (int)(consts::WINDOW_HEIGHT * 0.84f), 350, 70 });
 }
 
 Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackOnClick* raise, CallBackOnClick* decrease, Texture* t) {
@@ -92,7 +89,7 @@ Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackO
 
 void SettingsScene::createShowFPSBar() {
 	//Boton
-	Vector2D showFPSButtonPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.88f);
+	Vector2D showFPSButtonPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.86f);
 	auto fpsButton = new CheckButton(showFPSButtonPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), showFPS, g_, mngr_, g_->getFPSActive());
 	mngr_->addEntity(fpsButton);
 }
