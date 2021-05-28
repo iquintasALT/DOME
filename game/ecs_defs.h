@@ -43,7 +43,7 @@ class EnemyContactDamage;
 class HypothermiaComponent;
 class ClassicBullet;
 class TextWithBackground;
-class Open_station;
+class OpenStation;
 class TransitionComponent;
 class CameraMovement;
 class ScrollingBackGround;
@@ -98,7 +98,7 @@ class TutorialBackToShelter;
 	ClassicBullet, \
 	TextWithBackground,\
 	TransitionComponent, \
-	Open_station, \
+	OpenStation, \
 	CameraMovement, \
 	ScrollingBackGround, \
 	ChangeImage,\
@@ -115,14 +115,13 @@ class TutorialBackToShelter;
 	TutorialBackToShelter
 
 // groups
-
 struct Wall_grp;
 struct Enemy_grp;
 struct Ladders_grp;
 struct Player_grp;
 struct DefaultEnemy_grp;
 struct FlyingEnemy_grp;
-struct INITIALGRP;
+struct Initial_grp;
 #define _GRPS_LIST_  \
 	Wall_grp, \
 	Enemy_grp, \
@@ -130,9 +129,7 @@ struct INITIALGRP;
 	Player_grp, \
 	DefaultEnemy_grp, \
 	FlyingEnemy_grp, \
-	INITIALGRP
-	
-
+	Initial_grp
 
 // handlers
 struct Player_hdlr;
@@ -148,9 +145,9 @@ struct Player;
 struct Enemy;
 struct Bullets;
 struct Dark;
-struct Interface;
 struct Item;
-struct ULTIMATE;
+struct Interface;
+struct LastRenderLayer;
 #define _RENDER_LIST_ \
 	Parallax,\
 	Background, \
@@ -163,4 +160,4 @@ struct ULTIMATE;
 	Dark,\
 	Interface, \
 	Item, \
-	ULTIMATE
+	LastRenderLayer

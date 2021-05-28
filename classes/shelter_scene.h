@@ -7,7 +7,7 @@
 #include "../classes/spaceship_station.h"
 #include "../ecs/Entity.h"
 #include <functional>
-
+#include "../game/constant_variables.h"
 
 class ShelterScene : public GameScene {
 private:
@@ -33,13 +33,12 @@ private:
 	float spaceshipImgRot;
 
 	Manager* uselessMngr;
-	const int MAX_ACTIONS = 5;
 	int actions;
 
 	void createParallaxBackground(int numOfRep) override;
 
 public:
-	ShelterScene(Game* game) :GameScene(game, "Shelter") { actions = MAX_ACTIONS; };
+	ShelterScene(Game* game) :GameScene(game, "Shelter") { actions = consts::MAX_ACTIONS; };
 	virtual ~ShelterScene() { delete craftSys, delete uselessMngr; };
 	void init() override;
 	virtual void update();
@@ -53,6 +52,6 @@ public:
 
 	void sleepTransition();
 
-	void useAction();
+	void useActions(int numActions);
 	void addAction();
 };

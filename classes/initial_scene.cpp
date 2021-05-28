@@ -58,7 +58,7 @@ void InitialScene::init()
 		t->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
 		t->addComponent<Image>(&sdlutils().images().at("black"), true);
 		t->addComponent<TransitionComponent>(2);
-		mngr_->addRenderLayer<ULTIMATE>(t);
+		mngr_->addRenderLayer<LastRenderLayer>(t);
 
 		a->addComponent<CameraShake>(10, 15, 5, [this]() {
 			auto cameraZoom = mngr_->addEntity();
@@ -88,7 +88,7 @@ void InitialScene::init()
 	texture->setAlpha(255);
 	auto img = black->addComponent<Image>(texture, true);
 	black->addComponent<Timer>(5, startScene);
-	mngr_->addRenderLayer<ULTIMATE>(black);
+	mngr_->addRenderLayer<LastRenderLayer>(black);
 
 
 	auto loot = mngr_->addEntity();
@@ -176,7 +176,7 @@ void TutorialManager::changeCase(int newcase)
 	{
 	case 0: {
 		currentMessage = entity_->getMngr()->addEntity();
-		entity_->getMngr()->addRenderLayer<ULTIMATE>(currentMessage);
+		entity_->getMngr()->addRenderLayer<LastRenderLayer>(currentMessage);
 
 		auto tr = currentMessage->addComponent<Transform>(
 			Vector2D(consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT - 100 - 20)
@@ -187,7 +187,7 @@ void TutorialManager::changeCase(int newcase)
 	}
 	case 1: {
 		currentMessage = entity_->getMngr()->addEntity();
-		entity_->getMngr()->addRenderLayer<ULTIMATE>(currentMessage);
+		entity_->getMngr()->addRenderLayer<LastRenderLayer>(currentMessage);
 
 		currentMessage->addComponent<Transform>(Vector2D(
 			consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT * 0.8 + 32), consts::WINDOW_WIDTH, 100);
@@ -311,7 +311,7 @@ void TutorialManager::changeCase(int newcase)
 		player->getComponent<KeyboardPlayerCtrl>()->resetSpeed();
 		d->movePlayerAtTheEnd = true;
 		std::vector<std::string> texts = {
-			"Oh caspitas!",
+			"Oh my god!",
 			"I think I can take one down..."
 		};
 		d->createText(texts, 20);
@@ -324,7 +324,7 @@ void TutorialManager::changeCase(int newcase)
 	case 7:
 	{
 		currentMessage = entity_->getMngr()->addEntity();
-		entity_->getMngr()->addRenderLayer<ULTIMATE>(currentMessage);
+		entity_->getMngr()->addRenderLayer<LastRenderLayer>(currentMessage);
 		currentMessage->addComponent<Transform>(Vector2D(
 			consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT * 0.8 + 32), consts::WINDOW_WIDTH, 100);
 		currentMessage->addComponent<TextWithBackground>("Press MBL to shoot and X to change Weapon",
@@ -407,7 +407,6 @@ void TutorialCameraMovement::update()
 	Camera::mainCamera->Lerp(destination, speed);
 
 	float magnitude = (Camera::mainCamera->getCameraCenterPoisition() - destination).magnitude();
-	std::cout << magnitude << std::endl;
 	if (magnitude <= 15.0) {
 		function();
 		entity_->setDead(true);
@@ -464,7 +463,7 @@ void TutorialBackToShelter::changeImage(int n, int i)
 		timer->addComponent<Timer>(3, [this]() {changeScene(); });
 
 		auto b = entity_->getMngr()->addEntity();
-		entity_->getMngr()->addRenderLayer<ULTIMATE>(b);
+		entity_->getMngr()->addRenderLayer<LastRenderLayer>(b);
 		b->addComponent<Transform>(Vector2D(), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
 		b->addComponent<Image>(&sdlutils().images().at("logo"), true);
 		return;
@@ -473,7 +472,7 @@ void TutorialBackToShelter::changeImage(int n, int i)
 	Vector2D pos = Vector2D(floor(consts::WINDOW_WIDTH - width * (i + 1)), 0);
 
 	auto b = entity_->getMngr()->addEntity();
-	entity_->getMngr()->addRenderLayer<ULTIMATE>(b);
+	entity_->getMngr()->addRenderLayer<LastRenderLayer>(b);
 	b->addComponent<Transform>(pos, width, consts::WINDOW_HEIGHT);
 	b->addComponent<Image>(&sdlutils().images().at("black"), true);
 }

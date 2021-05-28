@@ -24,7 +24,6 @@ void InitialCameraZoom::update()
 		Camera::mainCamera->setScale(targetZoom);
 
 		function();
-		std::cout << " " << std::endl;
 
 		entity_->setDead(true);
 		return;

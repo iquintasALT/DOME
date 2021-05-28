@@ -42,7 +42,6 @@ void Enemy::receiveDamage(int damage_)
 
 void Enemy::createExplosion()
 {
-	std::cout << "created explosion";
 	auto tr = getComponent<Transform>();
 
 	auto a = mngr_->addEntity();

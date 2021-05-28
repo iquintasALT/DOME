@@ -266,7 +266,7 @@ void LocationsScene::addParticles()
 {
 	auto shelterTr = shelterImg->getComponent<Transform>();
 	particles = mngr_->addEntity();
-	mngr_->addRenderLayer<ULTIMATE>(particles);
+	mngr_->addRenderLayer<LastRenderLayer>(particles);
 	auto pos = Camera::mainCamera->WorldToPointSpace(shelterTr->getPos());
 	particles->addComponent<Transform>(
 		pos);

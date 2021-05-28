@@ -47,27 +47,27 @@ void ShelterScene::init() {
 	Entity* spaceshipImg = mngr_->addEntity();
 	spaceshipImg->addComponent<Transform>(Vector2D{ spaceshipStPos.getX(),spaceshipStPos.getY() }, spaceshipStSize.getX(), spaceshipStSize.getY(), spaceshipImgRot);
 	spaceshipImg->addComponent<Image>(&sdlutils().images().at("rocket"), 1, 1, 0, 0);
-	spaceshipImg->addComponent<Open_station>(spaceshipStation);
+	spaceshipImg->addComponent<OpenStation>(spaceshipStation);
 	mngr_->addRenderLayer<Background>(spaceshipImg);
 	
 	medical_Workshop = new Workshop(mngr_, uselessMngr, craftSys, this);
 	medical_Workshop->setWorkshopItems(vector<ITEMS>{ANTIDOTE, BANDAGE, SPLINT, PAINKILLER, FOOD});
 	Entity* medImg = mngr_->addEntity();
 	medImg->addComponent<Transform>(Vector2D{ medPos.getX(),medPos.getY() }, medSize.getX(), medSize.getY(), 0);
-	medImg->addComponent<Open_station>(medical_Workshop);
+	medImg->addComponent<OpenStation>(medical_Workshop);
 	mngr_->addRenderLayer<Background>(medImg);
 
 	sleep_Station = new SleepStation(mngr_, uselessMngr, this);
 	sleepImg = mngr_->addEntity();
 	sleepImg->addComponent<Transform>(Vector2D{ sleepStPos.getX()  ,sleepStPos.getY() }, sleepStSize.getX(), sleepStSize.getY(), 0);
-	sleepImg->addComponent<Open_station>(sleep_Station);
+	sleepImg->addComponent<OpenStation>(sleep_Station);
 	mngr_->addRenderLayer<Background>(sleepImg);
 
 	mechanical_Workshop = new Workshop(mngr_, uselessMngr, craftSys, this);
 	mechanical_Workshop->setWorkshopItems(vector<ITEMS>{METAL_PLATES, WEAPON_UPGRADE, CLASSIC_AMMO, LASER_AMMO, RICOCHET_AMMO});
 	Entity* mechImg = mngr_->addEntity();
 	mechImg->addComponent<Transform>(Vector2D{ mechPos.getX(),mechPos.getY() }, mechSize.getX(), mechSize.getY(), 0);
-	mechImg->addComponent<Open_station>(mechanical_Workshop);
+	mechImg->addComponent<OpenStation>(mechanical_Workshop);
 	mngr_->addRenderLayer<Background>(mechImg);
 }
 
@@ -94,7 +94,7 @@ void ShelterScene::sleepTransition()
 	//se desactivan el toolTip, la estacion, y su componente para abrirla
 	sleep_Station->setActive(false);
 	sleepInteractable->getComponent<InteractableElement>()->setToolTipActive(false);
-	sleepImg->getComponent<Open_station>()->enabled = false;
+	sleepImg->getComponent<OpenStation>()->enabled = false;
 	static_cast<Player*>(mngr_->getHandler<Player_hdlr>())->getWeapon()->getInv()->enabled = false;
 	//se desactiva el movimiento mientras se duerme
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
@@ -104,10 +104,9 @@ void ShelterScene::sleepTransition()
 	Camera::mainCamera->restoreScale();
 }
 
-void ShelterScene::useAction()
+void ShelterScene::useActions(int numActions)
 {
-	if (actions > 0) actions--;
-	std::cout << "actions: " << actions << endl;
+	if (actions - numActions >= 0) actions -= numActions;
 }
 
 void ShelterScene::addAction()

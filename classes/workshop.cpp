@@ -1,5 +1,6 @@
 #include "workshop.h"
 #include "../classes/shelter_scene.h"
+#include "../sdlutils/SoundManager.h"
 
 Workshop::Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_) : Entity(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
@@ -336,7 +337,7 @@ void Workshop::update() {
 								renderRightWindow = false;
 								weapon->upgradeCurrentWeapon();
 								//gastar accion
-								shelterScene->useAction();
+								shelterScene->useActions(1);
 							}
 
 						} //Si no es un arma
@@ -347,10 +348,11 @@ void Workshop::update() {
 								//Si es crafteable la variable loot ya será != nullptr y usamos una accion
 								renderRightWindow = false;
 								renderFlag = false;
-								shelterScene->useAction();
+								shelterScene->useActions(1);
 							}
 						}
 					}
+					else soundManager().playSFX("error");
 				}
 				//Si hacemos click en la flecha izq cambiamos el arma elegida en la mejora de armas
 				if (Collisions::collides(mousePos, 1, 1, arrowLeft_tr->getPos(), arrowLeft_tr->getW(), arrowLeft_tr->getH())) {
