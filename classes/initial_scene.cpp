@@ -214,7 +214,7 @@ void TutorialManager::changeCase(int newcase)
 		d->createText(texts, 20);
 
 		trigger = entity_->getMngr()->addEntity();
-		trigger->addComponent<Transform>(triggerPos + Vector2D(-150, 20), 30, 50);
+		trigger->addComponent<Transform>(triggerPos + Vector2D(0, 20), 30, 50);
 		trigger->addComponent<BoxCollider>(true);
 		trigger->addComponent<TutorialTrigger>();
 		break;
@@ -254,7 +254,8 @@ void TutorialManager::changeCase(int newcase)
 			};
 
 			cameraMovement->addComponent<TutorialCameraMovement>(
-				Vector2D(backToShelter->getComponent<Transform>()->getPos().getX() + 300, backToShelter->getComponent<Transform>()->getPos().getY()), f, 0.7f);
+				Vector2D(backToShelter->getComponent<Transform>()->getPos().getX() + 650, backToShelter->getComponent<Transform>()->getPos().getY()), f, 0.7f);
+			soundManager().playSFX("corridor");
 		};
 		break;
 	}
