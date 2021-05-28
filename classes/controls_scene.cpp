@@ -10,12 +10,12 @@ void ControlsScene::init() {
 	auto background = mngr_->addEntity();
 	background->addComponent<Transform>(Vector2D(0.0, 0.0), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
 	background->addComponent<Image>(&sdlutils().images().at("bgImage"), true);
-	mngr_->addRenderLayer<ULTIMATE>(background);
+	mngr_->addRenderLayer<LastRenderLayer>(background);
 
 	auto controls = mngr_->addEntity();
 	controls->addComponent<Transform>(Vector2D(0.0, 0.0))->setSize(sdlutils().width(), sdlutils().height());
 	controls->addComponent<Image>(&sdlutils().images().at("controls"), 1, 1, 0, 0, true);
-	mngr_->addRenderLayer<ULTIMATE>(controls);
+	mngr_->addRenderLayer<LastRenderLayer>(controls);
 }	
 
 void ControlsScene::update() {

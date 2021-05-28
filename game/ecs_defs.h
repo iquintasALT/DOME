@@ -115,14 +115,13 @@ class TutorialBackToShelter;
 	TutorialBackToShelter
 
 // groups
-
 struct Wall_grp;
 struct Enemy_grp;
 struct Ladders_grp;
 struct Player_grp;
 struct DefaultEnemy_grp;
 struct FlyingEnemy_grp;
-struct INITIALGRP;
+struct Initial_grp;
 #define _GRPS_LIST_  \
 	Wall_grp, \
 	Enemy_grp, \
@@ -130,9 +129,7 @@ struct INITIALGRP;
 	Player_grp, \
 	DefaultEnemy_grp, \
 	FlyingEnemy_grp, \
-	INITIALGRP
-	
-
+	Initial_grp
 
 // handlers
 struct Player_hdlr;
@@ -150,7 +147,7 @@ struct Bullets;
 struct Dark;
 struct Item;
 struct Interface;
-struct ULTIMATE;
+struct LastRenderLayer;
 #define _RENDER_LIST_ \
 	Parallax,\
 	Background, \
@@ -163,4 +160,4 @@ struct ULTIMATE;
 	Dark,\
 	Interface, \
 	Item, \
-	ULTIMATE
+	LastRenderLayer

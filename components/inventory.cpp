@@ -101,7 +101,7 @@ void Inventory::init() {
 	toolTipsTr = toolTips->addComponent<Transform>(Vector2D(100, 100), 500, 10, 0);
 	toolTipsText = toolTips->addComponent<TextWithBackground>("Inventario",
 		sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0xffffffff), &sdlutils().images().at("tooltipBox"));
-	entity_->getMngr()->addRenderLayer<ULTIMATE>(toolTips);
+	entity_->getMngr()->addRenderLayer<LastRenderLayer>(toolTips);
 	toolTips->setActive(false);
 	dropDownActive = false;
 
@@ -119,7 +119,7 @@ void Inventory::init() {
 		dropDown = new InventoryDropdown(&sdlutils().images().at("tooltipBox"), slots, 200);
 		dropDownRender = new DropDownRender(dropDown, entity_->getMngr());
 		entity_->getMngr()->addEntity(dropDownRender);
-		entity_->getMngr()->addRenderLayer<ULTIMATE>(dropDownRender);
+		entity_->getMngr()->addRenderLayer<LastRenderLayer>(dropDownRender);
 		dropDownRender->setActive(false);
 	}
 }
