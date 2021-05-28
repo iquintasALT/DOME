@@ -1,30 +1,27 @@
 #pragma once
-#include "player_health_component.h"
-#include "../sdlutils/Texture.h"
-#include "../sdlutils/SDLUtils.h"
-#include "../utils/checkML.h"
-#include "../utils/Vector2D.h"
-#include "../components/transform.h"
-#include "../components/keyboard_player_ctrl.h"
-#include "../game/constant_variables.h"
+
+#include "../components/player_health_component.h"
+
 #include <list>
 
 /*
 * TirednessComponent es un componente para el jugador que mide su nivel de cansacio.
 * Afecta a su velocidad de movimiento y cuanto menos duerma el jugador, el nivel 
-* de cansancio del jugador aumentará y subira de nivel, habiendo tres niveles
+* de cansancio del jugador aumentarï¿½ y subira de nivel, habiendo tres niveles
 * (Apenas cansado, cansado y exhausto).
-* Si está exhasuto la velocidad de movimiento es tan baja que el jugador apenas podrá moverse.
+* Si estï¿½ exhasuto la velocidad de movimiento es tan baja que el jugador apenas podrï¿½ moverse.
 */
 
-enum class tirednessLevel { NONE, TIRED, EXHAUSTED };
+enum class TirednessLevel { NONE, TIRED, EXHAUSTED };
+
+class KeyboardPlayerCtrl;
 
 class TirednessComponent : public PlayerHealthComponent
 {
 private:
 	float tiredness;
 	KeyboardPlayerCtrl* kb;
-	tirednessLevel tirednessLev;
+	TirednessLevel tirednessLev;
 
 public:
 	TirednessComponent();
@@ -34,8 +31,7 @@ public:
 	 
 	void sleep(int hours);			    //Horas descansadas como parametro
 	void decreaseTiredness(float tiredness);
-	tirednessLevel getTirednessLevel() { return tirednessLev; }
+	TirednessLevel getTirednessLevel() { return tirednessLev; }
 	float getTirednessFloat() { return tiredness; }
 	void setTirednessFloat(float tiredness_);
 };
-
