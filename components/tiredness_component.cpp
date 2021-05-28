@@ -1,7 +1,18 @@
 #include "tiredness_component.h"
-#include "../sdlutils/InputHandler.h"
 
-TirednessComponent::TirednessComponent() : tiredness(1.0f), tirednessLev(tirednessLevel::NONE), kb(nullptr) {};
+#include "../game/constant_variables.h"
+
+#include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/InputHandler.h"
+#include "../sdlutils/Texture.h"
+
+#include "../utils/checkML.h"
+#include "../utils/Vector2D.h"
+
+#include "../components/Transform.h"
+#include "../components/KeyboardPlayerCtrl.h"
+
+TirednessComponent::TirednessComponent() : tiredness(1.0f), tirednessLev(TirednessLevel::NONE), kb(nullptr) {};
 
 void TirednessComponent::init() {
 	kb = entity_->getComponent<KeyboardPlayerCtrl>();
@@ -36,14 +47,10 @@ void TirednessComponent::calculatePlayerSpeed() const {
 	kb->setMaxSpeed(vel);
 }
 
-void TirednessComponent::calculateTravelSpeed() const {
-	//Aumentar el tiempo de viaje en base al nivel de cansancio del jugador
-}
-
 void TirednessComponent::updateLevel() {
-	if (tiredness >= consts::NONETIRED_LEVEL) tirednessLev = tirednessLevel::NONE;
-	else if (tiredness >= consts::TIRED_LEVEL) tirednessLev = tirednessLevel::TIRED;
-	else tirednessLev = tirednessLevel::EXHAUSTED;
+	if (tiredness >= consts::NONETIRED_LEVEL) tirednessLev = TirednessLevel::NONE;
+	else if (tiredness >= consts::TIRED_LEVEL) tirednessLev = TirednessLevel::TIRED;
+	else tirednessLev = TirednessLevel::EXHAUSTED;
 
 	calculatePlayerSpeed();
 }

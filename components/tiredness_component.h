@@ -1,12 +1,7 @@
 #pragma once
-#include "player_health_component.h"
-#include "../sdlutils/Texture.h"
-#include "../sdlutils/SDLUtils.h"
-#include "../utils/checkML.h"
-#include "../utils/Vector2D.h"
-#include "../components/Transform.h"
-#include "../components/KeyboardPlayerCtrl.h"
-#include "../game/constant_variables.h"
+
+#include "../components/player_health_component.h"
+
 #include <list>
 
 /*
@@ -17,14 +12,16 @@
 * Si está exhasuto la velocidad de movimiento es tan baja que el jugador apenas podrá moverse.
 */
 
-enum class tirednessLevel { NONE, TIRED, EXHAUSTED };
+enum class TirednessLevel { NONE, TIRED, EXHAUSTED };
+
+class KeyboardPlayerCtrl;
 
 class TirednessComponent : public PlayerHealthComponent
 {
 private:
 	float tiredness;
 	KeyboardPlayerCtrl* kb;
-	tirednessLevel tirednessLev;
+	TirednessLevel tirednessLev;
 
 public:
 	TirednessComponent();
@@ -34,7 +31,7 @@ public:
 	 
 	void sleep(int hours);			    //Horas descansadas como parametro
 	void decreaseTiredness(float tiredness);
-	tirednessLevel getTirednessLevel() { return tirednessLev; }
+	TirednessLevel getTirednessLevel() { return tirednessLev; }
 	float getTirednessFloat() { return tiredness; }
 	void setTirednessFloat(float tiredness_);
 };
