@@ -454,6 +454,10 @@
       {
         "id": "statesBackgroundRed",
         "file": "resources/sprites/states_background_red.png"
+      },
+      {
+        "id": "buttonBackground",
+        "file": "resources/sprites/buttons/button_background.png"
       }
     ],
 

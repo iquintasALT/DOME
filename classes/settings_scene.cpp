@@ -14,27 +14,54 @@
 void SettingsScene::init() {
 	ih().clearState();
 
+	buttonBackground = (&sdlutils().images().at("buttonBackground"));
+	buttonBackground->setAlpha(50);
+
 	//BACKGROUND
 	auto pixel = mngr_->addEntity();
 	pixel->addComponent<Transform>(Vector2D(0, 0), consts::WINDOW_WIDTH, consts::WINDOW_HEIGHT);
 	pixel->addComponent<Image>(&sdlutils().images().at("bgImageDark"), true);
 	mngr_->addRenderLayer<Interface>(pixel);
 
+	auto domeLogo = mngr_->addEntity();
+	domeLogo->addComponent<Transform>(Vector2D(consts::WINDOW_WIDTH * 0.5f - (750 / 2), consts::WINDOW_HEIGHT * 0.02), 750, 381);
+	domeLogo->addComponent<Image>(&sdlutils().images().at("logo"), true);
+	mngr_->addRenderLayer<Interface>(domeLogo);
+
 	//BOTON DE VOLVER ATR�S
-	auto backButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH * 0.03f, consts::WINDOW_HEIGHT * 0.87f), Vector2D(256, 64), &sdlutils().images().at("backButton"), back, g_, mngr_);
+	auto backButton = new PauseButton(Vector2D(consts::WINDOW_WIDTH * 0.03f, consts::WINDOW_HEIGHT * 0.05f), Vector2D(192, 48), &sdlutils().images().at("backButton"), back, g_, mngr_);
 	mngr_->addEntity(backButton);
 
-	posBarVolume = Vector2D(consts::WINDOW_WIDTH * 0.55f, consts::WINDOW_HEIGHT * 0.2f);
-	posBarSFX = Vector2D(consts::WINDOW_WIDTH * 0.55f, consts::WINDOW_HEIGHT * 0.3f);
+	posBarVolume = Vector2D(consts::WINDOW_WIDTH * 0.55f, consts::WINDOW_HEIGHT * 0.62f);
+	posBarSFX = Vector2D(consts::WINDOW_WIDTH * 0.55f, consts::WINDOW_HEIGHT * 0.75f);
 
 	auto volumeBarsSize = Vector2D(consts::VOLUME_BARS_SIZE_X, consts::VOLUME_BARS_SIZE_Y);
 
 	adjusterVolume = createVolumeBar(posBarVolume, volumeBarsSize, raiseVolume, decreaseVolume, &sdlutils().images().at("mainVolumeText"));
 	adjusterSFXVolume = createVolumeBar(posBarSFX, volumeBarsSize, raiseEffectsVolume, decreaseEffectsVolume, &sdlutils().images().at("effectsVolume"));
 
+	mainVolumeTex = new Texture(sdlutils().renderer(), "Main Volume", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0x000000));
+	effectsVolumeTex = new Texture(sdlutils().renderer(), "Effects Volume", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0x000000));
+	showFPSTex = new Texture(sdlutils().renderer(), "Show FPS", sdlutils().fonts().at("Orbitron32"), build_sdlcolor(0x000000));
+
 	setAdjusterPosition();
 	createShowFPSBar();
 	//createFullscreenToggle();
+}
+
+void SettingsScene::render() {
+	GameScene::render();
+
+	float y = 0.60f;
+	SDL_Rect dest = { 0, consts::WINDOW_HEIGHT * y, consts::WINDOW_WIDTH ,  consts::WINDOW_HEIGHT / 10 }; 
+	for (int i = 0; i < 3; i++) {
+		buttonBackground->render(dest);
+		dest.y += 0.13*consts::WINDOW_HEIGHT;
+	}
+
+	mainVolumeTex->render({ (int)(consts::WINDOW_WIDTH * 0.1f), (int)(consts::WINDOW_HEIGHT * 0.59f), 450, 80 });
+	effectsVolumeTex->render({ (int)(consts::WINDOW_WIDTH * 0.1f), (int)(consts::WINDOW_HEIGHT * 0.72f), 450, 80 });
+	showFPSTex->render({ (int)(consts::WINDOW_WIDTH * 0.1f), (int)(consts::WINDOW_HEIGHT * 0.86f), 350, 70 });
 }
 
 Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackOnClick* raise, CallBackOnClick* decrease, Texture* t) {
@@ -61,26 +88,12 @@ Transform* SettingsScene::createVolumeBar(Vector2D pos, Vector2D size, CallBackO
 	adjuster->addComponent<Image>(&sdlutils().images().at("volumeAdjuster"), build_sdlrect(0, 0, consts::ADJUSTER_SIZE_X, consts::ADJUSTER_SIZE_Y), true);
 	mngr_->addRenderLayer<Interface>(adjuster);
 
-	//Texto
-	auto text = mngr_->addEntity();
-	auto textBarPosition = Vector2D(consts::WINDOW_WIDTH * 0.15f, barTr->getPos().getY() + barTr->getH() / 2 - consts::WINDOW_HEIGHT * 0.025f);
-	text->addComponent<Transform>(textBarPosition, consts::BAR_TEXT_SIZE_X, consts::BAR_TEXT_SIZE_Y);
-	text->addComponent<Image>(t, build_sdlrect(0, 0, 256, 32), true);
-	mngr_->addRenderLayer<Interface>(text);
-
 	return adjusterTr;
 }
 
 void SettingsScene::createShowFPSBar() {
-	//Texto
-	auto text = mngr_->addEntity();
-	auto textBarPosition = Vector2D(consts::WINDOW_WIDTH * 0.15f, consts::WINDOW_HEIGHT * 0.40f);
-	text->addComponent<Transform>(textBarPosition, consts::SHOW_FPS_BAR_SIZE_X, consts::SHOW_FPS_BAR_SIZE_Y);
-	text->addComponent<Image>(&sdlutils().images().at("showFPSBar"), build_sdlrect(0, 0, 256, 32), true);
-	mngr_->addRenderLayer<Interface>(text);
-
 	//Boton
-	Vector2D showFPSButtonPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.40f);
+	Vector2D showFPSButtonPos = Vector2D(adjusterVolume->getPos().getX() - consts::VOLUME_BARS_SIZE_Y / 2 + adjusterVolume->getW() / 2, consts::WINDOW_HEIGHT * 0.88f);
 	auto fpsButton = new CheckButton(showFPSButtonPos, Vector2D(consts::VOLUME_BARS_SIZE_Y, consts::VOLUME_BARS_SIZE_Y), &sdlutils().images().at("fpsButton"), showFPS, g_, mngr_, g_->getFPSActive());
 	mngr_->addEntity(fpsButton);
 }
