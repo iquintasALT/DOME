@@ -32,7 +32,7 @@
 
 DOME es un survival shooter scroller 2D donde el jugador controlará a uno de los últimos supervivientes de una colonia establecida en el planeta helado Aurora. Cada día, deberá aprovechar las horas de luz para buscar los objetos que necesita para sobrevivir en este hostil y frío lugar. Además, durante las horas de noche el frío es tal que deberás volver al refugio a descansar y gestionar tu tiempo y recursos. ¿Serás capaz de escapar?
 
-El juego se puede jugar en Windows, y es apto para un público mayor de 12 años, de acuerdo con la clasificación PEGI, pues contiene violencia y
+El juego se puede jugar en Windows, y es apto para un público mayor de 12 años, de acuerdo con la clasificación PEGI, pues contiene situaciones violentas y escenas que podrían dar miedo a audiencias más jóvenes. 
 
 ![Mecánicas](./docs/headers/h_mecanicas.png) <a name="mec"></a>
 
