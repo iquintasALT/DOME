@@ -6,13 +6,13 @@ CraftingSystem::CraftingSystem(Manager* mngr) {
 	playerInventory = mngr->getHandler<Player_hdlr>()->getComponent<InventoryController>()->inventory;
 
 	//CAMBIAR A ENUM
-	crafts.emplace(BANDAGE, std::vector<ItemInfo* >{getItemInfo(BANDAGE, 1), getItemInfo(WATER, 1), getItemInfo(ORGANIC_MATERIAL, 1)});
+	crafts.emplace(BANDAGE, std::vector<ItemInfo* >{ getItemInfo(WATER, 1), getItemInfo(ORGANIC_MATERIAL, 1)});
 
-	crafts.emplace(ANTIDOTE, std::vector<ItemInfo* >{getItemInfo(FOOD, 1), getItemInfo(WATER, 1), getItemInfo(MEDICAL_COMPONENTS, 1)});
+	crafts.emplace(ANTIDOTE, std::vector<ItemInfo* >{getItemInfo(WATER, 1), getItemInfo(MEDICAL_COMPONENTS, 1)});
 
 	crafts.emplace(SPLINT, std::vector<ItemInfo* >{getItemInfo(MECHANICAL_COMPONENTS, 1), getItemInfo(WATER, 1)});
 
-	crafts.emplace(PAINKILLER, std::vector<ItemInfo* >{getItemInfo(FOOD, 2), getItemInfo(WATER, 1), getItemInfo(MEDICAL_COMPONENTS, 2)});
+	crafts.emplace(PAINKILLER, std::vector<ItemInfo* >{getItemInfo(WATER, 1), getItemInfo(MEDICAL_COMPONENTS, 1)});
 
 	crafts.emplace(FOOD, std::vector<ItemInfo* >{getItemInfo(ORGANIC_MATERIAL, 1), getItemInfo(WATER, 1)});
 
