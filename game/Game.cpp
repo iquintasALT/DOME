@@ -147,8 +147,7 @@ void Game::initLoot() {
 			make_pair(CraftingSystem::getItemInfo(UPGRADE_KIT), Vector2D(0, 0)), make_pair(CraftingSystem::getItemInfo(FOOD), Vector2D(2, 2)),
 			make_pair(CraftingSystem::getItemInfo(METAL_PLATES), Vector2D(3, 1)),
 			make_pair(CraftingSystem::getItemInfo(ORGANIC_MATERIAL), Vector2D(2, 3)), make_pair(CraftingSystem::getItemInfo(LASER_AMMO), Vector2D(4, 0)),
-			make_pair(CraftingSystem::getItemInfo(METAL_SCRAPS), Vector2D(0, 2)), make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(4, 4)),
-			make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(4, 2))
+			make_pair(CraftingSystem::getItemInfo(METAL_SCRAPS), Vector2D(0, 2)), make_pair(CraftingSystem::getItemInfo(BANDAGE), Vector2D(4, 4))
 		}
 	});
 
