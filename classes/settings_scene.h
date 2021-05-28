@@ -12,12 +12,22 @@ private:
 	Vector2D posBarVolume;  Vector2D posBarSFX;
 	float currentVolume;  float currentSFXVolume;
 	Transform* adjusterVolume; Transform* adjusterSFXVolume;
+	Texture* buttonBackground;
+
+	//Textos
+	Texture* mainVolumeTex;
+	Texture* effectsVolumeTex;
+	Texture* showFPSTex;
+
 public:
 	SettingsScene(Game* g) : GameScene(g, "Settings") {
 		currentVolume = 0; currentSFXVolume = 0;
 		adjusterVolume = nullptr; adjusterSFXVolume = nullptr;
+		buttonBackground = nullptr;
 	};
+	~SettingsScene() { delete mainVolumeTex; delete effectsVolumeTex; delete showFPSTex; }
 	void init() override;
+	void render() override;
 	void setAdjusterPosition();
 
 	static void back(Manager* mng);

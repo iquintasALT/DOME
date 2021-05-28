@@ -36,10 +36,6 @@ void TirednessComponent::calculatePlayerSpeed() const {
 	kb->setMaxSpeed(vel);
 }
 
-void TirednessComponent::calculateTravelSpeed() const {
-	//Aumentar el tiempo de viaje en base al nivel de cansancio del jugador
-}
-
 void TirednessComponent::updateLevel() {
 	if (tiredness >= consts::NONETIRED_LEVEL) tirednessLev = tirednessLevel::NONE;
 	else if (tiredness >= consts::TIRED_LEVEL) tirednessLev = tirednessLevel::TIRED;
