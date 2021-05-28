@@ -51,6 +51,12 @@ void WeaponBehaviour::changeWeapon()
 		weapon->setAmmo();
 }
 
+void WeaponBehaviour::updateWeapons(short int* newTiers)
+{
+	for (int i = 0; i < 3; i++)
+		weaponTiers[i] = newTiers[i];
+}
+
 int WeaponBehaviour::tierOfWeapon()
 {
 	return weaponTiers[weaponType];

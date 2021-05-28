@@ -1,23 +1,30 @@
 #pragma once
+
 #include "../ecs/Entity.h"
-#include "../utils/Vector2D.h"
 #include "../ecs/Manager.h"
+
 #include "../sdlutils/SDLUtils.h"
+#include "../sdlutils/InputHandler.h"
+
+#include "../utils/Collisions.h"
+#include "../utils/Vector2D.h"
+#include "../utils/checkML.h"
+
 #include "../components/Image.h"
 #include "../components/Transform.h"
-#include "../ecs/Entity.h"
-#include "../classes/crafting_system.h"
-#include "../sdlutils/InputHandler.h"
-#include "../utils/Collisions.h"
-#include "../utils/checkML.h"
 #include "../components/InventoryController.h"
+
+#include "../classes/crafting_system.h"
+
 #include <vector>
 
 struct Slot {
 	int index;
 	Entity* slot;
 };
+
 class ShelterScene;
+
 class Workshop : public Entity
 {
 protected:
@@ -70,9 +77,6 @@ protected:
 public:
 	Workshop(Manager* mngr_) : Entity(mngr_) { };
 	Workshop(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_);
-
-	void closeCraft();
-
 	~Workshop() {
 		for (int i = 0; i < leftRenderTexts.size(); ++i) {
 			delete  leftRenderTexts[i];
@@ -87,6 +91,8 @@ public:
 		//delete falseMngr;
 	}
 
+	void closeCraft();
+
 	virtual void setLeftRender();
 	virtual void setRightRender();
 
@@ -99,8 +105,5 @@ public:
 	virtual void update();
 	void setRenderFlag(bool set);
 
-	void setLoot(Loot* l) {
-		loot = l;
-	}
+	void setLoot(Loot* l) { loot = l; }
 };
-

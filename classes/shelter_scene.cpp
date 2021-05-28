@@ -1,19 +1,19 @@
-#include "../classes/shelter_scene.h"
-#include "../components/hunger_component.h"
-#include "../components/tiredness_component.h"
-#include "../game/Game.h"
 #include "locations_scene.h"
+
+#include "../game/Game.h"
+
+#include "../classes/shelter_scene.h"
 #include "../classes/pause_scene.h"
-#include "../components/open_station.h"
 #include "../classes/shelter_hud.h"
 #include "../classes/lose_scene.h"
 
+#include "../components/open_station.h"
+#include "../components/hunger_component.h"
+#include "../components/tiredness_component.h"
+
 #include <memory>
 
-//#if defined(_WIN32)
-//#include <windows.h>
-//#endif
-//#include <iostream>
+#include "../classes/player.h"
 
 using std::cout;
 using std::cerr;
@@ -27,16 +27,18 @@ void ShelterScene::init() {
 	string path_ = "./resources/tilemap/zona_shelter.tmx";
 	loadMap(path_);
 
-	Player* player = dynamic_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+	Player* player = static_cast<Player*>(mngr_->getHandler<Player_hdlr>());
+
+	auto weapon = player->getWeapon();
+	if (weapon->isActive())
+		weapon->setActive(false);
+
+	player->getComponent<HungerComponent>()->decreaseHunger(0.5);
+	player->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
 
 	auto shelterHud = new ShelterHud(mngr_, this);
 
-	auto weapon = player->getWeapon();
-
 	createParallaxBackground(5);
-
-	if (weapon->isActive())
-		weapon->setActive(false);
 
 	uselessMngr = new Manager(g_);
 	craftSys = new CraftingSystem(mngr_);
@@ -69,12 +71,6 @@ void ShelterScene::init() {
 	mngr_->addRenderLayer<Background>(mechImg);
 }
 
-void ShelterScene::onLoad()
-{
-	//getGame()->playerSaved->getComponent<HungerComponent>()->decreaseHunger(0.5);
-	//getGame()->playerSaved->getComponent<TirednessComponent>()->decreaseTiredness(0.5);
-}
-
 void ShelterScene::update() {
 	mngr_->update();
 
@@ -99,6 +95,7 @@ void ShelterScene::sleepTransition()
 	sleep_Station->setActive(false);
 	sleepInteractable->getComponent<InteractableElement>()->setToolTipActive(false);
 	sleepImg->getComponent<Open_station>()->enabled = false;
+	static_cast<Player*>(mngr_->getHandler<Player_hdlr>())->getWeapon()->getInv()->enabled = false;
 	//se desactiva el movimiento mientras se duerme
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 	mngr_->getHandler<Player_hdlr>()->getComponent<RigidBody>()->setVel(Vector2D{ 0,0 });

@@ -1,19 +1,24 @@
 #pragma once
 #include <string>
-#include "../sdlutils/SDLUtils.h"
+
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
+
+#include "../sdlutils/SDLUtils.h"
+#include "../utils/checkML.h"
+
 #include "../components/Image.h"
 #include "../components/Transform.h"
 #include "../components/Inventory.h"
-#include "../utils/checkML.h"
+
 #include <functional>
+
 using namespace std;
 
 enum ITEMS {
-	BANDAGE, MEDICAL_COMPONENTS, WATER, ORGANIC_MATERIAL, MECANICAL_COMPONENTS, ANTIDOTE, FOOD, SPLINT, SPACESHIP_ROCKETS, SPACESHIP_KEY_ITEMS,
-	BUILDING_PARTS, ELECTRONIC_REMAINS, METAL_PLATES, WEAPON_UPGRADE, UPGRADE_KIT, CLASSIC_AMMO, RICOCHET_AMMO, LASER_AMMO, SPACESHIP_RADAR, SPACESHIP_CABIN
-	, PAINKILLER
+	BANDAGE, MEDICAL_COMPONENTS, WATER, ORGANIC_MATERIAL, MECANICAL_COMPONENTS, ANTIDOTE, FOOD, SPLINT, SPACESHIP_ROCKETS, 
+	SPACESHIP_KEY_ITEMS, BUILDING_PARTS, ELECTRONIC_REMAINS, METAL_PLATES, WEAPON_UPGRADE, UPGRADE_KIT, CLASSIC_AMMO, 
+	RICOCHET_AMMO, LASER_AMMO, SPACESHIP_RADAR, SPACESHIP_CABIN, PAINKILLER
 };
 
 class Inventory;
@@ -28,8 +33,9 @@ private:
 	int _row;
 	int _col;
 
-	std::function<void(Entity*)> function;
+	std::function<bool(Entity*)> function;
 	bool functionCreated;
+
 public:
 	void setAmount(int amount) { _craftAmount = amount; }
 	int getAmount() { return _craftAmount; }
@@ -57,9 +63,10 @@ public:
 	static ItemInfo* classicAmmo();
 
 	ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, int craftAmount = 0);
-	ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<void(Entity*)> function, int craftAmount = 0);
+	ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, std::function<bool(Entity*)> function, int craftAmount = 0);
 	ItemInfo(ItemInfo* itemInfo);
 	~ItemInfo();
+
 	inline ITEMS name() { return _name; };
 	string  strName() { return _strName; };
 	inline string description() { return _description; };
@@ -68,8 +75,7 @@ public:
 	inline int row() { return _row; }
 	inline int col() { return _col; }
 	std::function<void(Entity*)> getFunc() { return function; };
-	inline void execute(Entity* player) { function(player); };
-
+	inline bool execute(Entity* player) { return function(player); };
 	inline bool hasFunction() { return functionCreated; }
 };
 
@@ -88,9 +94,9 @@ public:
 	int getY() { return y; }
 	ItemInfo* getItemInfo();
 
-
 	bool forceDelete = false;
 	int count;
+
 private:
 	ItemInfo* info;
 	Texture* textureNumber;
@@ -99,7 +105,6 @@ private:
 	Entity* image;
 	Transform* transform;
 	Transform* numberTr;
-
 	Entity* countTex;
 };
 

@@ -19,7 +19,6 @@ private:
 
 	InventoryController* inv_;
 
-	//int weaponBullets[3] = { 0, 0, 0 };
 	int bulletSpread = 0;
 
 public:
@@ -27,14 +26,14 @@ public:
 	~WeaponBehaviour();
 	Weapon* getCurrentWeapon();
 
-	void setInv(InventoryController* inventory) {
-		inv_ = inventory;
-		//weapon->setAmmo();
-	}
+	void setInv(InventoryController* inventory) { inv_ = inventory; }
+	InventoryController* getInv() { return inv_; };
 
 	void changeWeapon();
 
 	Weapon::WeaponType typeOfWeapon() { return weaponType; }
+	short int * tiersOfWeapons() { return weaponTiers; }
+	void updateWeapons(short int* newTiers);
 	int tierOfWeapon();
 	void upgradeCurrentWeapon();
 

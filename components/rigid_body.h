@@ -2,11 +2,13 @@
 
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
-#include "../utils/Vector2D.h"
-#include "../utils/checkML.h"
+
 #include "../game/constant_variables.h"
 
-#include "Transform.h"
+#include "../utils/Vector2D.h"
+#include "../utils/checkML.h"
+
+class Transform;
 
 class RigidBody : public Component {
 	friend BoxCollider;
@@ -21,6 +23,7 @@ private:
 
 	bool collide;
 	bool collisions[consts::COLLISION_LAYERS];
+
 public:
 	RigidBody(Vector2D vel = Vector2D(), bool gravity = true);
 	RigidBody(Vector2D vel, Transform* tr);
@@ -42,8 +45,6 @@ public:
 	inline void setGravity(float gr) { gravity = gr; }
 
 	virtual void applyGravity();
-
-	void reachedFloor();
 
 	inline bool onFloor() { return onFloor_; };
 
