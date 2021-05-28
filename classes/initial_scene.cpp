@@ -69,9 +69,9 @@ void InitialScene::init()
 			a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
 			auto d = a->addComponent<Dialogue>();
 			std::vector<std::string> texts = {
-				"It is getting pretty close.",
-				"I need to hurry and pick all the things I need and go back home.",
-				"And I need to do it FAST"
+				"That one was pretty close.",
+				"I need to hurry and grab what I can and go back home.",
+				"And I need to do it FAST."
 			};
 			d->createText(texts, 20);
 			d->function = [this]() {
@@ -192,7 +192,7 @@ void TutorialManager::changeCase(int newcase)
 
 		currentMessage->addComponent<Transform>(Vector2D(
 			consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT * 0.8 + 32), consts::WINDOW_WIDTH, 100);
-		currentMessage->addComponent<TextWithBackground>("I need to take all the loot I can",
+		currentMessage->addComponent<TextWithBackground>("Best to take as much as I can.",
 			sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xfffffffff), nullptr, false, 1, true);
 		break;
 	}
@@ -208,13 +208,13 @@ void TutorialManager::changeCase(int newcase)
 		a->addComponent<Transform>(Vector2D(0, 200), 300, 400);
 		auto d = a->addComponent<Dialogue>();
 		std::vector<std::string> texts = {
-			"This should be enought for today",
-			"I need to head to the exit before it's too late"
+			"This should do for today.",
+			"It's getting cold. I should leave before it's too late."
 		};
 		d->createText(texts, 20);
 
 		trigger = entity_->getMngr()->addEntity();
-		trigger->addComponent<Transform>(triggerPos + Vector2D(0, 20), 30, 50);
+		trigger->addComponent<Transform>(triggerPos + Vector2D(-150, 20), 30, 50);
 		trigger->addComponent<BoxCollider>(true);
 		trigger->addComponent<TutorialTrigger>();
 		break;
@@ -238,7 +238,7 @@ void TutorialManager::changeCase(int newcase)
 		d->movePlayerAtTheEnd = false;
 		std::vector<std::string> texts = {
 			". . .",
-			"I hear something at the end of the corridor"
+			"No, no, no... not now..."
 		};
 		d->createText(texts, 20);
 		d->function = [this]() {
@@ -254,7 +254,7 @@ void TutorialManager::changeCase(int newcase)
 			};
 
 			cameraMovement->addComponent<TutorialCameraMovement>(
-				Vector2D(backToShelter->getComponent<Transform>()->getPos()), f, 0.7f);
+				Vector2D(backToShelter->getComponent<Transform>()->getPos().getX() + 300, backToShelter->getComponent<Transform>()->getPos().getY()), f, 0.7f);
 		};
 		break;
 	}
@@ -310,8 +310,8 @@ void TutorialManager::changeCase(int newcase)
 		player->getComponent<KeyboardPlayerCtrl>()->resetSpeed();
 		d->movePlayerAtTheEnd = true;
 		std::vector<std::string> texts = {
-			"Oh my god!",
-			"I think I can take one down..."
+			"There it is...",
+			"Just one? I can probably take it on..."
 		};
 		d->createText(texts, 20);
 		d->function = [this]() {
@@ -326,7 +326,7 @@ void TutorialManager::changeCase(int newcase)
 		entity_->getMngr()->addRenderLayer<LastRenderLayer>(currentMessage);
 		currentMessage->addComponent<Transform>(Vector2D(
 			consts::WINDOW_WIDTH / 2, consts::WINDOW_HEIGHT * 0.8 + 32), consts::WINDOW_WIDTH, 100);
-		currentMessage->addComponent<TextWithBackground>("Press MBL to shoot and Q to change Weapon",
+		currentMessage->addComponent<TextWithBackground>("Click to shoot. Press Q to change Weapon",
 			sdlutils().fonts().at("OrbitronRegular"), build_sdlcolor(0xfffffffff), nullptr, false, 1, true);
 
 		static_cast<Player*>(entity_->getMngr()->getHandler<Player_hdlr>())->getWeapon()->getCurrentWeapon()->setTutEnabled(true);
@@ -357,7 +357,7 @@ void TutorialManager::checkShoot()
 }
 
 
-TutorialLoot::TutorialLoot() : Loot("Press E to open loot", 5, 5)
+TutorialLoot::TutorialLoot() : Loot("Press E to loot", 5, 5)
 {
 	isTutorial = true;
 	firstTime = true;
