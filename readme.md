@@ -144,11 +144,11 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 
 | Nombre |  Desc | Dificultad |
 |--------|-------|-------|
-| Tienda | bla bla bla bla bla | Media |
-| Supermercado | bla bla bla bla bla | Media |
-| Zona de comunicaciones | bla bla bla bla bla | Alta|
-| Estacion nuclear | bla bla bla bla bla | Alta |
-| Hospital | bla bla bla bla bla | Bajo |
+| Tienda | Establecimiento a corta distancia del refugio, una tienda abandonada infestada por acechadores y persecutores. | Media |
+| Supermercado | Zona a media distancia del refugio, con bastantes recursos útiles para sobrevivir, pero no para escapar. | Media |
+| Zona de comunicaciones | Área de peligro de la cúpula, la raza alienígena estableció un nido en esta zona. Se encuentra a una distancia considerable del refugio. | Alta |
+| Estacion nuclear | Estación abandonada que debido a la radiación nuclear atrajo a un gran número de acechadores y persecutores. Aún así, los objetos a encontrar ahí pueden ser muy útiles. | Alta |
+| Hospital | Zona a muy poca distancia del refugio, un hospital con grandes cantidades de recursos médicos pero sin muchos objetos de valor, debido a esto se encuentra poco habitado por alienígenas. | Bajo |
 
 # Equipamiento
 
@@ -166,22 +166,22 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 ## Específico
 | Nombre | Sprite | Uso |
 |--------|--------|-----------------|
-| Kit de mejora | N/A | Permite la mejora de armas a nivel 2 o 3 |
-| Restos clave de la nave | N/A | Permite reparar la nave |
-| Munición clasica| N/A | Permite disparar el arma clasica |
-| Munición laser| N/A | Permite disparar el arma laser |
-| Munición ricochet| N/A | Permite disparar el arma ricochet |
+| Kit de mejora | ![alt text](./docs/images/tile020.png) | Permite la mejora de armas a nivel 2 o 3 |
+| Restos clave de la nave | ![alt text](./docs/images/tile014.png) | Permite reparar la nave |
+| Munición clasica| ![alt text](./docs/images/tile007.png) | Permite disparar el arma clasica |
+| Munición laser| ![alt text](./docs/images/tile009.png) | Permite disparar el arma laser |
+| Munición ricochet| ![alt text](./docs/images/tile010.png) | Permite disparar el arma ricochet |
 
 ## Genérico
 | Nombre | Sprite | 
 |--------|--------|
-| Materiales de construcción | N/A |
-| Partes mecánicas | N/A | 
-| Restos electronicas | N/A |
-| Componentes médicos | N/A |
-| Agua | N/A | N/A |
-| Elementos orgánicos | N/A |
-| Comida | N/A |
+| Materiales de construcción | ![alt text](./docs/images/tile021.png) |
+| Partes mecánicas | ![alt text](./docs/images/tile013.png) | 
+| Restos electronicas | ![alt text](./docs/images/tile015.png) |
+| Componentes médicos | ![alt text](./docs/images/tile001.png) |
+| Agua | ![alt text](./docs/images/tile012.png) |
+| Elementos orgánicos | ![alt text](./docs/images/tile000.png) |
+| Comida | ![alt text](./docs/images/tile005.png) |
 
 ## Crafteos
 | Objeto | Elementos necesarios | Uso |
@@ -206,25 +206,32 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 ## Estación médica
 | Crafteo/Acción | Sprite | Coste | Tiempo (Coste) |
 |-----|-----|-----|-----|
-| Antidoto | N/A | 1 comida, 1 agua, 1 componentes medicos | 1 Accion |
-| Vendas | N/A | 1 venda, 1 agua, 1 material organico | 1 Accion |
-| Torniquete | N/A | 1 agua, 1 componentes mecanicos | 1 Accion |
-| PainKiller | N/A | 2 comida, 1 agua, 2 componentes medicos | 1 Accion |
+| Antidoto | ![alt text](./docs/images/tile003.png) | 1 comida, 1 agua, 1 componentes medicos | 1 Accion |
+| Vendas | ![alt text](./docs/images/tile002.png) | 1 venda, 1 agua, 1 material organico | 1 Accion |
+| Torniquete | ![alt text](./docs/images/tile016.png) | 1 agua, 1 componentes mecanicos | 1 Accion |
+| PainKiller | ![alt text](./docs/images/tile006.png) | 2 comida, 1 agua, 2 componentes medicos | 1 Accion |
 
 ## Taller
 | Crafteo/Acción | Sprite | Coste | Tiempo (Coste) |
 |-----|-----|-----|-----|
-| Placas metalicas | N/A | 1 componentes mecanicos, 1 partes de construcción | 1 Accion |
-| Mejora de arma | N/A |  1 componentes mecanicos, 1 resto electronico, 1 kit de mejora | 1 Accion |
-| Cargador normal | N/A |  1 componentes mecanicos, 1 componente medico, placas metalicas | 1 Accion |
-| Cargador laser | N/A | 1 cargador normal, 2 restos electronicos | 1 Accion |
-| Cargador ricochet | N/A | 1 cargador normal, 2 componentes mecanicos | 1 Accion |
+| Placas metalicas | ![alt text](./docs/images/tile022.png) | 1 componentes mecanicos, 1 partes de construcción | 1 Accion |
+| Mejora de arma | ![alt text](./docs/images/tile023.png) |  1 componentes mecanicos, 1 resto electronico, 1 kit de mejora | 1 Accion |
+| Cargador normal | ![alt text](./docs/images/tile007.png) |  1 componentes mecanicos, 1 componente medico, placas metalicas | 1 Accion |
+| Cargador laser | ![alt text](./docs/images/tile009.png) | 1 cargador normal, 2 restos electronicos | 1 Accion |
+| Cargador ricochet | ![alt text](./docs/images/tile010.png) | 1 cargador normal, 2 componentes mecanicos | 1 Accion |
+
+## Nave
+| Crafteo/Acción | Sprite | Coste | Tiempo (Coste) |
+|-----|-----|-----|-----|
+| Cabina | ![alt text](./docs/images/tile019.png) | 3 partes clave de la nave, 2 placas metálicas | 1 Accion |
+| Radar | ![alt text](./docs/images/tile0218.png) |  1 parte clave de la nave, 1 placa metálica | 1 Accion |
+| Cohetes | ![alt text](./docs/images/tile017.png) |  2 partes clave de la nave | 1 Accion |
 
 # Enemigos
 | Nombre | Sprite | Descripción |
 |--------|--------|-------|
-| Acechador | N/A | Se acerca al jugador y le aplica desangrado al contacto |
-| Persecutor | N/A | Vuela, persigue al jugador y aplica dolor al contacto |
+| Acechador | ![alt text](./docs/images/enemy1.gif) | Se acerca al jugador y le aplica desangrado al contacto |
+| Persecutor | ![alt text](./docs/images/enemy2.gif) | Vuela, persigue al jugador y aplica dolor al contacto |
 
 
 
