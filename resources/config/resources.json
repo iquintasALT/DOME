@@ -560,6 +560,11 @@
               "file": "resources/sound/closeloot.wav"
           },
           {
+              "id": "corridor",
+              "volume": 128,
+              "file": "resources/sound/corridor.mp3"
+          },
+          {
               "id": "pickup",
               "volume": 128,
               "file": "resources/sound/pickup.wav"
