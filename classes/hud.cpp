@@ -48,7 +48,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 	stateBackground->setAlpha(100);
 
 	woundDescriptions = std::vector<std::string>{
-		{"You are INTOXICATED, your are getting hungry..."},
+		{"You are INTOXICATED, you are getting hungry..."},
 		{"You suffered a CONTUSSION, now, you can't jump..."},
 		{"You feel a lot of PAIN, you can`t aim well..."},
 		{"You are FREEZING, leave now!"},
