@@ -30,6 +30,7 @@ private:
 
 	Vector2D spaceshipStPos;
 	Vector2D spaceshipStSize;
+	float spaceshipImgRot;
 
 	Manager* uselessMngr;
 	const int MAX_ACTIONS = 5;
@@ -48,7 +49,7 @@ public:
 	void initMechWs(Vector2D pos, Vector2D size) { mechPos = pos; mechSize = size; };
 	void initMedWs(Vector2D pos, Vector2D size) { medPos = pos; medSize = size; };
 	void initSleepStation(Vector2D pos, Vector2D size, Entity* interactable) { sleepStPos = pos;  sleepStSize = size; sleepInteractable = interactable; };
-	void initSpaceshipStation(Vector2D pos, Vector2D size) { spaceshipStPos = pos; spaceshipStSize = size; };;
+	void initSpaceshipStation(Vector2D pos, Vector2D size, float rot) { spaceshipStPos = pos; spaceshipStSize = size;  spaceshipImgRot = rot; };
 
 	void sleepTransition();
 
