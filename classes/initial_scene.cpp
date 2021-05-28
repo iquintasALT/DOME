@@ -395,7 +395,6 @@ void TutorialCameraMovement::update()
 	Camera::mainCamera->Lerp(destination, speed);
 
 	float magnitude = (Camera::mainCamera->getCameraCenterPoisition() - destination).magnitude();
-	std::cout << magnitude << std::endl;
 	if (magnitude <= 15.0) {
 		function();
 		entity_->setDead(true);

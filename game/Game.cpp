@@ -235,12 +235,10 @@ void Game::initLoot() {
 void Game::clearSceneLoot()
 {
 	//el pair es iteminfo/posicion en el inventario del loot
-	int i = 1;
 	for (auto a : SCENES_LOOT) { //Esto es para eliminar el loot anterior y dejarlo vacio para uno nuevo
 		for (auto b : a.second) {
 			for (auto& c : b) {
 				auto d = c.first;
-				std::cout << "eliminado itemInfo " << i++ << std::endl;
 				delete d;
 			}
 			b.clear();

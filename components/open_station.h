@@ -7,7 +7,7 @@
 #include "../classes/workshop.h"
 #include "../classes/sleep_station.h"
 
-class Open_station: public Component
+class OpenStation: public Component
 {
 private:
 	Transform* myTr;
@@ -17,7 +17,7 @@ private:
 	bool eClicked;
 
 public:
-	Open_station(Entity* st);
+	OpenStation(Entity* st);
 	void init();
 	void update();
 };

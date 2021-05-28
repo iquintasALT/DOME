@@ -43,7 +43,7 @@ class EnemyContactDamage;
 class HypothermiaComponent;
 class ClassicBullet;
 class TextWithBackground;
-class Open_station;
+class OpenStation;
 class TransitionComponent;
 class CameraMovement;
 class ScrollingBackGround;
@@ -98,7 +98,7 @@ class TutorialBackToShelter;
 	ClassicBullet, \
 	TextWithBackground,\
 	TransitionComponent, \
-	Open_station, \
+	OpenStation, \
 	CameraMovement, \
 	ScrollingBackGround, \
 	ChangeImage,\
