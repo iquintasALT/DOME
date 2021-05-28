@@ -439,6 +439,8 @@ void TutorialBackToShelter::Interact()
 
 	auto player_ = entity_->getMngr()->getHandler<Player_hdlr>();
 	player_->getComponent<CameraMovement>()->enabled = false;
+
+	player_->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 }
 
 void TutorialBackToShelter::changeScene() {
