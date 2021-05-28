@@ -2,6 +2,7 @@
 #include "../game/Game.h"
 #include "../classes/shelter_scene.h"
 #include "../classes/lose_scene.h"
+#include "../sdlutils/SoundManager.h"
 
 SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingSystem* cs, ShelterScene* shelterScene_) : Workshop(mngr_) {
 	//EL MANAGER FALSO ES PARA PODER RENDERIZAR ENTIDADES POR SEPARADO SIN QUE SE HAGA DE FORMA AUTOMATICA
@@ -42,7 +43,7 @@ SpaceshipStation::SpaceshipStation(Manager* realMngr_, Manager* mngr_, CraftingS
 	Vector2D craftButton_pos = { bg_tr->getPos().getX() + bg_tr->getW() * (3.0f / 4.0f) - 132.5f, bg_tr->getPos().getY() + bg_tr->getH() - 105.0f / 1.5f };
 
 	//BOTON DE CRAFTEO
-	setImg(craftButton, craftButton_pos, Vector2D{ 265,105 }, "craft_slot_box");
+	setImg(craftButton, craftButton_pos, Vector2D{ 265,80 }, "actionButton");
 	craftButton_tr = craftButton->getComponent<Transform>();
 
 	setWorkshopItems({ SPACESHIP_CABIN,SPACESHIP_RADAR,SPACESHIP_ROCKETS });
@@ -244,6 +245,7 @@ void SpaceshipStation::update() {
 								endGame = true;
 						}
 					}
+					else soundManager().playSFX("error");
 				}
 			}
 		}
@@ -329,7 +331,7 @@ void SpaceshipStation::rightWindowRender() {
 			offsetY += 48 + 20;
 		}
 
-		dest = { (int)(craftButton_tr->getPos().getX() + craftButton_tr->getW() / 2 - rightRenderTexts[rightRenderTexts.size() - 1]->width() / 2),
+		dest = { (int)(craftButton_tr->getPos().getX() + craftButton_tr->getW() / 1.5f - rightRenderTexts[rightRenderTexts.size() - 1]->width() / 2),
 			(int)(craftButton_tr->getPos().getY() + craftButton_tr->getH() / 2 - rightRenderTexts[rightRenderTexts.size() - 1]->height() / 2),
 			rightRenderTexts[rightRenderTexts.size() - 1]->width(),	rightRenderTexts[rightRenderTexts.size() - 1]->height() };
 
