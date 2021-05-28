@@ -96,7 +96,6 @@ void ShelterScene::sleepTransition()
 	sleepInteractable->getComponent<InteractableElement>()->setToolTipActive(false);
 	sleepImg->getComponent<Open_station>()->enabled = false;
 	static_cast<Player*>(mngr_->getHandler<Player_hdlr>())->getWeapon()->getInv()->enabled = false;
-	/*mngr_->getHandler<Player_hdlr>()->*/
 	//se desactiva el movimiento mientras se duerme
 	mngr_->getHandler<Player_hdlr>()->getComponent<KeyboardPlayerCtrl>()->enabled = false;
 	mngr_->getHandler<Player_hdlr>()->getComponent<RigidBody>()->setVel(Vector2D{ 0,0 });
