@@ -148,8 +148,8 @@ struct Player;
 struct Enemy;
 struct Bullets;
 struct Dark;
-struct Interface;
 struct Item;
+struct Interface;
 struct ULTIMATE;
 #define _RENDER_LIST_ \
 	Parallax,\
@@ -161,6 +161,6 @@ struct ULTIMATE;
 	Enemy, \
 	Bullets, \
 	Dark,\
-	Item, \
 	Interface, \
+	Item, \
 	ULTIMATE
