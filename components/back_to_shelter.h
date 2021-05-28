@@ -1,5 +1,5 @@
 #pragma once
-#include "interactableElement.h"
+#include "interactable_element.h"
 
 class GameScene;
 class BackToShelter :

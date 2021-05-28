@@ -1,14 +1,13 @@
 #include "settings_scene.h"
-#include "../components/Image.h"
-#include "../components/Transform.h"
+#include "../components/image.h"
+#include "../components/transform.h"
 #include "../game/Game.h"
 #include "../classes/check_button.h"
 #include "../sdlutils/SoundManager.h"
-#include "../components/HoldToSkip.h"
-#include "../components/Image.h"
-#include "../components/TextWithBackGround.h"
+#include "../components/hold_to_skip.h"
+#include "../components/image.h"
+#include "../components/text_with_background.h"
 #include "../game/constant_variables.h"
-#include "../components/HoldToSkip.h"
 #include <vector>
 
 void SettingsScene::init() {

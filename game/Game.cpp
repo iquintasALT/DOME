@@ -1,9 +1,9 @@
 // This file is part of the course TPV2@UCM - Samir Genaim
 
 #include "Game.h"
-#include "../components/Transform.h"
-#include "../components/Image.h"
-#include "../components/KeyboardPlayerCtrl.h"
+#include "../components/transform.h"
+#include "../components/image.h"
+#include "../components/keyboard_player_ctrl.h"
 #include "../components/player_animation.h"
 #include "../components/weapon.h"
 #include "../ecs/ecs.h"

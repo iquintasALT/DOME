@@ -4,14 +4,14 @@
 #include "../classes/pause_scene.h"
 #include "../classes/camera.h"
 #include "../sdlutils/InputHandler.h"
-#include "../components/transitionComponent.h";
-#include "../components/TextWithBackGround.h"
+#include "../components/transition_component.h";
+#include "../components/text_with_background.h"
 #include "../components/loot.h"
 #include "../classes/physiognomy.h"
 #include "../classes/countdown.h"
 #include "../components/parallax_component.h"
-#include "../components/InitialCameraZoom.h"
-#include "../components/CameraMovement.h"
+#include "../components/initial_camera_zoom.h"
+#include "../components/camera_movement.h"
 void RaidScene::init() {
 	loadMap(path_);
 

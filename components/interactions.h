@@ -2,7 +2,7 @@
 
 #include "../sdlutils/InputHandler.h"
 #include "../ecs/Component.h"
-#include "../Components/Transform.h"
+#include "../Components/transform.h"
 #include "../utils/checkML.h"
 
 class Manager;

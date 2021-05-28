@@ -1,14 +1,14 @@
 #pragma once
 
 #include "../components/animation_component.h"
-#include "../components/Image.h"
+#include "../components/image.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/checkML.h"
 #include "../sdlutils/InputHandler.h"
 #include "../game/constant_variables.h"
-#include "../components/KeyboardPlayerCtrl.h"
+#include "../components/keyboard_player_ctrl.h"
 #include "../components/rigid_body.h"
-#include "../components/particleSystem.h"
+#include "../components/particle_system.h"
 #include <iostream>
 
 class PlayerAnimation : public AnimationComponent {

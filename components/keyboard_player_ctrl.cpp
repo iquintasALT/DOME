@@ -1,4 +1,4 @@
-#include "KeyboardPlayerCtrl.h"
+#include "keyboard_player_ctrl.h"
 #include "../classes/player.h"
 #include "../game/constant_variables.h"
 #include "../components/box_collider.h"

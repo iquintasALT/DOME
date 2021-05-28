@@ -5,8 +5,8 @@
 
 #include "../utils/ray_cast.h"
 
-#include "../components/Transform.h"
-#include "../components/particleSystem.h"
+#include "../components/transform.h"
+#include "../components/particle_system.h"
 #include "../components/box_collider.h"
 
 #include "../classes/enemy.h"

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../ecs/Component.h"
-#include "../components/Image.h"
+#include "../components/image.h"
 #include "../utils/checkML.h"
 #include "../game/constant_variables.h"
 

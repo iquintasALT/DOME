@@ -2,11 +2,11 @@
 
 #include "../ecs/Component.h"
 #include "../utils/checkML.h"
-#include "../components/KeyboardPlayerCtrl.h"
+#include "../components/keyboard_player_ctrl.h"
 #include "../sdlutils/Texture.h"
 #include "../sdlutils/SDLUtils.h"
 #include <math.h>
-#include "../classes/Item.h"
+#include "../classes/item.h"
 
 class Transform;
 class Image;

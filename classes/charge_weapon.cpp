@@ -1,9 +1,9 @@
 ﻿#include "charge_weapon.h"
 #include "../utils/Vector2D.h"
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "../sdlutils/InputHandler.h"
 #include "../classes/camera.h"
-#include "../components/Image.h"
+#include "../components/image.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
@@ -14,7 +14,7 @@
 #include "../components/rigid_body.h"
 #include "../components/weapon_animation.h"
 
-#include "../classes/Item.h"
+#include "../classes/item.h"
 
 int ChargeWeapon::bulletsInMagazine = 0;
 

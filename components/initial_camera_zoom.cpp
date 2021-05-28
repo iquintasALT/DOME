@@ -1,9 +1,9 @@
-#include "InitialCameraZoom.h"
+#include "initial_camera_zoom.h"
 #include "../classes/camera.h"
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 #include "../game/constant_variables.h"
-#include "CameraMovement.h"
+#include "camera_movement.h"
 InitialCameraZoom::InitialCameraZoom(float zoom, float time, std::function<void()> f):
 	 totalTime(time), function(f)
 {

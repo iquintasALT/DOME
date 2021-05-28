@@ -7,9 +7,9 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/checkML.h"
 
-#include "../components/Image.h"
-#include "../components/Transform.h"
-#include "../components/Inventory.h"
+#include "../components/image.h"
+#include "../components/transform.h"
+#include "../components/inventory.h"
 
 #include <functional>
 

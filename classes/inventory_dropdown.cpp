@@ -1,4 +1,4 @@
-#include "inventoryDropdown.h"
+#include "inventory_dropdown.h"
 #include "../sdlutils/SDLUtils.h"
 InventoryDropdown::slot::slot(std::string text, std::function<void()> f) {
 	function = f;

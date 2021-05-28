@@ -10,9 +10,9 @@
 #include "../utils/Vector2D.h"
 #include "../utils/checkML.h"
 
-#include "../components/Image.h"
-#include "../components/Transform.h"
-#include "../components/InventoryController.h"
+#include "../components/image.h"
+#include "../components/transform.h"
+#include "../components/inventory_controller.h"
 
 #include "../classes/crafting_system.h"
 

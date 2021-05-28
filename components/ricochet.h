@@ -6,7 +6,7 @@
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
 #include "../sdlutils/SDLUtils.h"
-#include "Transform.h"
+#include "transform.h"
 #include "../utils/checkML.h"
 #include "../components/rigid_body.h"
 

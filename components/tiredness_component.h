@@ -4,8 +4,8 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/checkML.h"
 #include "../utils/Vector2D.h"
-#include "../components/Transform.h"
-#include "../components/KeyboardPlayerCtrl.h"
+#include "../components/transform.h"
+#include "../components/keyboard_player_ctrl.h"
 #include "../game/constant_variables.h"
 #include <list>
 

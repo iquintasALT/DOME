@@ -1,12 +1,12 @@
 #pragma once
 
-#include "../components/Transform.h"
-#include "../components/Image.h"
-#include "../components/KeyboardPlayerCtrl.h"
+#include "../components/transform.h"
+#include "../components/image.h"
+#include "../components/keyboard_player_ctrl.h"
 #include "../components/player_animation.h"
 #include "../components/box_collider.h"
-#include "../components/InventoryController.h"
-#include "../components/particleSystem.h"
+#include "../components/inventory_controller.h"
+#include "../components/particle_system.h"
 #include "../classes/weapon_behaviour.h"
 #include "../classes/player.h"
 #include "../classes/enemy.h"

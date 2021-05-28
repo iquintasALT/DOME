@@ -11,9 +11,6 @@
     <ClCompile Include="json\JSONValue.cpp">
       <Filter>Source Files\json</Filter>
     </ClCompile>
-    <ClCompile Include="components\KeyboardPlayerCtrl.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="ecs\Manager.cpp">
       <Filter>Source Files\ecs</Filter>
     </ClCompile>
@@ -42,15 +39,6 @@
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\shelter_scene.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="components\InventoryController.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="components\Inventory.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="classes\Item.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="classes\enemy.cpp">
@@ -86,9 +74,6 @@
     <ClCompile Include="components\enemy_detection_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\interactableElement.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="components\interactions.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
@@ -117,9 +102,6 @@
       <Filter>Source Files\classes</Filter>
     </ClCompile>
     <ClCompile Include="components\animation_component.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="components\Transform.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="components\box_collider.cpp">
@@ -155,9 +137,6 @@
     <ClCompile Include="classes\countdown.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\particleSystem.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="classes\hud.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
@@ -176,19 +155,10 @@
     <ClCompile Include="classes\sleep_station.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\TextWithBackGround.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
     <ClCompile Include="classes\pause_scene.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="classes\inventoryDropdown.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
     <ClCompile Include="components\open_station.cpp">
-      <Filter>Source Files\components</Filter>
-    </ClCompile>
-    <ClCompile Include="components\TransitionComponent.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="classes\pause_button.cpp">
@@ -196,12 +166,6 @@
     </ClCompile>
     <ClCompile Include="ecs\Entity.cpp">
       <Filter>Source Files\ecs</Filter>
-    </ClCompile>
-    <ClCompile Include="classes\SceneManager.cpp">
-      <Filter>Source Files\classes</Filter>
-    </ClCompile>
-    <ClCompile Include="components\CameraMovement.cpp">
-      <Filter>Source Files\components</Filter>
     </ClCompile>
     <ClCompile Include="classes\lose_scene.cpp">
       <Filter>Source Files\classes</Filter>
@@ -230,28 +194,64 @@
     <ClCompile Include="classes\check_button.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\CameraShake.cpp">
+    <ClCompile Include="components\enemy_contact_damage.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\Dialogue.cpp">
+    <ClCompile Include="components\hold_to_skip.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\HoldToSkip.cpp">
+    <ClCompile Include="components\initial_camera_zoom.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\InitialCameraZoom.cpp">
+    <ClCompile Include="components\interactable_element.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="classes\InitialScene.cpp">
+    <ClCompile Include="classes\initial_scene.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="components\Timer.cpp">
+    <ClCompile Include="components\inventory_controller.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
-    <ClCompile Include="classes\PlayerSaveData.cpp">
+    <ClCompile Include="components\keyboard_player_ctrl.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\text_with_background.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\transition_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\camera_shake.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\camera_movement.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\transform.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\inventory.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\dialogue.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="components\timer.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\item.cpp">
       <Filter>Source Files\classes</Filter>
     </ClCompile>
-    <ClCompile Include="components\enemy_contact_damage.cpp">
+    <ClCompile Include="classes\player_save_data.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\scene_manager.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="classes\inventory_dropdown.cpp">
+      <Filter>Source Files\classes</Filter>
+    </ClCompile>
+    <ClCompile Include="components\particle_system.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
   </ItemGroup>
@@ -271,9 +271,6 @@
     <ClInclude Include="sdlutils\Font.h">
       <Filter>Header Files\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="components\Image.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="sdlutils\InputHandler.h">
       <Filter>Header Files\sdlutils</Filter>
     </ClInclude>
@@ -282,9 +279,6 @@
     </ClInclude>
     <ClInclude Include="json\JSONValue.h">
       <Filter>Header Files\json</Filter>
-    </ClInclude>
-    <ClInclude Include="components\KeyboardPlayerCtrl.h">
-      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="sdlutils\macros.h">
       <Filter>Header Files\sdlutils</Filter>
@@ -322,9 +316,6 @@
     <ClInclude Include="sdlutils\Texture.h">
       <Filter>Header Files\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="components\Transform.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="sdlutils\VirtualTimer.h">
       <Filter>Header Files\sdlutils</Filter>
     </ClInclude>
@@ -338,15 +329,6 @@
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\shelter_scene.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="components\InventoryController.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\Inventory.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\Item.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="classes\enemy.h">
@@ -377,9 +359,6 @@
       <Filter>Header Files\utils</Filter>
     </ClInclude>
     <ClInclude Include="components\enemy_detection_component.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\interactableElement.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="components\interactions.h">
@@ -457,9 +436,6 @@
     <ClInclude Include="classes\countdown.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\particleSystem.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="classes\hud.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
@@ -481,29 +457,14 @@
     <ClInclude Include="sdlutils\SoundManager.h">
       <Filter>Header Files\sdlutils</Filter>
     </ClInclude>
-    <ClInclude Include="components\TextWithBackGround.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="classes\pause_scene.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\inventoryDropdown.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
     <ClInclude Include="components\open_station.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
-    <ClInclude Include="components\TransitionComponent.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
     <ClInclude Include="classes\pause_button.h">
       <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\SceneManager.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
-    <ClInclude Include="components\CameraMovement.h">
-      <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="classes\lose_scene.h">
       <Filter>Header Files\classes</Filter>
@@ -535,29 +496,68 @@
     <ClInclude Include="classes\game_object.h">
       <Filter>Header Files\classes</Filter>
     </ClInclude>
-    <ClInclude Include="components\CameraShake.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\Dialogue.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\HoldToSkip.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\InitialCameraZoom.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\InitialScene.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="components\Timer.h">
-      <Filter>Header Files\components</Filter>
-    </ClInclude>
-    <ClInclude Include="classes\PlayerSaveData.h">
-      <Filter>Header Files\classes</Filter>
-    </ClInclude>
     <ClInclude Include="components\enemy_contact_damage.h">
       <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\player_save_data.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\scene_manager.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\camera_movement.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\camera_shake.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\hold_to_skip.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\initial_scene.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\initial_camera_zoom.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\keyboard_player_ctrl.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\inventory_controller.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\interactable_element.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\text_with_background.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\transition_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\particle_system.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\inventory_dropdown.h">
+      <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\transform.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\inventory.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\dialogue.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\image.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\timer.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="classes\item.h">
+      <Filter>Header Files\classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
