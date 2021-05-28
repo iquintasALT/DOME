@@ -56,19 +56,7 @@ void Ricochet::createExplosion()
 	particles->burstDuration = 0.02f;
 	particles->burstRepeat = 8;
 
-	//float i = (transf->getPos() - playerTr->getPos()).magnitude();
-
 	soundManager().playSFX("explosion");
-	/*particles->gravity = 0;
-	particles->lifeTime = 100;
-	particles->rateOverTime = 0;
-	particles->speed = 0;
-	particles->burst = true;
-	particles->destroyAfterBurst = false;
-	particles->burstRepeat = 1;*/
-
-	/*Point2D arribaizq = playerTr->getPos();
-	Point2D arribader = Point2D(playerTr->getPos().getX() + playerTr->getW(), arribaizq.getY());*/
 	Point2D rayCastOrigin = Point2D(transf->getPos().getX() + (transf->getW() / 2), transf->getPos().getY() + (transf->getH() / 2));
 
 
