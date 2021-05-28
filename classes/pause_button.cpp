@@ -79,13 +79,13 @@ PauseButton::~PauseButton() {
 }
 
 
-MainMenuButton::MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName, int alpha, float time) :
+MainMenuButton::MainMenuButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, int type, std::string buttonName, int alpha, float time, float displace) :
 	PauseButton(pos, size, t, function, g, mngr_, type, buttonName, alpha), alpha(alpha)
 {
 	speed = (200 - 50) / time;
 
 	displacementSpeed = 20 / time;
-	displacement = 0;
+	displacement = displace;
 }
 
 MainMenuButton::~MainMenuButton() {
@@ -117,8 +117,7 @@ void MainMenuButton::update()
 	}
 }
 
-void MainMenuButton::render()
-{
+void MainMenuButton::render() {
 	img->setAlpha(int(alpha));
 
 	img->render();

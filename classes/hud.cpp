@@ -44,8 +44,7 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 	currentWeapon = arma->addComponent<Image>(&sdlutils().images().at("weaponHUD"), 3, 3, 0, 0, true);
 	m->addRenderLayer<Interface>(arma);
 
-	stateBackground = &sdlutils().images().at("statesBackground");
-	stateBackground->setAlpha(100);
+	createStatesBackgrounds();
 
 	woundDescriptions = std::vector<std::string>{
 		{"You are intoxicated, find something to detox"},
@@ -60,6 +59,13 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 void hud::chooseWeapon(int type, int tier)
 {
 	currentWeapon->changeFrame(tier, type);
+}
+
+void hud::createStatesBackgrounds() {
+	stateBackground = &sdlutils().images().at("statesBackground");
+	stateBackground->setAlpha(100);
+	stateBackgroundRed = &sdlutils().images().at("statesBackgroundRed");
+	stateBackgroundRed->setAlpha(100);
 }
 
 void hud::update()
@@ -116,10 +122,11 @@ void hud::render() {
 
 	//Renderizar los fondos de los estados
 	SDL_Rect destRect = { consts::STATUS_EFFECTS_SIZEX / 2, 30, consts::STATUS_EFFECTS_SIZEX, consts::STATUS_EFFECTS_SIZEY };
-	for (int i = 0; i < consts::MAX_MULTIPLE_STATES; i++) {
+	for (int i = 0; i < consts::MAX_MULTIPLE_STATES -1; i++) {
 		stateBackground->render(destRect);
 		destRect.x += destRect.w;
 	}
+	stateBackgroundRed->render(destRect);
 
 	//Renderizar los estados
 	if (states->size() > 0)

@@ -34,6 +34,7 @@ private:
 	Texture* timer;
 	Texture* marco;
 	Texture* stateBackground;
+	Texture* stateBackgroundRed;
 	Image* currentWeapon;
 
 	std::vector<std::string> woundDescriptions;
@@ -51,6 +52,8 @@ public:
 	void render() override;
 
 	void chooseWeapon(int type, int tier);
+
+	void createStatesBackgrounds();
 
 	~hud() { delete posCam; }
 };
