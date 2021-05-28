@@ -44,9 +44,12 @@ Point2D Weapon::calculateBulletPosition(const Vector2D& direction) {
 
 Vector2D Weapon::calculateShotTrajectory(Vector2D direction) {
 	// If crouching, reduce spread by 20 but no lower than 0, otherwise use regular spread
-	float bulletSpread = playerCtrl_->isCrouching() ? std::max(baseBulletSpread - 20, 0.0f): baseBulletSpread;
+	float bulletSpread = playerCtrl_->isCrouching() ? std::max(baseBulletSpread - 20, 0.0f) : baseBulletSpread;
 
-	float maxSpread = bulletSpread; 
+	if (playerCtrl_->isWalking())
+		bulletSpread += 10;
+
+	float maxSpread = bulletSpread;
 
 	// Increase spread cone if player is airborne
 	if (!playerRb_->onFloor()) maxSpread += 60;
@@ -105,7 +108,7 @@ Entity* Weapon::createBullet(const Vector2D& direction)
 void Weapon::shoot(const Vector2D& direction) {
 	timeSinceLastShot = 0;
 
-	Entity* bullet = createBullet(direction);
+	Entity* bullet = createBullet(calculateShotTrajectory(direction));
 
 	Transform* bulletTr = bullet->getComponent<Transform>();
 	RigidBody* rb = bullet->getComponent<RigidBody>();
@@ -113,7 +116,7 @@ void Weapon::shoot(const Vector2D& direction) {
 	bulletTr->setPos(calculateBulletPosition(direction));
 	bulletTr->setRot(tr_->getRot());
 
-	setBulletsInMagazine(getBulletsInMagazine()-1);
+	setBulletsInMagazine(getBulletsInMagazine() - 1);
 
 	if (getBulletsInMagazine() <= 0)
 		reload();
@@ -155,7 +158,7 @@ void Weapon::update() {
 			}
 		}
 		else if (ih().getMouseButtonState(InputHandler::LEFT) && timeSinceLastShot >= fireRate &&
-			getBulletsInMagazine() > 0 && !reloading) 
+			getBulletsInMagazine() > 0 && !reloading)
 			shoot(rotation);
 	}
 	else

@@ -78,7 +78,7 @@ void Physiognomy::removePainState() {
 		healthComponents.remove(player->getComponent<PainComponent>());
 		player->removeComponent<PainComponent>();
 		painAdded = false;
-		player->getWeapon()->addDispersion(-25);
+		player->getWeapon()->addDispersion(-65);
 	}
 }
 
