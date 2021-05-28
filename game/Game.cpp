@@ -131,8 +131,8 @@ void Game::initLoot() {
 
 	clearSceneLoot();
 
-	//to store items on shelter
-	SCENES_LOOT.emplace(SCENES::SHELTER, vector<vector<pair<ItemInfo*, Vector2D>>> { { } });
+	////to store items on shelter
+	//SCENES_LOOT.emplace(SCENES::SHELTER, vector<vector<pair<ItemInfo*, Vector2D>>> { { } });
 
 	//NUCLEAR_STATION
 	SCENES_LOOT.emplace(SCENES::NUCLEAR_STATION, vector<vector<pair<ItemInfo*, Vector2D>>> { 
