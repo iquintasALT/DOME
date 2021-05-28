@@ -3,14 +3,14 @@
 #include "../utils/Vector2D.h"
 #include "../ecs/Manager.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../components/Image.h"
-#include "../components/Transform.h"
+#include "../components/image.h"
+#include "../components/transform.h"
 #include "../ecs/Entity.h"
 #include "../classes/crafting_system.h"
 #include "../sdlutils/InputHandler.h"
 #include "../utils/Collisions.h"
 #include "../utils/checkML.h"
-#include "../components/Inventory.h"
+#include "../components/inventory.h"
 #include <vector>
 class ShelterScene;
 class SleepStation : public Entity

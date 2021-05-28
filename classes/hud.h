@@ -1,6 +1,6 @@
 #pragma once
 #include <list>
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "player.h"
 #include "countdown.h"
 #include "../utils/Vector2D.h"

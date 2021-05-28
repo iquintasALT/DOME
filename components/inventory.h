@@ -1,11 +1,11 @@
 #pragma once
 #include "../ecs/Entity.h"
 #include "../ecs/Component.h"
-#include "../classes/Item.h"
-#include "../components/Transform.h"
+#include "../classes/item.h"
+#include "../components/transform.h"
 #include "../game/constant_variables.h"
 #include "../utils/checkML.h"
-#include "../classes/inventoryDropdown.h"
+#include "../classes/inventory_dropdown.h"
 
 
 #include <list>

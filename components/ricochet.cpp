@@ -3,8 +3,8 @@
 #include <list>
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
-#include "../components/Transform.h"
-#include "../components/particleSystem.h"
+#include "../components/transform.h"
+#include "../components/particle_system.h"
 #include "../utils/ray_cast.h"
 #include "../components/box_collider.h"
 #include "../classes/enemy.h"

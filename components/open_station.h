@@ -1,7 +1,7 @@
 #pragma once
 #include "../ecs/Entity.h"
 #include "../ecs/Component.h"
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "../sdlutils/InputHandler.h"
 #include "../ecs/Manager.h"
 #include "../classes/workshop.h"

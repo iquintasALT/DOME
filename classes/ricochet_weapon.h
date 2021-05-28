@@ -1,7 +1,7 @@
 #pragma once
 #include "../components/weapon.h"
 #include "../utils/checkML.h"
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "../sdlutils/Texture.h"
 
 class RicochetWeapon: public Weapon

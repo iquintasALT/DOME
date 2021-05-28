@@ -4,15 +4,15 @@
 
 #include "../sdlutils/SDLUtils.h"
 
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "../components/enemy_animation.h"
-#include "../components/Image.h"
-#include "../components/KeyboardPlayerCtrl.h"
+#include "../components/image.h"
+#include "../components/keyboard_player_ctrl.h"
 #include "../components/enemy_behaviour_component.h"
 #include "../components/enemy_detection_component.h"
 #include "../components/enemy_attack_component.h"
 #include "../components/box_collider.h"
-#include "../components/particleSystem.h"
+#include "../components/particle_system.h"
 
 Enemy::Enemy(Manager* mngr_, Point2D pos, bool hasGravity = true) : Entity(mngr_)
 {

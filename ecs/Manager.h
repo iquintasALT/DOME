@@ -11,7 +11,7 @@
 #include "Entity.h"
 
 #include "SDL_error.h"
-#include "../classes/SceneManager.h"
+#include "../classes/scene_manager.h"
 
 class BoxCollider;
 class InteractableElement;

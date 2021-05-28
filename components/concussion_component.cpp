@@ -1,6 +1,6 @@
 #include "concussion_component.h"
 #include "../classes/player.h"
-#include "KeyboardPlayerCtrl.h"
+#include "keyboard_player_ctrl.h"
 #include "../classes/physiognomy.h"
 #include "../sdlutils/SDLUtils.h"
 

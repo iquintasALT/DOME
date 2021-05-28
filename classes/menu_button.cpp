@@ -1,7 +1,7 @@
 #include "menu_button.h"
 #include "../ecs/Manager.h"
-#include "../components/Transform.h"
-#include "../components/Image.h"
+#include "../components/transform.h"
+#include "../components/image.h"
 #include "../sdlutils/InputHandler.h"
 
 MenuButton::MenuButton(Vector2D pos, Vector2D size_, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_)

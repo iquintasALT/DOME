@@ -1,8 +1,8 @@
 #pragma once
 
 #include "../ecs/Component.h"
-#include "../components/Transform.h"
-#include "../components/Image.h"
+#include "../components/transform.h"
+#include "../components/image.h"
 #include <functional>
 class HoldToSkip: public Component
 {

@@ -1,4 +1,4 @@
-#include "CameraShake.h"
+#include "camera_shake.h"
 
 #include "../sdlutils/SDLUtils.h"
 

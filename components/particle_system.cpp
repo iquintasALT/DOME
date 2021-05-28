@@ -1,4 +1,5 @@
-#include "particleSystem.h"
+#include "particle_system.h"
+#include "camera_shake.h"
 #include <iostream>
 #include <math.h>
 

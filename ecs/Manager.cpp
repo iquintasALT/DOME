@@ -7,7 +7,7 @@
 #include <iostream>
 #include "../ecs/Entity.h"
 #include "../game/Game.h"
-#include "../components/Inventory.h"
+#include "../components/inventory.h"
 #include "../components/weapon.h"
 
 Manager::Manager(Game* game) : game(game), sceneManager(game) {

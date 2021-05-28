@@ -1,7 +1,7 @@
 #include "check_button.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SoundManager.h"
-#include "../components/Image.h"
+#include "../components/image.h"
 #include "../game/Game.h"
 
 CheckButton::CheckButton(Vector2D pos, Vector2D size, Texture* t, CallBackOnClick* function, Game* g, Manager* mngr_, bool startCondition) 

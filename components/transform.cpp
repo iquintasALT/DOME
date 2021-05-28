@@ -1,4 +1,4 @@
-#include "Transform.h"
+#include "transform.h"
 
 Transform::Transform() :
 	pos_(), width_(), height_(), rotation_(){ }

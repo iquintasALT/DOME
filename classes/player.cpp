@@ -4,14 +4,14 @@
 
 #include "../ecs/Manager.h"
 
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "../components/player_animation.h"
-#include "../components/Image.h"
-#include "../components/KeyboardPlayerCtrl.h"
-#include "../components/InventoryController.h"
+#include "../components/image.h"
+#include "../components/keyboard_player_ctrl.h"
+#include "../components/inventory_controller.h"
 #include "../components/weapon.h"
 #include "../components/interactions.h"
-#include "../components/particleSystem.h"
+#include "../components/particle_system.h"
 #include "../components/bleedout_component.h"
 #include "../components/pain_component.h"
 #include "../components/concussion_component.h"
@@ -20,7 +20,7 @@
 #include "../components/tiredness_component.h"
 #include "../components/hypothermia_component.h"
 #include "../components/box_collider.h"
-#include "../components/CameraMovement.h"
+#include "../components/camera_movement.h"
 #include "../components/enemy_contact_damage.h"
 
 #include "../classes/weapon_behaviour.h"

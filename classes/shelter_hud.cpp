@@ -6,8 +6,8 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
 #include "../classes/shelter_scene.h"
-#include "../components/Transform.h"
-#include "../components/TextWithBackGround.h"
+#include "../components/transform.h"
+#include "../components/text_with_background.h"
 
 
 ShelterHud::ShelterHud(Manager* mngr, ShelterScene* shelter_) : Entity(mngr) {
