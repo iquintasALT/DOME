@@ -45,7 +45,7 @@ void ShelterScene::init() {
 
 	spaceshipStation = new SpaceshipStation(mngr_, uselessMngr, craftSys, this);
 	Entity* spaceshipImg = mngr_->addEntity();
-	spaceshipImg->addComponent<Transform>(Vector2D{ spaceshipStPos.getX(),spaceshipStPos.getY() }, spaceshipStSize.getX(), spaceshipStSize.getY(), 0);
+	spaceshipImg->addComponent<Transform>(Vector2D{ spaceshipStPos.getX(),spaceshipStPos.getY() }, spaceshipStSize.getX(), spaceshipStSize.getY(), spaceshipImgRot);
 	spaceshipImg->addComponent<Image>(&sdlutils().images().at("rocket"), 1, 1, 0, 0);
 	spaceshipImg->addComponent<OpenStation>(spaceshipStation);
 	mngr_->addRenderLayer<Background>(spaceshipImg);
@@ -74,7 +74,7 @@ void ShelterScene::init() {
 void ShelterScene::update() {
 	mngr_->update();
 
-	if (spaceshipStation->isBuilt())mngr_->ChangeScene(new LoseScene(mngr_->getGame(), WAYSTODIE::NONE, true), SceneManager::SceneMode::ADDITIVE);
+	if (spaceshipStation->isBuilt()) mngr_->ChangeScene(new LoseScene(mngr_->getGame(), WAYSTODIE::NONE, true), SceneManager::SceneMode::ADDITIVE);
 
 	if (ih().keyDownEvent() && ih().isKeyDown(SDL_SCANCODE_ESCAPE)) {
 		mngr_->getGame()->setShouldRenderFPS(false);

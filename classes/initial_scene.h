@@ -12,7 +12,7 @@ class InitialScene : public GameScene
 public:
 	InitialScene(Game* game): GameScene(game, string("First encounter")){}
 	void init();
-
+	void createParallaxBackground(int numOfRep) override;
 	void update() override;
 };
 
@@ -28,6 +28,7 @@ private:
 	int currentCase;
 	void checkMovement();
 	void checkShoot();
+
 
 	Entity* initialCollider;
 	Entity* trigger;
