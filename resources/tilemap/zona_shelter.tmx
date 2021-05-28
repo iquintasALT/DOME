@@ -119,7 +119,6 @@
   <object id="106" name="collision" x="2080" y="416" width="64" height="32"/>
   <object id="108" name="collision" x="1704" y="544" width="440" height="32"/>
   <object id="121" name="collision" x="1152" y="224" width="32" height="192"/>
-  <object id="126" name="collision" x="936" y="504" width="16" height="200"/>
  </objectgroup>
  <objectgroup id="10" name="Ladders">
   <object id="111" name="ladder" x="1664" y="544" width="32" height="160"/>
