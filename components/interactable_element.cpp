@@ -1,10 +1,10 @@
-#include "interactableElement.h"
+#include "interactable_element.h"
 #include "../ecs/Manager.h"
-#include "TextWithBackGround.h"
+#include "text_with_background.h"
 #include <iostream>
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"
-#include "particleSystem.h"
+#include "particle_system.h"
 InteractableElement::InteractableElement(string msg) : message_(msg), tr_(nullptr) {}
 
 bool InteractableElement::CheckCollision(Point2D pos, float width, float height) {

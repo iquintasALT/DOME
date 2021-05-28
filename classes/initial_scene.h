@@ -3,7 +3,7 @@
 #include "game_scene.h"
 #include "../components/loot.h"
 #include "../ecs/Component.h"
-#include "../components/Image.h"
+#include "../components/image.h"
 #include <functional>
 
 class Loot;

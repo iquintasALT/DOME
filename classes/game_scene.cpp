@@ -1,11 +1,11 @@
 #include "game_scene.h"
 #include "../game/Game.h"
 #include "../components/back_to_shelter.h"
-#include "../components/TextWithBackGround.h"
-#include "../components/Transform.h"
-#include "../components/Image.h"
+#include "../components/text_with_background.h"
+#include "../components/transform.h"
+#include "../components/image.h"
 
-#include "../components/TransitionComponent.h"
+#include "../components/transition_component.h"
 #include "../components/parallax_component.h"
 
 #include <SDL.h>
@@ -18,7 +18,7 @@
 #include "../sdlutils/Font.h"
 #include "../sdlutils/SDLUtils.h"
 
-#include "../classes/InitialScene.h"
+#include "../classes/initial_scene.h"
 
 void GameScene::loadMap(string& const path) {
 	// cargamos el mapa .tmx del archivo indicado

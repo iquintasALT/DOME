@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../components/animation_component.h"
-#include "../components/Image.h"
+#include "../components/image.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../utils/checkML.h"
 #include "../sdlutils/InputHandler.h"

@@ -9,9 +9,9 @@
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/SoundManager.h"
 
-#include "../components/Image.h"
+#include "../components/image.h"
 #include "../components/tiredness_component.h"
-#include "../components/particleSystem.h"
+#include "../components/particle_system.h"
 
 #include "../classes/raid_scene.h"
 #include "../classes/camera.h"

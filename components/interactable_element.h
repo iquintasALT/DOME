@@ -2,7 +2,7 @@
 
 #include "../ecs/Component.h"
 #include "../ecs/Entity.h"
-#include "Transform.h"
+#include "transform.h"
 #include <string>
 #include "../utils/checkML.h"
 

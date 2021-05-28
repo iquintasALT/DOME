@@ -1,4 +1,4 @@
-#include "InventoryController.h"
+#include "inventory_controller.h"
 #include <iostream>
 #include "../classes/player.h"
 

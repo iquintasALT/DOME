@@ -1,4 +1,4 @@
-#include "HoldToSkip.h"
+#include "hold_to_skip.h"
 #include "../sdlutils/InputHandler.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../game/constant_variables.h"

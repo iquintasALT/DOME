@@ -1,4 +1,4 @@
-#include "Inventory.h"
+#include "inventory.h"
 
 #include <iostream>
 
@@ -11,7 +11,7 @@
 #include "../classes/crafting_system.h"
 #include "../classes/weapon_behaviour.h"
 
-#include "../components/TextWithBackGround.h"
+#include "../components/text_with_background.h"
 
 bool Inventory::firstInitialization = false;
 int Inventory::itemWidth = 1;

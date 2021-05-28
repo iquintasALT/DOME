@@ -1,9 +1,9 @@
 #include "ricochet_weapon.h"
 #include "../utils/Vector2D.h"
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "../sdlutils/InputHandler.h"
 #include "../classes/camera.h"
-#include "../components/Image.h"
+#include "../components/image.h"
 #include "../sdlutils/SDLUtils.h"
 #include "../sdlutils/SoundManager.h"
 #include "../ecs/Entity.h"
@@ -12,7 +12,7 @@
 #include "../components/ricochet.h"
 #include "../game/constant_variables.h"
 
-#include "../classes/Item.h"
+#include "../classes/item.h"
 
 int RicochetWeapon::bulletsInMagazine = 0;
 

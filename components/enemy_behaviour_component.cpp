@@ -1,5 +1,5 @@
 #include "enemy_behaviour_component.h"
-#include "Transform.h"
+#include "transform.h"
 #include "rigid_body.h"
 #include "enemy_attack_component.h"
 #include "../sdlutils/SDLUtils.h"

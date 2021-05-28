@@ -3,7 +3,7 @@
 #include "../ecs/Entity.h"
 #include "../ecs/Manager.h"
 
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "../sdlutils/Texture.h"
 
 #include <string>

@@ -1,5 +1,5 @@
 #include "ray_cast.h"
-#include "../components/Transform.h"
+#include "../components/transform.h"
 #include "../ecs/Entity.h"
 
 RayCast::RayCast(Point2D origin, Transform* tr): origin_(origin)

@@ -1,7 +1,7 @@
 #pragma once
-#include "interactableElement.h"
-#include "../components/InventoryController.h"
-#include "Inventory.h"
+#include "interactable_element.h"
+#include "inventory.h"
+#include "../components/inventory_controller.h"
 #include "../game/constant_variables.h"
 #include "../classes/player.h"
 #include <string>

@@ -1,4 +1,4 @@
-#include "SceneManager.h"
+#include "scene_manager.h"
 #include "../game/Game.h"
 
 void SceneManager::ChangeScene(GameScene* scene, SceneMode mode) {

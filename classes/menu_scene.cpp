@@ -6,12 +6,12 @@
 #include "../game/Game.h"
 #include "locations_scene.h"
 #include "controls_scene.h"
-#include "InitialScene.h"
+#include "initial_scene.h"
 #include "../ecs/Manager.h"
 #include "../classes/settings_scene.h"
 #include "../classes/camera.h"
 #include "../game/constant_variables.h"
-#include "../components/TransitionComponent.h"
+#include "../components/transition_component.h"
 #include <string>
 #include <iostream>
 

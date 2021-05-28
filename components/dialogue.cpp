@@ -1,6 +1,6 @@
 #include "Dialogue.h"
-#include "TextWithBackGround.h"
-#include "Image.h"
+#include "text_with_background.h"
+#include "image.h"
 
 #include "../sdlutils/InputHandler.h"
 #include "../ecs/Entity.h"
@@ -8,7 +8,7 @@
 #include "../game/constant_variables.h"
 #include "../sdlutils/SDLUtils.h"
 
-#include "KeyboardPlayerCtrl.h"
+#include "keyboard_player_ctrl.h"
 #include "Timer.h"
 
 Dialogue::Dialogue(int height) :

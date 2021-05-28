@@ -1,9 +1,9 @@
-#include "CameraMovement.h"
+#include "camera_movement.h"
 #include "../components/rigid_body.h"
 #include "../game/constant_variables.h"
 #include "../sdlutils/SDLUtils.h"
-#include "../components/Transform.h"
-#include "../components/Image.h"
+#include "../components/transform.h"
+#include "../components/image.h"
 #include "../ecs/Manager.h"
 
 CameraMovement::CameraMovement(float _vel) {
