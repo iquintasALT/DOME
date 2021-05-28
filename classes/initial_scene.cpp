@@ -29,6 +29,8 @@ void InitialScene::init()
 	std::string path = std::string("./resources/tilemap/initialScene.tmx");
 	loadMap(path);
 
+	createParallaxBackground(5);
+
 	auto tutorialentity = mngr_->addEntity();
 	auto tutorialManager = tutorialentity->addComponent<TutorialManager>();
 
@@ -94,6 +96,16 @@ void InitialScene::init()
 	loot->addComponent<Transform>(playerTr->getPos() + Vector2D(250, 20), 64, 64);
 	loot->addComponent<Image>(&sdlutils().images().at("wardrobe"), 7, 2, 5, 0);
 	loot->addComponent<TutorialLoot>();
+}
+
+void InitialScene::createParallaxBackground(int numOfRep) {
+	createParallaxLayer(0, &sdlutils().images().at("sky"), numOfRep);
+	createParallaxLayer(0.2, &sdlutils().images().at("houses4"), numOfRep);
+	createParallaxLayer(0.3, &sdlutils().images().at("houses3"), numOfRep);
+	createParallaxLayer(0.4, &sdlutils().images().at("houses2"), numOfRep);
+	createParallaxLayer(0.5, &sdlutils().images().at("houses1"), numOfRep);
+	createParallaxLayer(0.6, &sdlutils().images().at("wall"), numOfRep);
+	createParallaxLayer(0.7, &sdlutils().images().at("road"), numOfRep);
 }
 
 void InitialScene::update()

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="93" height="28" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="126">
+<map version="1.5" tiledversion="1.5.0" orientation="orthogonal" renderorder="right-down" width="93" height="28" tilewidth="32" tileheight="32" infinite="0" nextlayerid="13" nextobjectid="127">
  <editorsettings>
   <export target="template.json" format="json"/>
  </editorsettings>
@@ -119,6 +119,7 @@
   <object id="106" name="collision" x="2080" y="416" width="64" height="32"/>
   <object id="108" name="collision" x="1704" y="544" width="440" height="32"/>
   <object id="121" name="collision" x="1152" y="224" width="32" height="192"/>
+  <object id="126" name="collision" x="936" y="504" width="16" height="200"/>
  </objectgroup>
  <objectgroup id="10" name="Ladders">
   <object id="111" name="ladder" x="1664" y="544" width="32" height="160"/>
@@ -131,7 +132,7 @@
   <object id="116" name="sleepStation" x="1944" y="640" width="112" height="64"/>
   <object id="117" name="workStation" x="1504" y="288" width="128" height="128"/>
   <object id="118" name="medicalStation" x="1776" y="352" width="96" height="64"/>
-  <object id="120" name="spaceShip" x="896" y="536" width="136" height="169"/>
+  <object id="120" name="spaceShip" x="848" y="464" width="184" height="241" rotation="346.018"/>
   <object id="124" name="loot" x="2064" y="632" width="72" height="72"/>
  </objectgroup>
 </map>
