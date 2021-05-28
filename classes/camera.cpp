@@ -128,7 +128,7 @@ Point2D Camera::getCameraPosition()
 	return pos;
 }
 
-Point2D Camera::getCameraCenterPoisition()
+Point2D Camera::getCameraCenterPosition()
 {
 	return pos + Vector2D(winWidth / 2, winHeight / 2) - Vector2D(winWidth - width, winHeight - height) / 2;
 }
