@@ -288,12 +288,12 @@ Este menú aparecera si el jugador pulsa esc durante la partida, aquí el jugado
 # Inventario
 Menú que se le abrirá al jugador cuando pulse el tabulador durante el juego, ya sea en refugio o saqueo. Aquí el jugador podrá ver el los objetos que tiene en el inventario.
 
-![raidmenu](./docs/images/CapturaInventario.png)
+![raidmenu](./docs/images/CapturaInventario.PNG)
 
 # Interfaz de espacios de almacenamiento
 Esta es una interfaz que aparece al lado del inventario del jugador cuando interactúa con una caja de almacenamiento. Podrá arrastrar objetos del lugar de almacenamiento a su inventario y viceversa.
 
-![openchest](./docs/images/take_objects.jpg)
+![raidmenu](./docs/images/CapturaCofre.PNG)
 
 # Interfaz de juego
 Durante los saqueos, la interfaz del jugador tendrá:
