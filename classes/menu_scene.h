@@ -1,9 +1,14 @@
 #pragma once
 #include "game_scene.h"
-#include "menu_button.h"
-#include "../utils/checkML.h"
-#include "../game/Game.h"
+
 #include <vector>
+
+#include "../game/Game.h"
+
+#include "../utils/checkML.h"
+
+#include "menu_button.h"
+
 using namespace std;
 
 class Manager;
@@ -21,8 +26,6 @@ public:
 	static void credits(Manager* mngr);
 	static void exit(Manager* mngr);
 };
-
-
 
 class ScrollingBackGround : public Component {
 public:
