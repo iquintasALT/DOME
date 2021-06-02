@@ -273,7 +273,7 @@ void Workshop::update() {
 	if (renderFlag) {
 		Vector2D mousePos(ih().getMousePos().first, ih().getMousePos().second);
 
-		//Cerramos el menu si pulsamos la E
+		//Cerramos el menu si pulsamos la E.
 		if (ih().isKeyDown(SDL_SCANCODE_E)) {
 			renderFlag = false;
 			renderRightWindow = false;
