@@ -45,8 +45,8 @@ namespace consts {
 	const float REDUCE_WEAPON_DAMAGE = 0.2f;		//En %
 	const int CONTUSION_INCREASE_TIME = 5000;		//Cantidad de tiempo que PainComponent añade a ContusionComponent
 	const int INTOXICATION_INCREASE_TIME = 5000;	//Cantidad de tiempo que PainComponent añade a IntoxicationComponent
-	const int CONTUSION_TIME = 60000;				//Tiempo que dura la contusion
-	const int INTOXICATION_TIME = 120000;			//Tiempo que dura la intoxicacion
+	const int CONTUSION_TIME = 5000;				//Tiempo que dura la contusion
+	const int INTOXICATION_TIME = 10000;			//Tiempo que dura la intoxicacion
 	const int TIME_PER_NEWSUMOFTIME = 8000;			//Tiempo que tarda PainComponent en añadir tiempo a Contusion e Intoxication
 	const int TIME_TO_DECREASE_HUNGER = 10000;
 	const float HUNGER_TO_DECREASE = 0.15f;			//En %
