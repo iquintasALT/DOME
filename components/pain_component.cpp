@@ -26,7 +26,7 @@ void PainComponent::increaseTime() {
 	while (i != phys->getHealthComponents()->end())
 	{
 		if (dynamic_cast<ConcussionComponent*>(*i) != nullptr) {
-			static_cast<ConcussionComponent*>(*i)->increaseTime(consts::CONTUSION_INCREASE_TIME);
+			static_cast<ConcussionComponent*>(*i)->increaseTime(consts::CONCUSSION_INCREASE_TIME);
 		}
 		else if (dynamic_cast<IntoxicationComponent*>(*i) != nullptr) {
 			static_cast<IntoxicationComponent*>(*i)->increaseTime(consts::INTOXICATION_INCREASE_TIME);

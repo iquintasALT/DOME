@@ -9,12 +9,17 @@ void HungerComponent::eat(float hunger_) {
 }
 
 void HungerComponent::updateLevel() {
-	if (hunger >= consts::NONEHUNGER_LEVEL) hungerLev = hungerLevel::NONE;
-	else if (hunger >= consts::HUNGER_LEVEL) hungerLev = hungerLevel::HUNGRY;
+	if (hunger >= consts::HUNGER_THRESHOLD) hungerLev = hungerLevel::NONE;
+	else if (hunger >= consts::STARVATION_THRESHOLD) hungerLev = hungerLevel::HUNGRY;
 	else hungerLev = hungerLevel::STARVING;
 }
-int HungerComponent::calculateBleedingSpeed() {
-	return (hunger * consts::MAX_NEWDAMAGE_TIME);
+float HungerComponent::bleedoutSpeed() {
+	// Returns between 1 (min hunger) and 2 (max hunger)
+	if (hunger < consts::STARVATION_THRESHOLD)
+		return 2.0;
+	if (hunger < consts::HUNGER_THRESHOLD)
+		return 1.5;
+	return 1.0;
 }
 void HungerComponent::setHunger(float hunger_) {
 	hunger = hunger_;
