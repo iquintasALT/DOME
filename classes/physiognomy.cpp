@@ -11,7 +11,7 @@
 #include <iostream>
 
 void Physiognomy::checkAlive(WAYSTODIE way) {
-	std::cout << "Checking death. Current wounds: " << getNumStates() << ".  Current bloodloss level: " << (bloodlossCount != nullptr ? *bloodlossCount : 0) << "\n";
+	//std::cout << "Checking death. Current wounds: " << getNumStates() << ".  Current bloodloss level: " << (bloodlossCount != nullptr ? *bloodlossCount : 0) << "\n";
 	if (getNumStates() < consts::MAX_MULTIPLE_STATES) playerAlive = true;
 	else die(way);
 }
@@ -29,12 +29,12 @@ void Physiognomy::increaseBloodloss()
 {
 	checkAlive(WAYSTODIE::BLEED);
 	if (!player->hasComponent<BloodlossComponent>())
-	{
 		bloodlossCount = (player->addComponent<BloodlossComponent>())->getCount();
-		healthComponents.insert(player->getComponent<BloodlossComponent>());
-	}
 	else
 		++(*bloodlossCount);
+
+		// Regardless of whether a new component was created, a new pointer to it is added to the set
+	healthComponents.insert(player->getComponent<BloodlossComponent>());
 }
 
 void Physiognomy::addPainState() {
@@ -84,17 +84,20 @@ void Physiognomy::removeBloodloss() {
 	if (!player->hasComponent<BloodlossComponent>())
 		return;
 	--(*bloodlossCount);
+
+	for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
+	{
+		if (dynamic_cast<BloodlossComponent*>(*i))
+		{
+			healthComponents.erase(i);
+			break;
+		}
+	}
+	
 	if (*bloodlossCount <= 0)
 	{
 		bloodlossCount = nullptr;
-		for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
-		{
-			if (dynamic_cast<BloodlossComponent*>(*i))
-			{
-				healthComponents.erase(i);
-				break;
-			}
-		}
+
 		player->removeComponent<BloodlossComponent>();
 	}
 }
@@ -181,7 +184,7 @@ void Physiognomy::removeAllStates() {
 
 int Physiognomy::getNumStates()
 {
-	return healthComponents.size() + (bloodlossCount != nullptr ? *bloodlossCount - 1 : 0);
+	return healthComponents.size();
 }
 
 bool Physiognomy::isAlive() const {
