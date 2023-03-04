@@ -1,11 +1,14 @@
 #pragma once
-#include <list>
+#include <set>
 #include "../utils/checkML.h"
 #include "player.h"
 #include "../game/constant_variables.h"
 #include "../classes/lose_scene.h"
+#include "../components/player_health_component.h"
+#include "../components/wound_comparator.h"
 class PlayerHealthComponent;
 class BleedoutComponent;
+class BloodlossComponent;
 class PainComponent;
 class ContussionComponent;
 class IntoxicationComponent;
@@ -23,29 +26,31 @@ class LoseScene;
 class Physiognomy {
 private:
 	Player* player;
-	std::list<PlayerHealthComponent*> healthComponents;
+	int* bloodlossCount = nullptr;
+	std::multiset<PlayerHealthComponent*, WoundComparator> healthComponents;
 	HypothermiaComponent* hypothermia;
 	bool playerAlive;
 
-	int numBleedStates;
 	bool painAdded;
 	bool intoxicationAdded;
 	bool concussionAdded;
 
 	void checkAlive(WAYSTODIE way = WAYSTODIE::NONE);
 public:
-	inline Physiognomy(Player* player_) : player(player_), healthComponents(list<PlayerHealthComponent*>()), hypothermia(nullptr) {
-		numBleedStates = 0; painAdded = false; intoxicationAdded = false; concussionAdded = false; playerAlive = true; }
+	inline Physiognomy(Player* player_) : player(player_), healthComponents(multiset<PlayerHealthComponent*, WoundComparator>()), hypothermia(nullptr) {
+		painAdded = false; intoxicationAdded = false; concussionAdded = false; playerAlive = true; }
 
 	//Añadir estados al sistema
-	void addBleedState();
+	void addBleedout();
+	void increaseBloodloss();
 	void addPainState();
 	void addIntoxicationState();
 	void addConcussionState();
 	void addHypothermiaState();
 
 	//Borrar estados del sistema
-	void removeBleedState();
+	void removeBleedout();
+	void removeBloodloss();
 	void removePainState();
 	void removeIntoxicationState();
 	void removeConcussionState();
@@ -53,11 +58,9 @@ public:
 
 	//Borra todos los estados (cuando se abandona la raid)
 	void removeAllStates();
-	int getNumStates() { return healthComponents.size(); }
-	int getNumBleedStates() { return numBleedStates; }
-	int getNumUniqueStates() { return healthComponents.size() - numBleedStates + (numBleedStates > 0); };
+	int getNumStates();
 
 	void die(WAYSTODIE way = WAYSTODIE::NONE);
 	inline bool isAlive() const;
-	inline std::list<PlayerHealthComponent*>* getHealthComponents() { return &healthComponents; }
+	inline std::multiset<PlayerHealthComponent*, WoundComparator>* getHealthComponents() { return &healthComponents; }
 };

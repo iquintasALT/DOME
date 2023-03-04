@@ -7,6 +7,7 @@
 #include "../ecs/Manager.h"
 #include "../components/player_health_component.h"
 #include "../components/bleedout_component.h"
+#include "../components/bloodloss_component.h"
 #include "../components/text_with_background.h"
 #include "../components/image.h"
 #include "../ecs/Manager.h"
@@ -104,21 +105,7 @@ void hud::render() {
 	dest = build_sdlrect(aux, 155, 95);
 	marco->render(dest);
 
-	//Renderizar las balas cargador
-	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(magSize), sdlutils().fonts().at("Orbitron12"),
-		build_sdlcolor(0xffffffff));
-
-	nbullets->render(100, consts::WINDOW_HEIGHT - 86);
-	delete nbullets;
-	nbullets = nullptr;
-
-	//Numero peque�ito
-	nbullets = new Texture(sdlutils().renderer(), to_string(totalBullet), sdlutils().fonts().at("OrbitronRegular"),
-		build_sdlcolor(0xffffffff));
-
-	nbullets->render(103, consts::WINDOW_HEIGHT - 56);
-	delete nbullets;
-	nbullets = nullptr;
+	drawAmmo();
 
 	//Renderizar los fondos de los estados
 	SDL_Rect destRect = { consts::STATUS_EFFECTS_SIZEX / 2, 30, consts::STATUS_EFFECTS_SIZEX, consts::STATUS_EFFECTS_SIZEY };
@@ -152,11 +139,28 @@ void hud::render() {
 		/// Empezamos desde el final de la lista, sabiendo que los desangrados estar�n al final
 		/// Adem�s, si hay alg�n desangrado, el primero que dibujaremos ser� el incompleto
 
-		list<PlayerHealthComponent*>::iterator i = states->end();
-		--i;
+		auto i = states->end();
+		int n = player->getPhysiognomy()->getNumStates(); // representación numérica del icono actual
+		if (n > 0)
+			do
+			{ 
+				--i;
+				if (dynamic_cast<BloodlossComponent*>(*i))
+				{
+					for (int b = 0; b < *((static_cast<BloodlossComponent*>(*i))->getCount()); b++)
+					{
+						drawStatus(n, (*i)->getFrameIndex(), mouse);
+						--n;
+					}
+				}
+				else
+				{
+					drawStatus(n, (*i)->getFrameIndex(), mouse);
+					--n;
+				}
+			} while (i != states->begin());
 
-		int n = player->getPhysiognomy()->getNumStates() - 1; // el indice de recorrido como entero
-
+		/*
 		// Dibujamos el desangrado incompleto, si hay
 		if (player->getPhysiognomy()->getNumBleedStates() > 0)
 		{
@@ -179,18 +183,19 @@ void hud::render() {
 				drawStatus(n, (*i)->getFrameIndex(), mouse);
 				if (i != states->begin()) --i;
 				--n;
-			} while (n >= 0);
+			} while (n >= 0);*/
 	}
 }
 
 void hud::drawStatus(int pos, int frameIndex, Vector2D mouse) {
 	// Si no hay estados que dibujar, no deberiamos estar en este metodo
 	assert(states->size() > 0);
+	pos -= 1;
 
 	Vector2D aux = Vector2D(consts::STATUS_EFFECTS_SIZEX/2 + pos * consts::STATUS_EFFECTS_SIZEX, 30);
 	SDL_Rect dest = build_sdlrect(aux, consts::STATUS_EFFECTS_SIZEX, consts::STATUS_EFFECTS_SIZEY);
 	SDL_Rect src = build_sdlrect((frameIndex % 4) * 32, (frameIndex / 4) * 32, 32, 32);
-	states->front()->getTexture()->render(src, dest);
+	(*states->begin())->getTexture()->render(src, dest);
 
 	if (mouse.getX() > dest.x && mouse.getX() < dest.x + dest.w &&
 		mouse.getY() > dest.y && mouse.getY() < dest.y + dest.h) {
@@ -207,4 +212,23 @@ void hud::drawStatus(int pos, int frameIndex, Vector2D mouse) {
 		tooltipTextures[n].text->render();
 		
 	}
+}
+
+void hud::drawAmmo()
+{
+	//Renderizar las balas cargador
+	nbullets = new Texture(sdlutils().renderer(), to_string(bullets) + " / " + to_string(magSize), sdlutils().fonts().at("Orbitron12"),
+		build_sdlcolor(0xffffffff));
+
+	nbullets->render(100, consts::WINDOW_HEIGHT - 86);
+	delete nbullets;
+	nbullets = nullptr;
+
+	//Numero peque�ito
+	nbullets = new Texture(sdlutils().renderer(), to_string(totalBullet), sdlutils().fonts().at("OrbitronRegular"),
+		build_sdlcolor(0xffffffff));
+
+	nbullets->render(103, consts::WINDOW_HEIGHT - 56);
+	delete nbullets;
+	nbullets = nullptr;
 }
