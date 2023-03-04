@@ -119,7 +119,7 @@ void hud::render() {
 	if (states->size() > 0)
 	{
 		if (states->size() != numberOfWounds) {
-			numberOfWounds = states->size();
+			numberOfWounds = player->getPhysiognomy()->getNumStates();
 			for (int i = 0; i < tooltipTextures.size(); i++) {
 				tooltipTextures[i].t->getEntity()->setDead(true);
 			}
@@ -145,19 +145,9 @@ void hud::render() {
 			do
 			{ 
 				--i;
-				if (dynamic_cast<BloodlossComponent*>(*i))
-				{
-					for (int b = 0; b < *((static_cast<BloodlossComponent*>(*i))->getCount()); b++)
-					{
-						drawStatus(n, (*i)->getFrameIndex(), mouse);
-						--n;
-					}
-				}
-				else
-				{
-					drawStatus(n, (*i)->getFrameIndex(), mouse);
-					--n;
-				}
+				
+				drawStatus(n, (*i)->getFrameIndex(), mouse);
+				--n;
 			} while (i != states->begin());
 
 		/*
