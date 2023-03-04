@@ -254,6 +254,9 @@
     <ClCompile Include="components\particle_system.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="components\bloodloss_component.cpp">
+      <Filter>Source Files\components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -558,6 +561,12 @@
     </ClInclude>
     <ClInclude Include="classes\item.h">
       <Filter>Header Files\classes</Filter>
+    </ClInclude>
+    <ClInclude Include="components\bloodloss_component.h">
+      <Filter>Header Files\components</Filter>
+    </ClInclude>
+    <ClInclude Include="components\wound_comparator.h">
+      <Filter>Header Files\components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

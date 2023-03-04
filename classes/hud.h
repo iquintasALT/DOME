@@ -1,5 +1,7 @@
 #pragma once
-#include <list>
+#include <set>
+#include "../components/player_health_component.h"
+#include "../components/wound_comparator.h"
 #include "../components/transform.h"
 #include "player.h"
 #include "countdown.h"
@@ -26,7 +28,7 @@ private:
 	int bullets = 0;
 	int magSize = 0;
 	int totalBullet = 0;
-	std::list<PlayerHealthComponent*>* states;
+	std::multiset<PlayerHealthComponent*, WoundComparator>* states;
 
 	Texture* nbullets;
 	Texture* ncharger;
@@ -42,8 +44,10 @@ private:
 	Transform* tooltipTr;
 	TextWithBackground* tooltipText;
 	int numberOfWounds;
-	void drawStatus(int pos, int frameIndex, Vector2D mouse);
 	std::vector<_tooltip_> tooltipTextures;
+
+	void drawStatus(int pos, int frameIndex, Vector2D mouse);
+	void drawAmmo();
 public:
 	hud(Manager* m, Transform* initialPos, Player* p, Countdown* time);
 

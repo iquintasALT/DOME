@@ -15,5 +15,11 @@ public:
 	virtual ~PlayerHealthComponent() {};
 	inline int getFrameIndex() { return frameIndex; };
 	Texture* getTexture() { return t; }
-};
+	
+	short int renderPriority = 0;	// Higher priority -> further left
 
+	bool operator<(const PlayerHealthComponent& other)const
+	{
+		return renderPriority < other.renderPriority;
+	}
+};

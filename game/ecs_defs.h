@@ -35,6 +35,7 @@ class ChargeWeapon;
 class Charge;
 class BoxCollider;
 class BleedoutComponent;
+class BloodlossComponent;
 class PainComponent;
 class ConcussionComponent;
 class IntoxicationComponent;
@@ -89,6 +90,7 @@ class TutorialBackToShelter;
 	Charge, \
 	BoxCollider,\
 	BleedoutComponent,\
+	BloodlossComponent,\
 	PainComponent,\
 	ConcussionComponent,\
 	IntoxicationComponent,\

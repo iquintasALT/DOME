@@ -39,7 +39,7 @@ ItemInfo* ItemInfo::antidote()
 ItemInfo* ItemInfo::bandage()
 {
 	auto f = [](Entity* player) {
-		static_cast<Player*>(player)->getPhysiognomy()->removeBleedState();
+		static_cast<Player*>(player)->getPhysiognomy()->removeBleedout();
 		soundManager().playSFX("heal");
 		return true; // CAMBIA
 	};

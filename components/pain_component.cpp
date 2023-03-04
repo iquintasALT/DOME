@@ -4,8 +4,9 @@
 #include "intoxication_component.h"
 #include "../ecs/Manager.h"
 #include "../components/weapon.h"
+#include "../components/wound_comparator.h"
 #include "../classes/weapon_behaviour.h"
-#include <list>
+#include <set>
 
 void PainComponent::init() {
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
@@ -22,7 +23,7 @@ PainComponent::~PainComponent() {
 
 void PainComponent::increaseTime() {
 
-	list<PlayerHealthComponent*>::iterator i = phys->getHealthComponents()->begin();
+	auto i = phys->getHealthComponents()->begin();
 	while (i != phys->getHealthComponents()->end())
 	{
 		if (dynamic_cast<ConcussionComponent*>(*i) != nullptr) {

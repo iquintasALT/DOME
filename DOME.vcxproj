@@ -55,6 +55,7 @@
     <ClInclude Include="components\animation_component.h" />
     <ClInclude Include="components\back_to_shelter.h" />
     <ClInclude Include="components\bleedout_component.h" />
+    <ClInclude Include="components\bloodloss_component.h" />
     <ClInclude Include="components\camera_movement.h" />
     <ClInclude Include="components\camera_shake.h" />
     <ClInclude Include="components\charge.h" />
@@ -95,6 +96,7 @@
     <ClInclude Include="components\transition_component.h" />
     <ClInclude Include="components\weapon.h" />
     <ClInclude Include="components\weapon_animation.h" />
+    <ClInclude Include="components\wound_comparator.h" />
     <ClInclude Include="ecs\Component.h" />
     <ClInclude Include="ecs\ecs.h" />
     <ClInclude Include="ecs\Entity.h" />
@@ -157,6 +159,7 @@
     <ClCompile Include="components\animation_component.cpp" />
     <ClCompile Include="components\back_to_shelter.cpp" />
     <ClCompile Include="components\bleedout_component.cpp" />
+    <ClCompile Include="components\bloodloss_component.cpp" />
     <ClCompile Include="components\box_collider.cpp" />
     <ClCompile Include="components\camera_movement.cpp" />
     <ClCompile Include="components\camera_shake.cpp" />

@@ -28,7 +28,7 @@ void EnemyContactDamage::OnCollision(Entity* other)
 		if (other->hasGroup<Enemy_grp>()) {
 			//aplicar efecto x metiendo el componente necesario
 			if (other->hasGroup<DefaultEnemy_grp>()) {
-				physiognomy->addBleedState();
+				physiognomy->addBleedout();
 				other->getComponent<EnemyAnimation>()->setAttack(true);
 				entity_->getComponent<PlayerAnimation>()->setDmg(true);
 				soundManager().playSFX("hurt");

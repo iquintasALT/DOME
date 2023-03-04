@@ -11,6 +11,7 @@ void BleedoutComponent::init() {
 	phys = static_cast<Player*>(entity_)->getPhysiognomy();
 
 	frameIndex = 6;
+	renderPriority = -2;
 	percentage = 0.0;
 
 	hunger = entity_->getComponent<HungerComponent>();
@@ -23,7 +24,7 @@ void BleedoutComponent::update() {
 	int fillAmount = hunger->bleedoutSpeed() / 8;
 	if (fillAmount > 1.0) {
 		accumulatedTime = sdlutils().currRealTime();
-		phys->addBleedState();
+		phys->addBleedout();
 	}*/
 
 	/*
@@ -32,7 +33,7 @@ void BleedoutComponent::update() {
 	{
 		accumulatedTime = sdlutils().currRealTime();
 		if (++frameIndex >= 13){
-			phys->addBleedState();
+			phys->addBleedout();
 			frameIndex = 6;
 		}
 	}*/
@@ -44,7 +45,10 @@ void BleedoutComponent::update() {
 
 		frameIndex = 6 + (7.0 * percentage / 100.0);
 		if (percentage >= 100.0)
-			phys->addBleedState();
+		{
+			phys->increaseBloodloss();
+			percentage = 0.0;
+		}
 	}
 }
 

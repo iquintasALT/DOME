@@ -1,5 +1,6 @@
 #include "physiognomy.h"
 #include "../components/bleedout_component.h"
+#include "../components/bloodloss_component.h"
 #include "../components/pain_component.h"
 #include "../components/concussion_component.h"
 #include "../components/player_health_component.h"
@@ -7,27 +8,40 @@
 #include "../components/hypothermia_component.h"
 #include "../classes/lose_scene.h"
 #include "../game/Game.h"
+#include <iostream>
 
 void Physiognomy::checkAlive(WAYSTODIE way) {
-	if (healthComponents.size() < consts::MAX_MULTIPLE_STATES) playerAlive = true;
+	std::cout << "Checking death. Current wounds: " << getNumStates() << ".  Current bloodloss level: " << (bloodlossCount != nullptr ? *bloodlossCount : 0) << "\n";
+	if (getNumStates() < consts::MAX_MULTIPLE_STATES) playerAlive = true;
 	else die(way);
 }
 
-void Physiognomy::addBleedState() {
+void Physiognomy::addBleedout() {
 	checkAlive(WAYSTODIE::BLEED);
-	if (healthComponents.size() < consts::MAX_MULTIPLE_STATES) {
-		if (numBleedStates == 0) player->addComponent<BleedoutComponent>();
-		healthComponents.push_back(player->getComponent<BleedoutComponent>());
-
-		numBleedStates++;
+	if (!player->hasComponent<BleedoutComponent>()) 
+	{
+		player->addComponent<BleedoutComponent>();
+		healthComponents.insert(player->getComponent<BleedoutComponent>());
 	}
+}
+
+void Physiognomy::increaseBloodloss()
+{
+	checkAlive(WAYSTODIE::BLEED);
+	if (!player->hasComponent<BloodlossComponent>())
+	{
+		bloodlossCount = (player->addComponent<BloodlossComponent>())->getCount();
+		healthComponents.insert(player->getComponent<BloodlossComponent>());
+	}
+	else
+		++(*bloodlossCount);
 }
 
 void Physiognomy::addPainState() {
 	checkAlive(WAYSTODIE::PAIN);
 	if (!painAdded) {
 		auto c = player->addComponent<PainComponent>();
-		healthComponents.push_front(c);
+		healthComponents.insert(c);
 		painAdded = true;
 	}
 	else player->getComponent<PainComponent>()->reduceWeaponDamage();
@@ -38,7 +52,7 @@ void Physiognomy::addIntoxicationState() {
 	checkAlive(WAYSTODIE::INTOXICATION);
 	if (!intoxicationAdded) {
 		auto c = player->addComponent<IntoxicationComponent>();
-		healthComponents.push_front(c);
+		healthComponents.insert(c);
 		intoxicationAdded = true;
 	}
 	else player->getComponent<IntoxicationComponent>()->increaseTime();
@@ -48,34 +62,55 @@ void Physiognomy::addConcussionState() {
 	checkAlive(WAYSTODIE::CONTUSION);
 	if (!concussionAdded) {
 		auto c = player->addComponent<ConcussionComponent>();
-		healthComponents.push_front(c);
+		healthComponents.insert(c);
 		concussionAdded = true;
 	}
 	else player->getComponent<ConcussionComponent>()->increaseTime();
 }
 
-void Physiognomy::removeBleedState() {
-
-	switch (numBleedStates)
+void Physiognomy::removeBleedout() {
+	for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
 	{
-	case 0:
-		break;
-	case 1:
-		player->removeComponent<BleedoutComponent>();
-		numBleedStates--;
-		if (numBleedStates < 0) numBleedStates = 0;
-	default:
-		healthComponents.pop_back();
-		numBleedStates--;
-		if (numBleedStates < 0) numBleedStates = 0;
-		break;
+		if (dynamic_cast<BleedoutComponent*>(*i))
+		{
+			healthComponents.erase(i);
+			break;
+		}
+	}
+	player->removeComponent<BleedoutComponent>();
+}
+
+void Physiognomy::removeBloodloss() {
+	if (!player->hasComponent<BloodlossComponent>())
+		return;
+	--(*bloodlossCount);
+	if (*bloodlossCount <= 0)
+	{
+		bloodlossCount = nullptr;
+		for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
+		{
+			if (dynamic_cast<BloodlossComponent*>(*i))
+			{
+				healthComponents.erase(i);
+				break;
+			}
+		}
+		player->removeComponent<BloodlossComponent>();
 	}
 }
 
 void Physiognomy::removePainState() {
 	if (player->hasComponent<PainComponent>())
 	{
-		healthComponents.remove(player->getComponent<PainComponent>());
+		//healthComponents.remove(player->getComponent<PainComponent>());
+		for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
+		{
+			if (dynamic_cast<PainComponent*>(*i))
+			{
+				healthComponents.erase(i);
+				break;
+			}
+		}
 		player->removeComponent<PainComponent>();
 		painAdded = false;
 		player->getWeapon()->addDispersion(-35);
@@ -85,7 +120,15 @@ void Physiognomy::removePainState() {
 void Physiognomy::removeIntoxicationState() {
 	if (player->hasComponent<IntoxicationComponent>())
 	{
-		healthComponents.remove(player->getComponent<IntoxicationComponent>());
+		//healthComponents.remove(player->getComponent<IntoxicationComponent>());
+		for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
+		{
+			if (dynamic_cast<IntoxicationComponent*>(*i))
+			{
+				healthComponents.erase(i);
+				break;
+			}
+		}
 		player->removeComponent<IntoxicationComponent>();
 		intoxicationAdded = false;
 	}
@@ -94,7 +137,15 @@ void Physiognomy::removeIntoxicationState() {
 void Physiognomy::removeConcussionState() {
 	if (player->hasComponent<ConcussionComponent>())
 	{
-		healthComponents.remove(player->getComponent<ConcussionComponent>());
+		//healthComponents.remove(player->getComponent<ConcussionComponent>());
+		for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
+		{
+			if (dynamic_cast<ConcussionComponent*>(*i))
+			{
+				healthComponents.erase(i);
+				break;
+			}
+		}
 		player->removeComponent<ConcussionComponent>();
 		concussionAdded = false;
 	}
@@ -106,18 +157,31 @@ void Physiognomy::addHypothermiaState() {
 
 void Physiognomy::removeHypothermiaState() {
 	if (player->hasComponent<HypothermiaComponent>()) {
-		player->removeComponent<HypothermiaComponent>();
+		//player->removeComponent<HypothermiaComponent>();
+		for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
+		{
+			if (dynamic_cast<HypothermiaComponent*>(*i))
+			{
+				healthComponents.erase(i);
+				break;
+			}
+		}
 		hypothermia = nullptr;
 	}
 }
 
 void Physiognomy::removeAllStates() {
-	for (int i = 0; i < numBleedStates; i++)
-		removeBleedState();
+	removeBleedout();
+
 	removeConcussionState();
 	removeIntoxicationState();
 	removePainState();
 	removeHypothermiaState();
+}
+
+int Physiognomy::getNumStates()
+{
+	return healthComponents.size() + (bloodlossCount != nullptr ? *bloodlossCount - 1 : 0);
 }
 
 bool Physiognomy::isAlive() const {
@@ -129,4 +193,3 @@ void Physiognomy::die(WAYSTODIE way) {
 	removeAllStates();
 	player->getMngr()->ChangeScene(new LoseScene(player->getMngr()->getGame(), way), SceneManager::SceneMode::ADDITIVE);
 }
-

@@ -16,7 +16,7 @@ class BleedoutComponent : public PlayerHealthComponent
 {
 private:
 	int accumulatedTime;
-	float percentage;	// Indicates how full the bleed meter is. At 100%, becomes Bloodloss and creates a new Bleedout
+	float percentage = 0.0;	// Indicates how full the bleed meter is. At 100%, becomes Bloodloss and creates a new Bleedout
 	Physiognomy* phys;
 	HungerComponent* hunger;
 public:
