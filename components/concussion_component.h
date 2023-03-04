@@ -25,7 +25,7 @@ public:
 	void init() override;
 	void update() override;
 
-	void increaseTime(int time_ = consts::CONTUSION_INCREASE_TIME);
+	void increaseTime(int time_ = consts::CONCUSSION_INCREASE_TIME);
 	void cancelJump();
 	void activateJump();
 };

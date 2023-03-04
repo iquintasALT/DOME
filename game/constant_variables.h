@@ -35,22 +35,22 @@ namespace consts {
 	// PHYSIOGNOMY
 	// Hunger y Tiredness
 	const int MAX_MULTIPLE_STATES = 8;		 //Numero de estados de daño que el jugador puede tener
-	const float NONEHUNGER_LEVEL = 0.75f;	 //Por encima del 75% estará en NONE y por debajo en HUNGER
-	const float HUNGER_LEVEL = 0.35f;		 //Por encima del 35% estará en HUNGER y por debajo en STARVING
+	const float HUNGER_THRESHOLD = 0.75f;	 //Por encima del 75% estará en NONE y por debajo en HUNGER
+	const float STARVATION_THRESHOLD = 0.35f;	//Por encima del 35% estará en HUNGER y por debajo en STARVING
 	const int MAX_SLEEP_HOURS = 8;			 //Horas máximas de sueño en una noche
 	const float NONETIRED_LEVEL = 0.75f;	 //Por encima del 75% estará en NONE y por debajo en TIRED
 	const float TIRED_LEVEL = 0.35f;		 //Por encima del 35% estará en TIRED y por debajo en EXHASUTED
 
 	// Pain, Bleed, Concussion, Intoxication y Hypothermia
+	const float BLOODLOSS_PER_SECOND_BASE = 15.0f;	//En %. Valor base, el tiempo se reduce con valores altos de hambre
 	const float REDUCE_WEAPON_DAMAGE = 0.2f;		//En %
-	const int CONTUSION_INCREASE_TIME = 5000;		//Cantidad de tiempo que PainComponent añade a ContusionComponent
+	const int CONCUSSION_INCREASE_TIME = 5000;		//Cantidad de tiempo que PainComponent añade a ConcussionComponent
 	const int INTOXICATION_INCREASE_TIME = 5000;	//Cantidad de tiempo que PainComponent añade a IntoxicationComponent
-	const int CONTUSION_TIME = 5000;				//Tiempo que dura la contusion
+	const int CONCUSSION_TIME = 5000;				//Tiempo que dura la contusion
 	const int INTOXICATION_TIME = 10000;			//Tiempo que dura la intoxicacion
-	const int TIME_PER_NEWSUMOFTIME = 8000;			//Tiempo que tarda PainComponent en añadir tiempo a Contusion e Intoxication
+	const int TIME_PER_NEWSUMOFTIME = 8000;			//Tiempo que tarda PainComponent en añadir tiempo a Concussion e Intoxication
 	const int TIME_TO_DECREASE_HUNGER = 10000;
 	const float HUNGER_TO_DECREASE = 0.15f;			//En %
-	const int MAX_NEWDAMAGE_TIME = 6000;
 	const int HYPOTHERMIA_TIME = 30000;
 
 	//UI

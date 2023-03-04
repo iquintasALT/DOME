@@ -21,7 +21,7 @@ void ConcussionComponent::init() {
 }
 
 void ConcussionComponent::update() {
-	if (sdlutils().currRealTime() > time + consts::CONTUSION_TIME) {
+	if (sdlutils().currRealTime() > time + consts::CONCUSSION_TIME) {
 		phys->removeConcussionState();
 	}
 }
