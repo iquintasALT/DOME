@@ -6,7 +6,7 @@
 [PIVOTAL](https://www.pivotaltracker.com/n/projects/2489079)\
 [DIAGRAMA UML - MENUS, ESCENA Y REFUGIO](https://lucid.app/lucidchart/invitations/accept/aae27cba-d4f9-486b-8103-88b7f02d1c62)\
 [DIAGRAMA UML - MECÁNICAS DE SAQUEO](https://lucid.app/lucidchart/invitations/accept/355e2dc6-1896-49d8-9c1d-601517544eb8)\
-[DIAGRAMA UML - COMPONENTES](https://lucid.app/lucidchart/invitations/accept/4e6c891a-a004-42ba-a569-ac58c1c28972)\
+[DIAGRAMA UML - COMPONENTES](https://lucid.app/lucidchart/invitations/accept/4e6c891a-a004-42ba-a569-ac58c1c28972)
 
 ## INDICE
 
@@ -89,8 +89,8 @@ Se puede cambiar de arma pulsando el botón Q, ciclando por las tres armas en or
 - En el combate, el jugador puede moverse por el mapa libremente en el horizontal, además de poder realizar un salto a poca altura. Mientras conrtola su movimiento con el teclado, podrá usar el ratón para operar su arma.
 - Los mapas tendrán verticalidad con plataformas, pero el jugador no podrá navegar el mapa con solo su salto; necesitará usar las escaleras del mapa. Para subir o bajar una escalera, usará las teclas direccionales arriba y abajo mientras el personaje esté sobre la escalera. Mientras está en una escalera, el jugador no puede atacar.
 - Las armas no son perfectamente certeras. Siempre que el jugador apunte, habrá una desviación aleatoria en la trayectoria de su puntería. Esta desviación se reduce mucho si el jugador se agacha, pero no se puede mover hasta volver a levantarse. 
-- El daño no se refleja en puntos de golpe, sino en efectos de estado o heridas. Cada ataque de cada enemigo puede inflingir ciertos tipos de herida. Si en algún momento el jugador sufre de 6 heridas diferentes, muere. Cada herida (ejs.: contusión, hemorragia, dolor, intoxicación) aportará una debilidad al jugador, parecidos a los efectos negativos del frío, el hambre, la sed y el cansancio.
-- Hay daño de caída: una caída de altura suficiente causa una contusión.
+- El daño no se refleja en puntos de golpe, sino en efectos de estado o heridas. Cada ataque de cada enemigo puede inflingir ciertos tipos de herida. Si en algún momento el jugador sufre de 6 heridas diferentes, muere. Cada herida (ejs.: esguince, hemorragia, dolor, intoxicación) aportará una debilidad al jugador, parecidos a los efectos negativos del frío, el hambre, la sed y el cansancio.
+- Hay daño de caída: una caída de altura suficiente causa un esguince.
 
 # Supervivencia <a name="supe"></a>
 
@@ -115,17 +115,26 @@ La mayoría de estados simplemente se quedarán ahí hasta que le apliques la me
 Si en algún momento el jugador tiene 6 heridas a la vez, morirá, obligándole a reiniciar su progreso.
 Cuando el jugador vuelve al refugio, se le curan todas las heridas.
 
-Heridas:
+## Heridas
 
-Desangrado: Esta herida se muestra como un icono de una gota de sangre que se rellena progresivamente. Cuando se llena por completo, la herida pasa a ser una hemorragia, y se añade al jugador una nueva herida de desangrado. No hay más efectos negativos, pero aún así el desangrado es la herida más peligrosa al jugador, pues puede causar que se muera por acumulación de heridas.
+**Desangrado:** Esta herida se muestra como un icono de una gota de sangre que se rellena progresivamente. Cuando se llena por completo, la herida pasa a ser una hemorragia, y se añade al jugador una nueva herida de desangrado. No hay más efectos negativos, pero aún así el desangrado es la herida más peligrosa al jugador, pues puede causar que se muera por acumulación de heridas. Se puede curar usando una **Venda**.
 
-Contusión: Esta herida tiene un icono de un hueso roto, y bloquea el salto del jugador hasta que desaparezca. Esta herida se cura automáticamente con el paso del tiempo.
+**Hemorragia:** Esta herida no tiene efectos adicionales. Solo se puede curar volviendo a la base.
 
-Intoxicación: Esta herida, mostrado con un icono de radiación sobre fondo verde, tiene una corta duración antes de desaparecer, durante la cual impide al jugador usar ninguna cura.
+**Esguince**: Esta herida tiene un icono de un hueso roto, y bloquea el salto del jugador hasta que desaparezca. Esta herida se cura automáticamente con el paso del tiempo, o con una **Férula**.
 
-Dolor: Esta herida tiene de icono una figura tumbada con rayos saliendo de la espalda. No tiene ningún efecto adicional por sí mismo, sino que afecta a otras heridas, incrementando el tiempo que tardan las heridas de contusión e intoxicación en desaparecer.
+**Intoxicación**: Esta herida, mostrado con un icono de radiación sobre fondo verde, tiene una corta duración antes de desaparecer, durante la cual impide al jugador usar ninguna cura salvo el **Antídoto**, que cura esta herida.
 
-Hipotermia. Este efecto de estado no es una herida formal, por lo que no cuenta para el número de heridas que se pueden sufrir. No es provocado por ningún enemigo, aparece cuando acaba el tiempo de raid, y va avanzando a medida que el jugador permanece en la raid. Es una forma de avisar al jugador de que va a anochecer y necesita volver al refugio. Si se deja avanzar hasta su límite, el jugador muere independiente del número de heridas que tenga.
+**Dolor**: Esta herida tiene de icono una figura tumbada con rayos saliendo de la espalda. Reduce drásticamente la precisión de las armas del jugador. Se puede curar con un **Analgésico**, o con el paso del tiempo.
+
+**Hipotermia**. Este efecto de estado no es una herida formal, por lo que no cuenta para el número de heridas que se pueden sufrir. No es provocado por ningún enemigo, aparece cuando acaba el tiempo de raid, y va avanzando a medida que el jugador permanece en la raid. Es una forma de avisar al jugador de que va a anochecer y necesita volver al refugio. Si se deja avanzar hasta su límite, el jugador muere independiente del número de heridas que tenga.
+
+## Hambre y cansancio
+Dentro del refugio, el jugador puede comer y descansar. Si no come o no descansa lo suficiente, acumula niveles de **Hambre** o **Cansancio** respectivamente. El nivel actual de hambre y cansancio solo se puede ver en el refugio.
+
+**Hambre:** Este efecto incrementa la velocidad a la cual se rellenan las heirdas de **Desangrado**. Al máximo nivel de hambre, el jugador se desangra al doble del ritmo ordinario.
+
+**Cansancio:** Este efecto decrementa progresivamente la precisión de las armas del jugador.
 
 ![raidmenu](./docs/images/statesicons.png)
 
