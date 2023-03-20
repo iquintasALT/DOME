@@ -203,7 +203,6 @@ Es un reto de supervivencia donde el jugador tendrá que gestionar las necesidad
 | Vendas | 2 componentes médicos + 1 agua + 1 elementos orgánicos | Curan sangrado |
 | Antídoto | 1 comida + 2 agua + 2 componenetes médicos | Cura infecciones |
 | Férula | 2 partes mecánicas + 1 agua | Cura contusiones |
-| Painkiller | 2 comida + 1 agua + 2 componenetes médicos | Cura Dolor |
 | Comida | 1 agua + 1 elementos orgánicos | Para comer |
 | Cohetes de la nave | 2 restos clave de la nave + x materiales de construcción + restos electrónicos + x placas de metal | Primera parte de la nave |
 | Radar de la nave | 1 restos clave de la nave + 1 restos electrónicos | Segunda nave parte de la nave |
