@@ -5,7 +5,8 @@
 
 #include "./utils/checkML.h"
 #include "./game/Game.h"
-
+#include <Test.h>
+#include <iostream>
 
 void start() {
 	Game g(8000);
@@ -17,7 +18,8 @@ void start() {
 int main(int, char**) {
 	//memory leaks
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-
+	std::cout << "The number thirteen equals " << return_thirteen() << ".\n";
+	//xcopy /y /d "..\..\GlassHouse-Telemetry\GlassHouse\build\$(Configuration)\GlassHouse.dll" "$(OutDir)"
 	try {
 		start();
 	} catch (const std::string &e) { // catch exceptions thrown as strings
