@@ -5,7 +5,7 @@
 
 #include "./utils/checkML.h"
 #include "./game/Game.h"
-#include <Test.h>
+#include <BaseClass.h>
 #include <iostream>
 
 void start() {
@@ -15,11 +15,20 @@ void start() {
 	g.start();
 }
 
+class SubClass : BaseClass
+{
+public:
+	SubClass() : BaseClass()
+	{
+		std::cout << "Subclass constructor.\n";
+	}
+};
+
 int main(int, char**) {
 	//memory leaks
+
+	SubClass instance = SubClass();
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-	std::cout << "The number thirteen equals " << return_thirteen() << ".\n";
-	//xcopy /y /d "..\..\GlassHouse-Telemetry\GlassHouse\build\$(Configuration)\GlassHouse.dll" "$(OutDir)"
 	try {
 		start();
 	} catch (const std::string &e) { // catch exceptions thrown as strings
