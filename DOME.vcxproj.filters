@@ -257,6 +257,7 @@
     <ClCompile Include="components\bloodloss_component.cpp">
       <Filter>Source Files\components</Filter>
     </ClCompile>
+    <ClCompile Include="DomeEvents.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="utils\Collisions.h">
@@ -568,6 +569,7 @@
     <ClInclude Include="components\wound_comparator.h">
       <Filter>Header Files\components</Filter>
     </ClInclude>
+    <ClInclude Include="DomeEvents.h" />
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Header Files">

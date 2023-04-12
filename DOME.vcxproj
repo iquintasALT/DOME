@@ -97,6 +97,7 @@
     <ClInclude Include="components\weapon.h" />
     <ClInclude Include="components\weapon_animation.h" />
     <ClInclude Include="components\wound_comparator.h" />
+    <ClInclude Include="DomeEvents.h" />
     <ClInclude Include="ecs\Component.h" />
     <ClInclude Include="ecs\ecs.h" />
     <ClInclude Include="ecs\Entity.h" />
@@ -198,6 +199,7 @@
     <ClCompile Include="components\transition_component.cpp" />
     <ClCompile Include="components\weapon.cpp" />
     <ClCompile Include="components\weapon_animation.cpp" />
+    <ClCompile Include="DomeEvents.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
     <ClCompile Include="game\Game.cpp" />
@@ -313,7 +315,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\GlassHouse-Telemetry\GlassHouse\src;.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2-2.0.14\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\tmxlite-1.2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GlassHouse-Telemetry\GlassHouse\Utils\json-develop\include;.\GlassHouse-Telemetry\GlassHouse\src;.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2-2.0.14\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\tmxlite-1.2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
