@@ -1,8 +1,28 @@
 #pragma once
 #include <Events.h>
-//#include "classes/item.h"
 
 enum Wound { BLEED, PAIN, INTOXICATION, CONTUSION };
+enum class Treatment { BANDAGE, ANTIDOTE, SPLINT, PAINKILLER };
+
+class SessionStart : public Events
+{
+public:
+
+	SessionStart() : Events(SESSION_START)
+	{
+		std::cout << "SESSION START\n";
+	}
+};
+
+class SessionEnd : public Events
+{
+public:
+
+	SessionEnd() : Events(SESSION_END)
+	{
+		std::cout << "SESSION END\n";
+	}
+};
 
 class WoundStart : public Events
 {
@@ -11,7 +31,7 @@ protected:
 
 public:
 
-	WoundStart(float timeEvent, Wound w) : Events(timeEvent, WOUND_START)
+	WoundStart(Wound w) : Events(WOUND_START)
 	{
 		wound = w;
 		std::cout << "PLAYER GOT " + std::to_string(wound) + "\n";
@@ -27,7 +47,7 @@ protected:
 
 public:
 
-	WoundEnd(float timeEvent, Wound w) : Events(timeEvent, WOUND_END)
+	WoundEnd(Wound w) : Events(WOUND_END)
 	{
 		wound = w;
 		std::cout << "PLAYER GOT RID OF " + std::to_string(wound) + "\n";
@@ -40,33 +60,34 @@ class Shoot : public Events
 {
 public:
 
-	Shoot(float timeEvent) : Events(timeEvent, SHOOT)
+	Shoot() : Events(SHOOT)
 	{
 		std::cout << "SHOOT\n";
 	}
 };
 
-//class Heal : public Events
-//{
-//protected:
-//	ITEMS treatment;
-//
-//public:
-//
-//	Heal(float timeEvent, ITEMS t) : Events(timeEvent, HEAL)
-//	{
-//		treatment = t;
-//		std::cout << "PLAYER USED " + std::to_string(treatment) + "\n";
-//	}
-//
-//	std::string serializeToJSON() const;
-//};
+class Heal : public Events
+{
+protected:
+	Treatment treatment;
+	//list<Wound> wounds;
+
+public:
+
+	Heal(Treatment t) : Events(HEAL)
+	{
+		treatment = t;
+		//std::cout << "PLAYER USED " + std::to_string(treatment) + "\n";
+	}
+
+	std::string serializeToJSON() const;
+};
 
 class Jump : public Events
 {
 public:
 
-	Jump(float timeEvent) : Events(timeEvent, JUMP)
+	Jump() : Events(JUMP)
 	{
 		std::cout << "JUMP\n";
 	}
@@ -79,7 +100,7 @@ protected:
 
 public:
 
-	ReturnHome(float timeEvent, float rTime) : Events(timeEvent, RETURN_HOME)
+	ReturnHome(float rTime) : Events(RETURN_HOME)
 	{
 		raidTime = rTime;
 		std::cout << "BACK TO SHELTER\n";
