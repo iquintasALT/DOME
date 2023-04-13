@@ -46,21 +46,21 @@ public:
 	}
 };
 
-class Heal : public Events
-{
-protected:
-	ITEMS treatment;
-
-public:
-
-	Heal(float timeEvent, ITEMS t) : Events(timeEvent, HEAL)
-	{
-		treatment = t;
-		std::cout << "PLAYER USED " + std::to_string(treatment) + "\n";
-	}
-
-	std::string serializeToJSON() const;
-};
+//class Heal : public Events
+//{
+//protected:
+//	ITEMS treatment;
+//
+//public:
+//
+//	Heal(float timeEvent, ITEMS t) : Events(timeEvent, HEAL)
+//	{
+//		treatment = t;
+//		std::cout << "PLAYER USED " + std::to_string(treatment) + "\n";
+//	}
+//
+//	std::string serializeToJSON() const;
+//};
 
 class Jump : public Events
 {
