@@ -4,48 +4,39 @@
 
 std::string WoundStart::serializeToJSON() const
 {
+    std::string intro = Events::serializeToJSON();
+
     nlohmann::json data = {
-            {"Evento", std::to_string(gameEvent)},
-            {"Tiempo", time},
             {"Herida", wound}
     };
 
-    std::string information = data.dump();
+    std::string information = intro + data.dump();
 
     return information;
 }
-
-Events* WoundStart::clone() const
-{
-    return new WoundStart(time, wound);
-}
-
 
 std::string WoundEnd::serializeToJSON() const
 {
+    std::string intro = Events::serializeToJSON();
+
     nlohmann::json data = {
-            {"Evento", std::to_string(gameEvent)},
-            {"Tiempo", time},
             {"Herida", wound}
     };
 
-    std::string information = data.dump();
+    std::string information = intro + data.dump();
 
     return information;
 }
 
-Events* WoundEnd::clone() const
+std::string Heal::serializeToJSON() const
 {
-    return new WoundEnd(time, wound);
-}
+    std::string intro = Events::serializeToJSON();
 
+    nlohmann::json data = {
+            {"Tratamiento", treatment},
+    };
 
-std::string Shoot::serializeToJSON() const
-{
-    return Events::serializeToJSON();
-}
+    std::string information = intro + data.dump();
 
-Events* Shoot::clone() const
-{
-    return new Shoot(time);
+    return information;
 }

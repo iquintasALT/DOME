@@ -2,8 +2,9 @@
 #include <Events.h>
 
 enum Wound { BLEED, PAIN, INTOXICATION, CONTUSION };
+enum Treatment { ANTIDOTE, BANDAGES, SPLINT, PAINKILLER };
 
-class WoundStart : Events
+class WoundStart : public Events
 {
 protected:
 	Wound wound;
@@ -16,14 +17,14 @@ public:
 		std::cout << "PLAYER GOT " + std::to_string(wound) + "\n";
 	}
 
-	virtual Events* clone() const;
 	virtual std::string serializeToJSON() const;
 };
 
-class WoundEnd : Events
+class WoundEnd : public Events
 {
 protected:
 	Wound wound;
+
 public:
 
 	WoundEnd(float timeEvent, Wound w) : Events(timeEvent, WOUND_END)
@@ -32,11 +33,10 @@ public:
 		std::cout << "PLAYER GOT RID OF " + std::to_string(wound) + "\n";
 	}
 
-	virtual Events* clone() const;
 	virtual std::string serializeToJSON() const;
 };
 
-class Shoot : Events
+class Shoot : public Events
 {
 public:
 
@@ -44,8 +44,40 @@ public:
 	{
 		std::cout << "SHOOT\n";
 	}
+};
 
-	virtual Events* clone() const;
+class Heal : public Events
+{
+protected:
+	Treatment treatment;
+
+public:
+
+	Heal(float timeEvent, Treatment t) : Events(timeEvent, HEAL)
+	{
+		treatment = t;
+		std::cout << "PLAYER USED " + std::to_string(treatment) + "\n";
+	}
+
 	virtual std::string serializeToJSON() const;
 };
 
+class Jump : public Events
+{
+public:
+
+	Jump(float timeEvent) : Events(timeEvent, JUMP)
+	{
+		std::cout << "JUMP\n";
+	}
+};
+
+class ReturnHome : public Events
+{
+public:
+
+	ReturnHome(float timeEvent) : Events(timeEvent, RETURN_HOME)
+	{
+		std::cout << "BACK TO SHELTER\n";
+	}
+};
