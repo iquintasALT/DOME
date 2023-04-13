@@ -1,55 +1,41 @@
 #include "DomeEvents.h"
 
-#include <nlohmann/json.hpp>
-
-std::string WoundStart::serializeToJSON() const
+nlohmann::json WoundStart::serializeToJSON() const
 {
-    std::string intro = Events::serializeToJSON();
+    nlohmann::json data = Events::serializeToJSON();
 
-    nlohmann::json data = {
-            {"Herida", wound}
-    };
+    data.push_back({ "Wound", wound });
 
-    std::string information = intro + data.dump();
-
-    return information;
+    return data;
 }
 
-std::string WoundEnd::serializeToJSON() const
+nlohmann::json WoundEnd::serializeToJSON() const
 {
-    std::string intro = Events::serializeToJSON();
+    nlohmann::json data = Events::serializeToJSON();
 
-    nlohmann::json data = {
-            {"Herida", wound}
-    };
+    data.push_back({"Wound", wound});
 
-    std::string information = intro + data.dump();
-
-    return information;
+    return data;
 }
 
-std::string Heal::serializeToJSON() const
+nlohmann::json Heal::serializeToJSON() const
 {
-    std::string intro = Events::serializeToJSON();
+    nlohmann::json data = Events::serializeToJSON();
 
-    nlohmann::json data = {
-            {"Tratamiento", treatment}
-    };
+    data.push_back({
+            {"Treatment", treatment}
+    });
 
-    std::string information = intro + data.dump();
-
-    return information;
+    return data;
 }
 
-std::string ReturnHome::serializeToJSON() const
+nlohmann::json ReturnHome::serializeToJSON() const
 {
-    std::string intro = Events::serializeToJSON();
+    nlohmann::json data = Events::serializeToJSON();
 
-    nlohmann::json data = {
-            {"TiempoRaid", raidTime}
-    };
+    data.push_back({
+            {"RaidTime", raidTime}
+    });
 
-    std::string information = intro + data.dump();
-
-    return information;
+    return data;
 }

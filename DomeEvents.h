@@ -37,7 +37,7 @@ public:
 		std::cout << "PLAYER GOT " + std::to_string(wound) + "\n";
 	}
 
-	std::string serializeToJSON() const;
+	nlohmann::json serializeToJSON() const;
 };
 
 class WoundEnd : public Events
@@ -53,7 +53,7 @@ public:
 		std::cout << "PLAYER GOT RID OF " + std::to_string(wound) + "\n";
 	}
 
-	std::string serializeToJSON() const;
+	nlohmann::json serializeToJSON() const;
 };
 
 class Shoot : public Events
@@ -80,7 +80,7 @@ public:
 		//std::cout << "PLAYER USED " + std::to_string(treatment) + "\n";
 	}
 
-	std::string serializeToJSON() const;
+	nlohmann::json serializeToJSON() const;
 };
 
 class Jump : public Events
@@ -106,5 +106,5 @@ public:
 		std::cout << "BACK TO SHELTER\n";
 	}
 
-	std::string serializeToJSON() const;
+	nlohmann::json serializeToJSON() const;
 };
