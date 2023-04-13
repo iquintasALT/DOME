@@ -1,8 +1,8 @@
 #pragma once
 #include <Events.h>
+//#include "classes/item.h"
 
 enum Wound { BLEED, PAIN, INTOXICATION, CONTUSION };
-enum Treatment { ANTIDOTE, BANDAGES, SPLINT, PAINKILLER };
 
 class WoundStart : public Events
 {
@@ -17,7 +17,7 @@ public:
 		std::cout << "PLAYER GOT " + std::to_string(wound) + "\n";
 	}
 
-	virtual std::string serializeToJSON() const;
+	std::string serializeToJSON() const;
 };
 
 class WoundEnd : public Events
@@ -33,7 +33,7 @@ public:
 		std::cout << "PLAYER GOT RID OF " + std::to_string(wound) + "\n";
 	}
 
-	virtual std::string serializeToJSON() const;
+	std::string serializeToJSON() const;
 };
 
 class Shoot : public Events
@@ -49,17 +49,17 @@ public:
 class Heal : public Events
 {
 protected:
-	Treatment treatment;
+	ITEMS treatment;
 
 public:
 
-	Heal(float timeEvent, Treatment t) : Events(timeEvent, HEAL)
+	Heal(float timeEvent, ITEMS t) : Events(timeEvent, HEAL)
 	{
 		treatment = t;
 		std::cout << "PLAYER USED " + std::to_string(treatment) + "\n";
 	}
 
-	virtual std::string serializeToJSON() const;
+	std::string serializeToJSON() const;
 };
 
 class Jump : public Events
@@ -74,10 +74,16 @@ public:
 
 class ReturnHome : public Events
 {
+protected:
+	float raidTime;
+
 public:
 
-	ReturnHome(float timeEvent) : Events(timeEvent, RETURN_HOME)
+	ReturnHome(float timeEvent, float rTime) : Events(timeEvent, RETURN_HOME)
 	{
+		raidTime = rTime;
 		std::cout << "BACK TO SHELTER\n";
 	}
+
+	std::string serializeToJSON() const;
 };
