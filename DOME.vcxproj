@@ -335,7 +335,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>.\GlassHouse-Telemetry\GlassHouse\src;.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2-2.0.14\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\tmxlite-1.2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GlassHouse-Telemetry\GlassHouse\Utils\json-develop\include;.\GlassHouse-Telemetry\GlassHouse\src;.\libraries\SDL2_image-2.0.1\include;.\libraries\SDL2_mixer-2.0.2\include;.\libraries\SDL2-2.0.14\include;.\libraries\SDL2_ttf-2.0.15\include;.\libraries\tmxlite-1.2.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
