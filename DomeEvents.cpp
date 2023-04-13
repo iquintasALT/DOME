@@ -28,12 +28,25 @@ std::string WoundEnd::serializeToJSON() const
     return information;
 }
 
-std::string Heal::serializeToJSON() const
+//std::string Heal::serializeToJSON() const
+//{
+//    std::string intro = Events::serializeToJSON();
+//
+//    nlohmann::json data = {
+//            {"Tratamiento", treatment},
+//    };
+//
+//    std::string information = intro + data.dump();
+//
+//    return information;
+//}
+
+std::string ReturnHome::serializeToJSON() const
 {
     std::string intro = Events::serializeToJSON();
 
     nlohmann::json data = {
-            {"Tratamiento", treatment},
+            {"TiempoRaid", raidTime},
     };
 
     std::string information = intro + data.dump();
