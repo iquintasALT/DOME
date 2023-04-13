@@ -4,26 +4,6 @@
 enum Wound { BLEED, PAIN, INTOXICATION, CONTUSION };
 enum class Treatment { BANDAGE, ANTIDOTE, SPLINT, PAINKILLER };
 
-class SessionStart : public Events
-{
-public:
-
-	SessionStart() : Events(SESSION_START)
-	{
-		std::cout << "SESSION START\n";
-	}
-};
-
-class SessionEnd : public Events
-{
-public:
-
-	SessionEnd() : Events(SESSION_END)
-	{
-		std::cout << "SESSION END\n";
-	}
-};
-
 class WoundStart : public Events
 {
 protected:
