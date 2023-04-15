@@ -1,8 +1,8 @@
 #pragma once
 #include <Events.h>
 
-enum Wound { BLEED, PAIN, INTOXICATION, CONTUSION };
-enum class Treatment { BANDAGE, ANTIDOTE, SPLINT, PAINKILLER };
+enum Wound { BLEED, PAIN, INTOXICATION, CONCUSSION };
+enum Treatment { T_BANDAGE, T_ANTIDOTE, T_SPLINT, T_PAINKILLER };
 
 class WoundStart : public Events
 {
@@ -50,14 +50,15 @@ class Heal : public Events
 {
 protected:
 	Treatment treatment;
-	//list<Wound> wounds;
+	std::list<Wound> wounds;
 
 public:
 
-	Heal(Treatment t) : Events(HEAL)
+	Heal(Treatment t, std::list<Wound> w) : Events(HEAL)
 	{
 		treatment = t;
-		//std::cout << "PLAYER USED " + std::to_string(treatment) + "\n";
+		wounds = w;
+		std::cout << "PLAYER USED " + std::to_string(treatment) + "\n";
 	}
 
 	nlohmann::json serializeToJSON() const;
@@ -77,13 +78,47 @@ class ReturnHome : public Events
 {
 protected:
 	float raidTime;
+	std::list<Wound> wounds;
 
 public:
 
-	ReturnHome(float rTime) : Events(RETURN_HOME)
+	ReturnHome(float rTime, std::list<Wound> w) : Events(RETURN_HOME)
 	{
 		raidTime = rTime;
+		wounds = w;
 		std::cout << "BACK TO SHELTER\n";
+	}
+
+	nlohmann::json serializeToJSON() const;
+};
+
+class CursorOnInfo : public Events
+{
+protected:
+	Wound wound;
+
+public:
+
+	CursorOnInfo(Wound w) : Events(CURSOR_ON_INFO)
+	{
+		wound = w;
+		std::cout << "PLAYER LOOKING AT " + std::to_string(wound) + "\n";
+	}
+
+	nlohmann::json serializeToJSON() const;
+};
+
+class CursorOffInfo : public Events
+{
+protected:
+	Wound wound;
+
+public:
+
+	CursorOffInfo(Wound w) : Events(CURSOR_OFF_INFO)
+	{
+		wound = w;
+		std::cout << "PLAYER NOT LOOKING AT " + std::to_string(wound) + "\n";
 	}
 
 	nlohmann::json serializeToJSON() const;
