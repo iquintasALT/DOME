@@ -6,6 +6,7 @@
 #include "./utils/checkML.h"
 #include "./game/Game.h"
 #include <BaseClass.h>
+#include <GlassHouse.h>
 #include <iostream>
 
 void start() {
@@ -26,7 +27,7 @@ public:
 
 int main(int, char**) {
 	//memory leaks
-
+	GlassHouse glassHouse = GlassHouse();
 	SubClass instance = SubClass();
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	try {
@@ -38,7 +39,7 @@ int main(int, char**) {
 	} catch (const std::exception &e) { // catch exceptions thrown as a sub-type of std::exception
 		std::cerr << e.what();
 	} catch (...) {
-		std::cerr << "Caught and exception of unknown type ...";
+		std::cerr << "Caught an exception of unknown type ...";
 	}
 
 	return 0;
