@@ -5,7 +5,6 @@
 
 #include "./utils/checkML.h"
 #include "./game/Game.h"
-#include <BaseClass.h>
 #include <GlassHouse.h>
 #include <iostream>
 
@@ -17,15 +16,6 @@ void start() {
 	g.start();
 	GlassHouse::close();
 }
-
-class SubClass : BaseClass
-{
-public:
-	SubClass() : BaseClass()
-	{
-		std::cout << "Subclass constructor.\n";
-	}
-};
 
 int main(int, char**) {
 	//memory leaks
