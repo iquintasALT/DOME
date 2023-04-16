@@ -50,16 +50,18 @@ class Heal : public Events
 {
 protected:
 	Treatment treatment;
-	std::list<Wound> wounds;
+	std::list<Wound>* wounds;
 
 public:
 
-	Heal(Treatment t, std::list<Wound> w) : Events(HEAL)
+	Heal(Treatment t, std::list<Wound>* w) : Events(HEAL)
 	{
 		treatment = t;
 		wounds = w;
 		std::cout << "PLAYER USED " + std::to_string(treatment) + "\n";
 	}
+
+	~Heal();
 
 	nlohmann::json serializeToJSON() const;
 };
@@ -78,16 +80,18 @@ class ReturnHome : public Events
 {
 protected:
 	float raidTime;
-	std::list<Wound> wounds;
+	std::list<Wound>* wounds;
 
 public:
 
-	ReturnHome(float rTime, std::list<Wound> w) : Events(RETURN_HOME)
+	ReturnHome(float rTime, std::list<Wound>* w) : Events(RETURN_HOME)
 	{
 		raidTime = rTime;
 		wounds = w;
 		std::cout << "BACK TO SHELTER\n";
 	}
+
+	~ReturnHome();
 
 	nlohmann::json serializeToJSON() const;
 };
