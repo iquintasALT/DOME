@@ -1,7 +1,7 @@
 #pragma once
 #include <Events.h>
 
-enum Wound { BLEED, PAIN, INTOXICATION, CONCUSSION };
+enum Wound { BLEED, INTOXICATION, CONCUSSION, PAIN };
 enum Treatment { T_BANDAGE, T_ANTIDOTE, T_SPLINT, T_PAINKILLER };
 
 class WoundStart : public Events
@@ -17,7 +17,7 @@ public:
 		std::cout << "PLAYER GOT " + std::to_string(wound) + "\n";
 	}
 
-	nlohmann::json serializeToJSON() const;
+	nlohmann::json serializeToJSON() const override;
 };
 
 class WoundEnd : public Events
@@ -33,7 +33,7 @@ public:
 		std::cout << "PLAYER GOT RID OF " + std::to_string(wound) + "\n";
 	}
 
-	nlohmann::json serializeToJSON() const;
+	nlohmann::json serializeToJSON() const override;
 };
 
 class Shoot : public Events
@@ -63,7 +63,7 @@ public:
 
 	~Heal();
 
-	nlohmann::json serializeToJSON() const;
+	nlohmann::json serializeToJSON() const override;
 };
 
 class Jump : public Events
@@ -93,7 +93,7 @@ public:
 
 	~ReturnHome();
 
-	nlohmann::json serializeToJSON() const;
+	nlohmann::json serializeToJSON() const override;
 };
 
 class CursorOnInfo : public Events
@@ -109,7 +109,7 @@ public:
 		std::cout << "PLAYER LOOKING AT " + std::to_string(wound) + "\n";
 	}
 
-	nlohmann::json serializeToJSON() const;
+	nlohmann::json serializeToJSON() const override;
 };
 
 class CursorOffInfo : public Events
@@ -125,5 +125,5 @@ public:
 		std::cout << "PLAYER NOT LOOKING AT " + std::to_string(wound) + "\n";
 	}
 
-	nlohmann::json serializeToJSON() const;
+	nlohmann::json serializeToJSON() const override;
 };
