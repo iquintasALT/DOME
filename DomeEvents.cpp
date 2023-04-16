@@ -24,12 +24,16 @@ nlohmann::json Heal::serializeToJSON() const
 
     data.push_back({ "Treatment", treatment });
     int i = 1;
-    for (auto it = wounds.begin(); it != wounds.end(); ++it) {
+    for (auto it = wounds->begin(); it != wounds->end(); ++it) {
         data.push_back({ "Wound" + i, *it });
         i++;
     }
 
     return data;
+}
+
+Heal::~Heal() {
+    delete wounds;
 }
 
 nlohmann::json ReturnHome::serializeToJSON() const
@@ -38,12 +42,16 @@ nlohmann::json ReturnHome::serializeToJSON() const
 
     data.push_back({ "RaidTime", raidTime });
     int i = 1;
-    for (auto it = wounds.begin(); it != wounds.end(); ++it) {
+    for (auto it = wounds->begin(); it != wounds->end(); ++it) {
         data.push_back({ "Wound" + i, *it });
         i++;
     }
 
     return data;
+}
+
+ReturnHome::~ReturnHome() {
+    delete wounds;
 }
 
 nlohmann::json CursorOnInfo::serializeToJSON() const
