@@ -66,6 +66,6 @@ public:
 	inline bool isAlive() const;
 	inline std::multiset<PlayerHealthComponent*, WoundComparator>* getHealthComponents() { return &healthComponents; }
 
-	std::list<Wound> getWounds();
+	std::list<Wound>* getWounds();
 };
 
