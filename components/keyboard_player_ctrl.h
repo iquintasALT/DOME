@@ -33,6 +33,8 @@ private:
 	void OnCollision(Entity* bc) override;
 	void OnTrigger(Entity* bc) override;
 
+	bool jumping;
+
 public:
 	KeyboardPlayerCtrl();
 
