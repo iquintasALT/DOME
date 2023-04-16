@@ -17,6 +17,8 @@
 #include <iostream>
 #include <string>
 
+#include "GlassHouse.h"
+
 hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entity(m)
 {
 	posCam = initialPos;
@@ -55,6 +57,9 @@ hud::hud(Manager* m, Transform* initialPos, Player* p, Countdown* time_) : Entit
 		{"You are BLEEDING"}, 
 		{"You have a serious wound..."}
 	};
+
+	showing = false;
+	infoShowing = -1;
 }
 
 void hud::chooseWeapon(int type, int tier)
@@ -141,6 +146,10 @@ void hud::render() {
 
 		auto i = states->end();
 		int n = player->getPhysiognomy()->getNumStates(); // representación numérica del icono actual
+
+		int infoShown = infoShowing;
+		bool wasShowing = showing;
+		showing = false;
 		if (n > 0)
 			do
 			{ 
@@ -149,6 +158,20 @@ void hud::render() {
 				drawStatus(n, (*i)->getFrameIndex(), mouse);
 				--n;
 			} while (i != states->begin());
+
+		if (infoShowing == 3) showing = false; // La hipotermia no la contamos como herida
+		else if (infoShowing > 3) infoShowing = 4; // Todas las de sangrado las contamos como la misma
+
+		if (!wasShowing && showing) { // Comienza a mostrar info
+			GlassHouse::enqueue(new CursorOnInfo(getWound(infoShowing)));
+		}
+		else if (wasShowing && !showing) { // Deja de mostrar info
+			GlassHouse::enqueue(new CursorOffInfo(getWound(infoShowing)));
+		}
+		else if (wasShowing && showing && (infoShown != infoShowing)) { // Muestra otra info
+			GlassHouse::enqueue(new CursorOffInfo(getWound(infoShown)));
+			GlassHouse::enqueue(new CursorOnInfo(getWound(infoShowing)));
+		}
 
 		/*
 		// Dibujamos el desangrado incompleto, si hay
@@ -201,6 +224,8 @@ void hud::drawStatus(int pos, int frameIndex, Vector2D mouse) {
 
 		tooltipTextures[n].text->render();
 		
+		showing = true;
+		infoShowing = frameIndex;
 	}
 }
 
@@ -221,4 +246,13 @@ void hud::drawAmmo()
 	nbullets->render(103, consts::WINDOW_HEIGHT - 56);
 	delete nbullets;
 	nbullets = nullptr;
+}
+
+Wound hud::getWound(int index) {
+	Wound w = BLEED;
+	if (infoShowing == 0) w = INTOXICATION;
+	else if (infoShowing == 1) w = CONCUSSION;
+	else if (infoShowing == 2) w = PAIN;
+	else if (infoShowing > 3) w = BLEED;
+	return w;
 }

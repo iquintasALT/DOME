@@ -10,6 +10,8 @@
 #include "../game/Game.h"
 #include <iostream>
 
+#include "GlassHouse.h"
+
 void Physiognomy::checkAlive(WAYSTODIE way) {
 	//std::cout << "Checking death. Current wounds: " << getNumStates() << ".  Current bloodloss level: " << (bloodlossCount != nullptr ? *bloodlossCount : 0) << "\n";
 	if (getNumStates() < consts::MAX_MULTIPLE_STATES) playerAlive = true;
@@ -22,6 +24,8 @@ void Physiognomy::addBleedout() {
 	{
 		player->addComponent<BleedoutComponent>();
 		healthComponents.insert(player->getComponent<BleedoutComponent>());
+
+		GlassHouse::enqueue(new WoundStart(BLEED));
 	}
 }
 
@@ -43,6 +47,8 @@ void Physiognomy::addPainState() {
 		auto c = player->addComponent<PainComponent>();
 		healthComponents.insert(c);
 		painAdded = true;
+
+		GlassHouse::enqueue(new WoundStart(PAIN));
 	}
 	else player->getComponent<PainComponent>()->reduceWeaponDamage();
 	player->getWeapon()->addDispersion(35);
@@ -54,6 +60,8 @@ void Physiognomy::addIntoxicationState() {
 		auto c = player->addComponent<IntoxicationComponent>();
 		healthComponents.insert(c);
 		intoxicationAdded = true;
+
+		GlassHouse::enqueue(new WoundStart(INTOXICATION));
 	}
 	else player->getComponent<IntoxicationComponent>()->increaseTime();
 }
@@ -64,6 +72,8 @@ void Physiognomy::addConcussionState() {
 		auto c = player->addComponent<ConcussionComponent>();
 		healthComponents.insert(c);
 		concussionAdded = true;
+
+		GlassHouse::enqueue(new WoundStart(CONCUSSION));
 	}
 	else player->getComponent<ConcussionComponent>()->increaseTime();
 }
@@ -78,6 +88,8 @@ void Physiognomy::removeBleedout() {
 		}
 	}
 	player->removeComponent<BleedoutComponent>();
+
+	if(player->hasComponent<BleedoutComponent>()) GlassHouse::enqueue(new WoundEnd(BLEED));
 }
 
 void Physiognomy::removeBloodloss() {
@@ -117,6 +129,8 @@ void Physiognomy::removePainState() {
 		player->removeComponent<PainComponent>();
 		painAdded = false;
 		player->getWeapon()->addDispersion(-35);
+
+		GlassHouse::enqueue(new WoundEnd(PAIN));
 	}
 }
 
@@ -134,6 +148,8 @@ void Physiognomy::removeIntoxicationState() {
 		}
 		player->removeComponent<IntoxicationComponent>();
 		intoxicationAdded = false;
+
+		GlassHouse::enqueue(new WoundEnd(INTOXICATION));
 	}
 }
 
@@ -151,6 +167,8 @@ void Physiognomy::removeConcussionState() {
 		}
 		player->removeComponent<ConcussionComponent>();
 		concussionAdded = false;
+
+		GlassHouse::enqueue(new WoundEnd(CONCUSSION));
 	}
 }
 
@@ -192,7 +210,19 @@ bool Physiognomy::isAlive() const {
 }
 
 void Physiognomy::die(WAYSTODIE way) {
+	GlassHouse::enqueue(new GameEnd());
+
 	playerAlive = false;
 	removeAllStates();
 	player->getMngr()->ChangeScene(new LoseScene(player->getMngr()->getGame(), way), SceneManager::SceneMode::ADDITIVE);
+}
+
+std::list<Wound> Physiognomy::getWounds() {
+	std::list<Wound> wounds = std::list<Wound>();
+	if (player->hasComponent<BleedoutComponent>()) wounds.push_back(BLEED);
+	if (player->hasComponent<PainComponent>()) wounds.push_back(PAIN);
+	if (player->hasComponent<IntoxicationComponent>()) wounds.push_back(INTOXICATION);
+	if (player->hasComponent<ConcussionComponent>()) wounds.push_back(CONCUSSION);
+
+	return wounds;
 }

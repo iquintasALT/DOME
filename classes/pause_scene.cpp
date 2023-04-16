@@ -7,6 +7,9 @@
 #include "../game/Game.h"
 #include "../classes/settings_scene.h"
 
+#include "../DomeEvents.h"
+#include "GlassHouse.h"
+
 void PauseScene::init() {
 	ih().clearState();
 
@@ -57,6 +60,8 @@ void PauseScene::settings(Manager* mng) {
 }
 
 void PauseScene::menu(Manager* mng) {
+	GlassHouse::enqueue(new GameEnd());
+
 	ih().clearState();
 	mng->getGame()->numDays = 0;
 	mng->ChangeScene(new MenuScene(mng->getGame(), false), SceneManager::SceneMode::SINGLE);

@@ -5,6 +5,10 @@
 #include "../classes/player.h"
 #include "../classes/physiognomy.h"
 
+#include "../classes/raid_scene.h"
+#include "../DomeEvents.h"
+#include "GlassHouse.h"
+
 BackToShelter::BackToShelter(GameScene* scene) : InteractableElement("Go back to SHELTER"), scene_(scene) {}
 
 void BackToShelter::init() {
@@ -13,6 +17,8 @@ void BackToShelter::init() {
 }
 
 void BackToShelter::Interact() {
+	GlassHouse::enqueue(new ReturnHome(static_cast<RaidScene*>(scene_)->getTime(), static_cast<Player*>(player_)->getPhysiognomy()->getWounds()));
+
 	entity_->getMngr()->getGame()->setShouldRenderFPS(true);
 	static_cast<Player*>(player_)->getPhysiognomy()->removeAllStates();
 	entity_->getMngr()->ChangeScene(new ShelterScene(scene_->getGame()), SceneManager::SceneMode::OVERRIDE);

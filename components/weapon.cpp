@@ -21,6 +21,9 @@
 #include <iostream>
 #include <list>
 
+#include "../DomeEvents.h"
+#include "GlassHouse.h"
+
 int Weapon::bulletsInMagazine = -1;
 bool Weapon::isTutorialEnabled = true;
 
@@ -135,6 +138,8 @@ void Weapon::shoot(const Vector2D& direction) {
 	default:
 		break;
 	}
+
+	GlassHouse::enqueue(new Shoot());
 }
 
 void Weapon::update() {
