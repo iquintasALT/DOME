@@ -12,8 +12,10 @@
 void start() {
 	Game g(8000);
 
+	GlassHouse::init();
 	g.init();
 	g.start();
+	GlassHouse::close();
 }
 
 class SubClass : BaseClass
@@ -27,8 +29,6 @@ public:
 
 int main(int, char**) {
 	//memory leaks
-	GlassHouse::init();
-	GlassHouse::close();
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 	try {
 		start();
