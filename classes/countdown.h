@@ -20,4 +20,6 @@ public:
 	void render();
 
 	inline bool keepPlaying() { return timeLeft > 0; }
+
+	inline float getTime() const { return timeLeft; }
 };

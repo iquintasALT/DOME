@@ -6,6 +6,9 @@
 #include "../classes/physiognomy.h"
 #include "../sdlutils/SoundManager.h"
 
+#include "../DomeEvents.h"
+#include "GlassHouse.h"
+
 KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
 	maxSpeed = consts::PLAYER_SPEED;
 	jumpSpeed = consts::JUMP_SPEED;
@@ -108,6 +111,8 @@ void KeyboardPlayerCtrl::update() {
 			if (keystates[SDL_SCANCODE_SPACE] && rb_->onFloor()) {
 				rb_->setVel(Vector2D(rb_->getVel().getX(), -jumpSpeed));
 				//rb_->setOnFloor(false);
+
+				if(jumpSpeed < consts::JUMP_SPEED) GlassHouse::enqueue(new Jump());
 			}
 
 			if (keystates[SDL_SCANCODE_LCTRL] && rb_->getVel().getY() == 0) {

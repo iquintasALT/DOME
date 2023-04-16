@@ -15,6 +15,8 @@
 #include <string>
 #include <iostream>
 
+#include "../DomeEvents.h"
+#include "GlassHouse.h"
 
 void MenuScene::init() {
 	// to reset player saved boolean so the game works fine
@@ -85,6 +87,8 @@ void MenuScene::onLoad()
 }
 
 void MenuScene::playGame(Manager* mngr) {
+	GlassHouse::enqueue(new GameStart());
+
 	ih().clearState();
 	soundManager().stopSongWithFade("game_theme", 1000);
 	Inventory::firstInitialization = true;

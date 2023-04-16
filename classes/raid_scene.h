@@ -4,7 +4,7 @@
 #include "player.h"
 #include "../utils/checkML.h"
 #include <string>
-class Countdown;
+#include "countdown.h"
 class Player;
 class Texture;
 
@@ -21,5 +21,7 @@ public:
 	~RaidScene() { delete timer; }
 	void init() override;
 	void update() override;
+
+	inline float getTime() const { return timer->getTime(); }
 };
 

@@ -10,6 +10,8 @@
 #include <vector>
 #include <string>
 
+#include "../DomeEvents.h"
+
 class TextWithBackground;
 class Image;
 
@@ -48,6 +50,10 @@ private:
 
 	void drawStatus(int pos, int frameIndex, Vector2D mouse);
 	void drawAmmo();
+
+	bool showing;
+	int infoShowing;
+	Wound getWound(int index);
 public:
 	hud(Manager* m, Transform* initialPos, Player* p, Countdown* time);
 

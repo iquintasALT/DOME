@@ -4,6 +4,9 @@
 #include "../components/hunger_component.h"
 #include "../sdlutils/SoundManager.h"
 
+#include "../DomeEvents.h"
+#include "GlassHouse.h"
+
 ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, int craftAmount) :
 	_name(name), _strName(strName), _description(description), _width(width), _height(height), _row(row), _col(col), _craftAmount(craftAmount) {
 	function = [](Entity*) {return true; };
@@ -29,6 +32,8 @@ ItemInfo::~ItemInfo() {}
 ItemInfo* ItemInfo::antidote()
 {
 	auto f = [](Entity* player) {
+		GlassHouse::enqueue(new Heal(T_ANTIDOTE	, static_cast<Player*>(player)->getPhysiognomy()->getWounds()));
+
 		static_cast<Player*>(player)->getPhysiognomy()->removeIntoxicationState();
 		return true;
 	};
@@ -39,6 +44,8 @@ ItemInfo* ItemInfo::antidote()
 ItemInfo* ItemInfo::bandage()
 {
 	auto f = [](Entity* player) {
+		GlassHouse::enqueue(new Heal(T_BANDAGE, static_cast<Player*>(player)->getPhysiognomy()->getWounds()));
+
 		static_cast<Player*>(player)->getPhysiognomy()->removeBleedout();
 		soundManager().playSFX("heal");
 		return true; // CAMBIA
@@ -107,6 +114,8 @@ ItemInfo* ItemInfo::upgradeKit() {
 ItemInfo* ItemInfo::splint()
 {
 	auto f = [](Entity* player) {
+		GlassHouse::enqueue(new Heal(T_SPLINT, static_cast<Player*>(player)->getPhysiognomy()->getWounds()));
+
 		static_cast<Player*>(player)->getPhysiognomy()->removeConcussionState();
 		soundManager().playSFX("splint");
 		return true; //CAMBIAA
@@ -119,6 +128,8 @@ ItemInfo* ItemInfo::splint()
 ItemInfo* ItemInfo::painKiller()
 {
 	auto f = [](Entity* player) {
+		GlassHouse::enqueue(new Heal(T_PAINKILLER, static_cast<Player*>(player)->getPhysiognomy()->getWounds()));
+
 		static_cast<Player*>(player)->getPhysiognomy()->removePainState();
 		soundManager().playSFX("pills");
 		return true; //CAMBIAA
