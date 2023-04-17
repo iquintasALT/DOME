@@ -1,8 +1,17 @@
 #pragma once
-#include <Events.h>
 
 enum Wound { BLEED, INTOXICATION, CONCUSSION, PAIN };
 enum Treatment { T_BANDAGE, T_ANTIDOTE, T_SPLINT, T_PAINKILLER };
+#define EXTEND_EVENT_DEFS ,\
+WOUND_START, \
+WOUND_END, \
+SHOOT, \
+HEAL, \
+JUMP, \
+RETURN_HOME, \
+CURSOR_ON_INFO, \
+CURSOR_OFF_INFO
+#include <Events.h>
 
 class WoundStart : public Events
 {
