@@ -60,6 +60,7 @@ void PauseScene::settings(Manager* mng) {
 }
 
 void PauseScene::menu(Manager* mng) {
+	GlassHouse::enqueue(new LevelEnd());
 	GlassHouse::enqueue(new GameEnd());
 
 	ih().clearState();

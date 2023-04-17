@@ -15,6 +15,9 @@
 
 #include "../classes/player.h"
 
+#include "../DomeEvents.h"
+#include "GlassHouse.h"
+
 using std::cout;
 using std::cerr;
 using std::endl;
@@ -89,6 +92,8 @@ void ShelterScene::render()
 
 void ShelterScene::sleepTransition()
 {
+	GlassHouse::enqueue(new LevelEnd());
+
 	//funcion llamada al terminar la transicion
 	std::function<void()> goToLocationsScene([this] { mngr_->ChangeScene(nullptr, SceneManager::SceneMode::REMOVE); });
 	//se desactivan el toolTip, la estacion, y su componente para abrirla
