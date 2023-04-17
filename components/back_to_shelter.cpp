@@ -17,10 +17,13 @@ void BackToShelter::init() {
 }
 
 void BackToShelter::Interact() {
+	GlassHouse::enqueue(new LevelEnd());
 	GlassHouse::enqueue(new ReturnHome(static_cast<RaidScene*>(scene_)->getTime(), static_cast<Player*>(player_)->getPhysiognomy()->getWounds()));
 
 	entity_->getMngr()->getGame()->setShouldRenderFPS(true);
 	static_cast<Player*>(player_)->getPhysiognomy()->removeAllStates();
+
+	GlassHouse::enqueue(new LevelStart());
 	entity_->getMngr()->ChangeScene(new ShelterScene(scene_->getGame()), SceneManager::SceneMode::OVERRIDE);
 }
 
