@@ -13,7 +13,13 @@ void start() {
 
 	GlassHouse::init();
 	g.init();
-	g.start();
+	try {
+		g.start();
+	}
+	catch(...)
+	{
+		GlassHouse::emergencyClose();
+	}
 	GlassHouse::close();
 }
 
