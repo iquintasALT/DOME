@@ -1,0 +1,3 @@
+[submodule "GlassHouse-Telemetry"]
+	path = GlassHouse-Telemetry
+	url = https://github.com/edekadt/GlassHouse-Telemetry
