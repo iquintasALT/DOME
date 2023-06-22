@@ -1,8 +1,5 @@
 #pragma once
 
-enum Wound { BLEED, INTOXICATION, CONCUSSION, PAIN };
-enum Treatment { T_BANDAGE, T_ANTIDOTE, T_SPLINT, T_PAINKILLER };
-
 #define EXTEND_EVENT_DEFS \
 WOUND_START, \
 SHOOT, \
