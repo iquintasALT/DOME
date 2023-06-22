@@ -6,9 +6,9 @@ class CursorOffInfo : public Event
 {
 public:
 
-	CursorOffInfo(Wound w) : Event(CURSOR_OFF_INFO)
+	CursorOffInfo() : Event(CURSOR_OFF_INFO)
 	{
-		std::cout << "PLAYER NOT LOOKING AT " + std::to_string(w) + "\n";
+		std::cout << "PLAYER NOT LOOKING AT UI\n";
 
 		add("CURSOROFF", w);
 	}

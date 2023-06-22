@@ -4,7 +4,8 @@
 #include "../components/hunger_component.h"
 #include "../sdlutils/SoundManager.h"
 
-#include "../DomeEvents.h"
+#include "../DomeEvents/Heal.h"
+
 #include "GlassHouse.h"
 
 ItemInfo::ItemInfo(ITEMS name, string strName, string description, int width, int height, int row, int col, int craftAmount) :
@@ -31,8 +32,12 @@ ItemInfo::~ItemInfo() {}
 
 ItemInfo* ItemInfo::antidote()
 {
-	auto f = [](Entity* player) {
-		GlassHouse::enqueue(new Heal(T_ANTIDOTE	, static_cast<Player*>(player)->getPhysiognomy()->getWounds()));
+	auto f = [](Entity* player) 
+	{
+		bool success = player->getComponent<IntoxicationComponent>();
+		bool intoxication = player->getComponent<IntoxicationComponent>();
+
+		GlassHouse::enqueue(new Heal(success, intoxication));
 
 		static_cast<Player*>(player)->getPhysiognomy()->removeIntoxicationState();
 		return true;
@@ -44,7 +49,11 @@ ItemInfo* ItemInfo::antidote()
 ItemInfo* ItemInfo::bandage()
 {
 	auto f = [](Entity* player) {
-		GlassHouse::enqueue(new Heal(T_BANDAGE, static_cast<Player*>(player)->getPhysiognomy()->getWounds()));
+
+		bool success = player->getComponent<BleedoutComponent>(); 
+		bool intoxication = player->getComponent<IntoxicationComponent>(); 
+
+		GlassHouse::enqueue(new Heal(success, intoxication));
 
 		static_cast<Player*>(player)->getPhysiognomy()->removeBleedout();
 		soundManager().playSFX("heal");
@@ -114,7 +123,11 @@ ItemInfo* ItemInfo::upgradeKit() {
 ItemInfo* ItemInfo::splint()
 {
 	auto f = [](Entity* player) {
-		GlassHouse::enqueue(new Heal(T_SPLINT, static_cast<Player*>(player)->getPhysiognomy()->getWounds()));
+		
+		bool success = player->getComponent<ConcussionComponent>();
+		bool intoxication = player->getComponent<IntoxicationComponent>();
+
+		GlassHouse::enqueue(new Heal(success, intoxication));
 
 		static_cast<Player*>(player)->getPhysiognomy()->removeConcussionState();
 		soundManager().playSFX("splint");
@@ -127,8 +140,12 @@ ItemInfo* ItemInfo::splint()
 
 ItemInfo* ItemInfo::painKiller()
 {
-	auto f = [](Entity* player) {
-		GlassHouse::enqueue(new Heal(T_PAINKILLER, static_cast<Player*>(player)->getPhysiognomy()->getWounds()));
+	auto f = [](Entity* player) 
+	{		
+		bool success = player->getComponent<PainComponent>();
+		bool intoxication = player->getComponent<IntoxicationComponent>();
+
+		GlassHouse::enqueue(new Heal(success, intoxication));
 
 		static_cast<Player*>(player)->getPhysiognomy()->removePainState();
 		soundManager().playSFX("pills");

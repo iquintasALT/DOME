@@ -6,10 +6,10 @@ class CursorOnInfo : public Event
 {
 public:
 
-	CursorOnInfo(Wound w) : Event(CURSOR_ON_INFO)
+	CursorOnInfo() : Event(CURSOR_ON_INFO)
 	{
-		std::cout << "PLAYER LOOKING AT " + std::to_string(w) + "\n";
+		std::cout << "PLAYER LOOKING AT UI\n";
 
-		add("CURSORON", w);
+		add("CURSORON", true);
 	}
 };

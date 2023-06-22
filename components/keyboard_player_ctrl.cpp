@@ -6,7 +6,7 @@
 #include "../classes/physiognomy.h"
 #include "../sdlutils/SoundManager.h"
 
-#include "../DomeEvents.h"
+#include "../DomeEvents/Jump.h"
 #include "GlassHouse.h"
 
 KeyboardPlayerCtrl::KeyboardPlayerCtrl() {
@@ -112,9 +112,12 @@ void KeyboardPlayerCtrl::update() {
 				rb_->setVel(Vector2D(rb_->getVel().getX(), -jumpSpeed));
 				//rb_->setOnFloor(false);
 
-				if (jumpSpeed < consts::JUMP_SPEED && !jumping) GlassHouse::enqueue(new Jump());
+				if (jumpSpeed < consts::JUMP_SPEED && entity_->getComponent<ConcussionComponent>())
+					GlassHouse::enqueue(new Jump());
+
 				jumping = true;
 			}
+
 			else jumping = false;
 
 			if (keystates[SDL_SCANCODE_LCTRL] && rb_->getVel().getY() == 0) {
