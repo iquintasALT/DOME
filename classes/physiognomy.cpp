@@ -1,4 +1,6 @@
 #include "physiognomy.h"
+#include "GlassHouse.h"
+
 #include "../components/bleedout_component.h"
 #include "../components/bloodloss_component.h"
 #include "../components/pain_component.h"
@@ -6,11 +8,14 @@
 #include "../components/player_health_component.h"
 #include "../components/intoxication_component.h"
 #include "../components/hypothermia_component.h"
-#include "../classes/lose_scene.h"
-#include "../game/Game.h"
-#include <iostream>
 
-#include "GlassHouse.h"
+#include "../classes/lose_scene.h"
+
+#include "../DomeEvents/IncludeEvents.h"
+
+#include "../game/Game.h"
+
+#include <iostream>
 
 void Physiognomy::checkAlive(WAYSTODIE way) {
 	//std::cout << "Checking death. Current wounds: " << getNumStates() << ".  Current bloodloss level: " << (bloodlossCount != nullptr ? *bloodlossCount : 0) << "\n";
@@ -43,13 +48,15 @@ void Physiognomy::increaseBloodloss()
 
 void Physiognomy::addPainState() {
 	checkAlive(WAYSTODIE::PAIN);
-	if (!painAdded) {
+	if (!painAdded) 
+	{
 		auto c = player->addComponent<PainComponent>();
 		healthComponents.insert(c);
 		painAdded = true;
 
 		GlassHouse::enqueue(new WoundStart(PAIN));
 	}
+
 	else player->getComponent<PainComponent>()->reduceWeaponDamage();
 	player->getWeapon()->addDispersion(35);
 }
@@ -68,13 +75,15 @@ void Physiognomy::addIntoxicationState() {
 
 void Physiognomy::addConcussionState() {
 	checkAlive(WAYSTODIE::CONTUSION);
-	if (!concussionAdded) {
+	if (!concussionAdded) 
+	{
 		auto c = player->addComponent<ConcussionComponent>();
 		healthComponents.insert(c);
 		concussionAdded = true;
 
-		GlassHouse::enqueue(new WoundStart(CONCUSSION));
+		GlassHouse::enqueue(new WoundStart(CONCUSSION)); 
 	}
+
 	else player->getComponent<ConcussionComponent>()->increaseTime();
 }
 
