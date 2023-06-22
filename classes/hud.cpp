@@ -163,14 +163,15 @@ void hud::render() {
 		else if (infoShowing > 3) infoShowing = 4; // Todas las de sangrado las contamos como la misma
 
 		if (!wasShowing && showing) { // Comienza a mostrar info
-			GlassHouse::enqueue(new CursorOnInfo(getWound(infoShowing)));
+			GlassHouse::enqueue(new CursorOnInfo());
 		}
 		else if (wasShowing && !showing) { // Deja de mostrar info
-			GlassHouse::enqueue(new CursorOffInfo(getWound(infoShowing)));
+			GlassHouse::enqueue(new CursorOffInfo());
 		}
-		else if (wasShowing && showing && (infoShown != infoShowing)) { // Muestra otra info
-			GlassHouse::enqueue(new CursorOffInfo(getWound(infoShown)));
-			GlassHouse::enqueue(new CursorOnInfo(getWound(infoShowing)));
+		else if (wasShowing && showing && (infoShown != infoShowing)) 
+		{ // Muestra otra info
+			GlassHouse::enqueue(new CursorOffInfo());
+			GlassHouse::enqueue(new CursorOnInfo());
 		}
 
 		/*
@@ -248,11 +249,11 @@ void hud::drawAmmo()
 	nbullets = nullptr;
 }
 
-Wound hud::getWound(int index) {
-	Wound w = BLEED;
-	if (infoShowing == 0) w = INTOXICATION;
-	else if (infoShowing == 1) w = CONCUSSION;
-	else if (infoShowing == 2) w = PAIN;
-	else if (infoShowing > 3) w = BLEED;
-	return w;
-}
+//Wound hud::getWound(int index) {
+//	Wound w = BLEED;
+//	if (infoShowing == 0) w = INTOXICATION;
+//	else if (infoShowing == 1) w = CONCUSSION;
+//	else if (infoShowing == 2) w = PAIN;
+//	else if (infoShowing > 3) w = BLEED;
+//	return w;
+//}

@@ -7,7 +7,7 @@
 #include "../game/Game.h"
 #include "../classes/settings_scene.h"
 
-#include "../DomeEvents.h"
+#include "../DomeEvents/DomeEvents.h"
 #include "GlassHouse.h"
 
 void PauseScene::init() {
@@ -59,7 +59,8 @@ void PauseScene::settings(Manager* mng) {
 	mng->ChangeScene(new SettingsScene(mng->getGame()), SceneManager::SceneMode::ADDITIVE);
 }
 
-void PauseScene::menu(Manager* mng) {
+void PauseScene::menu(Manager* mng) 
+{
 	GlassHouse::enqueue(new LevelEnd());
 	GlassHouse::enqueue(new GameEnd());
 

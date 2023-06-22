@@ -15,7 +15,8 @@
 
 #include "../classes/player.h"
 
-#include "../DomeEvents.h"
+#include "../DomeEvents/DomeEvents.h"
+
 #include "GlassHouse.h"
 
 using std::cout;
