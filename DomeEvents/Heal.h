@@ -6,16 +6,24 @@ class Heal : public Event
 {
 public:
 
-	Heal(Treatment t, bool exito) : Event(HEAL)
-	{
-		std::cout << "PLAYER USED " + std::to_string(t);
+	Heal(bool correctItem, bool toxic) : Event(HEAL)
+	{	
+		std::cout << "PLAYER HEALS ";
 
-		if (exito)
-			std::cout << " DE FORMA EXITOSA\n";
+		if (correctItem)
+			std::cout << " GOOD. ";
 		else
-			std::cout << " DE FORMA ERRONEA\n"; 
+			std::cout << " WRONG. ";
 
-		add("TreatmentUse", t);
-		add("TreatmentUse", exito);
+		add("CorrectItem", correctItem);
+
+		std::cout << "PLAYER ";
+
+		if (toxic)
+			std::cout << " HAS INTOXICATION\n"; 
+		else
+			std::cout << " HASNT INTOXICATION\n";
+
+		add("Intoxication", toxic);
 	}
 };

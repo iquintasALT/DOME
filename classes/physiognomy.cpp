@@ -30,7 +30,7 @@ void Physiognomy::addBleedout() {
 		player->addComponent<BleedoutComponent>();
 		healthComponents.insert(player->getComponent<BleedoutComponent>());
 
-		GlassHouse::enqueue(new WoundStart(BLEED));
+		GlassHouse::enqueue(new WoundStart());
 	}
 }
 
@@ -54,7 +54,7 @@ void Physiognomy::addPainState() {
 		healthComponents.insert(c);
 		painAdded = true;
 
-		GlassHouse::enqueue(new WoundStart(PAIN));
+		GlassHouse::enqueue(new WoundStart());
 	}
 
 	else player->getComponent<PainComponent>()->reduceWeaponDamage();
@@ -68,7 +68,7 @@ void Physiognomy::addIntoxicationState() {
 		healthComponents.insert(c);
 		intoxicationAdded = true;
 
-		GlassHouse::enqueue(new WoundStart(INTOXICATION));
+		GlassHouse::enqueue(new WoundStart());
 	}
 	else player->getComponent<IntoxicationComponent>()->increaseTime();
 }
@@ -81,7 +81,7 @@ void Physiognomy::addConcussionState() {
 		healthComponents.insert(c);
 		concussionAdded = true;
 
-		GlassHouse::enqueue(new WoundStart(CONCUSSION)); 
+		GlassHouse::enqueue(new WoundStart()); 
 	}
 
 	else player->getComponent<ConcussionComponent>()->increaseTime();
@@ -123,10 +123,10 @@ void Physiognomy::removeBloodloss() {
 	}
 }
 
-void Physiognomy::removePainState() {
+void Physiognomy::removePainState() 
+{
 	if (player->hasComponent<PainComponent>())
 	{
-		//healthComponents.remove(player->getComponent<PainComponent>());
 		for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
 		{
 			if (dynamic_cast<PainComponent*>(*i))
@@ -135,18 +135,16 @@ void Physiognomy::removePainState() {
 				break;
 			}
 		}
+
 		player->removeComponent<PainComponent>();
 		painAdded = false;
 		player->getWeapon()->addDispersion(-35);
-
-		GlassHouse::enqueue(new WoundEnd(PAIN));
 	}
 }
 
 void Physiognomy::removeIntoxicationState() {
 	if (player->hasComponent<IntoxicationComponent>())
 	{
-		//healthComponents.remove(player->getComponent<IntoxicationComponent>());
 		for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
 		{
 			if (dynamic_cast<IntoxicationComponent*>(*i))
@@ -155,17 +153,15 @@ void Physiognomy::removeIntoxicationState() {
 				break;
 			}
 		}
+
 		player->removeComponent<IntoxicationComponent>();
 		intoxicationAdded = false;
-
-		GlassHouse::enqueue(new WoundEnd(INTOXICATION));
 	}
 }
 
 void Physiognomy::removeConcussionState() {
 	if (player->hasComponent<ConcussionComponent>())
 	{
-		//healthComponents.remove(player->getComponent<ConcussionComponent>());
 		for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
 		{
 			if (dynamic_cast<ConcussionComponent*>(*i))
@@ -176,8 +172,6 @@ void Physiognomy::removeConcussionState() {
 		}
 		player->removeComponent<ConcussionComponent>();
 		concussionAdded = false;
-
-		GlassHouse::enqueue(new WoundEnd(CONCUSSION));
 	}
 }
 
@@ -187,7 +181,7 @@ void Physiognomy::addHypothermiaState() {
 
 void Physiognomy::removeHypothermiaState() {
 	if (player->hasComponent<HypothermiaComponent>()) {
-		//player->removeComponent<HypothermiaComponent>();
+
 		for (auto i = healthComponents.begin(); i != healthComponents.end(); ++i)
 		{
 			if (dynamic_cast<HypothermiaComponent*>(*i))
