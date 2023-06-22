@@ -16,7 +16,8 @@
 #include "../classes/raid_scene.h"
 #include "../classes/camera.h"
 
-#include "../DomeEvents.h"
+#include "../DomeEvents/DomeEvents.h"
+
 #include "GlassHouse.h"
 
 void LocationsScene::init()
@@ -99,7 +100,8 @@ void LocationsScene::loadLocationButtons(int buttons) {
 	}
 }
 
-void LocationsScene::changeToRaid(Game* g, int index) {
+void LocationsScene::changeToRaid(Game* g, int index) 
+{
 	GlassHouse::enqueue(new LevelStart());
 
 	g->playerSavedData->updateTiredness(consts::TIREDNESS_FROM_TRAVELING[index]);

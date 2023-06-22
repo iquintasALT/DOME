@@ -10,6 +10,6 @@ public:
 	{
 		std::cout << "PLAYER NOT LOOKING AT UI\n";
 
-		add("CURSOROFF", w);
+		add("CURSOROFF", true);
 	}
 };

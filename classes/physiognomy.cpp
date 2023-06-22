@@ -11,7 +11,7 @@
 
 #include "../classes/lose_scene.h"
 
-#include "../DomeEvents/IncludeEvents.h"
+#include "../DomeEvents/WoundStart.h"
 
 #include "../game/Game.h"
 
@@ -210,7 +210,8 @@ bool Physiognomy::isAlive() const {
 	return playerAlive;
 }
 
-void Physiognomy::die(WAYSTODIE way) {
+void Physiognomy::die(WAYSTODIE way) 
+{
 	GlassHouse::enqueue(new GameEnd());
 
 	playerAlive = false;

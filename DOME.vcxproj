@@ -97,7 +97,15 @@
     <ClInclude Include="components\weapon.h" />
     <ClInclude Include="components\weapon_animation.h" />
     <ClInclude Include="components\wound_comparator.h" />
-    <ClInclude Include="DomeEvents.h" />
+    <ClInclude Include="DomeEvents\CursorOff.h" />
+    <ClInclude Include="DomeEvents\CursorOn.h" />
+    <ClInclude Include="DomeEvents\DomeEvents.h" />
+    <ClInclude Include="DomeEvents\Heal.h" />
+    <ClInclude Include="DomeEvents\IncludeEvents.h" />
+    <ClInclude Include="DomeEvents\Jump.h" />
+    <ClInclude Include="DomeEvents\ReturnHome.h" />
+    <ClInclude Include="DomeEvents\Shoot.h" />
+    <ClInclude Include="DomeEvents\WoundStart.h" />
     <ClInclude Include="ecs\Component.h" />
     <ClInclude Include="ecs\ecs.h" />
     <ClInclude Include="ecs\Entity.h" />
@@ -199,7 +207,6 @@
     <ClCompile Include="components\transition_component.cpp" />
     <ClCompile Include="components\weapon.cpp" />
     <ClCompile Include="components\weapon_animation.cpp" />
-    <ClCompile Include="DomeEvents.cpp" />
     <ClCompile Include="ecs\Entity.cpp" />
     <ClCompile Include="ecs\Manager.cpp" />
     <ClCompile Include="game\Game.cpp" />

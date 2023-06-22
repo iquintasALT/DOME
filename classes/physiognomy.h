@@ -7,7 +7,6 @@
 #include "../components/player_health_component.h"
 #include "../components/wound_comparator.h"
 
-#include "../DomeEvents.h"
 class PlayerHealthComponent;
 class BleedoutComponent;
 class BloodlossComponent;
@@ -65,6 +64,5 @@ public:
 	void die(WAYSTODIE way = WAYSTODIE::NONE);
 	inline bool isAlive() const;
 	inline std::multiset<PlayerHealthComponent*, WoundComparator>* getHealthComponents() { return &healthComponents; }
-
-	std::list<Wound>* getWounds();
 };
+

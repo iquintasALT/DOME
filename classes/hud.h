@@ -10,7 +10,8 @@
 #include <vector>
 #include <string>
 
-#include "../DomeEvents.h"
+#include "../DomeEvents/CursorOff.h"
+#include "../DomeEvents/CursorOn.h"
 
 class TextWithBackground;
 class Image;
@@ -53,7 +54,7 @@ private:
 
 	bool showing;
 	int infoShowing;
-	Wound getWound(int index);
+
 public:
 	hud(Manager* m, Transform* initialPos, Player* p, Countdown* time);
 

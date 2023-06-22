@@ -6,12 +6,10 @@ class ReturnHome : public Event
 {
 public:
 
-	ReturnHome(float t) : Event(RETURN_HOME)
+	ReturnHome() : Event(RETURN_HOME)
 	{
-		time = t;
-
 		std::cout << "BACK TO SHELTER\n";
 
-		add("RETURNHOME", t);
+		add("RETURNHOME", true);
 	}
 };
