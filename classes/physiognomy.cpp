@@ -97,8 +97,6 @@ void Physiognomy::removeBleedout() {
 		}
 	}
 	player->removeComponent<BleedoutComponent>();
-
-	if(player->hasComponent<BleedoutComponent>()) GlassHouse::enqueue(new WoundEnd(BLEED));
 }
 
 void Physiognomy::removeBloodloss() {
@@ -220,12 +218,13 @@ void Physiognomy::die(WAYSTODIE way) {
 	player->getMngr()->ChangeScene(new LoseScene(player->getMngr()->getGame(), way), SceneManager::SceneMode::ADDITIVE);
 }
 
-std::list<Wound>* Physiognomy::getWounds() {
-	std::list<Wound>* wounds = new std::list<Wound>();
-	if (player->hasComponent<BleedoutComponent>()) wounds->push_back(BLEED);
-	if (player->hasComponent<PainComponent>()) wounds->push_back(PAIN);
-	if (player->hasComponent<IntoxicationComponent>()) wounds->push_back(INTOXICATION);
-	if (player->hasComponent<ConcussionComponent>()) wounds->push_back(CONCUSSION);
-
-	return wounds;
-}
+//std::list<Wound>* Physiognomy::getWounds() 
+//{
+//	std::list<Wound>* wounds = new std::list<Wound>();
+//	if (player->hasComponent<BleedoutComponent>()) wounds->push_back(BLEED);
+//	if (player->hasComponent<PainComponent>()) wounds->push_back(PAIN);
+//	if (player->hasComponent<IntoxicationComponent>()) wounds->push_back(INTOXICATION);
+//	if (player->hasComponent<ConcussionComponent>()) wounds->push_back(CONCUSSION);
+//
+//	return wounds;
+//}

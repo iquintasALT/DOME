@@ -21,7 +21,7 @@
 #include <iostream>
 #include <list>
 
-#include "../DomeEvents.h"
+#include "../DomeEvents/Shoot.h"
 #include "GlassHouse.h"
 
 int Weapon::bulletsInMagazine = -1;
@@ -139,7 +139,8 @@ void Weapon::shoot(const Vector2D& direction) {
 		break;
 	}
 
-	GlassHouse::enqueue(new Shoot());
+	if (entity_->getComponent<PainComponent>())
+		GlassHouse::enqueue(new Shoot());
 }
 
 void Weapon::update() {
