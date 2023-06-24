@@ -99,11 +99,8 @@
     <ClInclude Include="components\wound_comparator.h" />
     <ClInclude Include="DomeEvents\CursorOff.h" />
     <ClInclude Include="DomeEvents\CursorOn.h" />
-    <ClInclude Include="DomeEvents\DomeEvents.h" />
     <ClInclude Include="DomeEvents\Heal.h" />
-    <ClInclude Include="DomeEvents\IncludeEvents.h" />
     <ClInclude Include="DomeEvents\Jump.h" />
-    <ClInclude Include="DomeEvents\ReturnHome.h" />
     <ClInclude Include="DomeEvents\Shoot.h" />
     <ClInclude Include="DomeEvents\WoundStart.h" />
     <ClInclude Include="ecs\Component.h" />

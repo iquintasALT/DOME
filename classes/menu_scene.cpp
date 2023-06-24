@@ -15,7 +15,7 @@
 #include <string>
 #include <iostream>
 
-#include "../DomeEvents/DomeEvents.h"
+#include <Event.h>
 #include "GlassHouse.h"
 
 void MenuScene::init() {

@@ -82,4 +82,5 @@ public:
 	inline virtual void cycle() { update(); refresh(); render(); mngr_->cycle(); }
 	inline Game* getGame() { return g_; };
 	void changeState(GameScene* gs);
+	string getName() { return name; }
 };

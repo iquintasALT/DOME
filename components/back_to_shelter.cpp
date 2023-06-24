@@ -6,8 +6,8 @@
 #include "../classes/physiognomy.h"
 
 #include "../classes/raid_scene.h"
-#include "../DomeEvents/DomeEvents.h"
-#include "../DomeEvents/ReturnHome.h"
+
+#include <Event.h>
 #include "GlassHouse.h"
 
 BackToShelter::BackToShelter(GameScene* scene) : InteractableElement("Go back to SHELTER"), scene_(scene) {}
@@ -18,13 +18,11 @@ void BackToShelter::init() {
 }
 
 void BackToShelter::Interact() {
-	GlassHouse::enqueue(new LevelEnd());
-	GlassHouse::enqueue(new ReturnHome());
+	GlassHouse::enqueue(new LevelEnd(scene_->getName()));
 
 	entity_->getMngr()->getGame()->setShouldRenderFPS(true);
 	static_cast<Player*>(player_)->getPhysiognomy()->removeAllStates();
 
-	GlassHouse::enqueue(new LevelStart());
 	entity_->getMngr()->ChangeScene(new ShelterScene(scene_->getGame()), SceneManager::SceneMode::OVERRIDE);
 }
 
