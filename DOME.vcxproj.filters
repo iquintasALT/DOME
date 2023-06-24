@@ -569,31 +569,22 @@
       <Filter>Header Files\components</Filter>
     </ClInclude>
     <ClInclude Include="DomeEvents\CursorOff.h">
-      <Filter>Source Files\DomeEvents</Filter>
+      <Filter>Header Files\DomeEvents</Filter>
     </ClInclude>
     <ClInclude Include="DomeEvents\CursorOn.h">
-      <Filter>Source Files\DomeEvents</Filter>
-    </ClInclude>
-    <ClInclude Include="DomeEvents\DomeEvents.h">
-      <Filter>Source Files\DomeEvents</Filter>
+      <Filter>Header Files\DomeEvents</Filter>
     </ClInclude>
     <ClInclude Include="DomeEvents\Heal.h">
-      <Filter>Source Files\DomeEvents</Filter>
+      <Filter>Header Files\DomeEvents</Filter>
     </ClInclude>
     <ClInclude Include="DomeEvents\Jump.h">
-      <Filter>Source Files\DomeEvents</Filter>
-    </ClInclude>
-    <ClInclude Include="DomeEvents\ReturnHome.h">
-      <Filter>Source Files\DomeEvents</Filter>
+      <Filter>Header Files\DomeEvents</Filter>
     </ClInclude>
     <ClInclude Include="DomeEvents\Shoot.h">
-      <Filter>Source Files\DomeEvents</Filter>
+      <Filter>Header Files\DomeEvents</Filter>
     </ClInclude>
     <ClInclude Include="DomeEvents\WoundStart.h">
-      <Filter>Source Files\DomeEvents</Filter>
-    </ClInclude>
-    <ClInclude Include="DomeEvents\IncludeEvents.h">
-      <Filter>Source Files\DomeEvents</Filter>
+      <Filter>Header Files\DomeEvents</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -648,7 +639,7 @@
     <Filter Include="Source Files\game">
       <UniqueIdentifier>{4f169d5b-452d-457a-abfd-0a54f7199ddd}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\DomeEvents">
+    <Filter Include="Header Files\DomeEvents">
       <UniqueIdentifier>{ac77cdc4-09ee-4a3f-8fc1-e4504c537822}</UniqueIdentifier>
     </Filter>
   </ItemGroup>

@@ -7,7 +7,7 @@
 #include "../game/Game.h"
 #include "../classes/settings_scene.h"
 
-#include "../DomeEvents/DomeEvents.h"
+#include <Event.h>
 #include "GlassHouse.h"
 
 void PauseScene::init() {
@@ -61,7 +61,9 @@ void PauseScene::settings(Manager* mng) {
 
 void PauseScene::menu(Manager* mng) 
 {
-	GlassHouse::enqueue(new LevelEnd());
+	SCENES scene = mng->getGame()->currentScene;
+	if (scene != SCENES::SHELTER)
+		GlassHouse::enqueue(new LevelEnd(names[(int)scene]));
 	GlassHouse::enqueue(new GameEnd());
 
 	ih().clearState();

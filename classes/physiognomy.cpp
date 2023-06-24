@@ -10,6 +10,7 @@
 #include "../components/hypothermia_component.h"
 
 #include "../classes/lose_scene.h"
+#include "../classes/locations_scene.h"
 
 #include "../DomeEvents/WoundStart.h"
 
@@ -212,6 +213,9 @@ bool Physiognomy::isAlive() const {
 
 void Physiognomy::die(WAYSTODIE way) 
 {
+	SCENES scene = player->getMngr()->getGame()->currentScene;
+	if(scene != SCENES::SHELTER)
+		GlassHouse::enqueue(new LevelEnd(names[(int)scene]));
 	GlassHouse::enqueue(new GameEnd());
 
 	playerAlive = false;

@@ -5,10 +5,8 @@ class WoundStart : public Event
 {
 public:
 
-	WoundStart(Wound w) : Event("WOUND_START")
+	WoundStart() : Event("WOUND_START")
 	{
-		std::cout << "PLAYER GOT " + std::to_string(w) + "\n";
-
-		add("WoundStart", w);
+		std::cout << "PLAYER GOT A WOUND\n";
 	}
 };
