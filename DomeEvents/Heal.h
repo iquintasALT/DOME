@@ -1,12 +1,11 @@
-#include "DomeEvents.h"
-
+#pragma once
 #include <Event.h>
 
 class Heal : public Event
 {
 public:
 
-	Heal(bool correctItem, bool toxic) : Event(HEAL)
+	Heal(bool correctItem, bool toxic) : Event("HEAL")
 	{	
 		std::cout << "PLAYER HEALS ";
 

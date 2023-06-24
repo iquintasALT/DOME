@@ -1,12 +1,11 @@
-#include "DomeEvents.h"
-
+#pragma once
 #include <Event.h>
 
 class ReturnHome : public Event
 {
 public:
 
-	ReturnHome() : Event(RETURN_HOME)
+	ReturnHome() : Event("RETURN_HOME")
 	{
 		std::cout << "BACK TO SHELTER\n";
 
