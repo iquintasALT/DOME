@@ -23,6 +23,8 @@ private:
 
 	bool exit;
 
+	int gameID; 
+
 	int lastTimeFPS; //ultimo registro de fps
 	int currentFPS;  //el actual numero de fps
 	int framesFPS;   //frames transcurrido desde el ultimo registro de fps
@@ -45,6 +47,9 @@ public:
 	void quitGame() { exit = true; }
 
 	void initLoot();
+
+	int getGameID() { return gameID; }
+	void increaseGameID() { gameID++; }
 
 	void setFPSActive(bool value) { fpsActive = value; }
 	bool getFPSActive() { return fpsActive; }

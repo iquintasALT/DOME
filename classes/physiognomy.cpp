@@ -216,7 +216,9 @@ void Physiognomy::die(WAYSTODIE way)
 	SCENES scene = player->getMngr()->getGame()->currentScene;
 	if(scene != SCENES::SHELTER)
 		GlassHouse::enqueue(new LevelEnd(names[(int)scene]));
-	GlassHouse::enqueue(new GameEnd());
+
+	GlassHouse::enqueue(new GameEnd(player->getMngr()->getGame()->getGameID()));
+	player->getMngr()->getGame()->increaseGameID(); 
 
 	playerAlive = false;
 	removeAllStates();
