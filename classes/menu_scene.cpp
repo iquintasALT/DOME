@@ -86,8 +86,9 @@ void MenuScene::onLoad()
 	soundManager().playMusic("menu_theme");
 }
 
-void MenuScene::playGame(Manager* mngr) {
-	GlassHouse::enqueue(new GameStart());
+void MenuScene::playGame(Manager* mngr) 
+{
+	GlassHouse::enqueue(new GameStart(mngr->getGame()->getGameID()));
 
 	ih().clearState();
 	soundManager().stopSongWithFade("game_theme", 1000);

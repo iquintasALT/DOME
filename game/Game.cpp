@@ -45,6 +45,8 @@ Game::Game(int totaltime) {
 	fpsActive = false;
 	fpsText = nullptr;
 	shouldRenderFps = false;
+
+	gameID = 0; 
 }
 
 Game::~Game() {
@@ -257,3 +259,4 @@ void Game::renderCursor() {
 	};
 	cursor->render(dest);
 }
+

@@ -64,7 +64,9 @@ void PauseScene::menu(Manager* mng)
 	SCENES scene = mng->getGame()->currentScene;
 	if (scene != SCENES::SHELTER)
 		GlassHouse::enqueue(new LevelEnd(names[(int)scene]));
-	GlassHouse::enqueue(new GameEnd());
+
+	GlassHouse::enqueue(new GameEnd(mng->getGame()->getGameID()));
+	mng->getGame()->increaseGameID(); 
 
 	ih().clearState();
 	mng->getGame()->numDays = 0;
