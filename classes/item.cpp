@@ -34,8 +34,8 @@ ItemInfo* ItemInfo::antidote()
 {
 	auto f = [](Entity* player) 
 	{
-		bool success = player->getComponent<IntoxicationComponent>();
-		bool intoxication = player->getComponent<IntoxicationComponent>();
+		bool success = player->hasComponent<IntoxicationComponent>();
+		bool intoxication = player->hasComponent<IntoxicationComponent>();
 
 		GlassHouse::enqueue(new Heal(success, intoxication));
 
@@ -50,8 +50,8 @@ ItemInfo* ItemInfo::bandage()
 {
 	auto f = [](Entity* player) {
 
-		bool success = player->getComponent<BleedoutComponent>(); 
-		bool intoxication = player->getComponent<IntoxicationComponent>(); 
+		bool success = player->hasComponent<BleedoutComponent>(); 
+		bool intoxication = player->hasComponent<IntoxicationComponent>(); 
 
 		GlassHouse::enqueue(new Heal(success, intoxication));
 
@@ -124,8 +124,8 @@ ItemInfo* ItemInfo::splint()
 {
 	auto f = [](Entity* player) {
 		
-		bool success = player->getComponent<ConcussionComponent>();
-		bool intoxication = player->getComponent<IntoxicationComponent>();
+		bool success = player->hasComponent<ConcussionComponent>();
+		bool intoxication = player->hasComponent<IntoxicationComponent>();
 
 		GlassHouse::enqueue(new Heal(success, intoxication));
 
@@ -142,8 +142,8 @@ ItemInfo* ItemInfo::painKiller()
 {
 	auto f = [](Entity* player) 
 	{		
-		bool success = player->getComponent<PainComponent>();
-		bool intoxication = player->getComponent<IntoxicationComponent>();
+		bool success = player->hasComponent<PainComponent>();
+		bool intoxication = player->hasComponent<IntoxicationComponent>();
 
 		GlassHouse::enqueue(new Heal(success, intoxication));
 
