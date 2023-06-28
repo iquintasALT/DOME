@@ -139,7 +139,7 @@ void Weapon::shoot(const Vector2D& direction) {
 		break;
 	}
 
-	if (entity_->hasComponent<PainComponent>() != NULL)
+	if (entity_->hasComponent<PainComponent>())
 		GlassHouse::enqueue(new Shoot());
 }
 
