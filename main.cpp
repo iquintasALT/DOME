@@ -11,7 +11,7 @@
 void start() {
 	Game g(8000);
 
-	GlassHouse::init();
+	GlassHouse::init(SerializerType::Json, PersistorType::Local);
 	g.init();
 	try {
 		g.start();
