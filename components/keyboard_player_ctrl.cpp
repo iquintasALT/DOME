@@ -112,7 +112,7 @@ void KeyboardPlayerCtrl::update() {
 				rb_->setVel(Vector2D(rb_->getVel().getX(), -jumpSpeed));
 				//rb_->setOnFloor(false);
 
-				if (jumpSpeed < consts::JUMP_SPEED && entity_->hasComponent<ConcussionComponent>())
+				if (!jumping && entity_->hasComponent<ConcussionComponent>())
 					GlassHouse::enqueue(new Jump());
 
 				jumping = true;
