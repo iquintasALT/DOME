@@ -5,7 +5,7 @@ class Heal : public Event
 {
 public:
 
-	Heal(bool correctItem, bool intoxicated) : Event("HEAL")
+	Heal(bool correctItem, bool intoxicated, int wounds) : Event("HEAL")
 	{	
 		std::cout << "PLAYER HEALS ";
 
@@ -24,5 +24,7 @@ public:
 			std::cout << " HASNT INTOXICATION\n";
 
 		add("Intoxication", intoxicated);
+
+		add("Wounds", wounds);
 	}
 };

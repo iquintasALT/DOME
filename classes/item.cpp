@@ -37,7 +37,7 @@ ItemInfo* ItemInfo::antidote()
 		bool success = player->hasComponent<IntoxicationComponent>();
 		bool intoxication = player->hasComponent<IntoxicationComponent>();
 
-		GlassHouse::enqueue(new Heal(success, intoxication));
+		GlassHouse::enqueue(new Heal(success, intoxication, static_cast<Player*>(player)->getPhysiognomy()->getNumStates()));
 
 		static_cast<Player*>(player)->getPhysiognomy()->removeIntoxicationState();
 		return true;
@@ -53,7 +53,7 @@ ItemInfo* ItemInfo::bandage()
 		bool success = player->hasComponent<BleedoutComponent>(); 
 		bool intoxication = player->hasComponent<IntoxicationComponent>(); 
 
-		GlassHouse::enqueue(new Heal(success, intoxication));
+		GlassHouse::enqueue(new Heal(success, intoxication, static_cast<Player*>(player)->getPhysiognomy()->getNumStates()));
 
 		static_cast<Player*>(player)->getPhysiognomy()->removeBleedout();
 		soundManager().playSFX("heal");
@@ -127,7 +127,7 @@ ItemInfo* ItemInfo::splint()
 		bool success = player->hasComponent<ConcussionComponent>();
 		bool intoxication = player->hasComponent<IntoxicationComponent>();
 
-		GlassHouse::enqueue(new Heal(success, intoxication));
+		GlassHouse::enqueue(new Heal(success, intoxication, static_cast<Player*>(player)->getPhysiognomy()->getNumStates()));
 
 		static_cast<Player*>(player)->getPhysiognomy()->removeConcussionState();
 		soundManager().playSFX("splint");
@@ -145,7 +145,7 @@ ItemInfo* ItemInfo::painKiller()
 		bool success = player->hasComponent<PainComponent>();
 		bool intoxication = player->hasComponent<IntoxicationComponent>();
 
-		GlassHouse::enqueue(new Heal(success, intoxication));
+		GlassHouse::enqueue(new Heal(success, intoxication, static_cast<Player*>(player)->getPhysiognomy()->getNumStates()));
 
 		static_cast<Player*>(player)->getPhysiognomy()->removePainState();
 		soundManager().playSFX("pills");
