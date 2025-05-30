@@ -192,9 +192,11 @@ void GameScene::loadMap(string& const path) {
 					for (int i = 0; i < chestLoot.size(); i++) {
 						int count = 0;
 						if (chestLoot[i].name == CLASSIC_AMMO) count = 12;
-						if (chestLoot[i].name == LASER_AMMO) count = 5; 
+						if (chestLoot[i].name == LASER_AMMO) count = 5;
 						if (chestLoot[i].name == RICOCHET_AMMO) count = 6;
-						loot->getInventory()->storeItem(new Item{ new ItemInfo(chestLoot[i].name, chestLoot[i].desc, chestLoot[i].w,chestLoot[i].h,chestLoot[i].row,chestLoot[i].col),mngr_,loot->getInventory(),chestLoot[i].x,chestLoot[i].y ,count });
+						loot->getInventory()->storeItem(new Item{new ItemInfo(chestLoot[i].name,
+							chestLoot[i].desc, chestLoot[i].w, chestLoot[i].h, chestLoot[i].row, chestLoot[i].col, chestLoot[i].function),
+							mngr_, loot->getInventory(), chestLoot[i].x, chestLoot[i].y, count });
 					}
 					sceneLoots++;
 				}

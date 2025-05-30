@@ -121,6 +121,9 @@ void Game::initLoot() {
 	SCENES_LOOT.clear();
 	// HOSPITAL, RESTAURANT, RAID, COMMUNICATIONS,NUCLEAR_STATION,SUPERMARKET,SHOP
 	// ITEMS n, int cantidad = 0, int w , int h , int x, int y, int row, int col, string desc
+
+
+
 	SCENES_LOOT.emplace(SCENES::RAID, vector<vector<I>>{
 		{
 			I(WATER, 0, 1, 2, 0, 0, 4, 0, "water"),
@@ -213,7 +216,7 @@ void Game::initLoot() {
 	SCENES_LOOT.emplace(SCENES::SHOP, vector<vector<I>>{
 		// ITEMS n, int cantidad = 0, int w , int h , int x, int y, int row, int col, string desc
 		{
-			I{ ANTIDOTE, 0,2,2,0,0,1,0, "Antidote, cures intoxication" },
+			I{ ANTIDOTE, 0,2,2,0,0,1,0, "Antidote, cures intoxication",  },
 				I{ PAINKILLER, 0,1,2,2,2,0,0, "Painkiller, cures pain" }, //duran mas los estados
 				I{ SPLINT, 0,2,1,3,3,5,1, "Split, cures contussion" }, //no saltar
 				I{ BANDAGE, 0,1,1,4,4,0,2, "Bandage, cures bleeding" }
